@@ -1,0 +1,31 @@
+{
+  "name": "vite-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.29",
+     "@master/css": "^1.37.8",
+    "animate.css": "^4.1.1",
+    "swiper": "^11.1.14"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "vite": "^5.3.1",
+    "vite-plugin-html": "^3.2.2",
+     "autoprefixer": "^10.4.20",
+    "axios": "^1.7.7",
+    "axios-retry": "^4.5.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+     "lightningcss": "^1.27.0",
+      "prettier": "^3.2.5",
+    "sass": "1.63.4",
+    "stylus": "^0.63.0"
+  }
+}
