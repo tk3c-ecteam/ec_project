@@ -244,11 +244,11 @@ export default {
       })
     }, 30)
 
-    // 12月 更新現折券連結
-    if (today >= new Date('2024/12/01')) {
-      this.saleUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124085&strPreView=y'
+    // 12/13 更新現折券連結
+    if (today >= new Date('2024/12/13')) {
+      this.saleUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
     } else {
-      this.saleUrl = 'https://www.tk3c.com/dic2.aspx?cid=124026&aid=23890&hid=124046&strPreView=y'
+      this.saleUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124085&strPreView=y'
     }
   },
   methods: {

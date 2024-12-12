@@ -195,11 +195,11 @@ export default {
     //撈取夜間下殺樓層商品
     this.getFloorData(this.menuNight)
 
-    // 2024 12月 更換現折券連結
-    if (today >= new Date('2024/12/01')) {
-      this.disUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124085&strPreView=y'
+    // 2024 12月13 更換現折券連結
+    if (today >= new Date('2024/12/13')) {
+      this.disUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic2.aspx?cid=124026&aid=23890&hid=124045&strPreView=y'
+      this.disUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124085&strPreView=y'
     }
   },
   methods: {

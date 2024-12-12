@@ -43,9 +43,9 @@ const menu = defineModel('menu')
             }
           }"
         >
-          <swiper-slide class="mr:-20px! mr:-10px!@<992 mr:-5px!@<576">
-            <div class="mix flex flex-wrap:wrap flex-direction:column">
-              <img class="w:70% m:0|auto|4%" :src="$filters.siteUrl('tup/images/nav2.png')" />
+          <swiper-slide>
+            <div class="mix flex flex-wrap:wrap flex-direction:column bg:#fff r:20px r:10px@<576 p:4% box:border-box">
+              <img class="w:65% m:0|auto|4%" :src="$filters.siteUrl('tup/images/nav2.png')" />
               <a class="w:70%" href="https://www.tk3c.com">
                 <img :src="$filters.siteUrl('tup/images/nav1.png')" />
               </a>

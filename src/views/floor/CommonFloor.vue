@@ -10,7 +10,7 @@ import listF from '../layout/listF.vue'
 import { globalMixin } from '../../globalMixin.js'
 export default {
   mixins: [globalMixin],
-  props: ['floors', 'menu', 'singleImage'],
+  props: ['floors', 'menu', 'singleImage','moreImage'],
   mounted() {
     this.getFloorData(this.menu)
   }
@@ -20,12 +20,22 @@ export default {
 <template>
   <section class="floor scroll" v-for="(floor, f) in floors" :key="f">
     <h2 class="title" :name="`pro${menu[f]}`" :id="`pro${menu[f]}`">
+      <!-- 圖片+連結標題 -->
       <a v-if="floor.url" :href="$filters.addGALink(floor.url)">
         <img :src="$filters.siteUrl(floor.image)" />
       </a>
-      <img v-if="singleImage" :src="$filters.siteUrl(singleImage)" />
-      <img v-else :src="$filters.siteUrl(floor.image)" />
+      <!-- 有看更多按鈕僅有圖片標題 -->
+       <img v-else-if="floor.moreUrl != undefined" :src="$filters.siteUrl(floor.image)" />
+       <img v-else :src="$filters.siteUrl(floor.image)">
+       
+       <!-- 標題圖片(無文字) -->
+      <img v-if="singleImage != undefined" :src="$filters.siteUrl(singleImage)" />
       <b v-if="floor.text">{{ floor.text }}</b>
+
+      <!-- 單獨看更多按鈕 -->
+       <a v-if="floor.moreUrl != undefined" class="more" :href="$filters.addGALink(floor.moreUrl)">
+        <img :src="$filters.siteUrl(moreImage)" />
+       </a>
     </h2>
 
     <component
