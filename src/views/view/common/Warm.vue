@@ -78,7 +78,7 @@ export default {
           image: 'electric_heater/images/2412/sp03.png'
         },
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=111723&aid=23099&hid=124107&strPreView=y',
+          url: 'https://events.tk3c.com/events_net/24spring_clean/index.html',
           image: 'electric_heater/images/2412/sp04.png'
         },
         {
@@ -130,6 +130,10 @@ export default {
           text: '早鳥獨享',
           href: '#sale'
         },
+         {
+          text: '速速GO',
+          href: '#go'
+        },
         {
           text: '強檔推薦',
           href: '#special'
@@ -174,6 +178,7 @@ export default {
       menus: [2473, 2474, 2475, 7639, 2476, 2477, 2478, 3741, 3742],
       menuSp: 2472,
       menuSale: [7637, 7638],
+      menuGo:7690,
       statusGift: 0,
       statusSale: 0,
       today: new Date()
@@ -184,6 +189,9 @@ export default {
 
     //撈取現折樓層商品
     this.getFloorData(this.menuSale)
+
+    //撈取速速go樓層商品
+    this.getFloorSingle(this.menuGo)
 
     //撈取強檔推薦樓層商品
     this.getFloorSingle(this.menuSp)
@@ -320,6 +328,20 @@ export default {
         </a>
       </div>
     </section>
+
+     <!-- 速速go -->
+        <section class="go-box scroll" id="go">
+          <h2 class="title">
+            <img :src="$filters.siteUrl('wet/images/tk3cgo_bar.png')" alt="" />
+          </h2>
+
+          <div class="box">
+            <component :is="listF" :isSwiper="1" :name="'go-pro'" :pro="product2[menuGo]"></component>
+            <a class="more" :href="$filters.addGALink('https://fast.tk3c.com/store/219/category/13')" target="_blank">
+               <img :src="$filters.siteUrl('electric_heater/images/2411/more.png')" />
+            </a>
+          </div>
+        </section>
 
     <!-- 強檔推薦 保暖必Buy -->
     <section class="special-box scroll" id="special">
@@ -491,7 +513,8 @@ body {
 }
 
 .special-box,
-.sale-group {
+.sale-group,
+.go-box {
   .bg01 {
     background: #9c4638;
     margin: 0 auto 2%;
@@ -638,6 +661,15 @@ body {
   .sale-group {
     b {
       font-size: 1.5rem;
+    }
+  }
+
+  .gift-box {
+    .content {
+      li {
+        width: 97%;
+        margin: 0 5px 3%;
+      }
     }
   }
 }
