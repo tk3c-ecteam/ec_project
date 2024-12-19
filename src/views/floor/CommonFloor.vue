@@ -25,14 +25,14 @@ export default {
         <img :src="$filters.siteUrl(floor.image)" />
       </a>
       <!-- 有看更多按鈕僅有圖片標題 -->
-       <img v-else-if="floor.moreUrl != undefined" :src="$filters.siteUrl(floor.image)" />
-       <img v-else :src="$filters.siteUrl(floor.image)">
-       
+       <img v-else-if="floor.moreUrl && floor.image" :src="$filters.siteUrl(floor.image)" />
+       <img v-else-if="floor.image != undefined" :src="$filters.siteUrl(floor.image)">
+
        <!-- 標題圖片(無文字) -->
       <img v-if="singleImage != undefined" :src="$filters.siteUrl(singleImage)" />
       <b v-if="floor.text">{{ floor.text }}</b>
 
-      <!-- 單獨看更多按鈕 -->
+         <!-- 單獨看更多按鈕 -->
        <a v-if="floor.moreUrl != undefined" class="more" :href="$filters.addGALink(floor.moreUrl)">
         <img :src="$filters.siteUrl(moreImage)" />
        </a>
