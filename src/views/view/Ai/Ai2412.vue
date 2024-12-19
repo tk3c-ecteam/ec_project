@@ -442,32 +442,10 @@ export default {
       }
     },
     goNB(element) {
-      if (element == '#tab5') {
-        //跳轉到組裝機樓層
-        this.statusGift = 0
-
-        setTimeout(() => {
-          $all('.tab5-box li').forEach((el, t) => {
-            el.classList.remove('active')
-            $all('.tab5-box li')[1].classList.add('active')
-          })
-          $all('.tab5-box .tab-content').forEach((el, t) => {
-            el.style.display = 'none'
-            $all('.tab5-box .tab-content')[1].style.display = 'block'
-          })
-        }, 50)
-
-        setTimeout(() => {
-          goAnchor(element)
-        }, 60)
-
-        return false
-      }
-
       //前往錨點
       let el = document.querySelector(element),
         rect = el.getBoundingClientRect(),
-        move = rect.top + window.scrollY
+        move = rect.top + document.documentElement.scrollTop
 
       setTimeout(() => {
         window.scrollTo({
@@ -646,7 +624,7 @@ export default {
       <div class="tab-content" v-if="statusGift == 0">
         <ul class="w:90% gap:10 w:full@<992 mb:2% overflow:hidden">
           <li class="w:44% w:45vw@<992 w:92vw@<576">
-            <a href="#sale">
+            <a href="#sale" :class="[isSale == false ? 'off' :'']">
               <img :src="$filters.siteUrl('2024083C/images/2412/NB01_2.png')" />
             </a>
           </li>
@@ -712,7 +690,7 @@ export default {
             </a>
           </li>
           <li class="w:40% w:46vw@<992 w:92vw@<576">
-            <a @click="goNB('#tab5')" class="mb:2%@<576">
+            <a @click="goNB('#tab9')" class="mb:2%@<576">
               <img :src="$filters.siteUrl('2024083C/images/2412/DIY02.png')" />
             </a>
           </li>

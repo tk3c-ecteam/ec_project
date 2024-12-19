@@ -368,7 +368,7 @@ export default {
     </section>
 
     <!-- 最高現折 -->
-    <section class="sale-box" id="sale" v-if="isSale">
+    <section class="sale-box" id="sale" v-if="isSale && product2[menuDis] != ''">
       <h2 class="title">
         <img :src="$filters.siteUrl('airConditionerLAB/images/2310/dis_title.png')" />
       </h2>
@@ -615,7 +615,7 @@ export default {
                 :is="listF"
                 :pro="products[tab[0].menu[c]].Data"
                 :isSwiper="1"
-                :name="`pro${Number(c) + 1}`"
+                :name="`pro${Number(t) + 1}`"
               >
               </component>
             </div>

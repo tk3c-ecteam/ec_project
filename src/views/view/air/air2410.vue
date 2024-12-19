@@ -40,52 +40,24 @@ export default {
     return {
       proAir: [
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=180196',
-          image: 'airConditionerLAB/images/2412/180196.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=217065',
+          image: 'airConditionerLAB/images/2411/217065_b.png'
         },
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=184030',
-          image: 'airConditionerLAB/images/2412/184030.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=236549',
+          image: 'airConditionerLAB/images/2411/236549.png'
         },
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=214072',
-          image: 'airConditionerLAB/images/2412/214072.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=240642',
+          image: 'airConditionerLAB/images/2411/240642.png'
         },
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=217011',
-          image: 'airConditionerLAB/images/2412/217011.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=246100',
+          image: 'airConditionerLAB/images/2411/246100.png'
         },
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=224967',
-          image: 'airConditionerLAB/images/2412/224967.png'
-        },
-        {
-          url: 'https://www.tk3c.com/pt.aspx?pid=226734',
-          image: 'airConditionerLAB/images/2412/226734.png'
-        },
-        {
-          url: 'https://www.tk3c.com/pt.aspx?pid=237458',
-          image: 'airConditionerLAB/images/2412/237458.png'
-        },
-        {
-          url: 'https://www.tk3c.com/pt.aspx?pid=245825',
-          image: 'airConditionerLAB/images/2412/245825.png'
-        },
-        {
-          url: 'https://www.tk3c.com/pt.aspx?pid=246112',
-          image: 'airConditionerLAB/images/2412/246112.png'
-        },
-        {
-          url: 'https://www.tk3c.com/pt.aspx?pid=246919',
-          image: 'airConditionerLAB/images/2412/246919.png'
-        },
-        {
-          url: 'https://www.tk3c.com/pt.aspx?pid=248026',
-          image: 'airConditionerLAB/images/2412/248026.png'
-        },
-        {
-          url: 'https://www.tk3c.com/pt.aspx?pid=250028',
-          image: 'airConditionerLAB/images/2412/250028.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=249121',
+          image: 'airConditionerLAB/images/2411/249121.png'
         }
       ],
       specials: [
@@ -520,11 +492,12 @@ export default {
     </section>
 
     <!-- 現折券 -->
-    <section class="discount-box" id="dis" v-if="isDis">
+    <section class="discount-box" id="dis" v-if="isDis && product2[menuDis] != ''">
       <h2 class="title">
         <img :src="$filters.siteUrl('airConditionerLAB/images/2410/bra_s1.png')" alt="" />
       </h2>
 
+ 
       <div class="discount">
         <component :is="listF" :pro="product2[menuDis]" :isSwiper="1" :name="'dis'"></component>
         <a class="more" :href="$filters.addGALink(disUrl)" target="_blank">MORE</a>

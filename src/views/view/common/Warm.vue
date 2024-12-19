@@ -181,7 +181,8 @@ export default {
       menuGo:7690,
       statusGift: 0,
       statusSale: 0,
-      today: new Date()
+      today: new Date(),
+      isSale:true
     }
   },
   mounted() {
@@ -293,8 +294,9 @@ export default {
       </div>
     </section>
 
+
     <!-- 本早鳥獨享 領券再現折 -->
-    <section class="sale-group scroll" id="sale">
+    <section class="sale-group scroll" id="sale" v-if="isSale">
       <h2 class="title">
         <img :src="$filters.siteUrl('electric_heater/images/2411/bar01.png')" alt=" " />
       </h2>

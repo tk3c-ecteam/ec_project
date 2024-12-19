@@ -33,13 +33,25 @@ const menu = defineModel('menu')
           :space-between="10"
           :breakpoints="{
             0: {
-              slidesPerView: 2.4
+              slidesPerView: 3,
+              grid: {
+                fill: 'row',
+                rows: 2
+              }
             },
             600: {
-              slidesPerView: 4.3
+              slidesPerView: 4.3,
+              grid: {
+                fill: 'row',
+                rows: 1
+              }
             },
             992: {
-              slidesPerView: 5
+              slidesPerView: 5.3,
+              grid: {
+                fill: 'row',
+                rows: 1
+              }
             }
           }"
         >
@@ -90,7 +102,7 @@ const menu = defineModel('menu')
       <h3 class="aside-header"></h3>
       <div class="aside-content">
         <ul>
-          <li class="main"><a href="#info">活動辦法</a></li>
+          <li class="main new"><a href="#info">活動辦法</a></li>
           <li v-for="(aside, a) in contents[0].floor">
             <a :href="`#pro${menu[a]}`">{{ aside.text }}</a>
           </li>

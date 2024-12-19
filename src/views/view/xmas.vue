@@ -88,13 +88,22 @@ export default {
     this.getFloorSingle(this.menuPro)
 
     //撈取現折券樓層商品
-     this.getFloorData(this.menuSale)
+    setTimeout(() => {
+        this.getFloorData(this.menuSale)
+    }, 20);
+   
 
     //撈取綠點樓層商品
-    this.getFloorSingle(this.menuGreen)
+    setTimeout(() => {
+       this.getFloorSingle(this.menuGreen)
+    }, 25);
+   
 
     //撈取速速go樓層商品
-    this.getFloorSingle(this.menuGo)
+    setTimeout(() => {
+      this.getFloorSingle(this.menuGo)
+    }, 30);
+    
   },
   methods: {
     changSale(id) {
@@ -334,8 +343,8 @@ export default {
       <!-- 新展銀行 -->
       <div class="tab-content" v-show="statusBank == 1">
         <p class="grid-cols:2 grid-cols:1@<576 m:auto gap:10">
-          <img :src="$filters.siteUrl('Xmas2024/images/bank2b.png')" />
-          <img :src="$filters.siteUrl('Xmas2024/images/bank2-2b.png')" />
+          <img :src="$filters.siteUrl('Xmas2024/images/bank2c.png')" />
+          <img :src="$filters.siteUrl('Xmas2024/images/bank2-2c.png')" />
         </p>
         <a
           href="https://www.tk3c.com.tw/#activityinfo&8"

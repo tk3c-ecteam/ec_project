@@ -61,6 +61,10 @@ const contents = [
       {
         image: 'tup/images/nav6.png',
         url: 'https://events.tk3c.com/events_net/bank_ec/index.html'
+      },
+        {
+        image: 'tup/images/nav7.png',
+        url: 'https://www.tk3c.com/dictitleurl.aspx?cid=124130'
       }
     ]
   }
@@ -224,7 +228,7 @@ body {
   .nav-group {
     .swiper-slide {
       &:first-of-type {
-        margin-right: -10px !important;
+        margin-right: 10px !important;
       }
     }
   }
