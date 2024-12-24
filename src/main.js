@@ -22,6 +22,7 @@ const config = {
     if (url !== undefined) {
       return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'ec=' + location[2]
     }
+    return ''
   }
 }
 
@@ -41,4 +42,4 @@ if (document.querySelectorAll('#app').length > 0) app.mount('#app')
 if (document.querySelectorAll('#mobile').length > 0) mobile.mount('#mobile')
 
 //手機版選單項目
-import './assets/js/mobileText.js'
+//import './assets/js/mobileText.js'
