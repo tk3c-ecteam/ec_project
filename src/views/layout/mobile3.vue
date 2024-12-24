@@ -1,3 +1,9 @@
+<script setup>
+  const asides = defineModel('asides', {
+  type: Object
+})
+</script>
+
 <template>
   <!-- 手機版選單(有熱門活動版本) -->
   <div class="nav-footer">
@@ -36,7 +42,11 @@
   <div class="mobile-for-product">
     <div class="top-nav">
       <h3 class="title">快速選單</h3>
-      <ul></ul>
+      <ul>
+        <li v-for="aside in asides">
+          <a :href="aside.href">{{ aside.text }}</a>
+        </li>
+      </ul>
     </div>
     <a class="switch"><i class="fa-solid fa-angle-down"></i></a>
   </div>
