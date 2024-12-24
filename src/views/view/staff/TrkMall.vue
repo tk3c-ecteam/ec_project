@@ -7,7 +7,7 @@ const contents = [
   {
     logo: 'trkmall/images/logo.png',
     title: 'trkmall/images/title.png',
-    store: 'trkmall/images/store.png',
+    store: 'trkmall/images/store2.png',
     floor: [
       {
         text: '手機',
@@ -32,10 +32,7 @@ const contents = [
         <li>2.交易須知：</li>
         <li><p>(1) 限【門市取貨門市付款】(預約門市取貨且選擇門市付款)，商品不得轉售。</p></li>
         <li><p>(2) 指定取貨/付款門市</p></li>
-        <li><p>桃區：</p></li>
-        <li style="padding-left:20px"><p>楊梅店、南崁店、桃園旗艦店、藝文店、大園店、桃園中山店、桃園力行店、內壢忠孝店、平鎮環南店</p></li>
-        <li><p>竹苗區：</p></li>
-        <li style="padding-left:20px"><p>竹南店、新竹店、竹東店、苗栗店、光復店、頭份店、苑裡店、竹北店、竹北自強店、新竹民富店、神山超越店</p></li>
+        <li style="padding-left:25px;"><p style="color:red;font-weight:bold;">新竹湳雅店<small>限定</small></p></li>
         <li><p>(3) 貨到門市後，燦坤3C會再行通知，請於期限內攜帶【會員證】至【預約取貨門市】，出示【門市交易預約單】後於實體門市現場進行選購與付款，逾期未完成取貨則預約單自動取消。</p></li>
         <li><p>(4) 如非本人取貨、取貨未攜帶員工識別證等，燦坤3C得拒絕本交易。</p></li>
         <li><p>(5) 請務必填寫真實、正確資訊，若因姓名、電話、員工編號錯誤等不可歸責於燦坤3C之事由導致聯絡不上或無法出貨等情況，恕不負責，請多包涵。</p></li>
@@ -128,6 +125,16 @@ body {
   }
   .mix{
     background: #fff;
+  }
+}
+
+.store-group {
+  .buttons {
+    a {
+      &:last-of-type{
+        display: none
+      }
+    }
   }
 }
 

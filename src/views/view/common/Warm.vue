@@ -3,6 +3,7 @@ import { Parallax, EffectFade } from 'swiper/modules'
 import listF from '../../layout/listF.vue'
 import AllEvent from '../../../components/AllEvent.vue'
 import CommonFloor from '../../floor/CommonFloor.vue'
+import mobile from '@/views/layout/mobile2.vue'
 </script>
 
 <script>
@@ -323,7 +324,7 @@ export default {
         ></component>
         <a
           class="more"
-          :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=124085')"
+          :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=124130')"
           target="_blank"
         >
           <img :src="$filters.siteUrl('electric_heater/images/2411/more.png')" />
@@ -409,6 +410,7 @@ export default {
 
     <!-- 其他樓層 -->
     <CommonFloor :floors="floorImg" :menu="menus"></CommonFloor>
+    </div>
 
     <!-- 右側選單 -->
     <aside class="aside-container">
@@ -425,7 +427,9 @@ export default {
         <a href="#" class="go-top">GO TOP</a>
       </div>
     </aside>
-  </div>
+
+    <!-- 手機版上方選單  -->
+     <mobile v-model:asides="asides"></mobile>
 </template>
 
 <style lang="scss">

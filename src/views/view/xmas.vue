@@ -4,7 +4,7 @@ import {Controller } from "swiper/modules";
 import listF from '../layout/listF.vue'
 import XmasFloor from '../floor/XmasFloor.vue'
 import AllEvent from '../../components/AllEvent.vue'
-
+import mobile from '@/views/layout/mobile3.vue'
 
 const swiperBank = ref()
 
@@ -494,6 +494,9 @@ export default {
       <a href="#" class="go-top">GO TOP</a>
     </div>
   </aside>
+
+  <!-- 手機版選單 -->
+   <mobile v-model:asides="asides"></mobile>
 </template>
 
 <style lang="scss">

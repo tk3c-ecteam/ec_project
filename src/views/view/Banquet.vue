@@ -1,5 +1,6 @@
 <script setup>
 import listF from '../layout/listF.vue'
+import mobile from '@/views/layout/mobile3.vue'
 </script>
 
 <script>
@@ -9,7 +10,7 @@ export default {
   mixins: [globalMixin],
   data() {
     return {
-      menus: [7636, 7617, 7618, 7619, 7620, 7621, 7622, 7623, 7624], //商品陳列編號
+      menus: [7617, 7618, 7619, 7620, 7621, 7622, 7623, 7624], //商品陳列編號
       gifts: [
         { image: 'banquet/images/sp01.png' },
         { image: 'banquet/images/sp02.png' },
@@ -20,48 +21,41 @@ export default {
       ],
       floorImg: [
         {
-          image: 'banquet/images/bar09.png'
-        },
-        {
           image: 'banquet/images/bar01.png',
-          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=40444'
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=40444',
+           text: 'Apple'
         },
         {
           image: 'banquet/images/bar02.png',
-          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=93605'
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=93605',
+          text: '三星'
         },
         {
           image: 'banquet/images/bar03.png',
           url: 'https://www.tk3c.com/dictitleurl.aspx?cid=40343'
+          ,text: '穿戴裝置'
         },
         {
-          image: 'banquet/images/bar04.png'
+          image: 'banquet/images/bar04.png',
+          text: '50000以上'
         },
         {
-          image: 'banquet/images/bar05.png'
+          image: 'banquet/images/bar05.png',
+          text:'20000-49999'
         },
         {
-          image: 'banquet/images/bar06.png'
+          image: 'banquet/images/bar06.png',
+          text:'10000-19999'
         },
         {
-          image: 'banquet/images/bar07.png'
+          image: 'banquet/images/bar07.png',
+          text:'9999以下'
         },
         {
           image: 'banquet/images/bar08.png',
-          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=71484'
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=71484',
+          text:'Dyson/石頭/追覓'
         }
-      ],
-      asides: [
-        { text: '千元專區' },
-        { text: 'Apple' },
-        { text: '三星' },
-        { text: '穿戴裝置' },
-        { text: '50000以上' },
-        { text: '20000-49999' },
-        { text: '10000-19999' },
-        { text: '9999以下' },
-        { text: 'Dyson/石頭/追覓' },
-        { text: '聯絡方式', href: '#contact' }
       ],
       gift2: [
         { image: 'banquet/images/gift1_2.png' },
@@ -81,10 +75,6 @@ export default {
   },
   mounted() {
     const { today, menus } = this
-
-    menus.splice(0, 1)
-    this.floorImg.splice(0, 1)
-    this.asides.splice(0, 1)
 
     //撈好樓層商品
     this.getFloorData(menus)
@@ -260,7 +250,7 @@ export default {
           >
             <li class="flex flex-wrap:wrap mb:10px">
               請洽企業窗口專人服務信箱:
-              <address class="color:blue">cust_mange@tk3c.com</address>
+              <address class="color:blue">cust_manage@tk3c.com</address>
             </li>
             <li class="flex flex-wrap:wrap mb:10px mb:20px@<576">
               <div class="flex flex-direction:row">
@@ -310,14 +300,18 @@ export default {
       <h3 class="aside-header"></h3>
       <div class="aside-content">
         <ul>
-          <li v-for="(aside, a) in asides">
-            <a :href="[a == 8 ? aside.href : `#pro${menus[a]}`]">{{ aside.text }}</a>
+          <li v-for="(floor, f) in floorImg">
+            <a :href="`#pro${menus[f]}`">{{ floor.text }}</a>
           </li>
+          <li><a href="#contact">聯絡方式</a></li>
         </ul>
       </div>
       <a href="#" class="go-top">GO TOP</a>
     </div>
   </aside>
+
+  <!-- 手機板選單 -->
+   <mobile :asides="floorImg"></mobile>
 </template>
 
 <style lang="scss">

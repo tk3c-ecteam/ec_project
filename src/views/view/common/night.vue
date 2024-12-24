@@ -1,5 +1,6 @@
 <script setup>
 import listF from '../../layout/listF.vue'
+import mobile from '@/views/layout/mobile2.vue'
 </script>
 
 <script>
@@ -12,12 +13,12 @@ export default {
       menuSP: 7392,
       menus: [6149, 6150, 6151, 6152, 6153, 6154],
       proDatas: [
-        { image: 'nightsale/images/part3/bar_top.png', menu: 6149, title: '每週強檔' },
-        { image: 'nightsale/images/part3/bar000.png', menu: 6150, title: '大型家電' },
-        { image: 'nightsale/images/part3/bar01.png', menu: 6151, title: '生活家電' },
-        { image: 'nightsale/images/part3/bar02.png', menu: 6152, title: '電腦資訊' },
-        { image: 'nightsale/images/part3/bar07.png', menu: 6153, title: '鍵盤滑鼠' },
-        { image: 'nightsale/images/part3/bar04_b.png', menu: 6154, title: '數位週邊' }
+        { image: 'nightsale/images/part3/bar_top.png', menu: 6149, text: '每週強檔',href:'pro6149' },
+        { image: 'nightsale/images/part3/bar000.png', menu: 6150, text: '大型家電',href:'pro6150' },
+        { image: 'nightsale/images/part3/bar01.png', menu: 6151, text: '生活家電',href:'pro6151' },
+        { image: 'nightsale/images/part3/bar02.png', menu: 6152, text: '電腦資訊',href:'pro6152' },
+        { image: 'nightsale/images/part3/bar07.png', menu: 6153, text: '鍵盤滑鼠',href:'pro6153' },
+        { image: 'nightsale/images/part3/bar04_b.png', menu: 6154, text: '數位週邊',href:'pro6154' }
       ],
       today: new Date(),
       isSp: false,
@@ -134,20 +135,20 @@ export default {
               }"
               :breakpoints="{
                 0: {
-                  slidesPerView: 2.2,
+                  slidesPerView: 2,
                   grid: {
                     fill: 'row',
-                    rows: 3
+                    rows: 2
                   }
                 },
                 601: {
                   slidesPerView: 3.3,
                   grid: {
                     fill: 'row',
-                    rows: 4
+                    rows: 3
                   }
                 },
-                992: {
+                1100: {
                   slidesPerView: 4.3,
                   grid: {
                     fill: 'row',
@@ -155,10 +156,10 @@ export default {
                   }
                 },
                 1281: {
-                  slidesPerView: 5.3,
+                  slidesPerView: 5.8,
                   grid: {
                     fill: 'row',
-                    rows: 4
+                    rows: 3
                   }
                 }
               }"
@@ -225,11 +226,366 @@ export default {
       <div class="aside-content">
         <ul>
           <li v-for="floor in proDatas">
-            <a :href="`#pro${floor.menu}`">{{ floor.title }}</a>
+            <a :href="`#pro${floor.menu}`">{{ floor.text }}</a>
           </li>
         </ul>
       </div>
       <a href="#" class="go-top">GO TOP</a>
     </div>
   </aside>
+
+  <!-- 手機版 -->
+   <mobile v-model:asides="proDatas"></mobile>
 </template>
+
+<style lang="scss">
+  @charset "utf-8";
+$dir: "https://events.cdn-tkec.tw/events_net/events_net/nightsale/images/part3/";
+
+/*  共用樣式調整 */
+
+body {
+  background: #0f0224;
+  position: relative;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    $image: $dir + "bg.jpg";
+    background: url($image) no-repeat center;
+    background-size: 100% auto;
+    background-position: 0 45px, top;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 0;
+    z-index: -1;
+  }
+}
+
+.protitle {
+  height: auto;
+  @include hide-text;
+  a {
+    height: auto;
+  }
+}
+
+.bg01 {
+  background: none;
+  li {
+    .boxF_price {
+      &.incoming {
+        strong {
+          color: #fff;
+          height: 60px;
+          font-size: 190%;
+          &:before {
+            content: "先加入購物車時間到再結帳";
+            letter-spacing: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .before {
+    .boxF_price {
+      strong {
+        color: #fff;
+        height: 60px;
+        font-size: 190%;
+        &:before {
+          content: "先加入購物車時間到再結帳";
+          letter-spacing: 0;
+        }
+        em {
+          display: none;
+        }
+      }
+      .iconF_pro {
+        display: none;
+      }
+    }
+  }
+}
+
+.timearea {
+  color: #fff;
+  font-weight: bold;
+  margin: 0 auto 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    font-size: 3em;
+    padding-right: 1%;
+  }
+  i,
+  b {
+    font-size: 3em;
+    padding-left: 0.5%;
+  }
+}
+
+section {
+  .title {
+    width: 55%;
+  }
+}
+
+/* 夜間下殺 */
+#night-container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  .background {
+    position: relative;
+    margin: 0 auto 0;
+    padding-bottom: 30%;
+    .title {
+      width: 45%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 35%;
+      animation: zoomInNormal 1.4s linear;
+      img {
+        animation: none;
+      }
+    }
+    .product {
+      width: 30%;
+      position: absolute;
+      left: -7%;
+      top: -8%;
+      animation: slow-move2 5s ease-in;
+    }
+  }
+}
+
+.special-box {
+  min-width: 1200px;
+  .bg01 {
+    background: #fff000;
+    li {
+      &.close {
+        padding-bottom: 15px;
+        .boxF_price {
+          strong {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .title {
+    width: 65%;
+  }
+}
+
+.pro-box {
+  .pro {
+    .swiper-wrapper {
+      height: calc((100% - 30px) / 2) !important;
+    }
+  }
+  .bg01 {
+    background: #bd9460;
+    padding: 1% 1% 0;
+    box-sizing: border-box;
+  }
+  &:nth-of-type(1) {
+    .title {
+      width: 65%;
+    }
+  }
+}
+
+/*  電腦版其他尺寸 */
+@include media-query("mobile", "1280px") {
+  .special-box {
+    min-width: 90%;
+  }
+}
+@include media-query("mobile", "992px") {
+  #night-container {
+    .background {
+      padding-bottom: 50%;
+      .title {
+        width: 80vw;
+        top: 15vw;
+        z-index: 5;
+      }
+      .product {
+        width: 40vw;
+        left: -17vw;
+        top: -12vw;
+      }
+    }
+  }
+
+  body {
+    &:before {
+      background-size: 120% auto;
+      background-position: -10vw 4vw, top;
+    }
+  }
+
+  .timearea {
+    margin: 0 auto 5%;
+    span {
+      font-size: 3em;
+    }
+    i {
+      font-size: 3em;
+    }
+  }
+
+  section {
+    .title {
+      width: 90vw;
+    }
+  }
+
+  .special-box {
+    min-width: 60%;
+    .title {
+      width: 100%;
+    }
+  }
+
+  .pro-box {
+    &:nth-of-type(1) {
+      .title {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* 手機版 */
+
+@include media-query("mobile", "576px") {
+  .fix_btn {
+    display: block;
+    .dropdown-menu {
+      display: none;
+    }
+  }
+
+  #night-container {
+    .background {
+      padding-bottom: 80vw;
+      .title {
+        width: 95vw;
+        left: 0;
+        top: 34vw;
+      }
+      .product {
+        width: 40vw;
+        left: -82vw;
+        top: 16vw;
+      }
+    }
+  }
+
+  .bg01 {
+    li {
+      .boxF_price {
+        &.incoming {
+          strong {
+            height: 15px;
+          }
+        }
+      }
+    }
+    .boxF_price {
+      &.incoming {
+        &:after {
+          content: "先加入購物車" !important;
+          font-size: 0.8em;
+        }
+      }
+    }
+    .before {
+      .boxF_price {
+        &:after {
+          content: "先加入購物車" !important;
+        }
+      }
+    }
+  }
+
+  .timearea {
+    flex-wrap: wrap;
+    span {
+      width: 100%;
+      height: auto;
+      display: block;
+      font-size: 2.5em;
+    }
+  }
+
+  body {
+    &:before {
+      background-size: 180% auto;
+      background-position: -10vw 4vw, top;
+    }
+  }
+
+  section {
+    .title {
+      width: 100%;
+      margin: 0 auto 3%;
+    }
+  }
+
+  .special-box {
+    .title {
+      width: 120%;
+      margin: 0 -11% 3%;
+    }
+  }
+
+  .pro-box {
+    &:nth-of-type(1) {
+      .title {
+        width: 120%;
+        margin: 0 -11% 3%;
+      }
+    }
+
+    .bg01 {
+      padding: 2% 2% 0;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@include media-query("mobile", "360px") {
+  .bg01 {
+    .boxF_price {
+      &.incoming {
+        &:after {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes slow-move2 {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+</style>
