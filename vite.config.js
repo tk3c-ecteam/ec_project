@@ -4,6 +4,7 @@ import path from 'path'
 import { resolve } from 'node:path'
 import autoprefixer from 'autoprefixer'
 import { createHtmlPlugin } from 'vite-plugin-html'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,9 +16,13 @@ export default defineConfig({
     }),
     createHtmlPlugin({
       minify: true,
-      entry: 'src/main.js'
-    })
+      entry: './src/main.js'
+    }),
+    ViteImageOptimizer()
   ],
+  define: {
+    'process.env': {}
+  },
   css: {
     preprocessorOptions: {
       scss: {
@@ -41,30 +46,27 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
+      '@': path.resolve(__dirname, './src'),
+      '@page': path.resolve(__dirname, './page')
     }
   },
   build: {
-    //不壓縮js
+    //壓縮js
     minify: 'esbuild',
     //不壓縮css
     cssMinify: false,
     // 小於4k轉換成base64
     assetsInlineLimit: 4096,
+    //每次執行清空 dist資料夾
+    emptyOutDir: true,
     rollupOptions: {
       input: {
-        double12: resolve(__dirname, './index.html')
+        banquet: resolve(__dirname, './index.html')
       },
       output: {
-        /* manualChunks(id) {
-           //將資料夾是 node_modules 拆分出來
-           if (id.includes('node_modules')) {
-             return 'vendor'
-           }
-         },*/
         entryFileNames: 'js/[name].js',
         chunkFileNames: 'js/[name].js',
-        assetFileNames: 'css/[name].[ext]'
+        assetFileNames: 'css/[name][extname]'
       }
     }
   }
