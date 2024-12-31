@@ -72,9 +72,6 @@ export const globalMixin = {
         const res = await axios({
           method: 'get',
           url: 'https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu,
-          headers: {
-            'Content-Type': 'application/json',
-          }
         })
 
         this.product2[menu] = res.data.Data
@@ -95,6 +92,14 @@ export const globalMixin = {
     //價錢百分數加入逗號
     addNumComma(number) {
       return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    },
+    //促銷文顯示錯誤隱藏
+    hidePromte(text) {
+      if (text == '遠端伺服器傳回一個錯誤: (503) 伺服器無法使用。') {
+        return ''
+      } else {
+        return text.trim();
+      }
     },
     //頁籤顯示隱藏
     showAndHide(id, element) {

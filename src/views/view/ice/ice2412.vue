@@ -3,6 +3,7 @@ import { EffectFade, Parallax, EffectFlip } from 'swiper/modules'
 import listF from '../../layout/listF.vue'
 import { ref } from 'vue'
 import AllEvent from '../../../components/AllEvent.vue' //全站活動
+import mobile from '@/views/layout/mobile.vue'
 
 const swiperRef = ref()
 
@@ -39,35 +40,31 @@ export default {
       proICE: [
         {
           url: 'https://www.tk3c.com/pt.aspx?pid=194399',
-          image: 'icewash2209/images/2412/194399.png'
+          image: 'icewash2209/images/2411/194399.png'
         },
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=209619',
-          image: 'icewash2209/images/2412/209619.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=227951',
+          image: 'icewash2209/images/2411/227951.png'
         },
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=219235',
-          image: 'icewash2209/images/2412/219235.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=240131',
+          image: 'icewash2209/images/2411/240131.png'
         },
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=229402',
-          image: 'icewash2209/images/2412/229402.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=243215',
+          image: 'icewash2209/images/2411/243215.png'
         },
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=238698',
-          image: 'icewash2209/images/2412/238698.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=246687',
+          image: 'icewash2209/images/2411/246687.png'
         },
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=244261',
-          image: 'icewash2209/images/2412/244261.png'
-        },
-        {
-          url: 'https://www.tk3c.com/pt.aspx?pid=246437',
-          image: 'icewash2209/images/2412/246437.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=252717',
+          image: 'icewash2209/images/2411/252717.png'
         },
         {
           url: 'https://www.tk3c.com/pt.aspx?pid=252733',
-          image: 'icewash2209/images/2412/252733.png'
+          image: 'icewash2209/images/2411/252733.png'
         }
       ],
       tab1: [
@@ -204,7 +201,17 @@ export default {
       isSale: true,
       today: new Date(),
       isBrand: false,
-      saleUrl: ''
+      saleUrl: '',
+      asides:[
+        {
+          text:'最強暢銷品牌',
+          href:'#brand'
+        },
+        {
+          text:'冰箱洗衣機',
+          href:'#info'
+        }
+      ]
     }
   },
   mounted() {
@@ -347,6 +354,9 @@ export default {
           :autoplay="{ delay: 1800, disableOnInteraction: false }"
           :parallax="true"
           :effect="'fade'"
+          :fadeEffect="{
+            crossFade:true
+          }"
           :modules="[EffectFade, Parallax]"
         >
           <swiper-slide v-for="pro in proICE">
@@ -644,6 +654,9 @@ export default {
       <a href="#" class="go-top">GO TOP</a>
     </div>
   </aside>
+
+  <!-- 手機版 -->
+   <mobile :asides="asides"></mobile>
 </template>
 
 <style lang="scss">
@@ -714,7 +727,7 @@ body {
     .product {
       width: 25%;
       position: absolute;
-      top: 2vmax;
+      top: 9vmax;
       right: 22%;
       .swiper-wrapper {
         align-items: baseline;
@@ -783,9 +796,9 @@ body {
         top: 27vw;
       }
       .product {
-        width: 30vw;
+        width: 30%;
         right: 14vw;
-        top: 3vw;
+        top: 11vw;
       }
     }
   }
@@ -829,11 +842,11 @@ body {
         top: 49vw;
       }
       .product {
-        width: 70vw;
+        width: 70%;
         left: 29vw;
         right: 0;
         margin: 0 auto;
-        top: 40vw;
+        top: 61vw;
       }
     }
   }

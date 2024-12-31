@@ -9,7 +9,7 @@ export default {
 <!-- 商品樓層list_F版型 4小 -->
 <template>
   <!-- 有輪播 -->
-  <div class="bg01 list_F p:1%|1%|0! p:2%|2%|0!@<576" v-if="isSwiper == true">
+  <div class="bg01 list_F p:1%|1%|0! p:2%|2%|0!@<576" v-if="isSwiper">
     <ul v-if="pro != undefined" :class="[name != undefined ? name : '']">
       <swiper
         class="pro overflow:hidden"
@@ -49,7 +49,7 @@ export default {
           >
             <p class="itemF_img"><img onerror="ImgError(this);" :src="proA.ImgUrl" border="0" /></p>
             <storg v-html="proA.productname"></storg>
-            <h4 :class="[proA.Promote.trim() == '' ? 'empty' : '']">{{ proA.Promote }}</h4>
+            <h4 :class="[hidePromte(proA.Promote) == '' ? 'empty' : '']">{{ hidePromte(proA.Promote) }}</h4>
             <div class="boxF_price">
               <p class="iconF_pro" v-if="getProPercent(proA) != 100">
                 <span>{{ getProPercent(proA) }}</span
@@ -64,8 +64,8 @@ export default {
           </a>
         </swiper-slide>
       </swiper>
-      <div v-if="pro.length > 4" class="swiper-button-prev prev"></div>
-      <div v-if="pro.length > 4" class="swiper-button-next next"></div>
+      <div class="swiper-button-prev prev"></div>
+      <div class="swiper-button-next next"></div>
     </ul>
   </div>
 
@@ -80,7 +80,7 @@ export default {
         >
           <p class="itemF_img"><img onerror="ImgError(this);" :src="proA.ImgUrl" border="0" /></p>
           <storg v-html="proA.productname"></storg>
-          <h4 :class="[proA.Promote.trim() == '' ? 'empty' : '']">{{ proA.Promote }}</h4>
+          <h4 :class="[hidePromte(proA.Promote) == '' ? 'empty' : '']">{{ hidePromte(proA.Promote) }}</h4>
           <div class="boxF_price">
             <p class="iconF_pro" v-if="getProPercent(proA) != 100">
               <span>{{ getProPercent(proA) }}</span

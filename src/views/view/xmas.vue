@@ -77,12 +77,17 @@ export default {
       statusSale: 0, //現折券樓層用
       today: new Date(),
       swiperSale1:null,
-      swiperSale2:null
+      swiperSale2:null,
+      isSocial:true
     }
   },
   mounted() {
+    const { today } = this;
+
     //滑動後背景固定
     this.fixedBg('.background2','.all-box')
+
+    if (this.today >= new Date('2025/01/01')) this.isSocial = false
 
     // 撈取1212必購神物樓層商品
     this.getFloorSingle(this.menuPro)
@@ -141,11 +146,11 @@ export default {
   <div id="xmas-container">
     <div class="background">
       <h2 class="title">
-        <img :src="$filters.siteUrl('Xmas2024/images/title.png')" />
+        <img  :src="$filters.siteUrl('Xmas2024/images/title.png')" />
       </h2>
 
       <h5 class="subtitle">
-        <img :src="$filters.siteUrl('Xmas2024/images/subtitle2.png')" />
+        <img  :src="$filters.siteUrl('Xmas2024/images/subtitle2.png')" />
       </h5>
     </div>
 
@@ -157,7 +162,7 @@ export default {
     <!-- 送禮 -->
     <section class="pro-box">
       <h2 class="title">
-        <img :src="$filters.siteUrl('Xmas2024/images/gift_title.png')" />
+        <img  :src="$filters.siteUrl('Xmas2024/images/gift_title.png')" />
       </h2>
 
       <component :is="listF" :isSwiper="1" :name="'pro'" :pro="product2[menuPro]"></component>
@@ -172,7 +177,7 @@ export default {
           "
           target="_blank"
         >
-          <img :src="$filters.siteUrl('Xmas2024/images/sale_title3.png')" />
+          <img  :src="$filters.siteUrl('Xmas2024/images/sale_title3.png')" />
         </a>
       </h2>
 
@@ -206,7 +211,7 @@ export default {
             @click="goSlide(s)"
           >
             <a @click="changSale(s)">
-              <img :src="$filters.siteUrl(sale.image)" alt />
+              <img  :src="$filters.siteUrl(sale.image)" alt />
             </a>
           </swiper-slide>
         </swiper>
@@ -322,7 +327,8 @@ export default {
                 </a>
               </swiper-slide>
               <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
-                <img :src="$filters.siteUrl('Xmas2024/images/bank1-3.png')" />
+                <img v-if="today >= new Date('2025/01/01')" :src="$filters.siteUrl('Xmas2024/images/bank1-3c.png')" />
+                <img v-else :src="$filters.siteUrl('Xmas2024/images/bank1-3.png')" />
                 <a
                   class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576"
                   :href="
@@ -343,8 +349,10 @@ export default {
       <!-- 新展銀行 -->
       <div class="tab-content" v-show="statusBank == 1">
         <p class="grid-cols:2 grid-cols:1@<576 m:auto gap:10">
-          <img :src="$filters.siteUrl('Xmas2024/images/bank2c.png')" />
-          <img :src="$filters.siteUrl('Xmas2024/images/bank2-2c.png')" />
+          <img v-if="today >= new Date('2025/01/01')" :src="$filters.siteUrl('Xmas2024/images/bank2d.png')" />
+          <img v-else :src="$filters.siteUrl('Xmas2024/images/bank2c.png')" />
+          <img v-if="today >= new Date('2025/01/01')" :src="$filters.siteUrl('Xmas2024/images/bank2-2d.png')" />
+           <img :src="$filters.siteUrl('Xmas2024/images/bank2-2c.png')" />
         </p>
         <a
           href="https://www.tk3c.com.tw/#activityinfo&8"
@@ -386,13 +394,16 @@ export default {
               }"
             >
             <swiper-slide>
-              <img :src="$filters.siteUrl('Xmas2024/images/bank3.png')" />
+              <img v-if="today >= new Date('2025/01/01')" :src="$filters.siteUrl('Xmas2024/images/bank3b.png')" />
+              <img v-else :src="$filters.siteUrl('Xmas2024/images/bank3.png')" />
             </swiper-slide>
             <swiper-slide>
-              <img :src="$filters.siteUrl('Xmas2024/images/bank3-2.png')" />
+              <img v-if="today >= new Date('2025/01/01')" :src="$filters.siteUrl('Xmas2024/images/bank3-2b.png')" />
+              <img v-else :src="$filters.siteUrl('Xmas2024/images/bank3-2.png')" />
             </swiper-slide>
             <swiper-slide>
-              <img :src="$filters.siteUrl('Xmas2024/images/bank3-3.png')" />
+              <img v-if="today >= new Date('2025/01/01')" :src="$filters.siteUrl('Xmas2024/images/bank3-3b.png')" />
+              <img v-else :src="$filters.siteUrl('Xmas2024/images/bank3-3.png')" />
             </swiper-slide>
           </swiper>
         <a
@@ -406,13 +417,13 @@ export default {
     </section>
 
     <!-- fb/line分享 -->
-    <section>
+    <section v-if="isSocial">
       <div class="w:90% w:full@<576 gap:10 grid-cols:2 grid-cols:1@<576 m:auto">
         <a :href="$filters.addGALink('https://www.facebook.com/TDdd331')" target="_blank"
-          ><img :src="$filters.siteUrl('double12_2024/images/1212/fb.png')"
+          ><img  :src="$filters.siteUrl('double12_2024/images/1212/fb.png')"
         /></a>
         <a :href="$filters.addGALink('https://page.line.me/tid7686u')" target="_blank"
-          ><img :src="$filters.siteUrl('double12_2024/images/1212/line.png')"
+          ><img  :src="$filters.siteUrl('double12_2024/images/1212/line.png')"
         /></a>
       </div>
     </section>
@@ -424,12 +435,12 @@ export default {
           :href="$filters.addGALink('https://events.tk3c.com/events_net/green_subsidy/index.html')"
           target="_blank"
         >
-          <img :src="$filters.siteUrl('Xmas2024/images/g_title.png')" />
+          <img  :src="$filters.siteUrl('Xmas2024/images/g_title.png')" />
         </a>
       </h2>
 
       <p class="m:auto m:2%|0|0@<576">
-        <img :src="$filters.siteUrl('double12_2024/images/1212/green.png')" />
+        <img  :src="$filters.siteUrl('double12_2024/images/1212/green.png')" />
       </p>
 
       <div class="box">
@@ -451,7 +462,7 @@ export default {
           "
           target="_blank"
         >
-          <img :src="$filters.siteUrl('Xmas2024/images/go_title.png')" />
+          <img  :src="$filters.siteUrl('Xmas2024/images/go_title.png')" />
         </a>
       </h2>
 
@@ -525,7 +536,7 @@ body {
 
 #xmas-container {
   .background {
-    $image: $dir + 'kv.png';
+     $image: $dir + 'kv.png';
     @include bg-responsive($image, 2000, 700);
     position: relative;
     margin: 0 auto 0;

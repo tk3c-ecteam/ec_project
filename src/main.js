@@ -18,9 +18,11 @@ const config = {
   },
   //追蹤碼
   addGALink(url) {
-    const location = window.location.pathname.split('/')
+    let location = window.location.pathname.split('/');
+    let folderName = (location[2] == 'events_net') ? location[3] : location[2];
+
     if (url !== undefined) {
-      return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'ec=' + location[2]
+      return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'ec=' + folderName
     }
     return ''
   }
@@ -43,3 +45,8 @@ if (document.querySelectorAll('#mobile').length > 0) mobile.mount('#mobile')
 
 //手機版選單項目
 //import './assets/js/mobileText.js'
+
+//所有圖片加入預加載
+document.querySelectorAll('#app img').forEach(el => {
+  el.setAttribute('loading', 'lazy');
+});
