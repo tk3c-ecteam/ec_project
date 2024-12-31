@@ -2,6 +2,8 @@
 import { Controller } from 'swiper/modules'
 import listF from '../../layout/listF.vue'
 import listD from '../../layout/listD.vue'
+import Floor from "@/views/floor/CommonFloor.vue";
+import mobile from '@/views/layout/mobile.vue';
 import { ref } from 'vue'
 
 const swiperRef1 = ref()
@@ -68,34 +70,35 @@ export default {
       printers: [{ text: '主機' }, { text: '耗材' }],
       floorImg: [
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123936',
+          moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123936',
           image: 'green_subsidy/images/S9_b.png'
         },
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120393',
+          moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120393',
           image: 'green_subsidy/images/S3_a.png'
         },
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120394',
+          moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120394',
           image: 'green_subsidy/images/S4_a.png'
         },
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392',
+          moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392',
           image: 'green_subsidy/images/S5_a.png'
         },
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392',
+          moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392',
           image: 'green_subsidy/images/S6_a.png'
         },
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120395',
+          moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120395',
           image: 'green_subsidy/images/S7_a.png'
         },
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120816',
+          moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120816',
           image: 'green_subsidy/images/S8_a.png'
         }
       ],
+       moreImage:'green_subsidy/images/more2.png',
       newTabs: [
         {
           image: 'green_subsidy/images/new/S-btn12.png'
@@ -138,6 +141,44 @@ export default {
         },
         {
           image: 'green_subsidy/images/new/S-btn11.png'
+        }
+      ],
+      asides:[
+        {
+          text:'環保集點專區',
+          href:"#green"
+        },
+        {
+          text:'印表機',
+          href:'#printer'
+        },
+        {
+          text:'筆電',
+          href:'#pro7576'
+        },
+        {
+          text:'冰箱',
+          href:'#pro4348'
+        },
+        {
+          text:'洗衣機',
+          href:'#pro4349'
+        },
+        {
+          text:'分離式空調',
+          href:'#pro4350'
+        },
+        {
+          text:'窗型空調',
+          href:'#pro4352'
+        },
+        {
+          text:'除濕機',
+          href:'#pro4353'
+        },
+        {
+          text:'節能涼風扇',
+          href:'#pro4369'
         }
       ],
       menu: [7576, 4348, 4349, 4350, 4352, 4353, 4369],
@@ -448,25 +489,9 @@ export default {
       </div>
     </section>
 
-    <section class="scroll" v-for="(floor, f) in floorImg" :key="f">
-      <h2 class="title">
-        <img :src="$filters.siteUrl(floor.image)" />
-        <a
-          :href="$filters.addGALink(floor.url)"
-          :name="`pro${menu[f]}`"
-          :id="`pro${menu[f]}`"
-          class="more"
-          target="_blank"
-          ><img :src="$filters.siteUrl('green_subsidy/images/more2.png')" alt=""
-        /></a>
-      </h2>
-
-      <component
-        v-if="products[menu[f]] != undefined"
-        :is="listF"
-        :pro="products[menu[f]].Data"
-      ></component>
-    </section>
+    <!-- 其他樓層 -->
+     <Floor :floors="floorImg" :menu="menu" :moreImage="moreImage"></Floor>
+    </div>
 
     <!-- 右側選單 -->
     <aside class="aside-container">
@@ -476,29 +501,21 @@ export default {
         <h3 class="aside-header"></h3>
         <div class="aside-content">
           <ul>
-            <li class="main"><a href="#green">環保集點專區</a></li>
-            <li>
-              <a href="#printer">印表機</a>
+            <li v-for="(aside, a) in asides">
+              <a :href="aside.href">{{ aside.text }}</a>
             </li>
-            <li><a href="#pro7576">筆電</a></li>
-            <li><a href="#pro4348">冰箱</a></li>
-            <li><a href="#pro4349">洗衣機</a></li>
-            <li><a href="#pro4350">分離式空調</a></li>
-            <li><a href="#pro4352">窗型空調</a></li>
-            <li><a href="#pro4353">除濕機</a></li>
-            <li><a href="#pro4369">節能涼風扇</a></li>
           </ul>
         </div>
         <a href="#" class="go-top">GO TOP</a>
       </div>
     </aside>
-  </div>
+
+    <!-- 手機板 -->
+     <mobile :asides="asides"></mobile>
 </template>
 
 <style lang="scss">
 @charset "utf-8";
-
-@import '../../../assets/sass/module/base';
 $dir: 'https://events.cdn-tkec.tw/events_net/events_net/green_subsidy/images/';
 $origin: 'https://events.tk3c.com/events_net/events_net/green_subsidy/images/';
 $dir2: 'https://events.cdn-tkec.tw/events_net/events_net/green_subsidy/images/new/';
