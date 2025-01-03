@@ -70,12 +70,12 @@
           </li>
           <li class="w:44% w:45vw@<992 w:92vw@<576">
              <a :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank"><img
-                :src="$filters.siteUrl('2024083C/images/2501/NB07.png')" /></a>
+                :src="$filters.siteUrl('2024083C/images/2501/NB09.png')" /></a>
           </li>
         </ul>
-        <a class="w:25% w:35vw@<992 w:50vw@<576 m:auto" @click="alert(1)">
+        <!-- <a class="w:25% w:35vw@<992 w:50vw@<576 m:auto" @click="alert(1)">
           <img :src="$filters.siteUrl('2024083C/images/2412/infoR.png')" />
-        </a>
+        </a> -->
       </div>
 
       <!-- 週邊 -->
@@ -97,9 +97,9 @@
             </a>
           </li>
         </ul>
-        <a @click="alert(2)" class="w:25% w:35vw@<992 w:50vw@<576 m:auto">
+        <!-- <a @click="alert(2)" class="w:25% w:35vw@<992 w:50vw@<576 m:auto">
           <img :src="$filters.siteUrl('2024083C/images/2412/infoG.png')" />
-        </a>
+        </a> -->
       </div>
     </section>
 
@@ -154,15 +154,15 @@
           </div>
 
           <div v-else>
-            <component :is="listF" :pro="product2[tab[0].menu]" :isSwiper="1" :name="'pro'">
-            </component>
+            <listF :pro="product2[tab[0].menu]" :isSwiper="1" :name="'pro'">
+            </listF>
           </div>
         </section>
       </div>
     </div>
 
     <!-- 熱門活動 -->
-    <component :is="banner" :banner1="banner1" :banner2="banner2" :title="'2024083C/images/2412/E02.png'"></component>
+    <banner :banner1="banner1" :banner2="banner2" :title="'2024083C/images/2412/E02.png'"></banner>
   </div>
 
   <!-- 右側選單 -->
@@ -193,13 +193,7 @@
 </template>
 
 <script setup>
-import listF from '../../layout/listF.vue'
 import { Parallax, EffectFade } from 'swiper/modules'
-import banner from '../../layout/banner.vue'
-import mobileAi from '../../layout/mobileAi.vue'
-import AllEvent from '../../../components/AllEvent.vue' //全站活動
-import Tabs from '@/components/Tabs.vue'
-import TabContent from '@/components/TabContent.vue'
 </script>
 
 <script>
@@ -505,15 +499,15 @@ export default {
       ],
       gifts: [
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121988',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=123020',
           image: '2024083C/images/2501/NB04.png'
         },
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121986',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=123019',
           image: '2024083C/images/2501/NB05.png'
         },
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121987',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=123018',
           image: '2024083C/images/2501/NB06.png'
         }
       ],
@@ -535,17 +529,13 @@ export default {
         },
         {
           image: '2024083C/images/2501/D01-3.png',
-        },
-        {
-          image: '2024083C/images/2501/D01-2.png',
         }
       ],
-      menuSale: [7666,7666,7666],
+      menuSale: [7666,7667],
       statusPro: 0,
       tabs: [],
       statusGift: 0,
       statusSale: 0,
-      isSale: true,
       today: new Date()
     }
   },
@@ -740,6 +730,7 @@ body {
   position: relative;
 
   .background {
+    width: 100%;
    $image: $dir + 'kv_bg.png';
     @include bg-responsive($image, 2000, 1344);
     position: relative;
@@ -768,7 +759,7 @@ body {
     height: 268vmax;
     display: block;
     $image: $dir + 'bg.png';
-    background: url($image) no-repeat center;
+   background: url($image) no-repeat center;
     background-size: 100% auto;
     background-position:
       0 0,

@@ -1,9 +1,9 @@
 <script setup>
 import { Controller } from 'swiper/modules'
-import listF from '../../layout/listF.vue'
-import listD from '../../layout/listD.vue'
-import Floor from "@/views/floor/CommonFloor.vue";
-import mobile from '@/views/layout/mobile.vue';
+// import listF from '@/views/layout/listF.vue'
+// import listD from '@/views/layout/listD.vue'
+// import Floor from "@/views/floor/CommonFloor.vue";
+// import mobile from '@/views/layout/mobile.vue';
 import { ref } from 'vue'
 
 const swiperRef1 = ref()
@@ -277,11 +277,11 @@ export default {
       </h2>
     </div>
 
-    <!-- 環保3C家電產品 週末16%回饋 -->
+    <!-- 環保3C家電產品 週末12%回饋 -->
     <section class="new-box">
       <div class="w:full flex jc:center flex-wrap:wrap gap:10 m:0|0|5% m:0|0|10%@<576">
         <a href="#info" class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%"
-          ><img :src="$filters.siteUrl('green_subsidy/images/new/btn1.png')"
+          ><img :src="$filters.siteUrl('green_subsidy/images/new/btn1_b.png')"
         /></a>
         <a
           :href="
@@ -292,13 +292,13 @@ export default {
           ><img :src="$filters.siteUrl('green_subsidy/images/new/btn2.png')"
         /></a>
 
-        <div class="rel m:auto" id="info">
+        <div class="rel m:auto bg:#2fbe44 pb:1% p:2%|3%|3%|3%@<576" id="info">
           <img
             class="w:full abs left:0 top:0 right:0 z:-1 hidden@<576"
             :src="$filters.siteUrl('green_subsidy/images/new/g1.png')"
           />
           <p class="w:90% w:full@<576 m:auto pt:1.5%">
-            <img :src="$filters.siteUrl('green_subsidy/images/new/g3.png')" />
+            <img :src="$filters.siteUrl('green_subsidy/images/new/g4.png')" />
           </p>
         </div>
       </div>
@@ -347,11 +347,10 @@ export default {
 
         <!-- 對應商品 -->
         <div class="tab-content" v-for="(newTab, n) in newTabs" v-show="statusNew == n">
-          <component
+          <listF
             v-if="products[menuNew[n]] != undefined"
-            :is="listF"
             :pro="products[menuNew[n]].Data"
-          ></component>
+          ></listF>
         </div>
       </div>
     </section>
@@ -362,7 +361,7 @@ export default {
         <img :src="$filters.siteUrl('green_subsidy/images/S1_a.png')" alt="本週環保小尖兵" />
       </h2>
       <div class="special">
-        <component :is="listD" :pro="product2[menuSp]"></component>
+        <listD  :pro="product2[menuSp]"></listD>
       </div>
     </section>
 
@@ -411,14 +410,12 @@ export default {
         <div class="content-area">
           <swiper id="greenContent" :loop="false" :modules="[Controller]" @swiper="onControlSwiper">
             <swiper-slide class="tab-content" v-for="(tab, t) in tabs">
-              <component
+              <listF
                 v-if="products[menuGreen[t]] != undefined"
-                :is="listF"
                 :pro="products[menuGreen[t]].Data"
-                :allowTouchMove="false"
                 :isSwiper="1"
                 :name="'g'"
-              ></component>
+              ></listF>
               <a class="more" :href="$filters.addGALink(tabs[t].url)" target="_blank">
                 <img :src="$filters.siteUrl('green_subsidy/images/more2.png')" />
               </a>
@@ -481,16 +478,15 @@ export default {
       </ul>
 
       <div class="tab-content" v-for="(printer, p) in printers" v-show="stausPrinter == p">
-        <component
+        <listF
           v-if="products[menuPrint[p]] != undefined"
-          :is="listF"
           :pro="products[menuPrint[p]].Data"
-        ></component>
+        ></listF>
       </div>
     </section>
 
     <!-- 其他樓層 -->
-     <Floor :floors="floorImg" :menu="menu" :moreImage="moreImage"></Floor>
+     <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
     </div>
 
     <!-- 右側選單 -->
@@ -531,7 +527,8 @@ body {
     width: 100%;
     height: 100%;
     $image: $dir2 + 'kv.png';
-    background: url($image) no-repeat center;
+    background-image: url($image);
+    background-repeat: no-repeat;
     background-size: 100% auto;
     background-position:
       0 0,
@@ -552,8 +549,9 @@ form#form1 {
     position: absolute;
     width: 100%;
     height: 100%;
-    $image: $origin + 'bg_origin.png';
-    background: url($image) repeat-y center;
+    $image: $dir + 'bg_origin.png';
+    background-image: url($image);
+    background-repeat: repeat-y;
     background-size: 100% auto;
     background-position:
       0 45vmax,

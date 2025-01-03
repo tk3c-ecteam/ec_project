@@ -26,7 +26,7 @@
               slidesPerView: 1
             },
             600: {
-              slidesPerView: 2.1
+              slidesPerView: 1.5
             },
             992: {
               slidesPerView: 3
@@ -40,12 +40,12 @@
           <swiper-slide v-for="(bank, b) in banks" class="color:#000!">
             <img class="mt:14%@<576" :src="$filters.siteUrl(bank.image)" />
             <div
-              class="w:full max-width:21rem max-width:17rem@<992 max-width:18rem@<576 max-width:22rem@>2000 abs m:auto left:0 right:0 top:30% top:39vw@<576"
+              class="w:full max-width:21rem max-width:25rem@<992 max-width:21rem@<576 max-width:22rem@>2000 abs m:auto left:0 right:0 top:30% top:39vw@<576"
             >
               <em class="color:#707070 mb:10px">{{ bank.date }}</em>
               <div
                 v-html="bank.content"
-                class="h:9vmax h:9rem@<1440 h:15rem@<992 h:12rem@<601 h:48vw@<576 h:7vmax@>2500 f:1.1rem f:1.5em@<992 f:1.1rem@<601 f:1.3rem@>2000 pt:8% pt:2%@<992 pt:6%@<576 box:border-box"
+                class="w:full p:10px h:9vmax h:9rem@<1440 h:15rem@<992 h:12rem@<601 h:48vw@<576 h:7vmax@>2500 f:1.1rem f:1.5em@<992 f:1.1rem@<601 f:1.3rem@>2000 pt:8% pt:2%@<992 pt:6%@<576 box:border-box"
               ></div>
               <div class="flex flex-wrap:wrap jc:center m:auto gap:10 p:1% box:border-box">
                 <a
@@ -89,7 +89,7 @@
         <a
           class="more"
           :href="
-            $filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=124085&aid=23894&hid=124093')
+            $filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')
           "
           target="_blank"
         >
@@ -98,7 +98,7 @@
       </h2>
 
       <div class="box">
-        <component :is="listF" :pro="product2[menuPro1]"></component>
+        <listF :pro="product2[menuPro1]"></listF>
       </div>
     </section> 
 
@@ -109,7 +109,7 @@
         <a
           class="more"
           :href="
-            $filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=124085&aid=23894&hid=124098')
+            $filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')
           "
           target="_blank"
         >
@@ -129,11 +129,10 @@
         </li>
       </ul>
       <div class="pro-content" v-for="(tab, t) in tabs" v-show="status == t">
-        <component
+        <listF
           v-if="products[menuPro2[t]] != undefined"
-          :is="listF"
           :pro="products[menuPro2[t]].Data"
-        ></component>
+        ></listF>
       </div>
     </section>
 
@@ -165,11 +164,6 @@
    <mobile :asides="asides"></mobile>
 </template>
 
-<script setup>
-import listF from '../../layout/listF.vue'
-import mobile from '@/views/layout/mobile.vue'
-</script>
-
 <script>
 import { globalMixin } from '../../../globalMixin.js'
 
@@ -182,9 +176,9 @@ export default {
           image: 'bank_ec/images/bank1.png',
           date: '2024/11/13-11/30',
           content: `
-          <p><b>單筆分期刷滿$26,000享</b><span>現折$1,000</span></p>
-          <p><b>單筆分期刷滿$10,500享</b><span>現折$500</span></p>
-          <p><b>單筆不分期刷滿$7,300享</b><span>現折$300</span></p>
+          <p><b>單筆分期滿$26,000享</b><span>現折$1,000</span></p>
+          <p><b>單筆分期滿$10,500享</b><span>現折$500</span></p>
+          <p><b>單筆不分期滿$7,300享</b><span>現折$300</span></p>
           `,
           url: 'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779',
           alertText:
@@ -193,7 +187,7 @@ export default {
         {
           image: 'bank_ec/images/bank2.png',
           date: '即日起-11/30',
-          content: `<p><b>單筆分期刷滿$20,800享</b><span>現折$800</span></p>`,
+          content: `<p><b>單筆分期滿$20,800享</b><span>現折$800</span></p>`,
           alertText: ` <ul style='text-align:left;'>
              <li style='margin-bottom:30px;background:#d6d6d6;'>活動期間自2024/11/26起至2024/11/30 </li>
              <li style='margin-bottom:10px;'>凡於活動期間消費刷「星展銀行信用卡」，可享有下列檔期活動優惠。 </li>
@@ -213,7 +207,7 @@ export default {
         {
           image: 'bank_ec/images/bank3.png',
           date: '2024/11/13-11/30',
-          content: `<p><b>單筆刷滿$25,000享</b><span>現折$800</span></p>
+          content: `<p><b>單筆滿$25,000享</b><span>現折$800</span></p>
           <p><b>單筆刷滿$32,500享</b><span>現折$2,500</span></p>
           <p style="margin-bottom:20px;"></p>
           <p><b>單筆分期刷滿$50,000</b><span>登錄送5,000燦坤K幣</span>	</p>
@@ -227,9 +221,9 @@ export default {
           image: 'bank_ec/images/bank1.png',
           date: '2024/12/1-12/31',
           content: `
-          <p><b>單筆分期刷滿$26,000享</b><span>現折$1,000</span></p>
-          <p><b>單筆分期刷滿$10,500享</b><span>現折$500</span></p>
-          <p><b>單筆不分期刷滿$7,300享</b><span>現折$300</span></p>
+          <p><b>單筆分期滿$26,000享</b><span>現折$1,000</span></p>
+          <p><b>單筆分期滿$10,500享</b><span>現折$500</span></p>
+          <p><b>單筆不分期滿$7,300享</b><span>現折$300</span></p>
           `,
           url: 'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779',
           alertText:'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?ec=idx-ecmember'
@@ -237,7 +231,7 @@ export default {
         {
           image: 'bank_ec/images/bank2.png',
           date: '2024/12/13-31',
-          content: `<p><b>單筆分期刷滿$20,800享</b><span>現折$800</span></p>`,
+          content: `<p><b>單筆分期滿$20,800享</b><span>現折$800</span></p>`,
           alertText: ` <ul style='text-align:left;'>
              <li style='margin-bottom:30px;background:#d6d6d6;'>活動期間 2024/12/13-2024/12/31</li>
              <li style='margin-bottom:10px;'>於活動期間(2024/12/13-2024/12/31)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，刷「星展銀行信用卡」，單筆分期刷滿20,800元(限分3、6、8期，再享分期0%利率)，可享現折800元的優惠，單張發票不累贈，最多折抵一次，總限量1,000名。</li>
@@ -248,10 +242,10 @@ export default {
         {
           image: 'bank_ec/images/bank3.png',
           date: '2024/12/1-31',
-          content: `<p><b>單筆刷滿$25,000享</b><span>現折$800</span></p>
+          content: `<p><b>單筆滿$25,000享</b><span>現折$800</span></p>
           <p><b>單筆刷滿$32,500享</b><span>現折$2,500</span></p>
           <p style="margin-bottom:20px;"></p>
-          <p><b>單筆分期刷滿$50,000</b><span>登錄送5,000燦坤K幣</span>	</p>
+          <p><b>單筆分期滿$50,000</b><span>登錄送5,000燦坤K幣</span>	</p>
           `,
           url: 'https://events.tk3c.com/events_net/invoice_login/detail.aspx',
           alertText: 'https://www.tk3c.com.tw/#actsdetail&8&719'
@@ -262,9 +256,9 @@ export default {
           image: 'bank_ec/images/bank1.png',
           date: '2025/01/01-01/02',
           content: `
-          <p><b>單筆分期刷滿$25,000享</b><span>現折$1,000</span></p>
-          <p><b>單筆分期刷滿$10,000享</b><span>現折$500</span></p>
-          <p><b>單筆不分期刷滿$8,000享</b><span>現折$400</span></p>
+          <p><b>單筆分期滿$25,000享</b><span>現折$1,000</span></p>
+          <p><b>單筆分期滿$10,000享</b><span>現折$500</span></p>
+          <p><b>單筆不分期滿$8,000享</b><span>現折$400</span></p>
           `,
           url: 'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779',
           alertText:
@@ -273,7 +267,7 @@ export default {
         {
           image: 'bank_ec/images/bank2.png',
           date: '2025/01/01-01/02',
-          content: `<p><b>單筆分期刷滿$20,800享</b><span>現折$800</span></p>`,
+          content: `<p><b>單筆分期滿$20,800享</b><span>現折$800</span></p>`,
            alertText: ` <ul style='text-align:left;'>
              <li style='margin-bottom:30px;background:#d6d6d6;'>活動期間 2025/01/01-2025/01/02</li>
              <li style='margin-bottom:10px;'>於活動期間(2025/01/01-2025/01/02)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，刷「星展銀行信用卡」，單筆分期刷滿20,800元(限分3、6、8期，再享分期0%利率)，可享現折800元的優惠，單張發票不累贈，最多折抵一次，總限量1,000名。</li>
@@ -283,9 +277,9 @@ export default {
         {
           image: 'bank_ec/images/bank3.png',
           date: '2025/01/01-01/02',
-          content: `<p><b>單筆刷滿$25,000享</b><span>現折$800</span></p>
+          content: `<p><b>單筆滿$25,000享</b><span>現折$800</span></p>
           <p style="margin-bottom:20px;"></p>
-          <p><b>單筆分期刷滿$50,000</b><span>登錄送5,000燦坤K幣</span>	</p>
+          <p><b>單筆分期滿$50,000</b><span>登錄送5,000燦坤K幣</span>	</p>
           `,
           url: 'https://events.tk3c.com/events_net/invoice_login/detail.aspx',
           alertText: 'https://www.tk3c.com.tw/#actsdetail&8&719'
@@ -296,31 +290,22 @@ export default {
           image: 'bank_ec/images/bank1.png',
           date: '2025/01/03-01/13',
           content: `
-          <p><b>單筆不分期刷滿$9,000享</b><span>現折$500</span></p>
+          <p><b>單筆不分期滿3萬5千元享</b><span>現折1,500</span></p>
+          <p><b>單筆不分期滿9千元享</b><span>現折500</span></p>
           `,
           url: 'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779',
           alertText:
             'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=monthlyOffer'
         },
         {
-          image: 'bank_ec/images/bank2.png',
-          date: '2025/01/03-01/13',
-          content: `<p><b>單筆分期刷滿$20,800享</b><span>現折$800</span></p>`,
-           alertText: ` <ul style='text-align:left;'>
-             <li style='margin-bottom:30px;background:#d6d6d6;'>活動期間 2025/01/03-2025/01/13</li>
-             <li style='margin-bottom:10px;'>於活動期間(2025/01/03-2025/01/13)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，刷「星展銀行信用卡」，單筆分期刷滿20,800元(限分3、6、8期，再享分期0%利率)，可享現折800元的優惠，單張發票不累贈，最多折抵一次，總限量1,000名。</li>
-                <li style='margin-bottom:10px;'>燦坤線上購物網站：請先加入燦坤線上購物會員或是登入會員帳號及密碼，選擇購買商品後，在購物車勾選想適用銀行優惠，將於結帳時由系統判斷是否符合活動條件，符合活動條件將直接於結帳金額現折800元，限量50名，每位會員及每張星展銀行信用卡限回饋1次。</li>
-        </ul>`
-        },
-        {
           image: 'bank_ec/images/bank3.png',
           date: '2025/01/03-01/13',
-          content: `<p><b>單筆分期刷滿$50,000</b><span>登錄送1,300燦坤K幣</span></p>
-          <p><b>單筆分期刷滿$60,000</b><span>登錄送6,300燦坤K幣</span></p>
-          <p><b>單筆分期刷滿$100,000</b><span>登錄送13,000燦坤K幣</span></p>
+          content: `<p><b>單筆分期滿5萬元</b><span>登錄送1千3燦坤K幣</span></p>
+          <p><b>單筆分期滿6萬元</b><span>登錄送6千3燦坤K幣</span></p>
+          <p><b>單筆分期滿1萬元</b><span>登錄送1萬3燦坤K幣</span></p>
           `,
           url: 'https://events.tk3c.com/events_net/invoice_login/detail.aspx',
-          alertText: 'https://www.tk3c.com.tw/#actsdetail&8&719'
+          alertText: 'https://www.tk3c.com.tw/#actsdetail&8&747'
         }
       ],
       tabs: [
@@ -467,11 +452,8 @@ section {
     box-sizing: border-box;
   }
   p {
-    display: flex;
-    flex-wrap: nowrap;
     text-align: left;
-    width: 115%;
-    overflow: hidden;
+    white-space: nowrap;
   }
   li {
     &:after {
@@ -490,6 +472,9 @@ section {
       box-sizing: border-box;
       z-index: -1;
     }
+  }
+  .swiper-wrapper {
+    justify-content: center;
   }
 }
 
@@ -531,6 +516,9 @@ section {
       .swiper-wrapper {
         padding-bottom: 75px;
       }
+    }
+    .swiper-wrapper {
+      justify-content: left;
     }
   }
 

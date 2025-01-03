@@ -1,6 +1,5 @@
 <script setup>
 import { EffectFade,Controller } from "swiper/modules";
-import listF from '@/views/layout/listF.vue'
 </script>
 
 <script>

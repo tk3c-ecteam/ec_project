@@ -1,16 +1,17 @@
 <script setup>
-import listF from '../layout/listF.vue'
+import listF from '@/views/layout/listF.vue'
 </script>
 
 <script>
 /* 商品樓層共用版型
  * 傳入物件: floors(樓層標題圖片、連結) , menus(樓層陳列編號),
  * singleImage(純標題圖片單張+系統文字)
+ * isSwiper(是否使用swiper輪播)
  */
-import { globalMixin } from '../../globalMixin.js'
+import { globalMixin } from '@/globalMixin.js'
 export default {
   mixins: [globalMixin],
-  props: ['floors', 'menu', 'singleImage','moreImage'],
+  props: ['floors', 'menu', 'singleImage','moreImage','isSwiper'],
   mounted() {
     this.getFloorData(this.menu)
   }
@@ -33,15 +34,33 @@ export default {
       <b v-if="floor.text">{{ floor.text }}</b>
 
          <!-- 單獨看更多按鈕 -->
-       <a v-if="floor.moreUrl != undefined" class="more" :href="$filters.addGALink(floor.moreUrl)">
+       <a v-if="floor.moreUrl != undefined && !isSwiper" class="more" :href="$filters.addGALink(floor.moreUrl)">
         <img :src="$filters.siteUrl(moreImage)" />
        </a>
     </h2>
 
-    <component
-      v-if="products[menu[f]] != undefined"
+     <!-- 有輪播 -->
+    <div class="content" v-if="isSwiper">
+       <component
+      v-if="products[menu[f]] != undefined && isSwiper"
+      :is="floor.type != undefined ? floor.type : listF"
+      :pro="products[menu[f]].Data" :isSwiper="isSwiper"
+      :name="`pro${f + 1}`"
+    ></component>
+       <!-- 單獨看更多按鈕 -->
+       <a v-if="floor.moreUrl != undefined" class="more" :href="$filters.addGALink(floor.moreUrl)">
+        <img :src="$filters.siteUrl(moreImage)" />
+       </a>
+    </div>
+  
+    <div class="content" v-else>
+      <!-- 無輪播 -->
+       <component v-if="products[menu[f]] != undefined"
       :is="floor.type != undefined ? floor.type : listF"
       :pro="products[menu[f]].Data"
-    ></component>
+    >
+    </component>
+
+    </div>
   </section>
 </template>

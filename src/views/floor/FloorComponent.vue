@@ -1,6 +1,5 @@
 <script>
-import axios from "axios";
-import { globalMixin } from "../../../globalMixin.js";
+import { globalMixin } from "@globalMixin.js";
   export default {
   mixins: [globalMixin],
     data() {

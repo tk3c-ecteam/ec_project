@@ -1,13 +1,9 @@
 <script setup>
 import { Parallax, EffectFade } from 'swiper/modules'
-import listF from '../../layout/listF.vue'
-import AllEvent from '../../../components/AllEvent.vue'
-import CommonFloor from '../../floor/CommonFloor.vue'
-import mobile from '@/views/layout/mobile2.vue'
 </script>
 
 <script>
-import { globalMixin } from '../../../globalMixin.js'
+import { globalMixin } from '@/globalMixin.js'
 
 export default {
   mixins: [globalMixin],
@@ -79,15 +75,15 @@ export default {
           image: 'electric_heater/images/2501/sp03b.png'
         },
         {
-          url: 'https://events.tk3c.com/events_net/24spring_clean/index.html',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=115927&aid=22750&hid=115598',
           image: 'electric_heater/images/2501/sp04.png'
         },
         {
           url: 'https://www.tk3c.com/dic2.aspx?cid=11058&aid=5779&hid=116093',
-          image: 'electric_heater/images/2501/sp05.png',
+          image: 'electric_heater/images/2501/sp05b.png',
         },
          {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11058&aid=5779&hid=116093',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11058&aid=5779&hid=122529',
           image: 'electric_heater/images/2501/sp06.png',
         },
       ],
@@ -131,12 +127,15 @@ export default {
       ],
       sales:[
         {
+          url:'https://www.tk3c.com/dic2.aspx?cid=124185&aid=23901&hid=124188',
           image: 'electric_heater/images/2501/2-bt100.png'
         },
          {
+          url:'https://www.tk3c.com/dic2.aspx?cid=124185&aid=23901&hid=124189',
           image: 'electric_heater/images/2501/2-bt200.png'
         },
          {
+          url:'https://www.tk3c.com/dic2.aspx?cid=124185&aid=23901&hid=124195',
           image: 'electric_heater/images/2501/2-bt588.png'
         },
       ],
@@ -192,7 +191,7 @@ export default {
       ],
       menus: [2473, 2474, 2475, 7639, 2476, 2477, 2478, 3741, 3742],
       menuSp: 2472,
-      menuSale: [7637, 7638],
+      menuSale: [7637, 7638,7732],
       menuGo:7690,
       statusGift: 0,
       statusSale: 0,
@@ -313,17 +312,16 @@ export default {
           </a>
         </li>
       </ul>
-      <div class="box" v-for="(i, index) in 2" v-show="statusSale == index">
-        <component
-          v-if="products[menuSale[index]] != undefined"
-          :is="listF"
+      <div class="box" v-for="(sale,s) in sales" v-show="statusSale == s">
+        <ListF
+          v-if="products[menuSale[s]] != undefined"
           :isSwiper="1"
           :name="'sale-area'"
-          :pro="products[menuSale[index]].Data"
-        ></component>
+          :pro="products[menuSale[s]].Data"
+        ></ListF>
         <a
           class="more"
-          :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=124130')"
+          :href="$filters.addGALink(sale.url)"
           target="_blank"
         >
           <img :src="$filters.siteUrl('electric_heater/images/2501/more.png')" />
@@ -338,7 +336,7 @@ export default {
           </h2>
 
           <div class="box">
-            <component :is="listF" :isSwiper="1" :name="'go-pro'" :pro="product2[menuGo]"></component>
+            <ListF :isSwiper="1" :name="'go-pro'" :pro="product2[menuGo]"></ListF>
             <a class="more" :href="$filters.addGALink('https://fast.tk3c.com/store/219/category/13')" target="_blank">
                <img :src="$filters.siteUrl('electric_heater/images/2501/more.png')" />
             </a>
@@ -352,7 +350,7 @@ export default {
       </h2>
 
       <div class="specials">
-        <component :is="listF" :pro="product2[menuSp]"></component>
+        <ListF :pro="product2[menuSp]"></ListF>
         <a
           class="more"
           :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=11058&aid=5779')"
@@ -428,7 +426,7 @@ export default {
     </aside>
 
     <!-- 手機版上方選單  -->
-     <mobile v-model:asides="asides"></mobile>
+     <mobile2 v-model:asides="asides"></mobile2>
 </template>
 
 <style lang="scss">

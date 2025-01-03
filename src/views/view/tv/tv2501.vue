@@ -159,7 +159,7 @@
     </section>
 
     <!-- 其他樓層 -->
-    <TVFloor :floors="floorImg" :menu="menu"></TVFloor>
+    <CommonFloor :floors="floorImg" :menu="menu"></CommonFloor>
   </div>
 
   <!-- 右側選單 -->
@@ -179,21 +179,16 @@
   </aside>
 
   <!-- 手機板選單 -->
-  <mobile :asides="asides"></mobile>
+  <mobile2 :asides="asides"></mobile2>
 </template>
 
 <script setup>
 import { Parallax } from 'swiper/modules'
-import listF from '../../layout/listF.vue'
-import TVFloor from '../../floor/CommonFloor.vue'
-import AllEvent from '../../../components/AllEvent.vue' //全站活動
-import mobile from '@/views/layout/mobile2.vue';
-import Tabs from '@/components/Tabs.vue'
-import TabContent from '@/components/TabContent.vue'
 </script>
 
 <script>
 import { globalMixin } from '../../../globalMixin.js'
+import CommonFloor from '../../floor/CommonFloor.vue';
 
 export default {
   mixins: [globalMixin],
@@ -615,6 +610,14 @@ section {
   .brand-group {
     .swiper-pagination {
       bottom: -6% !important;
+    }
+  }
+
+  .night-box {
+     .tab {
+      li {
+        width: 40%;
+      }
     }
   }
 }

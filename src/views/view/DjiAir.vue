@@ -109,87 +109,69 @@ export default {
         <img :src="$filters.siteUrl('DjiNeo/images/air/S01.png')" />
       </h2>
 
-      <ul class="gap:10 mb:2%">
-        <li class="w:90% w:90vw@<992 w:full@<576">
-          <a
-            :href="
-              $filters.addGALink(
-                'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=main'
-              )
-            "
-            target="_blank"
-          >
-            <img
-              v-if="today >= new Date('2024/12/01')"
-              class="pc"
-              :src="$filters.siteUrl('double12_2024/images/1212/S3-1.png')"
-            />
-            <img v-else class="pc" :src="$filters.siteUrl('double12_2024/images/S1-1_PC.png')" />
-
-            <img
-              v-if="today >= new Date('2024/12/01')"
-              class="mobile"
-              :src="$filters.siteUrl('double12_2024/images/1212/S3-1_M.png')"
-            />
-            <img v-else class="mobile" :src="$filters.siteUrl('double12_2024/images/S1-1_M.png')" />
-          </a>
-        </li>
-        <li class="w:90% w:89vw@<992 w:93vw@<576">
-          <swiper
-            :loop="false"
-            :space-between="10"
-            :autoplay="{
-              delay: 1600,
-              disableOnInteraction: false
-            }"
-            :observer="true"
-            :breakpoints="{
-              0: {
-                slidesPerView: 1.1
-              },
-              600: {
-                slidesPerView: 2
-              },
-              992: {
-                slidesPerView: 2
-              }
-            }"
-          >
-            <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
-              <img
-                v-if="today >= new Date('2024/12/01')"
-                :src="$filters.siteUrl('double12_2024/images/1212/bank7_3.png')"
-              />
-              <img v-else :src="$filters.siteUrl('double12_2024/images/S1-2.png')" />
-              <a
-                class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576"
-                :href="
-                  $filters.addGALink(
-                    'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779'
-                  )
-                "
-                target="_blank"
-              >
-                <img :src="$filters.siteUrl('double12_2024/images/login.png')" />
-              </a>
-            </swiper-slide>
-            <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
-              <img :src="$filters.siteUrl('double12_2024/images/S1-3.png')" />
-              <a
-                class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576"
-                :href="
-                  $filters.addGALink(
-                    'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=monthlyOffer'
-                  )
-                "
-                target="_blank"
-              >
-                <img :src="$filters.siteUrl('double12_2024/images/info.png')" />
-              </a>
-            </swiper-slide>
-          </swiper>
-        </li>
-      </ul>
+       <ul class="gap:10 mb:2% mb:4%@<992">
+          <li class="w:90% w:90vw@<992 w:full@<576">
+            <a
+              :href="
+                $filters.addGALink(
+                  'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=main'
+                )
+              "
+              target="_blank"
+            >
+              <img class="pc" :src="$filters.siteUrl('Xmas2024/images/bank1_pc2.png')" />
+              <img class="mobile" :src="$filters.siteUrl('Xmas2024/images/bank1_mobile2.png')" />
+            </a>
+          </li>
+          <li class="w:90% w:89vw@<992 w:93vw@<576">
+            <swiper
+              :loop="false"
+              :space-between="10"
+              :observer="true"
+              :breakpoints="{
+                0: {
+                  slidesPerView: 1.1
+                },
+                600: {
+                  slidesPerView: 2
+                },
+                992: {
+                  slidesPerView: 2
+                }
+              }"
+            >
+              <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
+                <img :src="$filters.siteUrl('Xmas2024/images/bank1-2.png')" />
+                <a
+                  class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576"
+                  :href="
+                    $filters.addGALink(
+                      'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779'
+                    )
+                  "
+                  target="_blank"
+                >
+                  <img :src="$filters.siteUrl('Xmas2024/images/go2.png')" />
+                </a>
+              </swiper-slide>
+              <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
+                <img v-if="today >= new Date('2025/01/01')" :src="$filters.siteUrl('Xmas2024/images/bank1-3c.png')" />
+                <img v-else :src="$filters.siteUrl('Xmas2024/images/bank1-3.png')" />
+                <a
+                  class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576"
+                  :href="
+                    $filters.addGALink(
+                      'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=monthlyOffer'
+                    )
+                  "
+                  target="_blank"
+                >
+                  <img :src="$filters.siteUrl('Xmas2024/images/info.png')" />
+                </a>
+              </swiper-slide>
+            </swiper>
+          </li>
+        </ul>
     </section>
 
     <!-- 全站活動 -->

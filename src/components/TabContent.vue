@@ -6,6 +6,7 @@
           <img class="pc" :src="$filters.siteUrl(banners.pc)" alt=" ">
           <img class="mobile" :src="$filters.siteUrl(banners.mobile)" alt=" ">
         </a>
+
         <listF v-if="isSwiper && products[menus[index]] != undefined" :isSwiper="1" :pro="products[menus[index]].Data" :name="`box${index + 1}`"></listF>
          <listF v-else-if="products[menus[index]] != undefined" :pro="products[menus[index]].Data"></listF>
       </slot>

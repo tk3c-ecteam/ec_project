@@ -240,7 +240,7 @@ export default {
 
 <style lang="scss">
   @charset "utf-8";
-$dir: "https://events.cdn-tkec.tw/events_net/events_net/nightsale/images/part3/";
+$dir: "https://events.tk3c.com/events_net/events_net/nightsale/images/part3/";
 
 /*  共用樣式調整 */
 

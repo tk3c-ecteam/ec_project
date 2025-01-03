@@ -536,7 +536,7 @@ body {
 
 #xmas-container {
   .background {
-     $image: $dir + 'kv.png';
+     $image: $origin + 'kv.png';
     @include bg-responsive($image, 2000, 700);
     position: relative;
     margin: 0 auto 0;
@@ -573,7 +573,7 @@ body {
 .background2 {
   width: 100%;
   height: 100%;
-  $image:$dir + 'bg.png';
+  $image:$origin + 'bg.png';
   background: url($image) no-repeat center;
   background-size: 100% auto;
   background-position: 0 0,top;

@@ -830,10 +830,10 @@ body {
   padding-top: 3%;
   ul {
     li {
-      width: 56%;
+      width: 50%;
       margin: 0 5px 15px;
       &:nth-of-type(2) {
-        width: 42%;
+        width: 37%;
       }
     }
   }
@@ -1163,10 +1163,18 @@ body {
   .sub-box {
     ul {
       li {
-        width: 48%;
+        width: 52%;
         &:nth-of-type(2) {
-          width: 38%;
+          width: 39%;
         }
+      }
+    }
+  }
+
+  .product-box {
+    .tab {
+      li {
+        width: 23%;
       }
     }
   }
@@ -1278,6 +1286,14 @@ body {
   .discount-box {
     .bg01 {
       margin: 0 auto 4%;
+    }
+  }
+
+  .product-box {
+    .tab {
+      li {
+        width: 44%;
+      }
     }
   }
 }

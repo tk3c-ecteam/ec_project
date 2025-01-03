@@ -526,6 +526,15 @@ section {
 
   .pro-area {
     .tab {
+      .swiper-slide {
+        flex-basis: 43%;
+      }
+    }
+  }
+
+  .tab3-box,
+  .tab4-box{
+    .tab {
       .swiper-wrapper {
         justify-content: left;
       }
