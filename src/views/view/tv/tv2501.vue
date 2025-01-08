@@ -69,7 +69,7 @@
       </h2>
 
       <div class="discount">
-        <component :is="listF" :pro="product2[menuDis]" :isSwiper="1" :name="'dis'"></component>
+        <listF :pro="product2[menuDis]" :isSwiper="1" :name="'dis'"></listF>
       </div>
     </section>
 
@@ -187,11 +187,7 @@ import { Parallax } from 'swiper/modules'
 </script>
 
 <script>
-import { globalMixin } from '../../../globalMixin.js'
-import CommonFloor from '../../floor/CommonFloor.vue';
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       proTV: [
