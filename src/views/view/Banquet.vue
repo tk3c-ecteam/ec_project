@@ -1,8 +1,3 @@
-<script setup>
-import listF from '../layout/listF.vue'
-import mobile from '@/views/layout/mobile3.vue'
-</script>
-
 <script>
 import { globalMixin } from '../../globalMixin.js'
 
@@ -174,11 +169,10 @@ export default {
       </h2>
 
       <div class="box">
-        <component
+        <listF
           v-if="products[menus[f]] != undefined"
-          :is="listF"
           :pro="products[menus[f]].Data"
-        ></component>
+        ></listF>
       </div>
     </section>
 
@@ -280,9 +274,9 @@ export default {
       </div>
     </section>
   </div>
-
+  
   <!-- 左側選單 -->
-  <aside class="aside-container left">
+ <aside class="aside-container left">
     <span class="collaspe"><i class="fas fa-chevron-left"></i></span>
     <div class="aside-wrap">
       <h3 class="aside-header"></h3>
@@ -311,13 +305,11 @@ export default {
   </aside>
 
   <!-- 手機板選單 -->
-   <mobile :asides="floorImg"></mobile>
+   <mobile3 :asides="floorImg"></mobile3>
 </template>
 
 <style lang="scss">
 @charset "utf-8";
-
-@import '../../../src/assets/sass/module/base';
 $dir: 'https://events.cdn-tkec.tw/events_net/events_net/banquet/images/';
 $origin: 'https://events.tk3c.com/events_net/events_net/banquet/images/';
 

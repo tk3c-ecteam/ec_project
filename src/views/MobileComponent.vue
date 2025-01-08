@@ -7,5 +7,5 @@ import mobileAi from './layout/mobileAi.vue'
 </script>
 
 <template>
-  <component :is="mobile3"></component>
+  <!-- <component :is="mobile2"></component> -->
 </template>

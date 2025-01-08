@@ -1,5 +1,5 @@
-import axios from 'axios'
-import axiosRetry from 'axios-retry'
+import axios from 'axios';
+import axiosRetry from 'axios-retry';
 
 export const globalMixin = {
   data() {
@@ -13,16 +13,15 @@ export const globalMixin = {
   methods: {
     /*加入meta標籤
     * 參數格式: styles = [
-     "url....",//第一個放分享圖
      "url....."
     ]
     */
     addStyle(styles) {
       styles.forEach((style, s) => {
-        let link = document.createElement('link')
+        let link = document.createElement('link');
         link.type = 'text/css'
-
-        link.rel = 'stylesheet'
+        link.rel = 'preload stylesheet'
+        link.as = 'style'
         link.setAttribute('href', style)
         document.head.appendChild(link);
       })
@@ -31,6 +30,7 @@ export const globalMixin = {
       script.forEach((script, s) => {
         let scr = document.createElement('script')
         scr.setAttribute('src', script)
+        scr.setAttribute('defer', '')
         document.body.appendChild(scr);
       })
     },

@@ -61,16 +61,19 @@
                   <img :src="$filters.siteUrl('bank_ec/images/go.png')" />
                 </a>
                 <a
-                  v-if="b == 2"
+                  v-if="b == 1"
                   class="w:38% m:0|0"
                   :href="$filters.addGALink(bank.url)"
                   target="_blank"
                 >
                   <img :src="$filters.siteUrl('bank_ec/images/login2.png')" />
                 </a>
-                <a v-if="b == 1" class="w:38% m:0|0" @click.prevent="message(bank.alertText)">
+                 <a v-if="b == 1" class="w:38% m:0|0" :href="bank.alertText" target="_blank">
                   <img :src="$filters.siteUrl('bank_ec/images/info.png')" />
                 </a>
+                <!-- <a v-if="b == 1" class="w:38% m:0|0" @click.prevent="message(bank.alertText)">
+                  <img :src="$filters.siteUrl('bank_ec/images/info.png')" />
+                </a> -->
                 <a v-else class="w:38% m:0|0" :href="bank.alertText" target="_blank">
                   <img :src="$filters.siteUrl('bank_ec/images/info.png')" />
                 </a>
@@ -165,10 +168,7 @@
 </template>
 
 <script>
-import { globalMixin } from '../../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       banks: [
@@ -308,6 +308,29 @@ export default {
           alertText: 'https://www.tk3c.com.tw/#actsdetail&8&747'
         }
       ],
+        bank25014: [
+        {
+          image: 'bank_ec/images/bank1.png',
+          date: '2025/01/14-01/31',
+          content: `
+          <p><b>單筆分期滿2萬5千元享</b><span>現折1,000</span></p>
+          <p><b>單筆分期滿1萬元享</b><span>現折500</span></p>
+          <p><b>單筆不分期滿8千元享</b><span>現折400</span></p>
+          `,
+          url: 'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779',
+          alertText:
+            'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=monthlyOffer'
+        },
+        {
+          image: 'bank_ec/images/bank3.png',
+          date: '2025/01/14-01/31',
+          content: `<p><b>單筆滿$25,000享</b><span>現折$800</span></p>
+          <p><b>單筆分期滿$50,000</b><span>登錄送5,000燦坤K幣</span></p>
+          `,
+          url: 'https://events.tk3c.com/events_net/invoice_login/detail.aspx',
+          alertText: 'https://www.tk3c.com.tw/#actsdetail&8&747'
+        }
+      ],
       tabs: [
         { image: 'bank_ec/images/S2-10000_b.png' },
         { image: 'bank_ec/images/S2-30000_b.png' }
@@ -330,15 +353,9 @@ export default {
   },
   mounted() {
     const { today } = this
-
-    // 12月更新銀行訊息
-    if (today >= new Date('2024/12/13') && today < new Date('2025/01/01')) {
-      this.banks = this.bank241213;
-    }
-
-    // 2025/01月更新
-    if (today >= new Date('2025/01/01') && today < new Date('2025/01/03')) {
-      this.banks = this.bank2501;
+    // 2025/1/14
+    if (today >= new Date('2025/01/14') && today < new Date('2025/02/01')) {
+      this.banks = this.bank25014;
     }
 
     // 2025/01/03月更新

@@ -410,8 +410,8 @@ export default {
       })
     }, 120)
 
-    //12/13 現折券結束
-    if (today >= new Date('2024/12/13')) {
+    // 現折券結束
+    if (today >= new Date('2025/01/14')) {
       this.isSale = false
     }
   },

@@ -15,7 +15,7 @@
       </ul>
     </div>
 
-    <div class="box-area event">
+   <div class="box-area event">
       <ul></ul>
     </div>
 

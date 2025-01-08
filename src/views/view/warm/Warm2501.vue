@@ -3,10 +3,7 @@ import { Parallax, EffectFade } from 'swiper/modules'
 </script>
 
 <script>
-import { globalMixin } from '@/globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       proWarm: [
@@ -261,23 +258,13 @@ export default {
         <img :src="$filters.siteUrl('electric_heater/images/2501/bar_sp.png')" alt=" " />
       </h2>
 
-      <ul class="w:40% w:50vw@<992 w:90%@<576 mt:4% mb:1% mb:3%@<576 grid-cols:2 gap:10">
-        <li :class="[statusGift == 0 ? 'active' : '']" class="contrast(0.5) contrast(1).active">
-          <a @click="change(0)">
-            <img :src="$filters.siteUrl('electric_heater/images/2411/1-bt_01.png')" />
-          </a>
-        </li>
-        <li :class="[statusGift == 1 ? 'active' : '']" class="contrast(0.5) contrast(1).active">
-          <a @click="change(1)">
-            <img :src="$filters.siteUrl('electric_heater/images/2411/1-bt_02.png')" />
-          </a>
-        </li>
-      </ul>
-
       <!-- 線上獨家 -->
+      <h3 class="m:auto w:20% w:30%@<992 w:50%@<576 mb:1% mb:3%@<576">
+        <img :src="$filters.siteUrl('electric_heater/images/2411/1-bt_01.png')" />
+      </h3>
+
       <div
         class="content rel p:2% bg:#fff@<576 b:2px|solid|#fee190@<576  r:10px@<576 box:border-box w:80% w:90vw@<992 w:full@<576 m:auto"
-        v-if="statusGift == 0"
       >
         <img class="w:full abs left:0 right:0 top:0 m:auto z:-1 hidden@<576" :src="$filters.siteUrl('electric_heater/images/2501/spbg.png')" alt=" " />
         <ul class="ai:baseline">
@@ -290,11 +277,6 @@ export default {
             </a>
           </li>
         </ul>
-      </div>
-
-      <!-- 全站活動 -->
-      <div v-if="statusGift == 1">
-        <AllEvent></AllEvent>
       </div>
     </section>
 

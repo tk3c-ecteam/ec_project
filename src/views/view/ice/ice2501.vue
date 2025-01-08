@@ -30,7 +30,7 @@
         <img :src="$filters.siteUrl('airConditionerLAB/images/2310/dis_title.png')" />
       </h2>
       <div class="sale">
-        <component :is="listF" :pro="product2[menuDis]" :isSwiper="1" :name="'sale-pro'"></component>
+        <listF :pro="product2[menuDis]" :isSwiper="1" :name="'sale-pro'"></listF>
         <a class="more" :href="$filters.addGALink(saleUrl)" target="_blank">
           <img :src="$filters.siteUrl('icewash2209/images/2405/MORE.png')" />
         </a>
@@ -100,8 +100,8 @@
         </div>
 
         <div v-else>
-          <component :is="listF" :pro="product2[tab[0].menu]" :isSwiper="1" :name="'pro'">
-          </component>
+          <listF :pro="product2[tab[0].menu]" :isSwiper="1" :name="`po${t + 1}`">
+          </listF>
         </div>
       </section>
     </div>
@@ -129,18 +129,10 @@
 
 <script setup>
 import { EffectFade, Parallax } from 'swiper/modules'
-import listF from '../../layout/listF.vue'
-import AllEvent from '../../../components/AllEvent.vue' //全站活動
-import mobile from '@/views/layout/mobile.vue'
-import Tabs from '@/components/Tabs.vue'
-import TabContent from '@/components/TabContent.vue'
 </script>
 
 <script>
-import { globalMixin } from '../../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       proICE: [

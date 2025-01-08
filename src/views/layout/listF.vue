@@ -1,7 +1,5 @@
 <script>
-import { globalMixin } from '../../globalMixin.js'
 export default {
-  mixins: [globalMixin],
   props: ['pro', 'isSwiper', 'name', 'incoming']
 }
 </script>

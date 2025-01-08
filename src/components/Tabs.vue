@@ -91,7 +91,7 @@ export default {
   
          if (current.getAttribute('value') == '') return false;
          
-        //頁籤為swiper(輪播)格式
+        //頁籤為swiper(輪播)格式(標題上加入連結)
         if (current.parentNode.getAttribute('class') == 'swiper-slide') {
           parent = current.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
         } else {

@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AllEvent: typeof import('./src/components/AllEvent.vue')['default']
+    Asides: typeof import('./src/components/Asides.vue')['default']
     AutumnFloor: typeof import('./src/views/floor/AutumnFloor.vue')['default']
     Banner: typeof import('./src/views/layout/banner.vue')['default']
     CommonFloor: typeof import('./src/views/floor/CommonFloor.vue')['default']

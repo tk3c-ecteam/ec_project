@@ -8,9 +8,7 @@ import listF from '@/views/layout/listF.vue'
  * singleImage(純標題圖片單張+系統文字)
  * isSwiper(是否使用swiper輪播)
  */
-import { globalMixin } from '@/globalMixin.js'
 export default {
-  mixins: [globalMixin],
   props: ['floors', 'menu', 'singleImage','moreImage','isSwiper'],
   mounted() {
     this.getFloorData(this.menu)

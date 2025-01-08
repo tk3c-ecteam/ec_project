@@ -1,8 +1,3 @@
-<script setup>
-import listF from '../layout/listF.vue'
-import AllEvent from '@/components/AllEvent.vue'
-</script>
-
 <script>
 import { globalMixin } from '../../globalMixin.js'
 
@@ -12,7 +7,10 @@ export default {
     return {
       status: 0,
       menu: 7393,
-      today: new Date()
+      today: new Date(),
+      asides:[
+        {text:'熱門激推商品',href:'#hot'}
+      ]
     }
   },
   mounted() {
@@ -211,7 +209,7 @@ export default {
       </h2>
 
       <div class="box">
-        <component :is="listF" :pro="product2[menu]"></component>
+        <listF :pro="product2[menu]"></listF>
       </div>
     </section>
 
@@ -241,4 +239,165 @@ export default {
       <a href="#" class="go-top">GO TOP</a>
     </div>
   </aside>
+
+  <!-- 手機板 -->
+   <mobile :asides="asides"></mobile>
 </template>
+
+<style lang="scss">
+  @charset "utf-8";
+$dir: "https://events.cdn-tkec.tw/events_net/events_net/DjiNeo/images/";
+$origin: "https://events.tk3c.com/events_net/events_net/DjiNeo/images/";
+
+/*  共用樣式調整 */
+body {
+  background: #8b9099;
+  position: relative;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    $image: $dir + "BG.png";
+    background: url($image) no-repeat center;
+    background-size: 100% auto;
+    background-position: 0 45px, top;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 0;
+    z-index: -1;
+  }
+}
+
+.bg01 {
+  background: none;
+}
+
+#dji-container {
+  .background {
+    width: 100%;
+    height: 0;
+    position: relative;
+    margin: 0 auto 0;
+    padding-bottom: 30%;
+    .title {
+      width: 16%;
+      position: absolute;
+      left: 26%;
+      top: 28%;
+      margin: 0 auto;
+      animation: heartBeat 3s ease-in;
+    }
+  }
+}
+
+.special-box {
+  .title {
+    width: 40%;
+  }
+}
+
+.gift-box {
+  .title {
+    width: 16%;
+  }
+  li {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 8px 20px 8px 20px;
+    box-sizing: border-box;
+    &.active {
+      background: yellow;
+    }
+  }
+}
+
+/*  電腦版其他尺寸 */
+
+@include media-query("mobile", "992px") {
+  #dji-container {
+    .background {
+      padding-bottom: 45vw;
+      .title {
+        width: 30vw;
+        top: 11vw;
+        left: 16vw;
+      }
+    }
+  }
+
+  body {
+    &:before {
+      background-size: 120% auto;
+      background-position: -8vw 4vw, top;
+    }
+  }
+
+  .special-box {
+    .title {
+      width: 60vw;
+    }
+  }
+
+  .gift-box {
+    .title {
+      width: 30vw;
+    }
+    li {
+      font-size: 2.5em;
+    }
+  }
+}
+
+/* 手機版 */
+@include media-query("mobile", "576px") {
+  .fix_btn {
+    display: block;
+    .dropdown-menu {
+      display: none;
+    }
+  }
+
+  #dji-container {
+    .background {
+      padding-bottom: 65vw;
+      .title {
+        width: 40vw;
+        top: 16vw;
+        left: 5vw;
+      }
+    }
+  }
+
+  body {
+    &:before {
+      background-size: 180% auto;
+      background-position: -33vw 10vw, top;
+    }
+  }
+
+  .special-box {
+    .title {
+      width: 90vw;
+    }
+  }
+
+  .gift-box {
+    .title {
+      width: 40vw;
+    }
+    li {
+      font-size: 1.2em;
+    }
+  }
+
+  .hot-group {
+    .title {
+      margin: 0 auto 0;
+    }
+  }
+}
+
+</style>

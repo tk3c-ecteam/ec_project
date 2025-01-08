@@ -1,9 +1,5 @@
 <script setup>
 import { Controller } from 'swiper/modules'
-// import listF from '@/views/layout/listF.vue'
-// import listD from '@/views/layout/listD.vue'
-// import Floor from "@/views/floor/CommonFloor.vue";
-// import mobile from '@/views/layout/mobile.vue';
 import { ref } from 'vue'
 
 const swiperRef1 = ref()
@@ -143,6 +139,41 @@ export default {
           image: 'green_subsidy/images/new/S-btn11.png'
         }
       ],
+       newTab2: [
+        {
+          image: 'green_subsidy/images/new/S-btn1.png'
+        },
+        {
+          image: 'green_subsidy/images/new/S-btn2.png'
+        },
+        {
+          image: 'green_subsidy/images/new/S-btn3.png'
+        },
+        {
+          image: 'green_subsidy/images/new/S-btn4.png'
+        },
+        {
+          image: 'green_subsidy/images/new/S-btn5.png'
+        },
+        {
+          image: 'green_subsidy/images/new/S-btn6.png'
+        },
+        {
+          image: 'green_subsidy/images/new/S-btn7.png'
+        },
+        {
+          image: 'green_subsidy/images/new/S-btn8.png'
+        },
+        {
+          image: 'green_subsidy/images/new/S-btn9.png'
+        },
+        {
+          image: 'green_subsidy/images/new/S-btn10.png'
+        },
+        {
+          image: 'green_subsidy/images/new/S-btn11.png'
+        }
+      ],
       asides:[
         {
           text:'環保集點專區',
@@ -185,20 +216,23 @@ export default {
       menuGreen: [4344, 4345, 4346, 4347, 4390],
       menuPrint: [7394, 7395],
       menuNew: [7589, 7588, 7587, 7576, 7577, 7578, 7579, 7580, 7581, 7582, 7583, 7584, 7585, 7586],
+      menuNew2: [ 7576, 7577, 7578, 7579, 7580, 7581, 7582, 7583, 7584, 7585, 7586],
       status: 0,
       stausPrinter: 0,
       statusNew: 0,
       today: new Date(),
       fullData: [],
       menuSp: 4850,
-      isVip: true,
+      isVip: false,
       isNew: false
     }
   },
   mounted() {
     const { menu, tabs, menuSp, today } = this
 
-    this.getFloorData(this.menuNew)
+    this.newTabs = this.newTab2;
+    this.menuNew = this.menuNew2;
+    this.getFloorData(this.menuNew2)
 
     //撈取綠點新鮮貨樓層
     this.getFloorSingle(menuSp)
@@ -211,10 +245,6 @@ export default {
 
     //剩下樓層
     this.getFloorData(menu)
-
-    if (today >= new Date('2024/11/13')) {
-      this.isVip = false
-    }
 
     // 每週六日顯示
     if (today.getDay() == 6 || today.getDay() == 0) {
@@ -325,7 +355,7 @@ export default {
                 }
               },
               992: {
-                slidesPerView: 7,
+                slidesPerView: 6,
                 grid: {
                   fill: 'row',
                   rows: 2
