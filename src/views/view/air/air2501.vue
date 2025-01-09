@@ -41,7 +41,7 @@
 
 
       <div class="discount">
-        <component :is="listF" :pro="product2[menuDis]" :isSwiper="1" :name="'dis'"></component>
+        <listF :pro="product2[menuDis]" :isSwiper="1" :name="'dis'"></listF>
         <a class="more" :href="$filters.addGALink(disUrl)" target="_blank">MORE</a>
       </div>
     </section>
@@ -113,7 +113,7 @@
         </a>
       </h2>
 
-      <component :is="listF" :pro="product2[menuHot]" :isSwiper="1" :name="'hot'"></component>
+      <listF :pro="product2[menuHot]" :isSwiper="1" :name="'hot'"></listF>
     </section>
 
     <!-- 冷暖空調 -->
@@ -124,7 +124,7 @@
         </a>
       </h2>
 
-      <component :is="listF" :pro="product2[menuCold]"></component>
+      <listF :pro="product2[menuCold]"></listF>
     </section>
 
     <!-- 除濕機 -->
@@ -135,7 +135,7 @@
         </a>
       </h2>
 
-      <component :is="listF" :pro="product2[menuWet]"></component>
+      <listF :pro="product2[menuWet]"></listF>
     </section>
 
     <!-- 熊速配專區 -->
@@ -144,8 +144,8 @@
         <img :src="$filters.siteUrl('airConditionerLAB/images/2303/pro_title.jpg')" />
       </h2>
       <div class="bear">
-        <component :is="listF" :pro="product2[menuBear]" :isSwiper="1" :name="'bear'"></component>
-        <a class="more" :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=11225&aid=23421')"
+        <listF :pro="product2[menuBear]" :isSwiper="1" :name="'bear'"></listF>
+        <a class="more" :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=11225')"
           target="_blank">點我看更多</a>
       </div>
     </section>
@@ -272,12 +272,12 @@
             </template>
           </Tabs>
         </div>
-        <component v-else :is="listF" :pro="product2[floor[0].menu]"></component>
+        <listF v-else :pro="product2[floor[0].menu]"></listF>
       </div>
     </section>
 
     <!-- 影片 -->
-    <component :is="AirVideo"></component>
+    <AirVideo></AirVideo>
   </div>
 
   <!-- 右側選單 -->
@@ -297,17 +297,12 @@
   </aside>
 
   <!-- 手機版 -->
-  <mobile :asides="asides"></mobile>
+  <mobile2 :asides="asides"></mobile2>
 </template>
 
 <script setup>
 import { Controller, EffectFade, Parallax } from 'swiper/modules'
-import listF from '../../layout/listF.vue'
 import { ref } from 'vue'
-import AirVideo from '../AirVideo.vue'
-import mobile from '@/views/layout/mobile2.vue'
-import Tabs from '@/components/Tabs.vue'
-import TabContent from '@/components/TabContent.vue'
 
 const swiperRef1 = ref()
 const swiperRef2 = ref()
@@ -336,10 +331,7 @@ const onSlideChange = (e) => {
 </script>
 
 <script>
-import { globalMixin } from '../../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       proAir: [

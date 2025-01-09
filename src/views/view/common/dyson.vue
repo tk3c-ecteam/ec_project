@@ -1,6 +1,5 @@
 <script setup>
-import listM from '../../layout/listM.vue'
-import DysonFloor from '../../floor/CommonFloor.vue'
+import listM from '@/views/layout/listM.vue';
 
 const today = new Date()
 
@@ -75,21 +74,31 @@ const navs = [
 const menu = [2383, 2384, 2385, 2386, 2387]
 const floorImg = [
   {
-    image: 'dyson/images/fl1.jpg'
+    image: 'dyson/images/fl1.jpg',
+    text:'新品上市',
+    href:'#pro2383'
   },
   {
-    image: 'dyson/images/fl2.jpg'
+    image: 'dyson/images/fl2.jpg',
+    text:'吸塵器',
+    href:'#pro2384'
   },
   {
     image: 'dyson/images/fl3.jpg',
-    type: listM
+    type: listM,
+    text:'空氣清淨機與風扇',
+    href:'#pro2385'
   },
   {
     image: 'dyson/images/fl4.jpg',
-    type: listM
+    type: listM,
+    text:'頭髮護理',
+    href:'#pro2386'
   },
   {
-    image: 'dyson/images/fl5.jpg'
+    image: 'dyson/images/fl5.jpg',
+    text:'乾手器',
+    href:'#pro2387'
   }
 ]
 </script>
@@ -104,11 +113,9 @@ const floorImg = [
     </div>
     <div class="navbar">
       <ul>
-        <li><a href="#pro2383">新品上市</a></li>
-        <li><a href="#pro2384">吸塵器</a></li>
-        <li><a href="#pro2385">空氣清淨機與風扇</a></li>
-        <li><a href="#pro2386">頭髮護理</a></li>
-        <li><a href="#pro2387">乾手器</a></li>
+        <li v-for="(floor,f) in floorImg">
+          <a :href="floor.href">{{ floor.text }}</a>
+        </li>
       </ul>
     </div>
 
@@ -181,7 +188,7 @@ const floorImg = [
     </div>
 
     <!-- 商品樓層區 -->
-    <DysonFloor :floors="floorImg" :menu="menu"></DysonFloor>
+    <CommonFloor :floors="floorImg" :menu="menu"></CommonFloor>
   </div>
 
   <!-- 右側選單 -->
@@ -191,24 +198,15 @@ const floorImg = [
       <h3 class="aside-header"></h3>
       <div class="aside-content">
         <ul>
-          <li>
-            <a href="#pro2383">新品上市</a>
-          </li>
-          <li class="">
-            <a href="#pro2384">吸塵器</a>
-          </li>
-          <li class="">
-            <a href="#pro2385">空氣清淨機與風扇</a>
-          </li>
-          <li class="">
-            <a href="#pro2386">頭髮護理</a>
-          </li>
-          <li class="">
-            <a href="#pro2387">乾手器</a>
+           <li v-for="(floor,f) in floorImg">
+            <a :href="floor.href">{{ floor.text }}</a>
           </li>
         </ul>
       </div>
       <a href="#" class="go-top">GO TOP</a>
     </div>
   </aside>
+
+  <!-- 手機版 -->
+   <mobile :asides="floorImg"></mobile>
 </template>

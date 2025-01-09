@@ -1,8 +1,6 @@
 <script>
-import { globalMixin } from '@/globalMixin.js'
 export default {
-  mixins: [globalMixin],
-  props: ['pro']
+  props: ['pro','incoming']
 }
 </script>
 
@@ -10,7 +8,7 @@ export default {
   <!-- list_D版型 -->
   <div class="list_D bg01" v-if="pro != undefined">
     <ul>
-      <li v-for="(proA, p) in pro">
+      <li :class="[incoming ? 'before' : '']" v-for="(proA, p) in pro">
         <a
           :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=' + proA.productid)"
           :id="'prod' + proA.productid"

@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AirVideo: typeof import('./src/components/AirVideo.vue')['default']
     AllEvent: typeof import('./src/components/AllEvent.vue')['default']
     Asides: typeof import('./src/components/Asides.vue')['default']
     AutumnFloor: typeof import('./src/views/floor/AutumnFloor.vue')['default']
