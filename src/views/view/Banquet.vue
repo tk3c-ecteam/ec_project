@@ -1,8 +1,5 @@
 <script>
-import { globalMixin } from '../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       menus: [7617, 7618, 7619, 7620, 7621, 7622, 7623, 7624], //商品陳列編號
@@ -103,7 +100,7 @@ export default {
 </script>
 
 <template>
-  <div id="banquet-container" v-cloak>
+  <div id="banquet-container">
     <div class="background">
       <h2 class="title animate__animated animate__fadeInDownBig">
         <img :src="$filters.siteUrl('banquet/images/title2.png')" />

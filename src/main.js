@@ -3,10 +3,13 @@ import { register } from 'swiper/element/bundle'
 import '@master/css'
 import '../node_modules/swiper/swiper-bundle.min.css'
 import 'animate.css'
+import { Swiper, SwiperSlide } from "swiper/vue";
 
 import App from '@/AppComponent.vue' //主頁面內容
 import Mobile from '@/views/MobileComponent.vue' //手機版
 
+//載入撈取商品陳列api
+import { globalMixin } from './globalMixin.js'
 
 const app = createApp(App)
 const mobile = createApp(Mobile)
@@ -29,8 +32,14 @@ const config = {
   }
 }
 
+//直接使用http載入component
+//const { loadModule } = window['vue3-sfc-loader'];
+
 
 app.use(register)
+app.mixin(globalMixin)
+app.component('Swiper', Swiper)
+app.component('SwiperSlide', SwiperSlide)
 
 //使用方法: $filters.siteUrl(value)
 app.config.globalProperties.$filters = config
