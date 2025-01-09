@@ -1,13 +1,5 @@
-<script setup>
-import listF from '../../layout/listF.vue'
-import mobile from '@/views/layout/mobile2.vue'
-</script>
-
 <script>
-import { globalMixin } from '../../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       menuSP: 7392,
@@ -84,6 +76,7 @@ export default {
         until: $.countdown.UTCDate(+8, year, month - 1, date, 22, 0, 0),
         format: 'hms',
         layout: '<span>倒數:</span> <i>{hnn}</i> <b>:</b> <i>{mnn}</i> <b>:</b> <i>{snn}</i>',
+        expiryText:'限時搶購!',
         onExpiry: this.timeUpMsg
       })
     }
@@ -96,12 +89,6 @@ export default {
   }
 }
 </script>
-
-<style>
-[v-cloak] {
-  display: none;
-}
-</style>
 
 <template>
   <div id="night-container" v-cloak>
@@ -123,16 +110,21 @@ export default {
 
     <!-- 限時 -->
     <section class="special-box" v-show="isSp">
-      <div class="special">
+      <div class="special rel">
+        <div class="swiper-pagination page top:-1%!"></div>
         <div class="bg01 list_F p:1% p:2%@<576" v-if="product2[menuSP] != undefined">
           <ul>
-            <swiper
-              class="overflow:hidden"
-              :space-between="10"
+            <swiper class="overflow:hidden" 
+            :space-between="10" 
+            :pagination="{
+                el: '.special .page',
+                type: 'progressbar',
+                clickable: true
+              }" 
               :navigation="{
-                prevEl: `.special-box .prev`,
-                nextEl: `.special-box .next`
-              }"
+                prevEl: '.special .prev',
+                nextEl: '.special .next'
+              }" 
               :breakpoints="{
                 0: {
                   slidesPerView: 2,
@@ -162,18 +154,10 @@ export default {
                     rows: 3
                   }
                 }
-              }"
-            >
-              <swiper-slide
-                class="bg:#fff"
-                :class="[income ? 'before' : '']"
-                v-for="(proA, p) in product2[menuSP]"
-              >
-                <a
-                  :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=' + proA.productid)"
-                  :id="'prod' + proA.productid"
-                  :name="'prod' + proA.productid"
-                >
+              }">
+              <swiper-slide class="bg:#fff" :class="[income ? 'before' : '']" v-for="(proA, p) in product2[menuSP]">
+                <a :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=' + proA.productid)"
+                  :id="'prod' + proA.productid" :name="'prod' + proA.productid">
                   <p class="itemF_img">
                     <img onerror="ImgError(this);" :src="proA.ImgUrl" border="0" />
                   </p>
@@ -181,8 +165,7 @@ export default {
                   <h4 :class="[proA.Promote.trim() == '' ? 'empty' : '']">{{ proA.Promote }}</h4>
                   <div class="boxF_price">
                     <p class="iconF_pro" v-if="getProPercent(proA) != 100">
-                      <span>{{ getProPercent(proA) }}</span
-                      >折
+                      <span>{{ getProPercent(proA) }}</span>折
                     </p>
 
                     <strong class="txt_red fred">
@@ -206,14 +189,8 @@ export default {
       </h2>
 
       <div class="products">
-        <component
-          v-if="products[menus[p]] != undefined"
-          :is="listF"
-          :pro="products[menus[p]].Data"
-          :isSwiper="1"
-          :name="`pro${Number(p) + 1}`"
-          :incoming="income"
-        ></component>
+        <listF v-if="products[menus[p]] != undefined" :pro="products[menus[p]].Data" :isSwiper="1"
+          :name="`pro${Number(p) + 1}`" :incoming="income"></listF>
       </div>
     </section>
   </div>
@@ -235,7 +212,7 @@ export default {
   </aside>
 
   <!-- 手機版 -->
-   <mobile v-model:asides="proDatas"></mobile>
+  <mobile2 v-model:asides="proDatas"></mobile2>
 </template>
 
 <style lang="scss">
@@ -283,7 +260,7 @@ body {
           height: 60px;
           font-size: 190%;
           &:before {
-            content: "先加入購物車時間到再結帳";
+            content: "先加入購物車";
             letter-spacing: 0;
           }
         }
@@ -298,7 +275,7 @@ body {
         height: 60px;
         font-size: 190%;
         &:before {
-          content: "先加入購物車時間到再結帳";
+          content: "先加入購物車";
           letter-spacing: 0;
         }
         em {
@@ -385,6 +362,9 @@ section {
   }
   .title {
     width: 65%;
+  }
+  .swiper-pagination {
+    background: #fff;
   }
 }
 
