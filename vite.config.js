@@ -34,7 +34,12 @@ export default defineConfig({
     }),
     Components({
       //要引入的component路徑
-      dirs: ['src/components', 'src/views/floor', 'src/views/layout'],
+      dirs: [
+        'src/components',
+        'src/views/floor',
+        'src/views/layout',
+        'src/views/view'
+      ],
       extensions: ['vue'],
       deep: true,//搜尋子目錄
       dts: 'src/components.d.ts'
@@ -86,7 +91,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        banquet: resolve(__dirname, './index.html')
+        index: resolve(__dirname, './index.html')
       },
       output: {
         entryFileNames: 'js/[name].js',
