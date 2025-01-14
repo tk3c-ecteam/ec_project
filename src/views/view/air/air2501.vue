@@ -9,7 +9,7 @@
         <img :src="$filters.siteUrl('airConditionerLAB/images/2501/st2.png')" alt=" " />
       </h5>
 
-      <div class="product">
+      <div class="product" v-if="isPro">
         <swiper :loop="true" :effect="'fade'" :fadeEffect="{
             crossFade: true
           }" :parallax="true" :autoplay="{ delay: 1800, disableOnInteraction: false }"
@@ -579,6 +579,7 @@ export default {
       today: new Date(),
       disUrl: '',
       swiperBrand: null,
+      isPro:true
     }
   },
   mounted() {
@@ -615,10 +616,11 @@ export default {
       }
     }
 
-    // 2025/01/03 隱藏現折券樓層
+
     if (today >= new Date('2025/01/14')) {
       this.isDis = true;
-      this.disUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
+      this.isPro = false
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
     } else {
       this.disUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
     }

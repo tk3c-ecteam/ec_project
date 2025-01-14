@@ -5,7 +5,7 @@
         <img :src="$filters.siteUrl('2020TVforever/images/2501/title2.png')" alt="" />
       </h2>
 
-      <div class="pro">
+      <div class="pro" v-if="isPro">
         <swiper :loop="true" :observer="true" :parallax="true" :autoplay="{ delay: 2200, disableOnInteraction: false }"
           :modules="[Parallax]">
           <swiper-slide v-for="(pro, p) in proTV" :key="p">
@@ -348,7 +348,8 @@ export default {
       isDis: false,
       today: new Date(),
       disUrl: '',
-      isGift:false
+      isGift:false,
+      isPro:true
     }
   },
   mounted() {
@@ -365,7 +366,8 @@ export default {
     // 2025 1/03 隱藏現折券樓層
     if (today >= new Date('2025/01/14')) {
       this.isDis = true;
-      this.disUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
+      this.isPro = false;
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
     } else {
       this.disUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
     }
@@ -504,6 +506,9 @@ section {
 .discount-box {
   .bg01 {
     margin: 0 auto 1%;
+  }
+  .title {
+    margin: 0 auto 0;
   }
 }
 
