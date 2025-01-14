@@ -67,20 +67,14 @@ declare module 'vue' {
     MobileAi: typeof import('./views/layout/mobileAi.vue')['default']
     MobileW: typeof import('./views/layout/mobileW.vue')['default']
     Msi: typeof import('./views/view/Msi.vue')['default']
-<<<<<<< HEAD
     Newyear25: typeof import('./views/view/Newyear25.vue')['default']
-=======
->>>>>>> cf0a08d723e760b70f762e53454a74efd9f82210
     Night: typeof import('./views/view/common/night.vue')['default']
     Razer: typeof import('./views/view/store/Razer.vue')['default']
     StaffCommon: typeof import('./views/view/staff/StaffCommon.vue')['default']
     StoreDefault: typeof import('./views/view/store/StoreDefault.vue')['default']
     TabContent: typeof import('./components/TabContent.vue')['default']
     Tabs: typeof import('./components/Tabs.vue')['default']
-<<<<<<< HEAD
     Tba: typeof import('./views/view/staff/Tba.vue')['default']
-=======
->>>>>>> cf0a08d723e760b70f762e53454a74efd9f82210
     Thank: typeof import('./views/view/Thank.vue')['default']
     TrkMall: typeof import('./views/view/staff/TrkMall.vue')['default']
     Tup: typeof import('./views/view/staff/Tup.vue')['default']
