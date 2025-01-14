@@ -15,10 +15,7 @@
 </template>
 
 <script>
-import { globalMixin } from '../globalMixin.js';
-import listF from '@/views/layout/listF.vue';
 export default {
-  mixins: [globalMixin],
   props: {
     index: {
       type: Number,
@@ -39,9 +36,6 @@ export default {
       type:Boolean,
       default:0
     }
-  },
-  components: {
-    listF
   },
   mounted() {
     this.getFloorData(this.menus);
