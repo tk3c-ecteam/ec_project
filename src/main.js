@@ -32,9 +32,6 @@ const config = {
   }
 }
 
-//直接使用http載入component
-//const { loadModule } = window['vue3-sfc-loader'];
-
 
 app.use(register)
 app.mixin(globalMixin)

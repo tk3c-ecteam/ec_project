@@ -1,9 +1,7 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Controller, EffectFade, Parallax, EffectCube } from 'swiper/modules'
-import listF from '../../layout/listF.vue'
-import { ref } from 'vue'
-import AirVideo from '../AirVideo.vue'
+
 
 const swiperRef1 = ref()
 const swiperRef2 = ref()

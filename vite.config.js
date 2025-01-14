@@ -26,10 +26,7 @@ export default defineConfig({
       ],
       imports: [
         'vue',
-        'vue-router',
-        {
-          'axios': ['axios'], //import axios from 'axios'
-        }
+        'vue-router'
       ]
     }),
     Components({
@@ -46,7 +43,7 @@ export default defineConfig({
     }),
     createHtmlPlugin({
       minify: true,
-      entry: './src/main.js'
+      entry: './src/main.js',
     }),
     ViteImageOptimizer()
   ],
@@ -91,7 +88,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        index: resolve(__dirname, './index.html')
+        tv2501: resolve(__dirname, './index.html')
       },
       output: {
         entryFileNames: 'js/[name].js',

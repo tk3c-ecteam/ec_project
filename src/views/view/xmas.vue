@@ -1,10 +1,5 @@
 <script setup>
-import { ref } from 'vue'
-import {Controller } from "swiper/modules";
-import listF from '../layout/listF.vue'
-import XmasFloor from '../floor/XmasFloor.vue'
-import AllEvent from '../../components/AllEvent.vue'
-import mobile from '@/views/layout/mobile3.vue'
+import { Controller } from "swiper/modules";
 
 const swiperBank = ref()
 
@@ -20,11 +15,7 @@ const goBankSlide = (id) => {
 </script>
 
 <script>
-import { globalMixin } from '../../globalMixin.js'
-import { Controller } from 'swiper/modules'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       menuSale: [7679,7680,7681,7682,7683,7684,7685,7686,7687,7688,7689],
@@ -165,7 +156,7 @@ export default {
         <img  :src="$filters.siteUrl('Xmas2024/images/gift_title.png')" />
       </h2>
 
-      <component :is="listF" :isSwiper="1" :name="'pro'" :pro="product2[menuPro]"></component>
+      <listF :isSwiper="1" :name="'pro'" :pro="product2[menuPro]"></listF>
     </section>
 
     <!-- 現折券 -->
@@ -225,14 +216,13 @@ export default {
           @slideChange="onSlideChange"
           >
           <swiper-slide v-for="(sale, s) in sales">
-            <component
+            <listF
           v-if="products[menuSale[s]] != undefined"
-          :is="listF"
           :pro="products[menuSale[s]].Data"
           :isSwiper="1"
           :name="'sale'" 
           >
-           </component>
+           </listF>
          </swiper-slide>
         </swiper>
       </div>
@@ -444,12 +434,11 @@ export default {
       </p>
 
       <div class="box">
-        <component
-          :is="listF"
+        <listF
           :pro="product2[menuGreen]"
           :isSwiper="1"
           :name="'green-pro'"
-        ></component>
+        ></listF>
       </div>
     </section>
 
@@ -467,7 +456,7 @@ export default {
       </h2>
 
       <div class="box">
-        <component :is="listF" :pro="product2[menuGo]" :isSwiper="1" :name="'go-box'"></component>
+        <listF :pro="product2[menuGo]" :isSwiper="1" :name="'go-box'"></listF>
       </div>
     </section>
 
@@ -507,7 +496,7 @@ export default {
   </aside>
 
   <!-- 手機版選單 -->
-   <mobile v-model:asides="asides"></mobile>
+   <mobile3 v-model:asides="asides"></mobile3>
 </template>
 
 <style lang="scss">
@@ -536,7 +525,7 @@ body {
 
 #xmas-container {
   .background {
-     $image: $origin + 'kv.png';
+     $image: $dir + 'kv.png';
     @include bg-responsive($image, 2000, 700);
     position: relative;
     margin: 0 auto 0;
@@ -573,7 +562,7 @@ body {
 .background2 {
   width: 100%;
   height: 100%;
-  $image:$origin + 'bg.png';
+  $image:$dir + 'bg.png';
   background: url($image) no-repeat center;
   background-size: 100% auto;
   background-position: 0 0,top;

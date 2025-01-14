@@ -10,7 +10,7 @@ export default {
   <div class="bg01 list_F p:1%|1%|0! p:2%|2%|0!@<576" v-if="isSwiper">
     <ul v-if="pro != undefined" :class="[name != undefined ? name : '']">
       <swiper
-        class="pro overflow:hidden"
+        class="pro"
         :loop="true"
         :autoplay="{
           delay: 2500,

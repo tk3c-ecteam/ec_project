@@ -41,7 +41,7 @@
       <!-- 筆電 -->
       <div class="tab-content" v-if="statusGift == 0">
         <ul class="w:90% gap:10 w:full@<992 mb:2% overflow:hidden">
-          <li class="w:89% w:91vw@<992">
+          <li class="w:89% w:91vw@<992" :class="[isSale == false ? 'off' : '']">
             <a @click="goNB('#sale')" target="_blank"><img
                 :src="$filters.siteUrl('2024083C/images/2501/NB02.png')" /></a>
           </li>
@@ -108,7 +108,7 @@
     <div class="pro-group">
       <div>
         <!-- 狂撒百萬折價券 -->
-        <section class="sale-box" id="sale" v-show="statusGift == 0">
+        <section class="sale-box" id="sale" v-if="isSale">
           <h2 class="title">
             <a :href="
                 $filters.addGALink(
@@ -536,7 +536,8 @@ export default {
       tabs: [],
       statusGift: 0,
       statusSale: 0,
-      today: new Date()
+      today: new Date(),
+      isSale:true
     }
   },
   mounted() {
@@ -560,6 +561,8 @@ export default {
 
     //折價券樓層
     this.getFloorData(this.menuSale)
+
+    if(today >= new Date('2025/01/14')) this.isSale = false
   },
   methods: {
     //應援指南頁籤切換

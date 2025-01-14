@@ -13,10 +13,11 @@ const menu = defineModel('menu')
       </p>
     </div>
 
-    <!-- banner區(桃園機師公會頁面用) -->
-    <section v-if="contents[0].bannerForTUP != undefined">
+    <!-- banner區 -->
+    <section class="banner-group" v-if="contents[0].otherBanners != undefined">
       <a
-        v-for="banner in contents[0].bannerForTUP"
+        v-for="banner in contents[0].otherBanners"
+        :class="[banner.url == '' ? 'no' : '']"
         :href="$filters.addGALink(banner.url)"
         target="_blank"
       >
@@ -25,37 +26,15 @@ const menu = defineModel('menu')
       </a>
     </section>
 
-    <!-- 導航區(桃園機師公會頁面用) -->
+    <!-- 導航區 -->
     <section class="nav-group" v-if="contents[0].navButtons != undefined">
       <div class="navs">
         <swiper
           :loop="false"
           :space-between="10"
-          :breakpoints="{
-            0: {
-              slidesPerView: 3,
-              grid: {
-                fill: 'row',
-                rows: 2
-              }
-            },
-            600: {
-              slidesPerView: 4.3,
-              grid: {
-                fill: 'row',
-                rows: 1
-              }
-            },
-            992: {
-              slidesPerView: 5.3,
-              grid: {
-                fill: 'row',
-                rows: 1
-              }
-            }
-          }"
+          :slidesPerView="'auto'"
         >
-          <swiper-slide>
+          <swiper-slide class="flex-basis:19% flex-basis:22%@<992 flex-basis:28%@<576">
             <div class="mix flex flex-wrap:wrap flex-direction:column bg:#fff r:20px r:10px@<576 p:4% box:border-box">
               <img class="w:65% m:0|auto|4%" :src="$filters.siteUrl('tup/images/nav2.png')" />
               <a class="w:70%" href="https://www.tk3c.com">
@@ -63,7 +42,7 @@ const menu = defineModel('menu')
               </a>
             </div>
           </swiper-slide>
-          <swiper-slide v-for="nav in contents[0].navButtons">
+          <swiper-slide class="flex-basis:19% flex-basis:22%@<992 flex-basis:28%@<576" v-for="nav in contents[0].navButtons">
             <a :href="$filters.addGALink(nav.url)" target="_blank">
               <img :src="$filters.siteUrl(nav.image)" />
             </a>
@@ -72,7 +51,7 @@ const menu = defineModel('menu')
       </div>
     </section>
 
-    <section class="store-group">
+    <section class="store-group" v-if="contents[0].store != undefined">
       <p class="mb:3%"><img :src="$filters.siteUrl(contents[0].store)" /></p>
       <div class="buttons gap:10">
         <a href="#info"
@@ -111,4 +90,7 @@ const menu = defineModel('menu')
       <a href="#" class="go-top">GO TOP</a>
     </div>
   </aside>
+
+  <!-- 手機版 -->
+   <mobile :asides="contents[0].floor"></mobile>
 </template>

@@ -302,7 +302,7 @@ export default {
     // 2025/01/14 顯示現折券樓層
     if (today >= new Date('2025/01/14')) {
       this.isSale = true
-      this.saleUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
     } else {
       this.saleUrl = 'hhttps://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
     }

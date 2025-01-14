@@ -78,6 +78,13 @@ body {
   }
 }
 
+section {
+  .no {
+    pointer-events: none;
+    cursor: auto;
+  }
+}
+
 .store-group {
   min-width: 40%;
   .buttons {
@@ -159,8 +166,10 @@ body {
   }
 
   .bg01 {
+    padding: 1%;
+    box-sizing: border-box;
     &:before {
-      border-radius: 35px;
+      border-radius: 20px;
       box-sizing: border-box;
     }
   }
