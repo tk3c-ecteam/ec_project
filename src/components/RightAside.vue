@@ -6,16 +6,6 @@
    const type = defineModel('type', {
    type: String
   })
-
-const status = defineModel('status', {
-  type: Number
-})
-const tab1 = defineModel('tab1', {
-  type: Object
-})
-const tab2 = defineModel('tab2', {
-  type: Object
-})
 </script>
 
 <template>
