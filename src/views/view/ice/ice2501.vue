@@ -91,7 +91,7 @@
         <div v-if="tab[0].content != undefined">
           <Tabs :isSwiper="1" :tabs="tab[0].content">
             <template v-slot="{ selectedTab }" >
-              <TabContent :menus="tab[0].menu" :isSwiper="1" v-for="(content, c) in tab[0].content" :index="c" :selectedTab="selectedTab">
+              <TabContent :isSwiper="1" v-for="(content, c) in tab[0].content" :menus="tab[0].menu[c]" :index="c" :selectedTab="selectedTab">
               
               </TabContent>
             </template>
@@ -108,23 +108,7 @@
   </div>
 
   <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li v-for="(aside,a) in asides" :key="a">
-            <a :href="aside.href">{{ aside.text }}</a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <!-- 手機板 -->
-  <mobile :asides="asides"></mobile>
+  <RightAside :asides="asides" :type="'mobile'"></RightAside>
 </template>
 
 <script setup>
@@ -257,21 +241,27 @@ export default {
       asides:[
         {
           text:'熱銷強品',
+          href:'#tab1'
         },
         {
           text:'超夯新品',
+          href:'#tab2'
         },
         {
           text:'冰箱',
+          href:'#tab3'
         },
         {
           text:'洗衣機',
+          href:'#tab4'
         },
         {
           text:'乾衣機',
+          href:'#tab5'
         },
         {
           text:'洗碗機',
+          href:'#tab6'
         }
 
       ],

@@ -9,7 +9,7 @@
         <img :src="$filters.siteUrl('airConditionerLAB/images/2501/st2.png')" alt=" " />
       </h5>
 
-      <div class="product" v-if="isPro">
+      <div class="product">
         <swiper :loop="true" :effect="'fade'" :fadeEffect="{
             crossFade: true
           }" :parallax="true" :autoplay="{ delay: 1800, disableOnInteraction: false }"
@@ -266,7 +266,7 @@
         <div v-if="floor[0].content != undefined">
           <Tabs :tabs="floor[0].content">
             <template v-slot="{ selectedTab }">
-              <TabContent :menus="floor[0].menu" v-for="(content, c) in floor[0].content" :index="c" :selectedTab="selectedTab">
+              <TabContent v-for="(content, c) in floor[0].content" :menus="floor[0].menu[c]" :index="c" :selectedTab="selectedTab">
 
               </TabContent>
             </template>
@@ -280,24 +280,8 @@
     <AirVideo></AirVideo>
   </div>
 
-  <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li v-for="aside in asides">
-            <a :href="aside.href">{{ aside.text }}</a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <!-- 手機版 -->
-  <mobile2 :asides="asides"></mobile2>
+  <!-- 右側選單+手機版 -->
+  <RightAside :asides="asides" :type="'mobile2'"></RightAside>
 </template>
 
 <script setup>
@@ -337,23 +321,23 @@ export default {
       proAir: [
         {
           url: 'https://www.tk3c.com/pt.aspx?pid=214072',
-          image: 'airConditionerLAB/images/2501/214072.png'
+          image: 'airConditionerLAB/images/2501/214072_a.png'
         },
          {
-          url: 'https://www.tk3c.com/pt.aspx?pid=235291',
-          image: 'airConditionerLAB/images/2501/235291.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=236542',
+          image: 'airConditionerLAB/images/2501/236542_a.png'
         },
          {
-          url: 'https://www.tk3c.com/pt.aspx?pid=237214',
-          image: 'airConditionerLAB/images/2501/237214.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=245236',
+          image: 'airConditionerLAB/images/2501/245236_a.png'
         },
          {
           url: 'https://www.tk3c.com/pt.aspx?pid=237457',
-          image: 'airConditionerLAB/images/2501/237457.png'
+          image: 'airConditionerLAB/images/2501/237457_a.png'
         },
          {
           url: 'https://www.tk3c.com/pt.aspx?pid=240642',
-          image: 'airConditionerLAB/images/2501/240642.png'
+          image: 'airConditionerLAB/images/2501/240642_a.png'
         }
       ],
       specials: [
@@ -429,12 +413,10 @@ export default {
               menu: [4288, 4289, 4290, 4291],
               content: [
                 {
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4704&strPreView=y',
                   image: 'airConditionerLAB/images/2405/s2-1.png',
                   menu: 4288
                 },
                 {
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4704&strPreView=y',
                   image: 'airConditionerLAB/images/2405/s2-2.png',
                   menu: 4289
                 },
@@ -444,7 +426,6 @@ export default {
                   menu: 4290
                 },
                 {
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4704&strPreView=y',
                   image: 'airConditionerLAB/images/2405/s2-4.png',
                   menu: 4291
                 }
@@ -458,22 +439,18 @@ export default {
               menu: [4292, 4293, 4294, 4295],
               content: [
                 {
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4702&strPreView=y',
                   image: 'airConditionerLAB/images/2405/s3-1.png',
                   menu: 4292
                 },
                 {
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4702&strPreView=y',
                   image: 'airConditionerLAB/images/2405/s3-2.png',
                   menu: 4293
                 },
                 {
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4702&strPreView=y',
                   image: 'airConditionerLAB/images/2405/s3-3b.png',
                   menu: 4294
                 },
                 {
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4702&strPreView=y',
                   image: 'airConditionerLAB/images/2405/s3-4.png',
                   menu: 4295
                 }
@@ -578,8 +555,7 @@ export default {
       isDis: false,
       today: new Date(),
       disUrl: '',
-      swiperBrand: null,
-      isPro:true
+      swiperBrand: null
     }
   },
   mounted() {
@@ -619,7 +595,6 @@ export default {
 
     if (today >= new Date('2025/01/14')) {
       this.isDis = true;
-      this.isPro = false
       this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
     } else {
       this.disUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
@@ -1218,6 +1193,11 @@ body {
     .content {
       padding-top: 5%;
       box-sizing: border-box;
+    }
+    .tab {
+      .swiper-slide {
+        flex-basis: 37%;
+      }
     }
   }
 

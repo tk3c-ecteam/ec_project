@@ -65,23 +65,23 @@ export default {
         },
         {
           url: 'https://www.tk3c.com/events/eventgift.aspx',
-          image: 'electric_heater/images/2501/sp02b.png'
+          image: 'electric_heater/images/2501/sp02_c.png'
         },
         {
           url: 'https://www.tk3c.com/dic2.aspx?cid=11058&aid=5779&hid=112763',
-          image: 'electric_heater/images/2501/sp03b.png'
+          image: 'electric_heater/images/2501/sp03_d.png'
         },
         {
           url: 'https://www.tk3c.com/dic2.aspx?cid=115927&aid=22750&hid=115598',
-          image: 'electric_heater/images/2501/sp04.png'
+          image: 'electric_heater/images/2501/sp04_c.png'
         },
         {
           url: 'https://www.tk3c.com/dic2.aspx?cid=11058&aid=5779&hid=116093',
-          image: 'electric_heater/images/2501/sp05b.png',
+          image: 'electric_heater/images/2501/sp05_c.png',
         },
          {
           url: 'https://www.tk3c.com/dic2.aspx?cid=11058&aid=5779&hid=122529',
-          image: 'electric_heater/images/2501/sp06.png',
+          image: 'electric_heater/images/2501/sp06_c.png',
         },
       ],
       icons: [
@@ -207,6 +207,8 @@ export default {
 
     //撈取強檔推薦樓層商品
     this.getFloorSingle(this.menuSp)
+
+    if(today >= new Date('2025/01/14')) this.isSale = false
   },
   methods: {
     change(id) {
@@ -223,12 +225,11 @@ export default {
   <div id="warm-container" v-cloak>
     <div class="background">
       <h2 class="title">
-        <img :src="$filters.siteUrl('electric_heater/images/2501/title.png')" alt=" " />
+        <img :src="$filters.siteUrl('electric_heater/images/2501/title2.png')" alt=" " />
       </h2>
 
-      <div class="subtitle grid-cols:2 gap:10">
-        <img :src="$filters.siteUrl('electric_heater/images/2501/C1.png')" alt=" " />
-        <img :src="$filters.siteUrl('electric_heater/images/2501/C2.png')" alt=" " />
+      <div class="subtitle">
+        <img :src="$filters.siteUrl('electric_heater/images/2501/C3.png')" alt=" " />
       </div>
 
       <div class="product">
@@ -239,7 +240,7 @@ export default {
           :autoplay="{ delay: 1500, disableOnInteraction: false }"
           :modules="[Parallax, EffectFade]"
         >
-          <swiper-slide v-for="(pro, p) in proWarm" :key="p" class="flex!">
+          <swiper-slide v-for="(pro, p) in proWarm" :key="p" :class="[!isSale ? 'off' : '']" class="flex!">
             <a :href="$filters.addGALink(pro.url)" target="_blank" data-swiper-parallax-y="-7000">
               <img :src="$filters.siteUrl(pro.image)" alt="" />
             </a>
@@ -269,7 +270,7 @@ export default {
         <img class="w:full abs left:0 right:0 top:0 m:auto z:-1 hidden@<576" :src="$filters.siteUrl('electric_heater/images/2501/spbg.png')" alt=" " />
         <ul class="ai:baseline">
           <li v-for="(gift, g) in gifts">
-            <a v-if="g == 0" :href="gift.url">
+            <a v-if="g == 0" :href="gift.url" :class="[!isSale ? 'off' : '']">
               <img :src="$filters.siteUrl(gift.image)" />
             </a>
             <a v-else :href="$filters.addGALink(gift.url)" target="_blank">
@@ -465,6 +466,16 @@ body {
       position: absolute;
       right: 17%;
       top: 19%;
+      .swiper-slide {
+        &:before
+          {
+            content: ""; display: flex; width: 100%; height: 100%; position: absolute; left: 0; right: 0; z-index: 1; margin: 0 auto;
+          }
+          &:after {
+            content: "\5df2\7d50\675f"; 
+ display: -webkit-box; display: -ms-flexbox; display: flex;-webkit-box-align: center; -ms-flex-align: center; align-items: center;    -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center; width: 150px; height: auto; background: red; color: #fff; position: absolute; left: 0; right: 0; margin: 0 auto; top: 50%; z-index: 10; font-size: 2em; font-weight: bold; -webkit-transform: rotate(-15deg) translateY(-50%); transform: rotate(-15deg) translateY(-50%); padding: 1%; opacity: 0.8;border-radius: 10px; -webkit-box-sizing: border-box; box-sizing: border-box; z-index: 2;
+          }
+      }
     }
     .subtitle {
       width: 27%;

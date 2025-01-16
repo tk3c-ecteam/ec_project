@@ -121,7 +121,7 @@
 
           <Tabs :tabs="sales">
             <template v-slot="{ selectedTab }">
-              <TabContent :menus="menuSale" :isSwiper="1" v-for="(content, c) in sales" :index="c"
+              <TabContent :isSwiper="1" v-for="(content, c) in sales" :menus="menuSale[c]" :index="c"
                 :selectedTab="selectedTab">
 
               </TabContent>
@@ -144,7 +144,7 @@
           <div v-if="tab[0].content != undefined">
             <Tabs :tabs="tab[0].content" :singleUrl="tab[0].url">
               <template v-slot="{ selectedTab }">
-                <TabContent :menus="tab[0].menu" v-for="(content, c) in tab[0].content" :index="c"
+                <TabContent v-for="(content, c) in tab[0].content" :menus="tab[0].menu[c]" :index="c"
                   :selectedTab="selectedTab">
 
                 </TabContent>
@@ -197,10 +197,7 @@ import { Parallax, EffectFade } from 'swiper/modules'
 </script>
 
 <script>
-import { globalMixin } from '../../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       tab1: [

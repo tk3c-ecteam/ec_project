@@ -1,5 +1,5 @@
 <script setup>
-import listM from '../../layout/listM.vue'
+import listD from '@/views/layout/listD.vue'
 
 const contents = [
   {
@@ -9,8 +9,9 @@ const contents = [
     singleImage:'tba/images/bar.png',
     floor: [
       {
-        text: '手機',
-        href:'#pro7671',
+        text: '律師公會優惠',
+        href:'#pro7742',
+        type:listD
       }
     ],
     alertHtml: `
@@ -53,7 +54,7 @@ const contents = [
   }
 ]
 
-const menu = [7671,7672,7673,7674]
+const menu = [7742]
 </script>
 
 <template>
@@ -103,7 +104,7 @@ body {
 
 .floor {
   .title {
-    width: 900px;
+    width: 600px;
     margin: 0 auto 0;
     img {
       position: absolute;
@@ -114,8 +115,8 @@ body {
       z-index: -1;
     }
     b {
-      font-size: 3em;
-      line-height: 12.5rem;
+      font-size: 2em;
+      line-height: 8.5rem;
       color: #6a430e;
       font-weight: bold;
     }

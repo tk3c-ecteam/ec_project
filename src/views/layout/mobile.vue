@@ -1,9 +1,3 @@
-<script setup>
-  const asides = defineModel('asides', {
-  type: Object
-})
-</script>
-
 <template>
   <!-- 手機版選單(置底) -->
   <div class="nav-footer">
@@ -19,11 +13,7 @@
       </ul>
     </div>
     <div class="box-area type">
-      <ul>
-        <li v-for="aside in asides">
-          <a :href="aside.href">{{ aside.text }}</a>
-        </li>
-      </ul>
+      <slot name="asides"></slot>
     </div>
     <div class="box-area social">
       <ul>

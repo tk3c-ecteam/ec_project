@@ -10,7 +10,7 @@
       statusSelect-> 預設頁籤要顯示幾個(都沒有設定為0)
     */ -->
 
-    <div class="tab mb:2%">
+    <div class="tab mb:2% mb:1%@<576">
       <ul v-if="isSwiper == false" class="gap:10">
         <li v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }"
           class="brightness(0.7) brightness(1).active">
@@ -69,7 +69,7 @@ export default {
     },
     statusSelect:{
       type:Number
-    }
+    },
   },
   data() {
     return {

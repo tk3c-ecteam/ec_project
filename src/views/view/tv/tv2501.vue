@@ -84,7 +84,7 @@
       <div class="content">
          <Tabs :isSwiper="1" :tabs="saleTab" :statusSelect="1">
             <template v-slot="{ selectedTab }" >
-              <TabContent :menus="menuSale" :isSwiper="1" v-for="(content, c) in saleTab" :index="c" :selectedTab="selectedTab">
+              <TabContent :isSwiper="1" v-for="(content, c) in saleTab" :menus="menuSale[c]" :index="c" :selectedTab="selectedTab">
               
               </TabContent>
             </template>
@@ -103,7 +103,7 @@
       <div class="content">
          <Tabs :tabs="nights" :statusSelect="1">
             <template v-slot="{ selectedTab }" >
-              <TabContent :menus="menuNight" v-for="(content, c) in nights" :index="c" :selectedTab="selectedTab">
+              <TabContent v-for="(content, c) in nights" :menus="menuNight[c]" :index="c" :selectedTab="selectedTab">
               
               </TabContent>
             </template>
@@ -162,24 +162,8 @@
     <CommonFloor :floors="floorImg" :menu="menu"></CommonFloor>
   </div>
 
-  <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li v-for="(aside, a) in asides" :key="a" :class="[a == 0 ? 'main' : '']">
-            <a :href="aside.href">{{ aside.text }}</a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <!-- 手機板選單 -->
-  <mobile2 :asides="asides"></mobile2>
+  <!-- 右側選單 + 手機版選單 -->
+ <RightAside :asides="asides" :type="'mobile2'"></RightAside>
 </template>
 
 <script setup>
@@ -193,30 +177,27 @@ export default {
       proTV: [
         {
           url: 'https://www.tk3c.com/pt.aspx?pid=238959',
-          image: '2020TVforever/images/2501/238959.png'
+          image: '2020TVforever/images/2501/238959_a.png'
         },
          {
           url: 'https://www.tk3c.com/pt.aspx?pid=245384',
-          image: '2020TVforever/images/2501/245384.png'
+          image: '2020TVforever/images/2501/245384_a.png'
         },
          {
           url: 'https://www.tk3c.com/pt.aspx?pid=247190',
-          image: '2020TVforever/images/2501/247190.png'
+          image: '2020TVforever/images/2501/247190_a.png'
         },
          {
           url: 'https://www.tk3c.com/pt.aspx?pid=247808',
-          image: '2020TVforever/images/2501/247808.png'
+          image: '2020TVforever/images/2501/247808_a.png'
         },
          {
           url: 'https://www.tk3c.com/pt.aspx?pid=249380',
-          image: '2020TVforever/images/2501/249380.png'
+          image: '2020TVforever/images/2501/249380_a.png'
         },
          {
           url: 'https://www.tk3c.com/pt.aspx?pid=250543',
-          image: '2020TVforever/images/2501/250543.png'
-        }, {
-          url: 'https://www.tk3c.com/pt.aspx?pid=253090',
-          image: '2020TVforever/images/2501/253090.png'
+          image: '2020TVforever/images/2501/250543_a.png'
         }
 
       ],
@@ -353,20 +334,13 @@ export default {
     }
   },
   mounted() {
-    const { saleTab, nights, menuDis, today } = this
+    const { menuDis, today } = this
     //撈取 現折券樓層商品
     this.getFloorSingle(menuDis)
-
-    //撈取 出清樓層商品
-    this.getFloorData(this.menuSale)
-
-    //撈取夜間下殺樓層商品
-    this.getFloorData(this.menuNight)
 
     // 2025 1/03 隱藏現折券樓層
     if (today >= new Date('2025/01/14')) {
       this.isDis = true;
-      this.isPro = false;
       this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
     } else {
       this.disUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
@@ -618,6 +592,20 @@ section {
      .tab {
       li {
         width: 40%;
+      }
+    }
+  }
+
+  .sale-group {
+     .tab {
+      .swiper-slide {
+        flex-basis: 28%;
+        &:last-child{
+          flex-basis: 19%;
+        }
+      }
+      .swiper-wrapper {
+        align-items: baseline;
       }
     }
   }

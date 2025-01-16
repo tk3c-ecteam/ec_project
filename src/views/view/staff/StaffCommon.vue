@@ -21,8 +21,8 @@ const menu = defineModel('menu')
         :href="$filters.addGALink(banner.url)"
         target="_blank"
       >
-        <img class="pc" :src="$filters.siteUrl(banner.pc)" />
-        <img class="mobile" :src="$filters.siteUrl(banner.mobile)" />
+        <img class="pc" :src="$filters.siteUrl(banner.pc)" loading="lazy" />
+        <img class="mobile" :src="$filters.siteUrl(banner.mobile)" loading="lazy" />
       </a>
     </section>
 

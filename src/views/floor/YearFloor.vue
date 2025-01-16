@@ -186,7 +186,7 @@ export default {
             :href="$filters.addGALink(bn.url)"
             target="_blank"
           >
-            <img :src="$filters.siteUrl(bn.image)" alt=" " />
+            <img :src="$filters.siteUrl(bn.image)" loading="lazy" />
           </a>
         </li>
         </ul>
@@ -213,11 +213,11 @@ export default {
             target="_blank"
             data-swiper-parallax-opacity="0"
           >
-            <img :src="$filters.siteUrl(bn.image)" alt=" " />
+            <img :src="$filters.siteUrl(bn.image)" loading="lazy" />
           </a>
 
           <div class="split-box rel w:full" v-if="bn.links != undefined">
-            <img :src="$filters.siteUrl(bn.image)" alt=" " />
+            <img :src="$filters.siteUrl(bn.image)" loading="lazy" />
             <div class="w:full abs left:0 right:0 m:auto top:0 flex">
               <a
                 v-for="(link, l) in bn.links"
@@ -238,7 +238,7 @@ export default {
     <div v-if="floor.content != undefined">
        <Tabs :isSwiper="1" :tabs="floor.content">
         <template v-slot="{ selectedTab }">
-          <TabContent :menus="menuPrint" v-for="(content, c) in floor.content" :index="c" :selectedTab="selectedTab">
+          <TabContent v-for="(content,c) in floor.content" :menus="menuPrint[c]" :index="c" :selectedTab="selectedTab">
 
           </TabContent>
         </template>
@@ -276,7 +276,7 @@ export default {
         class="mb:1%"
       >
       <swiper-slide v-for="pro in floor.products">
-         <img :src="$filters.siteUrl(pro.image)" alt=" ">
+         <img :src="$filters.siteUrl(pro.image)" loading="lazy">
       </swiper-slide>
     </swiper>
     </div>

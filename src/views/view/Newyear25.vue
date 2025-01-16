@@ -1,5 +1,4 @@
 <script>
-
 export default {
   data() {
     return {
@@ -52,9 +51,22 @@ export default {
         { text: '平板/穿戴', href: '#pro7459' },
         { text: '燦坤K幣0元購', href: '#bonus' }
       ],
+      prices:[
+        {
+          image:'newyear2025/images/S00-1.png'
+        },
+          {
+          image:'newyear2025/images/S00-2.png'
+        },
+          {
+          image:'newyear2025/images/S00-3.png'
+        }
+      ],
       statusBank: 0, // 銀行樓層用
       today: new Date(),
-      swiperBank:null
+      swiperBank:null,
+      isPrice:true,
+      isYear:false
     }
   },
   mounted() {
@@ -84,6 +96,11 @@ export default {
     gsap.to('.background .title',{
      xPercent:0,
     })
+
+    // 1/22隱藏滿額禮
+    if(today >= new Date('2025/01/22')) this.isPrice = false
+
+    if(today >= new Date('2025/01/20') && today < new Date('2025/02/04')) this.isYear = false
 
     //撈取綠點樓層商品
     this.getFloorSingle(this.menuGreen)
@@ -148,10 +165,59 @@ export default {
         </swiper>
          <img class="rel z:5" :src="$filters.siteUrl('newyear2025/images/C04.png')" alt=" " />
       </ul>
-      <a :href="$filters.addGALink('https://www.tk3c.com.tw/#actsdetail&8&752')" target="_blank" class="w:10% w:18%@<992 w:35%@<576 rel z:5"> 
-        <img  :src="$filters.siteUrl('newyear2025/images/info.png')" alt=" " />
+      <a href="https://www.tk3c.com.tw/?ec=newyear2025#actsdetail&8&755" target="_blank" class="w:10% w:18%@<992 w:35%@<576 rel z:5"> 
+        <img  :src="$filters.siteUrl('newyear2025/images/info.png')" />
       </a>
     </section>
+
+    <!-- 滿額禮 -->
+     <section v-if="isPrice">
+      <h2 class="title">
+        <a :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank">
+          <img :src="$filters.siteUrl('newyear2025/images/s00_title.png')" />
+        </a>
+      </h2>
+
+      <swiper
+      :loop="false"
+      :space-between="10"
+      :breakpoints="{
+        0:{
+          slidesPerView:1.2
+        },
+        600:{
+          slidesPerView:3
+        },
+        992:{
+          slidesPerView:3
+        }
+      }"
+      >
+      <swiper-slide v-for="price in prices">
+       <img :src="$filters.siteUrl(price.image)" loading="lazy" />
+      </swiper-slide>
+      </swiper>
+
+      <div class="flex gap:10 jc:center m:2%|auto|0">
+        <a class="w:15% w:25%@<992 w:35%@<576 m:0|0" :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank"> 
+          <img :src="$filters.siteUrl('newyear2025/images/login_g.png')" />
+        </a>
+         <a class="w:15% w:25%@<992 w:35%@<576 m:0|0" :href="$filters.addGALink('https://www.tk3c.com.tw/#activityinfo&8')" target="_blank"> 
+          <img :src="$filters.siteUrl('newyear2025/images/info_g.png')" />
+        </a>
+      </div>
+     </section>
+
+      <!-- 行事曆 -->
+     <section v-if="isYear">    
+      <h2 class="title">
+        <img :src="$filters.siteUrl('newyear2025/images/notice_title.png')" />
+      </h2>
+
+      <p>
+         <img :src="$filters.siteUrl('newyear2025/images/Dayline.png')"  loading="lazy"/>
+      </p>
+     </section>
 
     <!-- 開春 -->
      <section class="product-box">
@@ -161,8 +227,7 @@ export default {
 
       <Tabs :tabs="yearPro">
         <template v-slot="{ selectedTab }">
-          <TabContent :menus="menuPro"  v-for="(year, y) in yearPro" :index="y" :selectedTab="selectedTab">
-
+          <TabContent v-for="(year,y) in yearPro" :menus="menuPro[y]" :index="y" :selectedTab="selectedTab">
           </TabContent>
         </template>
       </Tabs>
@@ -183,7 +248,7 @@ export default {
 
        <Tabs :isSwiper="1" :tabs="sales">
         <template v-slot="{ selectedTab }">
-          <TabContent :menus="menuSale" :isSwiper="1" v-for="(sale, s) in sales" :index="s" :selectedTab="selectedTab">
+          <TabContent :isSwiper="1" v-for="(sale,s) in sales" :menus="menuSale[s]" :index="s" :selectedTab="selectedTab">
 
           </TabContent>
         </template>
@@ -243,8 +308,7 @@ export default {
               "
               target="_blank"
             >
-              <img class="pc" :src="$filters.siteUrl('Xmas2024/images/bank1_pc2.png')" />
-              <img class="mobile" :src="$filters.siteUrl('Xmas2024/images/bank1_mobile2.png')" />
+              <img :src="$filters.siteUrl('newyear2025/images/bank1b.png')" loading="lazy" />
             </a>
           </li>
           <li class="w:90% w:89vw@<992 w:93vw@<576">
@@ -265,7 +329,7 @@ export default {
               }"
             >
               <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
-                <img :src="$filters.siteUrl('newyear2025/images/bank1-2.png')" />
+                <img :src="$filters.siteUrl('newyear2025/images/bank1-2.png')" loading="lazy" />
                 <a
                   class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576"
                   :href="
@@ -279,7 +343,7 @@ export default {
                 </a>
               </swiper-slide>
               <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
-                <img :src="$filters.siteUrl('newyear2025/images/bank1-3.png')" />
+                <img :src="$filters.siteUrl('newyear2025/images/bank1-3.png')" loading="lazy" />
                 <a
                   class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576"
                   :href="
@@ -300,8 +364,8 @@ export default {
       <!-- 新展銀行 -->
       <div class="tab-content" v-show="statusBank == 1">
         <p class="grid-cols:2 grid-cols:1@<576 m:auto gap:10">
-          <img :src="$filters.siteUrl('newyear2025/images/bank2.png')" />
-          <img  :src="$filters.siteUrl('newyear2025/images/bank2-2.png')" />
+          <img :src="$filters.siteUrl('newyear2025/images/bank2.png')" loading="lazy" />
+          <img  :src="$filters.siteUrl('newyear2025/images/bank2-2.png')" loading="lazy" />
         </p>
         <a
           href="https://www.tk3c.com.tw/#activityinfo&8"
@@ -343,13 +407,13 @@ export default {
               }"
             >
             <swiper-slide>
-              <img :src="$filters.siteUrl('newyear2025/images/bank3.png')" />
+              <img :src="$filters.siteUrl('newyear2025/images/bank3.png')" loading="lazy" />
             </swiper-slide>
             <swiper-slide>
-              <img :src="$filters.siteUrl('newyear2025/images/bank3-2.png')" />
+              <img :src="$filters.siteUrl('newyear2025/images/bank3-2.png')" loading="lazy" />
             </swiper-slide>
             <swiper-slide>
-              <img :src="$filters.siteUrl('newyear2025/images/bank3-3.png')" />
+              <img :src="$filters.siteUrl('newyear2025/images/bank3-3.png')" loading="lazy" />
             </swiper-slide>
           </swiper>
         <a
@@ -409,44 +473,10 @@ export default {
   </div>
 
   <!-- 左側選單 -->
-  <aside class="aside-container left">
-    <span class="collaspe"><i class="fas fa-chevron-left"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-           <li v-for="aside in asides">
-            <a :href="aside.href">
-              {{ aside.text }}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
+  <LeftAside :asides="asides"></LeftAside>
 
   <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="arrow"><i class="fas fa-chevron-left"></i></span>
-    <div class="aside-wrap">
-      <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li v-for="aside in asides">
-            <a :href="aside.href">
-              {{ aside.text }}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <!-- 手機版選單 -->
-   <mobile3 v-model:asides="asides"></mobile3>
+  <RightAside :asides="asides"></RightAside>
 </template>
 
 <style lang="scss">
@@ -485,7 +515,7 @@ body {
 
 .aside-container {
   &:not(.left) {
-    zoom: 0.75;
+    zoom: 0.8;
   }
 }
 
@@ -587,14 +617,6 @@ section {
 }
 
 /*  電腦版其他尺寸 */
-
-@include media-query('mobile', '1440px') {
-  .aside-container {
-    &:not(.left) {
-      zoom: 0.5;
-    }
-  }
-}
 @include media-query('mobile', '992px') {
   #year-container {
     .background {
@@ -682,12 +704,6 @@ section {
     }
   }
 
-  section{
-    .title {
-      margin: 0 auto 2%;
-    }
-  }
-
   .green-box,
   .go-group,
   .floor {
@@ -700,6 +716,14 @@ section {
   .bank-group {
     .tab-content {
       width: 100%;
+    }
+  }
+
+  .sale-box {
+    .tab {
+      .swiper-slide {
+        flex-basis: 28%;
+      }
     }
   }
 }
