@@ -2,8 +2,9 @@
  const today = new Date();
 
  //熱門活動區
- let mainName = (today < new Date('2025/01/14')) ? '202501vip' : '';
+ let mainName = (today < new Date('2025/01/14')) ? '202501vip' : 'newyear2025';
  let mainUrl = `https://events.tk3c.com/events_net/${mainName}/bank.html`;
+  let location = window.location.pathname.split('/');
 
   let events = [
     {"name":"回主會場","url": mainUrl,"class":"main"},
@@ -16,7 +17,13 @@
     {"name":"尾牙禮品大賞","url":"https://events.tk3c.com/events_net/banquet/index.html"},
   ];
 
+  if (location[2] == mainName) events.splice(0,1);
+
   if (today >= new Date('2025/01/20')) events.splice(7,1);
+
+  const asides = defineModel('asides', {
+    type: Object
+  })
 
 </script>
 
@@ -28,7 +35,7 @@
       <h3 class="aside-header"></h3>
       <div class="aside-content">
         <ul>
-          <li v-for="event in events">
+          <li v-for="(event,e) in events"  :class="[event.class ? event.class :'']">
             <a :href="$filters.addGALink(event.url)">{{ event.name }}</a>
           </li>
         </ul>
@@ -36,5 +43,25 @@
       <a href="#" class="go-top">GO TOP</a>
     </div>
   </aside>
-  <slot :events="events"></slot>
+
+   <!-- 手機版選單 -->
+  <mobile3>
+    <!-- 熱門活動 -->
+    <template #events>
+       <ul>
+        <li v-for="event in events" :class="[event.class ? event.class : '']">
+              <a :href="$filters.addGALink(event.url)">{{ event.name }}</a>
+            </li>
+      </ul>
+    </template>
+
+    <!-- 上方快速選單 -->
+    <template #topAsides>
+       <ul>
+        <li v-for="aside in asides">
+          <a :href="aside.href">{{ aside.text }}</a>
+        </li>
+      </ul>
+    </template>
+  </mobile3>
 </template>
