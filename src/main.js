@@ -50,7 +50,7 @@ if (document.querySelectorAll('#mobile').length > 0) mobile.mount('#mobile')
 //手機版選單項目
 //import './assets/js/mobileText.js'
 
-//所有圖片加入預加載
+//所有圖片加入 alt
 document.querySelectorAll('#app img').forEach(el => {
-  el.setAttribute('loading', 'lazy');
+  el.setAttribute('alt', ' ');
 });

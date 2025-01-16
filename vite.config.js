@@ -88,7 +88,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        tv2501: resolve(__dirname, './index.html')
+        ai2501: resolve(__dirname, './index.html')
       },
       output: {
         entryFileNames: 'js/[name].js',

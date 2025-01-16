@@ -34,6 +34,14 @@ export const globalMixin = {
         document.body.appendChild(scr);
       })
     },
+    //回到上層
+    goTop(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    },
     //用後台陳列編號撈取全商品 [2000,20001,2002]
     /* retryDelay 兩種方法
     * 1. retryDelay: axiosRetry.exponentialDelay
@@ -42,11 +50,20 @@ export const globalMixin = {
       (Liner retry delay between requests)
     */
     async getFloorData(menu) {
-      let moreUrls = []
+      let moreUrls = [];
 
-      //取得menuid組成新url
-      for (let z = 0; z < menu.length; z++) {
-        moreUrls.push('https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu[z])
+      switch (typeof (menu)) {
+        //單個編號
+        case 'number':
+          moreUrls.push('https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu);
+          break;
+
+        //多個取得menuid組成新url
+        default:
+          for (let z = 0; z < menu.length; z++) {
+            moreUrls.push('https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu[z])
+          }
+          break;
       }
 
       //撈取所有 url api 資料
@@ -95,7 +112,7 @@ export const globalMixin = {
     },
     //促銷文顯示錯誤隱藏
     hidePromte(text) {
-      if (text == '遠端伺服器傳回一個錯誤: (503) 伺服器無法使用。') {
+      if (text.indexOf('遠端伺服器傳回一個錯誤') > -1 || text.indexOf('\r\n\r\n<!DOCTYPE html>\r\n\r\n<html>') > -1) {
         return ''
       } else {
         return text.trim();
