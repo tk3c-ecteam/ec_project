@@ -519,25 +519,8 @@ export default {
      <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
     </div>
 
-    <!-- 右側選單 -->
-    <aside class="aside-container">
-      <span class="arrow"><i class="fas fa-chevron-left"></i></span>
-      <div class="aside-wrap">
-        <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-        <h3 class="aside-header"></h3>
-        <div class="aside-content">
-          <ul>
-            <li v-for="(aside, a) in asides">
-              <a :href="aside.href">{{ aside.text }}</a>
-            </li>
-          </ul>
-        </div>
-        <a href="#" class="go-top">GO TOP</a>
-      </div>
-    </aside>
-
-    <!-- 手機板 -->
-     <mobile :asides="asides"></mobile>
+    <!-- 右側選單+手機版 -->
+    <RightAside :asides="asides" :type="'mobile'"></RightAside>
 </template>
 
 <style lang="scss">
