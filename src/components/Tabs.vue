@@ -10,7 +10,7 @@
       statusSelect-> 預設頁籤要顯示幾個(都沒有設定為0)
     */ -->
 
-    <div class="tab mb:2% mb:1%@<576">
+    <div class="tab mb:2% mb:1%@<576 overflow:hidden">
       <ul v-if="isSwiper == false" class="gap:10">
         <li v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }"
           class="brightness(0.7) brightness(1).active">
@@ -88,22 +88,23 @@ export default {
         let current = event.currentTarget,
         parent = '';
 
-  
-         if (current.getAttribute('value') == '') return false;
+          //連結只有一個不用更換(標題加上 .single-url)
+         if (document.querySelectorAll('.single-url').length > 0) return false;
 
         //頁籤為swiper(輪播)格式(標題上加入連結)
-        if (current.parentNode.getAttribute('class').indexOf('swiper-slide') > -1) {
+       if (current.parentNode.getAttribute('class').indexOf('swiper-slide') > -1) {
           parent = current.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
         } else {
           parent = current.parentNode.parentNode.parentNode.parentNode.parentNode;
         }
       
         let parentAr = parent,
-          parentClass = parentAr.getAttribute('class'),
-          parentName = parentClass.substr(16),
+          parentId = parentAr.getAttribute('id'),
           getUrl = current.getAttribute('value');
-  
-        document.querySelector(`.${parentName} .title a`).setAttribute('href', getUrl);
+
+          if (document.querySelectorAll(`.${parentId}-box .title a`).length > 0) {
+            document.querySelector(`.${parentId}-box .title a`).setAttribute('href', getUrl);
+          }
       }
     },
     onSwiper(swiper) {

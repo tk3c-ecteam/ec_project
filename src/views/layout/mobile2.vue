@@ -11,7 +11,7 @@
 
     <div class="box-area social">
       <ul>
-        <li><a href="https://reurl.cc/QbZ149" target="_blank"><i class="fa-brands fa-meta"></i></a></li>
+        <li><a href="https://reurl.cc/QbZ149" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
         <li><a href="https://reurl.cc/7pMZVl" target="_blank"><i class="fa-brands fa-line"></i></a></li>
         <li><a href="https://reurl.cc/3Ye8kX" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
       </ul>
