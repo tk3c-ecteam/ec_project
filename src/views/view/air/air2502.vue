@@ -47,7 +47,7 @@
     </section>
 
     <!-- 精選活動 -->
-    <section class="special-box">
+    <section class="special-box" v-show="isSp">
       <h2 class="title">
         <img :src="$filters.siteUrl('airConditionerLAB/images/2502/S2.png')" alt="" />
       </h2>
@@ -93,10 +93,12 @@
     <!-- 品牌 -->
     <section class="brand-box scroll" id="brand">
       <h2 class="title">
-        <img :src="$filters.siteUrl('airConditionerLAB/images/2410/bra_s2.png')" alt="" />
+        <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=11225&aid=23717')" target="_blank">
+        <img :src="$filters.siteUrl('airConditionerLAB/images/2502/S9.png')" alt="" />
+        </a>
       </h2>
 
-      <Tabs :isSwiper="1" :tabs="brands">
+      <Tabs :isSwiper="1" :tabs="brands" :textOrImage="'text'">
         <template v-slot="{ selectedTab }">
           <TabContent :isSwiper="1" v-for="(brand, b) in brands" :menus="menuBrand[b]" :banners="brand" :index="b" :selectedTab="selectedTab">
 
@@ -161,12 +163,12 @@
           <a :href="
               $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
             " target="_blank">
-            <img :src="$filters.siteUrl('airConditionerLAB/images/2501/b01.png')" alt="" />
+            <img :src="$filters.siteUrl('airConditionerLAB/images/2502/b01.png')" alt="" />
           </a>
         </li>
         <li class="alert1">
           <a @click="message(2)">
-            <img :src="$filters.siteUrl('airConditionerLAB/images/2501/b02.png')" />
+            <img :src="$filters.siteUrl('airConditionerLAB/images/2502/b02.png')" />
           </a>
         </li>
       </ul>
@@ -345,34 +347,34 @@ export default {
       ],
       brands: [
         {
-          image: 'airConditionerLAB/images/2410/logo_panasonic.png',
+          text:'Panasonic',
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11238',
-          pc: 'airConditionerLAB/images/2410/brand_pana.jpg',
-          mobile: 'airConditionerLAB/images/2410/brand_panaM.jpg'
+          pc: 'airConditionerLAB/images/2502/bn_pana.jpg',
+          mobile: 'airConditionerLAB/images/2502/bn_panaM.jpg'
         },
         {
-          image: 'airConditionerLAB/images/2410/logo_sampo.png',
+          text:'SAMPO',
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11240',
-          pc: 'airConditionerLAB/images/2410/brand_sampo.jpg',
-          mobile: 'airConditionerLAB/images/2410/brand_sampoM.jpg'
+          pc: 'airConditionerLAB/images/2502/bn_sampo.jpg',
+          mobile: 'airConditionerLAB/images/2502/bn_sampoM.jpg'
         },
         {
-          image: 'airConditionerLAB/images/2410/logo_teco.png',
+          text:'TECO',
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11239',
-          pc: 'airConditionerLAB/images/2410/brand_teco.jpg',
-          mobile: 'airConditionerLAB/images/2410/brand_tecoM.jpg'
+          pc: 'airConditionerLAB/images/2502/bn_teco.jpg',
+          mobile: 'airConditionerLAB/images/2502/bn_tecoM.jpg'
         },
         {
-          image: 'airConditionerLAB/images/2410/logo_Heran.png',
+          text:'HERAN',
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=71512',
-          pc: 'airConditionerLAB/images/2410/brand_her.jpg',
-          mobile: 'airConditionerLAB/images/2410/brand_herM.jpg'
+          pc: 'airConditionerLAB/images/2502/bn_heran.jpg',
+          mobile: 'airConditionerLAB/images/2502/bn_heranM.jpg'
         },
         {
-          image: 'airConditionerLAB/images/2410/logo_sharp.png',
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23717&hid=122557&strPreView=y',
-          pc: 'airConditionerLAB/images/2410/brand_sharp.jpg',
-          mobile: 'airConditionerLAB/images/2410/brand_sharpM.jpg'
+          text:'CHIMEI',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=115784',
+          pc: 'airConditionerLAB/images/2502/bn_chimei.jpg',
+          mobile: 'airConditionerLAB/images/2502/bn_chimeiM.jpg'
         }
       ],
       events: [
@@ -525,19 +527,20 @@ export default {
       menuHot: 4127, //熱銷空調首選
       menuCold: 3695, //冷暖空調
       menuWet: 7466, //除濕機用
-      menuBrand: [4414, 4416, 5516, 5517, 4655], //品牌 陳列編號
+      menuBrand: [4414, 4416, 5516, 5517, 4419], //品牌 陳列編號
       statusTab:0, //商品樓層用
       statusInfo: 0,
       isDis: false,
       today: new Date(),
       disUrl: '',
+      isSp:false
     }
   },
   mounted() {
     const { floors, menuDis, menuBear, today, menuHot, menuCold, menuWet } = this
 
     //固定背景
-    this.fixedBg('.background2', '.gift-box')
+    this.fixedBg('.background2', '.air-info')
 
     //撈取 現折券樓層商品
     this.getFloorSingle(menuDis)
@@ -716,11 +719,11 @@ form#form1{
       animation: flipX 1.5s linear;
     }
     .product {
-      width: 30%;
+      width: 26%;
       margin: 0 auto 0;
       position: absolute;
-      right: 4%;
-      top: 25%;
+      right: 6%;
+      top: 31%;
       margin: 0 auto;
       .swiper-wrapper {
         align-items: baseline;
@@ -752,11 +755,8 @@ form#form1{
   padding-top: 3%;
   ul {
     li {
-      width: 50%;
+      width: 45%;
       margin: 0 5px 15px;
-      &:nth-of-type(2) {
-        width: 37%;
-      }
     }
   }
   .air-info {
@@ -837,6 +837,19 @@ form#form1{
     .swiper-wrapper {
       align-items: baseline;
       justify-content: center;
+    }
+    .swiper-slide {
+      background: #fff;
+      padding: 1%;
+      border-radius: 25px;
+      font-size: 1.5vw;
+      color: #004098;
+      font-weight: bold;
+      border: 3px solid #000;
+      box-sizing: border-box;
+      &.active {
+        background: yellow;
+      }
     }
   }
   .brand-tab {
@@ -1068,6 +1081,10 @@ form#form1{
       .swiper-wrapper {
         justify-content: left;
       }
+      .swiper-slide {
+        flex-basis: 19%;
+        font-size: 2vw;
+      }
     }
   }
 
@@ -1085,17 +1102,6 @@ form#form1{
       width: 44vw;
       &.long {
         width: 95vw;
-      }
-    }
-  }
-
-  .sub-box {
-    ul {
-      li {
-        width: 52%;
-        &:nth-of-type(2) {
-          width: 39%;
-        }
       }
     }
   }
@@ -1157,7 +1163,10 @@ form#form1{
     }
     .tab {
       .swiper-slide {
-        flex-basis: 37%;
+        flex-basis: 27%;
+        font-size: 4vw;
+        border: 2px solid #000;
+        box-sizing: border-box;
       }
     }
   }
@@ -1178,9 +1187,6 @@ form#form1{
       li {
         width: 95%;
         margin: 0 3px 3%;
-        &:nth-of-type(2) {
-          width: 95%;
-        }
       }
     }
   }
