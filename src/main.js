@@ -8,6 +8,9 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import App from '@/AppComponent.vue' //主頁面內容
 import Mobile from '@/views/MobileComponent.vue' //手機版
 
+//倒數計時
+import VueCountdown from '@chenfengyuan/vue-countdown';
+
 //載入撈取商品陳列api
 import { globalMixin } from './globalMixin.js'
 
@@ -37,6 +40,8 @@ app.use(register)
 app.mixin(globalMixin)
 app.component('Swiper', Swiper)
 app.component('SwiperSlide', SwiperSlide)
+
+app.component(VueCountdown.name, VueCountdown);
 
 //使用方法: $filters.siteUrl(value)
 app.config.globalProperties.$filters = config
