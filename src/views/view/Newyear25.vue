@@ -97,10 +97,10 @@ export default {
      xPercent:0,
     })
 
-    // 1/22隱藏滿額禮
-    if(today >= new Date('2025/01/22')) this.isPrice = false
+    if(today >= new Date('2025/01/20') && today < new Date('2025/02/04')) this.isYear = true
 
-    if(today >= new Date('2025/01/20') && today < new Date('2025/02/04')) this.isYear = false
+    // 2/3隱藏滿額禮
+    if(today >= new Date('2025/02/03')) this.isPrice = false
 
     //撈取綠點樓層商品
     this.getFloorSingle(this.menuGreen)
@@ -174,7 +174,7 @@ export default {
      <section v-if="isPrice">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank">
-          <img :src="$filters.siteUrl('newyear2025/images/s00_title.png')" />
+          <img :src="$filters.siteUrl('newyear2025/images/s00_title2.png')" />
         </a>
       </h2>
 

@@ -74,11 +74,6 @@ export default {
   },
   mounted() {
     //撈取個匯聚品牌樓層商品
-    //this.getFloorData(this.menuTab)
-
-    //撈取其他樓層商品
-    this.getFloorData(this.menuFloor)
-
     this.getFloorData(this.menuTab)
   },
   methods: {
@@ -143,23 +138,8 @@ export default {
      <CommonFloor :floors="floorImg" :menu="menuFloor" :moreImage="moreImage" :isSwiper="1"></CommonFloor>
   </div>
 
-  <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li v-for="(floor, f) in floorImg">
-            <a :href="`#f${f + 1}`">{{ floor.text }}</a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <mobile :asides="floorImg"></mobile>
+  <!-- 右側選單 + 手機板 -->
+   <RightAside :asides="floorImg" :type="'mobile'"></RightAside>
 </template>
 
 <style lang="scss">

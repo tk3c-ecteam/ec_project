@@ -3,9 +3,7 @@ const contents = defineModel("contents");
 </script>
 
 <script>
-  import { globalMixin } from "../../../globalMixin.js";
   export default {
-     mixins: [globalMixin],
      data(){
       return {
          swiper:null,
@@ -14,6 +12,7 @@ const contents = defineModel("contents");
      },
      mounted() {
        //導航區滾動定位
+       if (document.querySelectorAll('nav').length > 0) {
        document.addEventListener("scroll", (e) => {
          let scrollTop = document.documentElement.scrollTop;
 
@@ -35,6 +34,7 @@ const contents = defineModel("contents");
            }
          });
        });
+      }
      },
      methods: {
       onSwiper(swiper) {
@@ -78,9 +78,10 @@ const contents = defineModel("contents");
         class="max-w:992px min-w:50% w:auto@<992"
         :loop="false"
         :slidesPerView="'auto'"
+        :space-between="10"
         @swiper="onSwiper"
       >
-        <swiper-slide v-for="(floor, f) in contents[0].floorImg">
+        <swiper-slide v-for="(floor, f) in contents[0].floorImg" class="flex-basis:fit-content">
           <a :href="floor.href" :class="[statusNav == f ? 'active' : '']">
             <span class="f:1.5em f:2em@<992 f:1.2em@<576 f:2em@>2000">{{
               floor.text
@@ -98,6 +99,7 @@ const contents = defineModel("contents");
           delay: 2500,
           disableOnInteraction: false,
         }"
+        :autoHeight="'auto'"
         :pagination="{
           el: '.background .swiper-pagination',
           clickable: true,
@@ -108,8 +110,10 @@ const contents = defineModel("contents");
         }"
       >
         <swiper-slide v-for="slide in contents[0].slides">
-          <img class="pc" :src="$filters.siteUrl(slide.pc)" alt=" " />
-          <img class="mobile" :src="$filters.siteUrl(slide.mobile)" alt=" " />
+          <a :href="$filters.addGALink(slide.url)" target="_blank">
+             <img class="pc" :src="$filters.siteUrl(slide.pc)" />
+             <img class="mobile" :src="$filters.siteUrl(slide.mobile)" />
+          </a>
         </swiper-slide>
       </swiper>
       <div class="swiper-pagination"></div>
@@ -137,19 +141,8 @@ const contents = defineModel("contents");
     padding-bottom: 10px;
     box-sizing: border-box;
   }
-  .swiper-slide {
-    width: 25% !important;
-  }
   &.fixed {
     position: fixed;
-  }
-}
-
-@include media-query("mobile", "992px") {
-  nav {
-    .swiper-slide {
-      width: 29% !important;
-    }
   }
 }
 
@@ -165,13 +158,6 @@ const contents = defineModel("contents");
 
   .copyR {
     margin-bottom: 0;
-  }
-
-  nav {
-    .swiper-slide {
-      width: 42% !important;
-      margin-right: -10px !important;
-    }
   }
 }
 </style>

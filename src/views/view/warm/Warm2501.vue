@@ -270,7 +270,7 @@ export default {
         <img class="w:full abs left:0 right:0 top:0 m:auto z:-1 hidden@<576" :src="$filters.siteUrl('electric_heater/images/2501/spbg.png')" alt=" " />
         <ul class="ai:baseline">
           <li v-for="(gift, g) in gifts">
-            <a v-if="g == 0" :href="gift.url" :class="[!isSale ? 'off' : '']">
+            <a v-if="g == 0 || g == 2" :href="gift.url" :class="[!isSale ? 'off' : '']">
               <img :src="$filters.siteUrl(gift.image)" />
             </a>
             <a v-else :href="$filters.addGALink(gift.url)" target="_blank">

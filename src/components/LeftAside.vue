@@ -2,8 +2,8 @@
  const today = new Date();
 
  //熱門活動區
- let mainName = (today < new Date('2025/01/14')) ? '202501vip' : 'newyear2025';
- let mainUrl = `https://events.tk3c.com/events_net/${mainName}/bank.html`;
+ let mainName = (today >= new Date('2025/02/06')) ? '2025Valentine' : 'newyear2025';
+ let mainUrl = `https://events.tk3c.com/events_net/${mainName}/index.html`;
   let location = window.location.pathname.split('/');
 
   let events = [

@@ -101,7 +101,7 @@
       </h2>
 
       <div class="content">
-         <Tabs :tabs="nights" :statusSelect="1">
+         <Tabs :tabs="nights">
             <template v-slot="{ selectedTab }" >
               <TabContent v-for="(content, c) in nights" :menus="menuNight[c]" :index="c" :selectedTab="selectedTab">
               
@@ -266,9 +266,6 @@ export default {
       ],
       nights: [
         {
-          image: '2020TVforever/images/2412/n-02.png'
-        },
-        {
           image: '2020TVforever/images/2412/n-01.png'
         }
       ],
@@ -320,7 +317,7 @@ export default {
       ],
       menuDis: 4328, //現折 清單編號
       menuSale: [5977, 4465, 4466, 4463, 4467], // 出清 陳列編號
-      menuNight: [5421, 5420], //夜殺 陳列編號
+      menuNight: [5420], //夜殺 陳列編號
       menu: [2751, 5613, 5198, 5199, 4846, 5200, 5201, 5202],
       status: 0,
       statusSale: 1,
@@ -489,6 +486,12 @@ section {
 .night-box {
   .bg01 {
     margin: 0 auto 1%;
+  }
+  .tab {
+    a {
+      pointer-events: none;
+      cursor: auto;
+    }
   }
 }
 

@@ -33,7 +33,10 @@ const contents = [
             },
           ],
           slides: [
-            { pc: "EUPA/images/kv.jpg", mobile: "EUPA/images/M_kv.jpg" },
+            { pc: "EUPA/images/kv3.jpg", mobile: "EUPA/images/kv3M.jpg" },
+            { pc: "EUPA/images/eupa1.png", mobile: "EUPA/images/eupa1M.png" },
+            { pc: "EUPA/images/eupa2.png", mobile: "EUPA/images/eupa2M.png" },
+            { pc: "EUPA/images/eupa3.png", mobile: "EUPA/images/eupa3M.png" },
           ],
         }
       ];
@@ -108,6 +111,7 @@ section {
 nav {
   background: #000;
   .swiper-slide {
+    margin-right: 185px !important;
     a {
       color: #fff;
     }
@@ -137,6 +141,16 @@ nav {
   .logo {
     background: #404040;
   }
+
+  .background {
+    padding-bottom: 31%;
+    .swiper-slide {
+      a {
+        pointer-events: none;
+        cursor: auto;
+      }
+    }
+  }
 }
 
 /*  電腦版其他尺寸 */
@@ -144,7 +158,7 @@ nav {
 @include media-query("mobile", "992px") {
   #store-container {
     .background {
-      padding-bottom: 150vw;
+      padding-bottom: 94vw;
     }
   }
 
@@ -159,13 +173,19 @@ nav {
       }
     }
   }
+
+  nav {
+    .swiper-slide {
+      margin-right: 120px !important;
+    }
+  }
 }
 
 /* 手機版 */
 @include media-query("mobile", "576px") {
   #store-container {
     .background {
-      padding-bottom: 155vw;
+      padding-bottom: 98vw;
     }
   }
 
@@ -179,6 +199,12 @@ nav {
         right: -15vw;
         top: -3vw;
       }
+    }
+  }
+
+  nav {
+    .swiper-slide {
+      margin-right: 52px !important;
     }
   }
 }

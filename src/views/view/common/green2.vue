@@ -224,11 +224,17 @@ export default {
       fullData: [],
       menuSp: 4850,
       isVip: false,
-      isNew: false
+      isNew: false,
+      isGreenSale:false
     }
   },
   mounted() {
     const { menu, tabs, menuSp, today } = this
+
+    //綠色消費趣 2/4-3/2顯示
+    if (today >= new Date('2025/02/04') && today < new Date('2025/03/03')) {
+      this.isGreenSale = true;
+    }
 
     this.newTabs = this.newTab2;
     this.menuNew = this.menuNew2;
@@ -301,32 +307,30 @@ export default {
         <img :src="$filters.siteUrl('double11_2024/images/logo.png')" />
       </span>
       <h2
-        class="title w:25% abs right:26% top:19% m:auto w:40vw@<992 w:55vw@<576 left:45vw@<992 left:44vw@<576 top:9vw@<992 top:22vw@<576"
-      >
+        class="title w:25% abs right:26% top:19% m:auto w:40vw@<992 w:55vw@<576 left:45vw@<992 left:44vw@<576 top:9vw@<992 top:22vw@<576">
         <img :src="$filters.siteUrl('green_subsidy/images/new/title.png')" alt="" />
       </h2>
     </div>
 
+    <!-- 綠色消費趣活動 -->
+    <section v-show="isGreenSale">
+      <img class="pc" :src="$filters.siteUrl('green_subsidy/images/new/bn252432.jpg')" />
+      <img class="mobile" :src="$filters.siteUrl('green_subsidy/images/new/bn252432M.jpg')" />
+    </section>
+
     <!-- 環保3C家電產品 週末12%回饋 -->
     <section class="new-box">
       <div class="w:full flex jc:center flex-wrap:wrap gap:10 m:0|0|5% m:0|0|10%@<576">
-        <a href="#info" class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%"
-          ><img :src="$filters.siteUrl('green_subsidy/images/new/btn1_b.png')"
-        /></a>
-        <a
-          :href="
+        <a href="#info" class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%"><img
+            :src="$filters.siteUrl('green_subsidy/images/new/btn1_b.png')" /></a>
+        <a :href="
             $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
-          "
-          class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%"
-          target="_blank"
-          ><img :src="$filters.siteUrl('green_subsidy/images/new/btn2.png')"
-        /></a>
+          " class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%" target="_blank"><img
+            :src="$filters.siteUrl('green_subsidy/images/new/btn2.png')" /></a>
 
         <div class="rel m:auto bg:#2fbe44 pb:1% p:2%|3%|3%|3%@<576" id="info">
-          <img
-            class="w:full abs left:0 top:0 right:0 z:-1 hidden@<576"
-            :src="$filters.siteUrl('green_subsidy/images/new/g1.png')"
-          />
+          <img class="w:full abs left:0 top:0 right:0 z:-1 hidden@<576"
+            :src="$filters.siteUrl('green_subsidy/images/new/g1.png')" />
           <p class="w:90% w:full@<576 m:auto pt:1.5%">
             <img :src="$filters.siteUrl('green_subsidy/images/new/g4.png')" />
           </p>
@@ -336,10 +340,7 @@ export default {
       <div class="box" v-if="isNew">
         <!-- 頁籤 -->
         <div class="flex flex-wrap:wrap gap:10 mb:1%">
-          <swiper
-            :loop="false"
-            :space-between="10"
-            :breakpoints="{
+          <swiper :loop="false" :space-between="10" :breakpoints="{
               0: {
                 slidesPerView: 2.4,
                 grid: {
@@ -361,15 +362,9 @@ export default {
                   rows: 2
                 }
               }
-            }"
-            @swiper="onSwiperNew"
-          >
-            <swiper-slide
-              v-for="(newTab, n) in newTabs"
-              :class="[statusNew == n ? 'active' : '']"
-              class="w:20% brightness(0.7) brightness(1).active"
-              @click="goSlideNew(n)"
-            >
+            }" @swiper="onSwiperNew">
+            <swiper-slide v-for="(newTab, n) in newTabs" :class="[statusNew == n ? 'active' : '']"
+              class="w:20% brightness(0.7) brightness(1).active" @click="goSlideNew(n)">
               <a @click="changeNew(n)"><img :src="$filters.siteUrl(newTab.image)" /></a>
             </swiper-slide>
           </swiper>
@@ -377,10 +372,7 @@ export default {
 
         <!-- 對應商品 -->
         <div class="tab-content" v-for="(newTab, n) in newTabs" v-show="statusNew == n">
-          <listF
-            v-if="products[menuNew[n]] != undefined"
-            :pro="products[menuNew[n]].Data"
-          ></listF>
+          <listF v-if="products[menuNew[n]] != undefined" :pro="products[menuNew[n]].Data"></listF>
         </div>
       </div>
     </section>
@@ -391,7 +383,7 @@ export default {
         <img :src="$filters.siteUrl('green_subsidy/images/S1_a.png')" alt="本週環保小尖兵" />
       </h2>
       <div class="special">
-        <listD  :pro="product2[menuSp]"></listD>
+        <listD :pro="product2[menuSp]"></listD>
       </div>
     </section>
 
@@ -403,10 +395,7 @@ export default {
       <div class="green content">
         <ul>
           <div id="tab-area">
-            <swiper
-              :loop="false"
-              :space-between="10"
-              :breakpoints="{
+            <swiper :loop="false" :space-between="10" :breakpoints="{
                 0: {
                   slidesPerView: 2.4
                 },
@@ -416,19 +405,11 @@ export default {
                 992: {
                   slidesPerView: 5
                 }
-              }"
-              :modules="[Controller]"
-              :controller="{
+              }" :modules="[Controller]" :controller="{
                 control: [greenContent]
-              }"
-              @swiper="onSwiper"
-            >
-              <swiper-slide
-                v-for="(tab, t) in tabs"
-                class="swiper-slide"
-                :class="[status == t ? 'active' : '']"
-                @click="goSlide(t)"
-              >
+              }" @swiper="onSwiper">
+              <swiper-slide v-for="(tab, t) in tabs" class="swiper-slide" :class="[status == t ? 'active' : '']"
+                @click="goSlide(t)">
                 <a @click="changeGreen(t)">
                   <img :src="$filters.siteUrl(tab.image)" />
                 </a>
@@ -440,12 +421,8 @@ export default {
         <div class="content-area">
           <swiper id="greenContent" :loop="false" :modules="[Controller]" @swiper="onControlSwiper">
             <swiper-slide class="tab-content" v-for="(tab, t) in tabs">
-              <listF
-                v-if="products[menuGreen[t]] != undefined"
-                :pro="products[menuGreen[t]].Data"
-                :isSwiper="1"
-                :name="'g'"
-              ></listF>
+              <listF v-if="products[menuGreen[t]] != undefined" :pro="products[menuGreen[t]].Data" :isSwiper="1"
+                :name="'g'"></listF>
               <a class="more" :href="$filters.addGALink(tabs[t].url)" target="_blank">
                 <img :src="$filters.siteUrl('green_subsidy/images/more2.png')" />
               </a>
@@ -470,12 +447,9 @@ export default {
           </a>
         </li>
         <li class="long">
-          <a
-            :href="
+          <a :href="
               $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
-            "
-            target="_blank"
-          >
+            " target="_blank">
             <img :src="$filters.siteUrl('green_subsidy/images/turtle_2406.png')" alt="" />
           </a>
         </li>
@@ -486,41 +460,31 @@ export default {
     <section class="printer-box scroll" id="printer">
       <h2 class="title">
         <img :src="$filters.siteUrl('green_subsidy/images/S2_a.png')" alt="" />
-        <a
-          class="more"
-          :href="
+        <a class="more" :href="
             $filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123239')
-          "
-          target="_blank"
-        >
+          " target="_blank">
           <img :src="$filters.siteUrl('green_subsidy/images/more2.png')" alt="" />
         </a>
       </h2>
 
       <ul class="tab gap:10 mb:1%">
-        <li
-          class="w:22% w:25vw@<992 w:38vw@<576 font-size:1.2em font-size:2em@<992 fone-size:1.5em@<576 p:8px bg:#fff"
-          v-for="(printer, p) in printers"
-          :class="[stausPrinter == p ? 'active' : '']"
-        >
+        <li class="w:22% w:25vw@<992 w:38vw@<576 font-size:1.2em font-size:2em@<992 fone-size:1.5em@<576 p:8px bg:#fff"
+          v-for="(printer, p) in printers" :class="[stausPrinter == p ? 'active' : '']">
           <a @click="changePrinter(p)">{{ printer.text }}</a>
         </li>
       </ul>
 
       <div class="tab-content" v-for="(printer, p) in printers" v-show="stausPrinter == p">
-        <listF
-          v-if="products[menuPrint[p]] != undefined"
-          :pro="products[menuPrint[p]].Data"
-        ></listF>
+        <listF v-if="products[menuPrint[p]] != undefined" :pro="products[menuPrint[p]].Data"></listF>
       </div>
     </section>
 
     <!-- 其他樓層 -->
-     <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
-    </div>
+    <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
+  </div>
 
-    <!-- 右側選單+手機版 -->
-    <RightAside :asides="asides" :type="'mobile'"></RightAside>
+  <!-- 右側選單+手機版 -->
+  <RightAside :asides="asides" :type="'mobile'"></RightAside>
 </template>
 
 <style lang="scss">

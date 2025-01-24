@@ -15,11 +15,11 @@
         <li v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }"
           class="brightness(0.7) brightness(1).active">
             <a v-if="singleUrl != undefined" :value="$filters.addGALink(singleUrl)" @click.prevent="selectTab(index)">
-            <b v-if="textOrImage == 'text'"> {{ text }}</b>
+            <b v-if="textOrImage == 'text'"> {{ tab.text }}</b>
             <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
           </a>
           <a v-else :value="$filters.addGALink(tab.url)" @click.prevent="selectTab(index)">
-             <b v-if="textOrImage == 'text'"> {{ text }}</b>
+             <b v-if="textOrImage == 'text'"> {{ tab.text }}</b>
             <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
           </a>
         </li>
@@ -35,12 +35,12 @@
       >
         <swiper-slide v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }" class="flex! flex-basis:fit brightness(0.7) brightness(1).active" @click="goSlide(index)">
            <a v-if="singleUrl != undefined" :value="$filters.addGALink(singleUrl)"  @click.prevent="selectTab(index)" >
-             <b v-if="textOrImage == 'text'"> {{ text }}</b>
+             <b v-if="textOrImage == 'text'"> {{ tab.text }}</b>
             <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
           </a>
             <a v-else :value="$filters.addGALink(tab.url)"  @click.prevent="selectTab(index)">
-              <b v-if="textOrImage == 'text'"> {{ text }}</b>
-            <img v-esle :src="$filters.siteUrl(tab.image)" alt=" " />
+              <b v-if="textOrImage == 'text'"> {{ tab.text }}</b>
+            <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
           </a>
         </swiper-slide>
       </swiper>

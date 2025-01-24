@@ -11,17 +11,12 @@
     </p>
 
     <em
-      class="font-weight:bold block w:97vw@<576 f:2rem f:1.5rem@<576 color:#000 m:1rem|0|4rem m:1rem|0|0@<576"
-      >※門市付款之預約單無法享有指定信用卡刷卡優惠※</em
-    >
+      class="font-weight:bold block w:97vw@<576 f:2rem f:1.5rem@<576 color:#000 m:1rem|0|4rem m:1rem|0|0@<576">※門市付款之預約單無法享有指定信用卡刷卡優惠※</em>
 
     <!-- 銀行詳細說明 -->
     <section class="bank-group">
       <div class="box">
-        <swiper
-          :loop="false"
-          :space-between="10"
-          :breakpoints="{
+        <swiper :loop="false" :space-between="10" :breakpoints="{
             0: {
               slidesPerView: 1
             },
@@ -31,49 +26,40 @@
             992: {
               slidesPerView: 3
             }
-          }"
-          :pagination="{
+          }" :pagination="{
             el: '.bank-group .swiper-pagination',
             clickable: true
-          }"
-        >
+          }">
           <swiper-slide v-for="(bank, b) in banks" class="color:#000!">
             <img class="mt:14%@<576" :src="$filters.siteUrl(bank.image)" />
             <div
-              class="w:full max-width:21rem max-width:25rem@<992 max-width:21rem@<576 max-width:22rem@>2000 abs m:auto left:0 right:0 top:30% top:39vw@<576"
-            >
+              class="w:full max-width:21rem max-width:25rem@<992 max-width:21rem@<576 max-width:22rem@>2000 abs m:auto left:0 right:0 top:30% top:39vw@<576">
               <em class="color:#707070 mb:10px">{{ bank.date }}</em>
-              <div
-                v-html="bank.content"
-                class="w:full p:10px h:9vmax h:9rem@<1440 h:15rem@<992 h:12rem@<601 h:48vw@<576 h:7vmax@>2500 f:1.1rem f:1.5em@<992 f:1.1rem@<601 f:1.3rem@>2000 pt:8% pt:2%@<992 pt:6%@<576 box:border-box"
-              ></div>
+              <div v-html="bank.content"
+                class="w:full p:10px h:9vmax h:9rem@<1440 h:15rem@<992 h:12rem@<601 h:48vw@<576 h:7vmax@>2500 f:1.1rem f:1.5em@<992 f:1.1rem@<601 f:1.3rem@>2000 pt:8% pt:2%@<992 pt:6%@<576 box:border-box">
+              </div>
+
               <div class="flex flex-wrap:wrap jc:center m:auto gap:10 p:1% box:border-box">
-                <a
-                  class="w:38% m:0|0"
-                  target="_blank"
-                  v-if="b == 0"
-                  :href="
-                    $filters.addGALink(
-                      'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779'
-                    )
-                  "
-                >
-                  <img :src="$filters.siteUrl('bank_ec/images/go.png')" />
-                </a>
-                <a
-                  v-if="b == 2"
-                  class="w:38% m:0|0"
-                  :href="$filters.addGALink(bank.url)"
-                  target="_blank"
-                >
-                  <img :src="$filters.siteUrl('bank_ec/images/login2.png')" />
-                </a>
-                <a v-if="b == 1" class="w:38% m:0|0" @click.prevent="message(bank.alertText)">
-                  <img :src="$filters.siteUrl('bank_ec/images/info.png')" />
-                </a>
-                <a v-else class="w:38% m:0|0" :href="bank.alertText" target="_blank">
-                  <img :src="$filters.siteUrl('bank_ec/images/info.png')" />
-                </a>
+                <!-- 台新按鈕 -->
+                  <a v-if="b == 0" class="w:38% m:0|0" target="_blank" :href="$filters.addGALink(bank.url)">
+                    <img :src="$filters.siteUrl('bank_ec/images/go.png')" />
+                  </a>
+                  <a v-if="b == 0" class="w:38% m:0|0" :href="bank.alertText" target="_blank">
+                    <img :src="$filters.siteUrl('bank_ec/images/info.png')" />
+                  </a>
+
+                <!-- 星展按鈕 -->
+                 <a v-if="today < new Date('2025/02/06') && b == 1" class="w:38% m:0|0" @click.prevent="message(bank.alertText)">
+                    <img :src="$filters.siteUrl('bank_ec/images/info.png')" />
+                  </a>
+
+                <!-- 樂天按鈕 -->
+                  <a v-if="b == 2" class="w:38% m:0|0" :href="$filters.addGALink(bank.url)" target="_blank">
+                    <img :src="$filters.siteUrl('bank_ec/images/login2.png')" />
+                  </a>
+                  <a v-if="b == 2" class="w:38% m:0|0" :href="bank.alertText" target="_blank">
+                    <img :src="$filters.siteUrl('bank_ec/images/info.png')" />
+                  </a>
               </div>
             </div>
           </swiper-slide>
@@ -86,13 +72,9 @@
     <section class="pro1-box scroll" id="pro1">
       <h2 class="title">
         <img :src="$filters.siteUrl('bank_ec/images/S1.png')" />
-        <a
-          class="more"
-          :href="
+        <a class="more" :href="
             $filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')
-          "
-          target="_blank"
-        >
+          " target="_blank">
           <img :src="$filters.siteUrl('bank_ec/images/more.png')" />
         </a>
       </h2>
@@ -100,68 +82,40 @@
       <div class="box">
         <listF :pro="product2[menuPro1]"></listF>
       </div>
-    </section> 
+    </section>
 
     <!-- 萬元刷卡 -->
     <section class="pro2-box scroll" id="pro2">
       <h2 class="title">
         <img :src="$filters.siteUrl('bank_ec/images/S2.png')" />
-        <a
-          class="more"
-          :href="
+        <a class="more" :href="
             $filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')
-          "
-          target="_blank"
-        >
+          " target="_blank">
           <img :src="$filters.siteUrl('bank_ec/images/more.png')" />
         </a>
       </h2>
 
       <ul class="tab mb:2% mt:5% gap:10">
-        <li
-          v-for="(tab, t) in tabs"
-          :class="[status == t ? 'active' : '']"
-          class="hue-rotate(200deg).active w:42vw@<576"
-        >
+        <li v-for="(tab, t) in tabs" :class="[status == t ? 'active' : '']"
+          class="hue-rotate(200deg).active w:42vw@<576">
           <a @click="change(t)">
             <img :src="$filters.siteUrl(tab.image)" />
           </a>
         </li>
       </ul>
       <div class="pro-content" v-for="(tab, t) in tabs" v-show="status == t">
-        <listF
-          v-if="products[menuPro2[t]] != undefined"
-          :pro="products[menuPro2[t]].Data"
-        ></listF>
+        <listF v-if="products[menuPro2[t]] != undefined" :pro="products[menuPro2[t]].Data"></listF>
       </div>
     </section>
 
     <footer>
-      <img
-        class="w:20% w:40vw@<992 w:65vw@<576 m:0|auto|2% m:0|auto|10%@<576"
-        :src="$filters.siteUrl('bank_ec/images/copyRight.png')"
-      />
+      <img class="w:20% w:40vw@<992 w:65vw@<576 m:0|auto|2% m:0|auto|10%@<576"
+        :src="$filters.siteUrl('bank_ec/images/copyRight.png')" />
     </footer>
   </div>
 
   <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li v-for="aside in asides">
-            <a :href="aside.href">{{ aside.text }}</a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <!-- 手機版 -->
-   <mobile :asides="asides"></mobile>
+  <RightAside :asides="asides" :type="'mobile'"></RightAside>
 </template>
 
 <script>
@@ -241,8 +195,44 @@ export default {
         {
           image: 'bank_ec/images/bank3.png',
           date: '2025/01/14-01/31',
-          content: `<p><b>單筆滿$25,000享</b><span>現折$800</span></p>
-          <p><b>單筆分期滿$50,000</b><span>登錄送5,000燦坤K幣</span></p>
+          content: `<p><b>單筆滿2萬5千元享</b><span>現折800</span></p>
+          <p><b>單筆分期滿5萬元</b><span>登錄送5,000燦坤K幣</span></p>
+          `,
+          url: 'https://events.tk3c.com/events_net/invoice_login/detail.aspx',
+          alertText: 'https://www.tk3c.com.tw/#actsdetail&8&747'
+        }
+      ],
+        bank2502: [
+        {
+          image: 'bank_ec/images/bank1.png',
+          date: '2025/02/01-02/28',
+          content: `
+          <p><b>單筆分期滿2萬6千元享</b><span>現折1,000</span></p>
+          <p><b>單筆分期滿1萬零5百元享</b><span>現折500</span></p>
+          <p><b>單筆不分期滿8千4百元享</b><span>現折400</span></p>
+          `,
+          url: 'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779',
+          alertText:
+            'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=monthlyOffer'
+        },
+         {
+          image: 'bank_ec/images/bank2.png',
+          date: '2025/02/01-02/05',
+          content: `
+          <p><b>刷星展信用卡分期滿2萬(含)以上享</b><span>現折800</span></p>
+          `,
+          alertText: ` <ul style='text-align:left;'>
+             <li style='margin-bottom:30px;background:#d6d6d6;'>活動期間 2025/02/01-2025/02/05</li>
+             <li style='margin-bottom:10px;'>於活動期間(2025/02/01-2025/02/05)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，刷「星展銀行信用卡」，單筆分期刷滿2萬(含)以上，可享現折800元的優惠，單張發票不累贈，最多折抵一次，2/1-2/5限量40名。</li>
+        </ul>`
+        },
+        {
+          image: 'bank_ec/images/bank3.png',
+          date: '2025/02/01-02/28',
+          content: `
+          <p><b>單筆分期滿6千元</b><span>登錄送500燦坤K幣</span></p>
+           <p><b>單筆分期滿3萬5千元</b><span>登錄送3,500燦坤K幣</span></p>
+          <p><b>指定商品單品滿2萬5千元享</b><span>現折800</span></p>
           `,
           url: 'https://events.tk3c.com/events_net/invoice_login/detail.aspx',
           alertText: 'https://www.tk3c.com.tw/#actsdetail&8&747'
@@ -273,6 +263,11 @@ export default {
     // 2025/1/14
     if (today >= new Date('2025/01/14') && today < new Date('2025/02/01')) {
       this.banks = this.bank25014;
+    }
+
+    // 2/1更新
+    if (today >= new Date('2025/02/01') && today < new Date('2025/03/01')) {
+      this.banks = this.bank2502;
     }
 
     //撈取千元刷卡樓層商品
