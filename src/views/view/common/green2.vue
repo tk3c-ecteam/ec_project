@@ -232,9 +232,9 @@ export default {
     const { menu, tabs, menuSp, today } = this
 
     //綠色消費趣 2/4-3/2顯示
-    if (today >= new Date('2025/02/04') && today < new Date('2025/03/03')) {
+   /* if (today >= new Date('2025/02/04') && today < new Date('2025/03/03')) {
       this.isGreenSale = true;
-    }
+    }*/
 
     this.newTabs = this.newTab2;
     this.menuNew = this.menuNew2;

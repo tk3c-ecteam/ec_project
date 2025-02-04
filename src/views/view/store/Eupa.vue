@@ -5,6 +5,11 @@ const contents = [
           logoImage: "EUPA/images/logo.png",
           floorImg: [
             {
+              href: "#pro7759",
+              image: "EUPA/images/bar_05.png",
+              text: "新品上市",
+            },
+            {
               href: "#pro7675",
               image: "EUPA/images/bar_01.png",
               text: "熱銷商品",
@@ -18,18 +23,23 @@ const contents = [
                 "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124110",
             },
             {
+              href: "#pro7677",
+              image: "EUPA/images/bar_03.png",
+              text: "咖啡機",
+              moreUrl:
+                "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124111",
+            },
+             {
               href: "#pro7678",
               image: "EUPA/images/bar_04.png",
               text: "廚房小幫手",
               moreUrl:
                 "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124112",
             },
-            {
-              href: "#pro7677",
-              image: "EUPA/images/bar_03.png",
-              text: "咖啡機",
-              moreUrl:
-                "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124111",
+             {
+              href: "#pro7760",
+              image: "EUPA/images/bar_06.png",
+              text: "展示/福利出清",
             },
           ],
           slides: [
@@ -40,7 +50,7 @@ const contents = [
           ],
         }
       ];
-      const menus = [7675, 7676, 7678, 7677];
+      const menus = [7759,7675, 7676, 7677,7678,7760];
       const moreImage = "EUPA/images/more.png";
 </script>
 
@@ -105,6 +115,10 @@ section {
       right: -46%;
       top: 14%;
     }
+
+    b {
+      font-size: 0;
+    }
   }
 }
 
@@ -150,6 +164,12 @@ nav {
         cursor: auto;
       }
     }
+  }
+}
+
+.floor:not(:nth-of-type(1), :nth-of-type(6)) {
+  .bg01 {
+    margin: 0 auto 2%;
   }
 }
 

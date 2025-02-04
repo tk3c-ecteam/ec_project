@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      menuSale: [7735,7736,7737,7738,7739],
+      menuSale: [7761,7762,7763,7764,7765],
       menuPro: [7733,7734],// 陳列編號
       menuGreen: 7517, //環保商品陳列編號
       menuGo: 7518, //速速go陳列編號
@@ -51,7 +51,7 @@ export default {
         { text: 'Apple', href: '#pro7720' },
         { text: 'Android', href: '#pro7721' },
         { text: '秋冬除濕', href: '#pro7713' },
-        { text: '平板/穿戴', href: '#pro7569' },
+        { text: '平板/穿戴', href: '#pro7766' },
         { text: '燦坤K幣0元購', href: '#bonus' }
       ],
       bonus:[
@@ -336,7 +336,7 @@ export default {
           </swiper-slide>
         </swiper>
         <img class="w:70% w:full@<992 m:0|auto|2%" :src="$filters.siteUrl('2025Valentine/images/bank_07.png')" loading="lazy">
-        <a class="w:30% w:40%@<992 w:50%@<576" :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
+        <a class="w:25% w:40%@<992 w:50%@<576" :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/more_bank.png')">
         </a>
       </div>
@@ -533,7 +533,7 @@ section {
 .pro-box,
 .sale-box {
   .bg01 {
-    background: #ff9074;
+    background: #b9036e;
   }
 }
 

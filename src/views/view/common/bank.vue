@@ -208,7 +208,7 @@ export default {
           date: '2025/02/01-02/28',
           content: `
           <p><b>單筆分期滿2萬6千元享</b><span>現折1,000</span></p>
-          <p><b>單筆分期滿1萬零5百元享</b><span>現折500</span></p>
+          <p><b>單筆分期滿1.05萬元享</b><span>現折500</span></p>
           <p><b>單筆不分期滿8千4百元享</b><span>現折400</span></p>
           `,
           url: 'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779',
