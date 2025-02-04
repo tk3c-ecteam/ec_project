@@ -41,7 +41,7 @@
       <!-- 筆電 -->
       <div class="tab-content" v-if="statusGift == 0">
         <ul class="w:90% gap:10 w:full@<992 mb:2% overflow:hidden">
-          <li class="w:89% w:91vw@<992" :class="[isSale == false ? 'off' : '']">
+          <li class="w:89% w:91vw@<992" v-show="today >= new Date('2025/02/01')">
             <a @click="goNB('#sale')" target="_blank"><img
                 :src="$filters.siteUrl('2024083C/images/2501/NB02.png')" /></a>
           </li>
@@ -112,21 +112,14 @@
           <h2 class="title">
             <a :href="
                 $filters.addGALink(
-                  'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=124105&strPreView=y'
+                  'https://www.tk3c.com/dic2.aspx?cid=124236&aid=23905&hid=124240'
                 )
               " target="_blank">
               <img :src="$filters.siteUrl('2024083C/images/2411/S01.png')" />
             </a>
           </h2>
 
-          <Tabs :tabs="sales">
-            <template v-slot="{ selectedTab }">
-              <TabContent :isSwiper="1" v-for="(content, c) in sales" :menus="menuSale[c]" :index="c"
-                :selectedTab="selectedTab">
-
-              </TabContent>
-            </template>
-          </Tabs>
+           <listF :pro="product2[menuSale]" :isSwiper="1" :name="'pro'"></listF>
         </section>
 
         <section class="products scroll" v-for="(tab, t) in tabs"
@@ -528,7 +521,7 @@ export default {
           image: '2024083C/images/2501/D01-3.png',
         }
       ],
-      menuSale: [7666,7667],
+      menuSale: 7668,
       statusPro: 0,
       tabs: [],
       statusGift: 0,
@@ -539,6 +532,9 @@ export default {
   },
   mounted() {
     let { tab1, tab2, today } = this
+
+     //撈取折價券商品
+    this.getFloorSingle(this.menuSale);
 
     if (this.statusGift == 0 ) this.tabs = tab1[0];
 
@@ -555,11 +551,6 @@ export default {
         this.getFloorSingle(t2[0].menu)
       }
     }
-
-    //折價券樓層
-    this.getFloorData(this.menuSale)
-
-    if(today >= new Date('2025/01/14')) this.isSale = false
   },
   methods: {
     //應援指南頁籤切換

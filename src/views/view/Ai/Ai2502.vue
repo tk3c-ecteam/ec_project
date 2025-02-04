@@ -1,6 +1,10 @@
 <template>
   <div id="ai-container">
-    <div class="background"></div>
+    <div class="background">
+      <h2 class="title animate__animated animate__fadeInBottomLeft">
+        <img :src="$filters.siteUrl('2024083C/images/2502/title2.png')" />
+      </h2>
+    </div>
 
     
     <p class="item left">
@@ -11,12 +15,11 @@
     </p>
 
     <section class="pro-box">
-        <swiper 
-        :loop="true" 
-        :parallax="true" 
+        <swiper class="w:80% w:full@<992"
+        :loop="false" 
         :breakpoints="{
           0:{
-            slidesPerView:2.2
+            slidesPerView:2.3
           },
           600:{
             slidesPerView:3
@@ -25,9 +28,8 @@
             slidesPerView:3
           }
         }"
-        :autoplay="{ delay: 1800, disableOnInteraction: false }"
-          :modules="[Parallax, EffectFade]">
-          <swiper-slide v-for="p in pro" class="flex!">
+        :autoplay="{ delay: 1800, disableOnInteraction: false }">
+          <swiper-slide v-for="p in pro">
             <a :href="$filters.addGALink(p.url)" target="_blank">
               <img :src="$filters.siteUrl(p.image)" alt="" />
             </a>
@@ -57,18 +59,26 @@
       <!-- 筆電 -->
       <div class="tab-content" v-if="statusGift == 0">
         <ul class="w:90% gap:10 w:full@<992 mb:2% overflow:hidden">
-          <li class="w:89% w:91vw@<992" :class="[isSale == false ? 'off' : '']">
+          <li class="w:44% w:47%@<992 w:47%@<576" :class="[!isSale ? 'off' : '']">
             <a @click="goNB('#sale')" target="_blank"><img
-                :src="$filters.siteUrl('2024083C/images/2501/NB02.png')" /></a>
+                :src="$filters.siteUrl('2024083C/images/2502/a-e1_2.png')" /></a>
           </li>
-          <li class="w:89% w:91vw@<992">
+          <li class="w:44% w:47%@<992 w:47%@<576">
             <a :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank"><img
-                :src="$filters.siteUrl('2024083C/images/2501/NB03.png')" /></a>
+                :src="$filters.siteUrl('2024083C/images/2502/a-e2-1.png')" /></a>
           </li>
-          <li class="w:44% w:45vw@<992 w:92vw@<576">
+           <li class="w:44% w:47%@<992 w:47%@<576">
+            <a @click.prevent="alert(1)" target="_blank"><img
+                :src="$filters.siteUrl('2024083C/images/2502/a-e2.png')" /></a>
+          </li>
+           <li class="w:44% w:47%@<992 w:47%@<576">
+            <a @click.prevent="alert(2)" target="_blank"><img
+                :src="$filters.siteUrl('2024083C/images/2502/a-e3.png')" /></a>
+          </li>
+          <li class="w:89% w:95%@<992 w:97%@<576">
             <swiper class="overflow:hidden" :loop="false" :space-between="10" :breakpoints="{
                 0: {
-                  slidesPerView: 2.2
+                  slidesPerView: 2.3
                 },
                 600: {
                   slidesPerView: 3
@@ -84,34 +94,45 @@
               </swiper-slide>
             </swiper>
           </li>
-          <li class="w:44% w:45vw@<992 w:92vw@<576">
-            <a :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank"><img
-                :src="$filters.siteUrl('2024083C/images/2501/NB09.png')" /></a>
-          </li>
         </ul>
       </div>
 
       <!-- 週邊 -->
       <div class="tab-content" v-if="statusGift == 1">
         <ul class="gap:10 mb:2%">
-          <li class="rel w:81% w:92vw@<992">
-            <a @click="goNB('#tab8')">
-              <img :src="$filters.siteUrl('2024083C/images/2501/DIY01.png')" />
+          <li class="rel w:81% w:95%@<992 w:97%@<576">
+            <a @click="goNB('#tab7')">
+              <img :src="$filters.siteUrl('2024083C/images/2502/b-e1_2.png')" />
             </a>
           </li>
-          <li class="w:40% w:46vw@<992 w:92vw@<576">
-            <a @click="goNB('#tab9')" class="mb:2%@<576">
-              <img :src="$filters.siteUrl('2024083C/images/2501/DIY02.png')" />
+          <li class="w:40% w:47%@<992 w:46%@<576">
+            <a @click="goNB('#tab8')" class="mb:2%@<576">
+              <img :src="$filters.siteUrl('2024083C/images/2502/b-e2.png')" />
             </a>
           </li>
-          <li class="w:40% w:45vw@<992 w:92vw@<576">
-            <a @click="goNB('#tab13')" class="mb:2%@<576">
-              <img :src="$filters.siteUrl('2024083C/images/2501/DIY03.png')" />
+          <li class="w:40% w:47%@<992 w:46%@<576">
+            <a @click="goNB('#tab12')" class="mb:2%@<576">
+              <img :src="$filters.siteUrl('2024083C/images/2502/b-e3.png')" />
             </a>
           </li>
         </ul>
       </div>
     </section>
+
+     <!-- 狂撒百萬折價券 -->
+        <section class="sale-box" id="sale" v-if="isSale">
+          <h2 class="title">
+            <a :href="
+                $filters.addGALink(
+                  'https://www.tk3c.com/dic2.aspx?cid=124236&aid=23905&hid=124240'
+                )
+              " target="_blank">
+              <img :src="$filters.siteUrl('2024083C/images/2411/S01.png')" />
+            </a>
+          </h2>
+
+          <listF :pro="product2[menuSale]" :isSwiper="1" :name="'pro'"></listF>
+        </section>
 
     <!-- 錨點區 -->
      <section>
@@ -163,8 +184,11 @@
     <banner :banner1="banner1" :banner2="banner2"></banner>
   </div>
 
-  <!-- 右側選單+手機板 -->
-  <RightAside :asides="asides" :type="'mobile2'"></RightAside>
+  <!-- 左側選單+手機版 -->
+   <LeftAside :asides="asides"></LeftAside>
+
+  <!-- 右側選單 -->
+  <RightAside :asides="asides"></RightAside>
 </template>
 
 <script setup>
@@ -394,11 +418,11 @@ export default {
                   image: '2024083C/images/2502/S13-b-02.png'
                 },
                 {
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=11684&aid=4761',
+                  url: 'https://www.tk3c.com/dic1.aspx?cid=108783&aid=22325',
                   image: '2024083C/images/2502/S13-b-03.png'
                 },
                 {
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=108783&aid=22325',
+                  url: 'https://www.tk3c.com/dic1.aspx?cid=11684&aid=4761',
                   image: '2024083C/images/2502/S13-b-04.png'
                 }
               ]
@@ -423,22 +447,30 @@ export default {
       status: 0,
       pro: [
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=245519',
-          image: '2024083C/images/2502/PD.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=238947',
+          image: '2024083C/images/2502/238947.png'
+        },
+         {
+          url: 'https://www.tk3c.com/pt.aspx?pid=243162',
+          image: '2024083C/images/2502/243162.png'
+        },
+         {
+          url: 'https://www.tk3c.com/pt.aspx?pid=245130',
+          image: '2024083C/images/2502/245130.png'
         }
       ],
       gifts: [
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=123020',
-          image: '2024083C/images/2501/NB04.png'
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121988&strPreView=y',
+          image: '2024083C/images/2502/a-e4.png'
         },
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=123019',
-          image: '2024083C/images/2501/NB05.png'
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121986&strPreView=y',
+          image: '2024083C/images/2502/a-e5.png'
         },
         {
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=123018',
-          image: '2024083C/images/2501/NB06.png'
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121987&strPreView=y',
+          image: '2024083C/images/2502/a-e6.png'
         }
       ],
       banner1: [
@@ -541,16 +573,22 @@ export default {
       tabs: [],
       statusGift: 0,
       today: new Date(),
-      isSale:true
+      isSale:true,
+      menuSale:7668
     }
   },
   mounted() {
     let {floors, today } = this
 
+    //撈取折價券商品
+    this.getFloorSingle(this.menuSale);
+
     //樓層商品(無頁籤)
     for (const [f, floor] of Object.entries(floors[0])) {
       if (floor[0].content == undefined) this.getFloorSingle(floor[0].menu)
     }
+
+    if(today >= new Date('2025/02/06')) this.isSale = false
   },
   methods: {
     //應援指南頁籤切換
@@ -589,89 +627,43 @@ export default {
       let infoHtml = ''
 
       switch (id) {
-        //筆電
+        //筆電送logitech master 3s滑鼠
         case 1:
           infoHtml = `
+          <p style="margin-bottom:25px;text-align:left;font-weight:bold">【活動一】 2/1-2/28購搭載Intel處理器筆電，單品滿$30,000，登記送Logitech MX Master 3S無線滑鼠-黑 (市價$4,290，10名)
+活動期間(2025/2/1-2/28)內，於燦坤線上購物網站購買「全館任一搭載Intel處理器筆電(下稱活動指定商品)」，單品發票消費金額滿$30,000，並於線上完成付款且後續未退貨退款者，並於2025/3/4(含)前至指定活動頁面完成登記申請，送Logitech MX Master 3S無線滑鼠-黑 (市價$4,290，10名)。</p>
           <ul style='text-align:left;'>
-            <li style='margin-bottom:15px;'>【活動一】</li>
-             <li style='margin-bottom:20px;'>1.活動期間(2024/12/1-12/31)，於燦坤線上購物網站購買「全館任一搭載Intel Core Ultra處理器筆電(下稱活動指定商品)」，並於線上完成付款且後續未退貨退款者，並於2025/1/4(含)前至指定活動頁面完成登記申請即可獲得本活動抽獎資格，抽出1名送抽 Dyson SV52 DSlim Submarine乾溼洗地吸塵器 (市價$19,900，1名)。​</li>
-             <li style='margin-bottom:10px;'>2.請留意登記完成不代表保證獲得回饋(抽獎)資格，燦坤3C後續會進行資格檢核，相關認定以燦坤3C電腦系統之紀錄與認定為準。​</li>
-             <li style='margin-bottom:10px;'>3.得獎名單將於2024/12/15公布於FACEBOOK粉絲專頁「燦坤線上購物」(<a href="https://www.facebook.com/TDdd331" style="color:blue;text-decoration:underline;">https://www.facebook.com/TDdd331</a>) 並另以簡訊通知中獎者，通知以會員資料所留存的個人聯絡資料為準。倘中獎人因個人因素致無法收受上開通知(如無法收受、未能讀取或遲誤讀取)，均與燦坤3C無涉。​</li>
-             <li style='margin-bottom:10px;'>4.得獎者請於2025/1/23前回填中獎通知函：私訊「燦坤線上購物」粉絲專頁，提供會員帳號(email)/姓名/電話/訂單編號/中獎公告畫面，小編會提供回函，請依規定填寫並繳交相關資料，並將正本掛號寄回燦坤3C內湖總部，以郵戳為憑。逾期、資料不符規定或填寫不正確、不完整或未依中獎通知函規定期限存入代扣稅金者，視同放棄中獎/兌獎權利。(依稅法規定，抽中獎項市值超過1,001元(含)以上，將列入本年度之個人綜合所得稅申報，超過20,000元(含)以上者，依法須預先扣繳10%稅金(外籍人士20%)。​</li>
-             <li style='margin-bottom:10px;'>5.經核對無誤後，燦坤3C將於2025/1/25起陸續寄出獎項至得獎者中獎通知函地址(限台灣本島地區且不可為郵政信箱)。如中獎者有額外運送/安裝需求，另行計價，逾期領獎或安裝完成視為放棄，若因地址/收件人錯誤、無人收件等不可歸責於燦坤3C之事由導致延遲、遺失等情況，恕不負責，請多包涵。​</li>
-                 <li style='margin-bottom:10px;'>6.獎項詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金，中獎資格不可轉讓予第三人。​</li>
-                  <li style='margin-bottom:10px;'>7.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
-             <li style='margin-bottom:10px;padding-left:10px;'>(1) 提供獎品前：燦坤3C將不會寄送獎品。​</li>
-             <li style='margin-bottom:20px;padding-left:10px;'>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
-             <li style='margin-bottom:30px;'>8.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
-
-              <li style='margin-bottom:15px;'>【活動二】</li>
-             <li style='margin-bottom:20px;'>活動期間(2024/12/1-12/31)內，於燦坤線上購物網站購買「全館任一搭載Intel處理器筆電(下稱活動指定商品)」，單品發票消費金額滿$30,000，並於線上完成付款且後續未退貨退款者，並於2025/1/4(含)前至指定活動頁面完成登記申請，送羅技MX Anywhere 3S滑鼠-石墨灰 (市價$2,990，15名)​</li>
              <li style='margin-bottom:10px;'>1.請留意登記完成不代表保證獲得回饋(贈送)資格，燦坤3C後續會進行資格檢核，相關認定以燦坤3C電腦系統之紀錄與認定為準。​</li>
              <li style='margin-bottom:10px;'>2.消費金額以實際發票開立金額認定，僅限活動指定商品消費金額，其他商品恕不累計。​</li>
-             <li style='margin-bottom:10px;'>3.經核對無誤後，燦坤3C將於2024/12/25起陸續寄出獎項至會員資料地址 (限台灣本島地區且不可為郵政信箱)。若因地址/收件人錯誤、無人收件等不可歸責於燦坤3C之事由導致延遲、遺失等情況，恕不負責，請多包涵。​</li>
+             <li style='margin-bottom:10px;'>3.經核對無誤後，燦坤3C將於2025/3/25起陸續寄出獎項至會員資料地址 (限台灣本島地區且不可為郵政信箱)。若因地址/收件人錯誤、無人收件等不可歸責於燦坤3C之事由導致延遲、遺失等情況，恕不負責，請多包涵。​</li>
              <li style='margin-bottom:10px;'>4.商品詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金。​</li>
-               <li style='margin-bottom:10px;'>5.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
+             <li style='margin-bottom:10px;'>5.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
              <li style='margin-bottom:10px;padding-left:10px;'>(1) 提供贈品前：燦坤3C將不會寄送贈品。​</li>
-             <li style='margin-bottom:20px;padding-left:10px;'>(2) 提供贈品後：需將贈品退回，倘若已使用贈品，則需返回等同贈品價值金額。​</li>
-             <li style='margin-bottom:10px;'>6.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
-
-              <li style='margin-bottom:15px;'>【活動三】</li>
-             <li style='margin-bottom:20px;'>活動期間(2024/12/1-12/31)內，於燦坤線上購物網站購買「全館任一搭載Intel處理器筆電(下稱活動指定商品)」，單品發票消費金額滿$9,999，並於線上完成付款且後續未退貨退款者，並於2025/1/4(含)前至指定活動頁面完成登記申請，送卡巴斯基 標準版 (1台裝置/1年授權) (市價$990，8名)。請留意登記完成不代表保證獲得回饋(贈送)資格，燦坤3C後續會進行資格檢核，相關認定以燦坤3C電腦系統之紀錄與認定為準。​</li>
-             <li style='margin-bottom:10px;'>1.消費金額以實際發票開立金額認定，僅限活動指定商品消費金額，其他商品恕不累計。​</li>
-             <li style='margin-bottom:10px;'>2.經核對無誤後，燦坤3C將於2024/12/25起陸續寄出獎項至會員資料地址 (限台灣本島地區且不可為郵政信箱)。若因地址/收件人錯誤、無人收件等不可歸責於燦坤3C之事由導致延遲、遺失等情況，恕不負責，請多包涵。​</li>
-             <li style='margin-bottom:10px;'>3.商品詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金。​</li>
-             <li style='margin-bottom:10px;'>4.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
-             <li style='margin-bottom:10px;padding-left:10px;'>(1) 提供贈品前：燦坤3C將不會寄送贈品。​</li>
-             <li style='margin-bottom:20px;padding-left:10px;'>(2) 提供贈品後：需將贈品退回，倘若已使用贈品，則需返回等同贈品價值金額。​</li>
-             <li style='margin-bottom:10px;'>5.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
-
-              <li style='margin-bottom:20px;color:red;font-weight:bold:bold;'>【活動二、活動三僅可擇一登記，無法累積贈送。如重複登記，燦坤保有贈品決定權】</li>
+             <li style='margin-bottom:10px;padding-left:10px;'>(2) 提供贈品後：需將贈品退回，倘若已使用贈品，則需返回等同贈品價值金額。​</li>
+             <li style='margin-bottom:30px;'>6.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
         </ul>
+         <p style="text-align:left;margin-bottom:25px;color:red;">【活動一、活動二僅可擇一登記，無法累積贈送。如重複登記，燦坤保有所送贈品之決定權】</p>
         `
           break
 
-        //DIY / 週邊
+        //筆電送logitech M650滑鼠
         case 2:
           infoHtml = `
+        <p style="margin-bottom:10px;text-align:left;font-weight:bold">【活動二】 2/1-2/28購搭載Intel處理器筆電，單筆滿$9,999，登記送Logitech M650 多工靜音無線滑鼠(市價$1090，15名) 
+活動期間(2025/2/1-2/28)內，於燦坤線上購物網站購買「全館任一搭載Intel處理器筆電(下稱活動指定商品)」，單品發票消費金額滿$9,999，並於線上完成付款且後續未退貨退款者，並於2025/3/4(含)前至指定活動頁面完成登記申請，送Logitech M650 多工靜音無線滑鼠(市價$1090，15名)。</p>
+        <p style="margin-bottom:25px;color:red;text-align:left;font-weight:bold">請留意登記完成不代表保證獲得回饋(贈送)資格，燦坤3C後續會進行資格檢核，相關認定以燦坤3C電腦系統之紀錄與認定為準。</p>
+
         <ul style='text-align:left;'>
-          <li style='margin-bottom:15px;'>【活動一】</li>
-             <li style='margin-bottom:20px;'>活動期間(2024/12/1-12/31)，於燦坤線上購物網站購買「全館任一網路設備/儲存卡碟/監控攝影機商品(含網路分享器/路由器、網路交換器/集線器、網路線、網路卡、硬碟、隨身碟、記憶卡、網路監控攝影機，下稱活動指定商品)」，並於線上完成付款且後續未退貨退款者，單筆發票消費金額滿$1,000，並於2025/1/4(含)前至指定活動頁面完成登記申請即可獲得本活動抽獎資格，抽頭獎- BOSE QC ULTRA 藍牙耳機(市價$15,800，共1名) ; 二獎- SAMSUNG A9+ 8G/128G WIFI (市價8,490，1名，不挑色) ; 三獎-北方 石墨烯陶瓷電暖器(市價$2,880，1名)​</li>
-             <li style='margin-bottom:10px;'>1.請留意登記完成不代表保證獲得回饋(抽獎)資格，燦坤3C後續會進行資格檢核，相關認定以燦坤3C電腦系統之紀錄與認定為準。​</li>
-             <li style='margin-bottom:10px;'>2.消費金額以實際發票開立金額認定，僅限活動指定商品消費金額，其他商品恕不累計。​</li>
-             <li style='margin-bottom:10px;'>3.得獎名單將於2025/1/15公布於FACEBOOK粉絲專頁「燦坤線上購物」(<a href="https://www.facebook.com/TDdd331" style="color:blue;text-decoration:underline;">https://www.facebook.com/TDdd331</a>) 並另以簡訊通知中獎者，通知以會員資料所留存的個人聯絡資料為準。倘中獎人因個人因素致無法收受上開通知(如無法收受、未能讀取或遲誤讀取)，均與燦坤3C無涉。​</li>
-             <li style='margin-bottom:10px;'>4.得獎者請於2025/1/23前回填中獎通知函：私訊「燦坤線上購物」粉絲專頁，提供會員帳號(email)/姓名/電話/訂單編號/中獎公告畫面，小編會提供回函，請依規定填寫並繳交相關資料，並將正本掛號寄回燦坤3C內湖總部，以郵戳為憑。逾期、資料不符規定或填寫不正確、不完整或未依中獎通知函規定期限存入代扣稅金者，視同放棄中獎/兌獎權利。(依稅法規定，抽中獎項市值超過1,001元(含)以上，將列入本年度之個人綜合所得稅申報，超過20,000元(含)以上者，依法須預先扣繳10%稅金(外籍人士20%)。​</li>
-              <li style='margin-bottom:10px;'>5.經核對無誤後，燦坤3C將於2025/1/25起陸續寄出獎項至得獎者中獎通知函地址(限台灣本島地區且不可為郵政信箱)。如中獎者有額外運送/安裝需求，另行計價，逾期領獎或安裝完成視為放棄，若因地址/收件人錯誤、無人收件等不可歸責於燦坤3C之事由導致延遲、遺失等情況，恕不負責，請多包涵。​</li>
-               <li style='margin-bottom:10px;'>6.獎項詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金，中獎資格不可轉讓予第三人。​</li>
-                 <li style='margin-bottom:10px;'>7.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
-             <li style='margin-bottom:10px;padding-left:10px;'>(1) 提供獎品前：燦坤3C將不會寄送獎品。​</li>
-             <li style='margin-bottom:20px;padding-left:10px;'>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
-             <li style='margin-bottom:30px;'>8.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
-
-               <li style='margin-bottom:15px;'>【活動二】</li>
-             <li style='margin-bottom:20px;'>活動期間(2024/12/1-12/31)內，於燦坤線上購物網站購買「全館任一DIY組裝電腦、內/外接硬碟(下稱活動指定商品)」，並於線上完成付款且後續未退貨退款者，並於2025/1/4(含)前至指定活動頁面完成登記申請，抽羅技MX KEYS S COMEBO鍵盤滑鼠組(市價$7,490，2名)​</li>
-             <li style='margin-bottom:10px;'>1.請留意登記完成不代表保證獲得回饋(抽獎)資格，燦坤3C後續會進行資格檢核，相關認定以燦坤3C電腦系統之紀錄與認定為準。​</li>
-             <li style='margin-bottom:10px;'>2.消費金額以實際發票開立金額認定，僅限活動指定商品消費金額，其他商品恕不累計。​</li>
-             <li style='margin-bottom:10px;'>3.得獎名單將於2025/1/15公布於FACEBOOK粉絲專頁「燦坤線上購物」(<a href="https://www.facebook.com/TDdd331" style="color:blue;text-decoration:underline;">https://www.facebook.com/TDdd331</a>) 並另以簡訊通知中獎者，通知以會員資料所留存的個人聯絡資料為準。倘中獎人因個人因素致無法收受上開通知(如無法收受、未能讀取或遲誤讀取)，均與燦坤3C無涉。​</li>
-                 <li style='margin-bottom:10px;'>4.得獎者請於2025/1/23前回填中獎通知函：私訊「燦坤線上購物」粉絲專頁，提供會員帳號(email)/姓名/電話/訂單編號/中獎公告畫面，小編會提供回函，請依規定填寫並繳交相關資料，並將正本掛號寄回燦坤3C內湖總部，以郵戳為憑。逾期、資料不符規定或填寫不正確、不完整或未依中獎通知函規定期限存入代扣稅金者，視同放棄中獎/兌獎權利。(依稅法規定，抽中獎項市值超過1,001元(含)以上，將列入本年度之個人綜合所得稅申報，超過20,000元(含)以上者，依法須預先扣繳10%稅金(外籍人士20%)。​</li>
-                 <li style='margin-bottom:10px;'>5.經核對無誤後，燦坤3C將於2025/1/25起陸續寄出獎項至得獎者中獎通知函地址(限台灣本島地區且不可為郵政信箱)。如中獎者有額外運送/安裝需求，另行計價，逾期領獎或安裝完成視為放棄，若因地址/收件人錯誤、無人收件等不可歸責於燦坤3C之事由導致延遲、遺失等情況，恕不負責，請多包涵。​</li>
-                 <li style='margin-bottom:10px;'>6.獎項詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金，中獎資格不可轉讓予第三人。​</li>
-                  <li style='margin-bottom:10px;'>7.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
-             <li style='margin-bottom:10px;padding-left:10px;'>(1) 提供獎品前：燦坤3C將不會寄送獎品。​</li>
-             <li style='margin-bottom:30px;padding-left:10px;'>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
-             <li style='margin-bottom:20px;'>8.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
-
-              <li style='margin-bottom:15px;'>【活動三】</li>
-             <li style='margin-bottom:20px;'>活動期間(2024/12/1-12/31)內，於燦坤線上購物網站購買「全館任一投影機(不包含輕劇院商品，下稱活動指定商品)」，單筆發票消費金額滿$8,000，並於線上完成付款且後續未退貨退款者，並於2025/1/4(含)前至指定活動頁面完成登記申請，送THOMSON 石墨烯壁掛暖風機(市價$3,690，7名)。​</li>
-             <li style='margin-bottom:10px;'>1.請留意登記完成不代表保證獲得回饋(贈送)資格，燦坤3C後續會進行資格檢核，相關認定以燦坤3C電腦系統之紀錄與認定為準。​</li>
-             <li style='margin-bottom:10px;'>2.消費金額以實際發票開立金額認定，僅限活動指定商品消費金額，其他商品恕不累計。​</li>
-             <li style='margin-bottom:10px;'>3.經核對無誤後，燦坤3C將於2025/1/25起陸續寄出獎項至會員資料地址 (限台灣本島地區且不可為郵政信箱)。若因地址/收件人錯誤、無人收件等不可歸責於燦坤3C之事由導致延遲、遺失等情況，恕不負責，請多包涵。​</li>
-             <li style='margin-bottom:10px;'>4.商品詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金。​</li>
-                 <li style='margin-bottom:10px;'>5.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
+             <li style='margin-bottom:10px;'>1.消費金額以實際發票開立金額認定，僅限活動指定商品消費金額，其他商品恕不累計。​</li>
+             <li style='margin-bottom:10px;'>2.經核對無誤後，燦坤3C將於2025/3/25起陸續寄出獎項至會員資料地址 (限台灣本島地區且不可為郵政信箱)。若因地址/收件人錯誤、無人收件等不可歸責於燦坤3C之事由導致延遲、遺失等情況，恕不負責，請多包涵。​</li>
+             <li style='margin-bottom:10px;'>3.商品詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金。​</li>
+             <li style='margin-bottom:10px;'>4.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
              <li style='margin-bottom:10px;padding-left:10px;'>(1) 提供贈品前：燦坤3C將不會寄送贈品。​</li>
-             <li style='margin-bottom:20px;padding-left:10px;'>(2) 提供贈品後：需將贈品退回，倘若已使用贈品，則需返回等同贈品價值金額。​</li>
-             <li style='margin-bottom:10px;'>6.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
-        </ul>`
+             <li style='margin-bottom:10px;padding-left:10px;'>(2) 提供贈品後：需將贈品退回，倘若已使用贈品，則需返回等同贈品價值金額。​</li>
+             <li style='margin-bottom:30px;'>5.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
+        </ul>
+        <p style="text-align:left;margin-bottom:25px;color:red;">【活動一、活動二僅可擇一登記，無法累積贈送。如重複登記，燦坤保有所送贈品之決定權】</p>
+        `
           break
       }
 
@@ -679,12 +671,12 @@ export default {
         width: 900,
         title: "<p style='margin-bottom:5px';>活動辦法</p>",
         html: infoHtml,
-        confirmButtonText: '關閉',
+        confirmButtonText: '<a href="https://www.tk3c.com/events/eventgift.aspx?ec=2024083C" target="_blank">我要登記</a>',
         position: 'center',
         showCloseButton: true,
         confirmButtonColor: '#000',
-        returnFocus: false
-      })
+        returnFocus: false,
+      });
     }
   }
 }
@@ -711,12 +703,23 @@ body {
 
   .background {
     width: 100%;
-   $image: $dir + 'KV.jpg';
+   $image: $dir + 'KV2.jpg';
     @include bg-responsive($image, 2000, 750);
     position: relative;
     margin: 0 auto 0;
     background-position: 0 45px,top;
     padding-bottom: 43%;
+    .title {
+      width: 25%;
+      position: absolute;
+      right: 28%;
+      top: 22%;
+      animation-duration: 2s;
+      img {
+        animation: tada 1.4s linear;
+        animation-delay: 1.5s;
+      }
+    }
   }
 }
 
@@ -754,8 +757,13 @@ body {
   #ai-container {
     .background {
       background-size: 120% auto;
-      background-position: -10vw 4vw,top;
+      background-position: -10vw 2.5rem,top;
       padding-bottom: 50vw;
+      .title {
+        width: 30%;
+        right: 24vw;
+        top:13vw;
+      }
     }
   }
 
@@ -765,7 +773,7 @@ body {
         justify-content: left;
       }
       .swiper-slide {
-        flex-basis:fit-content;
+        flex-basis:32%;
       }
     }
   }
@@ -798,8 +806,13 @@ body {
   #ai-container {
     .background {
       background-size: 180% auto;
-      background-position: -41vw 22vw,top;
+      background-position: -41vw 5.5rem,top;
       padding-bottom: 90vw;
+      .title {
+        width: 45%;
+        right: 3rem;
+        top: 8.5rem;
+      }
     }
   }
 
@@ -812,6 +825,13 @@ body {
       .swiper-slide {
         flex-basis: 45%;
       }
+    }
+  }
+
+  .sale-box,
+  .floor {
+    .title {
+      margin: 0 auto 0;
     }
   }
 }

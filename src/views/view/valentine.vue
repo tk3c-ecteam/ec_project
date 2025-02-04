@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      menuSale: [7735,7736,7737,7738,7739,7740,7741],
+      menuSale: [7735,7736,7737,7738,7739],
       menuPro: [7733,7734],// 陳列編號
       menuGreen: 7517, //環保商品陳列編號
       menuGo: 7518, //速速go陳列編號
@@ -12,13 +12,11 @@ export default {
          { image: '2025Valentine/images/C03.png' },
       ],
       sales: [
-          { image: 'newyear2025/images/s100.png' },
-        { image: 'newyear2025/images/s200.png' },
-        { image: 'newyear2025/images/s400.png' },
-        { image: 'newyear2025/images/s500.png' },
-        { image: 'newyear2025/images/s600.png' },
-        { image: 'newyear2025/images/s700.png' },
-        { image: 'newyear2025/images/s1000.png' },
+          { image: '2025Valentine/images/S2_399.png' },
+        { image: '2025Valentine/images/S2_499.png' },
+        { image: '2025Valentine/images/S2_599.png' },
+        { image: '2025Valentine/images/S2_699.png' },
+        { image: '2025Valentine/images/S2_999.png' },
       ],
       cards: [
         { image: 'newyear2025/images/tab1.png' },
@@ -53,7 +51,7 @@ export default {
         { text: 'Apple', href: '#pro7720' },
         { text: 'Android', href: '#pro7721' },
         { text: '秋冬除濕', href: '#pro7713' },
-        { text: '平板/穿戴', href: '#pro7459' },
+        { text: '平板/穿戴', href: '#pro7569' },
         { text: '燦坤K幣0元購', href: '#bonus' }
       ],
       bonus:[
@@ -169,7 +167,7 @@ export default {
         <a :href="
             $filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y')
           " target="_blank">
-          <img :src="$filters.siteUrl('2025Valentine/images/S2_bar.png')" />
+          <img :src="$filters.siteUrl('2025Valentine/images/S2_bar_2.png')" />
         </a>
       </h2>
 
@@ -264,8 +262,8 @@ export default {
       <!-- 新展銀行 -->
       <div class="card-content" v-show="statusBank == 1">
         <p class="grid-cols:2 grid-cols:1@<576 m:auto gap:10">
-          <img :src="$filters.siteUrl('newyear2025/images/bank2.png')" loading="lazy" />
-          <img :src="$filters.siteUrl('newyear2025/images/bank2-2.png')" loading="lazy" />
+          <img :src="$filters.siteUrl('2025Valentine/images/bank2.png')" loading="lazy" />
+          <img :src="$filters.siteUrl('2025Valentine/images/bank2-2.png')" loading="lazy" />
         </p>
         <a href="https://www.tk3c.com.tw/#activityinfo&8" class="w:16% w:24%@<992 w:40%@<576 mt:3% mt:6%@<576"
           target="_blank">
@@ -579,6 +577,15 @@ section {
 .bonus-group {
   .swiper-wrapper {
     align-items: baseline;
+  }
+}
+
+.sale-box {
+  .tab {
+    margin-bottom: 1% !important;
+    .swiper-wrapper {
+      justify-content: center;
+    }
   }
 }
 

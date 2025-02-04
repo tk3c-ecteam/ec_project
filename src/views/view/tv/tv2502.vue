@@ -99,7 +99,7 @@
       </h2>
 
       <swiper class="overflow:hidden" :autoplay="{
-          delay: 1800,
+          delay: 1600,
           disableOnInteraction: false
         }" :space-between="10" :breakpoints="{
           0: {
@@ -113,14 +113,14 @@
             slidesPerView: 5,
             grid: {
               fill: 'row',
-              rows: 2
+              rows: 3
             }
           },
           992: {
             slidesPerView: 5,
             grid: {
               fill: 'row',
-              rows: 2
+              rows: 3
             }
           }
         }" :pagination="{
@@ -141,8 +141,11 @@
     <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
   </div>
 
-  <!-- 右側選單 + 手機版選單 -->
-  <RightAside :asides="asides" :type="'mobile2'"></RightAside>
+  <!-- 左側選單+手機版 -->
+   <LeftAside :asides="asides"></LeftAside>
+
+  <!-- 右側選單 -->
+  <RightAside :asides="asides"></RightAside>
 </template>
 
 <script setup>
@@ -212,6 +215,10 @@ export default {
         {
           url: 'https://www.tk3c.com/dic2.aspx?cid=11312&aid=4708&hid=116121',
           image: '2020TVforever/images/2502/tcl.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11312&aid=4708&hid=124295',
+          image: '2020TVforever/images/2502/toshiba.png'
         }
       ],
       saleTab: [

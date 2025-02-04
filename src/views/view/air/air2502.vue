@@ -272,8 +272,11 @@
     <AirVideo></AirVideo>
   </div>
 
-  <!-- 右側選單+手機版 -->
-  <RightAside :asides="asides" :type="'mobile2'"></RightAside>
+  <!-- 左側選單+手機版 -->
+   <LeftAside :asides="asides"></LeftAside>
+
+  <!-- 右側選單 -->
+  <RightAside :asides="asides"></RightAside>
 </template>
 
 <script setup>
@@ -353,6 +356,12 @@ export default {
           mobile: 'airConditionerLAB/images/2502/bn_panaM.jpg'
         },
         {
+          text:'HITACHI',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11236',
+          pc: 'airConditionerLAB/images/2502/bn_hit.jpg',
+          mobile: 'airConditionerLAB/images/2502/bn_hitM.jpg'
+        },
+        {
           text:'SAMPO',
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11240',
           pc: 'airConditionerLAB/images/2502/bn_sampo.jpg',
@@ -375,6 +384,12 @@ export default {
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=115784',
           pc: 'airConditionerLAB/images/2502/bn_chimei.jpg',
           mobile: 'airConditionerLAB/images/2502/bn_chimeiM.jpg'
+        },
+          {
+          text:'SHARP',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=107383',
+          pc: 'airConditionerLAB/images/2502/bn_sharp.jpg',
+          mobile: 'airConditionerLAB/images/2502/bn_sharpM.jpg'
         }
       ],
       events: [
@@ -527,7 +542,7 @@ export default {
       menuHot: 4127, //熱銷空調首選
       menuCold: 3695, //冷暖空調
       menuWet: 7466, //除濕機用
-      menuBrand: [4414, 4416, 5516, 5517, 4419], //品牌 陳列編號
+      menuBrand: [4414, 4415,4416, 5516, 5517, 4419,4655], //品牌 陳列編號
       statusTab:0, //商品樓層用
       statusInfo: 0,
       isDis: false,

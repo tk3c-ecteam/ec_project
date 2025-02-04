@@ -112,8 +112,11 @@
     </div>
   </div>
 
+  <!-- 左側選單+手機版 -->
+   <LeftAside :asides="asides"></LeftAside>
+
   <!-- 右側選單 -->
-  <RightAside :asides="asides" :type="'mobile'"></RightAside>
+  <RightAside :asides="asides"></RightAside>
 </template>
 
 <script setup>

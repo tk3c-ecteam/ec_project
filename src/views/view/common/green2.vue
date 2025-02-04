@@ -460,11 +460,6 @@ export default {
     <section class="printer-box scroll" id="printer">
       <h2 class="title">
         <img :src="$filters.siteUrl('green_subsidy/images/S2_a.png')" alt="" />
-        <a class="more" :href="
-            $filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123239')
-          " target="_blank">
-          <img :src="$filters.siteUrl('green_subsidy/images/more2.png')" alt="" />
-        </a>
       </h2>
 
       <ul class="tab gap:10 mb:1%">
@@ -476,6 +471,11 @@ export default {
 
       <div class="tab-content" v-for="(printer, p) in printers" v-show="stausPrinter == p">
         <listF v-if="products[menuPrint[p]] != undefined" :pro="products[menuPrint[p]].Data"></listF>
+         <a class="more" :href="
+            $filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123239')
+          " target="_blank">
+          <img :src="$filters.siteUrl('green_subsidy/images/more2.png')" alt="" />
+        </a>
       </div>
     </section>
 
@@ -568,16 +568,6 @@ form#form1 {
   }
 }
 
-section {
-  .more {
-    position: absolute;
-    right: -15%;
-    top: 30%;
-    &:hover {
-      position: absolute;
-    }
-  }
-}
 .new-box {
   .tab-content {
     .bg01 {
@@ -742,6 +732,15 @@ section {
       }
     }
   }
+  .bg01 {
+    margin: 0 auto 2%;
+  }
+}
+
+.floor {
+ .bg01 {
+  margin: 0 auto 2%;
+ }
 }
 
 /*  電腦版其他尺寸 */
@@ -765,14 +764,6 @@ section {
     }
   }
 
-  section {
-    .more {
-      width: 30vw;
-      right: -3vw;
-      top: -4vw;
-    }
-  }
-
   .sub-box {
     li {
       width: 42vw;
@@ -786,6 +777,13 @@ section {
   .new-box {
     .swiper-wrapper {
       justify-content: left;
+    }
+  }
+
+  .printer-box,
+  .floor {
+    .bg01 {
+      margin: 0 auto 2%;
     }
   }
 }

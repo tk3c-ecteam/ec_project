@@ -49,7 +49,7 @@
                   </a>
 
                 <!-- 星展按鈕 -->
-                 <a v-if="today < new Date('2025/02/06') && b == 1" class="w:38% m:0|0" @click.prevent="message(bank.alertText)">
+                 <a v-show="today < new Date('2025/02/06') && b == 1" class="w:38% m:0|0" @click.prevent="message(bank.alertText)">
                     <img :src="$filters.siteUrl('bank_ec/images/info.png')" />
                   </a>
 
@@ -72,15 +72,15 @@
     <section class="pro1-box scroll" id="pro1">
       <h2 class="title">
         <img :src="$filters.siteUrl('bank_ec/images/S1.png')" />
-        <a class="more" :href="
-            $filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')
-          " target="_blank">
-          <img :src="$filters.siteUrl('bank_ec/images/more.png')" />
-        </a>
       </h2>
 
       <div class="box">
         <listF :pro="product2[menuPro1]"></listF>
+         <a class="more" :href="
+            $filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')
+          " target="_blank">
+          <img :src="$filters.siteUrl('bank_ec/images/more.png')" />
+        </a>
       </div>
     </section>
 
@@ -88,11 +88,6 @@
     <section class="pro2-box scroll" id="pro2">
       <h2 class="title">
         <img :src="$filters.siteUrl('bank_ec/images/S2.png')" />
-        <a class="more" :href="
-            $filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')
-          " target="_blank">
-          <img :src="$filters.siteUrl('bank_ec/images/more.png')" />
-        </a>
       </h2>
 
       <ul class="tab mb:2% mt:5% gap:10">
@@ -105,6 +100,11 @@
       </ul>
       <div class="pro-content" v-for="(tab, t) in tabs" v-show="status == t">
         <listF v-if="products[menuPro2[t]] != undefined" :pro="products[menuPro2[t]].Data"></listF>
+         <a class="more" :href="
+            $filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')
+          " target="_blank">
+          <img :src="$filters.siteUrl('bank_ec/images/more.png')" />
+        </a>
       </div>
     </section>
 
@@ -196,7 +196,7 @@ export default {
           image: 'bank_ec/images/bank3.png',
           date: '2025/01/14-01/31',
           content: `<p><b>單筆滿2萬5千元享</b><span>現折800</span></p>
-          <p><b>單筆分期滿5萬元</b><span>登錄送5,000燦坤K幣</span></p>
+          <p><b>單筆分期滿5萬元享</b><span>登錄送5,000燦坤K幣</span></p>
           `,
           url: 'https://events.tk3c.com/events_net/invoice_login/detail.aspx',
           alertText: 'https://www.tk3c.com.tw/#actsdetail&8&747'
@@ -219,7 +219,7 @@ export default {
           image: 'bank_ec/images/bank2.png',
           date: '2025/02/01-02/05',
           content: `
-          <p><b>刷星展信用卡分期滿2萬(含)以上享</b><span>現折800</span></p>
+          <p><b>單筆分期刷滿2萬(含)以上享</b><span>現折800</span></p>
           `,
           alertText: ` <ul style='text-align:left;'>
              <li style='margin-bottom:30px;background:#d6d6d6;'>活動期間 2025/02/01-2025/02/05</li>
@@ -230,12 +230,12 @@ export default {
           image: 'bank_ec/images/bank3.png',
           date: '2025/02/01-02/28',
           content: `
-          <p><b>單筆分期滿6千元</b><span>登錄送500燦坤K幣</span></p>
-           <p><b>單筆分期滿3萬5千元</b><span>登錄送3,500燦坤K幣</span></p>
-          <p><b>指定商品單品滿2萬5千元享</b><span>現折800</span></p>
+          <p><b>單筆分期滿6千元</b><span>送500燦坤K幣</span></p>
+           <p><b>單筆分期滿3.5萬元</b><span>送3,500燦坤K幣</span></p>
+          <p><b>指定商品單品滿2.5萬元享</b><span>現折800</span></p>
           `,
           url: 'https://events.tk3c.com/events_net/invoice_login/detail.aspx',
-          alertText: 'https://www.tk3c.com.tw/#actsdetail&8&747'
+          alertText: 'https://www.tk3c.com.tw/#actsdetail&8&759'
         }
       ],
       tabs: [
@@ -331,19 +331,7 @@ form#form1 {
 
 .bg01 {
   background: #ffb080;
-}
-
-section {
-  .title {
-    .more {
-      width: 26%;
-      padding: 0;
-      font-size: 0;
-      position: absolute;
-      right: -30%;
-      top: 28%;
-    }
-  }
+  margin: 0 auto 2%;
 }
 
 #bank-container {
@@ -419,16 +407,8 @@ section {
     }
   }
 
-  section {
-    .title {
-      .more {
-        width: 25vw;
-        right: -5vw;
-        top: -3vw;
-        z-index: 5;
-        filter: hue-rotate(200deg);
-      }
-    }
+  .bg01 {
+    margin: 0 auto 2%;
   }
 
   .bank-group {

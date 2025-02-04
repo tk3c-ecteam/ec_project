@@ -94,6 +94,7 @@ declare module 'vue' {
     Valentine: typeof import('./views/view/valentine.vue')['default']
     Warm: typeof import('./views/view/warm/Warm.vue')['default']
     Warm2501: typeof import('./views/view/warm/Warm2501.vue')['default']
+    Warm2502: typeof import('./views/view/warm/Warm2502.vue')['default']
     Wukong: typeof import('./views/view/wukong.vue')['default']
     Xmas: typeof import('./views/view/xmas.vue')['default']
     XmasFloor: typeof import('./views/floor/XmasFloor.vue')['default']

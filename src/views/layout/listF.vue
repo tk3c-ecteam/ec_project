@@ -17,7 +17,6 @@ export default {
           disableOnInteraction: false
         }"
         :autoHeight="true"
-        :observer="true"
         :space-between="10"
         :navigation="{
           prevEl: `.${name} .prev`,

@@ -329,7 +329,7 @@ export default {
               }"
             >
               <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
-                <img :src="$filters.siteUrl('newyear2025/images/bank1-2.png')" loading="lazy" />
+                <img :src="$filters.siteUrl('2025Valentine/images/bank1-2.png')" loading="lazy" />
                 <a
                   class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576"
                   :href="
@@ -343,7 +343,7 @@ export default {
                 </a>
               </swiper-slide>
               <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
-                <img :src="$filters.siteUrl('newyear2025/images/bank1-3.png')" loading="lazy" />
+                <img :src="$filters.siteUrl('2025Valentine/images/bank1-3.png')" loading="lazy" />
                 <a
                   class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576"
                   :href="
@@ -364,8 +364,8 @@ export default {
       <!-- 新展銀行 -->
       <div class="tab-content" v-show="statusBank == 1">
         <p class="grid-cols:2 grid-cols:1@<576 m:auto gap:10">
-          <img :src="$filters.siteUrl('newyear2025/images/bank2.png')" loading="lazy" />
-          <img  :src="$filters.siteUrl('newyear2025/images/bank2-2.png')" loading="lazy" />
+          <img :src="$filters.siteUrl('2025Valentine/images/bank2.png')" loading="lazy" />
+          <img  :src="$filters.siteUrl('2025Valentine/images/bank2-2.png')" loading="lazy" />
         </p>
         <a
           href="https://www.tk3c.com.tw/#activityinfo&8"
@@ -407,13 +407,13 @@ export default {
               }"
             >
             <swiper-slide>
-              <img :src="$filters.siteUrl('newyear2025/images/bank3.png')" loading="lazy" />
+              <img :src="$filters.siteUrl('2025Valentine/images/bank3.png')" loading="lazy" />
             </swiper-slide>
             <swiper-slide>
-              <img :src="$filters.siteUrl('newyear2025/images/bank3-2.png')" loading="lazy" />
+              <img :src="$filters.siteUrl('2025Valentine/images/bank3-2.png')" loading="lazy" />
             </swiper-slide>
             <swiper-slide>
-              <img :src="$filters.siteUrl('newyear2025/images/bank3-3.png')" loading="lazy" />
+              <img :src="$filters.siteUrl('2025Valentine/images/bank3-3.png')" loading="lazy" />
             </swiper-slide>
           </swiper>
         <a
