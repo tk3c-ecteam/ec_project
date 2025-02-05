@@ -286,7 +286,7 @@ export default {
       status: 0,
       statusSale: 1,
       isNight: true,
-      isDis: false,
+      isDis: true,
       today: new Date(),
       disUrl: '',
       moreImage:''
@@ -301,12 +301,11 @@ export default {
     //撈取 現折券樓層商品
     this.getFloorSingle(menuDis)
 
-    // 2025 1/03 隱藏現折券樓層
-    if (today >= new Date('2025/01/14')) {
-      this.isDis = true;
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
+    // 2025 2/6 更新現折券連結
+    if (today >= new Date('2025/02/06')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&strPreView=y'
     } else {
-      this.disUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
     }
   }
 }

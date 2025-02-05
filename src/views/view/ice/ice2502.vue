@@ -271,7 +271,7 @@ export default {
       ],
       menuDis: 6462, //現折券後台清單編號
       statusPro: 0,
-      isSale: false,
+      isSale: true,
       today: new Date(),
       saleUrl: '',
     }
@@ -295,12 +295,11 @@ export default {
       }
     }
 
-    // 2025/01/14 顯示現折券樓層
-    if (today >= new Date('2025/01/14')) {
-      this.isSale = true
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
+    // 2025/2/6 更新現折券連結
+    if (today >= new Date('2025/02/06')) {
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&strPreView=y'
     } else {
-      this.saleUrl = 'hhttps://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
     }
   },
   methods: {

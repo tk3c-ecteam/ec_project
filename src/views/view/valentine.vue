@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      menuSale: [7761,7762,7763,7764,7765],
+      menuSale: [7761,7762,7763,7764,7765,7767],
       menuPro: [7733,7734],// 陳列編號
       menuGreen: 7517, //環保商品陳列編號
       menuGo: 7518, //速速go陳列編號
@@ -12,7 +12,8 @@ export default {
          { image: '2025Valentine/images/C03.png' },
       ],
       sales: [
-          { image: '2025Valentine/images/S2_399.png' },
+        { image: '2025Valentine/images/S2_100.png' },
+        { image: '2025Valentine/images/S2_399.png' },
         { image: '2025Valentine/images/S2_499.png' },
         { image: '2025Valentine/images/S2_599.png' },
         { image: '2025Valentine/images/S2_699.png' },
@@ -104,7 +105,7 @@ export default {
       let dmImage = 'https://events.cdn-tkec.tw/events_net/events_net/2025Valentine/images/S26_DM.jpg';
        Swal.fire({
         width: 1200,
-        html: `<img src="${dmImage}" width:"100" height:"100" loading="lazy">`,
+        html: `<img src="${dmImage}" width:"100%" height:"100%">`,
         confirmButtonText: '關閉',
         position: 'center',
         showCloseButton: true,
@@ -153,7 +154,7 @@ export default {
           </swiper-slide>
           </swiper>
           <a class="m:1%|0|2%" :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
-              <img class="rel z:5" :src="$filters.siteUrl('2025Valentine/images/C04.png')" />
+              <img class="rel z:5" :src="$filters.siteUrl('2025Valentine/images/C04_2.png')" />
           </a>
          </div>
       <a href="https://events.tk3c.com/events_net/Online_DMCatalog/index.aspx" target="_blank" class="w:20% w:25%@<992 w:35%@<576 rel z:5"> 
@@ -165,7 +166,7 @@ export default {
     <section class="sale-box scroll" id="sale">
       <h2 class="title">
         <a :href="
-            $filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y')
+            $filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124306&strPreView=y')
           " target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S2_bar_2.png')" />
         </a>
@@ -219,7 +220,7 @@ export default {
                   'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=main'
                 )
               " target="_blank">
-              <img :src="$filters.siteUrl('2025Valentine/images/bank1.png')" loading="lazy" />
+              <img :src="$filters.siteUrl('2025Valentine/images/bank1b.png')" />
             </a>
           </li>
           <li class="w:90% w:full@<992">
@@ -235,7 +236,7 @@ export default {
                 }
               }">
               <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
-                <img :src="$filters.siteUrl('2025Valentine/images/bank1-2.png')" loading="lazy" />
+                <img :src="$filters.siteUrl('2025Valentine/images/bank1-2b.png')" loading="lazy" />
                 <a class="w:32% w:40%@<992 w:50%@<576 mt:3% mt:6%@<576" :href="
                     $filters.addGALink(
                       'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779'
@@ -262,8 +263,8 @@ export default {
       <!-- 新展銀行 -->
       <div class="card-content" v-show="statusBank == 1">
         <p class="grid-cols:2 grid-cols:1@<576 m:auto gap:10">
-          <img :src="$filters.siteUrl('2025Valentine/images/bank2.png')" loading="lazy" />
-          <img :src="$filters.siteUrl('2025Valentine/images/bank2-2.png')" loading="lazy" />
+          <img :src="$filters.siteUrl('2025Valentine/images/bank2.png')" />
+          <img :src="$filters.siteUrl('2025Valentine/images/bank2-2b.png')" />
         </p>
         <a href="https://www.tk3c.com.tw/#activityinfo&8" class="w:16% w:24%@<992 w:40%@<576 mt:3% mt:6%@<576"
           target="_blank">
@@ -297,13 +298,13 @@ export default {
                 }
               }">
           <swiper-slide>
-            <img :src="$filters.siteUrl('2025Valentine/images/bank3.png')" loading="lazy" />
+            <img :src="$filters.siteUrl('2025Valentine/images/bank3.png')" />
           </swiper-slide>
           <swiper-slide>
-            <img :src="$filters.siteUrl('2025Valentine/images/bank3-2.png')" loading="lazy" />
+            <img :src="$filters.siteUrl('2025Valentine/images/bank3-2.png')"/>
           </swiper-slide>
           <swiper-slide>
-            <img :src="$filters.siteUrl('2025Valentine/images/bank3-3.png')" loading="lazy" />
+            <img :src="$filters.siteUrl('2025Valentine/images/bank3-3b.png')" />
           </swiper-slide>
         </swiper>
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/invoice_login/home.aspx')"

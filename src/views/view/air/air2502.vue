@@ -472,8 +472,8 @@ export default {
           1: [
             {
               tab: 'airConditionerLAB/images/2502/bn_02.png',
-              pc: 'airConditionerLAB/images/2402/info_new2.png',
-              mobile: 'airConditionerLAB/images/2402/info_new2m.png'
+              pc: 'airConditionerLAB/images/2402/info_new2A.png',
+              mobile: 'airConditionerLAB/images/2402/info_new2mA.png'
             }
           ],
           2: [
@@ -545,7 +545,7 @@ export default {
       menuBrand: [4414, 4415,4416, 5516, 5517, 4419,4655], //品牌 陳列編號
       statusTab:0, //商品樓層用
       statusInfo: 0,
-      isDis: false,
+      isDis: true,
       today: new Date(),
       disUrl: '',
       isSp:false
@@ -579,12 +579,11 @@ export default {
       }
     }
 
-
-    if (today >= new Date('2025/01/14')) {
-      this.isDis = true;
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
+    // 2/6修改現折券連結
+    if (today >= new Date('2025/02/06')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&strPreView=y'
     } else {
-      this.disUrl = 'https://www.tk3c.com/dictitleurl.aspx?cid=124130&strPreView=y'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
     }
   },
   methods: {
