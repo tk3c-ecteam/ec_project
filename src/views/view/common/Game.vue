@@ -13,11 +13,11 @@ export default {
               "menu":[4492,7020,7021],
               "title": "PLAYGAMES/images/2408/S4.png",
               "yt": "HDg2NLve6Ig",
-              "url": "https://www.tk3c.com/dic1.aspx?cid=629&aid=10180",
+              "url": "https://www.tk3c.com/dic2.aspx?cid=111639&aid=23906&hid=114170",
               "content": [
-                { "url": "https://www.tk3c.com/dic2.aspx?cid=629&aid=10180&hid=114170", "image": "PLAYGAMES/images/2408/S04_01.png" },
-                { "url": "https://www.tk3c.com/dic2.aspx?cid=629&aid=10180&hid=114252", "image": "PLAYGAMES/images/2408/S04_02.png" },
-                { "url": "https://www.tk3c.com/dic2.aspx?cid=629&aid=10180&hid=114169", "image": "PLAYGAMES/images/2408/S04_03.png" },
+                { "url": "https://www.tk3c.com/dic2.aspx?cid=111639&aid=23906&hid=114170", "image": "PLAYGAMES/images/2408/S04_01.png" },
+                { "url": "https://www.tk3c.com/dic2.aspx?cid=111639&aid=23906&hid=114252", "image": "PLAYGAMES/images/2408/S04_02.png" },
+                { "url": "https://www.tk3c.com/dic2.aspx?cid=111639&aid=23906&hid=114169", "image": "PLAYGAMES/images/2408/S04_03.png" },
               ]
             },
           ],
@@ -26,11 +26,11 @@ export default {
               "menu":[4495,7022,7023],
               "title": "PLAYGAMES/images/2408/S5.png",
               "yt": "DpYz24pspQA",
-              "url": "https://www.tk3c.com/dic1.aspx?cid=629&aid=20340",
+              "url": "https://www.tk3c.com/dic2.aspx?cid=111639&aid=23911&hid=116007",
               "content": [
-                { "image": "PLAYGAMES/images/2408/S04_01.png" },
-                { "image": "PLAYGAMES/images/2408/S04_02.png" },
-                { "image": "PLAYGAMES/images/2408/S04_03.png" },
+                { "url":"https://www.tk3c.com/dic2.aspx?cid=111639&aid=23911&hid=116007","image": "PLAYGAMES/images/2408/S04_01.png" },
+                { "url":"https://www.tk3c.com/dic2.aspx?cid=111639&aid=23911&hid=112422","image": "PLAYGAMES/images/2408/S04_02.png" },
+                { "url":"https://www.tk3c.com/dic2.aspx?cid=111639&aid=23911&hid=112423","image": "PLAYGAMES/images/2408/S04_03.png" },
               ]
             },
           ],
@@ -39,7 +39,7 @@ export default {
               "menu":[7024,7025,5760],
               "title": "PLAYGAMES/images/2408/S6.png",
               "yt": "IOB2ApsKjT8",
-              "url": "https://www.tk3c.com/dic1.aspx?cid=629&aid=22217",
+              "url": "https://www.tk3c.com/dic1.aspx?cid=111639&aid=23910",
               "content": [
                 { "image": "PLAYGAMES/images/2408/S04_01.png" },
                 { "image": "PLAYGAMES/images/2408/S04_02.png" },
@@ -52,7 +52,7 @@ export default {
               "menu":[7026,6445],
               "title": "PLAYGAMES/images/2408/S7.png",
               "image": "PLAYGAMES/images/24618/bn1.png",
-              "url": "https://www.tk3c.com/dic1.aspx?cid=629&aid=22230",
+              "url": "https://www.tk3c.com/dic1.aspx?cid=111639&aid=23909",
               "content": [
                 { "image": "PLAYGAMES/images/2408/S07_01.png" },
                 {"image": "PLAYGAMES/images/2408/S07_02.png" },
@@ -64,54 +64,22 @@ export default {
       proGame: [
         { "url": "https://www.tk3c.com/pt.aspx?pid=203202", "image": "PLAYGAMES/images/2408/203202.png" },
         { "url": "https://www.tk3c.com/pt.aspx?pid=220671", "image": "PLAYGAMES/images/2408/220671.png" },
-        { "url": "https://www.tk3c.com/pt.aspx?pid=213384", "image": "PLAYGAMES/images/2408/213384.png" },
-        { "url": "https://www.tk3c.com/pt.aspx?pid=244984-240526", "image": "PLAYGAMES/images/2408/244984-240526.png" },
-        { "url": "https://www.tk3c.com/pt.aspx?pid=246485", "image": "PLAYGAMES/images/2408/246485.png" },
         { "url": "https://www.tk3c.com/pt.aspx?pid=249373", "image": "PLAYGAMES/images/2408/249373.png" },
-        { "url": "https://www.tk3c.com/pt.aspx?pid=249413", "image": "PLAYGAMES/images/2408/249413.png" },
       ],
       asides:[
         {text:'速速GO',href:'sale'},
-        {text:'遊戲掌機',href:'pro'},
         {text:'PlayStation',href:'pro1'},
         {text:'Nintendo Switch',href:'pro2'},
         {text:'Xbox',href:'pro3'},
         {text:'Mycard',href:'pro4'},
       ],
       menuGo:7027,
-      menuPro:4549,
-      statusTab:0
     }
   },
   mounted() {
-    const { proFloors } = this;
-
     //撈取速速go樓層商品
     this.getFloorSingle(this.menuGo)
-
-    //撈取遊戲掌機樓層商品
-    this.getFloorSingle(this.menuPro)
-
-    for (const [f, floor] of Object.entries(proFloors[0])) {
-      //撈取商品樓層 有頁籤
-      if (floor[0].content != undefined) {
-        this.getFloorData(floor[0].menu)
-      }
-    }
-  },
-  methods: {
-    changeTab(id) {
-      if(event) {
-         let current = event.currentTarget,
-          parentAr = current.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode,
-          parentClass = parentAr.getAttribute('class'),
-          parentName = parentClass.substr(0,8)
-        setTimeout(() => {
-          this.showAndHide(id, '.' + parentName)
-        }, 30)
-      }
-    }
-  },
+  }
 }
 </script>
 
@@ -148,22 +116,10 @@ export default {
       </div>
     </section>
 
-    <!-- 遊戲掌機 -->
-    <section class="pro-group scroll" id="pro">
-      <h2 class="title">
-        <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=629&aid=23516&hid=121144')" target="_blank">
-          <img :src="$filters.siteUrl('PLAYGAMES/images/2408/S3.png')">
-        </a>
-      </h2>
-      <div class="products">
-        <listF :pro="product2[menuPro]" :isSwiper="1" :name="'pro'"></listF>
-      </div>
-    </section>
-
     <!-- 有頁籤的樓層 -->
     <section v-for="(floor,f) in proFloors[0]" :class="`pro${Number(f) + 1}-box product-area scroll`"
       :id="`pro${Number(f) + 1}`">
-      <h2 class="title">
+      <h2 class="title" :class="[f == 2 || f == 3 ? 'single-url' : '']">
         <a :href="$filters.addGALink(floor[0].url)">
           <img :src="$filters.siteUrl(floor[0].title)">
         </a>
@@ -171,56 +127,24 @@ export default {
 
       <!-- 頁籤區 -->
       <div class="topic">
-        <img class="w:66% w:full@<576 abs top:0 left:1% z:-1" :src="$filters.siteUrl('PLAYGAMES/images/2407/MEDIA_BOX.png')">
+        <img class="w:66% w:full@<576 abs top:0 left:1% z:-1"
+          :src="$filters.siteUrl('PLAYGAMES/images/2407/MEDIA_BOX.png')">
         <img v-if="f == 3" :src="$filters.siteUrl(floor[0].image)" class="banner">
         <div v-else class="youtube">
           <iframe :src="`https://www.youtube.com/embed/${floor[0].yt}`" frameborder="0" allowfullscreen></iframe>
         </div>
-        
-        <ul class="tab" 
-        v-if="floor[0].content != undefined">
-        <swiper
-        :loop="false"
-        :spaceBetween="10"
-        :breakpoints="{
-            0: {
-            slidesPerView: 3,
-            grid: {
-              fill: 'row',
-              rows: 1,
-            },
-          },
-          600: {
-            slidesPerView: 1.1,
-            grid: {
-              fill: 'row',
-              rows: 3,
-            },
-          },
-          992: {
-            slidesPerView: 1.1,
-            grid: {
-              fill: 'row',
-              rows: 3,
-            },
-          },
-        }"
-        >
-          <swiper-slide v-for="(content, c) in floor[0].content" :class="[statusTab == c ? 'active' : '']">
-            <a @click="changeTab(c)" :value="content.url">
-              <img :src="$filters.siteUrl(content.image)" />
-          </a>
-        </swiper-slide>
-        </swiper>
-      </ul>
       </div>
 
-      <div class="tab-content" v-for="(content, c) in floor[0].content" :key="c" v-show="statusTab == c">
-          <listF
-            v-if="products[floor[0].menu[c]] != undefined"
-            :pro="products[floor[0].menu[c]].Data"
-          ></listF>
-        </div>
+      <div>
+        <Tabs :isSwiper="1" :direct="'vertical'" :tabs="floor[0].content">
+          <template v-slot="{ selectedTab }">
+            <TabContent v-for="(content, c) in floor[0].content" :menus="floor[0].menu[c]" :index="c"
+              :selectedTab="selectedTab">
+            </TabContent>
+          </template>
+        </Tabs>
+      </div>
+
     </section>
 
 
@@ -319,8 +243,8 @@ body {
     position: relative;
   }
   .tab {
-    width: 31%;
-    margin: 0 0 2% 67%;
+    width: 25%;
+    margin: 3% 0 3% 67%;
     .swiper-wrapper {
       padding-left: 10px;
     }
@@ -353,7 +277,7 @@ body {
     width: 62%;
     position: absolute;
     left: 3%;
-    top: 6%;
+    top: 18%;
   }
 }
 
@@ -362,7 +286,7 @@ body {
     padding-bottom: 10%;
   }
   .tab {
-    padding-top: 10%;
+    margin: 0 0 11% 67%;
   }
 }
 
@@ -394,7 +318,7 @@ body {
 
   .product-area {
     .tab {
-      width: 34%;
+      width: 30%;
     }
     .youtube {
       top: 15px;
@@ -462,6 +386,9 @@ body {
       .swiper-wrapper {
         justify-content: left;
       }
+      .swiper-slide {
+        flex-basis: 47%;
+      }
     }
     .banner {
       width: 90vw;
@@ -477,15 +404,6 @@ body {
   .pro4-box {
     .topic {
       padding-bottom: 0;
-    }
-    .tab {
-      margin: 50% 0 0;
-      .swiper-slide {
-        width: 46% !important;
-      }
-      .swiper-wrapper {
-        justify-content: center;
-      }
     }
   }
 }

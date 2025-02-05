@@ -8,6 +8,7 @@
       預設為圖片
       singleUrl -> 連結只有一個(如果有頁籤也沒有連結)
       statusSelect-> 預設頁籤要顯示幾個(都沒有設定為0)
+      direct -> 輪播方向(預設為水平) 若要垂直輪播請設定'vertical'
     */ -->
 
     <div class="tab mb:2% mb:1%@<576 overflow:hidden">
@@ -30,6 +31,14 @@
       :loop="false" 
       :space-between="10" 
       :slides-per-view="'auto'"
+      :breakpoints="{
+        0:{
+          direction: 'horizontal',
+        },
+        600: {
+          direction: direct,
+        }
+      }"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
       >
@@ -70,6 +79,10 @@ export default {
     statusSelect:{
       type:Number
     },
+    direct:{
+      type:String,
+      default:'horizontal'
+    }
   },
   data() {
     return {
