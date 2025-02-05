@@ -238,6 +238,19 @@ export default {
           alertText: 'https://www.tk3c.com.tw/#actsdetail&8&759'
         }
       ],
+      bank250206:[
+         {
+          image: 'bank_ec/images/bank2.png',
+          date: '2025/02/06-02/16',
+          content: `
+          <p><b>單筆分期刷滿2.08萬(含)以上享</b><span>現折800</span></p>
+          `,
+          alertText: ` <ul style='text-align:left;'>
+             <li style='margin-bottom:30px;background:#d6d6d6;'>活動期間 2025/02/06-2025/02/16</li>
+             <li style='margin-bottom:10px;'>於活動期間(2025/02/06-2025/02/16)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，刷「星展銀行信用卡」，單筆分期刷滿$20,800以上，可享現折800元的優惠，單張發票不累贈，最多折抵一次，2/6-2/16限量40名。</li>
+        </ul>`
+        },
+      ],
       tabs: [
         { image: 'bank_ec/images/S2-10000_b.png' },
         { image: 'bank_ec/images/S2-30000_b.png' }
@@ -260,14 +273,14 @@ export default {
   },
   mounted() {
     const { today } = this
-    // 2025/1/14
-    if (today >= new Date('2025/01/14') && today < new Date('2025/02/01')) {
-      this.banks = this.bank25014;
-    }
-
     // 2/1更新
     if (today >= new Date('2025/02/01') && today < new Date('2025/03/01')) {
       this.banks = this.bank2502;
+    }
+
+    // 2/6 星展更新
+    if (today >= new Date('2025/02/06') && today < new Date('2025/02/17')) {
+      this.banks[1] = this.bank250206[0]
     }
 
     //撈取千元刷卡樓層商品
