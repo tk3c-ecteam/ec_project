@@ -1,5 +1,5 @@
 <script setup>
-import StoreDefault from "./StoreDefault.vue";
+import { nextTick, onMounted } from "vue";
 const contents = [
         {
           logoImage: "EUPA/images/logo.png",
@@ -50,8 +50,16 @@ const contents = [
           ],
         }
       ];
-      const menus = [7759,7675, 7676, 7677,7678,7760];
+      var menus = [7759,7675, 7676, 7677,7678,7760];
       const moreImage = "EUPA/images/more.png";
+
+      onMounted(() => {
+        const floors = document.querySelectorAll('.floor')[0],
+        floorLi = floors.querySelectorAll('.bg01 li');
+        if(floorLi.length <= 0) {
+          floors.style.display = 'none';
+        }
+      });
 </script>
 
 <template>
