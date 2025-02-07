@@ -1,5 +1,5 @@
 <script setup>
-import { nextTick, onMounted } from "vue";
+import { onMounted,onBeforeMount } from 'vue';
 const contents = [
         {
           logoImage: "EUPA/images/logo.png",
@@ -50,14 +50,16 @@ const contents = [
           ],
         }
       ];
-      var menus = [7759,7675, 7676, 7677,7678,7760];
+      let menus = [7759,7675,7676,7677,7678,7760];
       const moreImage = "EUPA/images/more.png";
 
+      menus.splice(0,1);
+
       onMounted(() => {
-        const floors = document.querySelectorAll('.floor')[0],
+         const floors = document.querySelectorAll('.floor')[0],
         floorLi = floors.querySelectorAll('.bg01 li');
         if(floorLi.length <= 0) {
-          floors.style.display = 'none';
+          contents[0].floorImg.splice(0,1);
         }
       });
 </script>
@@ -133,29 +135,17 @@ section {
 nav {
   background: #000;
   .swiper-slide {
-    margin-right: 185px !important;
+    margin-right: 45px !important;
     a {
       color: #fff;
-    }
-    .active {
-      color: #d0be96;
-      span {
-        position: relative;
-
-        &:before {
-          content: "";
-          display: block;
-          width: 100%;
-          height: 2px;
-          background: #d0be96;
-          position: absolute;
-          bottom: -10px;
-          left: 0;
-          right: 0;
-          margin: 0 auto;
-        }
+      &.active,
+      &:hover {
+        color: #d0be96;
       }
     }
+  }
+  .swiper-wrapper {
+    justify-content: center;
   }
 }
 
@@ -172,10 +162,13 @@ nav {
         cursor: auto;
       }
     }
+    .swiper-pagination {
+      bottom: 8% !important;
+    }
   }
 }
 
-.floor:not(:nth-of-type(1), :nth-of-type(6)) {
+.floor:not([titles='新品上市'], [titles='展示/福利出清']) {
   .bg01 {
     margin: 0 auto 2%;
   }
@@ -204,7 +197,10 @@ nav {
 
   nav {
     .swiper-slide {
-      margin-right: 120px !important;
+      margin-right: 150px !important;
+    }
+    .swiper-wrapper {
+      justify-content: left;
     }
   }
 }
@@ -214,6 +210,9 @@ nav {
   #store-container {
     .background {
       padding-bottom: 98vw;
+      .swiper-pagination {
+        bottom: 12% !important;
+      }
     }
   }
 
@@ -233,6 +232,22 @@ nav {
   nav {
     .swiper-slide {
       margin-right: 52px !important;
+    }
+  }
+}
+
+@include media-query("pc", "2000px") {
+  nav {
+    .swiper-slide {
+      margin-right: 40px !important;
+    }
+  }
+}
+
+@include media-query("pc", "2500px") {
+  nav {
+    .swiper-slide {
+      margin-right: 60px !important;
     }
   }
 }

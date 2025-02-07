@@ -4,7 +4,6 @@ import { EffectFade, Parallax } from 'swiper/modules'
 
 <script>
 export default {
-
   data() {
     return {
      menu:[7710,7711,7712,'',7702,7703,7704,7705,7706,7707,
@@ -149,6 +148,7 @@ export default {
     v-for="(floor, f) in floorImg"
     :key="f"
     :class="floor.class ? floor.class : ''"
+    :data-anchor="[floor.class == 'print-box' ? 'print' : `pro${menu[f]}`]"
   >
     <h2 class="title" :id="[floor.class == 'print-box' ? 'print' : `pro${menu[f]}`]">
       <a :href="$filters.addGALink(floor.url)" target="_blank">
