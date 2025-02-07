@@ -7,7 +7,8 @@ export const globalMixin = {
       products: [],
       product2: [],
       percent: 0,
-      tabS: null
+      tabS: null,
+      titles: [],
     }
   },
   methods: {

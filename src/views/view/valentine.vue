@@ -6,6 +6,7 @@ export default {
       menuPro: [7733,7734],// 陳列編號
       menuGreen: 7517, //環保商品陳列編號
       menuGo: 7518, //速速go陳列編號
+      menuGift:7768, //情人節送禮攻略陳列編號
       gifts:[
          { image: '2025Valentine/images/C01.png' },
          { image: '2025Valentine/images/C02.png' },
@@ -36,6 +37,7 @@ export default {
         { text: '現折券', href: '#sale' },
         { text: '信用卡專屬優惠', href: '#card' },
         { text: '銀行優惠', href: '#bank' },
+        { text: '情人節送禮攻略', href: '#gift' },
         { text: '環保商品', href: '#green' },
          { text: '筆電', href: '#pro7710' },
           { text: '桌機/螢幕', href: '#pro7711' },
@@ -87,6 +89,8 @@ export default {
     //撈取速速go樓層商品
     this.getFloorSingle(this.menuGo)
 
+    //撈取情人節送禮攻略樓層商品
+    this.getFloorSingle(this.menuGift)
     
   },
   methods: {
@@ -133,10 +137,7 @@ export default {
 
     <section class="special-box">
       <div class="w:90% w:full@<576 m:auto">
-          <swiper
-          :loop:="false"
-          :space-between="10"
-          :autoplay="{ delay: 1800, disableOnInteraction: false }"
+        <swiper :loop:="false" :space-between="10" :autoplay="{ delay: 1800, disableOnInteraction: false }"
           :breakpoints="{
             0:{
               slidesPerView:2
@@ -147,26 +148,24 @@ export default {
             992:{
               slidesPerView:3
             }
-          }"
-          >
+          }">
           <swiper-slide v-for="gift in gifts">
             <img :src="$filters.siteUrl(gift.image)">
           </swiper-slide>
-          </swiper>
-          <a class="m:1%|0|2%" :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
-              <img class="rel z:5" :src="$filters.siteUrl('2025Valentine/images/C04_2.png')" />
-          </a>
-         </div>
-      <a href="https://events.tk3c.com/events_net/Online_DMCatalog/index.aspx" target="_blank" class="w:20% w:25%@<992 w:35%@<576 rel z:5"> 
-        <img :src="$filters.siteUrl('2025Valentine/images/S1_dm.png')" />
-      </a>
+        </swiper>
+        <a class="m:1%|0|2%"
+          :href="$filters.addGALink('https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=main')"
+          target="_blank">
+          <img class="rel z:5" :src="$filters.siteUrl('2025Valentine/images/C04_2.png')" />
+        </a>
+      </div>
     </section>
 
     <!-- 現折券 -->
-    <section class="sale-box scroll" id="sale">
+    <section class="sale-box scroll" data-anchor="現折券" id="sale">
       <h2 class="title">
         <a :href="
-            $filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124306&strPreView=y')
+            $filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922')
           " target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S2_bar_2.png')" />
         </a>
@@ -183,7 +182,7 @@ export default {
     </section>
 
     <!-- 信用卡專屬優惠 -->
-    <section class="card-group scroll" id="card">
+    <section class="card-group scroll" data-anchor="信用卡專屬優惠" id="card">
       <h2 class="title">
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/bank_ec/index.html')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S3_bar.png')" />
@@ -220,7 +219,7 @@ export default {
                   'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=main'
                 )
               " target="_blank">
-              <img :src="$filters.siteUrl('2025Valentine/images/bank1b.png')" />
+              <img :src="$filters.siteUrl('2025Valentine/images/bank1c.png')" />
             </a>
           </li>
           <li class="w:90% w:full@<992">
@@ -301,7 +300,7 @@ export default {
             <img :src="$filters.siteUrl('2025Valentine/images/bank3.png')" />
           </swiper-slide>
           <swiper-slide>
-            <img :src="$filters.siteUrl('2025Valentine/images/bank3-2.png')"/>
+            <img :src="$filters.siteUrl('2025Valentine/images/bank3-2.png')" />
           </swiper-slide>
           <swiper-slide>
             <img :src="$filters.siteUrl('2025Valentine/images/bank3-3b.png')" />
@@ -315,7 +314,7 @@ export default {
     </section>
 
     <!-- 銀行 -->
-    <section class="bank-group scroll" id="bank">
+    <section class="bank-group scroll" data-anchor="銀行" id="bank">
       <h2 class="title">
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S25_bar.png')" />
@@ -336,15 +335,28 @@ export default {
             <img :src="$filters.siteUrl(bank.image)" loading="lazy">
           </swiper-slide>
         </swiper>
-        <img class="w:70% w:full@<992 m:0|auto|2%" :src="$filters.siteUrl('2025Valentine/images/bank_07.png')" loading="lazy">
-        <a class="w:25% w:40%@<992 w:50%@<576" :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
+        <img class="w:70% w:full@<992 m:0|auto|2%" :src="$filters.siteUrl('2025Valentine/images/bank_07.png')"
+          loading="lazy">
+        <a class="w:25% w:40%@<992 w:50%@<576"
+          :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/more_bank.png')">
         </a>
       </div>
     </section>
 
+    <!-- 情人節送禮攻略 -->
+    <section class="gift-group scroll" id="gift">
+      <h2 class="title">
+       <img :src="$filters.siteUrl('2025Valentine/images/special_title.png')" />
+      </h2>
+
+      <div class="box">
+        <listD :pro="product2[menuGift]"></listD>
+      </div>
+    </section>
+
     <!-- 環保商品 -->
-    <section class="green-box scroll" id="green">
+    <section class="green-box scroll" data-anchor="環保商品" id="green">
       <h2 class="title">
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/green_subsidy/index.html')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S4_bar.png')" />
@@ -379,7 +391,7 @@ export default {
     <ValentFloor></ValentFloor>
 
     <!-- k幣 -->
-    <section class="bonus-group scroll" id="bonus">
+    <section class="bonus-group scroll" data-anchor="bonus" id="bonus">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/other_store.aspx')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S22_bar.png')" />
@@ -531,7 +543,7 @@ section {
   }
 }
 
-.pro-box,
+
 .sale-box {
   .bg01 {
     background: #b9036e;
@@ -584,11 +596,18 @@ section {
 .sale-box {
   .tab {
     margin-bottom: 1% !important;
-    .swiper-wrapper {
-      justify-content: center;
-    }
+    justify-content: left;
   }
 }
+
+.print-box {
+  .tab {
+   .swiper-slide {
+    flex-basis: 18%;
+   }
+  }
+}
+
 
 /*  電腦版其他尺寸 */
 @include media-query('mobile', '992px') {
@@ -602,12 +621,6 @@ section {
         width: 70%;
         top: 18vw;
       }
-    }
-  }
-
-  .print-box {
-    .swiper-wrapper {
-      justify-content: left;
     }
   }
 
@@ -692,6 +705,9 @@ section {
       margin-bottom: 0 !important;
       .swiper-slide {
         flex-basis: 27%;
+      }
+      .swiper-wrapper {
+        justify-content: left;
       }
     }
   }

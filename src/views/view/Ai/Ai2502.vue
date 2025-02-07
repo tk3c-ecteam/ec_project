@@ -61,10 +61,10 @@
         <ul class="w:90% gap:10 w:full@<992 mb:2% overflow:hidden">
           <li class="w:44% w:47%@<992 w:47%@<576" :class="[!isSale ? 'off' : '']">
             <a @click="goNB('#sale')" target="_blank"><img
-                :src="$filters.siteUrl('2024083C/images/2502/a-e1_2.png')" /></a>
+                :src="$filters.siteUrl('2024083C/images/2502/a-e1_2b.png')" /></a>
           </li>
           <li class="w:44% w:47%@<992 w:47%@<576">
-            <a :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank"><img
+            <a @click.prevent="alert(3)" target="_blank"><img
                 :src="$filters.siteUrl('2024083C/images/2502/a-e2-1.png')" /></a>
           </li>
            <li class="w:44% w:47%@<992 w:47%@<576">
@@ -124,7 +124,7 @@
           <h2 class="title">
             <a :href="
                 $filters.addGALink(
-                  'https://www.tk3c.com/dic2.aspx?cid=124236&aid=23905&hid=124240'
+                  'https://www.tk3c.com/dic2.aspx?cid=124306&aid=23922&hid=124310'
                 )
               " target="_blank">
               <img :src="$filters.siteUrl('2024083C/images/2411/S01.png')" />
@@ -588,7 +588,7 @@ export default {
       if (floor[0].content == undefined) this.getFloorSingle(floor[0].menu)
     }
 
-    if(today >= new Date('2025/02/06')) this.isSale = false
+    if(today >= new Date('2025/02/17')) this.isSale = false
   },
   methods: {
     //應援指南頁籤切換
@@ -664,7 +664,27 @@ export default {
         </ul>
         <p style="text-align:left;margin-bottom:25px;color:red;">【活動一、活動二僅可擇一登記，無法累積贈送。如重複登記，燦坤保有所送贈品之決定權】</p>
         `
-          break
+          break;
+
+         //筆電抽 
+        case 3:
+          infoHtml = `
+        <p style="margin-bottom:25px;text-align:left;font-weight:bold;color:#4161df;"> 2/1-2/28購搭載Intel Core處理器筆電，登記抽SAMSUNG 32型 M7智慧聯網螢幕 (白)(市價$11,900，1名)
+活動期間(2025/2/1-2/28)，於燦坤線上購物網站購買「全館任一搭載Intel 處理器筆電(下稱活動指定商品)」，並於線上完成付款且後續未退貨退款者，並於2025/3/4(含)前至指定活動頁面完成登記申請即可獲得本活動抽獎資格，抽出1名送SAMSUNG 32型 M7智慧聯網螢幕 (白)(市價$11,900，1名)。</p>
+
+        <ul style='text-align:left;'>
+             <li style='margin-bottom:10px;'>1.請留意登記完成不代表保證獲得回饋(抽獎)資格，燦坤3C後續會進行資格檢核，相關認定以燦坤3C電腦系統之紀錄與認定為準。​</li>
+             <li style='margin-bottom:10px;'>2.得獎名單將於2025/3/15公布於FACEBOOK粉絲專頁「燦坤線上購物」(https://www.facebook.com/TDdd331) 並另以簡訊通知中獎者，通知以會員資料所留存的個人聯絡資料為準。倘中獎人因個人因素致無法收受上開通知(如無法收受、未能讀取或遲誤讀取)，均與燦坤3C無涉。​</li>
+             <li style='margin-bottom:10px;'>3.得獎者請於2025/3/23前回填中獎通知函：私訊「燦坤線上購物」粉絲專頁，提供會員帳號(email)/姓名/電話/訂單編號/中獎公告畫面，小編會提供回函，請依規定填寫並繳交相關資料，並將正本掛號寄回燦坤3C內湖總部，以郵戳為憑。逾期、資料不符規定或填寫不正確、不完整或未依中獎通知函規定期限存入代扣稅金者，視同放棄中獎/兌獎權利。(依稅法規定，抽中獎項市值超過1,001元(含)以上，將列入本年度之個人綜合所得稅申報，超過20,000元(含)以上者，依法須預先扣繳10%稅金(外籍人士20%)。​</li>
+             <li style='margin-bottom:10px;'>4.經核對無誤後，燦坤3C將於2025/3/25起陸續寄出獎項至得獎者中獎通知函地址(限台灣本島地區且不可為郵政信箱)。如中獎者有額外運送/安裝需求，另行計價，逾期領獎或安裝完成視為放棄，若因地址/收件人錯誤、無人收件等不可歸責於燦坤3C之事由導致延遲、遺失等情況，恕不負責，請多包涵。​</li>
+             <li style='margin-bottom:10px;'>5.獎項詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金，中獎資格不可轉讓予第三人。​</li>
+             <li style='margin-bottom:10px;'>6.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
+             <li style='margin-bottom:10px;padding-left:10px;'>(1) 提供獎品前：燦坤3C將不會寄送獎品。​</li>
+             <li style='margin-bottom:10px;padding-left:10px;'>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
+             <li style='margin-bottom:30px;'>7.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
+        </ul>
+        `
+          break  
       }
 
       Swal.fire({

@@ -40,6 +40,14 @@
        </a>
     </section>
 
+    <!-- 房東精選 -->
+    <section class="home-box" v-show="isHome">
+      <h2 class="title">
+        <img :src="$filters.siteUrl('2020TVforever/images/2502/S14.png')" />
+      </h2>
+      <listF :pro="product2[menuHome]"></listF>
+    </section>
+
     <!-- 現折券 -->
     <section class="discount-box" id="dis" v-if="isDis && product2[menuDis] != ''">
       <h2 class="title">
@@ -55,7 +63,7 @@
     </section>
 
     <!-- 福利 -->
-    <section class="sale-group scroll" id="sale">
+    <section class="sale-group scroll" data-title="品牌福利出清" id="sale">
       <h2 class="title">
         <img :src="$filters.siteUrl('2020TVforever/images/2502/S03.png')" />
       </h2>
@@ -93,7 +101,7 @@
     </section>
 
     <!-- 品牌 -->
-    <section class="brand-group scroll" id="brand">
+    <section class="brand-group scroll" data-title="人氣大牌" id="brand">
       <h2 class="title">
        <img :src="$filters.siteUrl('2020TVforever/images/2502/S05.png')" />
       </h2>
@@ -283,13 +291,15 @@ export default {
       menuSale: [5977, 4465, 4466, 4463, 4467], // 出清 陳列編號
       menuNight: [5420], //夜殺 陳列編號
       menu: [2751, 5613, 5198, 5199, 4846, 5200, 5201, 5202],
+      menuHome: 7769,
       status: 0,
       statusSale: 1,
       isNight: true,
       isDis: true,
       today: new Date(),
       disUrl: '',
-      moreImage:''
+      moreImage:'',
+      isHome:true
     }
   },
   mounted() {
@@ -301,9 +311,12 @@ export default {
     //撈取 現折券樓層商品
     this.getFloorSingle(menuDis)
 
+    //撈取 房東精選樓層商品
+    this.getFloorSingle(this.menuHome)
+
     // 2025 2/6 更新現折券連結
     if (today >= new Date('2025/02/06')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&strPreView=y'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922'
     } else {
       this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
     }

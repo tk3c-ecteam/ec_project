@@ -297,7 +297,7 @@ export default {
 
     // 2025/2/6 更新現折券連結
     if (today >= new Date('2025/02/06')) {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&strPreView=y'
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922'
     } else {
       this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
     }

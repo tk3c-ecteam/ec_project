@@ -49,7 +49,7 @@
                   </a>
 
                 <!-- 星展按鈕 -->
-                 <a v-show="today < new Date('2025/02/06') && b == 1" class="w:38% m:0|0" @click.prevent="message(bank.alertText)">
+                 <a v-show="b == 1" class="w:38% m:0|0" @click.prevent="message(bank.alertText)">
                     <img :src="$filters.siteUrl('bank_ec/images/info.png')" />
                   </a>
 
@@ -69,7 +69,7 @@
     </section>
 
     <!-- 千元刷卡 -->
-    <section class="pro1-box scroll" id="pro1">
+    <section class="pro1-box scroll" :data-anchor="asides[0].text" id="pro1">
       <h2 class="title">
         <img :src="$filters.siteUrl('bank_ec/images/S1.png')" />
       </h2>
@@ -85,7 +85,7 @@
     </section>
 
     <!-- 萬元刷卡 -->
-    <section class="pro2-box scroll" id="pro2">
+    <section class="pro2-box scroll" :data-anchor="asides[1].text" id="pro2">
       <h2 class="title">
         <img :src="$filters.siteUrl('bank_ec/images/S2.png')" />
       </h2>
@@ -243,11 +243,12 @@ export default {
           image: 'bank_ec/images/bank2.png',
           date: '2025/02/06-02/16',
           content: `
-          <p><b>單筆分期刷滿2.08萬(含)以上享</b><span>現折800</span></p>
+          <p><b>單筆分期刷滿2萬(含)以上享</b><span>現折800</span></p>
           `,
           alertText: ` <ul style='text-align:left;'>
-             <li style='margin-bottom:30px;background:#d6d6d6;'>活動期間 2025/02/06-2025/02/16</li>
-             <li style='margin-bottom:10px;'>於活動期間(2025/02/06-2025/02/16)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，刷「星展銀行信用卡」，單筆分期刷滿$20,800以上，可享現折800元的優惠，單張發票不累贈，最多折抵一次，2/6-2/16限量40名。</li>
+             <li style='margin-bottom:5px;'>凡於活動期間(2025/2/6-2025/2/16)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，</li>
+             <li style='margin-bottom:5px;'>刷「星展銀行信用卡」，單筆分期刷滿20,000元(限分3、6、8期，再享分期0利率)，</li>
+             <li style='margin-bottom:5px;'>可享現折800元的優惠，單張發票不累贈，最多折抵一次，線上限量40名。</li>
         </ul>`
         },
       ],

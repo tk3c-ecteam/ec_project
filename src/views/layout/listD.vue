@@ -24,7 +24,7 @@ export default {
           </p>
           <h4 :class="[proA.Promote.trim() == '' ? 'empty' : '']">{{ proA.Promote }}</h4>
           <div class="buybtn">
-            立即優惠
+            立即購買
             <div class="gobtn">搶購</div>
           </div>
         </a>

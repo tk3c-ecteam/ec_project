@@ -23,12 +23,12 @@
     <div class="background2"></div>
 
     <!-- 尊榮安裝 -->
-    <section class="air-info scroll">
+    <section class="air-info scroll" data-anchor="尊榮安裝">
       <a id="vvip" :href="
           $filters.addGALink('https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2')
         " target="_blank">
-        <img class="pc" :src="$filters.siteUrl('airConditionerLAB/images/2405/vvip.png')" />
-        <img class="mobile" :src="$filters.siteUrl('airConditionerLAB/images/2402/vvip_br_m.png')" />
+        <img v-show="isVip" :src="$filters.siteUrl('airConditionerLAB/images/2405/vvip_2.jpg')" />
+         <img v-show="isVipOld" :src="$filters.siteUrl('airConditionerLAB/images/2405/vvip.png')" />
       </a>
     </section>
 
@@ -91,7 +91,7 @@
     </section>
 
     <!-- 品牌 -->
-    <section class="brand-box scroll" id="brand">
+    <section class="brand-box scroll" data-anchor="強檔大牌" id="brand">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=11225&aid=23717')" target="_blank">
         <img :src="$filters.siteUrl('airConditionerLAB/images/2502/S9.png')" alt="" />
@@ -108,7 +108,7 @@
     </section>
 
     <!-- 熱銷空調首選 -->
-    <section class="hot-group scroll" id="hot">
+    <section class="hot-group scroll" data-anchor="熱銷空調首選" id="hot">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/search.aspx?q=%E7%A9%BA%E8%AA%BF')" target="_blank">
           <img :src="$filters.siteUrl('airConditionerLAB/images/2502/S3.png')" alt="" />
@@ -119,7 +119,7 @@
     </section>
 
     <!-- 冷暖空調 -->
-    <section class="cold-group scroll" id="cold">
+    <section class="cold-group scroll" data-anchor="冷暖空調" id="cold">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=11225')" target="_blank">
           <img :src="$filters.siteUrl('airConditionerLAB/images/2502/S4.png')" alt="" />
@@ -130,7 +130,7 @@
     </section>
 
     <!-- 除濕機 -->
-    <section class="wet-group scroll" id="wet">
+    <section class="wet-group scroll" data-anchor="除濕機" id="wet">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=71323&aid=16881')" target="_blank">
           <img :src="$filters.siteUrl('airConditionerLAB/images/2502/S5.png')" alt="" />
@@ -141,7 +141,7 @@
     </section>
 
     <!-- 熊速配專區 -->
-    <section class="bear-box scroll" id="bear">
+    <section class="bear-box scroll" data-anchor="熊速配專區" id="bear">
       <h2 class="title">
         <img :src="$filters.siteUrl('airConditionerLAB/images/2303/pro_title.jpg')" />
       </h2>
@@ -246,7 +246,7 @@
       <div class="swiper-pagination"></div>
     </section>
 
-    <section class="product-box scroll" v-for="(floor, f) in floors[0]" :class="`tab${Number(f) + 1}-box`"
+    <section class="product-box scroll" v-for="(floor, f) in floors[0]" :data-anchor="`tab${Number(f) + 1}`" :class="`tab${Number(f) + 1}-box`"
       :id="`tab${Number(f) + 1}`">
       <h2 class="title single-url">
         <a :href="$filters.addGALink(floor[0].url)" target="_blank">
@@ -548,11 +548,18 @@ export default {
       isDis: true,
       today: new Date(),
       disUrl: '',
-      isSp:false
+      isSp:false,
+      isVip:false,
+      isVipOld:true
     }
   },
   mounted() {
     const { floors, menuDis, menuBear, today, menuHot, menuCold, menuWet } = this
+
+    if (today >= new Date('2025/02/06 00:00')) {
+      this.isVip = true;
+      this.isVipOld = false;
+    }
 
     //固定背景
     this.fixedBg('.background2', '.air-info')
@@ -581,7 +588,7 @@ export default {
 
     // 2/6修改現折券連結
     if (today >= new Date('2025/02/06')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&strPreView=y'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922'
     } else {
       this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
     }
