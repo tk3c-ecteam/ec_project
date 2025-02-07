@@ -61,7 +61,7 @@ const contents = defineModel("contents");
         <img :src="$filters.siteUrl(contents[0].logoImage)" />
       </span>
       <!-- 品牌標題 文字版 -->
-      <b class="f:2em f:bold" v-if="contents[0].logoText != undefined">{{
+      <b class="f:2em f:2.5em@<992 f:1.2em@<576 f:bold" v-if="contents[0].logoText != undefined">{{
         contents[0].logoText
       }}</b>
     </div>
@@ -72,10 +72,10 @@ const contents = defineModel("contents");
     </p>
 
     <!-- 導航區 -->
-    <nav class="w:full top:45px z:99 p:1% p:3%@<992 p:4%@<576 box:border-box"
+    <nav v-if="contents[0].floorImg != undefined" class="w:full top:45px z:99 p:0.5%|1%|0.5% p:3%|3%|2%@<992 p:4%|4%|2%@<576 box:border-box"
     >
       <swiper
-        class="max-w:992px min-w:50% w:auto@<992"
+        class="max-w:1100px min-w:50% w:auto@<992"
         :loop="false"
         :slidesPerView="'auto'"
         :space-between="10"
@@ -83,9 +83,9 @@ const contents = defineModel("contents");
       >
         <swiper-slide v-for="(floor, f) in contents[0].floorImg" class="flex-basis:fit-content">
           <a :href="floor.href" :class="[statusNav == f ? 'active' : '']">
-            <span class="f:1.5em f:2em@<992 f:1.2em@<576 f:2em@>2000">{{
-              floor.text
-            }}</span>
+            <span class="f:1.2em f:2em@<992 f:1.2em@<576 f:1.5em@>2000">
+              {{ floor.text }} <i class="f:0.9rem">▼</i>
+            </span>
           </a>
         </swiper-slide>
       </swiper>
@@ -138,8 +138,7 @@ const contents = defineModel("contents");
 
   nav {
   .swiper-wrapper {
-    padding-bottom: 10px;
-    box-sizing: border-box;
+    justify-content: center;
   }
   &.fixed {
     position: fixed;
@@ -147,6 +146,13 @@ const contents = defineModel("contents");
 }
 
 /* 手機版 */
+@include media-query("mobile", "992px") {
+  nav {
+    .swiper-wrapper {
+      justify-content: left;
+    }
+  }
+}
 @include media-query("mobile", "576px") {
   .fix_btn {
     display: block;

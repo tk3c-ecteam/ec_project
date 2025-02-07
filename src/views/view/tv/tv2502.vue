@@ -63,7 +63,7 @@
     </section>
 
     <!-- 福利 -->
-    <section class="sale-group scroll" data-title="品牌福利出清" id="sale">
+    <section class="sale-group scroll" titles="品牌福利出清" id="sale">
       <h2 class="title">
         <img :src="$filters.siteUrl('2020TVforever/images/2502/S03.png')" />
       </h2>
@@ -101,7 +101,7 @@
     </section>
 
     <!-- 品牌 -->
-    <section class="brand-group scroll" data-title="人氣大牌" id="brand">
+    <section class="brand-group scroll" titles="人氣大牌" id="brand">
       <h2 class="title">
        <img :src="$filters.siteUrl('2020TVforever/images/2502/S05.png')" />
       </h2>
@@ -299,7 +299,8 @@ export default {
       today: new Date(),
       disUrl: '',
       moreImage:'',
-      isHome:true
+      isHome:true,
+      titles:[]
     }
   },
   mounted() {
