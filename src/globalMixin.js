@@ -7,8 +7,14 @@ export const globalMixin = {
       products: [],
       product2: [],
       percent: 0,
-      tabS: null
+      tabS: null,
+      asides: []
     }
+  },
+  beforeUpdate() {
+    this.asides = [];
+    //取得自訂樓層標題
+    this.getFloorTitle('section.scroll');
   },
   methods: {
     /*加入meta標籤
@@ -211,6 +217,27 @@ export const globalMixin = {
           return Promise.reject(error);
         }
       );
+    },
+    //取得樓層標題(element=區域)
+    getFloorTitle(element) {
+      document.querySelectorAll(element).forEach((el, t) => {
+        let title = el.getAttribute('titles'),
+          getFloorID = el.getAttribute('id'),
+          getMenuId = el.querySelector('.title').getAttribute('id'),
+          id = '';
+
+        //取得id 作錨點
+        if (getFloorID) id = getFloorID;
+        if (getMenuId) id = getMenuId;
+
+        if (title) {
+          this.asides.push(
+            {
+              "text": title,
+              "href": '#' + id
+            })
+        }
+      });
     }
   }
 }
