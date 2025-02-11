@@ -33,7 +33,7 @@ export default {
         { image: '2025Valentine/images/bank_05.png' },
         { image: '2025Valentine/images/bank_06.png' },
       ],
-      asides: [
+     asides: [
         { text: '現折券', href: '#sale' },
         { text: '信用卡專屬優惠', href: '#card' },
         { text: '銀行優惠', href: '#bank' },
@@ -162,7 +162,7 @@ export default {
     </section>
 
     <!-- 現折券 -->
-    <section class="sale-box scroll" data-anchor="現折券" id="sale">
+    <section class="sale-box scroll" id="sale">
       <h2 class="title">
         <a :href="
             $filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922')
@@ -182,7 +182,7 @@ export default {
     </section>
 
     <!-- 信用卡專屬優惠 -->
-    <section class="card-group scroll" data-anchor="信用卡專屬優惠" id="card">
+    <section class="card-group scroll" id="card">
       <h2 class="title">
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/bank_ec/index.html')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S3_bar.png')" />
@@ -314,7 +314,7 @@ export default {
     </section>
 
     <!-- 銀行 -->
-    <section class="bank-group scroll" data-anchor="銀行" id="bank">
+    <section class="bank-group scroll" id="bank">
       <h2 class="title">
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S25_bar.png')" />
@@ -356,7 +356,7 @@ export default {
     </section>
 
     <!-- 環保商品 -->
-    <section class="green-box scroll" data-anchor="環保商品" id="green">
+    <section class="green-box scroll" id="green">
       <h2 class="title">
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/green_subsidy/index.html')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S4_bar.png')" />
@@ -391,7 +391,7 @@ export default {
     <ValentFloor></ValentFloor>
 
     <!-- k幣 -->
-    <section class="bonus-group scroll" data-anchor="bonus" id="bonus">
+    <section class="bonus-group scroll" id="bonus">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/other_store.aspx')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S22_bar.png')" />

@@ -75,6 +75,8 @@ declare module 'vue' {
     Msi: typeof import('./views/view/Msi.vue')['default']
     Newyear25: typeof import('./views/view/Newyear25.vue')['default']
     Night: typeof import('./views/view/common/night.vue')['default']
+    NS: typeof import('./views/view/store/NS.vue')['default']
+    PX: typeof import('./views/view/PX.vue')['default']
     Razer: typeof import('./views/view/store/Razer.vue')['default']
     RightAside: typeof import('./components/RightAside.vue')['default']
     Rock: typeof import('./views/view/store/Rock.vue')['default']

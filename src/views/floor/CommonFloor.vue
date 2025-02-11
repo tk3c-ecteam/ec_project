@@ -12,7 +12,7 @@ import listF from '@/views/layout/listF.vue'
 export default {
   props: ['floors', 'menu', 'singleImage','moreImage','isSwiper'],
   mounted() {
-    this.getFloorData(this.menu)
+    this.getFloorData(this.menu);
   }
 }
 </script>

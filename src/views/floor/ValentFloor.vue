@@ -134,9 +134,7 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
-       this.getFloorData(this.menu)
-    }, 20);
+    this.getFloorData(this.menu)
    
   },
 }
@@ -148,7 +146,6 @@ export default {
     v-for="(floor, f) in floorImg"
     :key="f"
     :class="floor.class ? floor.class : ''"
-    :data-anchor="[floor.class == 'print-box' ? 'print' : `pro${menu[f]}`]"
   >
     <h2 class="title" :id="[floor.class == 'print-box' ? 'print' : `pro${menu[f]}`]">
       <a :href="$filters.addGALink(floor.url)" target="_blank">

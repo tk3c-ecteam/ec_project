@@ -137,7 +137,7 @@ export default {
   </div>
 
   <!-- 右側選單 + 手機板 -->
-   <RightAside :asides="floorImg" :type="'mobile'"></RightAside>
+   <RightAside :asides="asides" :type="'mobile'"></RightAside>
 </template>
 
 <style lang="scss">

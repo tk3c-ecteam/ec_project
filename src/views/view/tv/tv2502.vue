@@ -41,7 +41,7 @@
     </section>
 
     <!-- 房東精選 -->
-    <section class="home-box" v-show="isHome">
+    <section class="home-box scroll" titles="房東專區" id="home" v-show="isHome">
       <h2 class="title">
         <img :src="$filters.siteUrl('2020TVforever/images/2502/S14.png')" />
       </h2>
@@ -81,7 +81,7 @@
     </section>
 
     <!-- 夜間下殺 -->
-    <section class="night-box" v-show="isNight && products[menuNight[n]] != ''">
+    <section class="night-box"  v-show="isNight && products[menuNight[n]] != ''">
       <h2 class="title">
         <img :src="$filters.siteUrl('2020TVforever/images/2502/S04.png')" />
       </h2>
@@ -274,18 +274,6 @@ export default {
           moreUrl: 'https://www.tk3c.com/dic1.aspx?cid=828&aid=331',
           image: '2020TVforever/images/2502/S13.png'
         }
-      ],
-      asides: [
-        { text: '品牌福利出清', href: '#sale' },
-        { text: '人氣大牌', href: '#brand' },
-        { text: '必BUY熱銷排行', href: '#pro2751' },
-        { text: 'OLED電視最大賞', href: '#pro5613' },
-        { text: '大視野加倍過癮', href: '#pro5198' },
-        { text: 'QLED極致炫彩', href: '#pro5199' },
-        { text: '小資族激省攻略', href: '#pro4846' },
-        { text: '投影氣氛嗨翻天', href: '#pro5200' },
-        { text: '聲臨其境更刺激', href: '#pro5201' },
-        { text: '超給力助攻周邊', href: '#pro5202' }
       ],
       menuDis: 4328, //現折 清單編號
       menuSale: [5977, 4465, 4466, 4463, 4467], // 出清 陳列編號

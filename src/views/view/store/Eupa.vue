@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted,onBeforeMount } from 'vue';
-const contents = [
+var contents = [
         {
           logoImage: "EUPA/images/logo.png",
           floorImg: [
@@ -50,18 +50,11 @@ const contents = [
           ],
         }
       ];
-      let menus = [7759,7675,7676,7677,7678,7760];
+      var menus = [7759,7675,7676,7677,7678,7760];
       const moreImage = "EUPA/images/more.png";
 
       menus.splice(0,1);
-
-      onMounted(() => {
-         const floors = document.querySelectorAll('.floor')[0],
-        floorLi = floors.querySelectorAll('.bg01 li');
-        if(floorLi.length <= 0) {
-          contents[0].floorImg.splice(0,1);
-        }
-      });
+      contents[0].floorImg.splice(0,1);
 </script>
 
 <template>
