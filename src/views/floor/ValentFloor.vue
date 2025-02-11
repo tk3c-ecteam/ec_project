@@ -146,6 +146,7 @@ export default {
     v-for="(floor, f) in floorImg"
     :key="f"
     :class="floor.class ? floor.class : ''"
+    :titles="[products[menu[f]] != undefined && products[menu[f]].MenuTitle != null ? products[menu[f]].MenuTitle.trim() : '印表機']"
   >
     <h2 class="title" :id="[floor.class == 'print-box' ? 'print' : `pro${menu[f]}`]">
       <a :href="$filters.addGALink(floor.url)" target="_blank">

@@ -33,30 +33,6 @@ export default {
         { image: '2025Valentine/images/bank_05.png' },
         { image: '2025Valentine/images/bank_06.png' },
       ],
-     asides: [
-        { text: '現折券', href: '#sale' },
-        { text: '信用卡專屬優惠', href: '#card' },
-        { text: '銀行優惠', href: '#bank' },
-        { text: '情人節送禮攻略', href: '#gift' },
-        { text: '環保商品', href: '#green' },
-         { text: '筆電', href: '#pro7710' },
-          { text: '桌機/螢幕', href: '#pro7711' },
-        { text: '電腦周邊', href: '#pro7712' },
-        { text: '印表機', href: '#print' },
-        { text: '冰箱/洗衣機', href: '#pro7702' },
-        { text: '電視', href: '#pro7703' },
-        { text: '電競', href: '#pro7704' },
-        { text: '季節家電', href: '#pro7705' },
-        { text: '廚房小家電', href: '#pro7706' },
-        { text: '空調', href: '#pro7707' },
-        { text: '清淨除塵', href: '#pro7708' },
-         { text: '美容照明', href: '#pro7709' },
-        { text: 'Apple', href: '#pro7720' },
-        { text: 'Android', href: '#pro7721' },
-        { text: '秋冬除濕', href: '#pro7713' },
-        { text: '平板/穿戴', href: '#pro7766' },
-        { text: '燦坤K幣0元購', href: '#bonus' }
-      ],
       bonus:[
         {
           image: '2025Valentine/images/S22_1.png',
@@ -182,7 +158,7 @@ export default {
     </section>
 
     <!-- 信用卡專屬優惠 -->
-    <section class="card-group scroll" id="card">
+    <section class="card-group scroll" titles="信用卡優惠" id="card">
       <h2 class="title">
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/bank_ec/index.html')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S3_bar.png')" />
@@ -314,7 +290,7 @@ export default {
     </section>
 
     <!-- 銀行 -->
-    <section class="bank-group scroll" id="bank">
+    <section class="bank-group scroll" titles="銀行優惠" id="bank">
       <h2 class="title">
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S25_bar.png')" />
@@ -345,7 +321,7 @@ export default {
     </section>
 
     <!-- 情人節送禮攻略 -->
-    <section class="gift-group scroll" id="gift">
+    <section class="gift-group scroll" titles="情人節送禮攻略" id="gift">
       <h2 class="title">
        <img :src="$filters.siteUrl('2025Valentine/images/special_title.png')" />
       </h2>
@@ -356,7 +332,7 @@ export default {
     </section>
 
     <!-- 環保商品 -->
-    <section class="green-box scroll" id="green">
+    <section class="green-box scroll" titles="環保商品" id="green">
       <h2 class="title">
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/green_subsidy/index.html')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S4_bar.png')" />
@@ -391,7 +367,7 @@ export default {
     <ValentFloor></ValentFloor>
 
     <!-- k幣 -->
-    <section class="bonus-group scroll" id="bonus">
+    <section class="bonus-group scroll" titles="燦坤K幣0元購" id="bonus">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/other_store.aspx')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S22_bar.png')" />

@@ -23,7 +23,7 @@
     <div class="background2"></div>
 
     <!-- 尊榮安裝 -->
-    <section class="air-info scroll" data-anchor="尊榮安裝">
+    <section class="air-info scroll" titles="VVIP尊榮安裝" id="vvip">
       <a id="vvip" :href="
           $filters.addGALink('https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2')
         " target="_blank">
@@ -91,7 +91,7 @@
     </section>
 
     <!-- 品牌 -->
-    <section class="brand-box scroll" data-anchor="強檔大牌" id="brand">
+    <section class="brand-box scroll" titles="品牌大放送" id="brand">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=11225&aid=23717')" target="_blank">
         <img :src="$filters.siteUrl('airConditionerLAB/images/2502/S9.png')" alt="" />
@@ -108,7 +108,7 @@
     </section>
 
     <!-- 熱銷空調首選 -->
-    <section class="hot-group scroll" data-anchor="熱銷空調首選" id="hot">
+    <section class="hot-group scroll" titles="熱銷空調首選" id="hot">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/search.aspx?q=%E7%A9%BA%E8%AA%BF')" target="_blank">
           <img :src="$filters.siteUrl('airConditionerLAB/images/2502/S3.png')" alt="" />
@@ -119,7 +119,7 @@
     </section>
 
     <!-- 冷暖空調 -->
-    <section class="cold-group scroll" data-anchor="冷暖空調" id="cold">
+    <section class="cold-group scroll" titles="冷暖空調" id="cold">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=11225')" target="_blank">
           <img :src="$filters.siteUrl('airConditionerLAB/images/2502/S4.png')" alt="" />
@@ -130,7 +130,7 @@
     </section>
 
     <!-- 除濕機 -->
-    <section class="wet-group scroll" data-anchor="除濕機" id="wet">
+    <section class="wet-group scroll" titles="除濕機" id="wet">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=71323&aid=16881')" target="_blank">
           <img :src="$filters.siteUrl('airConditionerLAB/images/2502/S5.png')" alt="" />
@@ -141,7 +141,7 @@
     </section>
 
     <!-- 熊速配專區 -->
-    <section class="bear-box scroll" data-anchor="熊速配專區" id="bear">
+    <section class="bear-box scroll" titles="熊速配專區" id="bear">
       <h2 class="title">
         <img :src="$filters.siteUrl('airConditionerLAB/images/2303/pro_title.jpg')" />
       </h2>
@@ -174,7 +174,7 @@
       </ul>
     </section>
 
-    <section class="info-box">
+    <section class="info-box scroll" titles="場勘服務" id="info">
       <div class="content">
         <ul class="tab">
           <swiper id="infoTab" :space-between="10" :breakpoints="{
@@ -246,7 +246,7 @@
       <div class="swiper-pagination"></div>
     </section>
 
-    <section class="product-box scroll" v-for="(floor, f) in floors[0]" :data-anchor="`tab${Number(f) + 1}`" :class="`tab${Number(f) + 1}-box`"
+    <section class="product-box scroll" v-for="(floor, f) in floors[0]" :titles="floor[0].text" :class="`tab${Number(f) + 1}-box`"
       :id="`tab${Number(f) + 1}`">
       <h2 class="title single-url">
         <a :href="$filters.addGALink(floor[0].url)" target="_blank">
@@ -269,7 +269,7 @@
     </section>
 
     <!-- 影片 -->
-    <AirVideo></AirVideo>
+    <AirVideo class="scroll" titles="影片介紹" id="video"></AirVideo>
   </div>
 
   <!-- 左側選單+手機版 -->
@@ -406,6 +406,7 @@ export default {
         {
           0: [
             {
+              text:'分離式空調',
               title: 'airConditionerLAB/images/2502/S6.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4704&strPreView=y',
               menu: [4288, 4289, 4290, 4291],
@@ -432,6 +433,7 @@ export default {
           ],
           1: [
             {
+              text:'窗型空調',
               title: 'airConditionerLAB/images/2502/S7.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4702&strPreView=y',
               menu: [4292, 4293, 4294, 4295],
@@ -453,6 +455,7 @@ export default {
           ],
           2: [
             {
+              text:'移動式空調',
               menu: 4130,
               title: 'airConditionerLAB/images/2502/S8.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=13580&strPreView=y'
@@ -497,44 +500,6 @@ export default {
               mobile: 'airConditionerLAB/images/2402/info5_m.png'
             }
           ]
-        }
-      ],
-      asides:[
-         {
-          text: 'VVIP尊榮安裝',
-          href:'#vvip'
-        },
-        {
-          text: '強檔大牌',
-          href:'#brand'
-        },
-        {
-          text: '熱銷空調首選',
-          href:'#hot'
-        },
-        {
-          text: '冷暖空調',
-          href:'#cold'
-        },
-        {
-          text: '除濕機',
-          href:'#wet'
-        },
-        {
-          text: '熊速配專區',
-          href:'#bear'
-        },
-        {
-          text: '分離式空調',
-          href:'#tab1'
-        },
-        {
-          text: '窗型空調',
-          href:'#tab2'
-        },
-        {
-          text: '移動式冷氣',
-          href:'#tab3'
         }
       ],
       menuDis: 5515, //現折 清單編號

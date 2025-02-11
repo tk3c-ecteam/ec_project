@@ -222,13 +222,11 @@ export const globalMixin = {
     getFloorTitle(element) {
       document.querySelectorAll(element).forEach((el, t) => {
         let title = el.getAttribute('titles'),
-          getFloorID = el.getAttribute('id'),
-          getMenuId = el.querySelector('.title').getAttribute('id'),
           id = '';
 
         //取得id 作錨點
-        if (getFloorID) id = getFloorID;
-        if (getMenuId) id = getMenuId;
+        if (el.getAttribute('id')) id = el.getAttribute('id');
+        if (el.querySelector('.title') && el.querySelector('.title').getAttribute('id')) id = el.querySelector('.title').getAttribute('id');
 
         if (title) {
           this.asides.push(

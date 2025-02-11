@@ -35,10 +35,7 @@ const goSlideNew = (id) => {
 </script>
 
 <script>
-import { globalMixin } from '../../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       tabs: [
@@ -174,44 +171,6 @@ export default {
           image: 'green_subsidy/images/new/S-btn11.png'
         }
       ],
-      asides:[
-        {
-          text:'環保集點專區',
-          href:"#green"
-        },
-        {
-          text:'印表機',
-          href:'#printer'
-        },
-        {
-          text:'筆電',
-          href:'#pro7576'
-        },
-        {
-          text:'冰箱',
-          href:'#pro4348'
-        },
-        {
-          text:'洗衣機',
-          href:'#pro4349'
-        },
-        {
-          text:'分離式空調',
-          href:'#pro4350'
-        },
-        {
-          text:'窗型空調',
-          href:'#pro4352'
-        },
-        {
-          text:'除濕機',
-          href:'#pro4353'
-        },
-        {
-          text:'節能涼風扇',
-          href:'#pro4369'
-        }
-      ],
       menu: [7576, 4348, 4349, 4350, 4352, 4353, 4369],
       menuGreen: [4344, 4345, 4346, 4347, 4390],
       menuPrint: [7394, 7395],
@@ -248,9 +207,6 @@ export default {
 
     //撈取印表機樓層
     this.getFloorData(this.menuPrint)
-
-    //剩下樓層
-    this.getFloorData(menu)
 
     // 每週六日顯示
     if (today.getDay() == 6 || today.getDay() == 0) {
@@ -378,7 +334,7 @@ export default {
     </section>
 
     <!-- 本週環保小尖兵 -->
-    <section class="special-group scroll" id="special">
+    <section class="special-group scroll" titles="本週環保小尖兵" id="special">
       <h2 class="title">
         <img :src="$filters.siteUrl('green_subsidy/images/S1_a.png')" alt="本週環保小尖兵" />
       </h2>
@@ -388,7 +344,7 @@ export default {
     </section>
 
     <!-- 綠點 -->
-    <section class="green-box scroll" id="green">
+    <section class="green-box scroll" titles="環保集點專區" id="green">
       <h2 class="title">
         <img :src="$filters.siteUrl('green_subsidy/images/green_title.png')" alt="" />
       </h2>
@@ -433,7 +389,7 @@ export default {
     </section>
 
     <!-- 政府補助 -->
-    <section class="sub-box" id="sub">
+    <section class="sub-box scroll" titles="政府補助" id="sub">
       <img class="sub-bg" :src="$filters.siteUrl('green_subsidy/images/sub_bg_2406.png')" alt="" />
       <ul>
         <li class="alert1">
@@ -457,7 +413,7 @@ export default {
     </section>
 
     <!-- 印表機 -->
-    <section class="printer-box scroll" id="printer">
+    <section class="printer-box scroll" titles="印表機" id="printer">
       <h2 class="title">
         <img :src="$filters.siteUrl('green_subsidy/images/S2_a.png')" alt="" />
       </h2>

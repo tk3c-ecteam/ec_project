@@ -76,52 +76,6 @@ export default {
           image: 'electric_heater/images/2502/C4.png'
         }
       ],
-      asides: [
-         {
-          text: '速速GO',
-          href: '#go'
-        },
-        {
-          text: '強檔推薦',
-          href: '#special'
-        },
-        {
-          text: '葉片式電暖器',
-          href: '#pro2473'
-        },
-        {
-          text: '對流/陶瓷式電暖器',
-          href: '#pro2474'
-        },
-        {
-          text: '碳素/鹵素燈',
-          href: '#pro2475'
-        },
-        {
-          text: '溫熱便座',
-          href: '#pro7639'
-        },
-        {
-          text: '個人保暖',
-          href: '#pro2476'
-        },
-        {
-          text: '冷暖/除溼',
-          href: '#pro2477'
-        },
-        {
-          text: '烘被/烘衣/乾鞋機',
-          href: '#pro2478'
-        },
-        {
-          text: '循環對流',
-          href: '#pro3741'
-        },
-        {
-          text: '健康保健',
-          href: '#pro3742'
-        }
-      ],
       menus: [2473, 2474, 2475, 7639, 2476, 2477, 2478, 3741, 3742],
       menuSp: 2472,
       menuGo:7690,
@@ -210,7 +164,7 @@ export default {
     </section>
 
     <!-- 速速go -->
-    <section class="go-box scroll" id="go">
+    <section class="go-box scroll" titles="速速go" id="go">
       <h2 class="title">
         <img :src="$filters.siteUrl('wet/images/tk3cgo_bar.png')" />
       </h2>
@@ -224,7 +178,7 @@ export default {
     </section>
 
     <!-- 強檔推薦 保暖必Buy -->
-    <section class="special-box scroll" id="special">
+    <section class="special-box scroll" titles="強檔推薦" id="special">
       <h2 class="title">
         <img :src="$filters.siteUrl('electric_heater/images/2502/S1.png')"/>
       </h2>
