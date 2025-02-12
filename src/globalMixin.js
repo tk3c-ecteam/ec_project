@@ -8,13 +8,22 @@ export const globalMixin = {
       product2: [],
       percent: 0,
       tabS: null,
-      asides: []
+      asides: [],
+      timer: null
     }
   },
-  beforeUpdate() {
+  mounted() {
     this.asides = [];
-    //取得自訂樓層標題
-    this.getFloorTitle('section.scroll');
+    //每3秒執行一次
+    this.timer = setInterval(() => {
+      //取得自訂樓層標題
+      this.getFloorTitle('section.scroll');
+    }, 3000);
+
+    //3秒後清除
+    setTimeout(() => {
+      clearInterval(this.timer);
+    }, 3000);
   },
   methods: {
     /*加入meta標籤

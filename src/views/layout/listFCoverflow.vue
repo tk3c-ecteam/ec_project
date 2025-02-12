@@ -1,9 +1,12 @@
 <script>
-import { globalMixin } from '../../globalMixin.js'
 import { EffectCoverflow } from "swiper/modules";
 export default {
-  mixins: [globalMixin],
-  props: ['pro']
+  props: ['pro','name'],
+  data() {
+    return {
+      EffectCoverflow
+    }
+  }
 }
 </script>
 
@@ -25,6 +28,17 @@ export default {
         :loopAdditionalSlides="1"
         :slidesPerView="'auto'"
         :hideOnClick="true"
+        :breakpoints="{
+          0:{
+            slidesPerView:1
+          },
+          600:{
+            slidesPerView:3
+          },
+          992:{
+            slidesPerView:5
+          }
+        }"
         :coverflowEffect="{
           rotate:25,
            stretch: 0,

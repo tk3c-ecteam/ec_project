@@ -34,7 +34,7 @@
     },
     mounted() {
       const { now,specials } = this;
-      if (now >= new Date('2025/02/10')) {
+      if (now >= new Date('2025/02/13')) {
         this.isOpen = true;
         this.isOff = false;
       }

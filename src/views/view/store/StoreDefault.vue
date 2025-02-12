@@ -23,7 +23,7 @@ const contents = defineModel("contents");
          }
 
          document.querySelectorAll(".floor").forEach((el, i) => {
-           let top = el.getBoundingClientRect().top + scrollTop,
+           let top = el.getBoundingClientRect().top + scrollTop -200,
              bottom = top + window.innerHeight;
            if (scrollTop >= top && scrollTop < bottom) {
             this.statusNav = i
@@ -51,12 +51,12 @@ const contents = defineModel("contents");
 <template>
   <div id="store-container" v-cloak>
     <div
-      class="logo rel p:4%|0|1.5% p:7%|0|2%@<992 p:16vw|0|4vw@<576 box:border-box"
+      class="logo rel p:45px|0|1.5% p:45px|0|2%@<992 p:45px|0|1.5rem@<576 box:border-box"
     >
       <!-- 品牌標題 圖片版 -->
       <span
         v-if="contents[0].logoImage != undefined"
-        class="logo-title w:15% w:35%@<992 w:50%@<576 h:auto block m:auto"
+        class="logo-title w:15% w:35%@<992 w:50%@<576 h:auto block pt:2% pt:2.5%@<992 pt:8%@<576 m:auto"
       >
         <img :src="$filters.siteUrl(contents[0].logoImage)" />
       </span>
@@ -72,7 +72,7 @@ const contents = defineModel("contents");
     </p>
 
     <!-- 導航區 -->
-    <nav v-if="contents[0].floorImg != undefined" class="w:full top:45px z:99 p:0.5%|1%|0.5% p:3%|3%|2%@<992 p:4%|4%|2%@<576 box:border-box"
+    <nav v-if="contents[0].floorImg != undefined" class="w:full top:45px z:99 p:0.5%|1%|0.5% p:2%|3%|2%@<992 p:2%|4%|2%@<576 box:border-box"
     >
       <swiper
         class="max-w:1100px min-w:50% w:auto@<992"
@@ -133,12 +133,17 @@ const contents = defineModel("contents");
       position: relative;
       margin: 0 auto 0;
       padding-bottom: 40%;
+      .swiper-pagination
+        {
+          bottom: 0 !important;
+        }
     }
   }
 
   nav {
   .swiper-wrapper {
     justify-content: center;
+    padding-bottom: 0;
   }
   &.fixed {
     position: fixed;
