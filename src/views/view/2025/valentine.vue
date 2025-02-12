@@ -138,7 +138,7 @@ export default {
     </section>
 
     <!-- 現折券 -->
-    <section class="sale-box scroll" id="sale">
+    <section class="sale-box scroll" titles="最高現折999" id="sale">
       <h2 class="title">
         <a :href="
             $filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922')

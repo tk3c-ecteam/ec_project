@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted,onBeforeMount } from 'vue';
+import { onMounted } from 'vue';
 var contents = [
         {
           logoImage: "EUPA/images/logo.png",
@@ -54,7 +54,8 @@ var contents = [
       const moreImage = "EUPA/images/more.png";
 
       menus.splice(0,1);
-      contents[0].floorImg.splice(0,1);
+          contents[0].floorImg.splice(0,1);
+     
 </script>
 
 <template>

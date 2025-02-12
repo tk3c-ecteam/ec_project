@@ -2,7 +2,7 @@
   export default {
     data() {
       const today = new Date();
-       const future = new Date('2025/02/09');
+       const future = new Date('2025/02/13');
       return{
         time:future - today,
         specials: [
@@ -19,10 +19,10 @@
         { image: "PXDAY/images/g5.png", "url": "https://www.tk3c.com/pt.aspx?pid=245688-240929-30" },
       ],
       floors: [
-        { "image": 'PXDAY/images/S03.png',"text":"電視/螢幕好相伴","href":"#pro7797" },
-        { "image": 'PXDAY/images/S04_2.png',"text":"筆電行動伴侶","href":"#pro7798" },
-        { "image": 'PXDAY/images/S05.png',"text":"手機/平板神隊友","href":"#pro7799" },
-        { "image": 'PXDAY/images/S06.png',"text":"家電好搭檔","href":"#pro7800" },
+        { "image": 'PXDAY/images/S03.png' },
+        { "image": 'PXDAY/images/S04_2.png'},
+        { "image": 'PXDAY/images/S05.png' },
+        { "image": 'PXDAY/images/S06.png' },
       ],
        menu: [7797,7798,7799,7800],
        menuSP:[7801,7802,7803,7804],
@@ -34,7 +34,7 @@
     },
     mounted() {
       const { now,specials } = this;
-      if (now >= new Date('2025/02/09')) {
+      if (now >= new Date('2025/02/10')) {
         this.isOpen = true;
         this.isOff = false;
       }
@@ -62,7 +62,7 @@
 
 <template>
   <div id="px-container">
-    <div class="background">
+    <div class="background" v-if="isOpen">
       <h2 class="title">
          <img :src="$filters.siteUrl('PXDAY/images/tt.png')">
       </h2>
@@ -91,7 +91,7 @@
 
     <div v-show="isOpen">
       <!-- 限量 -->
-      <section class="special-box">
+      <section class="special-box scroll" titles="限量搶手速" id="special">
         <h2 class="title">
           <img :src="$filters.siteUrl('PXDAY/images/S01.png')" />
         </h2>
@@ -109,7 +109,7 @@
       </section>
 
       <!-- 限時大禮包 -->
-      <section class="gift-box">
+      <section class="gift-box scroll" titles="限時大禮包" id="gift">
         <h2 class="title">
           <img :src="$filters.siteUrl('PXDAY/images/S02.png')" />
         </h2>
@@ -131,7 +131,7 @@
   </div>
 
   <!-- 右側選單+手機板 -->
-  <RightAside v-if="isOpen" :asides="floors" :type="'mobile'"></RightAside>
+  <RightAside v-if="isOpen" :asides="asides" :type="'mobile'"></RightAside>
 </template>
 
 <style lang="scss">
@@ -323,6 +323,7 @@ body {
 }
 @include media-query('mobile', '576px') {
  .time-box {
+    margin: 45px auto 1%;
   b {
     display: block;
     font-size: 1.5em;
