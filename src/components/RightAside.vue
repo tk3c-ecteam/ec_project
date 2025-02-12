@@ -1,8 +1,13 @@
 <script setup>
+   //選單項目(各樓層的標題)
    const asides = defineModel('asides', {
    type: Object
   })
 
+   /*手機版選單類型
+   * type == 'mobile' -> 置底選單
+   * type == 'mobile2' -> 置頂選單
+   */
    const type = defineModel('type', {
    type: String
   })

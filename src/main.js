@@ -6,7 +6,6 @@ import 'animate.css'
 import { Swiper, SwiperSlide } from "swiper/vue";
 
 import App from '@/AppComponent.vue' //主頁面內容
-import Mobile from '@/views/MobileComponent.vue' //手機版
 
 //倒數計時
 import VueCountdown from '@chenfengyuan/vue-countdown';
@@ -15,8 +14,11 @@ import VueCountdown from '@chenfengyuan/vue-countdown';
 import { globalMixin } from './globalMixin.js'
 
 const app = createApp(App)
-const mobile = createApp(Mobile)
 
+/* 在component template上使用: 
+*    1. $filters.siteUrl('圖片路徑')
+*    2. $filters.addGALink('連結')
+*/
 const config = {
   //路徑
   //events.cdn-tkec.tw
@@ -48,12 +50,6 @@ app.config.globalProperties.$filters = config
 
 // id:app 區域有存在再綁到vue
 if (document.querySelectorAll('#app').length > 0) app.mount('#app')
-
-//id:mobile  區塊有存在再綁定到vue
-if (document.querySelectorAll('#mobile').length > 0) mobile.mount('#mobile')
-
-//手機版選單項目
-//import './assets/js/mobileText.js'
 
 //所有圖片加入 alt
 document.querySelectorAll('#app img').forEach(el => {
