@@ -5,9 +5,9 @@
 ## 架構
 
 ```sh
-vite.config.ts 匯出設定(摸組化輸出的檔案名稱)
+vite.config.js 匯出設定(摸組化輸出的檔案名稱)
 
-src/main.ts 主要設定
+src/main.js 主要設定
 src/views/view 各頁面撰寫區
 src/views/layout 共用版型(商品樓層與手機版選單)
 src/views/floor 樓層區
@@ -16,18 +16,19 @@ src/views/floor 樓層區
 src/views/components 常用功能
          - AllEvent.vue 全站活動
          - Tab.vue/TabContent.vue 頁籤
+         - LeftAside.vue 左側選單+手機版
+         - RightAside.vue 右側選單+手機版
 
 src/AppComponent.vue 以這個vue來引入各頁面
 
 src/globalMixin.js 撈取樓層商品api
 
-src/assets/js/mobileText.js 手機版選單項目撈取
 ```
 
 ## 此專案安裝步驟
 
 ```sh
-1. git clone檔案下來
+1. git clone檔案下來(或直接按下載按鈕下載)
 2. 對此專案資料夾輸入 npm init 後 npm install 進行安裝npm 套件安裝
 ```
 
