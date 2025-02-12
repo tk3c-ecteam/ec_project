@@ -28,6 +28,12 @@ src/globalMixin.js 撈取樓層商品api
 ## 此專案安裝步驟
 
 ```sh
+環境建置:
+*安裝node.js 可直接從官方下載(需要管理員權限進行安裝)，若沒有管理員權限可下載
+nvs進行安裝(步驟如此連結:https://smlpoints.com/guide-nvs-switch-node-js-manager-without-admin-rights-windows-git-bash-cmd.html)
+*安裝git bash(官網)
+*安裝 git sourcetree(介面化檔案管理) 教學-> https://ithelp.ithome.com.tw/articles/10206852
+
 1. git clone檔案下來(或直接按下載按鈕下載)
 2. 對此專案資料夾輸入 npm init 後 npm install 進行安裝npm 套件安裝
 ```
