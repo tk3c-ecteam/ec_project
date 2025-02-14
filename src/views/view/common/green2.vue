@@ -190,10 +190,10 @@ export default {
   mounted() {
     const { menu, tabs, menuSp, today } = this
 
-    //綠色消費趣 2/4-3/2顯示
-   /* if (today >= new Date('2025/02/04') && today < new Date('2025/03/03')) {
+    //綠色消費趣 顯示
+   if (today >= new Date('2025/02/17') && today < new Date('2025/03/17')) {
       this.isGreenSale = true;
-    }*/
+    }
 
     this.newTabs = this.newTab2;
     this.menuNew = this.menuNew2;
@@ -270,8 +270,10 @@ export default {
 
     <!-- 綠色消費趣活動 -->
     <section v-show="isGreenSale">
-      <img class="pc" :src="$filters.siteUrl('green_subsidy/images/new/bn252432.jpg')" />
-      <img class="mobile" :src="$filters.siteUrl('green_subsidy/images/new/bn252432M.jpg')" />
+      <a :href="$filters.addGALink('https://www.greenpoint.org.tw/GPHome/')" target="_blank">
+        <img class="pc" :src="$filters.siteUrl('green_subsidy/images/new/bn25217.jpg')" />
+      <img class="mobile" :src="$filters.siteUrl('green_subsidy/images/new/bn25217M.jpg')" />
+      </a>
     </section>
 
     <!-- 環保3C家電產品 週末12%回饋 -->

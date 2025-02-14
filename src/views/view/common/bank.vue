@@ -69,7 +69,7 @@
     </section>
 
     <!-- 千元刷卡 -->
-    <section class="pro1-box scroll" :data-anchor="asides[0].text" id="pro1">
+    <section class="pro1-box scroll" titles="仟元刷卡現折好物" id="pro1">
       <h2 class="title">
         <img :src="$filters.siteUrl('bank_ec/images/S1.png')" />
       </h2>
@@ -85,7 +85,7 @@
     </section>
 
     <!-- 萬元刷卡 -->
-    <section class="pro2-box scroll" :data-anchor="asides[1].text" id="pro2">
+    <section class="pro2-box scroll" titles="萬元刷卡現折好物" id="pro2">
       <h2 class="title">
         <img :src="$filters.siteUrl('bank_ec/images/S2.png')" />
       </h2>
@@ -252,19 +252,23 @@ export default {
         </ul>`
         },
       ],
+      bank250217:[
+        {
+          image: 'bank_ec/images/bank2.png',
+          date: '2025/02/17-03/05',
+          content: `
+          <p><b>單筆分期刷滿2萬(含)以上享</b><span>現折800</span></p>
+          `,
+          alertText: ` <ul style='text-align:left;'>
+             <li style='margin-bottom:5px;'>凡於活動期間(2025/2/17-2025/3/5)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，</li>
+             <li style='margin-bottom:5px;'>刷「星展銀行信用卡」，單筆分期刷滿20,000元(限分3、6、8期，再享分期0利率)，</li>
+             <li style='margin-bottom:5px;'>可享現折800元的優惠，單張發票不累贈，最多折抵一次，線上限量30名。</li>
+        </ul>`
+        },
+      ],
       tabs: [
         { image: 'bank_ec/images/S2-10000_b.png' },
         { image: 'bank_ec/images/S2-30000_b.png' }
-      ],
-      asides: [
-        {
-          text: '仟元刷卡現折好物',
-          href: '#pro1'
-        },
-        {
-          text: '萬元刷卡現折好物',
-          href: '#pro2'
-        }
       ],
       today: new Date(),
       menuPro1: 7640,
@@ -282,6 +286,11 @@ export default {
     // 2/6 星展更新
     if (today >= new Date('2025/02/06') && today < new Date('2025/02/17')) {
       this.banks[1] = this.bank250206[0]
+    }
+
+    //2/17更新
+    if (today >= new Date('2025/02/17') && today < new Date('2025/03/06')) {
+      this.banks[1] = this.bank250217;
     }
 
     //撈取千元刷卡樓層商品

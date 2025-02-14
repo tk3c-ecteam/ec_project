@@ -11,7 +11,7 @@
       direct -> 輪播方向(預設為水平) 若要垂直輪播請設定'vertical'
     */ -->
 
-    <div class="tab mb:2% mb:1%@<576 overflow:hidden">
+    <div class="tab mb:1% overflow:hidden">
       <ul v-if="isSwiper == false" class="gap:10">
         <li v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }"
           class="brightness(0.7) brightness(1).active">
@@ -31,14 +31,7 @@
       :loop="false" 
       :space-between="10" 
       :slides-per-view="'auto'"
-      :breakpoints="{
-        0:{
-          direction: 'horizontal',
-        },
-        600: {
-          direction: direct,
-        }
-      }"
+      :breakpoints="swiperOption"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
       >
@@ -82,6 +75,9 @@ export default {
     direct:{
       type:String,
       default:'horizontal'
+    },
+    swiperOption:{
+      type:Object
     }
   },
   data() {

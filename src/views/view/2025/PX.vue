@@ -122,7 +122,7 @@
       </section>
 
       <!-- 其他樓層 -->
-      <CommonFloor :floors="floors" :menu="menu"></CommonFloor>
+      <CommonFloor :isSwiper="1" :floors="floors" :menu="menu"></CommonFloor>
     </div>
   </div>
 
