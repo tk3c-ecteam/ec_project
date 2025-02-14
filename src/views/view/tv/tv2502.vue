@@ -303,11 +303,11 @@ export default {
     //撈取 房東精選樓層商品
     this.getFloorSingle(this.menuHome)
 
-    // 2025 2/6 更新現折券連結
-    if (today >= new Date('2025/02/06')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922'
+    // 2025 2/17 更新現折券連結
+    if (today >= new Date('2025/02/17')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124362&aid=23927&strPreView=y';
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922'
     }
   }
 }

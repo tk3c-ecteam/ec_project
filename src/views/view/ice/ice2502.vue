@@ -62,7 +62,7 @@
     </section>
 
     <!-- 政府補助 -->
-    <section class="sub-box">
+    <section class="sub-box scroll" titles="政府補助" id="sub">
       <h2 class="title">
         <img :src="$filters.siteUrl('icewash2209/images/2501/sub_title.png')" alt="" />
       </h2>
@@ -84,9 +84,9 @@
 
     <!-- 商品樓層 -->
     <div class="pro-group">
-      <section class="pro-area scroll" v-for="(tab, t) in tabs[0]" :key="t" :class="`tab${Number(t) + 1}-box`"
+      <section class="pro-area scroll" v-for="(tab, t) in tabs[0]" :titles="tab[0].text" :key="t" :class="`tab${Number(t) + 1}-box`"
         :id="`tab${Number(t) + 1}`">
-        <h2 class="title">
+        <h2 class="title" :class="[t == 2 || t == 3 ? 'single-url' : '']">
           <a :href="$filters.addGALink(tab[0].url)" target="_blank">
             <img :src="$filters.siteUrl(tab[0].title)" />
           </a>
@@ -157,6 +157,7 @@ export default {
         {
           0: [
             {
+              text:'熱銷強品',
               menu: [4423,7086],
               title: 'icewash2209/images/2501/S1.png',
               url:'https://www.tk3c.com/dic1.aspx?cid=12504&aid=4878',
@@ -174,6 +175,7 @@ export default {
           ],
           1: [
             {
+              text:'超夯新品',
               menu: [5540,7087],
               title: 'icewash2209/images/2501/S2.png',
               url:'https://www.tk3c.com/dic1.aspx?cid=12504&aid=4878',
@@ -191,6 +193,7 @@ export default {
           ],
           2: [
             {
+              text:'冰箱',
               title: 'icewash2209/images/2501/S3.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=12504&aid=12740',
               menu: [5983, 5982, 5981],
@@ -209,6 +212,7 @@ export default {
           ],
           3: [
             {
+              text:'洗衣機',
               title: 'icewash2209/images/2501/S4.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=83198&aid=18641',
               menu: [5984,5986,5987],
@@ -228,6 +232,7 @@ export default {
           ],
           4: [
             {
+              text:'乾衣機',
               menu: 6024,
               title: 'icewash2209/images/2501/S5.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=83198&aid=18643'
@@ -235,6 +240,7 @@ export default {
           ],
           5: [
             {
+              text:'洗碗機',
               menu: 3651,
               title: 'icewash2209/images/2501/S6.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=83198&aid=22912'
@@ -295,11 +301,11 @@ export default {
       }
     }
 
-    // 2025/2/6 更新現折券連結
-    if (today >= new Date('2025/02/06')) {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922'
+    // 2025/2/17 更新現折券連結
+    if (today >= new Date('2025/02/17')) {
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124362&aid=23927&strPreView=y';
     } else {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922'
     }
   },
   methods: {

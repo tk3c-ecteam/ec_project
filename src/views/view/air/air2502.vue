@@ -92,15 +92,15 @@
 
     <!-- 品牌 -->
     <section class="brand-box scroll" titles="品牌大放送" id="brand">
-      <h2 class="title">
-        <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=11225&aid=23717')" target="_blank">
+      <h2 class="title single-url">
+        <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=11225&aid=4707')" target="_blank">
         <img :src="$filters.siteUrl('airConditionerLAB/images/2502/S9.png')" alt="" />
         </a>
       </h2>
 
-      <Tabs :isSwiper="1" :tabs="brands" :textOrImage="'text'">
+      <Tabs :isSwiper="1" :swiperOption="swiperOption.breakpoints" :tabs="brands" :textOrImage="'text'">
         <template v-slot="{ selectedTab }">
-          <TabContent :isSwiper="1" v-for="(brand, b) in brands" :menus="menuBrand[b]" :banners="brand" :index="b" :selectedTab="selectedTab">
+          <TabContent :isSwiper="1" v-for="(brand, b) in brands" :menus="menuBrand[b]" :banners="brand.banner" :index="b" :selectedTab="selectedTab">
 
           </TabContent>
         </template>
@@ -280,6 +280,7 @@
 </template>
 
 <script setup>
+import { breakpoints } from '@master/css'
 import { Controller, EffectFade, Parallax } from 'swiper/modules'
 
 const swiperRef1 = ref()
@@ -351,45 +352,105 @@ export default {
       brands: [
         {
           text:'Panasonic',
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11238',
-          pc: 'airConditionerLAB/images/2502/bn_pana.jpg',
-          mobile: 'airConditionerLAB/images/2502/bn_panaM.jpg'
+          banner:[
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124282',
+              pc: 'airConditionerLAB/images/2502/bn_pana.jpg',
+              mobile: 'airConditionerLAB/images/2502/bn_panaM.jpg'
+            }
+          ],
+        },
+         {
+          text:'DAIKIN',
+          url:'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11237',
         },
         {
           text:'HITACHI',
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11236',
-          pc: 'airConditionerLAB/images/2502/bn_hit.jpg',
-          mobile: 'airConditionerLAB/images/2502/bn_hitM.jpg'
+          banner:[
+            {
+              pc: 'airConditionerLAB/images/2502/bn_hit.jpg',
+              mobile: 'airConditionerLAB/images/2502/bn_hitM.jpg',
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124287',
+            }
+          ]
+        },
+         {
+          text:'三菱',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=37503',
         },
         {
           text:'SAMPO',
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11240',
-          pc: 'airConditionerLAB/images/2502/bn_sampo.jpg',
-          mobile: 'airConditionerLAB/images/2502/bn_sampoM.jpg'
+          banner:[
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124289',
+              pc: 'airConditionerLAB/images/2502/bn_sampo.jpg',
+              mobile: 'airConditionerLAB/images/2502/bn_sampoM.jpg'
+            }
+          ]
         },
         {
           text:'TECO',
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11239',
-          pc: 'airConditionerLAB/images/2502/bn_teco.jpg',
-          mobile: 'airConditionerLAB/images/2502/bn_tecoM.jpg'
+          banner:[
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124284',
+              pc: 'airConditionerLAB/images/2502/bn_teco.jpg',
+              mobile: 'airConditionerLAB/images/2502/bn_tecoM.jpg'
+            }
+          ]
+        },
+         {
+          text:'LG',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=104083',
+        },
+         {
+          text:'富士通',
+          banner:[
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124376',
+              pc: 'airConditionerLAB/images/2502/bn_fuji2.jpg',
+              mobile: 'airConditionerLAB/images/2502/bn_fujiM2.jpg'
+            }
+          ]
         },
         {
           text:'HERAN',
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=71512',
-          pc: 'airConditionerLAB/images/2502/bn_heran.jpg',
-          mobile: 'airConditionerLAB/images/2502/bn_heranM.jpg'
+          banner:[
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124286',
+              pc: 'airConditionerLAB/images/2502/bn_heran.jpg',
+              mobile: 'airConditionerLAB/images/2502/bn_heranM.jpg'
+            }
+          ]
         },
         {
           text:'CHIMEI',
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=115784',
-          pc: 'airConditionerLAB/images/2502/bn_chimei.jpg',
-          mobile: 'airConditionerLAB/images/2502/bn_chimeiM.jpg'
+          banner:[
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124285',
+              pc: 'airConditionerLAB/images/2502/bn_chimei.jpg',
+              mobile: 'airConditionerLAB/images/2502/bn_chimeiM.jpg'
+            }
+          ]
         },
           {
           text:'SHARP',
-          url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=107383',
-          pc: 'airConditionerLAB/images/2502/bn_sharp.jpg',
-          mobile: 'airConditionerLAB/images/2502/bn_sharpM.jpg'
+          banner:[
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124283',
+              pc: 'airConditionerLAB/images/2502/bn_sharp.jpg',
+              mobile: 'airConditionerLAB/images/2502/bn_sharpM.jpg'
+            }
+          ]
+        },
+         {
+          text:'三洋',
+          banner:[
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124291',
+              pc: 'airConditionerLAB/images/2502/bn_san.jpg',
+              mobile: 'airConditionerLAB/images/2502/bn_sanM.jpg'
+            }
+          ]
         }
       ],
       events: [
@@ -507,7 +568,7 @@ export default {
       menuHot: 4127, //熱銷空調首選
       menuCold: 3695, //冷暖空調
       menuWet: 7466, //除濕機用
-      menuBrand: [4414, 4415,4416, 5516, 5517, 4419,4655], //品牌 陳列編號
+      menuBrand: [4414,4413, 4415,4417,4416, 5516,4418, 4436,5517, 4419,4655,7813], //品牌 陳列編號
       statusTab:0, //商品樓層用
       statusInfo: 0,
       isDis: true,
@@ -515,7 +576,32 @@ export default {
       disUrl: '',
       isSp:false,
       isVip:false,
-      isVipOld:true
+      isVipOld:true,
+      swiperOption:{
+        breakpoints:{
+          0:{
+            slidesPerView:2.2,
+            grid:{
+              fill:'colmn',
+              rows:1
+            }
+          },
+          600:{
+            slidesPerView:3,
+            grid:{
+              fill:'colmn',
+              rows:4
+            }
+          },
+          992:{
+            slidesPerView:6,
+            grid:{
+              fill:'colmn',
+              rows:2
+            }
+          }
+        }
+      }
     }
   },
   mounted() {
@@ -525,7 +611,6 @@ export default {
       this.isVip = true;
       this.isVipOld = false;
     }
-
     //固定背景
     this.fixedBg('.background2', '.air-info')
 
@@ -551,11 +636,11 @@ export default {
       }
     }
 
-    // 2/6修改現折券連結
-    if (today >= new Date('2025/02/06')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922'
+    // 2/17修改現折券連結
+    if (today >= new Date('2025/02/17')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124362&aid=23927&strPreView=y'
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124236&aid=23905&strPreView=y'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922'
     }
   },
   methods: {
@@ -822,7 +907,7 @@ form#form1{
     }
     .swiper-wrapper {
       align-items: baseline;
-      justify-content: center;
+      justify-content: left;
     }
     .swiper-slide {
       background: #fff;
@@ -833,6 +918,7 @@ form#form1{
       font-weight: bold;
       border: 3px solid #000;
       box-sizing: border-box;
+      flex-basis: auto;
       &.active {
         background: yellow;
       }
@@ -1068,7 +1154,6 @@ form#form1{
         justify-content: left;
       }
       .swiper-slide {
-        flex-basis: 19%;
         font-size: 2vw;
       }
     }
@@ -1149,7 +1234,6 @@ form#form1{
     }
     .tab {
       .swiper-slide {
-        flex-basis: 27%;
         font-size: 4vw;
         border: 2px solid #000;
         box-sizing: border-box;
