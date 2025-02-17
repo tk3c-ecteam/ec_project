@@ -2,7 +2,7 @@
  const today = new Date();
 
  //熱門活動區
- let mainName = (today >= new Date('2025/02/06')) ? '2025Valentine' : 'newyear2025',
+ let mainName = (today >= new Date('2025/02/17')) ? '25spring' : '2025Valentine',
   mainUrl = `https://events.tk3c.com/events_net/${mainName}/index.html`,
    location = window.location.pathname.split('/'),
   folderName = (location[2] == 'events_net') ? location[3] : location[2],

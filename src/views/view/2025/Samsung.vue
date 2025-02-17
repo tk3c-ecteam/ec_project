@@ -66,7 +66,7 @@
           <img :src="$filters.siteUrl(special.image)">
         </li>
         <li class="long">
-          <a :href="$filters.addGALink('https://events.tk3c.com/events_net/2025Valentine/index.html')" target="_blank">
+          <a :href="$filters.addGALink('https://www.tk3c.com/3COldChangeNew/index.aspx')" target="_blank">
             <img class="pc" :src="$filters.siteUrl('2025_S25/images/C09.png')" />
             <img class="mobile" :src="$filters.siteUrl('2025_S25/images/C09_m.png')" />
           </a>

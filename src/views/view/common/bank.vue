@@ -290,7 +290,7 @@ export default {
 
     //2/17更新
     if (today >= new Date('2025/02/17') && today < new Date('2025/03/06')) {
-      this.banks[1] = this.bank250217;
+      this.banks[1] = this.bank250217[0];
     }
 
     //撈取千元刷卡樓層商品
