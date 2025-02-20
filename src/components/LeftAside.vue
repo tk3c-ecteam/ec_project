@@ -1,4 +1,6 @@
 <script setup>
+import { inject } from "vue";
+
  const today = new Date();
 
  //熱門活動區
@@ -58,8 +60,7 @@
   //選單項目(各樓層的標題)
   const asides = defineModel('asides', {
     type: Object
-  })
-
+  });
 </script>
 
 <template>

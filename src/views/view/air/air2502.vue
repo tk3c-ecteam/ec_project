@@ -98,7 +98,7 @@
         </a>
       </h2>
 
-      <Tabs :isSwiper="1" :swiperOption="swiperOption.breakpoints" :tabs="brands" :textOrImage="'text'">
+      <Tabs :isSwiper="1" :statusSelect="5" :swiperOption="swiperOption.breakpoints" :tabs="brands" :textOrImage="'text'">
         <template v-slot="{ selectedTab }">
           <TabContent :isSwiper="1" v-for="(brand, b) in brands" :menus="menuBrand[b]" :banners="brand.banner" :index="b" :selectedTab="selectedTab">
 
@@ -158,20 +158,40 @@
         <img :src="$filters.siteUrl('airConditionerLAB/images/2501/bar_b.png')" alt="" />
       </h2>
 
-      <ul>
-        <li>
-          <a :href="
-              $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
+      <swiper
+      :loop="false"
+      :space-between="10"
+      :autoplay="{
+          delay: 2000,
+          disableOnInteraction: false
+        }"
+      :breakpoints="{
+        0:{
+          slidesPerView:2
+        },
+        992:{
+          slidesPerView:3
+        }
+      }"
+      >
+      <swiper-slide>
+         <a :href="
+              $filters.addGALink('https://events.tk3c.com/events_net/green_subsidy/index.html')
             " target="_blank">
             <img :src="$filters.siteUrl('airConditionerLAB/images/2502/b01.png')" alt="" />
           </a>
-        </li>
-        <li class="alert1">
-          <a @click="message(2)">
+      </swiper-slide>
+      <swiper-slide>
+         <a @click="message(2)">
             <img :src="$filters.siteUrl('airConditionerLAB/images/2502/b02.png')" />
           </a>
-        </li>
-      </ul>
+      </swiper-slide>
+      <swiper-slide>
+        <a :href="$filters.addGALink('https://save3000.moeaea.gov.tw')" target="_blank">
+            <img :src="$filters.siteUrl('airConditionerLAB/images/2502/b03.png')" />
+          </a>
+      </swiper-slide>
+      </swiper>
     </section>
 
     <section class="info-box scroll" titles="場勘服務" id="info">

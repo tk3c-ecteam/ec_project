@@ -64,22 +64,22 @@ $dir: "https://events.cdn-tkec.tw/events_net/events_net/roborock_event/images/co
 $origin: "https://events.tk3c.com/events_net/events_net/roborock_event/images/common/";
 
 /*  共用樣式調整 */
-body {
-  background: #c6c6c6;
+form#form1 {
+  position: relative;
   &:before {
     content: "";
     $image: $dir + 'bg.png';
     display: block;
     width: 100%;
     height: 100%;
-    background: url($image) no-repeat center;
+    background: url($image) repeat-y center;
     position: absolute;
     background-attachment: fixed;
     background-position: bottom center;
     left: 0;
     right: 0;
     margin: 0 auto;
-    z-index: -1;
+    z-index: -2;
   }
 }
 
@@ -100,6 +100,9 @@ body {
   .logo {
     background: #fff;
     padding: 45px 0 0;
+    .logo-title {
+      padding-top: 0 !important;
+    }
   }
 }
 

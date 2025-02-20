@@ -5,12 +5,12 @@ export default {
       menuSP: 7392,
       menus: [6149, 6150, 6151, 6152, 6153, 6154],
       proDatas: [
-        { image: 'nightsale/images/part3/bar_top.png', menu: 6149, text: '每週強檔',href:'pro6149' },
-        { image: 'nightsale/images/part3/bar000.png', menu: 6150, text: '大型家電',href:'pro6150' },
-        { image: 'nightsale/images/part3/bar01.png', menu: 6151, text: '生活家電',href:'pro6151' },
-        { image: 'nightsale/images/part3/bar02.png', menu: 6152, text: '電腦資訊',href:'pro6152' },
-        { image: 'nightsale/images/part3/bar07.png', menu: 6153, text: '鍵盤滑鼠',href:'pro6153' },
-        { image: 'nightsale/images/part3/bar04_b.png', menu: 6154, text: '數位週邊',href:'pro6154' }
+        { image: 'nightsale/images/part3/bar_top.png', menu: 6149, text: '每週強檔',href:'#pro6149' },
+        { image: 'nightsale/images/part3/bar000.png', menu: 6150, text: '大型家電',href:'#pro6150' },
+        { image: 'nightsale/images/part3/bar01.png', menu: 6151, text: '生活家電',href:'#pro6151' },
+        { image: 'nightsale/images/part3/bar02.png', menu: 6152, text: '電腦資訊',href:'#pro6152' },
+        { image: 'nightsale/images/part3/bar07.png', menu: 6153, text: '鍵盤滑鼠',href:'#pro6153' },
+        { image: 'nightsale/images/part3/bar04_b.png', menu: 6154, text: '數位週邊',href:'#pro6154' }
       ],
       today: new Date(),
       isSp: false,
@@ -195,24 +195,8 @@ export default {
     </section>
   </div>
 
-  <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li v-for="floor in proDatas">
-            <a :href="`#pro${floor.menu}`">{{ floor.text }}</a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <!-- 手機版 -->
-  <mobile2 v-model:asides="proDatas"></mobile2>
+  <!-- 右側選單+手機版 -->
+   <RightAside :asides="proDatas" :type="'mobile2'"></RightAside>
 </template>
 
 <style lang="scss">

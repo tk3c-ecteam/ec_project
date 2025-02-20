@@ -2,7 +2,7 @@
    //選單項目(各樓層的標題)
    const asides = defineModel('asides', {
    type: Object
-  })
+  });
 
    /*手機版選單類型
    * type == 'mobile' -> 置底選單
@@ -10,7 +10,7 @@
    */
    const type = defineModel('type', {
    type: String
-  })
+  });
 </script>
 
 <template>
@@ -46,7 +46,7 @@
     <template #topAsides>
       <ul>
         <li v-for="aside in asides">
-          <a :href="aside.href">{{ aside.text }}</a>
+          <a :href="aside.href" @click="changeNav">{{ aside.text }}</a>
         </li>
       </ul>
     </template>

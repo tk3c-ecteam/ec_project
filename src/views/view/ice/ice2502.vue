@@ -66,7 +66,7 @@
       <h2 class="title">
         <img :src="$filters.siteUrl('icewash2209/images/2501/sub_title.png')" alt="" />
       </h2>
-      <ul class="gap:10">
+      <ul class="gap:10 ai:flex-start">
         <li class="w:40% w:44%@<992 w:95%@<576">
           <img :src="$filters.siteUrl('icewash2209/images/2501/sub1.png')" alt=" " />
         </li>
@@ -74,9 +74,14 @@
           <a class="mb:2%" @click="message(1)">
             <img :src="$filters.siteUrl('icewash2209/images/2501/sub2.png')" alt="" />
           </a>
-          <a :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/green_subsidy/index.html')"
+           <a class="mb:2%" :href="$filters.addGALink('https://save3000.moeaea.gov.tw/subsidy02/index/index.aspx')" target="_blank">
+            <img :src="$filters.siteUrl('icewash2209/images/2501/sub2-2.png')" alt="" />
+          </a>
+        </li>
+        <li class="w:81% w:90%@<992 w:95%@<576">
+           <a :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/green_subsidy/index.html')"
             target="_blank">
-            <img :src="$filters.siteUrl('icewash2209/images/2501/sub3.png')" alt="" />
+            <img :src="$filters.siteUrl('icewash2209/images/2501/sub3b.png')" alt="" />
           </a>
         </li>
       </ul>
@@ -247,33 +252,6 @@ export default {
             }
           ]
         }
-      ],
-      asides:[
-        {
-          text:'熱銷強品',
-          href:'#tab1'
-        },
-        {
-          text:'超夯新品',
-          href:'#tab2'
-        },
-        {
-          text:'冰箱',
-          href:'#tab3'
-        },
-        {
-          text:'洗衣機',
-          href:'#tab4'
-        },
-        {
-          text:'乾衣機',
-          href:'#tab5'
-        },
-        {
-          text:'洗碗機',
-          href:'#tab6'
-        }
-
       ],
       menuDis: 6462, //現折券後台清單編號
       statusPro: 0,

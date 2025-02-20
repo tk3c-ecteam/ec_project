@@ -87,7 +87,13 @@ export default {
     };
   },
   mounted() {
-    if (this.statusSelect != undefined) this.selectedTab = this.statusSelect
+    if (this.statusSelect != undefined) {
+       this.selectedTab = this.statusSelect;
+       setTimeout(() => {
+        this.goSlide(this.selectedTab);
+       }, 50);
+    }
+   
   },
   methods: {
     selectTab(index) {

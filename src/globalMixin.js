@@ -4,12 +4,16 @@ import axiosRetry from 'axios-retry';
 export const globalMixin = {
   data() {
     return {
-      products: [],
-      product2: [],
+      products: [],//多個商品
+      product2: [],//單一商品
       percent: 0,
       tabS: null,
-      asides: [],
-      timer: null
+      asides: [],//右側選單項目
+      timer: null,
+      mobileStatus: '',//手機版置底選單用(status:'event','social')
+      mobileBg: 'none',//手機版選單背景遮罩
+      isGoTop: false,//手機版回到上層按鈕
+      isMobileOpen: false,//手機版上方選單切換狀態
     }
   },
   mounted() {
@@ -245,6 +249,75 @@ export const globalMixin = {
             })
         }
       });
+    },
+    //回到最上層
+    goTop() {
+      window.scrollTo(0, 0);
+      this.mobileBg = 'none';
+    },
+    //滾動到指定位置
+    scrollToPos() {
+      document.querySelectorAll('section.scroll').forEach((el, i) => {
+        let scrollTop = window.scrollY,
+          topNav = document.querySelector('.mobile-for-product .top-nav'),
+          topNavLi = document.querySelectorAll('.mobile-for-product .top-nav li'),
+          top = el.getBoundingClientRect().top + scrollTop - 180,
+          bottom = top + window.innerHeight,
+          left = topNav.scrollLeft,
+          num = topNavLi.length;
+
+        /* 目前滑鼠滾動位置滾到每個樓層區，所屬項目加上 .active 標記,
+        * .top-nav 卷軸往右滑動250px
+        */
+        if (scrollTop >= top && scrollTop < bottom) {
+          if (i >= Math.ceil(num / 3) && i < num) {
+            topNav.scrollTo({
+              behavior: 'smooth',
+              left: left += 200
+            });
+          } else if (i < Math.ceil(num / 3)) {
+            topNav.scrollTo({
+              behavior: 'smooth',
+              left: 0
+            });
+          }
+          document.querySelectorAll('.mobile-for-product .top-nav li').forEach(el => {
+            el.classList.remove('active');
+            topNavLi[i].classList.add('active');
+          });
+        }
+      });
+    },
+    //點擊切換置底選單      
+    changeMobile(name) {
+      this.mobileStatus = name;
+      this.mobileBg = 'block';
+      document.body.style.overflow = 'hidden';
+    },
+    //關閉手機版選單
+    closeNav() {
+      this.isMobileOpen = false;
+      this.mobileStatus = '';
+      this.mobileBg = 'none';
+      document.body.style.overflow = 'auto';
+    },
+    //滑鼠滾動後顯示
+    showMobileTop() {
+      (window.scrollY >= 100) ? this.isGoTop = true : this.isGoTop = false;
+    },
+    //移除手機版上方選單 .open 與改變icon符號
+    changeNav() {
+      this.isMobileOpen = false;
+    },
+    //點擊切換置底選單      
+    changeMobile(name) {
+      this.mobileStatus = name;
+      this.mobileBg = 'block';
+      document.body.style.overflow = 'hidden';
+    },
+    //點擊切換手機版上方按鈕
+    switchMobile() {
+      this.isMobileOpen = !this.isMobileOpen;
     }
   }
 }

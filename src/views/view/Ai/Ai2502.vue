@@ -185,10 +185,10 @@
   </div>
 
   <!-- 左側選單+手機版 -->
-   <LeftAside :asides="asides"></LeftAside>
+   <LeftAside :asides="aside2"></LeftAside>
 
   <!-- 右側選單 -->
-  <RightAside :asides="asides"></RightAside>
+  <RightAside :asides="aside2"></RightAside>
 </template>
 
 <script setup>
@@ -503,7 +503,7 @@ export default {
           url:'#tab15'
         }
       ],
-      asides:[
+      aside2:[
         {
             text: '輕薄商務',
             href: '#tab1',
