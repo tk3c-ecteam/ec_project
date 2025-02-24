@@ -1,6 +1,4 @@
 <script setup>
-import { inject } from "vue";
-
  const today = new Date();
 
  //熱門活動區
@@ -25,6 +23,10 @@ import { inject } from "vue";
     {"name":"電暖器","url":"https://events.tk3c.com/events_net/electric_heater/index.html"},
   ];
 
+  let event0301 = [
+    {"name":" 姐!妹力無限","url":"https://events.tk3c.com/events_net/2025GirlDay/index.html","class":"bank"}
+  ];
+
   switch (folderName) {
     case 'icewash2209':
       num = 5;
@@ -46,6 +48,16 @@ import { inject } from "vue";
       num = 9;
       break;   
   } 
+
+  if (today >= new Date('2025/03/01') && today < new Date('2025/03/10')) {
+    events.splice(1, event0301[0]);
+    num + 1;
+  }
+
+  if (today >= new Date('2025/03/01')) {
+    events.splice(10,1);
+    num - 1;
+  }
 
   if (folderName == mainName) {
     events.splice(0,1);

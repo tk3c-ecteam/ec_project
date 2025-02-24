@@ -31,7 +31,7 @@
             clickable: true
           }">
           <swiper-slide v-for="(bank, b) in banks" class="color:#000!">
-            <img class="mt:14%@<576" :src="$filters.siteUrl(bank.image)" />
+            <img class="mt:14%@<576" :src="$filters.siteUrl(bankIcons[b].image)" />
             <div
               class="w:full max-width:21rem max-width:25rem@<992 max-width:21rem@<576 max-width:22rem@>2000 abs m:auto left:0 right:0 top:30% top:39vw@<576">
               <em class="color:#707070 mb:10px">{{ bank.date }}</em>
@@ -122,9 +122,19 @@
 export default {
   data() {
     return {
-      banks: [
+      bankIcons:[
         {
           image: 'bank_ec/images/bank1.png',
+        },
+         {
+          image: 'bank_ec/images/bank2.png',
+        },
+         {
+          image: 'bank_ec/images/bank3.png',
+        },
+      ],
+      banks: [
+        {
           date: '2024/11/13-11/30',
           content: `
           <p><b>單筆分期滿$26,000享</b><span>現折$1,000</span></p>
@@ -136,7 +146,6 @@ export default {
             'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=monthlyOffer'
         },
         {
-          image: 'bank_ec/images/bank2.png',
           date: '即日起-11/30',
           content: `<p><b>單筆分期滿$20,800享</b><span>現折$800</span></p>`,
           alertText: ` <ul style='text-align:left;'>
@@ -156,7 +165,6 @@ export default {
         </ul>`
         },
         {
-          image: 'bank_ec/images/bank3.png',
           date: '2024/11/13-11/30',
           content: `<p><b>單筆滿$25,000享</b><span>現折$800</span></p>
           <p><b>單筆刷滿$32,500享</b><span>現折$2,500</span></p>
@@ -167,44 +175,8 @@ export default {
           alertText: 'https://www.tk3c.com.tw/#actsdetail&8&719'
         }
       ],
-        bank25014: [
-        {
-          image: 'bank_ec/images/bank1.png',
-          date: '2025/01/14-01/31',
-          content: `
-          <p><b>單筆分期滿2萬5千元享</b><span>現折1,000</span></p>
-          <p><b>單筆分期滿1萬元享</b><span>現折500</span></p>
-          <p><b>單筆不分期滿8千元享</b><span>現折400</span></p>
-          `,
-          url: 'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779',
-          alertText:
-            'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=monthlyOffer'
-        },
-        {
-          image: 'bank_ec/images/bank2.png',
-          date: '2025/01/14-01/31',
-          content: `
-          <p><b>單筆分期滿2萬元(含)以上享</b><span>現折800</span></p>
-          `,
-          alertText: ` <ul style='text-align:left;'>
-             <li style='margin-bottom:30px;background:#d6d6d6;'>活動期間 2025/01/14-2025/01/31</li>
-             <li style='margin-bottom:10px;'>於活動期間(2025/01/14-2025/01/31)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，刷「星展銀行信用卡」，單筆分期刷滿20,000元(限分3、6、8期，再享分期0%利率)，可享現折800元的優惠，單張發票不累贈，最多折抵一次，1/14-1/31總限量775名。</li>
-                <li style='margin-bottom:10px;'>燦坤線上購物網站：請先加入燦坤線上購物會員或是登入會員帳號及密碼，選擇購買商品後，在購物車勾選想適用銀行優惠，將於結帳時由系統判斷是否符合活動條件，符合活動條件將直接於結帳金額現折800元，1/14-1/31限量70名，每位會員及每張星展銀行信用卡限回饋1次。</li>
-        </ul>`
-        },
-        {
-          image: 'bank_ec/images/bank3.png',
-          date: '2025/01/14-01/31',
-          content: `<p><b>單筆滿2萬5千元享</b><span>現折800</span></p>
-          <p><b>單筆分期滿5萬元享</b><span>登錄送5,000燦坤K幣</span></p>
-          `,
-          url: 'https://events.tk3c.com/events_net/invoice_login/detail.aspx',
-          alertText: 'https://www.tk3c.com.tw/#actsdetail&8&747'
-        }
-      ],
         bank2502: [
         {
-          image: 'bank_ec/images/bank1.png',
           date: '2025/02/01-02/28',
           content: `
           <p><b>單筆分期滿2萬6千元享</b><span>現折1,000</span></p>
@@ -216,7 +188,6 @@ export default {
             'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=monthlyOffer'
         },
          {
-          image: 'bank_ec/images/bank2.png',
           date: '2025/02/01-02/05',
           content: `
           <p><b>單筆分期刷滿2萬(含)以上享</b><span>現折800</span></p>
@@ -227,7 +198,6 @@ export default {
         </ul>`
         },
         {
-          image: 'bank_ec/images/bank3.png',
           date: '2025/02/01-02/28',
           content: `
           <p><b>單筆分期滿6千元</b><span>送500燦坤K幣</span></p>
@@ -238,23 +208,8 @@ export default {
           alertText: 'https://www.tk3c.com.tw/#actsdetail&8&759'
         }
       ],
-      bank250206:[
-         {
-          image: 'bank_ec/images/bank2.png',
-          date: '2025/02/06-02/16',
-          content: `
-          <p><b>單筆分期刷滿2萬(含)以上享</b><span>現折800</span></p>
-          `,
-          alertText: ` <ul style='text-align:left;'>
-             <li style='margin-bottom:5px;'>凡於活動期間(2025/2/6-2025/2/16)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，</li>
-             <li style='margin-bottom:5px;'>刷「星展銀行信用卡」，單筆分期刷滿20,000元(限分3、6、8期，再享分期0利率)，</li>
-             <li style='margin-bottom:5px;'>可享現折800元的優惠，單張發票不累贈，最多折抵一次，線上限量40名。</li>
-        </ul>`
-        },
-      ],
       bank250217:[
         {
-          image: 'bank_ec/images/bank2.png',
           date: '2025/02/17-03/05',
           content: `
           <p><b>單筆分期刷滿2萬(含)以上享</b><span>現折800</span></p>
@@ -265,6 +220,41 @@ export default {
              <li style='margin-bottom:5px;'>可享現折800元的優惠，單張發票不累贈，最多折抵一次，線上限量30名。</li>
         </ul>`
         },
+      ],
+         bank2503: [
+        {
+          date: '2025/03/01-03/31',
+          content: `
+          <p><b>單筆分期滿2萬5千元享</b><span>現折1,000</span></p>
+          <p><b>單筆分期滿1萬元享</b><span>現折500</span></p>
+          <p><b>單筆不分期滿8千元享</b><span>現折400</span></p>
+          `,
+          url: 'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779',
+          alertText:
+            'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=monthlyOffer'
+        },
+         {
+           date: '2025/02/17-03/05',
+          content: `
+          <p><b>單筆分期刷滿2萬(含)以上享</b><span>現折800</span></p>
+          `,
+          alertText: ` <ul style='text-align:left;'>
+             <li style='margin-bottom:5px;'>凡於活動期間(2025/2/17-2025/3/5)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，</li>
+             <li style='margin-bottom:5px;'>刷「星展銀行信用卡」，單筆分期刷滿20,000元(限分3、6、8期，再享分期0利率)，</li>
+             <li style='margin-bottom:5px;'>可享現折800元的優惠，單張發票不累贈，最多折抵一次，線上限量30名。</li>
+          </ul>`
+        },
+        {
+          date: '2025/03/01-03/31',
+          content: `
+          <p><b>單筆分期滿6千元</b><span>送500燦坤K幣</span></p>
+           <p><b>單筆分期滿3萬元</b><span>送2,800燦坤K幣</span></p>
+            <p><b>單筆分期滿5萬元</b><span>送5,000燦坤K幣</span></p>
+          <p><b>指定商品單品滿2.5萬元享</b><span>現折800</span></p>
+          `,
+          url: 'https://events.tk3c.com/events_net/invoice_login/detail.aspx',
+          alertText: 'https://www.tk3c.com.tw/#activityinfo&8'
+        }
       ],
       tabs: [
         { image: 'bank_ec/images/S2-10000_b.png' },
@@ -283,14 +273,14 @@ export default {
       this.banks = this.bank2502;
     }
 
-    // 2/6 星展更新
-    if (today >= new Date('2025/02/06') && today < new Date('2025/02/17')) {
-      this.banks[1] = this.bank250206[0]
-    }
-
     //2/17更新
     if (today >= new Date('2025/02/17') && today < new Date('2025/03/06')) {
       this.banks[1] = this.bank250217[0];
+    }
+
+    // 3/1更新
+    if (today >= new Date('2025/03/01') && today < new Date('2025/04/01')) {
+      this.banks = this.bank2503;
     }
 
     //撈取千元刷卡樓層商品

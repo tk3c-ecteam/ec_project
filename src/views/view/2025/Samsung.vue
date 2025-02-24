@@ -2,11 +2,11 @@
   <div id="samsung-container">
     <div class="background">
       <h2 class="title">
-        <img :src="$filters.siteUrl('2025_S25/images/title.png')" />
+        <img :src="$filters.siteUrl('2025_S25/images/title2.png')" />
       </h2>
 
       <h5 class="subtitle">
-        <img :src="$filters.siteUrl('2025_S25/images/tt2.png')" />
+        <img :src="$filters.siteUrl('2025_S25/images/tt4.png')" />
       </h5>
 
       <div class="product animate__animated animate__bounceInRight">
@@ -25,47 +25,23 @@
         <img :src="$filters.siteUrl('2025_S25/images/S00.png')" />
       </h2>
 
-      <ul class="gap:10">
-        <li>
-          <swiper :loop="true" :effect="'flip'" :flipEffect="{
-            slideShadows:false,
-            limitRotation:true
-          }" :autoplay="{
-            delay: 1500,
-            disableOnInteraction: false
-          }" :modules="[EffectFlip]">
-            <swiper-slide v-for="s1 in sp1">
-              <a :href="s1.url"><img :src="$filters.siteUrl(s1.image)"></a>
-            </swiper-slide>
-          </swiper>
-        </li>
-        <li>
-          <a @click="alert(1)">
-            <img :src="$filters.siteUrl('2025_S25/images/C02.png')" />
+      <ul class="gap:10 ai:flex-start">
+        <li v-for="(sp2,s) in special2" :class="[sp2.class ? sp2.class : '']">
+          <a v-if="s == 0" :href="sp2.url">
+            <img :src="$filters.siteUrl(sp2.image)">
           </a>
+
+          <div v-else-if="s == 1">
+            <img :src="$filters.siteUrl(sp2.image)">
+             <div class="alert">
+              <a v-if="s == 1 || s == 2" @click="alert(s)">
+                <img :src="$filters.siteUrl('2025_S25/images/btn.png')" />
+              </a>
+            </div>
+          </div>
+          <img v-else :src="$filters.siteUrl(sp2.image)">
         </li>
-        <!-- <li>
-            <a>
-              <img :src="$filters.siteUrl('2025_S25/images/C03_2.png')" />
-            </a>
-         </li> -->
-        <li>
-          <swiper :loop="true" :effect="'flip'" :flipEffect="{
-            slideShadows:false,
-            limitRotation:true
-          }" :autoplay="{
-            delay: 1900,
-            disableOnInteraction: false
-          }" :modules="[EffectFlip]">
-            <swiper-slide v-for="s2 in sp2">
-              <a @click="alert(2)"><img :src="$filters.siteUrl(s2.image)" loading="lazy"></a>
-            </swiper-slide>
-          </swiper>
-        </li>
-        <li v-for="special in specials">
-          <img :src="$filters.siteUrl(special.image)">
-        </li>
-        <li class="long">
+         <li class="long mt:2%">
           <a :href="$filters.addGALink('https://www.tk3c.com/3COldChangeNew/index.aspx')" target="_blank">
             <img class="pc" :src="$filters.siteUrl('2025_S25/images/C09.png')" />
             <img class="mobile" :src="$filters.siteUrl('2025_S25/images/C09_m.png')" />
@@ -75,8 +51,8 @@
     </section>
 
     <!-- 商品樓層 -->
-    <section class="pro-group scroll" v-for="(pro,p) in proS[0]" :key="p" :titles="pro[0].text" :class="`pro${Number(p) + 1}-box`"
-      :id="`p${Number(p) + 1}`">
+    <section class="pro-group scroll" v-for="(pro,p) in proS[0]" :key="p" :titles="pro[0].text"
+      :class="`pro${Number(p) + 1}-box`" :id="`p${Number(p) + 1}`">
       <h2 class="title">
         <img :src="$filters.siteUrl(pro[0].images)" />
       </h2>
@@ -150,6 +126,29 @@ export default {
           "url":""
         },
       ],
+      special2:[
+        {
+          "image":"2025_S25/images/C05b.png",
+          "class":"mid",
+          "url":"#p1"
+        },
+        {
+          "image":"2025_S25/images/C04b.png",
+          "class":"mid"
+        },
+         {
+          "image":"2025_S25/images/C03_2b.png",
+        },
+         {
+          "image":"2025_S25/images/C06b.png",
+        },
+         {
+          "image":"2025_S25/images/C07b.png",
+        },
+         {
+          "image":"2025_S25/images/C08b.png",
+        },
+      ],
       proS:[
         {
           0:[
@@ -160,11 +159,11 @@ export default {
               url:"https://www.tk3c.com/dic2.aspx?cid=93605&aid=20221&hid=124277",
               content:[
                 {
-                  image:'2025_S25/images/tab1.png',
+                  image:'2025_S25/images/tab4.png',
                   url:"https://www.tk3c.com/dic2.aspx?cid=93605&aid=20221&hid=124277"
                 },
                 {
-                  image:'2025_S25/images/tab2.png',
+                  image:'2025_S25/images/tab3.png',
                   url:'https://www.tk3c.com/dic2.aspx?cid=93605&aid=20221&hid=124358'
                 }
               ]
@@ -178,11 +177,11 @@ export default {
               url:'https://www.tk3c.com/dic2.aspx?cid=93605&aid=20221&hid=124276',
               content:[
                 {
-                  image:'2025_S25/images/tab1.png',
+                  image:'2025_S25/images/tab4.png',
                   url:'https://www.tk3c.com/dic2.aspx?cid=93605&aid=20221&hid=124276'
                 },
                  {
-                  image:'2025_S25/images/tab2.png',
+                  image:'2025_S25/images/tab3.png',
                   url:'https://www.tk3c.com/dic2.aspx?cid=93605&aid=20221&hid=124358'
                 },
               ]
@@ -196,11 +195,11 @@ export default {
               url:'https://www.tk3c.com/dic2.aspx?cid=93605&aid=20221&hid=124275',
                content:[
                 {
-                  image:'2025_S25/images/tab1.png',
+                  image:'2025_S25/images/tab4.png',
                   url:'https://www.tk3c.com/dic2.aspx?cid=93605&aid=20221&hid=124275'
                 },
                  {
-                  image:'2025_S25/images/tab2.png',
+                  image:'2025_S25/images/tab3.png',
                   url:'https://www.tk3c.com/dic2.aspx?cid=93605&aid=20221&hid=124358'
                 },
               ]
@@ -230,6 +229,25 @@ export default {
       let infoHtml = '';
       switch (id) {
         case 1:
+           //三星
+          infoHtml = `
+               <p style="font-weight:bold;margin-bottom:10px;text-align:left;">【SAMSUNG S25系列新機抽獎活動】</p>
+           <ul style='text-align:left;'>
+                    <li style='margin-bottom:10px';>1.於燦坤3C門市或燦坤線上購物網站購買皆可參加本活動。​</li>
+                    <li style='margin-bottom:10px';>2.凡於2025/1/23-3/31購買「SAMSUNG S25系列新機」(下稱活動指定商品)，並於2025/4/7前出貨/配送完成，且後續未退貨退款者，憑消費發票即可參加抽獎活動，抽出1名送「SAMSUNG Tab S10U 1TB WIFI 鍵盤組(貨號252535，市價$58,490)」、1名送「台北-首爾來回雙人機票兌換券(市價$14,600)」，每一會員限中獎1次。​</li>
+                     <li style='margin-bottom:10px';>3.燦坤3C將於2025/4/16於FACEBOOK粉絲專頁「燦坤3C」公布中獎者，並另以簡訊及(或)電話通知中獎者，通知以會員資料所留存的個人聯絡資料為準。倘中獎人因個人因素致無法收受上開通知(如無法收受、未能讀取或遲誤讀取)，均與燦坤3C無涉。​</li>
+                    <li style='margin-bottom:10px';>4.中獎者請於2025/4/23前填寫中獎通知函完成；(1)攜帶身分證件、中獎發票至「原開賣門市」，出示中獎公告並填寫中獎通知函完成或(2) 私訊「燦坤3C」粉絲專頁，提供姓名/電話/地址/中獎發票/中獎公告畫面，小編會提供回函，請依規定填寫並繳交相關資料，並將正本掛號寄回燦坤3C內湖總部，以郵戳為憑。逾期、資料不符規定或填寫不正確、不完整或未依中獎通知函規定期限存入代扣稅金者，視同放棄中獎/兌獎權利。(依稅法規定，抽中獎項市值超過1,001元(含)以上，將列入本年度之個人綜合所得稅申報，超過20,000元(含)以上者，依法須預先扣繳10%稅金(外籍人士20%))​</li>
+                    <li style='margin-bottom:10px';>5.經核對無誤後，燦坤3C會另行通知得獎者，請得獎者於2025/5/10前至指定門市領取。​</li>
+                    <li style='margin-bottom:10px';>6.獎項詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金，中獎資格不可轉讓予第三人。​</li>
+                    <li style='margin-bottom:10px';>7.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
+                    <li style='margin-bottom:10px;padding-left:10px';>(1) 提供獎品前：燦坤3C將不會提供獎品。​</li>
+                    <li style='margin-bottom:10px;padding-left:10px';>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
+                    <li style='margin-bottom:10px';>本活動得與銀行滿額現折活動併行，但不與其他優惠活動(包含銀行全月單筆分期活動、或其他專案活動)併行，活動未盡事宜以燦坤3C公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
+        </ul>
+          `
+          break;
+
+           case 2:
           //中信
           infoHtml = `
                <p style="font-weight:bold;margin-bottom:10px;text-align:left;">中國信託銀行專案期間自2025/2/14 00:00 -2025/3/16 23:59</p>
@@ -249,25 +267,6 @@ export default {
                     <li style='margin-bottom:10px';>5.會員保證所有提出之資料均為真實且正確，並且未冒用或盜用任何第三人之資料，如有疑慮或發現不符資格、資料造假、不實，燦坤有權要求提供相關證明，以佐證其為會員本人，否則燦坤有權取消開賣資格。​</li>
                      <li style='margin-bottom:10px';>6.訂購即視同同意本活動最後公告之內容，並已充分知悉並同意燦坤依個人資料保護相關法規進行蒐集、處理及利用其個人資料。​</li>
                     <li style='margin-bottom:30px';>活動未盡事宜以燦坤3C公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
-        </ul>
-          `
-          break;
-      
-        case 2:
-           //三星
-          infoHtml = `
-               <p style="font-weight:bold;margin-bottom:10px;text-align:left;">【SAMSUNG S25系列新機抽獎活動】</p>
-           <ul style='text-align:left;'>
-                    <li style='margin-bottom:10px';>1.於燦坤3C門市或燦坤線上購物網站購買皆可參加本活動。​</li>
-                    <li style='margin-bottom:10px';>2.凡於2025/1/23-3/31購買「SAMSUNG S25系列新機」(下稱活動指定商品)，並於2025/4/7前出貨/配送完成，且後續未退貨退款者，憑消費發票即可參加抽獎活動，抽出1名送「SAMSUNG Tab S10U 1TB WIFI 鍵盤組(貨號252535，市價$58,490)」、1名送「台北-首爾來回雙人機票兌換券(市價$14,600)」，每一會員限中獎1次。​</li>
-                     <li style='margin-bottom:10px';>3.燦坤3C將於2025/4/16於FACEBOOK粉絲專頁「燦坤3C」公布中獎者，並另以簡訊及(或)電話通知中獎者，通知以會員資料所留存的個人聯絡資料為準。倘中獎人因個人因素致無法收受上開通知(如無法收受、未能讀取或遲誤讀取)，均與燦坤3C無涉。​</li>
-                    <li style='margin-bottom:10px';>4.中獎者請於2025/4/23前填寫中獎通知函完成；(1)攜帶身分證件、中獎發票至「原開賣門市」，出示中獎公告並填寫中獎通知函完成或(2) 私訊「燦坤3C」粉絲專頁，提供姓名/電話/地址/中獎發票/中獎公告畫面，小編會提供回函，請依規定填寫並繳交相關資料，並將正本掛號寄回燦坤3C內湖總部，以郵戳為憑。逾期、資料不符規定或填寫不正確、不完整或未依中獎通知函規定期限存入代扣稅金者，視同放棄中獎/兌獎權利。(依稅法規定，抽中獎項市值超過1,001元(含)以上，將列入本年度之個人綜合所得稅申報，超過20,000元(含)以上者，依法須預先扣繳10%稅金(外籍人士20%))​</li>
-                    <li style='margin-bottom:10px';>5.經核對無誤後，燦坤3C會另行通知得獎者，請得獎者於2025/5/10前至指定門市領取。​</li>
-                    <li style='margin-bottom:10px';>6.獎項詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金，中獎資格不可轉讓予第三人。​</li>
-                    <li style='margin-bottom:10px';>7.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
-                    <li style='margin-bottom:10px;padding-left:10px';>(1) 提供獎品前：燦坤3C將不會提供獎品。​</li>
-                    <li style='margin-bottom:10px;padding-left:10px';>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
-                    <li style='margin-bottom:10px';>本活動得與銀行滿額現折活動併行，但不與其他優惠活動(包含銀行全月單筆分期活動、或其他專案活動)併行，活動未盡事宜以燦坤3C公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
         </ul>
           `
           break;
@@ -366,7 +365,29 @@ body{
   li {
     width: 20%;
     &.long {
-      width: 80%;
+      width: 83%;
+    }
+    &.mid {
+      width: 41%;
+    }
+    .alert {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      bottom: -8%;
+      a {
+        width: 30%;
+      }
+    }
+    &:nth-of-type(3) {
+      .alert {
+        bottom: -6%;
+        a {
+          width: 50%;
+        }
+      }
     }
   }
 }
@@ -405,7 +426,10 @@ body{
     li {
       width: 23%;
       &.long {
-        width: 90%;
+        width: 95%;
+      }
+      &.mid {
+        width: 47%;
       }
     }
   }
@@ -456,9 +480,9 @@ body{
 
   .special-box {
     li {
-      width: 45%;
-      &:nth-of-type(7) {
-        width: 70%;
+      width: 46%;
+      &.mid {
+        width: 95%;
       }
     }
   }
