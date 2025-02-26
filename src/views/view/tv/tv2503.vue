@@ -2,21 +2,13 @@
   <div id="tv-container">
     <div class="background">
       <h2 class="title">
-        <img :src="$filters.siteUrl('2020TVforever/images/2503/title.png')" />
+        <img :src="$filters.siteUrl('2020TVforever/images/2503/title3.png')" />
       </h2>
 
       <div class="pro">
-        <swiper 
-        :loop="true" 
-        :parallax="true" 
-        :effect="'fade'"
-        :fadeEffect="{
-          crossFade:true
-        }"
-        :autoplay="{ delay: 2200, disableOnInteraction: false }"
-          :modules="[Parallax,EffectFade]">
+        <swiper :loop="true" :parallax="true" :autoplay="{ delay: 2200, disableOnInteraction: false }" :modules="[Parallax]">
           <swiper-slide v-for="(pro, p) in proTV" :key="p" class="flex!">
-            <a :href="$filters.addGALink(pro.url)" target="_blank" data-swiper-parallax-y="-1500" data-swiper-parallax-opacity="0">
+            <a :href="$filters.addGALink(pro.url)" target="_blank" data-swiper-parallax-x="800" data-swiper-parallax-duration="4" data-swiper-parallax-opacity="0">
               <img :src="$filters.siteUrl(pro.image)" />
             </a>
           </swiper-slide>
@@ -31,46 +23,14 @@
     </p>
 
     <section class="gift-box">
-      <h3 class="w:30% m:auto">
-        <img :src="$filters.siteUrl('2020TVforever/images/2503/btn-a.png')"/>
+      <h3 class="w:30% w:50%@<992 w:60%@<576 m:0|auto|2%">
+        <img :src="$filters.siteUrl('2020TVforever/images/2503/btn-a.png')" />
       </h3>
 
       <!-- 精選活動 -->
-       <div>
-        <swiper
-        :loop="true"
-        :space-between="10"
-        :effect="'coverflow'"
-        :coverflowEffect="{
-           rotate: 60,
-           stretch: 10,
-           depth: 120,
-           modifier: 2,
-        }"
-        :centeredSlides="true"
-        :breakpoints="{
-          0:{
-            slidesPerView:1
-          },
-          992:{
-            slidesPerView:3
-          }
-        }"
-        :navigation="{
-          nextEl:'.gift-box .next',
-          prevEl:'.gift-box .prev'
-        }"
-        :modules="[EffectCoverflow]"
-        >
-        <swiper-slide v-for="gift in gifts">
-          <a :href="$filters.addGALink(gift.url)" target="_blank">
-            <img :src="$filters.siteUrl(gift.image)">
-          </a>
-        </swiper-slide>
-        </swiper>
-        <div class="swiper-button-prev prev"></div>
-        <div class="swiper-button-next next"></div>
-       </div>
+      <a class="w:50% w:90%@<992 w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=11312')" target="_blank">
+          <img :src="$filters.siteUrl('2020TVforever/images/2503/C4_a.png')" />
+        </a>
     </section>
 
     <!-- 房東精選 -->
@@ -84,12 +44,12 @@
     <!-- 現折券 -->
     <section class="discount-box" id="dis" v-if="isDis && product2[menuDis] != ''">
       <h2 class="title">
-         <img :src="$filters.siteUrl('2020TVforever/images/2503/S1.png')" />
+        <img :src="$filters.siteUrl('2020TVforever/images/2503/S1.png')" />
       </h2>
 
       <div class="discount">
         <listF :pro="product2[menuDis]" :isSwiper="1" :name="'dis'"></listF>
-         <a class="more" :href="$filters.addGALink(disUrl)" target="_blank">
+        <a class="more" :href="$filters.addGALink(disUrl)" target="_blank">
           <img :src="$filters.siteUrl('2020TVforever/images/2503/more.png')" />
         </a>
       </div>
@@ -114,14 +74,15 @@
     </section>
 
     <!-- 夜間下殺 -->
-    <section class="night-box"  v-show="isNight && products[menuNight[n]] != ''">
+    <section class="night-box" v-show="isNight && products[menuNight[n]] != ''">
       <h2 class="title">
         <img :src="$filters.siteUrl('2020TVforever/images/2503/S3.png')" />
       </h2>
 
-      <div>  
+      <div>
         <listF :pro="product2[menuNight]"></listF>
-       <a class="more" :href="$filters.addGALink('https://events.tk3c.com/events_net/nightsale/index.html')" target="_blank">
+        <a class="more" :href="$filters.addGALink('https://events.tk3c.com/events_net/nightsale/index.html')"
+          target="_blank">
           <img :src="$filters.siteUrl('2020TVforever/images/2503/more.png')" />
         </a>
       </div>
@@ -130,7 +91,7 @@
     <!-- 品牌 -->
     <section class="brand-group scroll" titles="人氣大牌" id="brand">
       <h2 class="title">
-       <img :src="$filters.siteUrl('2020TVforever/images/2503/S4.png')" />
+        <img :src="$filters.siteUrl('2020TVforever/images/2503/S4.png')" />
       </h2>
 
       <swiper class="overflow:hidden" :autoplay="{
@@ -138,24 +99,24 @@
           disableOnInteraction: false
         }" :space-between="10" :breakpoints="{
           0: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             grid: {
               fill: 'row',
               rows: 2
             }
           },
           600: {
-            slidesPerView: 5,
+            slidesPerView: 3,
             grid: {
               fill: 'row',
-              rows: 3
+              rows: 2
             }
           },
           992: {
-            slidesPerView: 5,
+            slidesPerView: 6,
             grid: {
               fill: 'row',
-              rows: 3
+              rows: 2
             }
           }
         }" :pagination="{
@@ -177,7 +138,7 @@
   </div>
 
   <!-- 左側選單+手機版 -->
-   <LeftAside :asides="asides"></LeftAside>
+  <LeftAside :asides="asides"></LeftAside>
 
   <!-- 右側選單 -->
   <RightAside :asides="asides"></RightAside>
@@ -193,20 +154,32 @@ export default {
       Parallax,
       proTV: [
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=247821',
-          image: '2020TVforever/images/2502/PD_247821.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=233430',
+          image: '2020TVforever/images/2503/233430_a.png'
         },
          {
-          url: 'https://www.tk3c.com/pt.aspx?pid=249380',
-          image: '2020TVforever/images/2502/PD_249380.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=246742',
+          image: '2020TVforever/images/2503/246742_a.png'
         },
          {
-          url: 'https://www.tk3c.com/pt.aspx?pid=250719',
-          image: '2020TVforever/images/2502/PD_250719.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=247802',
+          image: '2020TVforever/images/2503/247802_a.png'
         },
          {
-          url: 'https://www.tk3c.com/pt.aspx?pid=253004',
-          image: '2020TVforever/images/2502/PD_253004.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=248269',
+          image: '2020TVforever/images/2503/248269_a.png'
+        },
+          {
+          url: 'https://www.tk3c.com/pt.aspx?pid=250173',
+          image: '2020TVforever/images/2503/250173_a.png'
+        },
+          {
+          url: 'https://www.tk3c.com/pt.aspx?pid=253091',
+          image: '2020TVforever/images/2503/253091_a.png'
+        },
+           {
+          url: 'https://www.tk3c.com/pt.aspx?pid=254426',
+          image: '2020TVforever/images/2503/254426_a.png'
         }
 
       ],
@@ -275,11 +248,11 @@ export default {
         }
       ],
       saleTab: [
-        { image: '2020TVforever/images/2502/logo_01.png' },
-        { image: '2020TVforever/images/2502/logo_02.png' },
-        { image: '2020TVforever/images/2502/logo_03.png' },
-        { image: '2020TVforever/images/2502/logo_04.png' },
-        { image: '2020TVforever/images/2502/logo_more.png' }
+        { image: '2020TVforever/images/2503/logo_01.png' },
+        { image: '2020TVforever/images/2503/logo_03.png' },
+        { image: '2020TVforever/images/2503/logo_04.png' },
+        { image: '2020TVforever/images/2503/logo_02.png' },
+        { image: '2020TVforever/images/2503/logo_more.png' }
       ],
       floorImg: [
         {
@@ -366,8 +339,7 @@ body {
 }
 
 .bg01 {
-  margin: 0 auto 1%;
-  background: #a75cf0;
+  background: #7a99e9;
   border-radius: 10px;
   box-sizing: border-box;
 }
@@ -391,10 +363,10 @@ body {
     margin: 0 auto 0;
     padding-bottom: 40%;
     .pro {
-      width: 30%;
+      width: 35%;
       position: absolute;
-      right: 21%;
-      top: 23%;
+      right: 16%;
+      top: 29%;
     }
     .title {
       width: 30%;
@@ -423,7 +395,7 @@ body {
 .background2 {
    width: 100%;
     height: 100%;
-    $image: $dir + 'BG.png';
+    $image: $dir + 'BG2.png';
     background: url($image) no-repeat center;
     background-size: 100% auto;
     background-position:
@@ -437,7 +409,7 @@ body {
     z-index: -1;
     &.fixed {
       position: fixed;
-      background-position: 0 -212vw,top;
+      background-position: 0 -207vw,top;
       z-index: -2;
     }
 }
@@ -460,6 +432,13 @@ body {
     }
     .swiper-slide {
       flex-basis: 16%;
+      &:last-child {
+        img {
+          transform: scale(0.65);
+          margin-top: -8%;
+          margin-left: -14%;
+        }
+      }
     }
   }
 }
@@ -482,15 +461,6 @@ body {
   }
 }
 
-#sale-area {
-  .swiper-slide {
-    .other {
-      transform: scale(0.7);
-      margin-top: -7%;
-    }
-  }
-}
-
 .brand-group {
   .swiper-pagination {
     .swiper-pagination-bullet {
@@ -500,38 +470,51 @@ body {
       background: #fff !important;
     }
   }
+  .swiper-wrapper {
+    justify-content: center;
+  }
 }
 
 /*  電腦版其他尺寸 */
 @include media-query('mobile', '992px') {
   #tv-container {
     .background {
-      padding-bottom: 60vw;
+      padding-bottom: 55vw;
       .title {
         width: 45%;
-        top: 13vw;
-        left: 4vw;
+        top: 12vw;
+        left: 5vw;
       }
       .pro {
-        width: 40%;
-        right: 10vw;
-        top: 13vw;
+        width: 45%;
+        right: 4vw;
+        top: 12vw;
       }
     }
   }
 
- body {
-  &:before {
-    background-size: 120% auto;
-    background-position: -11vw 4vw,top;
+ .background2 {
+  background-size: 125% auto;
+  background-position: -12vw 0,top;
+  &.fixed {
+    background-position: -12vw -194vw,top;
   }
  }
 
  .sale-group {
   .tab {
     .swiper-slide {
-      flex-basis: 18%;
+      flex-basis: 21%;
     }
+    .swiper-wrapper {
+      justify-content: left;
+    }
+  }
+ }
+
+ .brand-group {
+  .swiper-wrapper {
+    justify-content: left;
   }
  }
 }
@@ -540,20 +523,20 @@ body {
 @include media-query('mobile', '576px') {
   #tv-container {
     .background {
-      padding-bottom: 173vw;
+      padding-bottom: 160vw;
       .title {
         left: 0;
         right: 0;
         margin: 0 auto;
-        width: 95%;
-        top: 27vw;
+        width: 85%;
+        top: 28vw;
       }
       .pro {
-        width: 90%;
+        width: 100%;
         left: 0;
         right: 0;
         margin: 0 auto;
-        top: 90vw;
+        top: 91vw;
         .swiper-wrapper {
           align-items: baseline;
         }
@@ -561,10 +544,11 @@ body {
     }
   }
 
-  body {
-    &:before {
-      background-size: 320% auto;
-      background-position: -170vw 55vw,top;
+  .background2 {
+    background-size: 180% auto;
+    background-position: -40vw 21vw,top;
+    &.fixed {
+      background-position: -40vw -258vw,top;
     }
   }
 

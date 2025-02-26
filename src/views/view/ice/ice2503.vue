@@ -18,13 +18,12 @@
     <!-- 最高現折 -->
     <section class="sale-box" id="sale" v-if="isSale && product2[menuDis] != ''">
       <h2 class="title">
-        <img :src="$filters.siteUrl('icewash2209/images/2503/S1.png')" />
+        <a :href="$filters.addGALink(saleUrl)" target="_blank">
+           <img :src="$filters.siteUrl('icewash2209/images/2503/S1.png')" />
+        </a>
       </h2>
       <div class="sale">
         <listF :pro="product2[menuDis]" :isSwiper="1" :name="'sale-pro'"></listF>
-        <a class="more" :href="$filters.addGALink(saleUrl)" target="_blank">
-          <img :src="$filters.siteUrl('icewash2209/images/2405/MORE.png')" />
-        </a>
       </div>
     </section>
 
@@ -35,7 +34,7 @@
       </h2>
 
       <!-- 活動搶先看 -->
-      <div class="w:45% w:75%@<992 w:full@<576 m:auto">
+      <div class="w:80% w:90%@<992 w:full@<576 m:auto">
         <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=111723&aid=22434&hid=123829')" target="_blank">
           <img :src="$filters.siteUrl('icewash2209/images/2503/S2-e1.png')" />
         </a>
@@ -451,7 +450,7 @@ section {
 }
 
 /* 手機版 */
-@include media-query('pad', '577px','610px') {
+@include media-query('pad', '577px','760px') {
   #icewash-container {
     .background {
       $image:$dir + 'kvM.png';
@@ -467,9 +466,9 @@ section {
       .box {
         width: 85%;
         height: 100%;
-        top: 81vw;
+        top: 89vw;
         .product {
-          width: 100%;
+          width: 145%;
         }
       }
     }

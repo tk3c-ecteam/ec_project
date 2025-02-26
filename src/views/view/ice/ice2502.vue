@@ -151,7 +151,7 @@ export default {
         },
          {
           url: 'https://www.tk3c.com/pt.aspx?pid=223496',
-          image: 'icewash2209/images/2502/223496.png'
+          image: 'icewash2209/images/2502/223496_2.png'
         },
           {
           url: 'https://www.tk3c.com/pt.aspx?pid=252990',
