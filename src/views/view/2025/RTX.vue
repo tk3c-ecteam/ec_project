@@ -45,7 +45,7 @@
             <img :src="$filters.siteUrl(sp.image)">
           </a>
           <a v-else-if="isOpen" :href="$filters.addGALink(sp.url)" target="_blank">
-              <img :src="$filters.siteUrl(sp.image)">
+            <img :src="$filters.siteUrl(sp.image)">
           </a>
           <img v-else :src="$filters.siteUrl(sp.image)">
         </li>
@@ -195,56 +195,64 @@
     </section>
 
     <div v-if="isOpen">
-       <!-- 首批保證取貨專區 -->
-    <section class="floor1-box floors scroll" titles="首批保證取貨專區" id="floor1">
-      <h2 class="title">
-        <img :src="$filters.siteUrl('RTXNB/images/bar_01.png')" />
-      </h2>
+      <!-- 首批保證取貨專區 -->
+      <section class="floor1-box floors scroll" titles="首批保證取貨專區" id="floor1">
+        <h2 class="title">
+          <img :src="$filters.siteUrl('RTXNB/images/bar_01.png')" />
+        </h2>
 
-      <div class="box">
-        <ul class="gap:10 mt:7% mt:12%@<576 grid-cols:2 w:40% w:60%@<992 w:90%@<576">
-          <li v-for="(t1,t) in tab1[0].content" class="grayscale(1) grayscale(0).active translateZ(0) translateZ(0).active color:#fff bg:#23dae8 r:25px box:border-box" :class="[status1 == t ? 'active' : '']">
-            <a @click.prevent="changeTab1(t)">
-              <img :src="$filters.siteUrl(t1.image)">
-            </a>
-          </li>
-        </ul>
+        <div class="box">
+          <ul class="gap:10 mt:7% mt:12%@<576 grid-cols:2 w:40% w:60%@<992 w:90%@<576">
+            <li v-for="(t1,t) in tab1[0].content"
+              class="grayscale(1) grayscale(0).active translateZ(0) translateZ(0).active color:#fff bg:#23dae8 r:25px box:border-box"
+              :class="[status1 == t ? 'active' : '']">
+              <a @click.prevent="changeTab1(t)">
+                <img :src="$filters.siteUrl(t1.image)">
+              </a>
+            </li>
+          </ul>
 
-          <div class="tab-content" v-for="(t1,t) in tab1[0].content" v-show="status1 == t">
+          <div class="tab-content" v-for="(t1, t) in tab1[0].content" v-show="status1 == t">
             <listF v-if="products[menuF1[t]] != undefined" :pro="products[menuF1[t]].Data"></listF>
           </div>
 
-        <div class="text">
-          <p class="f:bold color:#f6f402 f:1.5rem f:1.2rem@<576 word-break:break-all">保證取貨賣場不參與贈1000燦坤K幣活動，預計於3/31交機</p>
+          <div class="text">
+            <p class="f:bold color:#f6f402 f:1.5rem f:1.2rem@<576 word-break:break-all">保證取貨賣場不參與贈1000燦坤K幣活動，預計於3/31交機
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- 沒搶到? 客訂排隊送1000K幣 -->
-    <section class="floor2-box floors scroll" titles="客訂排隊送1000K幣" id="floor2">
-      <h2 class="title">
-        <img :src="$filters.siteUrl('RTXNB/images/bar_02_a.png')" />
-      </h2>
+      <!-- 沒搶到? 客訂排隊送1000K幣 -->
+      <section class="floor2-box floors scroll" titles="客訂排隊送1000K幣" id="floor2">
+        <h2 class="title">
+          <img :src="$filters.siteUrl('RTXNB/images/bar_02_a.png')" />
+        </h2>
 
-      <div class="box">
-         <ul class="gap:10 mt:7% mt:12%@<576 grid-cols:3 w:60% w:90%@<992">
-          <li v-for="(t2,t) in tab2[0].content" class="grayscale(1) grayscale(0).active translateZ(0) translateZ(0).active color:#fff bg:#23dae8 r:25px box:border-box"  :class="[status2 == t ? 'active' : '']">
-            <a @click.prevent="changeTab2(t)">
-              <img :src="$filters.siteUrl(t2.image)">
-            </a>
-          </li>
-        </ul>
+        <div class="box">
+          <ul class="gap:10 mt:7% mt:12%@<576 grid-cols:3 w:60% w:90%@<992">
+            <li v-for="(t2,t) in tab2[0].content"
+              class="grayscale(1) grayscale(0).active translateZ(0) translateZ(0).active color:#fff bg:#23dae8 r:25px box:border-box"
+              :class="[status2 == t ? 'active' : '']">
+              <a @click.prevent="changeTab2(t)">
+                <img :src="$filters.siteUrl(t2.image)">
+              </a>
+            </li>
+          </ul>
 
-           <div class="tab-content" v-for="(t2,t) in tab2[0].content" v-show="status2 == t">
-              <listM v-if="t == 2 && products[menuF2[t]] != undefined" :pro="products[menuF2[t]].Data"></listM>
-               <listF v-else-if="products[menuF2[t]] != undefined" :pro="products[menuF2[t]].Data"></listF>
+
+          <div class="tab-content" v-for="(t2, t) in tab2[0].content" v-show="status2 == t">
+            <listM v-if="t == 2 && products[menuF2[t]] != undefined" :pro="products[menuF2[t]].Data"></listM>
+            <listF v-else-if="products[menuF2[t]] != undefined" :pro="products[menuF2[t]].Data"></listF>
           </div>
 
-        <div class="text">
-          <p class="f:bold color:#f6f402 f:1.5rem f:1.2rem@<576 word-break:break-all">客訂交機，過猶豫期後贈送1000燦坤K幣(需具有實體會員資格)</p>
+
+          <div class="text">
+            <p class="f:bold color:#f6f402 f:1.5rem f:1.2rem@<576 word-break:break-all">客訂交機，過猶豫期後贈送1000燦坤K幣(需具有實體會員資格)
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   </div>
 
