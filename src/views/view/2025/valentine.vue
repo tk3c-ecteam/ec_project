@@ -140,9 +140,7 @@ export default {
     <!-- 現折券 -->
     <section class="sale-box scroll" titles="最高現折999" id="sale">
       <h2 class="title">
-        <a :href="
-            $filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922')
-          " target="_blank">
+        <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922')" target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/S2_bar_2.png')" />
         </a>
       </h2>

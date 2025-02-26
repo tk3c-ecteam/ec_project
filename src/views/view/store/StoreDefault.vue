@@ -72,7 +72,7 @@ const contents = defineModel("contents");
     </p>
 
     <!-- 導航區 -->
-    <nav v-if="contents[0].floorImg != undefined" class="w:full top:45px z:99 p:0.5%|1%|0.5% p:2%|3%|2%@<992 p:2%|4%|2%@<576 box:border-box"
+    <nav v-if="contents[0].floorImg != undefined" class="w:full top:45px z:99 p:0.5%|1%|0.5% p:2%|3%|2%@<992 p:2%|4%|3%@<576 box:border-box"
     >
       <swiper
         class="max-w:1100px min-w:50% w:auto@<992"
@@ -109,10 +109,10 @@ const contents = defineModel("contents");
           prevEl: '.background .prev',
         }"
       >
-        <swiper-slide v-for="slide in contents[0].slides">
+        <swiper-slide v-for="(slide,s) in contents[0].slides">
           <a :href="$filters.addGALink(slide.url)" target="_blank">
-             <img class="pc" :src="$filters.siteUrl(slide.pc)" />
-             <img class="mobile" :src="$filters.siteUrl(slide.mobile)" />
+             <img v-if="slide.pc" class="pc" :src="$filters.siteUrl(slide.pc)" />
+             <img v-if="slide.mobile" class="mobile" :src="$filters.siteUrl(slide.mobile)" />
           </a>
         </swiper-slide>
       </swiper>

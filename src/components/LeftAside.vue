@@ -24,7 +24,8 @@
   ];
 
   let event0301 = [
-    {"name":" 姐!妹力無限","url":"https://events.tk3c.com/events_net/2025GirlDay/index.html","class":"bank"}
+    {"name":" 姐!妹力無限","url":"https://events.tk3c.com/events_net/2025GirlDay/index.html","class":"bank"},
+    {"name":"風扇主題館","url":"https://events.tk3c.com/events_net/fan_hot/index.html"}
   ];
 
   switch (folderName) {
@@ -47,6 +48,10 @@
      case 'electric_heater':
       num = 9;
       break;   
+
+     case 'fan_hot':
+      num = 9;
+      break; 
   } 
 
   if (today >= new Date('2025/03/01') && today < new Date('2025/03/10')) {
@@ -56,6 +61,7 @@
 
   if (today >= new Date('2025/03/01')) {
     events.splice(10,1);
+    events.splice(9,event0301[1]);
     num - 1;
   }
 

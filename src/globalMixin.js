@@ -22,12 +22,12 @@ export const globalMixin = {
     this.timer = setInterval(() => {
       //取得自訂樓層標題
       this.getFloorTitle('section.scroll');
-    }, 3000);
+    }, 4000);
 
     //3秒後清除
     setTimeout(() => {
       clearInterval(this.timer);
-    }, 3000);
+    }, 4000);
   },
   methods: {
     /*加入meta標籤

@@ -43,10 +43,12 @@ var contents = [
             },
           ],
           slides: [
-            { pc: "EUPA/images/kv3.jpg", mobile: "EUPA/images/kv3M.jpg" },
-            { pc: "EUPA/images/eupa1.png", mobile: "EUPA/images/eupa1M.png" },
-            { pc: "EUPA/images/eupa2.png", mobile: "EUPA/images/eupa2M.png" },
-            { pc: "EUPA/images/eupa3.png", mobile: "EUPA/images/eupa3M.png" },
+            { pc: "EUPA/images/TSK.png"},
+            { pc: "EUPA/images/TSK-264.png", mobile: "EUPA/images/TSK-264_M.png" },
+            { pc: "EUPA/images/TSK-1171_a.png", mobile: "EUPA/images/TSK-1171A_M.png" },
+            { pc: "EUPA/images/TSK-1589.png", mobile: "EUPA/images/TSK-1589B_M.png" },
+            { pc: "EUPA/images/TSK-2865_a.png", mobile: "EUPA/images/TSK-2865_M.png" },
+             { pc: "EUPA/images/TSK-B164.png", mobile: "EUPA/images/TSK-B164_M.png" },
           ],
         }
       ];
@@ -54,7 +56,19 @@ var contents = [
       const moreImage = "EUPA/images/more.png";
 
       menus.splice(0,1);
-          contents[0].floorImg.splice(0,1);
+          contents[0].floorImg.splice(0,1);    
+
+      contents[0].slides.forEach((slide,s) => {
+        if (slide.mobile == undefined && window.innerWidth <= 992) {
+          contents[0].slides.splice(s,1);
+        }
+
+        addEventListener('resize',() => {
+           if (slide.mobile == undefined && window.innerWidth <= 992) {
+          contents[0].slides.splice(s,1);
+          }
+        });
+      });    
      
 </script>
 
