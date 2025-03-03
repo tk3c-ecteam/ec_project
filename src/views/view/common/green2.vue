@@ -184,7 +184,9 @@ export default {
       menuSp: 4850,
       isVip: false,
       isNew: false,
-      isGreenSale:false
+      isGreenSale:false,
+      isOpen:false,
+      isOff:true
     }
   },
   mounted() {
@@ -193,6 +195,12 @@ export default {
     //綠色消費趣 顯示
    if (today >= new Date('2025/02/17') && today < new Date('2025/03/17')) {
       this.isGreenSale = true;
+    }
+
+    //3/1新增星展活動
+    if (today >= new Date('2025/03/01') && today < new Date('2025/04/01')) {
+      this.isOpen = true;
+      this.isOff = false;
     }
 
     this.newTabs = this.newTab2;
@@ -227,24 +235,39 @@ export default {
     },
     message(id) {
       //活動說明
-      let infoHtml = ''
+      let infoHtml = '',
+      width = 0;
 
-      if (id == 1) {
-        infoHtml = `
+      switch (id) {
+        case 1:
+          //退貨物稅
+          width = 900;
+          infoHtml = `
           <img src="https://www.tk3c.com/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg" width="100%">
           <img src="https://www.tk3c.com/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg" width="100%">
-        `
-      } else if (id == 2) {
-        infoHtml = `
-          <img src="https://www.tk3c.com/image/UserFiles/sgs-2024-1.jpg" width="100%">
-          <img src="https://www.tk3c.com/image/UserFiles/sgs-2024-2.jpg" width="100%">
-        `
+        `;
+          break;
+      
+        case 2:
+          //星展線上說明
+            width = 500;
+            infoHtml = `
+             <img src="https://events.cdn-tkec.tw/events_net/events_net/green_subsidy/images/new/online.png" width="100%">
+        `;
+          break;
+
+         case 3:
+          //星展門市說明
+          width = 500;
+            infoHtml = `
+             <img src="https://events.cdn-tkec.tw/events_net/events_net/green_subsidy/images/new/store.png" width="100%">
+        `;
+          break;  
       }
 
       Swal.fire({
-        width: 900,
+        width: width,
         html: infoHtml,
-        padding: '1em',
         showCloseButton: true,
         position: 'center',
         returnFocus: false,
@@ -278,7 +301,33 @@ export default {
 
     <!-- 環保3C家電產品 週末12%回饋 -->
     <section class="new-box">
-      <div class="w:full flex jc:center flex-wrap:wrap gap:10 m:0|0|5% m:0|0|10%@<576">
+      <!-- 3/1新增 -->
+      <div v-show="isOpen">
+        <p class="w:85% w:full@<992 m:0|auto|6%">
+            <img :src="$filters.siteUrl('green_subsidy/images/new/g5.png')" />
+         </p>
+
+         <h2 class="title">
+            <img :src="$filters.siteUrl('green_subsidy/images/new/bank31_title.png')" />
+         </h2>
+         <p class="w:85% w:full@<992 mb:2% m:auto">
+          <img :src="$filters.siteUrl('green_subsidy/images/new/bank31.png')" />
+         </p>
+         <div class="w:35% w:50%@<992 w:70%@<576 grid-cols:2 gap:10 m:0|auto|5%">
+            <a @click="message(2)"><img :src="$filters.siteUrl('green_subsidy/images/new/bank_btn1.png')" /></a>
+             <a @click="message(3)"><img :src="$filters.siteUrl('green_subsidy/images/new/bank_btn2.png')" /></a>
+         </div>
+         <p class="w:85% w:full@<992 m:0|auto|4%">
+          <img :src="$filters.siteUrl('green_subsidy/images/new/bank31_board.png')" />
+         </p>
+
+          <a :href="
+            $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
+          " class="w:42% w:45%@<992 w:90%@<576 m:0|auto|5%" target="_blank"><img
+            :src="$filters.siteUrl('green_subsidy/images/new/btn2.png')" /></a>
+      </div>
+
+      <div v-show="isOff" class="w:full flex jc:center flex-wrap:wrap gap:10 m:0|0|5% m:0|0|10%@<576">
         <a href="#info" class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%"><img
             :src="$filters.siteUrl('green_subsidy/images/new/btn1_b.png')" /></a>
         <a :href="
@@ -400,7 +449,7 @@ export default {
           </a>
         </li>
         <li class="alert2">
-          <a @click="message(2)">
+          <a :href="$filters.addGALink('https://save3000.moeaea.gov.tw/subsidy02/index/index.aspx')" target="_blank">
             <img :src="$filters.siteUrl('green_subsidy/images/a05_2.png')" alt="" />
           </a>
         </li>

@@ -15,7 +15,7 @@ const { title } = toRefs(props)
 
 <template>
   <!-- 熱門活動 -->
-  <section class="event-box scroll" id="event">
+  <section class="event-box scroll" titles="熱門活動" id="event">
     <h2 class="title" v-if="title != undefined">
       <img :src="$filters.siteUrl(title)" />
     </h2>

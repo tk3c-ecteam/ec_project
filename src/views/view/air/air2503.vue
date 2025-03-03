@@ -45,12 +45,11 @@
     <div class="background2"></div>
 
     <!-- 尊榮安裝 -->
-    <section class="air-info scroll" titles="VVIP尊榮安裝" id="vvip">
+    <section class="air-info scroll" v-if="isVipOld" titles="VVIP尊榮安裝" id="vvip">
       <a id="vvip" :href="
           $filters.addGALink('https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2')
         " target="_blank">
-        <img v-show="isVip" :src="$filters.siteUrl('airConditionerLAB/images/2405/vvip_2.jpg')" />
-         <img v-show="isVipOld" :src="$filters.siteUrl('airConditionerLAB/images/2405/vvip.png')" />
+        <img :src="$filters.siteUrl('airConditionerLAB/images/2405/vvip_2.jpg')" />
       </a>
     </section>
 
@@ -120,7 +119,7 @@
         </a>
       </h2>
 
-      <Tabs :isSwiper="1" :statusSelect="5" :swiperOption="swiperOption.breakpoints" :tabs="brands">
+      <Tabs :isSwiper="1" :swiperOption="swiperOption.breakpoints" :tabs="brands">
         <template v-slot="{ selectedTab }">
           <TabContent :isSwiper="1" v-for="(brand, b) in brands" :menus="menuBrand[b]" :banners="brand.banner" :index="b" :selectedTab="selectedTab">
 
@@ -356,8 +355,16 @@ export default {
     return {
       proAir: [
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=216180',
-          image: 'airConditionerLAB/images/2503/PD01.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=248028',
+          image: 'airConditionerLAB/images/2503/PD1.png'
+        },
+        {
+          url: 'https://www.tk3c.com/pt.aspx?pid=215493',
+          image: 'airConditionerLAB/images/2503/PD2.png'
+        },
+        {
+          url: 'https://www.tk3c.com/pt.aspx?pid=240642',
+          image: 'airConditionerLAB/images/2503/PD3.png'
         }
       ],
       subtitles:[
@@ -407,6 +414,13 @@ export default {
          {
           image: 'airConditionerLAB/images/2503/brand2.png',
           url:'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11237',
+           banner:[
+            {
+              pc: 'airConditionerLAB/images/2503/bn_daikin.jpg',
+              mobile: 'airConditionerLAB/images/2503/bn_daikinM.jpg',
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11237',
+            }
+          ]
         },
         {
           image: 'airConditionerLAB/images/2503/brand3.png',
@@ -421,6 +435,13 @@ export default {
          {
          image: 'airConditionerLAB/images/2503/brand4.png',
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=37503',
+           banner:[
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=37503',
+              pc: 'airConditionerLAB/images/2503/bn_mit.jpg',
+              mobile: 'airConditionerLAB/images/2503/bn_mitM.jpg'
+            }
+          ]
         },
         {
           image: 'airConditionerLAB/images/2503/brand5.png',
@@ -445,6 +466,13 @@ export default {
          {
           image: 'airConditionerLAB/images/2503/brand7.png',
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=104083',
+          banner:[
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=104083',
+              pc: 'airConditionerLAB/images/2503/bn_lg.jpg',
+              mobile: 'airConditionerLAB/images/2503/bn_lgM.jpg'
+            }
+          ]
         },
          {
           image: 'airConditionerLAB/images/2503/brand8.png',
@@ -620,7 +648,7 @@ export default {
       disUrl: '',
       isSp:false,
       isVip:false,
-      isVipOld:true,
+      isVipOld:false,
       swiperOption:{
         breakpoints:{
           0:{
@@ -650,11 +678,6 @@ export default {
   },
   mounted() {
     const { floors, menuDis, menuBear, today, menuHot, menuCold, menuWet } = this
-
-    if (today >= new Date('2025/02/06 00:00')) {
-      this.isVip = true;
-      this.isVipOld = false;
-    }
     //固定背景
     this.fixedBg('.background2', '.air-info')
 
@@ -778,7 +801,7 @@ $origin: "https://events.tk3c.com/events_net/events_net/airConditionerLAB/images
 
 /*  共用樣式調整 */
 body {
-  background: #f7ffff;
+  background: #eafffe;
 }
 
 .bg01 {

@@ -35,7 +35,7 @@
 
       <!-- 活動搶先看 -->
       <div class="w:80% w:90%@<992 w:full@<576 m:auto">
-        <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=111723&aid=22434&hid=123829')" target="_blank">
+        <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=12504&aid=4878&hid=14374')" target="_blank">
           <img :src="$filters.siteUrl('icewash2209/images/2503/S2-e1.png')" />
         </a>
       </div>

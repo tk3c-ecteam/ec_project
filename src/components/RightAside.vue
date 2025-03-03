@@ -7,9 +7,22 @@
    /*手機版選單類型
    * type == 'mobile' -> 置底選單
    * type == 'mobile2' -> 置頂選單
+   * type == 'mobileAi' -> 3c頁用
    */
    const type = defineModel('type', {
    type: String
+  });
+
+  const tab1 = defineModel('tab1', {
+    type: Object
+  });
+
+  const tab2 = defineModel('tab2', {
+    type: Object
+  });
+
+   const statusGift = defineModel('statusGift', {
+    type: Number
   });
 </script>
 
@@ -19,13 +32,31 @@
     <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
     <div class="aside-wrap">
       <h3 class="aside-header"></h3>
-      <div class="aside-content">
+      <!-- 一般右側選單樓層項目 -->
+      <div class="aside-content" v-if="asides">
         <ul>
           <li v-for="(aside, a) in asides" :key="a">
             <a :href="aside.href">{{ aside.text }}</a>
           </li>
         </ul>
       </div>
+
+      <!-- 3c頁樓層項目專屬 -->
+      <div class="aside-content" v-else>
+        <ul class="a1" v-show="statusGift == 0">
+          <li v-for="(t1,t) in tab1[0]">
+            <a :href="`#tab${Number(t) + 1}`">{{ t1[0].text }}</a>
+          </li>
+          <li><a href="#event">熱門活動 </a></li>
+        </ul>
+        <ul class="a2" v-show="statusGift == 1">
+          <li v-for="(t2,t) in tab2[0]">
+            <a :href="`#tab${Number(t) + 7}`">{{ t2[0].text }}</a>
+          </li>
+          <li><a href="#event">熱門活動 </a></li>
+        </ul>
+      </div>
+      
       <a href="#" class="go-top">GO TOP</a>
     </div>
   </aside>
@@ -51,4 +82,22 @@
       </ul>
     </template>
   </mobile2>
+
+  <!-- 3c頁手機版選單 -->
+   <mobileAi v-if="type == 'mobileAi'">
+      <template #typeAside>
+       <ul class="a1" v-show="statusGift == 0">
+          <li v-for="(t1,t) in tab1[0]">
+            <a :href="`#tab${Number(t) + 1}`">{{ t1[0].text }}</a>
+          </li>
+          <li><a href="#event">熱門活動 </a></li>
+        </ul>
+        <ul class="a2" v-show="statusGift == 1">
+          <li v-for="(t2,t) in tab2[0]">
+            <a :href="`#tab${Number(t) + 7}`">{{ t2[0].text }}</a>
+          </li>
+          <li><a href="#event">熱門活動 </a></li>
+        </ul>
+    </template>
+   </mobileAi>
 </template>

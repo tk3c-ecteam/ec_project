@@ -11,10 +11,10 @@ export default {
          { image: '2025GirlDay/images/e03_a.png' },
       ],
       sales: [
-        { image: '2025GirlDay/images/c1_a.png'},
-        { image: '2025GirlDay/images/c2_a.png'},
-        { image: '2025GirlDay/images/c3_a.png' },
-        { image: '2025GirlDay/images/c4_a.png' },
+        { url:"https://www.tk3c.com/dic2.aspx?cid=124362&aid=23927&hid=124365", image: '2025GirlDay/images/c1_a.png'},
+        { url:"https://www.tk3c.com/dic2.aspx?cid=124362&aid=23927&hid=124366" ,image: '2025GirlDay/images/c2_a.png'},
+        { url:"https://www.tk3c.com/dic2.aspx?cid=124362&aid=23927&hid=124368",image: '2025GirlDay/images/c3_a.png' },
+        { url:"https://www.tk3c.com/dic2.aspx?cid=124362&aid=23927&hid=124370",image: '2025GirlDay/images/c4_a.png' },
       ],
       banks: [
         { image: '2025GirlDay/images/bank1_a.png', 
@@ -65,7 +65,7 @@ export default {
         },
          {
           image:'2025GirlDay/images/S10_bar.png',
-          url:""
+          url:"https://www.tk3c.com/dictitleurl.aspx?cid=11703"
         },
           {
           image:'2025GirlDay/images/S11_bar.png',
@@ -244,7 +244,9 @@ export default {
     <!-- 瘋搶折價 -->
     <section class="sale-group scroll" titles="瘋搶折價" id="sale">
       <h2 class="title">
-       <img :src="$filters.siteUrl('2025GirlDay/images/S4_bar_a.png')" />
+        <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124362&aid=23927')" target="_blank">
+          <img :src="$filters.siteUrl('2025GirlDay/images/S4_bar_a.png')" />
+        </a>
       </h2>
 
       <div class="box">

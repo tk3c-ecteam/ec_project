@@ -2,68 +2,27 @@
   <div id="fan-container" v-cloak>
     <div class="background">
       <h2 class="title animate__animated animate__pulse">
-        <img :src="$filters.siteUrl('fan_hot/images/2503/title.png')" />
+        <img :src="$filters.siteUrl('fan_hot/images/2503/title2.png')" />
       </h2>
 
       <div class="product">
-        <swiper :loop="true" :effect="'fade'" :fadeEffect="{
-          crossFade: true,
-        }" :parallax="true" :autoplay="{ delay: 1800, disableOnInteraction: false }" :modules="[Parallax, EffectFade]">
-          <swiper-slide v-for="pro in proFan">
-            <a :href="$filters.addGALink(pro.url)" target="_blank" data-swiper-parallax-scale="0.7"
-              data-swiper-parallax-opacity="0">
-              <img :src="$filters.siteUrl(pro.image)" alt="" />
-            </a>
-          </swiper-slide>
-        </swiper>
+        <img :src="$filters.siteUrl('fan_hot/images/2503/PD2.png')" />
       </div>
     </div>
 
     <canvas id="particle_canvas"></canvas>
 
-    <!-- 暖心優惠一把抓 -->
-    <section class="gift-box scroll" titles="暖心優惠一把抓" id="gift">
+    <!-- 早鳥沁涼好康 -->
+    <section class="gift-box scroll" titles="早鳥沁涼好康" id="gift">
       <h2 class="title">
-        <img :src="$filters.siteUrl('fan_hot/images/2503/S0.png')" alt="" />
+        <img :src="$filters.siteUrl('fan_hot/images/2503/S0_a.png')" alt="" />
       </h2>
 
       <ul>
-        <li class="w:43%">
-          <swiper :loop="true" :effect="'flip'" :flipEffect="{
-                 slideShadows : false,
-                 limitRotation : -180,
-              }" :autoplay="{ delay: 1500, disableOnInteraction: false }" :modules="[EffectFlip]">
-            <swiper-slide v-for="gift in gifts">
-              <a :href="$filters.addGALink(gift.url)" target="_blank">
-                <img :src="$filters.siteUrl(gift.image)">
-              </a>
-            </swiper-slide>
-          </swiper>
-        </li>
-        <li><a :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank">
-            <img :src="$filters.siteUrl('fan_hot/images/2411/s1-4.png')" alt="" />
+        <li v-for="gift in gifts">
+          <a :href="$filters.addGALink(gift.url)" target="_blank">
+            <img :src="$filters.siteUrl(gift.image)">
           </a>
-        </li>
-        <li class="muti">
-          <img :src="$filters.siteUrl('fan_hot/images/2411/s1-2b.png')" alt="" />
-          <div class="links">
-            <a class="alert">
-              <img :src="$filters.siteUrl('fan_hot/images/2411/event2.png')" />
-            </a>
-            <a class="go" :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=88225')"
-              target="_blank">
-              <img :src="$filters.siteUrl('fan_hot/images/2411/go2.png')" />
-            </a>
-          </div>
-        </li>
-        <li class="muti">
-          <img :src="$filters.siteUrl('fan_hot/images/2411/s1-5.png')" alt="" />
-          <div class="links">
-            <a class="go" :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=115927&aid=22750&hid=115598')"
-              target="_blank">
-              <img :src="$filters.siteUrl('fan_hot/images/2411/go2.png')" />
-            </a>
-          </div>
         </li>
       </ul>
     </section>
@@ -95,28 +54,26 @@
 </template>
 
 <script>
-import { EffectFlip,EffectFade,Parallax } from "swiper/modules";
 import listM from '@/views/layout/listM.vue'
 export default {
   data() {
     return {
-      EffectFlip,
-      EffectFade,
-      Parallax,
-      proFan:[
-        {
-          image: 'fan_hot/images/2503/PD.png',
-          url:'https://www.tk3c.com/pt.aspx?pid=123640'
-        }
-      ],
       gifts:[
          {
-          image: 'fan_hot/images/2411/s1-1.png',
+          image: 'fan_hot/images/2503/C1_a.png',
           url:'https://www.tk3c.com/events/eventgift.aspx'
         },
           {
-          image: 'fan_hot/images/2411/s1-3.png',
-          url:'https://www.tk3c.com/events/eventgift.aspx'
+          image: 'fan_hot/images/2503/C2_a.png',
+          url:'https://www.tk3c.com/dic1.aspx?cid=11058&aid=17040'
+        },
+        {
+          image: 'fan_hot/images/2503/C3_a.png',
+          url:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=69944'
+        },
+          {
+          image: 'fan_hot/images/2503/C4_a.png',
+          url:'https://www.tk3c.com/dic2.aspx?cid=115927&aid=22750&hid=116932'
         },
       ],
       floorImg: [
@@ -155,7 +112,7 @@ export default {
         },
          {
           image: 'fan_hot/images/2503/S10.png',
-          moreUrl:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=22588&hid=120412',
+          moreUrl:'https://www.tk3c.com/dic1.aspx?cid=11058&aid=5779',
           type:listM
         }
       ],
@@ -187,6 +144,7 @@ body {
   background: none;
   border: 2px solid #40637e;
   box-sizing: border-box;
+  border-top: none;
   margin: 0 auto 2%;
 }
 
@@ -207,16 +165,16 @@ body {
     background-position: 0 45px, top;
     padding-bottom: 65%;
     .title {
-      width: 35%;
+      width: 33%;
       position: absolute;
       left:0;
       right: 0;
-      top: 16%;
+      top: 12%;
       margin: 0 auto;
       animation-duration: 2.3s;
     }
     .product {
-      width: 30%;
+      width: 23%;
       position: absolute;
       right: 0;
       left: 0;
@@ -233,62 +191,6 @@ body {
   li {
     width: 44%;
     margin: 0 5px 1%;
-    &.muti {
-      position: relative;
-      img {
-        transform: scale(1.1);
-        position: relative;
-      }
-      .links {
-        width: 100%;
-        position: absolute;
-        top: 73%;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        display: flex;
-        align-items: baseline;
-        a {
-          margin: 0 0;
-          img {
-            transform: scale(1);
-          }
-        }
-      }
-      &:nth-of-type(even) {
-        img {
-          top: -20px;
-        }
-        .links {
-          left: 80%;
-          img {
-            top: 0;
-          }
-          a {
-            width: 17%;
-          }
-        }
-      }
-      &:nth-of-type(odd) {
-        img {
-          top: -32px;
-        }
-        .links {
-          left: 55%;
-          img {
-            top: 0;
-          }
-          a {
-            &:nth-of-type(odd) {
-              width: 26%;
-            }
-            &:nth-of-type(even) {
-              width: 17%;
-            }
-          }
-        }
-      }
-    }
   }
 }
 
@@ -314,46 +216,15 @@ body {
       background-position: -10vw 4vw, top;
       padding-bottom: 80vw;
       .title {
-        width: 50%;
+        width: 44%;
         top: 10vw;
       }
       .product {
-        width: 40%;
+        width: 30%;
         right: 0;
         left:0;
         margin: 0 auto;
-        top: 12vw;
-      }
-    }
-  }
-
-  .gift-box {
-    li {
-      width: 44%;
-      &.muti {
-        .links {
-          top: 17.5vw;
-        }
-        &:nth-of-type(odd) {
-          img {
-            top: -25px;
-          }
-          .links {
-            img {
-              top: 0;
-            }
-          }
-        }
-        &:nth-of-type(even) {
-          img {
-            top: -15px;
-          }
-          .links {
-            img {
-              top: 0;
-            }
-          }
-        }
+        top: 37vw;
       }
     }
   }
@@ -364,20 +235,20 @@ body {
   #fan-container {
     .background {
       background-size: 200% auto;
-      background-position: -52vw 22vw, top;
-      padding-bottom: 150vw;
+      background-position: -54vw 16vw, top;
+      padding-bottom: 145vw;
       .title {
-        width: 80%;
-        top: 29vw;
+        width: 75%;
+        top: 27vw;
         left: 0;
         right: 0;
         margin: 0 auto;
       }
       .product {
-        width: 72%;
+        width: 50%;
         right: 0;
         left: 0;
-        top: 72vw;
+        top: 71vw;
         margin: 0 auto;
       }
     }
@@ -387,11 +258,6 @@ body {
     li {
       width: 100%;
       margin: 0 5px 4%;
-      &.muti {
-        .links {
-          top: 35vw;
-        }
-      }
     }
     .title {
       width: 160%;
