@@ -112,12 +112,9 @@
 
         <section class="pro-group scroll" v-for="(t1, t) in tab1[0]" :class="`tab${Number(t) + 1}-box`"
           :id="`tab${Number(t) + 1}`">
-          <h2 class="title">
-            <a v-if="t1[0].content != undefined" :href="$filters.addGALink(t1[0].content[0].url)" target="_blank">
-              <img :src="$filters.siteUrl(t1[0].title)" alt="" />
-            </a>
-            <a v-else :href="$filters.addGALink(t1[0].url)">
-              <img :src="$filters.siteUrl(t1[0].title)" alt="" />
+          <h2 class="title single-url">
+            <a :href="$filters.addGALink(t1[0].url)" target="_blank">
+              <img :src="$filters.siteUrl(t1[0].title)" />
             </a>
           </h2>
 

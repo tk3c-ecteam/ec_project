@@ -479,8 +479,8 @@ export default {
           banner:[
             {
               url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124376',
-              pc: 'airConditionerLAB/images/2502/bn_fuji2.jpg',
-              mobile: 'airConditionerLAB/images/2502/bn_fujiM2.jpg'
+              pc: 'airConditionerLAB/images/2503/bn_fuji3.jpg',
+              mobile: 'airConditionerLAB/images/2503/bn_fuji3M.jpg'
             }
           ]
         },

@@ -28,8 +28,8 @@
       </h3>
 
       <!-- 精選活動 -->
-      <a class="w:50% w:90%@<992 w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=11312')" target="_blank">
-          <img :src="$filters.siteUrl('2020TVforever/images/2503/C4_a.png')" />
+      <a class="w:80% w:90%@<992 w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=11312&aid=23889')" target="_blank">
+          <img :src="$filters.siteUrl('2020TVforever/images/2503/C4_b.png')" />
         </a>
     </section>
 
