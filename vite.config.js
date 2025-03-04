@@ -16,7 +16,7 @@ export default defineConfig({
         defineModel: true
       }
     }),
-    //自動引入import 套件
+    //自動引入import 套件(不需要再加入import { ref } from 'vue')
     AutoImport({
       include: [
         /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
@@ -30,7 +30,7 @@ export default defineConfig({
       ]
     }),
     Components({
-      //要引入的component路徑
+      //要引入的component路徑(不需再加入import xxx from '@/src/views/layout ...')
       dirs: [
         'src/components',
         'src/views/floor',
@@ -45,6 +45,7 @@ export default defineConfig({
       minify: true,
       entry: './src/main.js',
     }),
+    //圖片壓縮套件
     ViteImageOptimizer()
   ],
   define: {
@@ -88,9 +89,10 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        ai2501: resolve(__dirname, './index.html')
+        rtx: resolve(__dirname, './index.html')
       },
       output: {
+        //匯出index.html .js .css(打包檔案)
         entryFileNames: 'js/[name].js',
         chunkFileNames: 'js/[name].js',
         assetFileNames: 'css/[name][extname]'
