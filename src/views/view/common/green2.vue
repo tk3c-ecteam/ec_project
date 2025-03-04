@@ -265,15 +265,17 @@ export default {
           break;  
       }
 
-      Swal.fire({
-        width: width,
-        html: infoHtml,
-        showCloseButton: true,
-        position: 'center',
-        returnFocus: false,
-        confirmButtonText: '確定',
-        confirmButtonColor: '#000'
-      })
+      setTimeout(() => {
+         Swal.fire({
+          width: width,
+          html: infoHtml,
+          showCloseButton: true,
+          position: 'center',
+          returnFocus: false,
+          confirmButtonText: '確定',
+          confirmButtonColor: '#000'
+        })
+      }, 30);
     }
   }
 }

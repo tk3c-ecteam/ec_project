@@ -679,7 +679,7 @@ export default {
   mounted() {
     const { floors, menuDis, menuBear, today, menuHot, menuCold, menuWet } = this
     //固定背景
-    this.fixedBg('.background2', '.air-info')
+    this.fixedBg('.background2', '.discount-box')
 
     //撈取 現折券樓層商品
     this.getFloorSingle(menuDis)

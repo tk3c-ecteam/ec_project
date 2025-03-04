@@ -25,14 +25,14 @@ export default {
         { 
           image: '2025GirlDay/images/bank2_a.png',
           links:[
-            "https://www.tk3c.com.tw/#activityinfo&8"
+            "https://www.tk3c.com.tw/#actsdetail&8&774"
           ]
         },
         { 
           image: '2025GirlDay/images/bank3_a.png' ,
           links:[
             "https://events.tk3c.com/events_net/invoice_login/home.aspx",
-            "https://www.tk3c.com.tw/#activityinfo&8"
+            "https://www.tk3c.com.tw/#actsdetail&8&782"
           ]
         }
       ],
@@ -206,7 +206,9 @@ export default {
 
       <!-- 3/8限時下殺 -->
      <section class="limit-box" v-show="isLimit">
+       <h2 class="title">
         <img :src="$filters.siteUrl('2025GirlDay/images/S2_bar_a.png')" />
+       </h2>
         <div>
           <listF :pro="product2[menuLimit]" :isSwiper="1" :name="'limit'"></listF>
         </div>

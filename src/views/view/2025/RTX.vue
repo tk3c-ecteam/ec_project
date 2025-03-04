@@ -102,7 +102,7 @@
                 }
               }">
               <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
-                <img :src="$filters.siteUrl('2025Valentine/images/bank1-2b.png')" loading="lazy" />
+                <img :src="$filters.siteUrl('25spring/imagesT/bank/TS01.png')" />
                 <a class="w:32% w:40%@<992 w:50%@<576 mt:3% mt:6%@<576" :href="
                     $filters.addGALink(
                       'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779'
@@ -112,10 +112,10 @@
                 </a>
               </swiper-slide>
               <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
-                <img :src="$filters.siteUrl('2025Valentine/images/bank1-3.png')" loading="lazy" />
+                <img :src="$filters.siteUrl('25spring/imagesT/bank/TS02_new.png')" />
                 <a class="w:32% w:40%@<992 w:50%@<576 mt:3% mt:6%@<576" :href="
                     $filters.addGALink(
-                      'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=monthlyOffer'
+                      'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=main'
                     )
                   " target="_blank">
                   <img :src="$filters.siteUrl('2025Valentine/images/info.png')" />
@@ -129,8 +129,8 @@
       <!-- 新展銀行 -->
       <div class="card-content" v-show="statusBank == 1">
         <p class="grid-cols:2 grid-cols:1@<576 m:auto gap:10">
-          <img :src="$filters.siteUrl('25spring/imagesT/bank/DBS01.png')" />
-          <img :src="$filters.siteUrl('25spring/imagesT/bank/DBS02.png')" />
+          <img :src="$filters.siteUrl('25spring/imagesT/bank/DBS01_new.png')" />
+          <img :src="$filters.siteUrl('25spring/imagesT/bank/DBS02_new.png')" />
         </p>
         <a href="https://www.tk3c.com.tw/#actsdetail&8&774" class="w:16% w:24%@<992 w:40%@<576 mt:3% mt:6%@<576"
           target="_blank">
@@ -164,13 +164,13 @@
                 }
               }">
           <swiper-slide>
-            <img :src="$filters.siteUrl('25spring/imagesT/bank/rakuten01.png')" />
+            <img :src="$filters.siteUrl('25spring/imagesT/bank/rakuten01_new.png')" />
           </swiper-slide>
           <swiper-slide>
-            <img :src="$filters.siteUrl('25spring/imagesT/bank/rakuten02.png')" />
+            <img :src="$filters.siteUrl('25spring/imagesT/bank/rakuten02_new.png')" />
           </swiper-slide>
           <swiper-slide>
-            <img :src="$filters.siteUrl('25spring/imagesT/bank/rakuten03.png')" />
+            <img :src="$filters.siteUrl('25spring/imagesT/bank/rakuten03_new.png')" />
           </swiper-slide>
         </swiper>
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/invoice_login/detail.aspx?activity_id=982')"
@@ -186,7 +186,7 @@
         <img :src="$filters.siteUrl('RTXNB/images/bar_pt2.png')" />
       </h2>
 
-      <div v-for="pro in proNB" class="w:80% w:full@<992 m:-8%|auto|-20%">
+      <div v-for="(pro,p) in proNB" :key="p" :class="[p == 3 ? 'sale-out' : '']" class="w:80% w:full@<992 m:-8%|auto|-20%">
         <a v-if="isOpen" :href="$filters.addGALink(pro.url)" target="_blank">
           <img :src="$filters.siteUrl(pro.saleImage)">
         </a>
@@ -553,6 +553,20 @@ body{
 .pro-box {
   .title {
     width: 75%;
+  }
+  .sale-out {
+    position: relative;
+    &:before {
+      content: ""; display: flex; width: 100%; height: 70%; position: absolute; background: #00000085; left: 0; right: 0; bottom: 0; z-index: 1; margin: 0 auto;
+    }
+    &:after {
+      content:"熱銷一空"; 
+       display: flex; align-items: center; justify-content: center; text-align: center; width: 150px; height: auto; background: red; color: #fff; position: absolute; left: 0; right: 0; margin: 0 auto; top: 60%; z-index: 10; font-size: 2em; font-weight: bold; transform: rotate(-15deg) translateY(-50%); padding: 1%; opacity: 0.8;border-radius: 10px; box-sizing: border-box; z-index: 2;
+    }
+    a {
+      pointer-events: none;
+      cursor: auto;
+    }
   }
 }
 
