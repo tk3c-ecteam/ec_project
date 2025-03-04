@@ -260,6 +260,19 @@ export default {
         { image: 'bank_ec/images/S2-10000_b.png' },
         { image: 'bank_ec/images/S2-30000_b.png' }
       ],
+      bank20306:[
+        {
+           date: '2025/03/06-03/23',
+          content: `
+          <p><b>單筆分期刷滿2萬(含)以上享</b><span>現折800</span></p>
+          `,
+          alertText: ` <ul style='text-align:left;'>
+             <li style='margin-bottom:5px;'>凡於活動期間(2025/3/6-2025/3/23)於燦坤實體門市或燦坤線上購物網站購買全館商品，除享有「促銷價」的折扣外，</li>
+             <li style='margin-bottom:5px;'>刷「星展銀行信用卡」，單筆分期刷滿20,000元(限分3、6、8期，再享分期0利率)，</li>
+             <li style='margin-bottom:5px;'>可享現折800元的優惠，單張發票不累贈，最多折抵一次，線上限量30名。</li>
+          </ul>`
+        }
+      ],
       today: new Date(),
       menuPro1: 7640,
       menuPro2: [7641, 7642],
@@ -268,10 +281,6 @@ export default {
   },
   mounted() {
     const { today } = this
-    // 2/1更新
-    if (today >= new Date('2025/02/01') && today < new Date('2025/03/01')) {
-      this.banks = this.bank2502;
-    }
 
     //2/17更新
     if (today >= new Date('2025/02/17') && today < new Date('2025/03/06')) {
@@ -281,6 +290,11 @@ export default {
     // 3/1更新
     if (today >= new Date('2025/03/01') && today < new Date('2025/04/01')) {
       this.banks = this.bank2503;
+    }
+
+    // 3/6更新星展銀行日期
+    if(today >= new Date('2025/03/06') && today < new Date('2025/03/24')) {
+      this.banks[1] = this.bank20306[0];
     }
 
     //撈取千元刷卡樓層商品
