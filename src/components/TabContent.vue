@@ -8,7 +8,7 @@
         </a>
         
         <listF v-if="isSwiper && products[menus[index]] != undefined" :isSwiper="1" :pro="products[menus[index]].Data" :name="`box${index + 1}`"></listF>
-         <listF v-else-if="products[menus[index]] != undefined" :pro="products[menus[index]].Data"></listF> 
+        <component :is="type" v-else-if="products[menus[index]] != undefined" :pro="products[menus[index]].Data"></component>
           <a v-if="moreUrl" class="more" :href="$filters.addGALink(moreUrl)" target="_blank">
             MORE
             <img v-if="moreImage" :src="$filters.siteUrl(moreImage)">
@@ -19,7 +19,13 @@
 </template>
 
 <script>
+import listF from '@/views/layout/listF.vue'
 export default {
+  data() {
+    return {
+      listF
+    }
+  },
   props: {
     index: {
       type: Number,
@@ -46,6 +52,11 @@ export default {
     },
     moreImage:{
       type:String
+    },
+    //商品樓層版型(沒有輪播) 預設listF 4小板型
+    type:{
+      type:Object,
+      default:listF
     }
   },
   mounted() {
