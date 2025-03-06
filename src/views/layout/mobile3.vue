@@ -46,7 +46,7 @@
   <a class="gotop-mobile" :class="{'isShow':isGoTop}" @click="goTop"></a>
 
   <div class="mobile-for-product" :class="{'open':isMobileOpen}">
-    <div class="top-nav" @click="closeNav">
+    <div class="top-nav" ref="scrollDis" @click="closeNav">
       <h3 class="title">快速選單</h3>
       <slot name="topAsides"></slot>
     </div>

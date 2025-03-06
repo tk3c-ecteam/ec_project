@@ -1,5 +1,6 @@
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
+import { nextTick } from 'vue';
 
 export const globalMixin = {
   data() {
@@ -18,16 +19,15 @@ export const globalMixin = {
   },
   mounted() {
     this.asides = [];
-    //每3秒執行一次
     this.timer = setInterval(() => {
-      //取得自訂樓層標題
-      this.getFloorTitle('section.scroll');
-    }, 4200);
+      setTimeout(() => {
+        this.getFloorTitle('section.scroll');
+      }, 3000);
+    }, 1000);
 
-    //3秒後清除
     setTimeout(() => {
       clearInterval(this.timer);
-    }, 4210);
+    }, 1001);
   },
   methods: {
     /*加入meta標籤
@@ -242,11 +242,13 @@ export const globalMixin = {
         if (el.querySelector('.title') && el.querySelector('.title').getAttribute('id')) id = el.querySelector('.title').getAttribute('id');
 
         if (title) {
-          this.asides.push(
-            {
-              "text": title,
-              "href": '#' + id
-            })
+          setTimeout(() => {
+            this.asides.push(
+              {
+                "text": title,
+                "href": '#' + id
+              })
+          }, 20);
         }
       });
     },
@@ -265,25 +267,23 @@ export const globalMixin = {
           bottom = top + window.innerHeight,
           left = topNav.scrollLeft,
           num = topNavLi.length;
-
         /* 目前滑鼠滾動位置滾到每個樓層區，所屬項目加上 .active 標記,
-        * .top-nav 卷軸往右滑動250px
+        * .top-nav 卷軸往右滑動150px
         */
         if (scrollTop >= top && scrollTop < bottom) {
-          if (i >= Math.ceil(num / 3) && i < num) {
+          if (i >= Math.ceil(num / 3)) {
             topNav.scrollTo({
               behavior: 'smooth',
-              left: left += 200
+              left: left + 150
             });
-          } else if (i < Math.ceil(num / 3)) {
+          } else if (i < (num / 3)) {
             topNav.scrollTo({
-              behavior: 'smooth',
               left: 0
             });
           }
           document.querySelectorAll('.mobile-for-product .top-nav li').forEach(el => {
             el.classList.remove('active');
-            topNavLi[i].classList.add('active');
+            if (topNavLi[i] != undefined) topNavLi[i].classList.add('active');
           });
         }
       });

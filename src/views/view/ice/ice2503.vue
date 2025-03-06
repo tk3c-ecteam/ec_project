@@ -233,11 +233,11 @@ export default {
       }
     }
 
-    // 2025/2/17 更新現折券連結
-    if (today >= new Date('2025/02/17')) {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124362&aid=23927&strPreView=y';
+    // 2025/3/6 更新現折券連結
+    if (today >= new Date('2025/03/06')) {
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
     } else {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922'
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124362&aid=23927'
     }
   },
   methods: {

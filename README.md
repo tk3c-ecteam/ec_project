@@ -34,8 +34,9 @@ nvs進行安裝(步驟如此連結:https://smlpoints.com/guide-nvs-switch-node-j
 *安裝git bash(官網)
 *安裝 git sourcetree(介面化檔案管理) 教學-> https://williesmithchen.medium.com/install-git-on-windows-10-a4a713c9f9d2
 
-1. git clone檔案下來(或直接按下載按鈕下載)
-2. 對此專案資料夾輸入 npm init 後 npm install 進行安裝npm 套件安裝
+1. 在本機新增資料夾
+2. git clone檔案下來(下載此專案或直接使用sourcetree載到本機資料裡)
+3. 對此專案資料夾輸入 npm init 後 npm install 進行安裝npm 套件安裝
 ```
 
 ### 此專案在本機運作指令

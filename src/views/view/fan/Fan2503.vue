@@ -2,7 +2,7 @@
   <div id="fan-container" v-cloak>
     <div class="background">
       <h2 class="title animate__animated animate__pulse">
-        <img :src="$filters.siteUrl('fan_hot/images/2503/title2.png')" />
+        <img :src="$filters.siteUrl('fan_hot/images/2503/title3.png')" />
       </h2>
 
       <div class="product">

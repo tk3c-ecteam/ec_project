@@ -8,7 +8,7 @@ export default {
       gifts:[
          { image: '2025GirlDay/images/e01_a.png' },
          { image: '2025GirlDay/images/e02_a.png' },
-         { image: '2025GirlDay/images/e03_a.png' },
+         { url:"#hot", image: '2025GirlDay/images/e03_a.png' },
       ],
       sales: [
         { url:"https://www.tk3c.com/dic2.aspx?cid=124362&aid=23927&hid=124365", image: '2025GirlDay/images/c1_a.png'},
@@ -19,7 +19,7 @@ export default {
       banks: [
         { image: '2025GirlDay/images/bank1_a.png', 
           links:[
-            "https://events.tk3c.com/events_net/tk3c_creditcard/index.html"
+            "https://events.tk3c.com/events_net/tk3c_creditcard/index.html?ec=2025GirlDay"
           ] 
         },
         { 
@@ -31,7 +31,7 @@ export default {
         { 
           image: '2025GirlDay/images/bank3_a.png' ,
           links:[
-            "https://events.tk3c.com/events_net/invoice_login/home.aspx",
+            "https://events.tk3c.com/events_net/invoice_login/home.aspx?ec=2025GirlDay",
             "https://www.tk3c.com.tw/#actsdetail&8&782"
           ]
         }
@@ -103,13 +103,21 @@ export default {
         },
       ],
       today: new Date(),
-      isLimit:false // 3/8限時用
+      isLimit:false, // 3/8限時用
+      isSale:true,
+      isOpen:false
     }
   },
   mounted() {
     const { today } = this;
 
     this.fixedBg('.background2','.special-box');
+    
+    if (today >= new Date('2025/03/06')) {
+      this.banks.splice(1,1);
+      this.isSale = false;
+      this.isLimit = true;
+    }
 
      //背景動畫GSAP
     //滾動觸發
@@ -140,7 +148,7 @@ export default {
     this.getFloorSingle(this.menuLimit);
 
     //3/8顯示限時下殺
-    if(today >= new Date('2025/03/08 00:00') && today < new Date('2025/03/09 00:00')) this.isLimit = true;
+    if(today >= new Date('2025/03/08 00:00') && today < new Date('2025/03/09 00:00')) this.isOpen = true;
     
   }
 }
@@ -169,6 +177,16 @@ export default {
 
     <div class="background2"></div>
 
+      <!-- 3/8限時下殺 -->
+     <section class="limit-box scroll" titles="3/8限時瘋搶購" v-if="isLimit" id="limit">
+       <h2 class="title">
+        <img :src="$filters.siteUrl('2025GirlDay/images/S2_bar_a.png')" />
+       </h2>
+        <div>
+          <listF :class="{'incoming' : !isOpen}" :pro="product2[menuLimit]" :isSwiper="1" :name="'limit'"></listF>
+        </div>
+     </section>
+     
     <section class="special-box">
       <div class="w:90% w:full@<576 m:auto">
         <swiper :loop:="true" :space-between="10" :autoplay="{ delay: 1800, disableOnInteraction: false }"
@@ -183,11 +201,14 @@ export default {
               slidesPerView:3
             }
           }">
-          <swiper-slide v-for="gift in gifts">
-            <a :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank">
+          <swiper-slide v-for="(gift,g) in gifts" :key="g">
+            <a v-if="g == 2" :href="gift.url">
               <img :src="$filters.siteUrl(gift.image)">
             </a>
             
+             <a v-else :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank">
+              <img :src="$filters.siteUrl(gift.image)">
+            </a>
           </swiper-slide>
         </swiper>
       </div>
@@ -201,16 +222,6 @@ export default {
        
         <div>
           <listF :pro="product2[menuHot]" :isSwiper="1" :name="'hot'"></listF>
-        </div>
-     </section>
-
-      <!-- 3/8限時下殺 -->
-     <section class="limit-box" v-show="isLimit">
-       <h2 class="title">
-        <img :src="$filters.siteUrl('2025GirlDay/images/S2_bar_a.png')" />
-       </h2>
-        <div>
-          <listF :pro="product2[menuLimit]" :isSwiper="1" :name="'limit'"></listF>
         </div>
      </section>
 
@@ -235,7 +246,7 @@ export default {
       <div class="banks rel w:75% w:85%@<992 w:full@<576 m:auto" v-for="bank in banks">
         <img class="mb:4%" :src="$filters.siteUrl(bank.image)">
         <div class="abs w:full left:0 right:0 m:auto top:0 flex flex-direction:column">
-          <a v-for="link in bank.links" :class="[bank.links.length > 1 ? 'mix' : '']" :href="$filters.addGALink(link)" target="_blank"></a>
+          <a v-for="link in bank.links" :class="[bank.links.length > 1 ? 'mix' : '']" :href="link" target="_blank"></a>
         </div>
       </div>
         <a class="w:30% w:45%@<992 w:75%@<576 m:2%|auto" :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
@@ -244,7 +255,7 @@ export default {
     </section>
 
     <!-- 瘋搶折價 -->
-    <section class="sale-group scroll" titles="瘋搶折價" id="sale">
+    <section class="sale-group scroll" titles="瘋搶折價" id="sale" v-if="isSale">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124362&aid=23927')" target="_blank">
           <img :src="$filters.siteUrl('2025GirlDay/images/S4_bar_a.png')" />
@@ -410,6 +421,20 @@ section {
   }
 }
 
+.limit-box {
+  .bg01 {
+    &.incoming {
+      position: relative;
+       &:before {
+      content: ""; display: flex; width: 100%; height: 100%; position: absolute; background: #00000085; left: 0; right: 0; bottom: 0; z-index: 99; margin: 0 auto;
+    }
+    &:after {
+      content:"尚未開放"; 
+       display: flex; align-items: center; justify-content: center; text-align: center; width: 190px; height: auto; background: red; color: #fff; position: absolute; left: 0; right: 0; margin: 0 auto; top: 50%; z-index: 100; font-size: 2em; font-weight: bold; transform: rotate(-15deg) translateY(-50%); padding: 1%; opacity: 0.8;border-radius: 10px; box-sizing: border-box;
+    }
+    }
+  }
+}
 
 /*  電腦版其他尺寸 */
 @include media-query('mobile', '992px') {

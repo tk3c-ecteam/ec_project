@@ -43,8 +43,8 @@
           :src="$filters.siteUrl('2024083C/images/2503/sp_bg.png')" />
         <ul class="gap:10 pt:7% box:border-box">
           <li class="w:66% w:full@<576">
-            <a class="mb:1%" @click="goNB('#sale')" target="_blank"><img
-                :src="$filters.siteUrl('2024083C/images/2503/sp01-1a.png')" /></a>
+            <a class="mb:1%" :class="{'off':!isOff}" @click="goNB('#sale')" target="_blank"><img
+                :src="$filters.siteUrl('2024083C/images/2503/sp01-1b.png')" /></a>
             <div class="flex flex-direction:row gap:10 mb:1%">
               <a class="w:52% w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')"
                 target="_blank"><img :src="$filters.siteUrl('2024083C/images/2503/sp01-2a.png')" /></a>
@@ -101,7 +101,7 @@
         <!-- 狂撒百萬折價券 -->
         <section class="sale-box scroll" titles="狂撒百萬折價券" id="sale">
           <h2 class="title">
-            <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=124362&aid=23927&hid=124366')"
+            <a :href="$filters.addGALink(disUrl)"
               target="_blank">
               <img :src="$filters.siteUrl('2024083C/images/2503/bar_00.png')" />
             </a>
@@ -557,11 +557,23 @@ export default {
       statusGift: 0,
       today: new Date(),
       menuSale:7668,
-      bnTitle:''
+      bnTitle:'',
+      isOff:true,
+      disUrl:''
     }
   },
   mounted() {
     let {today,tabs,tab1,tab2 } = this
+
+    //3/6更新現折券
+    if(today >= new Date('2025/03/06')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y'
+    } else {
+      this.disUrl = 'https://www.tk3c.com/dic2.aspx?cid=124362&aid=23927&hid=124366'
+    }
+
+    if(today >= new Date('2025/03/24')) this.isOff = false;
+    
 
     //熱門活動標題
     this.bnTitle = '2024083C/images/2503/bar_8.png';

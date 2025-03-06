@@ -28,6 +28,10 @@
         </div>
       </div>
 
+      <a class="icon" :href="$filters.addGALink('https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2')" target="_blank">
+        <img :src="$filters.siteUrl('airConditionerLAB/images/2503/vip_icon.png')"/>
+      </a>
+
       <div class="product">
         <swiper :loop="true" :effect="'fade'" :fadeEffect="{
             crossFade: true
@@ -45,11 +49,11 @@
     <div class="background2"></div>
 
     <!-- 尊榮安裝 -->
-    <section class="air-info scroll" v-if="isVipOld" titles="VVIP尊榮安裝" id="vvip">
+    <section class="air-info scroll" v-show="isVipOld" titles="VVIP尊榮安裝" id="vvip">
       <a id="vvip" :href="
           $filters.addGALink('https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2')
         " target="_blank">
-        <img :src="$filters.siteUrl('airConditionerLAB/images/2405/vvip_2.jpg')" />
+        <img :src="$filters.siteUrl('airConditionerLAB/images/2405/vvip_3.jpg')" />
       </a>
     </section>
 
@@ -648,7 +652,7 @@ export default {
       disUrl: '',
       isSp:false,
       isVip:false,
-      isVipOld:false,
+      isVipOld:true,
       swiperOption:{
         breakpoints:{
           0:{
@@ -679,7 +683,10 @@ export default {
   mounted() {
     const { floors, menuDis, menuBear, today, menuHot, menuCold, menuWet } = this
     //固定背景
-    this.fixedBg('.background2', '.discount-box')
+    this.fixedBg('.background2', '.discount-box');
+
+    // 3/11 VVIP安裝隱藏
+    if(today >= new Date('2025/03/11')) this.isVipOld = false;
 
     //撈取 現折券樓層商品
     this.getFloorSingle(menuDis)
@@ -703,11 +710,11 @@ export default {
       }
     }
 
-    // 2/17修改現折券連結
-    if (today >= new Date('2025/02/17')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124362&aid=23927&strPreView=y'
+    // 3/6修改現折券連結
+    if (today >= new Date('2025/03/06')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124306&aid=23922'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124362&aid=23927'
     }
   },
   methods: {
@@ -823,7 +830,7 @@ body {
       width: 30%;
       position: absolute;
       left: 23%;
-      top: 15%;
+      top: 12%;
       margin: 0 auto;
       animation: blurFadeIn 1.8s linear;
     }
@@ -832,7 +839,7 @@ body {
       position: absolute;
       left: 26%;
       margin: 0 auto;
-      top: 54%;
+      top: 57%;
       div {
         width: 80%;
         margin: -16% auto 0;
@@ -851,6 +858,13 @@ body {
       .swiper-wrapper {
         align-items: baseline;
       }
+    }
+    .icon {
+      width: 13%;
+      position: absolute;
+      right: 43%;
+      top: 49%;
+      animation: slowMove2 0.7s linear infinite alternate;
     }
   }
 }
@@ -1079,18 +1093,23 @@ body {
       padding-bottom: 80%;
       .title {
         width: 45%;
-        top: 14vw;
-        left: 6vw;
+        top: 12vw;
+        left: 3vw;
       }
       .subtitle {
         width: 40%;
-        top: 40vw;
-        left: 9vw;
+        top: 42vw;
+        left: 7vw;
       }
       .product {
         width: 45%;
         top: 14vw;
-        right: 4%;
+        right: 0;
+      }
+      .icon {
+        width: 22%;
+        right: 44vw;
+        top: 38vw;
       }
     }
   }
@@ -1176,25 +1195,30 @@ body {
 
   #air-container {
     .background {
-      padding-bottom: 193%;
+      padding-bottom: 215%;
       .title {
         width: 90%;
-        top: 26vw;
+        top: 28vw;
         left: 0;
         right: 0;
       }
       .subtitle {
         width: 75%;
-        top: 80vw;
+        top: 96vw;
         left: 0;
         right: 0;
       }
       .product {
         width: 90%;
-        top: 110vw;
+        top: 124vw;
         left: 0;
         right: 0;
         margin: 0 auto;
+      }
+      .icon {
+        width: 50%;
+        right: 1vw;
+        top: 82vw;
       }
     }
   }
@@ -1264,6 +1288,15 @@ body {
         width: 44%;
       }
     }
+  }
+}
+
+@keyframes slowMove2 {
+  0% {
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(10px);
   }
 }
 
