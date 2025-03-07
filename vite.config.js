@@ -16,7 +16,7 @@ export default defineConfig({
         defineModel: true
       }
     }),
-    //自動引入import 套件(不需要再加入import { ref } from 'vue')
+    //自動加入 .js .vue檔名
     AutoImport({
       include: [
         /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
@@ -24,6 +24,7 @@ export default defineConfig({
         /\.vue\?vue/, // .vue
         /\.md$/, // .md
       ],
+      //自動引入import(不需要再加入import { ref } from 'vue')
       imports: [
         'vue',
         'vue-router'
@@ -67,7 +68,8 @@ export default defineConfig({
       plugins: [
         autoprefixer({
           //自動加入css -webkit
-          overrideBrowserslist: ['last 2 version', '> 1%']
+          overrideBrowserslist: ['last 2 version', '> 1%'],
+          grid: true
         })
       ]
     }
@@ -89,7 +91,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        rtx: resolve(__dirname, './index.html')
+        green2: resolve(__dirname, './index.html')
       },
       output: {
         //匯出index.html .js .css(打包檔案)
