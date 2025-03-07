@@ -73,7 +73,7 @@ export default {
               </p>
 
               <strong class="txt_red fred">
-                <em>市價${{ addNumComma(proA.nonmemberprice) }}</em>
+                <em v-if="proA.nonmemberprice != proA.realprice">市價${{ addNumComma(proA.nonmemberprice) }}</em>
                 <i>活動價$</i>{{ addNumComma(proA.realprice) }}
               </strong>
             </div>

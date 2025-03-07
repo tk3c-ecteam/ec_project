@@ -18,7 +18,7 @@ export default {
           <p class="itemD_img">
             <img onerror="ImgError(this);" :src="proA.ImgUrl" border="0" />
           </p>
-          <p class="fgray">市價${{ addNumComma(proA.nonmemberprice) }}</p>
+          <p class="fgray" v-if="proA.nonmemberprice != proA.realprice">市價${{ addNumComma(proA.nonmemberprice) }}</p>
           <p class="itemD_text fred">
             活動價$<span>{{ addNumComma(proA.realprice) }}</span>
           </p>

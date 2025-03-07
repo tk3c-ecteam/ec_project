@@ -35,7 +35,7 @@ export default {
                 >折
               </p>
               <strong class="fred">
-                <em>${{ addNumComma(proA.nonmemberprice) }}</em>
+                <em v-if="proA.nonmemberprice != proA.realprice">${{ addNumComma(proA.nonmemberprice) }}</em>
                 <i>活動價</i>
                 {{ addNumComma(proA.realprice) }}
               </strong>
@@ -66,7 +66,7 @@ export default {
                 >折
               </p>
               <strong class="fred">
-                <em>${{ addNumComma(proA.nonmemberprice) }}</em>
+                <em v-if="proA.nonmemberprice != proA.realprice">${{ addNumComma(proA.nonmemberprice) }}</em>
                 <i>活動價</i>
                 {{ addNumComma(proA.realprice) }}
               </strong>

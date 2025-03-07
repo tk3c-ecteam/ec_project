@@ -18,7 +18,7 @@ export default {
             <div class="hotpro_sale"></div>
             <div class="hotpro_name" v-html="proA.productname"></div>
             <div class="hotpro_info" v-html="proA.Productfunc"></div>
-            <div class="hotpro_price1 fred">${{ addNumComma(proA.nonmemberprice) }}</div>
+            <div class="hotpro_price1 fred" v-if="proA.nonmemberprice != proA.realprice">${{ addNumComma(proA.nonmemberprice) }}</div>
             <div class="hotpro_price2">
               活動價$<span>{{ addNumComma(proA.realprice) }}</span>
             </div>
@@ -47,7 +47,7 @@ export default {
                 >折
               </p>
               <strong class="txt_red fred">
-                <em>${{ addNumComma(proA.nonmemberprice) }}</em>
+                <em v-if="proA.nonmemberprice != proA.realprice">${{ addNumComma(proA.nonmemberprice) }}</em>
                 <i>活動價</i>{{ addNumComma(proA.realprice) }}
               </strong>
             </div>
