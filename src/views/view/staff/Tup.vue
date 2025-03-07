@@ -84,7 +84,7 @@ const menu = [7671,7672,7673,7674]
   ></CommonFloor>
 
   <!-- 活動辦法 -->
-  <section class="info-group scroll" id="info">
+  <section class="info-group scroll" titles="活動辦法" id="info">
     <h2 class="title">員工福利委員會員購專案</h2>
     <div class="text">
       <p class="last">注意事項如下</p>

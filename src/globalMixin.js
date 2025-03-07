@@ -241,14 +241,12 @@ export const globalMixin = {
         if (el.getAttribute('id')) id = el.getAttribute('id');
         if (el.querySelector('.title') && el.querySelector('.title').getAttribute('id')) id = el.querySelector('.title').getAttribute('id');
 
-        if (title) {
-          setTimeout(() => {
-            this.asides.push(
-              {
-                "text": title,
-                "href": '#' + id
-              })
-          }, 20);
+        if (id != '' && title != '') {
+          this.asides.push(
+            {
+              "text": title,
+              "href": '#' + id
+            })
         }
       });
     },

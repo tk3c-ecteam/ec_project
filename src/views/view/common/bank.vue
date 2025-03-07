@@ -253,7 +253,7 @@ export default {
           <p><b>指定商品單品滿2.5萬元享</b><span>現折800</span></p>
           `,
           url: 'https://events.tk3c.com/events_net/invoice_login/detail.aspx',
-          alertText: 'https://www.tk3c.com.tw/#activityinfo&8'
+          alertText: 'https://www.tk3c.com.tw/#actsdetail&8&782'
         }
       ],
       tabs: [

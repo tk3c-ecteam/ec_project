@@ -43,7 +43,7 @@ export default defineConfig({
       dts: 'src/components.d.ts'
     }),
     createHtmlPlugin({
-      minify: true,
+      minify: false,
       entry: './src/main.js',
     }),
     //圖片壓縮套件
@@ -91,7 +91,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        green2: resolve(__dirname, './index.html')
+        fan2503: resolve(__dirname, './index.html')
       },
       output: {
         //匯出index.html .js .css(打包檔案)

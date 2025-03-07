@@ -1,6 +1,4 @@
 <script setup>
-import StoreDefault from "./StoreDefault.vue";
-import CommonFloor from "../../floor/CommonFloor.vue"
 const contents = [
         {
           logoImage: "Razer/images/logo.png",

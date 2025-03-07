@@ -74,23 +74,6 @@ const menu = defineModel('menu')
     </section>
   </div>
 
-  <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li class="main new"><a href="#info">活動辦法</a></li>
-          <li v-for="(aside, a) in contents[0].floor">
-            <a :href="`#pro${menu[a]}`">{{ aside.text }}</a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <!-- 手機版 -->
-   <mobile :asides="contents[0].floor"></mobile>
+  <!-- 右側選單+手機板 -->
+   <RightAside :asides="asides" :type="'mobile'"></RightAside>
 </template>

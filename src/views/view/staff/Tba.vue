@@ -68,7 +68,7 @@ const menu = [7742]
   ></CommonFloor>
 
   <!-- 活動辦法 -->
-  <section class="info-group scroll" id="info">
+  <section class="info-group scroll" titles="開業福袋專屬優惠" id="info">
     <h2 class="title">開業福袋專屬優惠</h2>
     <div class="text">
       <p class="last">注意事項如下</p>

@@ -34,7 +34,7 @@ export default {
       <ul>
         <li v-for="(proA, pr) in pro.slice(2, pro.length)">
           <a
-            :href="$filters.addGALink('http://www.tk3c.com/pt.aspx?pid=808673' + proA.productid)"
+            :href="$filters.addGALink('http://www.tk3c.com/pt.aspx?pid=' + proA.productid)"
             :id="`prod${proA.productid}`"
             :name="`prod${proA.productid}`"
           >
