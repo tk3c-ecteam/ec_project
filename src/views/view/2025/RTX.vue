@@ -2,7 +2,7 @@
   <div id="rtx-container">
     <div class="background">
       <h2 class="title">
-        <img :src="$filters.siteUrl('RTXNB/images/title3.png')" />
+        <img :src="$filters.siteUrl('RTXNB/images/title4.png')" />
       </h2>
 
       <h5 class="subtitle">
@@ -129,10 +129,10 @@
       <!-- 新展銀行 -->
       <div class="card-content" v-show="statusBank == 1">
         <p class="grid-cols:2 grid-cols:1@<576 m:auto gap:10">
-          <img :src="$filters.siteUrl('25spring/imagesT/bank/DBS01_new.png')" />
-          <img :src="$filters.siteUrl('25spring/imagesT/bank/DBS02_new.png')" />
+          <img :src="$filters.siteUrl('25spring2/imagesT/bank/DBS01_new.png')" />
+          <img :src="$filters.siteUrl('25spring2/imagesT/bank/DBS02_new.png')" />
         </p>
-        <a href="https://www.tk3c.com.tw/#actsdetail&8&774" class="w:16% w:24%@<992 w:40%@<576 mt:3% mt:6%@<576"
+        <a href="https://www.tk3c.com.tw/#actsdetail&8&789" class="w:16% w:24%@<992 w:40%@<576 mt:3% mt:6%@<576"
           target="_blank">
           <img :src="$filters.siteUrl('2025Valentine/images/info.png')" />
         </a>
@@ -186,7 +186,7 @@
         <img :src="$filters.siteUrl('RTXNB/images/bar_pt2.png')" />
       </h2>
 
-      <div v-for="(pro,p) in proNB" :key="p" :class="[p == 3 ? 'sale-out' : '']" class="w:80% w:full@<992 m:-8%|auto|-20%">
+      <div v-for="(pro,p) in proNB" :key="p" :class="[ p == 3 ? 'sale-out' : '']" class="w:80% w:full@<992 m:-8%|auto|-20%">
         <a v-if="isOpen" :href="$filters.addGALink(pro.url)" target="_blank">
           <img :src="$filters.siteUrl(pro.saleImage)">
         </a>
@@ -213,7 +213,7 @@
           </ul>
 
           <div class="tab-content" v-for="(t1, t) in tab1[0].content" v-show="status1 == t">
-            <listF v-if="products[menuF1[t]] != undefined" :pro="products[menuF1[t]].Data"></listF>
+             <JimmyFloor :id="t1.id"></JimmyFloor>
           </div>
 
           <div class="text">
@@ -242,8 +242,7 @@
 
 
           <div class="tab-content" v-for="(t2, t) in tab2[0].content" v-show="status2 == t">
-            <listM v-if="t == 2 && products[menuF2[t]] != undefined" :pro="products[menuF2[t]].Data"></listM>
-            <listF v-else-if="products[menuF2[t]] != undefined" :pro="products[menuF2[t]].Data"></listF>
+            <JimmyFloor :id="t2.id"></JimmyFloor>
           </div>
 
 
@@ -331,10 +330,12 @@ export default {
         {
           "content":[
             {
-              "image": "RTXNB/images/tab2.png"
+              "image": "RTXNB/images/tab2.png",
+              "id":7863
             },
             {
-               "image": "RTXNB/images/tab1.png"
+               "image": "RTXNB/images/tab1.png",
+               "id":7815
             },
           ]
         }
@@ -343,13 +344,16 @@ export default {
          {
           "content":[
              {
-               "image": "RTXNB/images/tab2.png"
+               "image": "RTXNB/images/tab2.png",
+               "id":7816
              },
              {
-               "image": "RTXNB/images/tab1.png"
+               "image": "RTXNB/images/tab1.png",
+               "id":7817
              },
              {
-               "image": "RTXNB/images/tab3.png"
+               "image": "RTXNB/images/tab3.png",
+               "id":7818
              },
           ]
         }
@@ -357,8 +361,6 @@ export default {
       today:new Date(),
       statusBank: 0, // 銀行樓層用
       swiperBank: null,
-      menuF1:[7814,7815],
-      menuF2:[7816,7817,7818],
       status1:0,
       status2:0
     }
@@ -369,12 +371,6 @@ export default {
        this.isSale = false;
        this.specials = this.special2;
        this.isOpen = true;
-
-      //撈取首批保證到貨專區商品
-      this.getFloorData(this.menuF1);
-
-      //撈取限量送1000燦坤K幣商品
-      this.getFloorData(this.menuF2);
     } 
   },
   methods: {
@@ -566,6 +562,27 @@ body{
     a {
       pointer-events: none;
       cursor: auto;
+    }
+  }
+}
+
+.floor1-box {
+  .tab-content {
+    &:nth-of-type(1) {
+      a[id="prod256096-preorder1"],
+      a[id="prod256093-preorder1"],
+      a[id="prod256097-preorder1"] {
+        position: relative;
+        pointer-events: none;
+        cursor: auto;
+         &:before {
+            content: ""; display: flex; width: 100%; height: 100%; position: absolute; background: #00000085; left: 0; right: 0; bottom: 0; z-index: 10; margin: 0 auto;
+          }
+          &:after {
+            content:"熱銷一空"; 
+            display: flex; align-items: center; justify-content: center; text-align: center; width: 150px; height: auto; background: red; color: #fff; position: absolute; left: 0; right: 0; margin: 0 auto; top: 60%; z-index: 10; font-size: 2em; font-weight: bold; transform: rotate(-15deg) translateY(-50%); padding: 1%; opacity: 0.8;border-radius: 10px; box-sizing: border-box; z-index: 11;
+          }
+      }
     }
   }
 }

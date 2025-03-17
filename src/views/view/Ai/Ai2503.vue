@@ -106,8 +106,7 @@
               <img :src="$filters.siteUrl('2024083C/images/2503/bar_00.png')" />
             </a>
           </h2>
-
-          <listF :pro="product2[menuSale]" :isSwiper="1" :name="'pro'"></listF>
+          <JimmyFloor :id="7668" :isSwiper="1" :name="'pro'"></JimmyFloor>
         </section>
 
         <section class="pro-group scroll" v-for="(t1, t) in tab1[0]" :class="`tab${Number(t) + 1}-box`"
@@ -121,16 +120,16 @@
           <div v-if="t1[0].content != undefined">
             <Tabs :isSwiper="1" :tabs="t1[0].content" :singleUrl="t1[0].url">
               <template v-slot="{ selectedTab }">
-                <TabContent v-for="(content, c) in t1[0].content" :menus="t1[0].menu[c]" :index="c"
+                <TabContent2 v-for="(content, c) in t1[0].content" :floor="content" :name="`p${c + 1}`" :index="c"
                   :selectedTab="selectedTab">
 
-                </TabContent>
+                </TabContent2>
               </template>
             </Tabs>
           </div>
 
           <div v-else>
-            <listF :pro="product2[t1[0].menu]" :isSwiper="1" :name="`pro${Number(t) + 1}`"></listF>
+            <JimmyFloor :id="t1[0].id" :isSwiper="1" :name="`pro${Number(t) + 1}`"></JimmyFloor>
           </div>
         </section>
       </div>
@@ -152,16 +151,16 @@
           <div v-if="t2[0].content != undefined">
              <Tabs :isSwiper="1" :tabs="t2[0].content" :singleUrl="t2[0].url">
               <template v-slot="{ selectedTab }">
-                <TabContent v-for="(content, c) in t2[0].content" :menus="t2[0].menu[c]" :index="c"
+                <TabContent2 v-for="(content, c) in t2[0].content" :floor="content" :name="`p${c + 1}`" :index="c"
                   :selectedTab="selectedTab">
 
-                </TabContent>
+                </TabContent2>
               </template>
             </Tabs>
           </div>
 
           <div v-else>
-            <listF :pro="product2[t2[0].menu]" :isSwiper="1" :name="`pro${Number(t) + 1}`"></listF>
+            <JimmyFloor :id="t2[0].id" :isSwiper="1" :name="`pro${Number(t) + 1}`"></JimmyFloor>
           </div>
         </section>
       </div>
@@ -189,15 +188,17 @@ export default {
               text:'RTX50 新機預購',
               title: '2024083C/images/2503/bar_rtx50.png',
               url: 'https://events.tk3c.com/events_net/RTXNB/index.html',
-              menu: [7817,7816,7818],
               content: [
                 {
+                  id:7872,
                   text:'ROG'
                 },
                 {
+                  id:7873,
                   text:'MSI'
                 },
                  {
+                  id:7874,
                   text:'ACER',
                 },
               ]
@@ -208,12 +209,13 @@ export default {
               text:'輕薄商務',
               title: '2024083C/images/2503/bar_1.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=11124',
-              menu: [7267, 7268],
               content: [
                 {
+                  id:7267,
                   text:'文書款'
                 },
                 {
+                  id:7268,
                   text:'AI筆電'
                 }
               ]
@@ -223,16 +225,18 @@ export default {
             {
               text:'飆速電競',
               title: '2024083C/images/2503/bar_2.png',
-              menu: [7269, 7270, 7271],
                url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117913',
               content: [
                 {
+                  id:7269,
                   text:'RTX40系列'
                 },
                 {
+                  id:7270,
                   text:'RTX30系列'
                 },
                 {
+                  id:7271,
                   text:'RTX20系列'
                 }
               ]
@@ -242,16 +246,18 @@ export default {
             {
               text:'特仕改裝升級',
               title: '2024083C/images/2503/bar_4.png',
-              menu: [7272, 7273, 7274],
               url: 'https://www.tk3c.com/dic1.aspx?cid=11124&aid=22124',
               content: [
                 {
+                  id:7272,
                   text:'MSI'
                 },
                 {
+                  id:7273,
                   text:'ASUS'
                 },
                 {
+                  id:7274,
                   text:'ACER'
                 }
               ]
@@ -262,12 +268,13 @@ export default {
               text:'精選螢幕',
               title: '2024083C/images/2503/bar_5.png',
                url: 'https://www.tk3c.com/dictitleurl.aspx?cid=44823',
-              menu: [7275, 7276],
               content: [
                 {
+                  id:7275,
                   text:'文書/商務款'
                 },
                 {
+                  id:7276,
                   text:'電競款'
                 }
               ]
@@ -275,34 +282,28 @@ export default {
           ],
           5: [
             {
+              id:7277,
               text:'高效桌機',
               title: '2024083C/images/2503/bar_6.png',
-              menu: [7277, 7278],
-              url: 'https://www.tk3c.com/dictitleurl.aspx?cid=114130',
-              content: [
-                {
-                  text:'品牌桌機'
-                },
-                {
-                  text:"DIY組裝機"
-                }
-              ]
+              url: 'https://www.tk3c.com/dictitleurl.aspx?cid=114130'
             }
           ],
           6: [
             {
               text:'DIY零組件',
               title: '2024083C/images/2503/bar_7.png',
-              menu: [7279, 7280, 7281],
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117896',
               content: [
                 {
+                  id:7279,
                   text:'顯示卡'
                 },
                 {
+                  id:7280,
                   text:'RAM'
                 },
                 {
+                  id:7281,
                   text:'SSD'
                 }
               ]
@@ -316,21 +317,24 @@ export default {
              {
               text:'Wi-Fi路由器',
               title: '2024083C/images/2503/bar_10.png',
-              menu: [7285, 7282, 7284, 7283],
               content: [
                 {
+                  id:7285,
                   url: 'https://www.tk3c.com/dic2.aspx?cid=43403&aid=11540&hid=122073',
                   text:'Wi-Fi 7'
                 },
                 {
+                  id:7282,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=43403&aid=17260',
                   text:'Mesh系統'
                 },
                 {
+                  id:7284,
                   url: 'https://www.tk3c.com/dic2.aspx?cid=43403&aid=11540&hid=122542',
                   text:'Wi-Fi 6/6E'
                 },
                 {
+                  id:7283,
                   url: 'https://www.tk3c.com/dic2.aspx?cid=43403&aid=11540&hid=122073',
                   text:'無線路由器'
                 }
@@ -341,30 +345,22 @@ export default {
              {
               text:"DIY組裝機",
               title: '2024083C/images/2503/bar_11.png',
-              menu: [7278, 7278],
-              content: [
-                {
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=14719&aid=10020',
-                  text:'華碩平台'
-                },
-                {
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=14719&aid=6040',
-                  text:'微星平台'
-                }
-              ]
+               id:7278,
+               url: 'https://www.tk3c.com/dic1.aspx?cid=14719&aid=10020'
             }
           ],
           2:[
              {
               text:'鍵盤滑鼠',
               title: '2024083C/images/2503/bar_12.png',
-              menu: [7286, 7287],
               content: [
                 {
+                  id:7286,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=14719&aid=10020',
                   text:'鍵盤'
                 },
                 {
+                  id:7287,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=14719&aid=6040',
                   text:'滑鼠'
                 }
@@ -375,13 +371,14 @@ export default {
              {
               text:'硬碟',
               title: '2024083C/images/2503/bar_13.png',
-              menu: [7288, 7289],
               content: [
                 {
+                  id:7288,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=117896&aid=23571',
                   text:'外接硬碟'
                 },
                 {
+                  id:7289,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=117896&aid=22551',
                   text:'內接硬碟'
                 }
@@ -392,13 +389,14 @@ export default {
              {
               text:'隨身碟/記憶卡',
               title: '2024083C/images/2503/bar_14.png',
-              menu: [7290, 7291],
               content: [
                 {
+                  id:7290,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=12356&aid=4855',
                   text:'隨身碟'
                 },
                 {
+                  id:7291,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=12356&aid=4853',
                   text:'記憶卡'
                 }
@@ -409,13 +407,14 @@ export default {
              {
               text:'投影機/監控設備',
               title: '2024083C/images/2503/bar_15.png',
-              menu: [7292, 7293],
               content: [
                 {
+                  id:7292,
                   url: 'https://www.tk3c.com/dictitleurl.aspx?cid=19729',
                   text:'投影機'
                 },
                 {
+                  id:7293,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=43403&aid=11545',
                   text:'網路攝影機'
                 }
@@ -426,21 +425,24 @@ export default {
              {
               text:'辦公設備',
               title: '2024083C/images/2503/bar_17.png',
-              menu: [7294, 7295, 7296, 7297],
               content: [
                 {
+                  id:7294,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=11684&aid=4762',
                   text:'辦公週邊'
                 },
                 {
+                  id:7295,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=108783&aid=22323',
                   text:'延長線'
                 },
                 {
+                  id:7296,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=108783&aid=22325',
                   text:'碎紙機'
                 },
                 {
+                  id:7297,
                   url: 'https://www.tk3c.com/dic1.aspx?cid=11684&aid=4761',
                   text:'電池'
                 }
@@ -452,7 +454,7 @@ export default {
               text:'速速Go',
               title: '2024083C/images/2503/bar_9.png',
               url: 'https://events.tk3c.com/events_net/tk3c_fastdelivery/index.html',
-              menu: 7357,
+              id: 7357,
             }
           ],
           8:[
@@ -460,7 +462,7 @@ export default {
               text:'出清搶便宜',
               title: '2024083C/images/2503/bar_16.png',
               url: 'https://www.tk3c.com/dic2.aspx?cid=44823&aid=22525&hid=121385',
-              menu: 7298
+              id: 7298
             }
           ]
         }
@@ -478,92 +480,17 @@ export default {
           image: '202404_green/images/bn_tesnbM.jpg'
         }
       ],
-      aside2:[
-        {
-          'text':'RTX50 新機預購',
-          'href':'#tab1'
-        },
-        {
-          'text':'輕薄商務',
-          'href':'#tab2'
-        },
-        {
-          'text':'飆速電競',
-          'href':'#tab3'
-        },
-        {
-          'text':'特仕改裝升級',
-          'href':'#tab4'
-        },
-        {
-          'text':'精選螢幕',
-          'href':'#tab5'
-        },
-        {
-          'text':'特仕改裝升級',
-          'href':'#tab6'
-        },
-        {
-          'text':'精選螢幕',
-          'href':'#tab7'
-        },
-        {
-          'text':'高效桌機',
-          'href':'#tab8'
-        },
-        {
-          'text':'DIY零組件',
-          'href':'#tab9'
-        },
-        {
-          'text':'Wi-Fi路由器',
-          'href':'#tab8'
-        },
-        {
-          'text':'DIY組裝機',
-          'href':'#tab9'
-        },
-        {
-          'text':'鍵盤滑鼠',
-          'href':'#tab10'
-        },
-        {
-          'text':'硬碟',
-          'href':'#tab11'
-        },
-        {
-          'text':'隨身碟/記憶卡',
-          'href':'#tab12'
-        },
-        {
-          'text':'投影機/監控設備',
-          'href':'#tab13'
-        },
-        {
-          'text':'辦公設備',
-          'href':'#tab14'
-        },
-        {
-          'text':'速速Go',
-          'href':'#tab15'
-        },
-        {
-          'text':'出清搶便宜',
-          'href':'#tab16'
-        },
-      ],
       statusPro: 0,
       tabs: [],
       statusGift: 0,
       today: new Date(),
-      menuSale:7668,
       bnTitle:'',
       isOff:true,
       disUrl:''
     }
   },
   mounted() {
-    let {today,tabs,tab1,tab2 } = this
+    let {today,tab1 } = this
 
     //3/6更新現折券
     if(today >= new Date('2025/03/06')) {
@@ -578,43 +505,12 @@ export default {
     //熱門活動標題
     this.bnTitle = '2024083C/images/2503/bar_8.png';
 
-    //撈取折價券商品
-    this.getFloorSingle(this.menuSale);
-
      if (this.statusGift == 0 ) this.tabs = tab1[0];
-
-    //撈取筆電區樓層商品
-    for (const [t, t1] of Object.entries(tab1[0])) {
-      this.getFloorData(t1[0].menu)
-    }
-
-    //撈取周邊區樓層商品
-    for (const [t, t2] of Object.entries(tab2[0])) {
-      if (t2[0].content != undefined) {
-        this.getFloorData(t2[0].menu)
-      } else {
-        this.getFloorSingle(t2[0].menu)
-      }
-    }
   },
   methods: {
     //應援指南頁籤切換
     changeGift(id) {
       this.statusGift = id
-    },
-    change(id) {
-      if (event) {
-        let current = event.currentTarget,
-          parentAr = current.parentNode.parentNode.parentNode.parentNode,
-          parentClass = parentAr.getAttribute('class'),
-          parentName = parentClass.substr(16),
-          getUrl = current.getAttribute('href')
-
-        setTimeout(() => {
-          this.showAndHide(id, `.${parentName}`)
-          parentAr.querySelector('.title a').setAttribute('href', getUrl)
-        }, 20)
-      }
     },
     goNB(element) {
       //前往錨點

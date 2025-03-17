@@ -1,6 +1,5 @@
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
-import { nextTick } from 'vue';
 
 export const globalMixin = {
   data() {
@@ -15,10 +14,11 @@ export const globalMixin = {
       mobileBg: 'none',//手機版選單背景遮罩
       isGoTop: false,//手機版回到上層按鈕
       isMobileOpen: false,//手機版上方選單切換狀態
+      jimmyId: [], //商品樓層id
+      jimmyText: [], //樓層文字 
     }
   },
   mounted() {
-    this.asides = [];
     this.timer = setInterval(() => {
       setTimeout(() => {
         this.getFloorTitle('section.scroll');
@@ -316,6 +316,18 @@ export const globalMixin = {
     //點擊切換手機版上方按鈕
     switchMobile() {
       this.isMobileOpen = !this.isMobileOpen;
+    },
+    //取得吉米後台商品
+    addJimmyFloor() {
+      let protitle2 = document.querySelectorAll('.wrapper .protitle');
+      if (protitle2.length > 0) {
+        protitle2.forEach((pro, p) => {
+          //id - 商品樓層 
+          this.jimmyId.push(pro.querySelector('a').getAttribute('id').substring(3)),
+            //樓層標題文字
+            this.jimmyText.push(pro.textContent.trim());
+        });
+      }
     }
   }
 }

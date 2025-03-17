@@ -49,16 +49,16 @@
     <div class="background2"></div>
 
     <!-- 尊榮安裝 -->
-    <section class="air-info scroll" v-show="isVipOld" titles="VVIP尊榮安裝" id="vvip">
+    <section class="air-info scroll" v-if="isVipOld" titles="VVIP尊榮安裝" id="vvip">
       <a id="vvip" :href="
           $filters.addGALink('https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2')
         " target="_blank">
-        <img :src="$filters.siteUrl('airConditionerLAB/images/2405/vvip_3.jpg')" />
+        <img :src="$filters.siteUrl('airConditionerLAB/images/2405/vvip_5.jpg')" />
       </a>
     </section>
 
     <!-- 現折券 -->
-    <section class="discount-box" v-if="isDis && product2[menuDis] != ''">
+    <section class="discount-box" v-if="isDis">
       <h2 class="title">
         <a :href="$filters.addGALink(disUrl)" target="_blank">
           <img :src="$filters.siteUrl('airConditionerLAB/images/2503/S1.png')" alt="" />
@@ -67,7 +67,7 @@
 
 
       <div class="discount">
-        <listF :pro="product2[menuDis]" :isSwiper="1" :name="'dis'"></listF>
+        <JimmyFloor :id="5515" :isSwiper="1" :name="'dis'"></JimmyFloor>
       </div>
     </section>
 
@@ -116,7 +116,7 @@
     </section>
 
     <!-- 品牌 -->
-    <section class="brand-box scroll" titles="品牌大放送" id="brand">
+     <section class="brand-box scroll" titles="品牌大放送" id="brand">
       <h2 class="title single-url">
         <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=11225&aid=4707')" target="_blank">
         <img :src="$filters.siteUrl('airConditionerLAB/images/2503/S2.png')" alt="" />
@@ -125,9 +125,8 @@
 
       <Tabs :isSwiper="1" :swiperOption="swiperOption.breakpoints" :tabs="brands">
         <template v-slot="{ selectedTab }">
-          <TabContent :isSwiper="1" v-for="(brand, b) in brands" :menus="menuBrand[b]" :banners="brand.banner" :index="b" :selectedTab="selectedTab">
-
-          </TabContent>
+          <TabContent2 v-for="(brand, b) in brands" :floor="brand" :name="`b${Number(b) + 1}`" :banners="brand.banner" :index="b" :selectedTab="selectedTab">
+          </TabContent2>
         </template>
       </Tabs>
     </section>
@@ -139,8 +138,8 @@
           <img :src="$filters.siteUrl('airConditionerLAB/images/2503/S3.png')" alt="" />
         </a>
       </h2>
-
-      <listF :pro="product2[menuHot]" :isSwiper="1" :name="'hot'"></listF>
+      
+      <JimmyFloor :id="4127" :isSwiper="1" :name="'hot'"></JimmyFloor>
     </section>
 
     <!-- 冷暖空調 -->
@@ -151,7 +150,7 @@
         </a>
       </h2>
 
-      <listF :pro="product2[menuCold]"></listF>
+      <JimmyFloor :id="3695"></JimmyFloor>
     </section>
 
     <!-- 除濕機 -->
@@ -162,7 +161,7 @@
         </a>
       </h2>
 
-      <listF :pro="product2[menuWet]"></listF>
+      <JimmyFloor :id="7466"></JimmyFloor>
     </section>
 
     <!-- 熊速配專區 -->
@@ -171,7 +170,7 @@
         <img :src="$filters.siteUrl('airConditionerLAB/images/2303/pro_title.jpg')" />
       </h2>
       <div class="bear">
-        <listF :pro="product2[menuBear]" :isSwiper="1" :name="'bear'"></listF>
+        <JimmyFloor :id="4148" :isSwiper="1" :name="'bear'"></JimmyFloor>
         <a class="more" :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=11225')"
           target="_blank">點我看更多</a>
       </div>
@@ -303,13 +302,15 @@
         <div v-if="floor[0].content != undefined">
           <Tabs :tabs="floor[0].content">
             <template v-slot="{ selectedTab }">
-              <TabContent v-for="(content, c) in floor[0].content" :menus="floor[0].menu[c]" :index="c" :selectedTab="selectedTab">
+              <TabContent2 v-for="(content, c) in floor[0].content" :floor="content" :index="c" :selectedTab="selectedTab">
 
-              </TabContent>
+              </TabContent2>
             </template>
           </Tabs>
         </div>
-        <listF v-else :pro="product2[floor[0].menu]"></listF>
+        <div v-else>
+          <JimmyFloor :id="floor[0].id"></JimmyFloor>
+        </div>
       </div>
     </section>
 
@@ -406,7 +407,9 @@ export default {
       ],
       brands: [
         {
+          id:4414,
           image: 'airConditionerLAB/images/2503/brand1.png',
+          isSwiper:1,
           banner:[
             {
               url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124282',
@@ -416,6 +419,8 @@ export default {
           ],
         },
          {
+          id:4413,
+          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand2.png',
           url:'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11237',
            banner:[
@@ -427,6 +432,8 @@ export default {
           ]
         },
         {
+          id:4415,
+          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand3.png',
           banner:[
             {
@@ -437,6 +444,8 @@ export default {
           ]
         },
          {
+          id:4417,
+          isSwiper:1,
          image: 'airConditionerLAB/images/2503/brand4.png',
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=37503',
            banner:[
@@ -448,6 +457,8 @@ export default {
           ]
         },
         {
+          id:4416,
+          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand5.png',
           banner:[
             {
@@ -458,6 +469,8 @@ export default {
           ]
         },
         {
+          id:5516,
+          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand6.png',
           banner:[
             {
@@ -468,6 +481,8 @@ export default {
           ]
         },
          {
+          id:4418,
+          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand7.png',
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=104083',
           banner:[
@@ -479,6 +494,8 @@ export default {
           ]
         },
          {
+          id:4436,
+          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand8.png',
           banner:[
             {
@@ -489,6 +506,8 @@ export default {
           ]
         },
         {
+          id:5517,
+          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand9.png',
           banner:[
             {
@@ -499,6 +518,8 @@ export default {
           ]
         },
         {
+         id:4419,
+         isSwiper:1,
          image: 'airConditionerLAB/images/2503/brand10.png',
           banner:[
             {
@@ -508,7 +529,9 @@ export default {
             }
           ]
         },
-          {
+        {
+          id:4655,
+          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand11.png',
           banner:[
             {
@@ -519,6 +542,8 @@ export default {
           ]
         },
          {
+          id:7813,
+          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand12.png',
           banner:[
             {
@@ -546,24 +571,23 @@ export default {
               text:'分離式空調',
               title: 'airConditionerLAB/images/2503/S6.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4704&strPreView=y',
-              menu: [4288, 4289, 4290, 4291],
               content: [
                 {
                   image: 'airConditionerLAB/images/2503/tab1.png',
-                  menu: 4288
+                  id: 4288
                 },
                 {
                   image: 'airConditionerLAB/images/2503/tab2.png',
-                  menu: 4289
+                  id: 4289
                 },
                 {
                   url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4704&strPreView=y',
                   image: 'airConditionerLAB/images/2503/tab3.png',
-                  menu: 4290
+                  id: 4290
                 },
                 {
                   image: 'airConditionerLAB/images/2503/tab4.png',
-                  menu: 4291
+                  id: 4291
                 }
               ]
             }
@@ -573,18 +597,21 @@ export default {
               text:'窗型空調',
               title: 'airConditionerLAB/images/2503/S7.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4702&strPreView=y',
-              menu: [4292, 4293, 4294, 4295],
               content: [
                 {
+                  id:4292,
                   image: 'airConditionerLAB/images/2503/tab1.png',
                 },
                 {
+                  id:4293,
                   image: 'airConditionerLAB/images/2503/tab2.png',
                 },
                 {
+                  id:4294,
                   image: 'airConditionerLAB/images/2503/tab3.png',
                 },
                 {
+                  id:4295,
                   image: 'airConditionerLAB/images/2503/tab4.png',
                 }
               ]
@@ -593,7 +620,7 @@ export default {
           2: [
             {
               text:'移動式空調',
-              menu: 4130,
+              id: 4130,
               title: 'airConditionerLAB/images/2503/S8.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=13580&strPreView=y'
             }
@@ -639,12 +666,6 @@ export default {
           ]
         }
       ],
-      menuDis: 5515, //現折 清單編號
-      menuBear: 4148, //熊速配
-      menuHot: 4127, //熱銷空調首選
-      menuCold: 3695, //冷暖空調
-      menuWet: 7466, //除濕機用
-      menuBrand: [4414,4413, 4415,4417,4416, 5516,4418, 4436,5517, 4419,4655,7813], //品牌 陳列編號
       statusTab:0, //商品樓層用
       statusInfo: 0,
       isDis: true,
@@ -681,34 +702,12 @@ export default {
     }
   },
   mounted() {
-    const { floors, menuDis, menuBear, today, menuHot, menuCold, menuWet } = this
+    const {  today } = this
     //固定背景
     this.fixedBg('.background2', '.discount-box');
 
     // 3/11 VVIP安裝隱藏
-    if(today >= new Date('2025/03/11')) this.isVipOld = false;
-
-    //撈取 現折券樓層商品
-    this.getFloorSingle(menuDis)
-
-    //撈取 熱銷空調樓層商品
-    this.getFloorSingle(menuHot)
-
-    //撈取 冷暖空調樓層商品
-    this.getFloorSingle(menuCold)
-
-    //撈取 除濕機樓層商品
-    this.getFloorSingle(menuWet)
-
-    //撈取熊速配樓層商品
-    this.getFloorSingle(menuBear)
-
-    for (const [f, floor] of Object.entries(floors[0])) {
-      if (floor[0].content == undefined) {
-       //無頁籤商品樓層
-        this.getFloorSingle(floor[0].menu)
-      }
-    }
+    if(today >= new Date('2025/04/01')) this.isVipOld = false;
 
     // 3/6修改現折券連結
     if (today >= new Date('2025/03/06')) {
@@ -718,19 +717,6 @@ export default {
     }
   },
   methods: {
-    changeTab(id) {
-      if (event) {
-        let current = event.currentTarget,
-          parentAr = current.parentNode.parentNode.parentNode.parentNode.parentNode,
-          parentClass = parentAr.getAttribute('class'),
-          parentName = parentClass.substr(19)
-
-
-        setTimeout(() => {
-          this.showAndHide(id, `.${parentName}`)
-        }, 20)
-      }
-    },
     changeInfo(id) {
       setTimeout(() => {
         this.statusInfo = id

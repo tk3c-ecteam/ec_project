@@ -5,10 +5,10 @@ import '../node_modules/swiper/swiper-bundle.min.css'
 import 'animate.css'
 import { Swiper, SwiperSlide } from "swiper/vue";
 
-import App from '@/AppComponent.vue' //主頁面內容
-
 //倒數計時
 import VueCountdown from '@chenfengyuan/vue-countdown';
+
+import App from '@/AppComponent.vue';
 
 //載入撈取商品陳列api
 import { globalMixin } from './globalMixin.js'
@@ -37,12 +37,10 @@ const config = {
   }
 }
 
-
 app.use(register)
 app.mixin(globalMixin)
 app.component('Swiper', Swiper)
 app.component('SwiperSlide', SwiperSlide)
-
 app.component(VueCountdown.name, VueCountdown);
 
 //使用方法: $filters.siteUrl(value)
