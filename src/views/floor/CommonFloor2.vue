@@ -1,9 +1,10 @@
 <script>
 
 /* 商品樓層共用版型(吉米後台樓層陳列清單商品)
- * 傳入物件: floors(樓層標題圖片、連結) - 必要
+ * 傳入物件: floors(樓層標題圖片-image、連結-url、樓層編號-id、是否單個樓層輪播-isSwiper(可不用寫) - 必要
  * singleImage(純標題圖片單張+系統文字) - 非必要
  * moreImage(看更多按鈕圖片) - 非必要
+ * isSwiper - 是否全部樓層都要輪播 - 非必要
  */
 export default {
   props: ['floors','singleImage','moreImage','isSwiper'],
