@@ -10,6 +10,10 @@ import Components from 'unplugin-vue-components/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: {
+    global: 'window',
+    'process.env': {}
+  },
   plugins: [
     vue({
       script: {
@@ -49,9 +53,6 @@ export default defineConfig({
     //圖片壓縮套件
     ViteImageOptimizer()
   ],
-  define: {
-    'process.env': {}
-  },
   css: {
     preprocessorOptions: {
       scss: {
@@ -91,10 +92,9 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        fan2503: resolve(__dirname, './index.html')
+        night_part2: resolve(__dirname, './index.html')
       },
       output: {
-        //匯出index.html .js .css(打包檔案)
         entryFileNames: 'js/[name].js',
         chunkFileNames: 'js/[name].js',
         assetFileNames: 'css/[name][extname]'
