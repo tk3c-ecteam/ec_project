@@ -75,7 +75,7 @@
       </h2>
 
       <div class="box">
-        <listF :pro="product2[menuPro1]"></listF>
+       <JimmyFloor :id="7640"></JimmyFloor> 
          <a class="more" :href="
             $filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')
           " target="_blank">
@@ -99,7 +99,7 @@
         </li>
       </ul>
       <div class="pro-content" v-for="(tab, t) in tabs" v-show="status == t">
-        <listF v-if="products[menuPro2[t]] != undefined" :pro="products[menuPro2[t]].Data"></listF>
+        <JimmyFloor :id="tab.id"></JimmyFloor>
          <a class="more" :href="
             $filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')
           " target="_blank">
@@ -257,8 +257,8 @@ export default {
         }
       ],
       tabs: [
-        { image: 'bank_ec/images/S2-10000_b.png' },
-        { image: 'bank_ec/images/S2-30000_b.png' }
+        { image: 'bank_ec/images/S2-10000_b.png',id:7641 },
+        { image: 'bank_ec/images/S2-30000_b.png',id:7642 }
       ],
       bank20306:[
         {
@@ -274,8 +274,6 @@ export default {
         }
       ],
       today: new Date(),
-      menuPro1: 7640,
-      menuPro2: [7641, 7642],
       status: 0
     }
   },
@@ -296,12 +294,6 @@ export default {
     if(today >= new Date('2025/03/06') && today < new Date('2025/03/24')) {
       this.banks[1] = this.bank20306[0];
     }
-
-    //撈取千元刷卡樓層商品
-    this.getFloorSingle(this.menuPro1)
-
-    //撈取其他樓層
-    this.getFloorData(this.menuPro2)
   },
   methods: {
     change(id) {

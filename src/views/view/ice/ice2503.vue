@@ -81,7 +81,7 @@
         <div v-if="tab[0].content != undefined">
           <Tabs :isSwiper="1" :tabs="tab[0].content">
             <template v-slot="{ selectedTab }">
-              <TabContent2 v-for="(content, c) in tab[0].content" :floor="content" :name="`p${c + 1}`" :index="c"
+              <TabContent2 :isSwiper="1" v-for="(content, c) in tab[0].content" :id="content.id" :name="`p${c + 1}`" :index="c"
                 :selectedTab="selectedTab">
 
               </TabContent2>
@@ -117,13 +117,11 @@ export default {
               url:'https://www.tk3c.com/dic1.aspx?cid=12504&aid=4878',
               content:[
                 {
-                  isSwiper:1,
                   id:4423,
                   image: 'icewash2209/images/2503/S4-btm01.png',
                   url:'https://www.tk3c.com/dic1.aspx?cid=12504&aid=4878'
                 },
                 {
-                  isSwiper:1,
                   id:7086,
                   image: 'icewash2209/images/2503/S4-btm02.png',
                   url:'https://www.tk3c.com/dic1.aspx?cid=83198&aid=18620'
@@ -138,13 +136,11 @@ export default {
               url:'https://www.tk3c.com/dic1.aspx?cid=12504&aid=4878',
               content:[
                 {
-                  isSwiper:1,
                   id:5540,
                   image:'icewash2209/images/2503/S4-btm01.png',
                   url:'https://www.tk3c.com/dic1.aspx?cid=12504&aid=4878'
                 },
                 {
-                  isSwiper:1,
                   id:7087,
                   image:'icewash2209/images/2503/S4-btm02.png',
                   url:'https://www.tk3c.com/dic1.aspx?cid=83198&aid=18620'
@@ -159,17 +155,14 @@ export default {
               url: 'https://www.tk3c.com/dic1.aspx?cid=12504&aid=12740',
               content: [
                 {
-                  isSwiper:1,
                   id:5983,
                   image: 'icewash2209/images/2503/S6-btm01.png'
                 },
                 {
-                  isSwiper:1,
                   id:5982,
                   image: 'icewash2209/images/2503/S6-btm02.png'
                 },
                 {
-                  isSwiper:1,
                   id:5981,
                   image: 'icewash2209/images/2503/S6-btm03.png'
                 }
@@ -184,17 +177,14 @@ export default {
               url: 'https://www.tk3c.com/dic1.aspx?cid=83198&aid=18641',
               content: [
                 {
-                  isSwiper:1,
                   id:7091,
                   image: 'icewash2209/images/2503/S7-btm03.png'
                 },
                 {
-                  isSwiper:1,
                   id:7092,
                   image: 'icewash2209/images/2503/S7-btm02.png'
                 },
                 {
-                  isSwiper:1,
                   id:7093,
                   image: 'icewash2209/images/2503/S7-btm01.png'
                 }

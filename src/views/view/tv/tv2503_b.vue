@@ -65,7 +65,7 @@
       <div class="content">
         <Tabs :isSwiper="1" :tabs="saleTab" :statusSelect="1">
           <template v-slot="{ selectedTab }">
-            <TabContent2 isSwiper="1" v-for="(content, c) in saleTab" :floor="content" :name="`t${Number(c) + 1}`" :index="c"
+            <TabContent2 v-for="(content, c) in saleTab" :isSwiper="content.isSwiper" :id="content.id" :name="`t${Number(c) + 1}`" :index="c"
               :selectedTab="selectedTab">
 
             </TabContent2>

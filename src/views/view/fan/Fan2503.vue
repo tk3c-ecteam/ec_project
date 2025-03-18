@@ -34,7 +34,7 @@
       </h2>
 
       <div class="sales">
-       <listF :pro="product2[menuGo]" :isSwiper="1" :name="'sale'"></listF>
+       <JimmyFloor :id="6880" :isSwiper="1" :name="'sale'"></JimmyFloor> 
         <a class="more" :href="$filters.addGALink('https://fast.tk3c.com/store/219/category/13')"
           target="_blank">
           <img :src="$filters.siteUrl('fan_hot/images/2503/more.png')">
@@ -43,7 +43,7 @@
     </section>
 
     <!-- 其他樓層 -->
-    <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
+    <CommonFloor2 :floors="floorImg" :moreImage="moreImage"></CommonFloor2>
   </div>
 
   <!-- 左側選單+手機版 -->
@@ -54,7 +54,6 @@
 </template>
 
 <script>
-import listM from '@/views/layout/listM.vue'
 export default {
   data() {
     return {
@@ -78,55 +77,58 @@ export default {
       ],
       floorImg: [
         {
+          id:3428,
           image: 'fan_hot/images/2503/S2.png',
           moreUrl:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=27404'
         },
         {
+          id:3430,
           image: 'fan_hot/images/2503/S3.png',
           moreUrl:'https://www.tk3c.com/dic1.aspx?cid=11058&aid=16920'
         },
         {
+          id:3429,
           image: 'fan_hot/images/2503/S4.png',
           moreUrl:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=115230'
         },
         {
+          id:4150,
           image: 'fan_hot/images/2503/S5.png',
           moreUrl:'https://www.tk3c.com/dic1.aspx?cid=11058&aid=17040'
         },
         {
+          id:4153,
           image: 'fan_hot/images/2503/S6.png',
           moreUrl:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=26943'
         },
         {
+          id:6729,
           image: 'fan_hot/images/2503/S7.png',
           moreUrl:'https://www.tk3c.com/dictitleurl.aspx?cid=115927'
         },
          {
+          id:6730,
           image: 'fan_hot/images/2503/S8.png',
           moreUrl:'https://www.tk3c.com/dic1.aspx?cid=11058&aid=4677'
         },
         {
+          id:4151,
           image: 'fan_hot/images/2503/S9.png',
-          type: listM,
           moreUrl:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=22588&hid=120412'
         },
          {
+          id:7876,
           image: 'fan_hot/images/2503/S10.png',
           moreUrl:'https://www.tk3c.com/dic1.aspx?cid=11058&aid=5779',
-          type:listM
+          isSwiper:1
         }
       ],
-      menuGo: 6880, //速速go樓層清單編號
-      menu:[3428,3430,3429,4150,4153,6729,6730,4151,5518],
       moreImage:''
     }
   },
   mounted() {
     //看更多按鈕
     this.moreImage = 'fan_hot/images/2503/more.png';
-
-    //撈取速速商go品樓層
-    this.getFloorSingle(this.menuGo)
   }
 }
 </script>

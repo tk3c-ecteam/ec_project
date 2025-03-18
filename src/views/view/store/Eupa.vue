@@ -1,21 +1,23 @@
 <script setup>
-import { onMounted } from 'vue';
 var contents = [
         {
           logoImage: "EUPA/images/logo.png",
           floorImg: [
             {
+              id:7759,
               href: "#pro7759",
               image: "EUPA/images/bar_05.png",
               text: "新品上市",
             },
             {
+              id:7675,
               href: "#pro7675",
               image: "EUPA/images/bar_01.png",
               text: "熱銷商品",
               moreUrl: "https://www.tk3c.com/dic1.aspx?cid=111723&aid=23897",
             },
             {
+              id:7676,
               href: "#pro7676",
               image: "EUPA/images/bar_02.png",
               text: "電鍋/料理鍋",
@@ -23,6 +25,7 @@ var contents = [
                 "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124110",
             },
             {
+              id:7677,
               href: "#pro7677",
               image: "EUPA/images/bar_03.png",
               text: "咖啡機",
@@ -30,6 +33,7 @@ var contents = [
                 "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124111",
             },
              {
+              id:7678,
               href: "#pro7678",
               image: "EUPA/images/bar_04.png",
               text: "廚房小幫手",
@@ -37,6 +41,7 @@ var contents = [
                 "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124112",
             },
              {
+              id:7760,
               href: "#pro7760",
               image: "EUPA/images/bar_06.png",
               text: "展示/福利出清",
@@ -52,11 +57,15 @@ var contents = [
           ],
         }
       ];
-      var menus = [7759,7675,7676,7677,7678,7760];
+    
       const moreImage = "EUPA/images/more.png";
 
-      menus.splice(0,1);
-          contents[0].floorImg.splice(0,1);    
+      nextTick(() => {
+       if( document.querySelectorAll('.floor')[0].querySelectorAll('.bg01 li').length == 0) {
+          document.querySelectorAll('.floor')[0].style.display = 'none';
+          document.querySelectorAll('nav .swiper-slide')[0].style.display = 'none';
+       }
+      });
 
       contents[0].slides.forEach((slide,s) => {
         if (slide.mobile == undefined && window.innerWidth <= 992) {
@@ -76,7 +85,7 @@ var contents = [
      <StoreDefault
     :contents="contents"
   ></StoreDefault>
-    <CommonFloor :floors="contents[0].floorImg" :menu="menus"  :moreImage="moreImage"></CommonFloor>
+    <CommonFloor2 :floors="contents[0].floorImg"  :moreImage="moreImage"></CommonFloor2>
 </template>
 
 <style lang="scss">

@@ -2,9 +2,6 @@
 export default {
   data() {
     return {
-      menuHot: 7819,// 熱銷推薦陳列編號
-      menuLimit: 7820, //3/8限時陳列編號
-      menus:[7821,7822,7823,7824,7825,7826,7827,7828,7829],
       gifts:[
          { image: '2025GirlDay/images/e01_a.png' },
          { image: '2025GirlDay/images/e02_a.png' },
@@ -48,38 +45,47 @@ export default {
       ],
       floors:[
         {
+          id:7821,
           image:'2025GirlDay/images/S6_bar.png',
           url:"https://www.tk3c.com/dictitleurl.aspx?cid=10890"
         },
          {
+          id:7822,
           image:'2025GirlDay/images/S7_bar.png',
           url:"https://www.tk3c.com/dictitleurl.aspx?cid=4640"
         },
          {
+          id:7823,
           image:'2025GirlDay/images/S8_bar.png',
           url:"https://www.tk3c.com/dictitleurl.aspx?cid=83186"
         },
           {
+          id:7824,  
           image:'2025GirlDay/images/S9_bar.png',
           url:"https://www.tk3c.com/dictitleurl.aspx?cid=40444"
         },
          {
+          id:7825,
           image:'2025GirlDay/images/S10_bar.png',
           url:"https://www.tk3c.com/dictitleurl.aspx?cid=11703"
         },
           {
+          id:7826,  
           image:'2025GirlDay/images/S11_bar.png',
           url:"https://www.tk3c.com/dictitleurl.aspx?cid=71484"
         },
          {
+          id:7827,
           image:'2025GirlDay/images/S12_bar.png',
           url:"https://events.tk3c.com/events_net/RTXNB/index.html"
         },
           {
+          id:7828,  
           image:'2025GirlDay/images/S13_bar.png',
           url:"https://events.tk3c.com/events_net/icewash2209/index.html"
         },
          {
+          id:7829,
           image:'2025GirlDay/images/S14_bar.png',
           url:"https://events.tk3c.com/events_net/2020TVforever/index.html"
         },
@@ -119,6 +125,8 @@ export default {
       this.isLimit = true;
     }
 
+    if (today >= new Date('2025/03/09')) this.isLimit = false; 
+
      //背景動畫GSAP
     //滾動觸發
     const gsapAnimate = gsap.timeline();
@@ -141,15 +149,8 @@ export default {
       {opacity:1,scale:1,duration: 3}
     );
 
-    //撈取熱銷推薦商品
-    this.getFloorSingle(this.menuHot)
-
-    //撈取3/8限時樓層商品
-    this.getFloorSingle(this.menuLimit);
-
     //3/8顯示限時下殺
     if(today >= new Date('2025/03/08 00:00') && today < new Date('2025/03/09 00:00')) this.isOpen = true;
-    
   }
 }
 </script>
@@ -182,9 +183,8 @@ export default {
        <h2 class="title">
         <img :src="$filters.siteUrl('2025GirlDay/images/S2_bar_a.png')" />
        </h2>
-        <div>
-          <listF :class="{'incoming' : !isOpen}" :pro="product2[menuLimit]" :isSwiper="1" :name="'limit'"></listF>
-        </div>
+
+       <JimmyFloor :class="{'incoming' : !isOpen}" :id="7820" :isSwiper="1" :name="'limit'"></JimmyFloor>
      </section>
      
     <section class="special-box">
@@ -220,9 +220,7 @@ export default {
            <img :src="$filters.siteUrl('2025GirlDay/images/S1_bar_a.png')" />
         </h2>
        
-        <div>
-          <listF :pro="product2[menuHot]" :isSwiper="1" :name="'hot'"></listF>
-        </div>
+        <JimmyFloor :id="7819" :isSwiper="1" :name="'hot'"></JimmyFloor>
      </section>
 
      <!-- 姐的必BUY清單 -->
@@ -309,7 +307,7 @@ export default {
     </section>
 
     <!-- 其他樓層 -->
-    <CommonFloor :floors="floors" :menu="menus"></CommonFloor>
+    <CommonFloor2 :floors="floors"></CommonFloor2>
   </div>
 
   <!-- 左側選單 -->

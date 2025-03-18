@@ -20,7 +20,7 @@
             <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
           </a>
           <a v-else :value="$filters.addGALink(tab.url)" @click.prevent="selectTab(index)">
-             <b v-if="textOrImage == 'text'"> {{ tab.text }}</b>
+             <b v-if="tab.text != undefined"> {{ tab.text }}</b>
             <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
           </a>
         </li>

@@ -322,10 +322,11 @@ export const globalMixin = {
       let protitle2 = document.querySelectorAll('.wrapper .protitle');
       if (protitle2.length > 0) {
         protitle2.forEach((pro, p) => {
+          let id = pro.querySelector('a').getAttribute('id').substring(3)
           //id - 商品樓層 
-          this.jimmyId.push(pro.querySelector('a').getAttribute('id').substring(3)),
-            //樓層標題文字
-            this.jimmyText.push(pro.textContent.trim());
+          this.jimmyId[id] = pro.querySelector('a').getAttribute('id').substring(3);
+          //樓層標題文字
+          this.jimmyText[id] = pro.textContent.trim();
         });
       }
     }

@@ -1,15 +1,12 @@
 <script>
 
-import { nextTick } from 'vue';
-
 /* 商品樓層共用版型(吉米後台樓層陳列清單商品)
  * 傳入物件: floors(樓層標題圖片、連結) - 必要
  * singleImage(純標題圖片單張+系統文字) - 非必要
  * moreImage(看更多按鈕圖片) - 非必要
- * num - 此共用樓層順序
  */
 export default {
-  props: ['floors','singleImage','moreImage','num'],
+  props: ['floors','singleImage','moreImage','isSwiper'],
   mounted() {
    this.addJimmyFloor();
   },
@@ -17,8 +14,8 @@ export default {
 </script>
 
 <template>
-  <section class="floor scroll" v-for="(floor, f) in floors" :titles="jimmyText[Number(f) + num]" :key="f">
-    <h2 class="title" :id="'pro' + jimmyId[f + num]">
+  <section class="floor scroll" v-for="(floor, f) in floors" :titles="[this.jimmyText[floor.id] != undefined ? this.jimmyText[floor.id] : '']" :key="f">
+    <h2 class="title" :id="[this.jimmyId[floor.id] != undefined ? 'pro' + this.jimmyId[floor.id] : '']">
       <!-- 圖片+連結標題 -->
       <a v-if="floor.url" :href="$filters.addGALink(floor.url)">
         <img :src="$filters.siteUrl(floor.image)" />
@@ -33,7 +30,10 @@ export default {
     </h2>
 
     <!-- 樓層商品 -->
-    <JimmyFloor :id="floor.id"></JimmyFloor>
+     <!-- 單獨樓層需要輪播 -->
+    <JimmyFloor v-if="floor.isSwiper" :isSwiper="floor.isSwiper" :name="`f${f + 1}`" :id="floor.id"></JimmyFloor>
+    <!-- 全部樓層需要輪播 -->
+    <JimmyFloor v-else :isSwiper="isSwiper" :name="`f${f + 1}`" :id="floor.id"></JimmyFloor>
 
     <!-- 單獨看更多按鈕 -->
     <a v-if="floor.moreUrl != undefined" class="more" :href="$filters.addGALink(floor.moreUrl)">

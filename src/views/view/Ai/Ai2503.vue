@@ -120,7 +120,7 @@
           <div v-if="t1[0].content != undefined">
             <Tabs :isSwiper="1" :tabs="t1[0].content" :singleUrl="t1[0].url">
               <template v-slot="{ selectedTab }">
-                <TabContent2 v-for="(content, c) in t1[0].content" :floor="content" :name="`p${c + 1}`" :index="c"
+                <TabContent2 v-for="(content, c) in t1[0].content" :id="content.id" :name="`p${c + 1}`" :index="c"
                   :selectedTab="selectedTab">
 
                 </TabContent2>
@@ -151,7 +151,7 @@
           <div v-if="t2[0].content != undefined">
              <Tabs :isSwiper="1" :tabs="t2[0].content" :singleUrl="t2[0].url">
               <template v-slot="{ selectedTab }">
-                <TabContent2 v-for="(content, c) in t2[0].content" :floor="content" :name="`p${c + 1}`" :index="c"
+                <TabContent2 v-for="(content, c) in t2[0].content" :id="content.id" :name="`p${c + 1}`" :index="c"
                   :selectedTab="selectedTab">
 
                 </TabContent2>

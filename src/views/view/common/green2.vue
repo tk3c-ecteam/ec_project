@@ -40,157 +40,150 @@ export default {
     return {
       tabs: [
         {
+          id:4344,
           url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120395&strPreView=y',
           image: 'green_subsidy/images/tab1.png'
         },
         {
+          id:4345,
           url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392&strPreView=y',
           image: 'green_subsidy/images/tab2.png'
         },
         {
+          id:4346,
           url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120393&strPreView=y',
           image: 'green_subsidy/images/tab3.png'
         },
         {
+          id:4347,
           url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120394&strPreView=y',
           image: 'green_subsidy/images/tab4.png'
         },
         {
+          id:4390,
           url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120396&strPreView=y',
           image: 'green_subsidy/images/tab5_a.png'
         }
       ],
-      printers: [{ text: '主機' }, { text: '耗材' }],
+      printers: [
+        { text: '主機',id:7394 }, 
+        { text: '耗材',id:7395 }]
+        ,
       floorImg: [
         {
+          id:7576,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123936',
           image: 'green_subsidy/images/S9_b.png'
         },
         {
+          id:4348,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120393',
           image: 'green_subsidy/images/S3_a.png'
         },
         {
+          id:4349,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120394',
           image: 'green_subsidy/images/S4_a.png'
         },
         {
+          id:4350,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392',
           image: 'green_subsidy/images/S5_a.png'
         },
         {
+          id:4352,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392',
           image: 'green_subsidy/images/S6_a.png'
         },
         {
+          id:4353,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120395',
           image: 'green_subsidy/images/S7_a.png'
         },
         {
+          id:4369,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120816',
           image: 'green_subsidy/images/S8_a.png'
         }
       ],
        moreImage:'green_subsidy/images/more2.png',
-      newTabs: [
+       newTabs: [
         {
-          image: 'green_subsidy/images/new/S-btn12.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn13.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn14.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn1.png'
-        },
-        {
+          id:7577,
           image: 'green_subsidy/images/new/S-btn2.png'
         },
         {
+          id:7578,
           image: 'green_subsidy/images/new/S-btn3.png'
         },
         {
+          id:7579,
           image: 'green_subsidy/images/new/S-btn4.png'
         },
         {
+          id:7580,
           image: 'green_subsidy/images/new/S-btn5.png'
         },
         {
+          id:7581,
           image: 'green_subsidy/images/new/S-btn6.png'
         },
         {
+          id:7582,
           image: 'green_subsidy/images/new/S-btn7.png'
         },
         {
+          id:7583,
           image: 'green_subsidy/images/new/S-btn8.png'
         },
         {
+          id:7584,
           image: 'green_subsidy/images/new/S-btn9.png'
         },
         {
+          id:7585,
           image: 'green_subsidy/images/new/S-btn10.png'
         },
         {
+          id:7586,
           image: 'green_subsidy/images/new/S-btn11.png'
         }
       ],
-       newTab2: [
-        {
-          image: 'green_subsidy/images/new/S-btn1.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn2.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn3.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn4.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn5.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn6.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn7.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn8.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn9.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn10.png'
-        },
-        {
-          image: 'green_subsidy/images/new/S-btn11.png'
-        }
-      ],
-      menu: [7576, 4348, 4349, 4350, 4352, 4353, 4369],
-      menuGreen: [4344, 4345, 4346, 4347, 4390],
-      menuPrint: [7394, 7395],
-      menuNew: [7589, 7588, 7587, 7576, 7577, 7578, 7579, 7580, 7581, 7582, 7583, 7584, 7585, 7586],
-      menuNew2: [ 7576, 7577, 7578, 7579, 7580, 7581, 7582, 7583, 7584, 7585, 7586],
-      status: 0,
-      stausPrinter: 0,
-      statusNew: 0,
       today: new Date(),
-      fullData: [],
-      menuSp: 4850,
       isVip: false,
       isNew: false,
       isGreenSale:false,
       isOpen:false,
-      isOff:true
+      isOff:true,
+      swiperOption: {
+        breakpoints: {
+          0: {
+            slidesPerView: 2.4,
+            grid: {
+              fill: 'row',
+              rows: 1
+            }
+          },
+          600: {
+            slidesPerView: 4.3,
+            grid: {
+              fill: 'row',
+              rows: 1
+            }
+          },
+          992: {
+            slidesPerView: 6,
+            grid: {
+              fill: 'row',
+              rows: 2
+            }
+          }
+        }
+      }
     }
   },
   mounted() {
-    const { menu, tabs, menuSp, today } = this
+    const { today } = this
 
     //綠色消費趣 顯示
    if (today >= new Date('2025/02/17') && today < new Date('2025/03/17')) {
@@ -203,36 +196,12 @@ export default {
       this.isOff = false;
     }
 
-    this.newTabs = this.newTab2;
-    this.menuNew = this.menuNew2;
-    this.getFloorData(this.menuNew2)
-
-    //撈取綠點新鮮貨樓層
-    this.getFloorSingle(menuSp)
-
-    //撈取環保集點樓層商品
-    this.getFloorData(this.menuGreen)
-
-    //撈取印表機樓層
-    this.getFloorData(this.menuPrint)
-
     // 每週六日顯示
     if (today.getDay() == 6 || today.getDay() == 0) {
       this.isNew = true
     }
   },
   methods: {
-    changeGreen(id) {
-      if (event) {
-        this.status = id
-      }
-    },
-    changePrinter(id) {
-      this.stausPrinter = id
-    },
-    changeNew(id) {
-      this.statusNew = id
-    },
     message(id) {
       //活動說明
       let infoHtml = '',
@@ -297,7 +266,7 @@ export default {
     <section v-show="isGreenSale">
       <a :href="$filters.addGALink('https://www.greenpoint.org.tw/GPHome/')" target="_blank">
         <img class="pc" :src="$filters.siteUrl('green_subsidy/images/new/bn25217.jpg')" />
-      <img class="mobile" :src="$filters.siteUrl('green_subsidy/images/new/bn25217M.jpg')" />
+        <img class="mobile" :src="$filters.siteUrl('green_subsidy/images/new/bn25217M.jpg')" />
       </a>
     </section>
 
@@ -306,24 +275,24 @@ export default {
       <!-- 3/1新增 -->
       <div v-show="isOpen">
         <p class="w:85% w:full@<992 m:0|auto|6%">
-            <img :src="$filters.siteUrl('green_subsidy/images/new/g5.png')" />
-         </p>
+          <img :src="$filters.siteUrl('green_subsidy/images/new/g5.png')" />
+        </p>
 
-         <h2 class="title">
-            <img :src="$filters.siteUrl('green_subsidy/images/new/bank31_title.png')" />
-         </h2>
-         <p class="w:85% w:full@<992 mb:2% m:auto">
+        <h2 class="title">
+          <img :src="$filters.siteUrl('green_subsidy/images/new/bank31_title.png')" />
+        </h2>
+        <p class="w:85% w:full@<992 mb:2% m:auto">
           <img :src="$filters.siteUrl('green_subsidy/images/new/bank31.png')" />
-         </p>
-         <div class="w:35% w:50%@<992 w:70%@<576 grid-cols:2 gap:10 m:0|auto|5%">
-            <a @click="message(2)"><img :src="$filters.siteUrl('green_subsidy/images/new/bank_btn1.png')" /></a>
-             <a @click="message(3)"><img :src="$filters.siteUrl('green_subsidy/images/new/bank_btn2.png')" /></a>
-         </div>
-         <p class="w:85% w:full@<992 m:0|auto|4%">
+        </p>
+        <div class="w:35% w:50%@<992 w:70%@<576 grid-cols:2 gap:10 m:0|auto|5%">
+          <a @click="message(2)"><img :src="$filters.siteUrl('green_subsidy/images/new/bank_btn1.png')" /></a>
+          <a @click="message(3)"><img :src="$filters.siteUrl('green_subsidy/images/new/bank_btn2.png')" /></a>
+        </div>
+        <p class="w:85% w:full@<992 m:0|auto|4%">
           <img :src="$filters.siteUrl('green_subsidy/images/new/bank31_board.png')" />
-         </p>
+        </p>
 
-          <a :href="
+        <a :href="
             $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
           " class="w:42% w:45%@<992 w:90%@<576 m:0|auto|5%" target="_blank"><img
             :src="$filters.siteUrl('green_subsidy/images/new/btn2.png')" /></a>
@@ -346,43 +315,14 @@ export default {
         </div>
       </div>
 
-      <div class="box" v-if="isNew">
+      <div class="box" v-show="isNew">
         <!-- 頁籤 -->
-        <div class="flex flex-wrap:wrap gap:10 mb:1%">
-          <swiper :loop="false" :space-between="10" :breakpoints="{
-              0: {
-                slidesPerView: 2.4,
-                grid: {
-                  fill: 'row',
-                  rows: 1
-                }
-              },
-              600: {
-                slidesPerView: 4.3,
-                grid: {
-                  fill: 'row',
-                  rows: 1
-                }
-              },
-              992: {
-                slidesPerView: 6,
-                grid: {
-                  fill: 'row',
-                  rows: 2
-                }
-              }
-            }" @swiper="onSwiperNew">
-            <swiper-slide v-for="(newTab, n) in newTabs" :class="[statusNew == n ? 'active' : '']"
-              class="w:20% brightness(0.7) brightness(1).active" @click="goSlideNew(n)">
-              <a @click="changeNew(n)"><img :src="$filters.siteUrl(newTab.image)" /></a>
-            </swiper-slide>
-          </swiper>
-        </div>
-
-        <!-- 對應商品 -->
-        <div class="tab-content" v-for="(newTab, n) in newTabs" v-show="statusNew == n">
-          <listF v-if="products[menuNew[n]] != undefined" :pro="products[menuNew[n]].Data"></listF>
-        </div>
+        <Tabs :isSwiper="1" :tabs="newTabs" :swiperOption="swiperOption.breakpoints">
+          <template v-slot="{ selectedTab }">
+            <TabContent2 v-for="(tab, n) in newTabs" :id="tab.id" :index="n" :selectedTab="selectedTab">
+            </TabContent2>
+          </template>
+        </Tabs>
       </div>
     </section>
 
@@ -392,7 +332,7 @@ export default {
         <img :src="$filters.siteUrl('green_subsidy/images/S1_a.png')" alt="本週環保小尖兵" />
       </h2>
       <div class="special">
-        <listD :pro="product2[menuSp]"></listD>
+       <JimmyFloor :id="4850"></JimmyFloor>
       </div>
     </section>
 
@@ -402,42 +342,12 @@ export default {
         <img :src="$filters.siteUrl('green_subsidy/images/green_title.png')" alt="" />
       </h2>
       <div class="green content">
-        <ul>
-          <div id="tab-area">
-            <swiper :loop="false" :space-between="10" :breakpoints="{
-                0: {
-                  slidesPerView: 2.4
-                },
-                600: {
-                  slidesPerView: 3.4
-                },
-                992: {
-                  slidesPerView: 5
-                }
-              }" :modules="[Controller]" :controller="{
-                control: [greenContent]
-              }" @swiper="onSwiper">
-              <swiper-slide v-for="(tab, t) in tabs" class="swiper-slide" :class="[status == t ? 'active' : '']"
-                @click="goSlide(t)">
-                <a @click="changeGreen(t)">
-                  <img :src="$filters.siteUrl(tab.image)" />
-                </a>
-              </swiper-slide>
-            </swiper>
-          </div>
-        </ul>
-
-        <div class="content-area">
-          <swiper id="greenContent" :loop="false" :modules="[Controller]" @swiper="onControlSwiper">
-            <swiper-slide class="tab-content" v-for="(tab, t) in tabs">
-              <listF v-if="products[menuGreen[t]] != undefined" :pro="products[menuGreen[t]].Data" :isSwiper="1"
-                :name="'g'"></listF>
-              <a class="more" :href="$filters.addGALink(tabs[t].url)" target="_blank">
-                <img :src="$filters.siteUrl('green_subsidy/images/more2.png')" />
-              </a>
-            </swiper-slide>
-          </swiper>
-        </div>
+         <Tabs :isSwiper="1" :tabs="tabs">
+          <template v-slot="{ selectedTab }">
+            <TabContent2 :isSwiper="1" :moreImage="'green_subsidy/images/more2.png'" v-for="(tab, t) in tabs" :id="tab.id" :name="`t${t + 1}`" :moreUrl="tab.url" :index="t" :selectedTab="selectedTab">
+            </TabContent2>
+          </template>
+        </Tabs>
       </div>
     </section>
 
@@ -471,25 +381,16 @@ export default {
         <img :src="$filters.siteUrl('green_subsidy/images/S2_a.png')" alt="" />
       </h2>
 
-      <ul class="tab gap:10 mb:1%">
-        <li class="w:22% w:25vw@<992 w:38vw@<576 font-size:1.2em font-size:2em@<992 fone-size:1.5em@<576 p:8px bg:#fff"
-          v-for="(printer, p) in printers" :class="[stausPrinter == p ? 'active' : '']">
-          <a @click="changePrinter(p)">{{ printer.text }}</a>
-        </li>
-      </ul>
-
-      <div class="tab-content" v-for="(printer, p) in printers" v-show="stausPrinter == p">
-        <listF v-if="products[menuPrint[p]] != undefined" :pro="products[menuPrint[p]].Data"></listF>
-         <a class="more" :href="
-            $filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123239')
-          " target="_blank">
-          <img :src="$filters.siteUrl('green_subsidy/images/more2.png')" alt="" />
-        </a>
-      </div>
+       <Tabs :tabs="printers">
+          <template v-slot="{ selectedTab }">
+            <TabContent2 :moreImage="'green_subsidy/images/more2.png'" v-for="(printer, p) in printers" :id="printer.id" :moreUrl="'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123239'" :index="p" :selectedTab="selectedTab">
+            </TabContent2>
+          </template>
+        </Tabs>
     </section>
 
     <!-- 其他樓層 -->
-    <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
+    <CommonFloor2 :floors="floorImg" :moreImage="moreImage"></CommonFloor2>
   </div>
 
   <!-- 右側選單+手機版 -->
@@ -553,6 +454,11 @@ form#form1 {
 .bg01 {
   background: #23b4fe;
   border-radius: 10px;
+}
+
+.more {
+  font-size: 0;
+  padding: 0;
 }
 
 /* 環保集點 */
@@ -735,6 +641,11 @@ form#form1 {
 .printer-box {
   .tab {
     li {
+      width: 20%;
+      padding: 5px 5px 0;
+      font-size: 1.5em;
+      box-sizing: border-box;
+      background: #fff;
       &.active {
         background: #3f3a39;
         color: #fff;
@@ -793,6 +704,14 @@ form#form1 {
   .floor {
     .bg01 {
       margin: 0 auto 2%;
+    }
+  }
+
+  .printer-box {
+    .tab {
+      li {
+        width: 33%;
+      }
     }
   }
 }
@@ -869,6 +788,15 @@ form#form1 {
       .prev2,
       .next2 {
         display: none;
+      }
+    }
+  }
+
+  .printer-box {
+    .tab {
+      li {
+        width: 40%;
+        font-size: 1em;
       }
     }
   }

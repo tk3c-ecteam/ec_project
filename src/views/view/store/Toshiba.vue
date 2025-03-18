@@ -4,21 +4,25 @@ const contents = [
           logoImage: "TOSHIBA202206/images/logo.png",
           floorImg: [
             {
+              id:3227,
               image: 'TOSHIBA202206/images/t1.png',
               href: "#pro3227",
               text: "熱銷商品",
             },
             {
+              id:3228,
               image: 'TOSHIBA202206/images/t2.png',
               href: "#pro3228",
               text: "冰箱",
             },
              {
+              id:3229,
               image: 'TOSHIBA202206/images/t3.png',
               href: "#pro3229",
               text: "洗衣機",
             },
             {
+              id:3230,
               image: 'TOSHIBA202206/images/t4.png',
               href: "#pro3230",
               text: "小家電"
@@ -38,7 +42,6 @@ const contents = [
           ],
         }
       ];
-      const menus = [3227,3228,3229,3230];
 </script>
 <script>
   export default {
@@ -68,7 +71,7 @@ const contents = [
    </section>
 
   <!-- 商品樓層 -->
-  <CommonFloor :floors="contents[0].floorImg" :menu="menus"></CommonFloor>
+  <CommonFloor2 :floors="contents[0].floorImg"></CommonFloor2>
 </template>
 
 <style lang="scss">

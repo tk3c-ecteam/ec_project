@@ -8,13 +8,23 @@
 
     <div class="background2"></div>
 
+    <!-- 時間倒數 -->
+    <section class="time-box" v-show="isIncoming">
+      <vue-countdown :time="time" :interval="1000" v-slot="{ days, hours, minutes, seconds }">
+        <p><b>開賣倒數</b> <em>{{ days }}</em> 天 <em>{{ hours }}</em> 時 <em>{{ minutes }}</em> 分 <em>{{ seconds }}</em> 秒
+        </p>
+      </vue-countdown>
+    </section>
+
+   <div v-show="!isIncoming">
     <!-- 全館限時活動 -->
     <section class="special-box scroll pt:5% box:border-box" titles="全館限時活動" id="special">
       <ul class="gap:20 gap:10@<576">
         <li v-for="(sp,s) in specials" :key="s" :class="[sp.class ? sp.class : '']" class="w:40% w:47%@<992 w:85%@<576 w:82%.long w:96%.long@<992 w:85%.long@<576">
-          <a :href="$filters.addGALink(sp.url)" target="_blank">
+          <a v-if="sp.url" :href="$filters.addGALink(sp.url)" target="_blank">
             <img :src="$filters.siteUrl(sp.image)">
           </a>
+          <img v-else :src="$filters.siteUrl(sp.image)">
         </li>
       </ul>
     </section>
@@ -75,9 +85,7 @@
       }"
       >
       <swiper-slide v-for="(gift,g) in gifts" :key="g">
-         <a :href="$filters.addGALink(gift.url)" target="_blank">
-            <img :src="$filters.siteUrl(gift.image)">
-          </a>
+        <img :src="$filters.siteUrl(gift.image)">
       </swiper-slide>
       </swiper>
        <div class="swiper-pagination page"></div>
@@ -95,32 +103,36 @@
 
       <Tabs :tabs="tabs">
           <template v-slot="{ selectedTab }">
-            <TabContent2 v-for="(tab, b) in tabs" :floor="tab" :type="tab.type" :index="b" :selectedTab="selectedTab">
+            <TabContent2 v-for="(tab, b) in tabs" :id="tab.id" :index="b" :selectedTab="selectedTab">
             </TabContent2>
           </template>
         </Tabs>
     </section>
-  </div>
 
-  <!-- 右側選單+手機板 -->
-  <RightAside :asides="asides" :type="'mobile'"></RightAside>
+    <!-- 右側選單+手機板 -->
+    <RightAside :asides="asides" :type="'mobile'"></RightAside>
+   </div>
+ </div>
 </template>
 
 <script>
 export default {
   data() {
+    const today = new Date();
+    const future = new Date('2025/03/20 00:00');
     return {
+      time:future - today,
+      now:new Date(),
+      isIncoming:true,
       specials:[
         {
-          "url":"",
+          "url":"https://www.tk3c.com/dic2.aspx?cid=124448&aid=23934&hid=124453",
           "image":"Esportday/images/e1.png",
         },
          {
-           "url":"",
           "image":"Esportday/images/e2.png",
         },
          {
-           "url":"",
           "image":"Esportday/images/e3.png",
           "class":"long"
         },
@@ -152,7 +164,11 @@ export default {
         { image: 'Esportday/images/S4-btn02.png',id:7870 },
       ]
     }
-  }
+  },
+  mounted() {
+    const { now } = this;
+    (now >= new Date('2025/03/20 00:00')) ? this.isIncoming = false : this.isIncoming = true;
+  },
 }
 </script>
 
@@ -168,6 +184,21 @@ body {
 
 .bg01 {
   background:#ffff3c;
+}
+
+.time-box {
+  p {
+    font-size: 3em;
+    color: #fff;
+  }
+  em {
+    font-size: 1.5em;
+    color: #fdef58;
+    font-weight: bold;
+  }
+  b {
+    display: block;
+  }
 }
 
 
@@ -251,6 +282,12 @@ body {
       }
     }
   }
+
+  .time-box {
+    p {
+      font-size: 2em;
+    }
+  }
 }
 
 /* 手機版 */
@@ -290,6 +327,16 @@ body {
       .swiper-pagination-bullet-active {
         background: #fff !important;
       }
+    }
+  }
+
+  .time-box {
+    b {
+      display: block;
+      font-size: 1.5em;
+    }
+    em {
+      font-size: 1em;
     }
   }
 }

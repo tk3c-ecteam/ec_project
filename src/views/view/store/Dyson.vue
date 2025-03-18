@@ -1,32 +1,34 @@
 <script setup>
-import listM from '@/views/layout/listM.vue'
 const contents = [
         {
           logoImage: "dyson/images/logo.png",
           floorImg: [
             {
+              id:2383,
               image: 'dyson/images/fl1.jpg',
               href: "#pro2383",
               text: "新品上市",
             },
             {
+              id:2384,
               image: 'dyson/images/fl2.jpg',
               href: "#pro2384",
               text: "吸塵器",
-              type:listM
             },
              {
+              id:2385,
               image: 'dyson/images/fl3.jpg',
               href: "#pro2385",
               text: "空氣清淨機與風扇",
-              type:listM
             },
             {
+              id:2386,
               image: 'dyson/images/fl4.jpg',
               href: "#pro2386",
               text: "頭髮護理"
             },
             {
+              id:2387,
               image: 'dyson/images/fl5.jpg',
               href: "#pro2387",
               text: "乾手器",
@@ -76,30 +78,6 @@ const contents = [
           ],
         }
       ];
-
-      const navs = [
-        {
-          image:'dyson/images/icon1.png',
-          url:'https://www.tk3c.com/dic2.aspx?cid=71484&aid=16984&hid=71501'
-        },
-        {
-          image:'dyson/images/icon2.png',
-          url:'https://www.tk3c.com/dic2.aspx?cid=71323&aid=16887&hid=71363'
-        },
-        {
-          image:'dyson/images/icon3.png',
-          url:'https://www.tk3c.com/dic2.aspx?cid=71323&aid=16887&hid=71363'
-        },
-        {
-          image:'dyson/images/icon4.png',
-          url:''
-        },
-        {
-          image:'dyson/images/icon5.png',
-          url:''
-        },
-      ];
-      const menus = [2383, 2384, 2385, 2386, 2387];
 </script>
 
 <template>
@@ -113,7 +91,7 @@ const contents = [
   </div>
 
   <!-- 商品樓層 -->
-  <CommonFloor :floors="contents[0].floorImg" :menu="menus"></CommonFloor>
+  <CommonFloor2 :floors="contents[0].floorImg"></CommonFloor2>
 </template>
 
 <style lang="scss">

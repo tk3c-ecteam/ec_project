@@ -125,7 +125,7 @@
 
       <Tabs :isSwiper="1" :swiperOption="swiperOption.breakpoints" :tabs="brands">
         <template v-slot="{ selectedTab }">
-          <TabContent2 v-for="(brand, b) in brands" :floor="brand" :name="`b${Number(b) + 1}`" :banners="brand.banner" :index="b" :selectedTab="selectedTab">
+          <TabContent2 isSwiper="1" v-for="(brand, b) in brands" :floor="brand" :banners="brand.banner" :name="`b${Number(b) + 1}`" :index="b" :selectedTab="selectedTab">
           </TabContent2>
         </template>
       </Tabs>
@@ -409,7 +409,6 @@ export default {
         {
           id:4414,
           image: 'airConditionerLAB/images/2503/brand1.png',
-          isSwiper:1,
           banner:[
             {
               url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=23921&hid=124282',
@@ -420,7 +419,6 @@ export default {
         },
          {
           id:4413,
-          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand2.png',
           url:'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11237',
            banner:[
@@ -433,7 +431,6 @@ export default {
         },
         {
           id:4415,
-          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand3.png',
           banner:[
             {
@@ -445,7 +442,6 @@ export default {
         },
          {
           id:4417,
-          isSwiper:1,
          image: 'airConditionerLAB/images/2503/brand4.png',
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=37503',
            banner:[
@@ -458,7 +454,6 @@ export default {
         },
         {
           id:4416,
-          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand5.png',
           banner:[
             {
@@ -470,7 +465,6 @@ export default {
         },
         {
           id:5516,
-          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand6.png',
           banner:[
             {
@@ -482,7 +476,6 @@ export default {
         },
          {
           id:4418,
-          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand7.png',
           url: 'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=104083',
           banner:[
@@ -495,7 +488,6 @@ export default {
         },
          {
           id:4436,
-          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand8.png',
           banner:[
             {
@@ -507,7 +499,6 @@ export default {
         },
         {
           id:5517,
-          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand9.png',
           banner:[
             {
@@ -519,7 +510,6 @@ export default {
         },
         {
          id:4419,
-         isSwiper:1,
          image: 'airConditionerLAB/images/2503/brand10.png',
           banner:[
             {
@@ -531,7 +521,6 @@ export default {
         },
         {
           id:4655,
-          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand11.png',
           banner:[
             {
@@ -543,7 +532,6 @@ export default {
         },
          {
           id:7813,
-          isSwiper:1,
           image: 'airConditionerLAB/images/2503/brand12.png',
           banner:[
             {

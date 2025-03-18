@@ -95,7 +95,7 @@
       <div>
         <Tabs :tabs="tabs">
           <template v-slot="{ selectedTab }">
-            <TabContent2 v-for="(tab, b) in tabs" :floor="tab" :type="tab.type" :index="b" :selectedTab="selectedTab">
+            <TabContent2 v-for="(tab, b) in tabs" :id="tab.id" :index="b" :selectedTab="selectedTab">
             </TabContent2>
           </template>
         </Tabs>
