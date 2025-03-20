@@ -1,6 +1,5 @@
 <script setup>
 const contents = defineModel('contents')
-const menu = defineModel('menu')
 </script>
 
 <template>

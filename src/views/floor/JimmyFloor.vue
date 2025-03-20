@@ -6,31 +6,18 @@
  -->
 <script>
   export default {
-    props:['id','name','isSwiper','breakpoint'],
+    props:['id','name','isSwiper'],
     data() {
       return {
         Bg01Html:'',
         BgLiHtml:'',
         BgLiSlide:'',
-        bg01Type:'',
-        breakpoints:{
-          0: {
-            slidesPerView: 2
-          },
-          601: {
-            slidesPerView: 3
-          },
-          992: {
-            slidesPerView: 4
-          }
-        },// swiper輪播預設
+        bg01Type:''
       }
     },
     mounted() {
       const { id } = this;
-
-        if (this.breakpoint) this.breakpoints = this.breakpoint;
-
+      
       if (document.querySelectorAll('.wrapper .bg01').length > 0) {
         //用樓層id來找它下一個.bg01 #pro7769 -> .bg01
 
@@ -47,12 +34,13 @@
           //將樓層猜分li 做輪播
           this.BgLiSlide = protitle.nextElementSibling.querySelectorAll('li');
           let listMPro = protitle.nextElementSibling.querySelectorAll('.hotproboxL,.hotproboxR'),
+          listMSpecial = protitle.nextElementSibling.querySelectorAll('.list_special li'),
           listBoxHBig = protitle.nextElementSibling.querySelectorAll('.boxH_big li'),
           listBoxHSmall = protitle.nextElementSibling.querySelectorAll('.boxH_s li');
           
           //各商品版型價錢加入千分號、不顯示市價=活動價
          if (this.bg01Type == 'list_F') this.modifyListF(this.BgLiSlide);
-         if (this.bg01Type == 'list_M') this.modifyListM(listMPro);
+         if (this.bg01Type == 'list_M') this.modifyListM(listMPro); this.modifyListMsp(listMSpecial);
          if (this.bg01Type == 'list_D') this.modifyListD(this.BgLiSlide);
          if (this.bg01Type == 'list_H') {
           this.modifyListH(listBoxHBig);
@@ -91,22 +79,52 @@
             }
           });
       },
-      //listM 2凸4小修改
+      //listM 2凸
       modifyListM(list) {
          list.forEach((Li, i) => {
-            let LiText = Li.querySelector('.hotpro_sale').textContent,
+            let LiImg = Li.querySelector('.hotpro_pic img').getAttribute('org'),
+              LiText = Li.querySelector('.hotpro_sale').textContent,
               LiPriceText = Li.querySelector('.hotpro_price1').innerText,
               LiPrice2Text = Li.querySelector('.hotpro_price2 span').innerText,
               price1 = LiPriceText.substring(2);
               
+            //解決此版型bug 商品圖片會變成空白
+            Li.querySelector('.hotpro_pic img').setAttribute('src',LiImg);
+
             //沒有促銷文加入空白  
             if (LiText == '') LiText = ' '; Li.querySelector('.hotpro_sale').innerHTML = LiText;
             //商品價錢加入千分位
+            Li.querySelector('.hotpro_price1').innerHTML = this.addNumComma(LiPriceText);
             Li.querySelector('.hotpro_price2 span').innerHTML = this.addNumComma(LiPrice2Text);
             //市價和活動價相同，不顯示市價
             if (price1 == LiPrice2Text) {
               LiPriceText = ' ';
               Li.querySelector('.hotpro_price1').innerHTML = LiPriceText;
+            }
+          });
+      },
+      //listM 4小
+       modifyListMsp(list) {
+         list.forEach((Li, i) => {
+            let LiImg = Li.querySelector('.item_img img').getAttribute('org'),
+              LiText = Li.querySelector('h4').textContent,
+              LiStrong = Li.querySelector('strong').innerHTML,
+              LiStrongText = Li.querySelector('strong').innerText,
+              LiStrongEM = Li.querySelector('strong em').innerText,
+              price1 = LiStrongText.split('活動價')[1],
+              price2 = LiStrongEM.substring(1);
+
+              //解決此版型bug 商品圖片會變成空白
+            Li.querySelector('.item_img img').setAttribute('src',LiImg);
+
+            //沒有促銷文加入空白  
+            if (LiText == '') Li.querySelector('h4').classList.add('empty');
+            //商品價錢加入千分位
+            Li.querySelector('strong').innerHTML = this.addNumComma(LiStrong);
+            //市價和活動價相同，不顯示市價
+            if (price1 == price2) {
+              LiStrongEM = ' ';
+              Li.querySelector('strong em').innerHTML = LiStrongEM;
             }
           });
       },
@@ -174,11 +192,21 @@
       }" 
       :autoHeight="true" 
       :space-between="10" 
+      :breakpoints="{
+         0: {
+            slidesPerView: 2
+          },
+          601: {
+            slidesPerView: 3
+          },
+          992: {
+            slidesPerView: 4
+          }
+      }"
       :navigation="{
           prevEl: `.${name} .prev`,
           nextEl: `.${name} .next`
         }" 
-        :breakpoints="breakpoints"
         >
         <swiper-slide class="bg:#fff pb:2%@<576" v-for="bg in BgLiSlide" v-html="bg.innerHTML">
         </swiper-slide>

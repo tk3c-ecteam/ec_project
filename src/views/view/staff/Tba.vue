@@ -1,6 +1,4 @@
 <script setup>
-import listD from '@/views/layout/listD.vue'
-
 const contents = [
   {
     logo: 'tba/images/logo.png',
@@ -9,9 +7,8 @@ const contents = [
     singleImage:'tba/images/bar.png',
     floor: [
       {
-        text: '律師公會優惠',
-        href:'#pro7742',
-        type:listD
+        id:7742,
+        text:'律師公會優惠'
       }
     ],
     alertHtml: `
@@ -53,19 +50,16 @@ const contents = [
     ]
   }
 ]
-
-const menu = [7742]
 </script>
 
 <template>
-  <StaffCommon v-model:contents="contents" v-model:menu="menu"></StaffCommon>
+  <StaffCommon v-model:contents="contents"></StaffCommon>
 
   <!-- 商品樓層 -->
-  <CommonFloor
+  <CommonFloor2
     :floors="contents[0].floor"
-    :menu="menu"
     :singleImage="contents[0].singleImage"
-  ></CommonFloor>
+  ></CommonFloor2>
 
   <!-- 活動辦法 -->
   <section class="info-group scroll" titles="開業福袋專屬優惠" id="info">

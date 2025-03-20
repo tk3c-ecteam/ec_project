@@ -125,7 +125,7 @@
 
       <Tabs :isSwiper="1" :swiperOption="swiperOption.breakpoints" :tabs="brands">
         <template v-slot="{ selectedTab }">
-          <TabContent2 isSwiper="1" v-for="(brand, b) in brands" :floor="brand" :banners="brand.banner" :name="`b${Number(b) + 1}`" :index="b" :selectedTab="selectedTab">
+          <TabContent2 isSwiper="1" v-for="(brand, b) in brands" :id="brand.id" :banners="brand.banner" :name="`b${Number(b) + 1}`" :index="b" :selectedTab="selectedTab">
           </TabContent2>
         </template>
       </Tabs>
@@ -302,7 +302,7 @@
         <div v-if="floor[0].content != undefined">
           <Tabs :tabs="floor[0].content">
             <template v-slot="{ selectedTab }">
-              <TabContent2 v-for="(content, c) in floor[0].content" :floor="content" :index="c" :selectedTab="selectedTab">
+              <TabContent2 v-for="(content, c) in floor[0].content" :id="content.id" :index="c" :selectedTab="selectedTab">
 
               </TabContent2>
             </template>

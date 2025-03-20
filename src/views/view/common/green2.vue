@@ -244,7 +244,7 @@ export default {
           confirmButtonText: '確定',
           confirmButtonColor: '#000'
         })
-      }, 30);
+      }, 0);
     }
   }
 }

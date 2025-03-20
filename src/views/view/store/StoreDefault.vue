@@ -122,7 +122,7 @@ const contents = defineModel("contents");
     </div>
   </div>
 
-  <div class="custom-top"><p></p></div>
+  <div class="custom-top" :class="{'isShow':isGoTop}" @click="goTop"><p></p></div>
 </template>
 
 <style lang="scss">

@@ -5,12 +5,12 @@ export default {
       menuSP: 7392,
       menus: [6149, 6150, 6151, 6152, 6153, 6154],
       proDatas: [
-        { image: 'nightsale/images/part3/bar_top.png', menu: 6149, text: '每週強檔',href:'#pro6149' },
-        { image: 'nightsale/images/part3/bar000.png', menu: 6150, text: '大型家電',href:'#pro6150' },
-        { image: 'nightsale/images/part3/bar01.png', menu: 6151, text: '生活家電',href:'#pro6151' },
-        { image: 'nightsale/images/part3/bar02.png', menu: 6152, text: '電腦資訊',href:'#pro6152' },
-        { image: 'nightsale/images/part3/bar07.png', menu: 6153, text: '鍵盤滑鼠',href:'#pro6153' },
-        { image: 'nightsale/images/part3/bar04_b.png', menu: 6154, text: '數位週邊',href:'#pro6154' }
+        { image: 'nightsale/images/part3/bar_top.png', id: 6149, text: '每週強檔',href:'#pro6149' },
+        { image: 'nightsale/images/part3/bar000.png', id: 6150, text: '大型家電',href:'#pro6150' },
+        { image: 'nightsale/images/part3/bar01.png', id: 6151, text: '生活家電',href:'#pro6151' },
+        { image: 'nightsale/images/part3/bar02.png', id: 6152, text: '電腦資訊',href:'#pro6152' },
+        { image: 'nightsale/images/part3/bar07.png', id: 6153, text: '鍵盤滑鼠',href:'#pro6153' },
+        { image: 'nightsale/images/part3/bar04_b.png', id: 6154, text: '數位週邊',href:'#pro6154' }
       ],
       today: new Date(),
       isSp: false,
@@ -111,16 +111,16 @@ export default {
     <!-- 限時 -->
     <section class="special-box" v-show="isSp">
       <div class="special rel">
-        <div class="swiper-pagination page top:-1%!"></div>
+         <div class="swiper-pagination page top:-2%!"></div>
         <div class="bg01 list_F p:1% p:2%@<576" v-if="product2[menuSP] != undefined">
           <ul>
             <swiper class="overflow:hidden" 
             :space-between="10" 
-            :pagination="{
-                el: '.special .page',
-                type: 'progressbar',
-                clickable: true
-              }" 
+              :pagination="{
+                el:'.special .page',
+                type:'progressbar',
+                clickable:true,
+              }"
               :navigation="{
                 prevEl: '.special .prev',
                 nextEl: '.special .next'
@@ -134,21 +134,21 @@ export default {
                   }
                 },
                 601: {
-                  slidesPerView: 3.3,
+                  slidesPerView: 3,
                   grid: {
                     fill: 'row',
                     rows: 3
                   }
                 },
                 1100: {
-                  slidesPerView: 4.3,
+                  slidesPerView: 4,
                   grid: {
                     fill: 'row',
                     rows: 4
                   }
                 },
                 1281: {
-                  slidesPerView: 5.8,
+                  slidesPerView: 6,
                   grid: {
                     fill: 'row',
                     rows: 3
@@ -183,8 +183,8 @@ export default {
       </div>
     </section>
 
-    <section class="pro-box scroll" v-for="(pd, p) in proDatas" :class="`pro${Number(p) + 1}-box`">
-      <h2 class="title" :id="`pro${menus[p]}`">
+    <section class="pro-box scroll" v-for="(pd, p) in proDatas" :key="p" :titles="pd.text" :id="`pro${pd.id}`" :class="`pro${Number(p) + 1}-box`">
+      <h2 class="title">
         <img :src="$filters.siteUrl(pd.image)" />
       </h2>
 
@@ -196,7 +196,7 @@ export default {
   </div>
 
   <!-- 右側選單+手機版 -->
-   <RightAside :asides="proDatas" :type="'mobile2'"></RightAside>
+   <RightAside :asides="asides" :type="'mobile2'"></RightAside>
 </template>
 
 <style lang="scss">
@@ -347,8 +347,10 @@ section {
   .title {
     width: 65%;
   }
-  .swiper-pagination {
-    background: #fff;
+
+  
+  .swiper-pagination-progressbar-fill{
+    background: #fff000 !important;
   }
 }
 
@@ -476,6 +478,7 @@ section {
         }
       }
     }
+
     .before {
       .boxF_price {
         &:after {

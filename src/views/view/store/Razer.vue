@@ -4,29 +4,34 @@ const contents = [
           logoImage: "Razer/images/logo.png",
           floorImg: [
             {
+              id:4441,
               href: "#pro4441",
               text: "熱銷商品",
               moreUrl: "https://www.tk3c.com/dictitleurl.aspx?cid=118749",
             },
             {
+              id:4442,
               href: "#pro4442",
               text: "滑鼠",
               moreUrl:
                 "https://www.tk3c.com/dic2.aspx?cid=118749&aid=23193&hid=118754",
             },
              {
+              id:4443,
               href: "#pro4443",
               text: "鍵盤",
               moreUrl:
                 "https://www.tk3c.com/dic2.aspx?cid=118749&aid=23193&hid=118753",
             },
             {
+              id:4444,
               href: "#pro4444",
               text: "耳機/麥克風",
               moreUrl:
                 "https://www.tk3c.com/dic2.aspx?cid=118749&aid=23193&hid=118755",
             },
             {
+              id:4446,
               href: "#pro4446",
               text: "電競椅",
               moreUrl:
@@ -38,7 +43,6 @@ const contents = [
           ],
         }
       ];
-      const menus = [4441,4442,4443,4444,4446];
       const moreImage = "Razer/images/more.png";
 </script>
 
@@ -65,7 +69,7 @@ const contents = [
   </section>
 
   <!-- 商品樓層 -->
-  <CommonFloor :floors="contents[0].floorImg" :menu="menus" :moreImage="moreImage"></CommonFloor>
+  <CommonFloor2 :floors="contents[0].floorImg" :moreImage="moreImage"></CommonFloor2>
 </template>
 
 <style lang="scss">
