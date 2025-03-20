@@ -24,7 +24,7 @@ export default {
   <section class="floor scroll" v-for="(floor, f) in floors" :titles="[products[menu[f]] != undefined ? products[menu[f]].MenuTitle.trim() : '']" :key="f">
     <h2 class="title" :name="`pro${menu[f]}`" :id="`pro${menu[f]}`">
       <!-- 圖片+連結標題 -->
-      <a v-if="floor.url" :href="$filters.addGALink(floor.url)">
+      <a v-if="floor.url" :href="$filters.addGALink(floor.url)" target="_blank">
         <img :src="$filters.siteUrl(floor.image)" />
       </a>
       <!-- 有看更多按鈕僅有圖片標題 -->
@@ -50,7 +50,7 @@ export default {
     </div>
 
     <!-- 單獨看更多按鈕 -->
-    <a v-if="floor.moreUrl != undefined" class="more" :href="$filters.addGALink(floor.moreUrl)">
+    <a v-if="floor.moreUrl != undefined" class="more" :href="$filters.addGALink(floor.moreUrl)" target="_blank">
       <img :src="$filters.siteUrl(moreImage)" />
     </a>
   </section>

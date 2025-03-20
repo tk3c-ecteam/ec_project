@@ -18,7 +18,7 @@ export default {
   <section class="floor scroll" v-for="(floor, f) in floors" :titles="[this.jimmyText[floor.id] != undefined ? this.jimmyText[floor.id] : '']" :key="f">
     <h2 class="title" :id="[this.jimmyId[floor.id] != undefined ? 'pro' + this.jimmyId[floor.id] : '']">
       <!-- 圖片+連結標題 -->
-      <a v-if="floor.url" :href="$filters.addGALink(floor.url)">
+      <a v-if="floor.url" :href="$filters.addGALink(floor.url)" target="_blank">
         <img :src="$filters.siteUrl(floor.image)" />
       </a>
       <!-- 有看更多按鈕僅有圖片標題 -->
@@ -37,7 +37,7 @@ export default {
     <JimmyFloor v-else :isSwiper="isSwiper" :name="`f${f + 1}`" :id="floor.id"></JimmyFloor>
 
     <!-- 單獨看更多按鈕 -->
-    <a v-if="floor.moreUrl != undefined" class="more" :href="$filters.addGALink(floor.moreUrl)">
+    <a v-if="floor.moreUrl != undefined" class="more" :href="$filters.addGALink(floor.moreUrl)" target="_blank">
       <img :src="$filters.siteUrl(moreImage)" />
     </a>
   </section>
