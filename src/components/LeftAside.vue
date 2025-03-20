@@ -1,8 +1,9 @@
 <script setup>
+import { onMounted } from "vue";
  const today = new Date();
 
  //熱門活動區
- let mainName = (today >= new Date('2025/03/06')) ? '25spring2' : '25spring',
+ let mainName = (today >= new Date('2025/03/24')) ? '25spring_part3' : '25spring2',
   mainUrl = `https://events.tk3c.com/events_net/${mainName}/index.html`,
    location = window.location.pathname.split('/'),
   folderName = (location[2] == 'events_net') ? location[3] : location[2],
@@ -12,8 +13,7 @@
 
   let events = [
     {"name":"回主會場","url": mainUrl},
-     {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html","class":"bank"},
-    {"name":"信用卡優惠","url":"https://events.tk3c.com/events_net/bank_ec/index.html","class":'bank'},
+    {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html","class":"bank"},
     {"name":"銀行優惠","url":"https://events.tk3c.com/events_net/events_net/banks/bank.html","class":'bank'},
     {"name":"環保集點","url":"https://events.tk3c.com/events_net/green_subsidy/index.html","class":'bank'},
     {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/icewash2209/index.html"},
@@ -23,33 +23,25 @@
     {"name":"風扇主題館","url":"https://events.tk3c.com/events_net/fan_hot/index.html"}
   ];
 
-  let event0301 = [
-    {"name":" 姐!妹力無限","url":"https://events.tk3c.com/events_net/2025GirlDay/index.html","class":"bank"},
-  ];
-
   switch (folderName) {
     case 'icewash2209':
-      num = 5;
+      num = 4;
       break;
   
     case 'airConditionerLAB':
-      num = 6;
+      num = 5;
       break;
 
      case '2020TVforever':
-      num = 7;
+      num = 6;
       break;  
     
      case '2024083C':
-      num = 8;
+      num = 7;
       break; 
-      
-     case 'electric_heater':
-      num = 9;
-      break;   
 
      case 'fan_hot':
-      num = 9;
+      num = 8;
       break; 
   } 
 
@@ -95,10 +87,26 @@
   });
 </script>
 
+<script>
+ //左側選單 1520 以下裝置不展開
+  export default {
+    mounted() {
+      this.smallDeviceLeft();
+      window.addEventListener('resize',this.smallDeviceLeft);
+    },
+    unmounted() {
+      window.removeEventListener('resize',this.smallDeviceLeft);
+    },
+  }
+</script>
+
 <template>
    <!-- 左側選單 -->
-  <aside class="aside-container left">
-    <span class="collaspe"><i class="fas fa-chevron-left"></i></span>
+  <aside class="aside-container left" :class="{'close-left': isLeftAside}">
+    <span class="collaspe" @click="switchLeftAside">
+      <i v-if="!isLeftAside" class="fas fa-chevron-left"></i>
+      <i v-else class="fas fa-chevron-right"></i>
+    </span>  
     <div class="aside-wrap">
       <h3 class="aside-header"></h3>
       <div class="aside-content">
@@ -108,7 +116,7 @@
           </li>
         </ul>
       </div>
-      <a href="#" class="go-top">GO TOP</a>
+      <a href="#" class="go-top" @click="goTop">GO TOP</a>
     </div>
   </aside>
 

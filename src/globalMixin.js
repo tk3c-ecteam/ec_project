@@ -10,6 +10,8 @@ export const globalMixin = {
       tabS: null,
       asides: [],//右側選單項目
       timer: null,
+      isLeftAside: false, //是否顯示左側選單
+      isRightAside: false, //是否顯示右側選單
       mobileStatus: '',//手機版置底選單用(status:'event','social')
       mobileBg: 'none',//手機版選單背景遮罩
       isGoTop: false,//手機版回到上層按鈕
@@ -139,27 +141,27 @@ export const globalMixin = {
     },
     //頁籤顯示隱藏
     showAndHide(id, element) {
-      $all(`${element} .tab-content`).forEach((el) => {
+      document.querySelectorAll(`${element} .tab-content`).forEach((el) => {
         el.style.display = 'none'
         el.classList.remove('active')
 
-        $all(`${element} .tab-content`)[id].style.display = 'block'
-        $all(`${element} .tab-content`)[id].classList.add('active')
+        document.querySelectorAll(`${element} .tab-content`)[id].style.display = 'block'
+        document.querySelectorAll(`${element} .tab-content`)[id].classList.add('active')
       })
 
       // 有輪播 .swiper-slide版本
-      if ($all(`${element} .swiper-slide`).length > 0) {
-        $all(`${element} .swiper-slide`).forEach((el) => {
+      if (document.querySelectorAll(`${element} .swiper-slide`).length > 0) {
+        document.querySelectorAll(`${element} .swiper-slide`).forEach((el) => {
           el.classList.remove('active')
-          $all(`${element} .swiper-slide`)[id].classList.add('active')
+          document.querySelectorAll(`${element} .swiper-slide`)[id].classList.add('active')
         })
       }
 
       //無輪播版本
-      if ($all(`${element} li`).length > 0) {
-        $all(`${element} li`).forEach((el) => {
+      if (document.querySelectorAll(`${element} li`).length > 0) {
+        document.querySelectorAll(`${element} li`).forEach((el) => {
           el.classList.remove('active')
-          $all(`${element} li`)[id].classList.add('active')
+          document.querySelectorAll(`${element} li`)[id].classList.add('active')
         })
       }
 
@@ -316,6 +318,31 @@ export const globalMixin = {
     //點擊切換手機版上方按鈕
     switchMobile() {
       this.isMobileOpen = !this.isMobileOpen;
+    },
+    //顯示左右側選單
+    showAside() {
+      let firstSection = document.querySelectorAll('section')[0],
+        firstSectionPos = firstSection.getBoundingClientRect().top
+      if (firstSection) {
+        (window.scrollY >= firstSectionPos) ? this.isLeftAside = true : this.isLeftAside = false;
+        (window.scrollY >= firstSectionPos) ? this.isRightAside = true : this.isRightAside = false;
+      }
+    },
+    //切換左側選單顯示按鈕
+    switchLeftAside() {
+      this.isLeftAside = !this.isLeftAside;
+    },
+    //切換右側選單顯示按鈕
+    switchRightAside() {
+      this.isRightAside = !this.isRightAside;
+    },
+    smallDeviceLeft() {
+      //左側選單 1520 以下裝置不展開
+      (window.innerWidth < 1520) ? this.isLeftAside = true : this.isLeftAside = false;
+    },
+    smallDeviceRight() {
+      //右側選單 1520 以下裝置不展開
+      (window.innerWidth < 1520) ? this.isRightAside = true : this.isRightAside = false;
     },
     //取得吉米後台商品
     addJimmyFloor() {

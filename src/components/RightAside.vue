@@ -26,10 +26,27 @@
   });
 </script>
 
+<script>
+ //右側選單 1520 以下裝置不展開
+  export default {
+    mounted() {
+      this.smallDeviceRight();
+      window.addEventListener('resize',this.smallDeviceRight);
+    },
+    unmounted() {
+      window.removeEventListener('resize',this.smallDeviceRight);
+    },
+  }
+</script>
+
 <template>
   <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
+  <aside class="aside-container" :class="{'close-right':isRightAside}">
+    <span class="collaspe" @click="switchRightAside">
+      <i v-if="!isRightAside" class="fas fa-chevron-right"></i>
+      <i v-else class="fas fa-chevron-left"></i>
+    </span>
+    
     <div class="aside-wrap">
       <h3 class="aside-header"></h3>
       <!-- 一般右側選單樓層項目 -->
@@ -57,7 +74,7 @@
         </ul>
       </div>
       
-      <a href="#" class="go-top">GO TOP</a>
+      <a href="#" class="go-top" @click="goTop">GO TOP</a>
     </div>
   </aside>
 
