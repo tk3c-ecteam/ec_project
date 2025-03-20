@@ -4,7 +4,6 @@ import path from 'path'
 import { resolve } from 'node:path'
 import autoprefixer from 'autoprefixer'
 import { createHtmlPlugin } from 'vite-plugin-html'
-import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 
@@ -49,9 +48,7 @@ export default defineConfig({
     createHtmlPlugin({
       minify: false,
       entry: './src/main.js',
-    }),
-    //圖片壓縮套件
-    ViteImageOptimizer()
+    })
   ],
   css: {
     preprocessorOptions: {
@@ -92,7 +89,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        night_part2: resolve(__dirname, './index.html')
+        lenovo2503: resolve(__dirname, './index.html')
       },
       output: {
         entryFileNames: 'js/[name].js',
