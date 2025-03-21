@@ -36,9 +36,15 @@ export default {
       <b v-if="floor.text">{{ floor.text }}</b>
     </h2>
 
-    <!-- 有輪播 -->
-    <div class="content" v-if="isSwiper">
-      <component v-if="products[menu[f]] != undefined && isSwiper" :is="floor.type != undefined ? floor.type : listF"
+    <!-- 有輪播(單個樓層輪播) -->
+    <div class="content" v-if="floor.isSwiper">
+      <component v-if="products[menu[f]] != undefined && floor.isSwiper == 1" :is="floor.type != undefined ? floor.type : listF"
+        :pro="products[menu[f]].Data" :isSwiper="1" :name="`pro${f + 1}`"></component>
+    </div>
+
+     <!-- 有輪播(全部樓層輪播) -->
+    <div class="content" v-else-if="isSwiper">
+      <component v-if="products[menu[f]] != undefined && isSwiper == 1" :is="floor.type != undefined ? floor.type : listF"
         :pro="products[menu[f]].Data" :isSwiper="1" :name="`pro${f + 1}`"></component>
     </div>
 
