@@ -7,7 +7,7 @@
 
       <div class="box">
         <div class="product">
-          <JimmyFloor :id="7871" :isSwiper="1" :name="'pro'"></JimmyFloor>
+          <listF :pro="product2[menuPro]" :isSwiper="1" :name="'p'"></listF>
         </div>
       </div>
     </div>
@@ -16,14 +16,14 @@
     <div class="background2"></div>
 
     <!-- 最高現折 -->
-    <section class="sale-box" id="sale" v-if="isSale">
+    <section class="sale-box" id="sale" v-if="isSale && product2[menuDis] != ''">
       <h2 class="title">
         <a :href="$filters.addGALink(saleUrl)" target="_blank">
            <img :src="$filters.siteUrl('icewash2209/images/2503/S1.png')" />
         </a>
       </h2>
       <div class="sale">
-        <JimmyFloor :id="6462" :isSwiper="1" :name="'sale-pro'"></JimmyFloor>
+        <listF :pro="product2[menuDis]" :isSwiper="1" :name="'sale-pro'"></listF>
       </div>
     </section>
 
@@ -81,17 +81,18 @@
         <div v-if="tab[0].content != undefined">
           <Tabs :isSwiper="1" :tabs="tab[0].content">
             <template v-slot="{ selectedTab }">
-              <TabContent2 :isSwiper="1" v-for="(content, c) in tab[0].content" :id="content.id" :name="`p${c + 1}`" :index="c"
+              <TabContent :isSwiper="1" v-for="(content, c) in tab[0].content" :menus="tab[0].menu[c]" :index="c"
                 :selectedTab="selectedTab">
 
-              </TabContent2>
+              </TabContent>
             </template>
           </Tabs>
 
         </div>
 
         <div v-else>
-          <JimmyFloor :id="tab[0].id" :isSwiper="1" :name="`po${t + 1}`"></JimmyFloor>
+         <listF :pro="product2[tab[0].id]" :isSwiper="1" :name="`po${t + 1}`">
+          </listF>
         </div>
       </section>
     </div>
@@ -112,6 +113,7 @@ export default {
         {
           0: [
             {
+              menu:[4423,7086,],
               text:'熱銷強品',
               title: 'icewash2209/images/2503/S4.png',
               url:'https://www.tk3c.com/dic1.aspx?cid=12504&aid=4878',
@@ -131,6 +133,7 @@ export default {
           ],
           1: [
             {
+              menu:[5540,7087],
               text:'超夯新品',
               title: 'icewash2209/images/2503/S5.png',
               url:'https://www.tk3c.com/dic1.aspx?cid=12504&aid=4878',
@@ -150,6 +153,7 @@ export default {
           ],
           2: [
             {
+              menu:[5983,5982,5981],
               text:'冰箱',
               title: 'icewash2209/images/2503/S6.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=12504&aid=12740',
@@ -171,7 +175,7 @@ export default {
           ],
           3: [
             {
-              isSwiper:1,
+              menu:[7091,7092,7093],
               text:'洗衣機',
               title: 'icewash2209/images/2503/S7.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=83198&aid=18641',
@@ -213,18 +217,34 @@ export default {
       isSale: true,
       today: new Date(),
       saleUrl: '',
+      menuPro:7871, //熱銷陳列編號
+      menuDis:6462, //現折券陳列編號
     }
   },
   mounted() {
-    let {  today } = this
+    let {  today,tabs } = this
 
     this.fixedBg('.background2','.sale-box');
 
-    // 2025/3/6 更新現折券連結
-    if (today >= new Date('2025/03/06')) {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
+    // 2025/3/24 更新現折券連結
+    if (today >= new Date('2025/03/24')) {
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124522&aid=23947&strPreView=y';
     } else {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124362&aid=23927'
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
+    }
+
+    this.getFloorSingle(this.menuPro)
+
+    //撈取現折券樓層商品
+    this.getFloorSingle(this.menuDis)
+
+    for (const [t, tab] of Object.entries(tabs[0])) {
+      //撈取商品樓層 冰箱
+ 
+      if (tab[0].content == undefined) {
+         //無頁籤商品樓層
+        this.getFloorSingle(tab[0].id)
+      }
     }
   },
   methods: {

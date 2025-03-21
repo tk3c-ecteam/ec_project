@@ -196,7 +196,7 @@
 
     <div v-if="isOpen">
       <!-- 首批保證取貨專區 -->
-      <section class="floor1-box floors scroll" titles="首批保證取貨專區" id="floor1">
+      <section class="floor1-box floors scroll" titles="首批保證取貨專區" id="floor1" v-if="isTab1">
         <h2 class="title">
           <img :src="$filters.siteUrl('RTXNB/images/bar_01.png')" />
         </h2>
@@ -213,7 +213,7 @@
           </ul>
 
           <div class="tab-content" v-for="(t1, t) in tab1[0].content" v-show="status1 == t">
-             <JimmyFloor :id="t1.id"></JimmyFloor>
+             <component :is="[t1.type ? t1.type : listF]" v-if="products[menuTab1[t]] != undefined" :pro="products[menuTab1[t]].Data"></component>
           </div>
 
           <div class="text">
@@ -242,7 +242,8 @@
 
 
           <div class="tab-content" v-for="(t2, t) in tab2[0].content" v-show="status2 == t">
-            <JimmyFloor :id="t2.id"></JimmyFloor>
+            <listF v-if="t2.type == undefined && products[menuTab2[t]] != undefined" :pro="products[menuTab2[t]].Data"></listF>
+            <component :is="t2.type" v-else-if="products[menuTab2[t]] != undefined" :pro="products[menuTab2[t]].Data"></component>
           </div>
 
 
@@ -261,15 +262,20 @@
 
 <script>
 import { EffectFlip } from "swiper/modules";
+import listM from '@/views/layout/listM.vue';
+import listF from '@/views/layout/listF.vue';
 export default {
   data() {
      const today = new Date();
     const future = new Date('2025/02/25 22:00:00');
     return {
+      listM,
+      listF,
       EffectFlip,
        time: future - today,
       isSale:true,//預購用
       isOpen:false,//開賣用
+      isTab1:false,
       specials:[
         {
           "image":"RTXNB/images/sp01.png",
@@ -335,7 +341,8 @@ export default {
             },
             {
                "image": "RTXNB/images/tab1.png",
-               "id":7815
+               "id":7815,
+               "type":listM
             },
           ]
         }
@@ -353,7 +360,8 @@ export default {
              },
              {
                "image": "RTXNB/images/tab3.png",
-               "id":7818
+               "id":7818,
+               "type":listM
              },
           ]
         }
@@ -362,7 +370,9 @@ export default {
       statusBank: 0, // 銀行樓層用
       swiperBank: null,
       status1:0,
-      status2:0
+      status2:0,
+      menuTab1:[7863,7815],
+      menuTab2:[7816,7817,7818]
     }
   },
   mounted() {
@@ -372,6 +382,9 @@ export default {
        this.specials = this.special2;
        this.isOpen = true;
     } 
+
+    this.getFloorData(this.menuTab1);
+    this.getFloorData(this.menuTab2);
   },
   methods: {
     changeBank(id) {
@@ -494,7 +507,6 @@ body{
         top: 32%;
         animation: upAndDown 1.6s linear infinite alternate;
         &:before {
-          content: '';
           display: block;
           width: 50%;
           height: 100%;
@@ -568,10 +580,30 @@ body{
 
 .floor1-box {
   .tab-content {
+    li {
+      position: relative;
+    }
     &:nth-of-type(1) {
       a[id="prod256096-preorder1"],
       a[id="prod256093-preorder1"],
       a[id="prod256097-preorder1"] {
+        position: relative;
+        pointer-events: none;
+        cursor: auto;
+         &:before {
+            content: ""; display: flex; width: 100%; height: 100%; position: absolute; background: #00000085; left: 0; right: 0; bottom: 0; z-index: 10; margin: 0 auto;
+          }
+          &:after {
+            content:"銷售一空"; 
+            display: flex; align-items: center; justify-content: center; text-align: center; width: 150px; height: auto; background: red; color: #fff; position: absolute; left: 0; right: 0; margin: 0 auto; top: 60%; z-index: 10; font-size: 2em; font-weight: bold; transform: rotate(-15deg) translateY(-50%); padding: 1%; opacity: 0.8;border-radius: 10px; box-sizing: border-box; z-index: 11;
+          }
+      }
+    }
+    &:nth-of-type(2) {
+      .hotproboxL,
+      .hotproboxR ,
+      a[id="prod256192-preorder1"],
+      a[id="prod256190-preorder1"] {
         position: relative;
         pointer-events: none;
         cursor: auto;
@@ -781,5 +813,32 @@ body{
       box-sizing: border-box;
     }
   }
-}
+
+  .floor1-box {
+    .tab-content {
+      li {
+        position: relative;
+      }
+      &:nth-of-type(1) {
+        a[id="prod256096-preorder1"],
+        a[id="prod256093-preorder1"],
+        a[id="prod256097-preorder1"] {
+            &:before {
+              height: 105%;
+              bottom: -8px;
+            }
+        }
+      }
+      &:nth-of-type(2) {
+        a[id=prod256192-preorder1],
+        a[id=prod256190-preorder1] {
+          &:before {
+            height: 150%;
+            bottom: -120px;
+          }
+        }
+      }
+    }
+  }
+}  
 </style>

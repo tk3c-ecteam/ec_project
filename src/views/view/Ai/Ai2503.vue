@@ -185,6 +185,7 @@ export default {
         {
              0: [
             {
+              menu:[7872,7873,7874],
               text:'RTX50 新機預購',
               title: '2024083C/images/2503/bar_rtx50.png',
               url: 'https://events.tk3c.com/events_net/RTXNB/index.html',
@@ -206,6 +207,7 @@ export default {
           ],
           1: [
             {
+              menu:[7267,7268],
               text:'輕薄商務',
               title: '2024083C/images/2503/bar_1.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=11124',
@@ -223,6 +225,7 @@ export default {
           ],
           2: [
             {
+              menu:[7269,7270,7271],
               text:'飆速電競',
               title: '2024083C/images/2503/bar_2.png',
                url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117913',
@@ -244,6 +247,7 @@ export default {
           ],
           3: [
             {
+              menu:[7272,7273,7274],
               text:'特仕改裝升級',
               title: '2024083C/images/2503/bar_4.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11124&aid=22124',
@@ -265,6 +269,7 @@ export default {
           ],
           4: [
             {
+              menu:[7275,7276],
               text:'精選螢幕',
               title: '2024083C/images/2503/bar_5.png',
                url: 'https://www.tk3c.com/dictitleurl.aspx?cid=44823',
@@ -290,6 +295,7 @@ export default {
           ],
           6: [
             {
+              menu:[7279,7280,7281],
               text:'DIY零組件',
               title: '2024083C/images/2503/bar_7.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117896',
@@ -315,6 +321,7 @@ export default {
         {
           0:[
              {
+              menu:[7285,7282,7284],
               text:'Wi-Fi路由器',
               title: '2024083C/images/2503/bar_10.png',
               content: [
@@ -351,6 +358,7 @@ export default {
           ],
           2:[
              {
+              menu:[7286,7287],
               text:'鍵盤滑鼠',
               title: '2024083C/images/2503/bar_12.png',
               content: [
@@ -369,6 +377,7 @@ export default {
           ],
           3:[
              {
+              menu:[7288,7289],
               text:'硬碟',
               title: '2024083C/images/2503/bar_13.png',
               content: [
@@ -387,6 +396,7 @@ export default {
           ],
           4:[
              {
+              menu:[7290,7291],
               text:'隨身碟/記憶卡',
               title: '2024083C/images/2503/bar_14.png',
               content: [
@@ -405,6 +415,7 @@ export default {
           ],
           5:[
              {
+              menu:[7292,7293],
               text:'投影機/監控設備',
               title: '2024083C/images/2503/bar_15.png',
               content: [
@@ -423,6 +434,7 @@ export default {
           ],
           6:[
              {
+              menu:[7294,7295,7296,7297],
               text:'辦公設備',
               title: '2024083C/images/2503/bar_17.png',
               content: [
@@ -486,26 +498,37 @@ export default {
       today: new Date(),
       bnTitle:'',
       isOff:true,
-      disUrl:''
+      disUrl:'',
+      menuDis:7668,
     }
   },
   mounted() {
-    let {today,tab1 } = this
+    let {today,tab1,tab2 } = this
 
-    //3/6更新現折券
-    if(today >= new Date('2025/03/06')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y'
+    //3/24更新現折券
+    if(today >= new Date('2025/03/24')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124522&aid=23947&hid=124524&strPreView=y'
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic2.aspx?cid=124362&aid=23927&hid=124366'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }
 
     if(today >= new Date('2025/03/24')) this.isOff = false;
-    
-
     //熱門活動標題
     this.bnTitle = '2024083C/images/2503/bar_8.png';
 
      if (this.statusGift == 0 ) this.tabs = tab1[0];
+
+      //撈取折價券商品
+    this.getFloorSingle(this.menuDis);
+
+    //樓層商品(無頁籤)
+    for (const [t, t1] of Object.entries(tab1[0])) {
+      if (t1[0].content == undefined) this.getFloorSingle(t1[0].id)
+    }
+
+    for (const [t, t2] of Object.entries(tab2[0])) {
+      if (t2[0].content == undefined) this.getFloorSingle(t2[0].id)
+    }
   },
   methods: {
     //應援指南頁籤切換

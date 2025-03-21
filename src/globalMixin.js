@@ -24,12 +24,12 @@ export const globalMixin = {
     this.timer = setInterval(() => {
       setTimeout(() => {
         this.getFloorTitle('section.scroll');
-      }, 3000);
+      }, 5500);
     }, 1000);
 
     setTimeout(() => {
       clearInterval(this.timer);
-    }, 1001);
+    }, 1000);
   },
   methods: {
     /*加入meta標籤

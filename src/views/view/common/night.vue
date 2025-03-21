@@ -115,10 +115,10 @@ export default {
         <div class="bg01 list_F p:1% p:2%@<576" v-if="product2[menuSP] != undefined">
           <ul>
             <swiper class="overflow:hidden" 
-            :space-between="10" 
+              :space-between="10" 
               :pagination="{
                 el:'.special .page',
-                type:'progressbar',
+                type : 'progressbar',
                 clickable:true,
               }"
               :navigation="{

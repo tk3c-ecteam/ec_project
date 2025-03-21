@@ -251,7 +251,6 @@ export default {
         { image: '2020TVforever/images/2503/logo_01.png' },
         { image: '2020TVforever/images/2503/logo_03.png' },
         { image: '2020TVforever/images/2503/logo_04.png' },
-        { image: '2020TVforever/images/2503/logo_02.png' },
         { image: '2020TVforever/images/2503/logo_more.png' }
       ],
       floorImg: [
@@ -289,7 +288,7 @@ export default {
         }
       ],
       menuDis: 4328, //現折 清單編號
-      menuSale: [5977, 4465, 4466, 4463, 4467], // 出清 陳列編號
+      menuSale: [5977, 4465, 4466, 4467], // 出清 陳列編號
       menuNight: 5420, //夜殺 陳列編號
       menu: [2751, 5613, 5198, 5199, 4846, 5200, 5201, 5202],
       menuHome: 7769,
@@ -318,11 +317,11 @@ export default {
      //撈取 夜殺樓層商品
     this.getFloorSingle(this.menuNight)
 
-    // 2025 3/6 更新現折券連結
-    if (today >= new Date('2025/03/06')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
+    // 2025 3/24 更新現折券連結
+    if (today >= new Date('2025/03/24')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124522&aid=23947&strPreView=y';
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124362&aid=23927'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }
   }
 }

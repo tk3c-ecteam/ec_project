@@ -191,10 +191,6 @@
   <RightAside :asides="aside2"></RightAside>
 </template>
 
-<script setup>
-import { Parallax, EffectFade } from 'swiper/modules'
-</script>
-
 <script>
 export default {
   data() {

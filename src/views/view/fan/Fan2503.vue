@@ -34,7 +34,7 @@
       </h2>
 
       <div class="sales">
-       <JimmyFloor :id="6880" :isSwiper="1" :name="'sale'"></JimmyFloor> 
+       <listF :pro="product2[menuGo]" :isSwiper="1" :name="'sale'"></listF> 
         <a class="more" :href="$filters.addGALink('https://fast.tk3c.com/store/219/category/13')"
           target="_blank">
           <img :src="$filters.siteUrl('fan_hot/images/2503/more.png')">
@@ -43,7 +43,7 @@
     </section>
 
     <!-- 其他樓層 -->
-    <CommonFloor2 :floors="floorImg" :moreImage="moreImage"></CommonFloor2>
+    <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
   </div>
 
   <!-- 左側選單+手機版 -->
@@ -54,9 +54,11 @@
 </template>
 
 <script>
+import listM from "@/views/layout/listM.vue";
 export default {
   data() {
     return {
+      listM,
       gifts:[
          {
           image: 'fan_hot/images/2503/C1_a.png',
@@ -114,7 +116,8 @@ export default {
         {
           id:4151,
           image: 'fan_hot/images/2503/S9.png',
-          moreUrl:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=22588&hid=120412'
+          moreUrl:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=22588&hid=120412',
+          type:listM
         },
          {
           id:7876,
@@ -123,12 +126,17 @@ export default {
           isSwiper:1
         }
       ],
-      moreImage:''
+      moreImage:'',
+      menuGo:6880, //速速go陳列標題
+      menu:[3428,3430,3429,4150,4153,6729,6730,4151,7876]
     }
   },
   mounted() {
     //看更多按鈕
     this.moreImage = 'fan_hot/images/2503/more.png';
+
+    //撈取速速go樓層商品
+    this.getFloorSingle(this.menuGo)
   }
 }
 </script>
