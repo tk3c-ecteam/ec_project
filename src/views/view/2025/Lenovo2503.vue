@@ -88,7 +88,7 @@
     </section>
 
     <!--商品樓層 -->
-    <CommonFloor2 :floors="floors"></CommonFloor2>
+    <CommonFloor :floors="floors" :menu="menu"></CommonFloor>
   </div>
 
   <!-- 右側選單+手機板 -->
@@ -152,7 +152,8 @@ export default {
           "url":"https://www.tk3c.com/dic1.aspx?cid=10890&aid=22655",
           "id":7912
         },
-      ]
+      ],
+      menu:[7909,7910,7911,7912]
     }
   },
   mounted() {

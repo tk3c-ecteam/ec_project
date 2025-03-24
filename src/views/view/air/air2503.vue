@@ -125,7 +125,7 @@
 
        <Tabs :isSwiper="1" :swiperOption="swiperOption.breakpoints" :tabs="brands" :textOrImage="'text'">
         <template v-slot="{ selectedTab }">
-          <TabContent :isSwiper="1" v-for="(brand, b) in brands" :menus="menuBrand[b]" :banners="brand.banner" :index="b" :selectedTab="selectedTab">
+          <TabContent :isSwiper="1" v-for="(brand, b) in brands" :menus="brand.id" :banners="brand.banner" :index="b" :selectedTab="selectedTab">
 
           </TabContent>
         </template>
@@ -303,7 +303,7 @@
         <div v-if="floor[0].content != undefined">
           <Tabs :tabs="floor[0].content">
             <template v-slot="{ selectedTab }">
-              <TabContent v-for="(content, c) in floor[0].content" :menus="floor[0].menu[c]" :index="c" :selectedTab="selectedTab">
+              <TabContent v-for="(content, c) in floor[0].content" :menus="content.id" :index="c" :selectedTab="selectedTab">
 
               </TabContent>
             </template>
@@ -559,7 +559,6 @@ export default {
         {
           0: [
             {
-              menu:[4288,4289,4290,4291],
               text:'分離式空調',
               title: 'airConditionerLAB/images/2503/S6.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4704&strPreView=y',
@@ -586,7 +585,6 @@ export default {
           ],
           1: [
             {
-              menu:[4292,4293,4294,4295],
               text:'窗型空調',
               title: 'airConditionerLAB/images/2503/S7.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4702&strPreView=y',
@@ -660,9 +658,6 @@ export default {
         }
       ],
       menuDis:5515,//現折券陳列編號
-      menuBrand:[4414,4413,4415,4417,4416,5516,
-        4418,4436,5517,4419,4655,7813
-      ],//品牌大放送陳列編號
       menuHot:4127, //熱銷空調首選陳列編號
       menuCold:3695,//冷暖空調陳列編號
       menuWet:7466,//除濕機陳列編號
@@ -712,7 +707,7 @@ export default {
 
     // 3/24修改現折券連結
     if (today >= new Date('2025/03/24')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124522&aid=23947&strPreView=y';
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947';
     } else {
       this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }

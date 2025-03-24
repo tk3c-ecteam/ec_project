@@ -79,48 +79,39 @@ export default {
       ],
       floorImg: [
         {
-          id:3428,
           image: 'fan_hot/images/2503/S2.png',
           moreUrl:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=27404'
         },
         {
-          id:3430,
           image: 'fan_hot/images/2503/S3.png',
           moreUrl:'https://www.tk3c.com/dic1.aspx?cid=11058&aid=16920'
         },
         {
-          id:3429,
           image: 'fan_hot/images/2503/S4.png',
           moreUrl:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=115230'
         },
         {
-          id:4150,
           image: 'fan_hot/images/2503/S5.png',
           moreUrl:'https://www.tk3c.com/dic1.aspx?cid=11058&aid=17040'
         },
         {
-          id:4153,
           image: 'fan_hot/images/2503/S6.png',
           moreUrl:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=26943'
         },
         {
-          id:6729,
           image: 'fan_hot/images/2503/S7.png',
           moreUrl:'https://www.tk3c.com/dictitleurl.aspx?cid=115927'
         },
          {
-          id:6730,
           image: 'fan_hot/images/2503/S8.png',
           moreUrl:'https://www.tk3c.com/dic1.aspx?cid=11058&aid=4677'
         },
         {
-          id:4151,
           image: 'fan_hot/images/2503/S9.png',
           moreUrl:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=22588&hid=120412',
           type:listM
         },
          {
-          id:7876,
           image: 'fan_hot/images/2503/S10.png',
           moreUrl:'https://www.tk3c.com/dic1.aspx?cid=11058&aid=5779',
           isSwiper:1

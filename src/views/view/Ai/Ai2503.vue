@@ -43,8 +43,10 @@
           :src="$filters.siteUrl('2024083C/images/2503/sp_bg.png')" />
         <ul class="gap:10 pt:7% box:border-box">
           <li class="w:66% w:full@<576">
-            <a class="mb:1%" :class="{'off':!isOff}" @click="goNB('#sale')" target="_blank"><img
-                :src="$filters.siteUrl('2024083C/images/2503/sp01-1b.png')" /></a>
+            <a class="mb:1%" @click="goNB('#sale')" target="_blank">
+              <img v-show="isOff" :src="$filters.siteUrl('2024083C/images/2503/sp01-1b.png')" />
+              <img v-show="!isOff" :src="$filters.siteUrl('2024083C/images/2503/sp01-1c.png')" />
+            </a>
             <div class="flex flex-direction:row gap:10 mb:1%">
               <a class="w:52% w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')"
                 target="_blank"><img :src="$filters.siteUrl('2024083C/images/2503/sp01-2a.png')" /></a>
@@ -507,7 +509,7 @@ export default {
 
     //3/24更新現折券
     if(today >= new Date('2025/03/24')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124522&aid=23947&hid=124524&strPreView=y'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
     } else {
       this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }

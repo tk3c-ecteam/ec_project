@@ -64,7 +64,7 @@
       <div class="content">
         <Tabs :isSwiper="1" :tabs="saleTab" :statusSelect="1">
           <template v-slot="{ selectedTab }">
-            <TabContent :isSwiper="1" v-for="(content, c) in saleTab" :menus="menuSale[c]" :index="c"
+            <TabContent :isSwiper="1" v-for="(sale, c) in saleTab" :menus="sale.id" :index="c"
               :selectedTab="selectedTab">
 
             </TabContent>
@@ -248,10 +248,10 @@ export default {
         }
       ],
       saleTab: [
-        { image: '2020TVforever/images/2503/logo_01.png' },
-        { image: '2020TVforever/images/2503/logo_03.png' },
-        { image: '2020TVforever/images/2503/logo_04.png' },
-        { image: '2020TVforever/images/2503/logo_more.png' }
+        { image: '2020TVforever/images/2503/logo_01.png',id:5977 },
+        { image: '2020TVforever/images/2503/logo_03.png',id:4465 },
+        { image: '2020TVforever/images/2503/logo_04.png',id:4466 },
+        { image: '2020TVforever/images/2503/logo_more.png',id:4467 }
       ],
       floorImg: [
         {
@@ -288,7 +288,6 @@ export default {
         }
       ],
       menuDis: 4328, //現折 清單編號
-      menuSale: [5977, 4465, 4466, 4467], // 出清 陳列編號
       menuNight: 5420, //夜殺 陳列編號
       menu: [2751, 5613, 5198, 5199, 4846, 5200, 5201, 5202],
       menuHome: 7769,
@@ -319,7 +318,7 @@ export default {
 
     // 2025 3/24 更新現折券連結
     if (today >= new Date('2025/03/24')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124522&aid=23947&strPreView=y';
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947';
     } else {
       this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }

@@ -129,8 +129,10 @@
       <!-- 新展銀行 -->
       <div class="card-content" v-show="statusBank == 1">
         <p class="grid-cols:2 grid-cols:1@<576 m:auto gap:10">
-          <img :src="$filters.siteUrl('25spring2/imagesT/bank/DBS01_new.png')" />
-          <img :src="$filters.siteUrl('25spring2/imagesT/bank/DBS02_new.png')" />
+          <img v-show="isBank" :src="$filters.siteUrl('25spring2/imagesT/bank/DBS01_new.png')" />
+          <img v-show="isBank" :src="$filters.siteUrl('25spring2/imagesT/bank/DBS02_new.png')" />
+          <img v-show="!isBank" :src="$filters.siteUrl('25spring_part3/imagesT/bank/DBS01.png')" />
+          <img v-show="!isBank" :src="$filters.siteUrl('25spring_part3/imagesT/bank/DBS02.png')" />
         </p>
         <a href="https://www.tk3c.com.tw/#actsdetail&8&789" class="w:16% w:24%@<992 w:40%@<576 mt:3% mt:6%@<576"
           target="_blank">
@@ -164,13 +166,16 @@
                 }
               }">
           <swiper-slide>
-            <img :src="$filters.siteUrl('25spring/imagesT/bank/rakuten01_new.png')" />
+            <img v-show="isBank" :src="$filters.siteUrl('25spring/imagesT/bank/rakuten01_new.png')" />
+            <img v-show="!isBank" :src="$filters.siteUrl('25spring_part3/imagesT/bank/rakuten01_new.png')" />
           </swiper-slide>
           <swiper-slide>
-            <img :src="$filters.siteUrl('25spring/imagesT/bank/rakuten02_new.png')" />
+            <img v-show="isBank" :src="$filters.siteUrl('25spring/imagesT/bank/rakuten02_new.png')" />
+            <img v-show="!isBank" :src="$filters.siteUrl('25spring_part3/imagesT/bank/rakuten02_new.png')" />
           </swiper-slide>
           <swiper-slide>
-            <img :src="$filters.siteUrl('25spring/imagesT/bank/rakuten03_new.png')" />
+            <img  v-show="isBank" :src="$filters.siteUrl('25spring/imagesT/bank/rakuten03_new.png')" />
+            <img v-show="!isBank" :src="$filters.siteUrl('25spring_part3/imagesT/bank/rakuten03_new.png')" />
           </swiper-slide>
         </swiper>
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/invoice_login/detail.aspx?activity_id=982')"
@@ -213,7 +218,7 @@
           </ul>
 
           <div class="tab-content" v-for="(t1, t) in tab1[0].content" v-show="status1 == t">
-             <component :is="[t1.type ? t1.type : listF]" v-if="products[menuTab1[t]] != undefined" :pro="products[menuTab1[t]].Data"></component>
+             <component :is="[t1.type ? t1.type : listF]" :pro="product2[t1.id]"></component>
           </div>
 
           <div class="text">
@@ -242,8 +247,8 @@
 
 
           <div class="tab-content" v-for="(t2, t) in tab2[0].content" v-show="status2 == t">
-            <listF v-if="t2.type == undefined && products[menuTab2[t]] != undefined" :pro="products[menuTab2[t]].Data"></listF>
-            <component :is="t2.type" v-else-if="products[menuTab2[t]] != undefined" :pro="products[menuTab2[t]].Data"></component>
+            <listF v-if="t2.type == undefined" :pro="product2[t2.id]"></listF>
+            <component :is="t2.type" v-else :pro="product2[t2.id]"></component>
           </div>
 
 
@@ -276,6 +281,7 @@ export default {
       isSale:true,//預購用
       isOpen:false,//開賣用
       isTab1:false,
+      isBank:true, //銀行用
       specials:[
         {
           "image":"RTXNB/images/sp01.png",
@@ -371,20 +377,25 @@ export default {
       swiperBank: null,
       status1:0,
       status2:0,
-      menuTab1:[7863,7815],
-      menuTab2:[7816,7817,7818]
     }
   },
   mounted() {
-    const { today } = this;
+    const { today,tab1,tab2 } = this;
     if(today >= new Date('2025/02/25 22:00')) {
        this.isSale = false;
        this.specials = this.special2;
        this.isOpen = true;
     } 
 
-    this.getFloorData(this.menuTab1);
-    this.getFloorData(this.menuTab2);
+    if (today >= new Date('2025/03/24')) this.isBank = false;
+
+    for (const [t, t1] of Object.entries(tab1[0].content)) {
+      this.getFloorSingle(t1.id)
+    }
+
+    for (const [t, t2] of Object.entries(tab2[0].content)) {
+     this.getFloorSingle(t2.id)
+    }
   },
   methods: {
     changeBank(id) {

@@ -1,39 +1,3 @@
-<script setup>
-import { Controller } from 'swiper/modules'
-import { ref } from 'vue'
-
-const swiperRef1 = ref()
-const swiperRef2 = ref()
-const swiperRefNew = ref()
-
-/* 環保集點專區start */
-const onSwiper = (swiper) => {
-  swiperRef1.value = swiper
-}
-
-const onControlSwiper = (swiper) => {
-  swiperRef2.value = swiper
-}
-
-const goSlide = (id) => {
-  swiperRef2.value.slideTo(id)
-  swiperRef1.value.slideTo(id)
-}
-
-/* 環保集點專區end */
-
-/* 週末16%回饋區 start */
-const onSwiperNew = (swiper) => {
-  swiperRefNew.value = swiper
-}
-
-const goSlideNew = (id) => {
-  swiperRefNew.value.slideTo(id)
-}
-
-/* 週末16%回饋區 end */
-</script>
-
 <script>
 export default {
   data() {
@@ -42,7 +6,8 @@ export default {
         {
           id:4344,
           url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120395&strPreView=y',
-          image: 'green_subsidy/images/tab1.png'
+          image: 'green_subsidy/images/tab1.png',
+          isSwiper:1
         },
         {
           id:4345,
@@ -149,6 +114,8 @@ export default {
           image: 'green_subsidy/images/new/S-btn11.png'
         }
       ],
+      menuSp:4850, // 環保小尖兵陳列編號
+      menu:[7576,4348,4349,4350,4352,4353,4369],
       today: new Date(),
       isVip: false,
       isNew: false,
@@ -200,6 +167,9 @@ export default {
     if (today.getDay() == 6 || today.getDay() == 0) {
       this.isNew = true
     }
+
+    //撈取環保小尖兵樓層商品
+    this.getFloorSingle(this.menuSp);
   },
   methods: {
     message(id) {
@@ -319,8 +289,8 @@ export default {
         <!-- 頁籤 -->
         <Tabs :isSwiper="1" :tabs="newTabs" :swiperOption="swiperOption.breakpoints">
           <template v-slot="{ selectedTab }">
-            <TabContent2 v-for="(tab, n) in newTabs" :id="tab.id" :index="n" :selectedTab="selectedTab">
-            </TabContent2>
+            <TabContent v-for="(tab, n) in newTabs" :menus="tab.id" :index="n" :selectedTab="selectedTab">
+            </TabContent>
           </template>
         </Tabs>
       </div>
@@ -332,7 +302,7 @@ export default {
         <img :src="$filters.siteUrl('green_subsidy/images/S1_a.png')" alt="本週環保小尖兵" />
       </h2>
       <div class="special">
-       <JimmyFloor :id="4850"></JimmyFloor>
+       <ListD :pro="product2[menuSp]"></ListD> 
       </div>
     </section>
 
@@ -344,8 +314,8 @@ export default {
       <div class="green content">
          <Tabs :isSwiper="1" :tabs="tabs">
           <template v-slot="{ selectedTab }">
-            <TabContent2 :isSwiper="1" :moreImage="'green_subsidy/images/more2.png'" v-for="(tab, t) in tabs" :id="tab.id" :name="`t${t + 1}`" :moreUrl="tab.url" :index="t" :selectedTab="selectedTab">
-            </TabContent2>
+            <TabContent :isSwiper="1" :moreImage="'green_subsidy/images/more2.png'" v-for="(tab, t) in tabs" :menus="tab.id" :name="`t${t + 1}`" :moreUrl="tab.url" :index="t" :selectedTab="selectedTab">
+            </TabContent>
           </template>
         </Tabs>
       </div>
@@ -383,14 +353,14 @@ export default {
 
        <Tabs :tabs="printers">
           <template v-slot="{ selectedTab }">
-            <TabContent2 :moreImage="'green_subsidy/images/more2.png'" v-for="(printer, p) in printers" :id="printer.id" :moreUrl="'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123239'" :index="p" :selectedTab="selectedTab">
-            </TabContent2>
+            <TabContent :moreImage="'green_subsidy/images/more2.png'" v-for="(printer, p) in printers" :menus="printer.id" :moreUrl="'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123239'" :index="p" :selectedTab="selectedTab">
+            </TabContent>
           </template>
         </Tabs>
     </section>
 
     <!-- 其他樓層 -->
-    <CommonFloor2 :floors="floorImg" :moreImage="moreImage"></CommonFloor2>
+    <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
   </div>
 
   <!-- 右側選單+手機版 -->

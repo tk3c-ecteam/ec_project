@@ -7,8 +7,8 @@
           <img class="mobile" :src="$filters.siteUrl(banner.mobile)">
         </a>
         
-        <listF v-if="isSwiper && products[menus[index]] != undefined" :isSwiper="1" :pro="products[menus[index]].Data" :name="`box${index + 1}`"></listF>
-        <component :is="type" v-else-if="products[menus[index]] != undefined" :pro="products[menus[index]].Data"></component>
+        <listF v-if="isSwiper" :isSwiper="1" :pro="product2[menus]" :name="`box${index + 1}`"></listF>
+        <component v-else :is="type" :pro="product2[menus]"></component>
           <a v-if="moreUrl" class="more" :href="$filters.addGALink(moreUrl)" target="_blank">
             MORE
             <img v-if="moreImage" :src="$filters.siteUrl(moreImage)">
@@ -60,7 +60,7 @@ export default {
     }
   },
   mounted() {
-    this.getFloorData(this.menus);
+    this.getFloorSingle(this.menus);
   },
   computed: {
     isActive() {

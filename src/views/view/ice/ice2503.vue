@@ -81,7 +81,7 @@
         <div v-if="tab[0].content != undefined">
           <Tabs :isSwiper="1" :tabs="tab[0].content">
             <template v-slot="{ selectedTab }">
-              <TabContent :isSwiper="1" v-for="(content, c) in tab[0].content" :menus="tab[0].menu[c]" :index="c"
+              <TabContent :isSwiper="1" v-for="(content, c) in tab[0].content" :menus="content.id" :index="c"
                 :selectedTab="selectedTab">
 
               </TabContent>
@@ -113,7 +113,6 @@ export default {
         {
           0: [
             {
-              menu:[4423,7086,],
               text:'熱銷強品',
               title: 'icewash2209/images/2503/S4.png',
               url:'https://www.tk3c.com/dic1.aspx?cid=12504&aid=4878',
@@ -133,7 +132,6 @@ export default {
           ],
           1: [
             {
-              menu:[5540,7087],
               text:'超夯新品',
               title: 'icewash2209/images/2503/S5.png',
               url:'https://www.tk3c.com/dic1.aspx?cid=12504&aid=4878',
@@ -153,7 +151,6 @@ export default {
           ],
           2: [
             {
-              menu:[5983,5982,5981],
               text:'冰箱',
               title: 'icewash2209/images/2503/S6.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=12504&aid=12740',
@@ -175,7 +172,6 @@ export default {
           ],
           3: [
             {
-              menu:[7091,7092,7093],
               text:'洗衣機',
               title: 'icewash2209/images/2503/S7.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=83198&aid=18641',
@@ -228,7 +224,7 @@ export default {
 
     // 2025/3/24 更新現折券連結
     if (today >= new Date('2025/03/24')) {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124522&aid=23947&strPreView=y';
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947';
     } else {
       this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }
