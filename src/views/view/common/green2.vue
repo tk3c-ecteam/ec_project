@@ -36,37 +36,30 @@ export default {
         ,
       floorImg: [
         {
-          id:7576,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123936',
           image: 'green_subsidy/images/S9_b.png'
         },
         {
-          id:4348,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120393',
           image: 'green_subsidy/images/S3_a.png'
         },
         {
-          id:4349,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120394',
           image: 'green_subsidy/images/S4_a.png'
         },
         {
-          id:4350,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392',
           image: 'green_subsidy/images/S5_a.png'
         },
         {
-          id:4352,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392',
           image: 'green_subsidy/images/S6_a.png'
         },
         {
-          id:4353,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120395',
           image: 'green_subsidy/images/S7_a.png'
         },
         {
-          id:4369,
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120816',
           image: 'green_subsidy/images/S8_a.png'
         }
@@ -139,7 +132,7 @@ export default {
             }
           },
           992: {
-            slidesPerView: 6,
+            slidesPerView: 5,
             grid: {
               fill: 'row',
               rows: 2
@@ -182,8 +175,8 @@ export default {
           //退貨物稅
           width = 900;
           infoHtml = `
-          <img src="https://www.tk3c.com/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg" width="100%">
-          <img src="https://www.tk3c.com/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg" width="100%">
+          <img src="https://www.tk3c.com/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg" width="100%" loading="lazy">
+          <img src="https://www.tk3c.com/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg" width="100%" loading="lazy">
         `;
           break;
       

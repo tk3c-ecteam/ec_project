@@ -140,7 +140,7 @@
         </a>
       </h2>
       
-      <JimmyFloor :id="4127" :isSwiper="1" :name="'hot'"></JimmyFloor>
+     <listF :pro="product2[4127]" :isSwiper="1" :name="'hot'"></listF>
     </section>
 
     <!-- 冷暖空調 -->

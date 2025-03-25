@@ -108,7 +108,8 @@
               <img :src="$filters.siteUrl('2024083C/images/2503/bar_00.png')" />
             </a>
           </h2>
-          <JimmyFloor :id="7668" :isSwiper="1" :name="'pro'"></JimmyFloor>
+
+          <ListF :pro="product2[7668]" :isSwiper="1" :name="'pro'"></ListF>
         </section>
 
         <section class="pro-group scroll" v-for="(t1, t) in tab1[0]" :class="`tab${Number(t) + 1}-box`"
@@ -122,16 +123,16 @@
           <div v-if="t1[0].content != undefined">
             <Tabs :isSwiper="1" :tabs="t1[0].content" :singleUrl="t1[0].url">
               <template v-slot="{ selectedTab }">
-                <TabContent2 v-for="(content, c) in t1[0].content" :id="content.id" :name="`p${c + 1}`" :index="c"
+                <TabContent v-for="(content, c) in t1[0].content" :type="content.type" :menus="content.id" :name="`p${c + 1}`" :index="c"
                   :selectedTab="selectedTab">
 
-                </TabContent2>
+                </TabContent>
               </template>
             </Tabs>
           </div>
 
           <div v-else>
-            <JimmyFloor :id="t1[0].id" :isSwiper="1" :name="`pro${Number(t) + 1}`"></JimmyFloor>
+            <ListF :pro="product2[t1[0].id]" :isSwiper="1" :name="`pro${Number(t) + 1}`"></ListF>
           </div>
         </section>
       </div>
@@ -153,16 +154,16 @@
           <div v-if="t2[0].content != undefined">
              <Tabs :isSwiper="1" :tabs="t2[0].content" :singleUrl="t2[0].url">
               <template v-slot="{ selectedTab }">
-                <TabContent2 v-for="(content, c) in t2[0].content" :id="content.id" :name="`p${c + 1}`" :index="c"
+                <TabContent v-for="(content, c) in t2[0].content" :menus="content.id" :name="`p${c + 1}`" :index="c"
                   :selectedTab="selectedTab">
 
-                </TabContent2>
+                </TabContent>
               </template>
             </Tabs>
           </div>
 
           <div v-else>
-            <JimmyFloor :id="t2[0].id" :isSwiper="1" :name="`pro${Number(t) + 1}`"></JimmyFloor>
+            <ListF :pro="product2[t2[0].id]" :isSwiper="1" :name="`pro${Number(t) + 1}`"></ListF>
           </div>
         </section>
       </div>
@@ -180,21 +181,23 @@
 </template>
 
 <script>
+import listM from '@/views/layout/listM.vue'
 export default {
   data() {
     return {
+      listM,
       tab1:[
         {
              0: [
             {
-              menu:[7872,7873,7874],
               text:'RTX50 新機預購',
               title: '2024083C/images/2503/bar_rtx50.png',
               url: 'https://events.tk3c.com/events_net/RTXNB/index.html',
               content: [
                 {
                   id:7872,
-                  text:'ROG'
+                  text:'ROG',
+                  type:listM
                 },
                 {
                   id:7873,
@@ -203,13 +206,13 @@ export default {
                  {
                   id:7874,
                   text:'ACER',
+                  type:listM
                 },
               ]
             }
           ],
           1: [
             {
-              menu:[7267,7268],
               text:'輕薄商務',
               title: '2024083C/images/2503/bar_1.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=11124',
@@ -227,7 +230,6 @@ export default {
           ],
           2: [
             {
-              menu:[7269,7270,7271],
               text:'飆速電競',
               title: '2024083C/images/2503/bar_2.png',
                url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117913',
@@ -249,7 +251,6 @@ export default {
           ],
           3: [
             {
-              menu:[7272,7273,7274],
               text:'特仕改裝升級',
               title: '2024083C/images/2503/bar_4.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11124&aid=22124',
@@ -271,7 +272,6 @@ export default {
           ],
           4: [
             {
-              menu:[7275,7276],
               text:'精選螢幕',
               title: '2024083C/images/2503/bar_5.png',
                url: 'https://www.tk3c.com/dictitleurl.aspx?cid=44823',
@@ -297,7 +297,6 @@ export default {
           ],
           6: [
             {
-              menu:[7279,7280,7281],
               text:'DIY零組件',
               title: '2024083C/images/2503/bar_7.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117896',
@@ -323,7 +322,6 @@ export default {
         {
           0:[
              {
-              menu:[7285,7282,7284],
               text:'Wi-Fi路由器',
               title: '2024083C/images/2503/bar_10.png',
               content: [
@@ -360,7 +358,6 @@ export default {
           ],
           2:[
              {
-              menu:[7286,7287],
               text:'鍵盤滑鼠',
               title: '2024083C/images/2503/bar_12.png',
               content: [
@@ -379,7 +376,6 @@ export default {
           ],
           3:[
              {
-              menu:[7288,7289],
               text:'硬碟',
               title: '2024083C/images/2503/bar_13.png',
               content: [
@@ -398,7 +394,6 @@ export default {
           ],
           4:[
              {
-              menu:[7290,7291],
               text:'隨身碟/記憶卡',
               title: '2024083C/images/2503/bar_14.png',
               content: [
@@ -417,7 +412,6 @@ export default {
           ],
           5:[
              {
-              menu:[7292,7293],
               text:'投影機/監控設備',
               title: '2024083C/images/2503/bar_15.png',
               content: [
@@ -436,7 +430,6 @@ export default {
           ],
           6:[
              {
-              menu:[7294,7295,7296,7297],
               text:'辦公設備',
               title: '2024083C/images/2503/bar_17.png',
               content: [

@@ -95,14 +95,14 @@
       <div>
         <Tabs :tabs="tabs">
           <template v-slot="{ selectedTab }">
-            <TabContent2 v-for="(tab, b) in tabs" :id="tab.id" :index="b" :selectedTab="selectedTab">
-            </TabContent2>
+            <TabContent v-for="(tab, b) in tabs" :type="tab.type" :menus="tab.id" :index="b" :selectedTab="selectedTab">
+            </TabContent>
           </template>
         </Tabs>
       </div>
     </section>
 
-    <CommonFloor2 :floors="floors" :num="3"></CommonFloor2>
+    <CommonFloor :floors="floors" :menu="menu"></CommonFloor>
   </div>
 
   <!-- 右側選單+手機板 -->
@@ -110,9 +110,11 @@
 </template>
 
 <script>
+import listM from '@/views/layout/listM.vue'
 export default {
   data() {
     return {
+      listM,
       specials:[
         {
           "url":"https://www.tk3c.com/pt.aspx?pid=250713-809985",
@@ -166,33 +168,30 @@ export default {
         },
       ],
        tabs: [
-        { image: 'windows10upgrade/images/rog.png',id:7864},
+        { image: 'windows10upgrade/images/rog.png',id:7864,type:listM},
         { image: 'windows10upgrade/images/msi.png',id:7865 },
-        { image: 'windows10upgrade/images/acer.png',id:7866 }
+        { image: 'windows10upgrade/images/acer.png',id:7866,type:listM }
       ],
       floors:[
         {
           "image":"windows10upgrade/images/bar_01.png",
           "url":"https://www.tk3c.com/dic2.aspx?cid=124426&aid=23931&hid=124429",
-          "id":7859
         },
          {
           "image":"windows10upgrade/images/bar_02.png",
           "url":"https://events.tk3c.com/events_net/2024083C/index.html",
-          "id":7860
         },
          {
           "image":"windows10upgrade/images/bar_03.png",
           "url":"https://events.tk3c.com/events_net/2024083C/index.html",
-          "id":7861
         },
          {
           "image":"windows10upgrade/images/bar_04.png",
           "url":"https://events.tk3c.com/events_net/2024083C/index.html",
-          "id":7862
         }
       ],
       today:new Date(),
+      menu:[7859,7860,7861,7862]
     }
   },
   mounted() {

@@ -193,7 +193,7 @@
 
       <div v-for="(pro,p) in proNB" :key="p" :class="[ p == 3 ? 'sale-out' : '']" class="w:80% w:full@<992 m:-8%|auto|-20%">
         <a v-if="isOpen" :href="$filters.addGALink(pro.url)" target="_blank">
-          <img :src="$filters.siteUrl(pro.saleImage)">
+          <img :src="$filters.siteUrl(pro.saleImage)" loading="lazy">
         </a>
         <img v-else :src="$filters.siteUrl(pro.image)">
       </div>

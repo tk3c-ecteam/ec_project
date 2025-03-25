@@ -60,7 +60,9 @@ export default {
     }
   },
   mounted() {
-    this.getFloorSingle(this.menus);
+    setTimeout(() => {
+      this.getFloorSingle(this.menus);
+    }, 20);
   },
   computed: {
     isActive() {

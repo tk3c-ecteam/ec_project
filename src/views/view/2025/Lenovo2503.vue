@@ -135,22 +135,18 @@ export default {
         {
           "image":"lenovo2402/images/2503/bar_01.png",
           "url":"https://www.tk3c.com/search.aspx?q=lenovo&cid=124426",
-          "id":7909
         },
         {
           "image":"lenovo2402/images/2503/bar_02.png",
           "url":"https://www.tk3c.com/dic1.aspx?cid=11124&aid=5261",
-          "id":7910
         },
         {
           "image":"lenovo2402/images/2503/bar_03.png",
           "url":"https://www.tk3c.com/dic1.aspx?cid=11124&aid=5261",
-          "id":7911
         },
         {
           "image":"lenovo2402/images/2503/bar_04.png",
           "url":"https://www.tk3c.com/dic1.aspx?cid=10890&aid=22655",
-          "id":7912
         },
       ],
       menu:[7909,7910,7911,7912]
