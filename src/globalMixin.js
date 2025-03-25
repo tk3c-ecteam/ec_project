@@ -64,27 +64,12 @@ export const globalMixin = {
       })
     },
     //用後台陳列編號撈取全商品 [2000,20001,2002]
-    /* retryDelay 兩種方法
-    * 1. retryDelay: axiosRetry.exponentialDelay
-      (Exponential back-off retry delay between requests)
-      2. retryDelay: axiosRetry.linearDelay()
-      (Liner retry delay between requests)
-    */
     async getFloorData(menu) {
-      let moreUrls = [];
+      let moreUrls = [],
+        time = Date.now();
 
-      switch (typeof (menu)) {
-        //單個編號
-        case 'number':
-          moreUrls.push('https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu);
-          break;
-
-        //多個取得menuid組成新url
-        default:
-          for (let z = 0; z < menu.length; z++) {
-            moreUrls.push('https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu[z])
-          }
-          break;
+      for (let z = 0; z < menu.length; z++) {
+        moreUrls.push('https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu[z] + '&_=' + time)
       }
 
       //撈取所有 url api 資料
@@ -106,10 +91,11 @@ export const globalMixin = {
 
     //用後台陳列編號撈取單一商品 如:2000
     async getFloorSingle(menu) {
+      let time = Date.now();
       try {
         const res = await axios({
           method: 'get',
-          url: 'https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu,
+          url: 'https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu + '&_=' + time,
         })
 
         this.product2[menu] = res.data.Data
@@ -186,6 +172,12 @@ export const globalMixin = {
     },
     retryRequest() {
       //若request請求失敗則重新發送請求
+      /* retryDelay 兩種方法
+      * 1. retryDelay: axiosRetry.exponentialDelay
+        (Exponential back-off retry delay between requests)
+        2. retryDelay: axiosRetry.linearDelay()
+        (Liner retry delay between requests)
+      */
       axiosRetry(axios, {
         retries: 2, //重新發送請求次數
         retryDelay: axiosRetry.linearDelay(),
