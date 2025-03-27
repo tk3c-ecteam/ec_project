@@ -1,5 +1,4 @@
 <script setup>
-import { onMounted } from "vue";
  const today = new Date();
 
  //熱門活動區
@@ -60,11 +59,7 @@ import { onMounted } from "vue";
     type: Object
   });
 
-  //取得3頁手機版類類別
-   const status = defineModel('status', {
-    type: Number
-  });
-
+  /* 3C頁用類別 START */ 
   const tab1 = defineModel('tab1', {
     type: Object
   });
@@ -76,6 +71,7 @@ import { onMounted } from "vue";
    const statusGift = defineModel('statusGift', {
     type: Number
   });
+  /*3C頁用類別 END */
 
   /*手機版類型
   * 預設: mobile3 
@@ -96,7 +92,7 @@ import { onMounted } from "vue";
     },
     unmounted() {
       window.removeEventListener('resize',this.smallDeviceLeft);
-    },
+    }
   }
 </script>
 
@@ -133,10 +129,10 @@ import { onMounted } from "vue";
 
     <!-- 上方快速選單 -->
     <template #topAsides>
-       <ul>
-        <li v-for="aside in asides">
+     <ul>
+       <li v-for="aside in asides">
           <a :href="aside.href">{{ aside.text }}</a>
-        </li>
+       </li>
       </ul>
     </template>
   </mobile3>
@@ -156,13 +152,13 @@ import { onMounted } from "vue";
     <template #typeAside>
        <ul class="a1" v-show="statusGift == 0">
           <li v-for="(t1,t) in tab1[0]">
-            <a :href="`#tab${Number(t) + 1}`">{{ t1[0].text }}</a>
+            <a :href="t1[0].href">{{ t1[0].text }}</a>
           </li>
           <li><a href="#event">熱門活動 </a></li>
         </ul>
         <ul class="a2" v-show="statusGift == 1">
           <li v-for="(t2,t) in tab2[0]">
-            <a :href="`#tab${Number(t) + 7}`">{{ t2[0].text }}</a>
+            <a :href="t2[0].href">{{ t2[0].text }}</a>
           </li>
           <li><a href="#event">熱門活動 </a></li>
         </ul>

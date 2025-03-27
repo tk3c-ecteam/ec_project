@@ -14,7 +14,7 @@
     <div class="tab mb:1% overflow:hidden">
       <ul v-if="isSwiper == false" class="gap:10">
         <li v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }"
-          class="brightness(0.7) brightness(1).active">
+          class="flex-basis:fit-content brightness(0.7) brightness(1).active">
             <a v-if="singleUrl != undefined" :value="$filters.addGALink(singleUrl)" @click.prevent="selectTab(index)">
             <b v-if="tab.text != undefined"> {{ tab.text }}</b>
             <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />

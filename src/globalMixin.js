@@ -246,6 +246,12 @@ export const globalMixin = {
     },
     //回到最上層
     goTop() {
+      //將手機板選單卷軸歸0
+      if (document.querySelectorAll('.mobile-for-product .top-nav').length > 0) {
+        let topNav = document.querySelector('.mobile-for-product .top-nav');
+        topNav.scrollTo({ left: 0 });
+        document.querySelectorAll('.mobile-for-product .top-nav li')[0].classList.remove('active');
+      }
       window.scrollTo(0, 0);
       this.mobileBg = 'none';
     },
@@ -255,27 +261,32 @@ export const globalMixin = {
         let scrollTop = window.scrollY,
           topNav = document.querySelector('.mobile-for-product .top-nav'),
           topNavLi = document.querySelectorAll('.mobile-for-product .top-nav li'),
-          top = el.getBoundingClientRect().top + scrollTop - 180,
+          top = el.getBoundingClientRect().top + scrollTop - 100,
           bottom = top + window.innerHeight,
           left = topNav.scrollLeft,
           num = topNavLi.length;
         /* 目前滑鼠滾動位置滾到每個樓層區，所屬項目加上 .active 標記,
-        * .top-nav 卷軸往右滑動150px
         */
-        if (scrollTop >= top && scrollTop < bottom) {
-          if (i >= Math.ceil(num / 3)) {
+
+        if (scrollTop > top && scrollTop < bottom) {
+          //跑到一半的項目卷軸往右移動
+          if (i >= num / 3 && i < num) {
             topNav.scrollTo({
               behavior: 'smooth',
               left: left + 150
             });
-          } else if (i < (num / 3)) {
+          } else {
+            //滑鼠滾到底後卷軸往左移動
             topNav.scrollTo({
-              left: 0
+              behavior: 'smooth',
+              left: left - 150
             });
           }
           document.querySelectorAll('.mobile-for-product .top-nav li').forEach(el => {
             el.classList.remove('active');
-            if (topNavLi[i] != undefined) topNavLi[i].classList.add('active');
+            if (topNavLi[i] != undefined) {
+              topNavLi[i].classList.add('active');
+            }
           });
         }
       });

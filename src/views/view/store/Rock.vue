@@ -1,25 +1,24 @@
 <script setup>
+import listH from '@/views/layout/listH.vue';
 const contents = [
         {
           logoImage: "roborock_event/images/common/LOGO.png",
           floorImg: [
             {
-              id:1505,
               image: 'roborock_event/images/common/protitle2.png',
               href: "#pro1505",
               text: "本期主打",
             },
             {
-              id:1506,
               image: 'roborock_event/images/common/protitle3.png',
               href: "#pro1506",
               text: "強檔熱銷",
             },
              {
-              id:1507,
               image: 'roborock_event/images/common/protitle4.png',
               href: "#pro1507",
               text: "配件耗材",
+              type:listH
             }
           ],
           slides: [
@@ -34,13 +33,14 @@ const contents = [
           ],
         }
       ];
+ const menu = [1505,1506,1507]     
 </script>
 
 <template>
   <StoreDefault :contents="contents"></StoreDefault>
 
   <!-- 商品樓層 -->
-  <CommonFloor2 :floors="contents[0].floorImg"></CommonFloor2>
+  <CommonFloor :floors="contents[0].floorImg" :menu="menu"></CommonFloor>
 
   <!-- 影片 -->
   <section class="video-group">

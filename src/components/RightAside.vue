@@ -13,6 +13,7 @@
    type: String
   });
 
+  /* 3c頁專用 start */
   const tab1 = defineModel('tab1', {
     type: Object
   });
@@ -23,6 +24,13 @@
 
    const statusGift = defineModel('statusGift', {
     type: Number
+  });
+
+  /* 3c頁專用 end */
+
+  //右側選單圖片
+  const asideImage = defineModel('asideImage',{
+    type:String
   });
 </script>
 
@@ -48,7 +56,9 @@
     </span>
     
     <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
+      <h3 class="aside-header">
+       <img v-if="asideImage != undefined" :src="$filters.siteUrl(asideImage)">
+      </h3>
       <!-- 一般右側選單樓層項目 -->
       <div class="aside-content" v-if="asides">
         <ul>
@@ -105,13 +115,13 @@
       <template #typeAside>
        <ul class="a1" v-show="statusGift == 0">
           <li v-for="(t1,t) in tab1[0]">
-            <a :href="`#tab${Number(t) + 1}`">{{ t1[0].text }}</a>
+            <a :href="t1[0].href">{{ t1[0].text }}</a>
           </li>
           <li><a href="#event">熱門活動 </a></li>
         </ul>
         <ul class="a2" v-show="statusGift == 1">
           <li v-for="(t2,t) in tab2[0]">
-            <a :href="`#tab${Number(t) + 7}`">{{ t2[0].text }}</a>
+            <a :href="t2[0].href">{{ t2[0].text }}</a>
           </li>
           <li><a href="#event">熱門活動 </a></li>
         </ul>

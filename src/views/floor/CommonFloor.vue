@@ -12,10 +12,9 @@ import listF from '@/views/layout/listF.vue'
 export default {
   props: ['floors', 'menu', 'singleImage','moreImage','isSwiper'],
   mounted() {
-    setTimeout(() => {
-      this.getFloorData(this.menu);
-    }, 20);
-    
+   setTimeout(() => {
+     this.getFloorData(this.menu);
+   }, 5);
   }
 }
 </script>
@@ -33,7 +32,7 @@ export default {
 
       <!-- 標題圖片(無文字) -->
       <img v-if="singleImage != undefined" :src="$filters.siteUrl(singleImage)" />
-      <b v-if="floor.text">{{ floor.text }}</b>
+      <b v-if="floor.text" class="abs left:0 right:0 m:auto top:50% translateY(-50%) f:3em f:2.5em@<992 f:1.5em@<576 f:1.2em@<361 f:bold color:#fff">{{ floor.text }}</b>
     </h2>
 
     <!-- 有輪播(單個樓層輪播) -->

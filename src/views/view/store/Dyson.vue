@@ -1,34 +1,32 @@
 <script setup>
+import listM from '@/views/layout/listM.vue';
 const contents = [
         {
           logoImage: "dyson/images/logo.png",
           floorImg: [
             {
-              id:2383,
               image: 'dyson/images/fl1.jpg',
               href: "#pro2383",
               text: "新品上市",
             },
             {
-              id:2384,
               image: 'dyson/images/fl2.jpg',
               href: "#pro2384",
               text: "吸塵器",
             },
              {
-              id:2385,
               image: 'dyson/images/fl3.jpg',
               href: "#pro2385",
               text: "空氣清淨機與風扇",
+              type:listM
             },
             {
-              id:2386,
               image: 'dyson/images/fl4.jpg',
               href: "#pro2386",
-              text: "頭髮護理"
+              text: "頭髮護理",
+              type:listM
             },
             {
-              id:2387,
               image: 'dyson/images/fl5.jpg',
               href: "#pro2387",
               text: "乾手器",
@@ -78,6 +76,7 @@ const contents = [
           ],
         }
       ];
+const menu = [2383,2384,2385,2386,2387];      
 </script>
 
 <template>
@@ -91,7 +90,7 @@ const contents = [
   </div>
 
   <!-- 商品樓層 -->
-  <CommonFloor2 :floors="contents[0].floorImg"></CommonFloor2>
+  <CommonFloor :floors="contents[0].floorImg" :menu="menu"></CommonFloor>
 </template>
 
 <style lang="scss">

@@ -4,20 +4,17 @@ var contents = [
           logoImage: "EUPA/images/logo.png",
           floorImg: [
             {
-              id:7759,
               href: "#pro7759",
               image: "EUPA/images/bar_05.png",
               text: "新品上市",
             },
             {
-              id:7675,
               href: "#pro7675",
               image: "EUPA/images/bar_01.png",
               text: "熱銷商品",
               moreUrl: "https://www.tk3c.com/dic1.aspx?cid=111723&aid=23897",
             },
             {
-              id:7676,
               href: "#pro7676",
               image: "EUPA/images/bar_02.png",
               text: "電鍋/料理鍋",
@@ -25,7 +22,6 @@ var contents = [
                 "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124110",
             },
             {
-              id:7677,
               href: "#pro7677",
               image: "EUPA/images/bar_03.png",
               text: "咖啡機",
@@ -33,7 +29,6 @@ var contents = [
                 "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124111",
             },
              {
-              id:7678,
               href: "#pro7678",
               image: "EUPA/images/bar_04.png",
               text: "廚房小幫手",
@@ -41,7 +36,6 @@ var contents = [
                 "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124112",
             },
              {
-              id:7760,
               href: "#pro7760",
               image: "EUPA/images/bar_06.png",
               text: "展示/福利出清",
@@ -58,6 +52,7 @@ var contents = [
         }
       ];
     
+      const menu = [7759,7675,7676,7677,7678,7760];
       const moreImage = "EUPA/images/more.png";
 
       nextTick(() => {
@@ -85,7 +80,7 @@ var contents = [
      <StoreDefault
     :contents="contents"
   ></StoreDefault>
-    <CommonFloor2 :floors="contents[0].floorImg"  :moreImage="moreImage"></CommonFloor2>
+    <CommonFloor :floors="contents[0].floorImg" :menu="menu"  :moreImage="moreImage"></CommonFloor>
 </template>
 
 <style lang="scss">
@@ -236,7 +231,6 @@ nav {
   section {
     .title {
       width: 70%;
-      margin: 0 auto 0;
 
       .more {
         width: 35%;

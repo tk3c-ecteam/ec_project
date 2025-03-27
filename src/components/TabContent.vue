@@ -1,5 +1,5 @@
 <template>
-  <transition appear>
+  <transition>
     <div class="tab-content" v-if="isActive">
       <slot>
         <a v-if="banners != undefined" class="banner" v-for="banner in banners" :href="$filters.addGALink(banner.url)" target="_blank">
@@ -74,7 +74,7 @@ export default {
 
 <style lang="scss">
   .v-enter-active, .v-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.8s ease;
 }
 
 .v-enter-from, .v-leave-to {

@@ -15,7 +15,12 @@ export default {
       today: new Date(),
       isSp: false,
       income: 0,
-      dateTime: ''
+      dateTime: '',
+      pagination:{
+        el:'.special .page',
+        type:'progressbar',
+        clickable:true
+      }
     }
   },
   updated() {
@@ -116,11 +121,7 @@ export default {
           <ul>
             <swiper class="overflow:hidden" 
               :space-between="10" 
-              :pagination="{
-                el:'.special .page',
-                type : 'progressbar',
-                clickable:true,
-              }"
+              :pagination="pagination"
               :navigation="{
                 prevEl: '.special .prev',
                 nextEl: '.special .next'
