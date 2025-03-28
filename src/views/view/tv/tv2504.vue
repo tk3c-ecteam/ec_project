@@ -52,8 +52,8 @@
       </h2>
 
       <!-- 精選活動 -->
-      <a class="w:80% w:90%@<992 w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=11312&aid=23889')" target="_blank">
-          <img :src="$filters.siteUrl('2020TVforever/images/2504/gift.png')" />
+      <a class="w:80% w:90%@<992 w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=11312')" target="_blank">
+          <img :src="$filters.siteUrl('2020TVforever/images/2504/gift2.png')" />
         </a>
     </section>
 
@@ -161,20 +161,26 @@ export default {
       proTV: [
         {
           url: 'https://www.tk3c.com/pt.aspx?pid=233430',
-          image: '2020TVforever/images/2504/233430.png'
+          image: '2020TVforever/images/2504/233430_a.png'
         },
          {
           url: 'https://www.tk3c.com/pt.aspx?pid=247802',
-          image: '2020TVforever/images/2504/247802.png'
+          image: '2020TVforever/images/2504/247802_dis.png'
         },
          {
           url: 'https://www.tk3c.com/pt.aspx?pid=248269',
-          image: '2020TVforever/images/2504/248269.png'
+          image: '2020TVforever/images/2504/248269_a.png'
         },
          {
           url: 'https://www.tk3c.com/pt.aspx?pid=254426',
-          image: '2020TVforever/images/2504/254426.png'
+          image: '2020TVforever/images/2504/254426_a.png'
         }
+      ],
+      proTV411:[
+        {
+          url: 'https://www.tk3c.com/pt.aspx?pid=247802',
+          image: '2020TVforever/images/2504/247802_a.png'
+        },
       ],
       brands: [
           {
@@ -280,6 +286,8 @@ export default {
     const { menuDis, today } = this
 
     this.fixedBg('.background2','.discount-box');
+
+    if (today >= new Date('2025/04/11')) this.proTV.splice(1,1,this.proTV411[0]);
 
     //撈取 現折券樓層商品
     this.getFloorSingle(menuDis)

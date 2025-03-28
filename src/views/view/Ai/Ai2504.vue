@@ -53,7 +53,7 @@
       </ul>
 
       <!-- 筆電 -->
-      <div class="tab-content rel" v-if="statusGift == 0">
+      <div class="tab-content rel" v-show="statusGift == 0">
         <img class="hidden@<576 abs w:90% w:full@<992 h:auto left:0 right:0 m:auto top:0 z:-1"
           :src="$filters.siteUrl('2024083C/images/2504/sp_bg.png')" />
         <ul class="gap:10 pt:2% pt:3%@<992 box:border-box">
@@ -86,7 +86,7 @@
       </div>
 
       <!-- 週邊 -->
-      <div class="tab-content rel" v-if="statusGift == 1">
+      <div class="tab-content rel" v-show="statusGift == 1">
         <img class="hidden@<576 abs w:90% w:full@<992 h:auto left:0 right:0 m:auto top:0 z:-1"
           :src="$filters.siteUrl('2024083C/images/2504/sp_bg.png')" />
         <ul class="gap:10 pt:2% box:border-box">

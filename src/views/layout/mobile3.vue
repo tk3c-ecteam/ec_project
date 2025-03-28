@@ -2,7 +2,6 @@
   export default {
     mounted() {
       window.addEventListener('scroll',this.showMobileTop);
-      window.addEventListener('scroll',this.scrollToPos);
     },
     beforeUnmount() {
         window.removeEventListener('scroll',this.showMobileTop);

@@ -22,13 +22,16 @@
         <img :src="$filters.siteUrl('pet_product/images/vip/s1.png')" />
       </h2>
 
-      <p class="w:75% w:90%@<992 m:0|auto|2%">
+      <p class="w:75% w:90%@<992 w:full@<576 m:0|auto|2%">
         <img :src="$filters.siteUrl('pet_product/images/vip/s1-1.png')" />
       </p>
-      <p class="w:75% w:90%@<992 m:auto">
-        <a :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/202504vip/dm.html?id=2')" target="_blank">
-          <img :src="$filters.siteUrl('pet_product/images/vip/s1-2.png')" />
-        </a>
+      <p class="rel w:75% w:90%@<992 w:full@<576 m:auto">
+        <img class="abs w:full left:0 right:0 m:auto top:0 z:-1" :src="$filters.siteUrl('pet_product/images/vip/s1-2.png')" />
+        <ul class="gap:10">
+          <li v-for="(i,index) in 4" :key="index" class="w:48% h:11vmax h:11rem@<1700 h:21vw@<992 h:20vw@<576 h:8vmax@>2500">
+            <a class="h:full" @click="alert(index + 1)"></a>
+          </li>
+        </ul>
       </p>
     </section> 
 
@@ -37,7 +40,7 @@
   </div>
 
   <!-- 右側選單+手機板 -->
-  <RightAside :asides="asides" :type="'mobile2'" :asideImage="asideImage"></RightAside>
+  <RightAside :asides="asides" :type="'mobile'" :asideImage="asideImage"></RightAside>
 </template>
 
 <script>
@@ -77,9 +80,41 @@ export default {
       menu:[7913,7914,7915,7916,7917,7918,7919]
     }
   },
-  mounted() {
-   
-  }
+  methods: {
+    alert(id) {
+      //彈出視窗
+      let image = "";
+      switch (id) {
+        case 1:
+          image = "pet_product/images/vip/a1.png"
+          break;
+      
+        case 2:
+          image = "pet_product/images/vip/a2.png"
+          break;
+
+        case 3:
+          image = "pet_product/images/vip/a3.png"
+          break;  
+
+         case 4:
+          image = "pet_product/images/vip/a4.png"
+          break;  
+      }
+      
+     setTimeout(() => {
+       Swal.fire({
+        html:`<img src="${this.$filters.siteUrl(image)}" width="100%">`,
+        confirmButtonText: '關閉',
+        position: 'center',
+        showCloseButton: true,
+        confirmButtonColor: '#000',
+        padding:0,
+        returnFocus: true
+      })
+     }, 5);
+    }
+  },
 }
 </script>
 
@@ -209,17 +244,17 @@ body {
 @include media-query("mobile", "576px") {
   #pet-container {
     .background {
-      padding-bottom: 76vw;
+      padding-bottom: 64vw;
       .title {
         width: 85%;
-        top: 28vw;
+        top: 16vw;
         left: 0;
         right: 0;
         margin: 0 auto;
       }
       .pet {
         width: 120%;
-        top: 38vw;
+        top: 27vw;
         left: -12vw;
         right: 0;
         margin: 0 auto;
@@ -231,7 +266,7 @@ body {
     &:before,
     .background2 {
       background-size: 180% auto;
-      background-position: -37vw 21vw,top;
+      background-position: -37vw 10vw,top;
     }
   }
 }

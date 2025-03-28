@@ -58,7 +58,7 @@
     </section>
 
     <!-- 信用卡專屬優惠 -->
-    <section class="card-group scroll" titles="信用卡優惠" id="card">
+    <section class="card-group scroll" titles="信用卡優惠" id="card" v-if="isCard">
       <h2 class="title">
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/bank_ec/index.html')" target="_blank">
           <img :src="$filters.siteUrl('RTXNB/images/bank_bar2.png')" />
@@ -377,6 +377,7 @@ export default {
       swiperBank: null,
       status1:0,
       status2:0,
+      isCard:true
     }
   },
   mounted() {
@@ -388,6 +389,7 @@ export default {
     } 
 
     if (today >= new Date('2025/03/24')) this.isBank = false;
+    if (today >= new Date('2025/04/01')) this.isCard = false;
 
     for (const [t, t1] of Object.entries(tab1[0].content)) {
       this.getFloorSingle(t1.id)

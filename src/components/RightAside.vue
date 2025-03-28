@@ -40,6 +40,7 @@
     mounted() {
       this.smallDeviceRight();
       window.addEventListener('resize',this.smallDeviceRight);
+      window.addEventListener('scroll',this.scrollToPos);
     },
     unmounted() {
       window.removeEventListener('resize',this.smallDeviceRight);
@@ -71,13 +72,13 @@
       <!-- 3c頁樓層項目專屬 -->
       <div class="aside-content" v-else>
         <ul class="a1" v-show="statusGift == 0">
-          <li v-for="(t1,t) in tab1[0]">
+          <li v-for="(t1,t) in tab1[0]" :key="t">
             <a :href="`#tab${Number(t) + 1}`">{{ t1[0].text }}</a>
           </li>
           <li><a href="#event">熱門活動 </a></li>
         </ul>
         <ul class="a2" v-show="statusGift == 1">
-          <li v-for="(t2,t) in tab2[0]">
+          <li v-for="(t2,t) in tab2[0]" :key="t">
             <a :href="`#tab${Number(t) + 7}`">{{ t2[0].text }}</a>
           </li>
           <li><a href="#event">熱門活動 </a></li>
@@ -92,7 +93,7 @@
   <mobile v-if="type == 'mobile'">
     <template #asides>
       <ul>
-        <li v-for="aside in asides">
+        <li v-for="(aside,a) in asides" :key="a">
           <a :href="aside.href">{{ aside.text }}</a>
         </li>
       </ul>
@@ -103,28 +104,10 @@
   <mobile2 v-if="type == 'mobile2'">
     <template #topAsides>
       <ul>
-        <li v-for="aside in asides">
+        <li v-for="(aside,a) in asides" :key="a">
           <a :href="aside.href" @click="changeNav">{{ aside.text }}</a>
         </li>
       </ul>
     </template>
   </mobile2>
-
-  <!-- 3c頁手機版選單 -->
-   <mobileAi v-if="type == 'mobileAi'">
-      <template #typeAside>
-       <ul class="a1" v-show="statusGift == 0">
-          <li v-for="(t1,t) in tab1[0]">
-            <a :href="t1[0].href">{{ t1[0].text }}</a>
-          </li>
-          <li><a href="#event">熱門活動 </a></li>
-        </ul>
-        <ul class="a2" v-show="statusGift == 1">
-          <li v-for="(t2,t) in tab2[0]">
-            <a :href="t2[0].href">{{ t2[0].text }}</a>
-          </li>
-          <li><a href="#event">熱門活動 </a></li>
-        </ul>
-    </template>
-   </mobileAi>
 </template>

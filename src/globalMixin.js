@@ -16,6 +16,7 @@ export const globalMixin = {
       mobileBg: 'none',//手機版選單背景遮罩
       isGoTop: false,//手機版回到上層按鈕
       isMobileOpen: false,//手機版上方選單切換狀態
+      isMobileTopStatus: '', //手機版上方選單目前項目
       jimmyId: [], //商品樓層id
       jimmyText: [], //樓層文字 
     }
@@ -250,18 +251,18 @@ export const globalMixin = {
       if (document.querySelectorAll('.mobile-for-product .top-nav').length > 0) {
         let topNav = document.querySelector('.mobile-for-product .top-nav');
         topNav.scrollTo({ left: 0 });
-        document.querySelectorAll('.mobile-for-product .top-nav li')[0].classList.remove('active');
       }
       window.scrollTo(0, 0);
       this.mobileBg = 'none';
     },
     //滾動到指定位置
     scrollToPos() {
+      if (document.querySelectorAll('.mobile-for-product .top-nav').length <= 0) return;
       document.querySelectorAll('section.scroll').forEach((el, i) => {
         let scrollTop = window.scrollY,
           topNav = document.querySelector('.mobile-for-product .top-nav'),
           topNavLi = document.querySelectorAll('.mobile-for-product .top-nav li'),
-          top = el.getBoundingClientRect().top + scrollTop - 100,
+          top = el.getBoundingClientRect().top + scrollTop - 120,
           bottom = top + window.innerHeight,
           left = topNav.scrollLeft,
           num = topNavLi.length;
@@ -269,6 +270,7 @@ export const globalMixin = {
         */
 
         if (scrollTop > top && scrollTop < bottom) {
+          this.isMobileTopStatus = i;
           //跑到一半的項目卷軸往右移動
           if (i >= num / 3 && i < num) {
             topNav.scrollTo({
@@ -282,12 +284,6 @@ export const globalMixin = {
               left: left - 150
             });
           }
-          document.querySelectorAll('.mobile-for-product .top-nav li').forEach(el => {
-            el.classList.remove('active');
-            if (topNavLi[i] != undefined) {
-              topNavLi[i].classList.add('active');
-            }
-          });
         }
       });
     },

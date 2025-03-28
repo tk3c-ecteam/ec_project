@@ -89,6 +89,7 @@
     mounted() {
       this.smallDeviceLeft();
       window.addEventListener('resize',this.smallDeviceLeft);
+      window.addEventListener('scroll',this.scrollToPos);
     },
     unmounted() {
       window.removeEventListener('resize',this.smallDeviceLeft);
@@ -107,7 +108,7 @@
       <h3 class="aside-header"></h3>
       <div class="aside-content">
         <ul>
-          <li v-for="(event,e) in events" :class="[e == 0 ? statusClass : event.class]">
+          <li v-for="(event,e) in events" :key="e" :class="[e == 0 ? statusClass : event.class]">
             <a :href="$filters.addGALink(event.url)">{{ event.name }}</a>
           </li>
         </ul>
@@ -121,7 +122,7 @@
     <!-- 熱門活動 -->
     <template #events>
        <ul>
-        <li v-for="event in events" :class="[event.class ? event.class : '']">
+        <li v-for="(event,e) in events" :key="e" :class="[event.class ? event.class : '']">
               <a :href="$filters.addGALink(event.url)">{{ event.name }}</a>
             </li>
       </ul>
@@ -130,7 +131,7 @@
     <!-- 上方快速選單 -->
     <template #topAsides>
      <ul>
-       <li v-for="aside in asides">
+       <li v-for="(aside,a) in asides" :key="a" :class="{'active':isMobileTopStatus == a}">
           <a :href="aside.href">{{ aside.text }}</a>
        </li>
       </ul>
@@ -142,7 +143,7 @@
        <!-- 熱門活動 -->
     <template #events>
        <ul>
-        <li v-for="event in events" :class="[event.class ? event.class : '']">
+        <li v-for="(event,e) in events" :key="e" :class="[event.class ? event.class : '']">
               <a :href="$filters.addGALink(event.url)">{{ event.name }}</a>
             </li>
         </ul>
@@ -150,14 +151,14 @@
 
      <!-- 上方快速選單 -->
     <template #typeAside>
-       <ul class="a1" v-show="statusGift == 0">
-          <li v-for="(t1,t) in tab1[0]">
+       <ul class="a1" v-if="statusGift == 0">
+          <li v-for="(t1,t) in tab1[0]" :key="t">
             <a :href="t1[0].href">{{ t1[0].text }}</a>
           </li>
           <li><a href="#event">熱門活動 </a></li>
         </ul>
-        <ul class="a2" v-show="statusGift == 1">
-          <li v-for="(t2,t) in tab2[0]">
+        <ul class="a2" v-if="statusGift == 1">
+          <li v-for="(t2,t) in tab2[0]" :key="t">
             <a :href="t2[0].href">{{ t2[0].text }}</a>
           </li>
           <li><a href="#event">熱門活動 </a></li>
