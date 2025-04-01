@@ -2,7 +2,8 @@
   <div id="fan-container">
     <div class="background">
       <h2 class="title">
-        <img :src="$filters.siteUrl('fan_hot/images/2504/title.png')" />
+        <img class="pc" :src="$filters.siteUrl('fan_hot/images/2504/title2.png')" />
+        <img class="mobile" :src="$filters.siteUrl('fan_hot/images/2504/title2M.png')" />
       </h2>
 
       <div class="product animate__animated animate__backInRight">
@@ -13,20 +14,72 @@
 
     <div class="background2"></div>
 
-    <!-- 早鳥沁涼好康 -->
-    <section class="gift-box scroll mt:-7%" titles="早鳥沁涼好康" id="gift">
+    <section class="pro-group mt:-4%">
+      <ProductTop :pro="product2[menuPro]"></ProductTop>
+    </section>
+
+    <!-- 沁涼好康 -->
+    <section class="gift-box scroll" titles="沁涼好康" id="gift">
       <h2 class="title">
-        <img :src="$filters.siteUrl('fan_hot/images/2504/ES.png')" />
+        <img :src="$filters.siteUrl('fan_hot/images/2504/ES_2.png')" />
       </h2>
 
-      <ul class="w:85% w:95%@<992 gap:10 bg:#c2ab8e p:3%|0|3% box:border-box">
-        <li v-for="gift in gifts" class="w:45%">
-          <a :href="$filters.addGALink(gift.url)" target="_blank">
+      <div class="w:85% w:full@<992 m:auto rel">
+        <swiper
+        :loop="true"
+        :space-between="30"
+        :effect="'coverflow'"
+        :grabCursor="true"
+        :coverflowEffect="{
+          rotate: 20,
+          stretch: 0,
+          depth: 135,
+          modifier: 1,
+          slideShadows : false
+        }"
+        :navigation="{
+           nextEl: '.gift-box .next',
+           prevEl: '.gift-box .prev',
+        }" 
+        :breakpoints="{
+          0:{
+            slidesPerView:2,
+            spaceBetween:10
+          },
+          600:{
+            slidesPerView:3
+          }
+        }" 
+        >
+        <swiper-slide v-for="gift in gifts">
+           <a :href="$filters.addGALink(gift.url)" target="_blank">
             <img :src="$filters.siteUrl(gift.image)">
           </a>
-        </li>
-      </ul>
+        </swiper-slide>
+        </swiper>
+         <div class="swiper-button-prev prev"></div>
+        <div class="swiper-button-next next"></div>
+      </div>
     </section>
+
+    <!-- 銀行優惠 -->
+     <section class="bank-group scroll" titles="銀行優惠" v-if="isBank" id="bank">
+      <h2 class="title">
+       <img :src="$filters.siteUrl('fan_hot/images/2504/bank_title.png')" />
+      </h2>
+
+      <div class="w:80% w:full@<992 m:auto">
+        <a class="mb:2%" :href="$filters.addGALink('https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=main')" target="_blank">
+          <img :src="$filters.siteUrl('fan_hot/images/2504/bank1.png')" />
+        </a>
+        <a class="mb:2%" href="https://www.tk3c.com.tw/#actsdetail&8&794" target="_blank">
+          <img :src="$filters.siteUrl('fan_hot/images/2504/bank2.png')" />
+        </a>
+      </div>
+      <a class="w:28% w:40%@<992 m:auto" :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
+        <img :src="$filters.siteUrl('fan_hot/images/2504/bank_more.png')" />
+      </a>
+     </section>
 
     <!-- 速速go -->
     <section class="sale-box scroll" titles="速速go" id="go">
@@ -54,26 +107,33 @@
 
 <script>
 import listM from "@/views/layout/listM.vue";
+import { breakpoints } from "@master/css";
+import ProductTop from "../../layout/ProductTop.vue";
 export default {
   data() {
     return {
       listM,
       gifts:[
          {
-          image: 'fan_hot/images/2504/e1.png',
+          image: 'fan_hot/images/2504/e1_a.png',
           url:'https://www.tk3c.com/events/eventgift.aspx'
         },
           {
-          image: 'fan_hot/images/2504/e2.png',
+          image: 'fan_hot/images/2504/e2_a.png',
           url:'https://www.tk3c.com/dic1.aspx?cid=11058&aid=17040'
         },
         {
-          image: 'fan_hot/images/2504/e3.png',
+          image: 'fan_hot/images/2504/e3_a.png',
+          url:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=88225'
+        },
+        {
+          image: 'fan_hot/images/2504/e4_a.png',
           url:'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=69944'
         },
-          {
-          image: 'fan_hot/images/2504/e4.png',
-          url:'https://www.tk3c.com/dic2.aspx?cid=115927&aid=22750&hid=116932'
+        {
+          image: 'fan_hot/images/2504/e5_a.png',
+
+          url:'https://www.tk3c.com/dic2.aspx?cid=115927&aid=22750&hid=115598'
         },
       ],
       floorImg: [
@@ -118,12 +178,19 @@ export default {
       ],
       moreImage:'',
       menuGo:6880, //速速go陳列標題
-      menu:[3428,3430,3429,4150,4153,6729,6730,4151,7876]
+      menu:[3428,3430,3429,4150,4153,6729,6730,4151,7876],
+      today:new Date(),
+      isBank:true,
+      menuPro:7957
     }
   },
   mounted() {
     //滾動後固定背景
     this.fixedBg('.background2','.gift-box');
+
+    if (this.today >= new Date('2025/04/11')) this.isBank = false;
+
+     this.getFloorSingle(this.menuPro)
 
     //撈取速速go樓層商品
     this.getFloorSingle(this.menuGo)
@@ -157,14 +224,14 @@ body {
       width: 32%;
       position: absolute;
       left:24%;
-      top: 11%;
+      top: 10%;
       animation: bg-wave3 1.6s ease-in;
     }
     .product {
       width: 32%;
       position: absolute;
       right: 15%;
-      top: 13%;
+      top: 16%;
       animation-duration: 2s;
     }
   }
@@ -193,6 +260,17 @@ body {
 section {
   .title {
     margin: 0 auto -3%;
+  }
+}
+
+.pro-group {
+  .bg01 {
+    width: 90%;
+    border:none;
+    background: #fff;
+  }
+  .swiper-slide {
+    width: 30%;
   }
 }
 
@@ -227,6 +305,12 @@ section {
       margin: 0 auto -5%;
     }
   }
+
+   .pro-group {
+    .bg01 {
+      width: 100%;
+    }
+  }
 }
 
 /* 手機版 */
@@ -234,10 +318,10 @@ section {
   #fan-container {
     .background {
       background: none;
-      padding-bottom: 182vw;
+      padding-bottom: 190vw;
       .title {
         width: 80%;
-        top: 20vw;
+        top: 26vw;
         left: 11%;
         right: 0;
         margin: 0 auto;
@@ -262,6 +346,12 @@ section {
         background-size: 120% auto;
         background-position: -19vw 14vw,top;
       }
+  }
+
+  .pro-group {
+    .swiper-slide {
+      width: 46%;
+    }
   }
 }
 

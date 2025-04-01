@@ -73,13 +73,13 @@
       <div class="aside-content" v-else>
         <ul class="a1" v-show="statusGift == 0">
           <li v-for="(t1,t) in tab1[0]" :key="t">
-            <a :href="`#tab${Number(t) + 1}`">{{ t1[0].text }}</a>
+            <a :href="t1[0].href">{{ t1[0].text }}</a>
           </li>
           <li><a href="#event">熱門活動 </a></li>
         </ul>
         <ul class="a2" v-show="statusGift == 1">
           <li v-for="(t2,t) in tab2[0]" :key="t">
-            <a :href="`#tab${Number(t) + 7}`">{{ t2[0].text }}</a>
+            <a :href="t2[0].href">{{ t2[0].text }}</a>
           </li>
           <li><a href="#event">熱門活動 </a></li>
         </ul>
@@ -104,7 +104,7 @@
   <mobile2 v-if="type == 'mobile2'">
     <template #topAsides>
       <ul>
-        <li v-for="(aside,a) in asides" :key="a">
+        <li v-for="(aside,a) in asides" :key="a" :class="{'active':isMobileTopStatus == a}">
           <a :href="aside.href" @click="changeNav">{{ aside.text }}</a>
         </li>
       </ul>

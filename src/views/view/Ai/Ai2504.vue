@@ -2,7 +2,7 @@
   <div id="ai-container">
     <div class="background">
       <h2 class="title">
-        <img :src="$filters.siteUrl('2024083C/images/2504/title2.png')" />
+        <img :src="$filters.siteUrl('2024083C/images/2504/title3.png')" />
         <div class="subtitle">
           <swiper
           :loop="true"
@@ -35,6 +35,13 @@
       <img :src="$filters.siteUrl('2024083C/images/2504/item.png')" />
     </p>
 
+    <!-- 上方商品 -->
+     <section class="top-group mt:-18%">
+       <div class="rel">
+        <ProductTop :pro="product2[menuPro]"></ProductTop>
+       </div>
+     </section>
+
     <!--  指南 -->
     <section class="gift-box">
       <h2 class="title">
@@ -57,7 +64,7 @@
         <img class="hidden@<576 abs w:90% w:full@<992 h:auto left:0 right:0 m:auto top:0 z:-1"
           :src="$filters.siteUrl('2024083C/images/2504/sp_bg.png')" />
         <ul class="gap:10 pt:2% pt:3%@<992 box:border-box">
-          <li class="w:62% w:71.5%@<992 w:full@<576">
+          <li class="w:62% w:71.5%@<992 w:full@<576" :class="[!isOff ? 'off' : '']">
             <a class="mb:1%" @click="goNB('#sale')" target="_blank">
               <img :src="$filters.siteUrl('2024083C/images/2504/sp01-1.png')" />
             </a>
@@ -65,18 +72,18 @@
               <a class="w:52% w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')"
                 target="_blank"><img :src="$filters.siteUrl('2024083C/images/2504/sp01-2a.png')" /></a>
               <a class="w:52% w:full@<576"
-                :href="$filters.addGALink('https://events.tk3c.com/events_net/RTXNB/index.html')" target="_blank"><img
-                  :src="$filters.siteUrl('2024083C/images/2504/sp01-3.png')" /></a>
+                :href="$filters.addGALink('https://events.tk3c.com/events_net/DBS_RTX50NB/')" target="_blank"><img
+                  :src="$filters.siteUrl('2024083C/images/2504/sp01-3a.png')" /></a>
             </div>
             <a class="w:full" :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')"
               target="_blank"><img :src="$filters.siteUrl('2024083C/images/2504/sp01-4.png')" /></a>
           </li>
           <li class="w:19% w:22%@<992 w:19.5%@<992 w:full@<576 flex flex-direction:column  flex-direction:row@<576 gap:10">
-            <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121988')"
+            <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=123020&strPreView=y')"
               target="_blank"><img :src="$filters.siteUrl('2024083C/images/2504/sp01-5.png')" /></a>
-            <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121986')"
+            <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=123019&strPreView=y')"
               target="_blank"><img :src="$filters.siteUrl('2024083C/images/2504/sp01-6.png')" /></a>
-            <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121987')"
+            <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=123018&strPreView=y')"
               target="_blank"><img :src="$filters.siteUrl('2024083C/images/2504/sp01-7.png')" /></a>
           </li>
         </ul>
@@ -112,10 +119,29 @@
       </div>
     </section>
 
+    <!-- 銀行優惠 -->
+     <section class="bank-group" v-if="isBank">
+      <h2 class="title">
+       <img :src="$filters.siteUrl('2024083C/images/2504/bank_title.png')" />
+      </h2>
+
+      <div class="w:80% w:full@<992 m:auto">
+        <a class="mb:2%" :href="$filters.addGALink('https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=main')" target="_blank">
+          <img :src="$filters.siteUrl('fan_hot/images/2504/bank1.png')" />
+        </a>
+        <a class="mb:2%" href="https://www.tk3c.com.tw/#actsdetail&8&794" target="_blank">
+          <img :src="$filters.siteUrl('fan_hot/images/2504/bank2.png')" />
+        </a>
+      </div>
+      <a class="w:28% w:40%@<992 m:auto" :href="$filters.addGALink('https://events.tk3c.com/events_net/events_net/banks/bank.html')" target="_blank">
+        <img :src="$filters.siteUrl('fan_hot/images/2504/bank_more.png')" />
+      </a>
+     </section>
+
       <!-- 筆電區商品樓層 -->
       <div v-show="statusGift == 0" class="product-area pro1">
         <!-- 狂撒百萬折價券 -->
-        <section class="sale-box scroll" titles="狂撒百萬折價券" id="sale">
+        <section class="sale-box" v-show="isOff" id="sale">
           <h2 class="title">
             <a :href="$filters.addGALink(disUrl)"
               target="_blank">
@@ -197,6 +223,7 @@
 <script>
 import listM from '@/views/layout/listM.vue'
 import { EffectFlip } from 'swiper/modules'
+import ProductTop from '../../layout/ProductTop.vue'
 export default {
   data() {
     return {
@@ -526,10 +553,14 @@ export default {
       isOff:true,
       disUrl:'',
       menuDis:7668,
+      menuPro:7956,
+      isBank:true
     }
   },
   mounted() {
     let {today,tab1,tab2 } = this
+
+    if (today >= new Date('2025/04/11')) this.isBank = false;
 
     //3/24更新現折券
     if(today >= new Date('2025/03/24')) {
@@ -538,11 +569,13 @@ export default {
       this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }
 
-    if(today >= new Date('2025/03/24')) this.isOff = false;
     //熱門活動標題
     this.bnTitle = '2024083C/images/2504/s15.png';
 
      if (this.statusGift == 0 ) this.tabs = tab1[0];
+
+     //最上方商商品撈取陳列編號
+    this.getFloorSingle(this.menuPro);
 
       //撈取折價券商品
     this.getFloorSingle(this.menuDis);
@@ -724,10 +757,6 @@ body {
     }
 }
 
-.aside-container:not(.left) {
-  zoom:0.8
-}
-
 #ai-container {
   width: 100%;
   margin: 0 auto;
@@ -740,13 +769,13 @@ body {
     position: relative;
     margin: 0 auto 0;
     background-position: 0 45px,top;
-    padding-bottom: 50%;
+    padding-bottom: 48%;
     .title {
-      width: 40%;
+      width: 42%;
       position: absolute;
       right: 0;
       left: 0;
-      top: 15%;
+      top: 16%;
       margin: 0 auto;
       animation: tada 1.6s linear;
       .subtitle {
@@ -755,17 +784,6 @@ body {
         .swiper-wrapper {
           align-items: baseline;
         }
-      }
-    }
-    .product{
-      width: 26%;
-      position: absolute;
-      right: 3%;
-      top: 22%;
-      animation-duration: 1.4s;
-      img {
-        animation: upAndDown 0.5s ease-in-out infinite alternate;
-        animation-delay: 1.5s;
       }
     }
     .ribbon {
@@ -777,6 +795,22 @@ body {
       right: 0;
       margin: 0 auto;
     }
+  }
+}
+
+.top-group {
+   .bg01 {
+    width: 90%;
+    border:none;
+    background: #fff;
+    border-radius: 15px;
+    box-sizing: border-box;
+    &:before {
+      display: none;
+    }
+  }
+  .swiper-slide {
+    width: 30%;
   }
 }
 
@@ -815,9 +849,9 @@ body {
     .background {
       background-size: 120% auto;
       background-position: -10vw 4vw,top;
-      padding-bottom: 62vw;
+      padding-bottom: 64vw;
       .title {
-        width: 50%;
+        width: 60%;
         top:12vw;
       }
       .ribbon {
@@ -848,31 +882,30 @@ body {
       }
     }
   }
+
+  .top-group {
+    .bg01 {
+      width: 100%;
+    }
+  }
 }
 
 /* 手機版 */
 @include media-query('mobile', '576px') {
-  .fix_btn {
-    display: block;
-    .dropdown-menu {
-      display: none;
-    }
-  }
-
   #ai-container {
     .background {
-      background-size: 260% auto;
-      background-position: -100vw 21vw,top;
-      padding-bottom: 146vw;
+      background-size: 180% auto;
+      background-position: -40vw 21vw,top;
+      padding-bottom: 105vw;
       .title {
         width: 95%;
         top: 29vw;
       }
       .product {
-        width: 55%;
+        width: 100%;
         right: 0;
         left: 0;
-        top: 93vw;
+        top: 79vw;
         margin: 0 auto;
       }
       .ribbon {
@@ -907,6 +940,16 @@ body {
       .swiper-wrapper {
         justify-content: left;
       }
+    }
+  }
+
+  .top-group {
+    .bg01 {
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+    .swiper-slide {
+      width: 46%;
     }
   }
 }

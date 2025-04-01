@@ -25,7 +25,7 @@ export const globalMixin = {
     this.timer = setInterval(() => {
       setTimeout(() => {
         this.getFloorTitle('section.scroll');
-      }, 5500);
+      }, 5000);
     }, 1000);
 
     setTimeout(() => {
@@ -251,6 +251,7 @@ export const globalMixin = {
       if (document.querySelectorAll('.mobile-for-product .top-nav').length > 0) {
         let topNav = document.querySelector('.mobile-for-product .top-nav');
         topNav.scrollTo({ left: 0 });
+        this.isMobileTopStatus = '';
       }
       window.scrollTo(0, 0);
       this.mobileBg = 'none';

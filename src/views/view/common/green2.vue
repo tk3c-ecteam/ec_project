@@ -146,7 +146,7 @@ export default {
     const { today } = this
 
     //綠色消費趣 顯示
-   if (today >= new Date('2025/02/17') && today < new Date('2025/03/17')) {
+    if (today >= new Date('2025/02/17') && today < new Date('2025/03/17')) {
       this.isGreenSale = true;
     }
 
@@ -163,54 +163,54 @@ export default {
 
     //撈取環保小尖兵樓層商品
     this.getFloorSingle(this.menuSp);
-  },
+  }, 
   methods: {
-    message(id) {
-      //活動說明
-      let infoHtml = '',
-      width = 0;
+      message(id) {
+        //活動說明
+        let infoHtml = '',
+        width = 0;
 
-      switch (id) {
-        case 1:
-          //退貨物稅
-          width = 900;
-          infoHtml = `
-          <img src="https://www.tk3c.com/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg" width="100%" loading="lazy">
-          <img src="https://www.tk3c.com/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg" width="100%" loading="lazy">
-        `;
-          break;
-      
-        case 2:
-          //星展線上說明
-            width = 500;
+        switch (id) {
+          case 1:
+            //退貨物稅
+            width = 900;
             infoHtml = `
-             <img src="https://events.cdn-tkec.tw/events_net/events_net/green_subsidy/images/new/online.png" width="100%">
-        `;
-          break;
+            <img src="https://www.tk3c.com/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg" width="100%">
+            <img src="https://www.tk3c.com/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg" width="100%">
+          `;
+            break;
+        
+          case 2:
+            //星展線上說明
+              width = 400;
+              infoHtml = `
+              <img src="https://events.cdn-tkec.tw/events_net/events_net/green_subsidy/images/new/online.png" width="100%" loading="lazy">
+          `;
+            break;
 
-         case 3:
-          //星展門市說明
-          width = 500;
-            infoHtml = `
-             <img src="https://events.cdn-tkec.tw/events_net/events_net/green_subsidy/images/new/store.png" width="100%">
-        `;
-          break;  
+          case 3:
+            //星展門市說明
+            width = 400;
+              infoHtml = `
+              <img src="https://events.cdn-tkec.tw/events_net/events_net/green_subsidy/images/new/store.png" width="100%" loading="lazy">
+          `;
+            break;  
+        }
+
+        setTimeout(() => {
+          Swal.fire({
+            width: width,
+            html: infoHtml,
+            showCloseButton: true,
+            position: 'center',
+            returnFocus: false,
+            confirmButtonText: '確定',
+            confirmButtonColor: '#000'
+          })
+        }, 5);
       }
-
-      setTimeout(() => {
-         Swal.fire({
-          width: width,
-          html: infoHtml,
-          showCloseButton: true,
-          position: 'center',
-          returnFocus: false,
-          confirmButtonText: '確定',
-          confirmButtonColor: '#000'
-        })
-      }, 0);
-    }
   }
-}
+}  
 </script>
 
 <template>

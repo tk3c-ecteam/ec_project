@@ -2,7 +2,7 @@
   <div id="icewash-container" v-cloak>
     <div class="background">
       <h2 class="title">
-        <img :src="$filters.siteUrl('icewash2209/images/2504/title.png')" />
+        <img :src="$filters.siteUrl('icewash2209/images/2504/title2.png')" />
       </h2>
     </div>
 
@@ -31,9 +31,39 @@
 
       <!-- 活動搶先看 -->
       <div class="w:80% w:90%@<992 w:full@<576 m:auto">
-        <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=12504&aid=4878&hid=14374')" target="_blank">
-          <img :src="$filters.siteUrl('icewash2209/images/2504/e1.png')" />
-        </a>
+        <swiper
+        :loop="false"
+        :autoplay="{
+          delay:1800,
+          disableOnInteraction:false
+        }"
+        :effect="'fade'"
+        :fadeEffect="{
+          crossFade:true
+        }"
+        :modules="[EffectFade]"
+        :pagination="{
+          el:'.gift-box .page',
+          clickable:true
+        }"
+        >
+        <swiper-slide>
+         <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=12504&aid=4878&hid=14374')" target="_blank">
+          <img :src="$filters.siteUrl('icewash2209/images/2504/e1_a.png')" />
+          </a>
+        </swiper-slide>
+        <swiper-slide>
+         <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=12504&aid=4878&hid=12524')" target="_blank">
+          <img :src="$filters.siteUrl('icewash2209/images/2504/e2_a.png')" />
+          </a>
+        </swiper-slide>
+        <swiper-slide>
+         <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=12504&aid=4878&hid=49125')" target="_blank">
+          <img :src="$filters.siteUrl('icewash2209/images/2504/e3_a.png')" />
+          </a>
+        </swiper-slide>
+        </swiper>
+         <div class="swiper-pagination page"></div>
       </div>
     </section>
 
@@ -102,9 +132,11 @@
 </template>
 
 <script>
+import { EffectFade } from "swiper/modules";
 export default {
   data() {
     return {
+      EffectFade,
       tabs: [
         {
           0: [
@@ -294,11 +326,11 @@ body {
     background-position: 0 45px, top;
     padding-bottom: 66%;
     .title {
-      width: 35%;
+      width: 40%;
       position: absolute;
       left: 0;
       right: 0;
-      top: 11%;
+      top: 12%;
       margin: 0 auto;
       animation: bg-wave2 1.4s ease-in infinite;
     }

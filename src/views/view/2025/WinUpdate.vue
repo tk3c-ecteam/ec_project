@@ -73,7 +73,7 @@
           }
         }">
           <swiper-slide v-for="(gift,g) in gifts" :key="g">
-            <a v-if="g == 0" :href="gift.url" target="_blank">
+            <a v-if="g == 0" :href="gift.url">
               <img :src="$filters.siteUrl(gift.image)">
             </a>
              <a v-else :href="$filters.addGALink(gift.url)" target="_blank">
@@ -303,14 +303,6 @@ body{
   }
 }
 
-.rtx-group {
-  .tab {
-    li {
-      width: 20%;
-    }
-  }
-}
-
 
 /*  電腦版其他尺寸 */
 @include media-query("mobile", "992px") {
@@ -348,7 +340,7 @@ body{
   .rtx-group {
     .tab {
       li {
-        width: 30%;
+        flex-basis: 30%;
       }
     }
   }

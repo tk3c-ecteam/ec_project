@@ -104,7 +104,7 @@ export default {
       
      setTimeout(() => {
        Swal.fire({
-        html:`<img src="${this.$filters.siteUrl(image)}" width="100%">`,
+        html:`<img src="${this.$filters.siteUrl(image)}" width="95%" loading="lazy">`,
         confirmButtonText: '關閉',
         position: 'center',
         showCloseButton: true,
@@ -112,7 +112,7 @@ export default {
         padding:0,
         returnFocus: true
       })
-     }, 5);
+     }, 0);
     }
   },
 }
