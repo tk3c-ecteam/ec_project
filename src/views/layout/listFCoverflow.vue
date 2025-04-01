@@ -1,7 +1,7 @@
 <script>
 import { EffectCoverflow } from "swiper/modules";
 export default {
-  props: ['pro','name'],
+  props: ['pro'],
   data() {
     return {
       EffectCoverflow
@@ -13,9 +13,9 @@ export default {
 <!-- 商品樓層list_F版型 4小 (扇形展開效果 swiper:coverflow) -->
 <template>
   <div class="bg01 list_F p:1%|1%|0! p:2%|2%|0!@<576">
-    <ul v-if="pro != undefined" :class="[name != undefined ? name : '']">
+    <ul v-if="pro != undefined" class="pro-cover">
       <swiper
-        class="pro overflow:hidden"
+       class="pro"
         :loop="true"
         :autoplay="{
           delay: 2500,
@@ -23,10 +23,13 @@ export default {
         }"
         :effect="'coverflow'"
         :centeredSlides="true"
-        :centeredSlidesBounds="true"
-        :grabCursor="true"
-        :loopAdditionalSlides="1"
-        :hideOnClick="true"
+        :coverflowEffect="{
+           rotate:20,
+           stretch: 0,
+            depth: 135,
+            modifier: 1,
+            slideShadows: false
+        }"
         :breakpoints="{
           0:{
             slidesPerView:2
@@ -35,21 +38,13 @@ export default {
             slidesPerView:3
           },
           992:{
-            slidesPerView:5
+            slidesPerView:4.4
           }
         }"
-        :coverflowEffect="{
-          rotate:25,
-           stretch: 0,
-            depth: 135,
-            modifier: 1,
-            slideShadows: false
-        }"
         :autoHeight="true"
-        :observer="true"
         :navigation="{
-          prevEl: `.${name} .prev`,
-          nextEl: `.${name} .next`
+          prevEl: '.pro-cover .prev',
+          nextEl: '.pro-cover .next'
         }"
         :modules="[EffectCoverflow]"
       >
