@@ -1,18 +1,19 @@
 <script setup>
+import listD from '@/views/layout/listD.vue'
 const contents = [
   {
     logo: 'tba/images/logo.png',
-    title: 'tba/images/title.png',
+    title: 'tba/images/title2.png',
     mark: 'tba/images/mark.png',
     singleImage:'tba/images/bar.png',
     floor: [
       {
-        id:7742,
-        text:'律師公會優惠'
+        text:'律師公會優惠',
+        type:listD
       }
     ],
     alertHtml: `
-        <li>1.收單時間：即日起至<span class="red">2025/3/31 23:59</span>止</li>
+        <li>1.收單時間：即日起至<span class="red">2025/6/30 23:59</span>止</li>
         <li>2.交易須知：</li>
         <li><p>(1) 限【門市取貨門市付款】(預約門市取貨且選擇門市付款)，商品不得轉售。</p></li>
         <li><p>(2) 指定取貨/付款門市&nbsp;&nbsp;全台門市</p></li>
@@ -38,7 +39,7 @@ const contents = [
       },
       {
         image: 'tup/images/nav6.png',
-        url: 'https://events.tk3c.com/events_net/bank_ec/index.html'
+        url: 'https://events.tk3c.com/events_net/events_net/banks/bank.html'
       }
     ],
     otherBanners:[
@@ -49,17 +50,20 @@ const contents = [
       }
     ]
   }
-]
+];
+
+const menus = [7742];
 </script>
 
 <template>
   <StaffCommon v-model:contents="contents"></StaffCommon>
 
   <!-- 商品樓層 -->
-  <CommonFloor2
+  <CommonFloor
     :floors="contents[0].floor"
     :singleImage="contents[0].singleImage"
-  ></CommonFloor2>
+    :menu="menus"
+  ></CommonFloor>
 
   <!-- 活動辦法 -->
   <section class="info-group scroll" titles="開業福袋專屬優惠" id="info">
@@ -98,21 +102,9 @@ body {
 
 .floor {
   .title {
-    width: 600px;
-    margin: 0 auto 0;
-    img {
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      top: 0;
-      z-index: -1;
-    }
     b {
-      font-size: 2em;
-      line-height: 8.5rem;
       color: #6a430e;
-      font-weight: bold;
+      top: 55% !important;
     }
   }
 }
@@ -195,10 +187,6 @@ body {
   .floor {
     .title {
       width: 100%;
-      b {
-        font-size: 3rem;
-        line-height: 21vw;
-      }
     }
   }
 }
@@ -206,7 +194,7 @@ body {
 @include media-query('mobile', '576px') {
   body {
     &:before {
-      $image:$dir + 'M_kv.jpg';
+      $image:$dir + 'M_kv2.jpg';
       background: url($image) no-repeat center;
       background-size: 100% auto;
       background-position:
@@ -242,11 +230,7 @@ body {
    .floor {
     .title {
       width: 120%;
-      margin: 0 -10% 0;
-      b {
-        font-size: 2rem;
-        line-height: 26vw;
-      }
+      margin: 0 -10% 5%;
     }
   }
 }

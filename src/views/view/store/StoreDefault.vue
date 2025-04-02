@@ -11,6 +11,9 @@ const contents = defineModel("contents");
       }
      },
      mounted() {
+      //回到上層按鈕滾動後顯示
+      window.addEventListener('scroll',this.showMobileTop);
+
        //導航區滾動定位
        if (document.querySelectorAll('nav').length > 0) {
        document.addEventListener("scroll", (e) => {
@@ -35,6 +38,9 @@ const contents = defineModel("contents");
          });
        });
       }
+     },
+     beforeUnmount() {
+        window.removeEventListener('scroll',this.showMobileTop);
      },
      methods: {
       onSwiper(swiper) {

@@ -11,7 +11,7 @@
     </div>
 
     <p class="item">
-      <img :src="$filters.siteUrl('pet_product/images/item.png')" />
+      <img :src="$filters.siteUrl('pet_product/images/de.png')" />
     </p>
 
     <div class="background2"></div>

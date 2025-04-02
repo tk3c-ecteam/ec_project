@@ -181,14 +181,6 @@ nav {
     margin: 0 auto 0;
     b {
       color: red;
-        font-size: 3rem;
-        line-height: 1.6em;
-        display: block;
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        top: 0;
     }
   }
 }
@@ -222,10 +214,6 @@ nav {
   .floor {
     .title {
       width: 80%;
-      b {
-        font-size: 4rem;
-        line-height: 13vw;
-      }
     }
   }
 
@@ -239,14 +227,6 @@ nav {
 }
 
 @include media-query("mobile", "576px") {
-  .floor {
-    .title {
-      b {
-        font-size: 2.5rem;
-      }
-    }
-  }
-
   nav {
     padding: 2% 4% 2% !important;
   }

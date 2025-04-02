@@ -3,8 +3,8 @@
     <div class="tab-content" v-if="isActive">
       <slot>
         <a v-if="banners != undefined" class="banner" v-for="banner in banners" :href="$filters.addGALink(banner.url)" target="_blank">
-          <img class="pc" :src="$filters.siteUrl(banner.pc)">
-          <img class="mobile" :src="$filters.siteUrl(banner.mobile)">
+          <img class="pc" :src="$filters.siteUrl(banner.pc)" loading="lazy">
+          <img class="mobile" :src="$filters.siteUrl(banner.mobile)" loading="lazy">
         </a>
         
         <listF v-if="isSwiper" :isSwiper="1" :pro="product2[menus]" :name="`box${index + 1}`"></listF>

@@ -5,7 +5,7 @@ export default {
       menuSP: 7392,
       menus: [6149, 6150, 6151, 6152, 6153, 6154],
       proDatas: [
-        { image: 'nightsale/images/part3/bar_top.png', id: 6149, text: '每週強檔',href:'#pro6149' },
+        { image: 'nightsale/images/part3/bar_top.png', id: 6149, text: '本週強檔推薦',href:'#pro6149' },
         { image: 'nightsale/images/part3/bar000.png', id: 6150, text: '大型家電',href:'#pro6150' },
         { image: 'nightsale/images/part3/bar01.png', id: 6151, text: '生活家電',href:'#pro6151' },
         { image: 'nightsale/images/part3/bar02.png', id: 6152, text: '電腦資訊',href:'#pro6152' },
@@ -28,9 +28,7 @@ export default {
     document.querySelectorAll('.pro-box').forEach((el, p) => {
       if (el.querySelectorAll('.bg01').length > 0) {
         if (el.querySelectorAll('.bg01 .swiper-slide').length <= 0) {
-          el.classList.add('hide')
-          document.querySelectorAll('.aside-container .aside-content li')[p].remove()
-          document.querySelectorAll('.mobile-for-product ul li')[p].remove()
+           el.style.display = 'none';
         }
       }
     })

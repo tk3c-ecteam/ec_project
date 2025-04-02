@@ -1040,8 +1040,6 @@ body {
     box-sizing: border-box;
     margin-bottom: 0;
     li {
-      width: 20%;
-      margin: 0 5px 1%;
       filter: brightness(0.8);
       &.active {
         filter: brightness(1);
@@ -1183,7 +1181,7 @@ body {
   .product-box {
     .tab {
       li {
-        width: 22%;
+        flex-basis: 22%;
       }
     }
   }
@@ -1290,7 +1288,7 @@ body {
   .product-box {
     .tab {
       li {
-        width: 44%;
+        flex-basis: 45%;
       }
     }
   }

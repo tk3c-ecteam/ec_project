@@ -170,7 +170,7 @@ export default {
           <img class="abs w:full left:0 right:0 m:auto top:0 z:-1 scale(1.2)@<576 mt:13%@<576" :src="$filters.siteUrl('light_equipment/images/new/info.png')">
 
           <div class="content w:full h:full rel">
-            <div class="w:full flex flex-wrap:wrap gap:350 gap:300@<1700 gap:250@<992 gap:150@<576 m:auto jc:center pt:28% pt:36%@<576 box:border-box">
+            <div class="w:full flex flex-wrap:wrap gap:350 gap:300@<1700 gap:250@<992 gap:120@<576 m:auto jc:center pt:28% pt:36%@<576 box:border-box">
               <img class="w:15% w:20%@<576" loading="lazy" :src="$filters.siteUrl('light_equipment/images/new/zero.png')">
               <img class="w:15% w:20%@<576" loading="lazy" :src="$filters.siteUrl('light_equipment/images/new/zero.png')">
             </div>
@@ -455,16 +455,16 @@ form#form1 {
   .info-group {
     .light1,
     .light2 {
-      width: 36%;
-      left: 4%;
-      top: 39%;
+      width: 39%;
+      left: 4vw;
+      top: 24vw;
     }
 
     .light3,
     .light4 {
-      width: 36%;
-      right: 4%;
-      top: 39%;
+      width: 39%;
+      right: 4vw;
+      top: 24vw;
     }
   }
 }

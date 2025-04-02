@@ -57,8 +57,8 @@ var contents = [
 
       nextTick(() => {
        if( document.querySelectorAll('.floor')[0].querySelectorAll('.bg01 li').length == 0) {
-          document.querySelectorAll('.floor')[0].style.display = 'none';
-          document.querySelectorAll('nav .swiper-slide')[0].style.display = 'none';
+         contents[0].floorImg.splice(0,1);
+         menu.splice(0,1);
        }
       });
 
