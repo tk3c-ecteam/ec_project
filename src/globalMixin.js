@@ -73,6 +73,8 @@ export const globalMixin = {
         moreUrls.push('https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu[z] + '&_=' + time)
       }
 
+      this.interCatch();
+
       //撈取所有 url api 資料
       await axios.all(moreUrls.map((moreUrl) => axios.get(moreUrl))).then((respon) => {
         respon.forEach((res, r) => {
@@ -80,8 +82,6 @@ export const globalMixin = {
         });
       })
         .catch((error) => {
-          //請求失敗重啟
-          this.retryRequest();
           if (error.code === 'ECONNABORTED') {
             console.log('請求逾時')
           } else {
@@ -94,6 +94,7 @@ export const globalMixin = {
     async getFloorSingle(menu) {
       let time = Date.now();
       try {
+        this.interCatch();
         const res = await axios({
           method: 'get',
           url: 'https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu + '&_=' + time,
@@ -101,7 +102,6 @@ export const globalMixin = {
 
         this.product2[menu] = res.data.Data
       } catch (error) {
-        this.retryRequest();
         if (error.code === 'ECONNABORTED') {
           console.log('請求逾時')
         } else {
