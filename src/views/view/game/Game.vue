@@ -10,6 +10,7 @@ export default {
         {
           0: [
             {
+              "text":"PlayStation",
               "menu":[4492,7020,7021],
               "title": "PLAYGAMES/images/2408/S4.png",
               "yt": "HDg2NLve6Ig",
@@ -23,6 +24,7 @@ export default {
           ],
           1: [
             {
+              "text":"NS SWITCH",
               "menu":[4495,7022,7023],
               "title": "PLAYGAMES/images/2408/S5.png",
               "yt": "DpYz24pspQA",
@@ -36,6 +38,7 @@ export default {
           ],
           2: [
             {
+              "text":"XBOX",
               "menu":[7024,7025,5760],
               "title": "PLAYGAMES/images/2408/S6.png",
               "yt": "IOB2ApsKjT8",
@@ -49,6 +52,7 @@ export default {
           ],
           3: [
             {
+              "text":"MYCARD",
               "menu":[7026,6445],
               "title": "PLAYGAMES/images/2408/S7.png",
               "image": "PLAYGAMES/images/24618/bn1.png",
@@ -65,13 +69,6 @@ export default {
         { "url": "https://www.tk3c.com/pt.aspx?pid=203202", "image": "PLAYGAMES/images/2408/203202.png" },
         { "url": "https://www.tk3c.com/pt.aspx?pid=220671", "image": "PLAYGAMES/images/2408/220671.png" },
         { "url": "https://www.tk3c.com/pt.aspx?pid=249373", "image": "PLAYGAMES/images/2408/249373.png" },
-      ],
-      asides:[
-        {text:'速速GO',href:'sale'},
-        {text:'PlayStation',href:'pro1'},
-        {text:'Nintendo Switch',href:'pro2'},
-        {text:'Xbox',href:'pro3'},
-        {text:'Mycard',href:'pro4'},
       ],
       menuGo:7027,
     }
@@ -105,7 +102,7 @@ export default {
     <div class="background2"></div>
 
     <!-- 速速go -->
-    <section class="sale-box scroll" id="sale">
+    <section class="sale-box scroll" titles="速速GO" id="sale">
       <h2 class="title">
         <a :href="$filters.addGALink('https://fast.tk3c.com/')" target="_blank">
           <img :src="$filters.siteUrl('PLAYGAMES/images/2408/S2.png')">
@@ -117,7 +114,7 @@ export default {
     </section>
 
     <!-- 有頁籤的樓層 -->
-    <section v-for="(floor,f) in proFloors[0]" :class="`pro${Number(f) + 1}-box product-area scroll`"
+    <section v-for="(floor,f) in proFloors[0]" :titles="floor[0].text" :class="`pro${Number(f) + 1}-box product-area scroll`"
       :id="`pro${Number(f) + 1}`">
       <h2 class="title" :class="[f == 2 || f == 3 ? 'single-url' : '']">
         <a :href="$filters.addGALink(floor[0].url)">

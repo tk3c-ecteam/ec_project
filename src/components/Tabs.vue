@@ -30,6 +30,7 @@
       <swiper v-else 
       :loop="false" 
       :space-between="10" 
+      :direction="direct"
       :slides-per-view="'auto'"
       :breakpoints="swiperOption"
       @swiper="onSwiper"

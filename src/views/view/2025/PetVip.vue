@@ -104,7 +104,7 @@ export default {
       
      setTimeout(() => {
        Swal.fire({
-        html:`<img src="${this.$filters.siteUrl(image)}" width="95%" loading="lazy">`,
+        html:`<img src="${this.$filters.siteUrl(image)}" width="50%" height="20%">`,
         confirmButtonText: '關閉',
         position: 'center',
         showCloseButton: true,
