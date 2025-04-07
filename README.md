@@ -20,6 +20,7 @@ src/views/layout 共用版型(商品樓層與手機版選單)
           - mobile.vue 手機版置底選單
           - mobile2.vue 手機版置頂選單
           - mobileAi.vue 3c頁用手機版選單
+          - mobile3.vue 熱門活動版本手機版選單
 
 src/views/floor 樓層區
          - CommonFloor.vue 共用
