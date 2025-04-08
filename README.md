@@ -50,6 +50,7 @@ nvs進行安裝(步驟如此連結:https://smlpoints.com/guide-nvs-switch-node-j
 2. git clone檔案下來(下載此專案或直接使用sourcetree載到本機資料裡)
 3. 對此專案資料夾輸入 npm init 後 npm install 進行安裝npm 套件安裝
 ```
+### 活動使用規則:https://tk3ctsannkuen-my.sharepoint.com/:w:/g/personal/tp030164_tk3c_tsannkuen_com/EdJQiERIf-FAnbtPJ2u8Ud4BJ1MY_heCTBu7PXLZb5oisA?e=awolNT
 
 ### 此專案在本機運作指令
 
