@@ -53,9 +53,6 @@ const contents = [
       </div>
     </div>
   </section>
-
-  <!-- 右側選單+手機版 -->
-  <RightAside :asides="contents[0].floorImg" :type="'mobile'"></RightAside>
 </template>
 
 <style lang="scss">
@@ -175,7 +172,7 @@ nav {
   }
 
   .copyR {
-    margin-bottom: 14%;
+    margin-bottom: 0;
   }
 }
 

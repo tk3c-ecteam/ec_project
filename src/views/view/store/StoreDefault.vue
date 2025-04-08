@@ -12,12 +12,12 @@ const contents = defineModel("contents");
      },
      mounted() {
       //回到上層按鈕滾動後顯示
-      window.addEventListener('scroll',this.showMobileTop);
+       window.addEventListener('scroll',this.showMobileTop);
 
        //導航區滾動定位
        if (document.querySelectorAll('nav').length > 0) {
        document.addEventListener("scroll", (e) => {
-         let scrollTop = document.documentElement.scrollTop;
+         let scrollTop = window.scrollY;
 
          if (scrollTop >= 150) {
           document.querySelector('nav').classList.add('fixed');
@@ -156,6 +156,12 @@ const contents = defineModel("contents");
   }
 }
 
+.custom-top {
+  &.isShow {
+    display: block;
+  }
+}
+
 /* 手機版 */
 @include media-query("mobile", "992px") {
   nav {
@@ -165,14 +171,6 @@ const contents = defineModel("contents");
   }
 }
 @include media-query("mobile", "576px") {
-  .fix_btn {
-    display: block;
-
-    .dropdown-menu {
-      display: none;
-    }
-  }
-
   .copyR {
     margin-bottom: 0;
   }
