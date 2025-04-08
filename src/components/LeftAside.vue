@@ -2,7 +2,7 @@
  const today = new Date();
 
  //熱門活動區
- let mainName = (today >= new Date('2025/03/24')) ? '25spring_part3' : '25spring2',
+ let mainName = (today >= new Date('2025/04/11')) ? '202504vip' : '25spring_part3',
   mainUrl = `https://events.tk3c.com/events_net/${mainName}/index.html`,
    location = window.location.pathname.split('/'),
   folderName = (location[2] == 'events_net') ? location[3] : location[2],
@@ -12,9 +12,11 @@
 
   let events = [
     {"name":"回主會場","url": mainUrl},
+    {"name":"燦坤服務","class":"title"},
     {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html","class":"bank"},
     {"name":"銀行優惠","url":"https://events.tk3c.com/events_net/events_net/banks/bank.html","class":'bank'},
     {"name":"環保集點","url":"https://events.tk3c.com/events_net/green_subsidy/index.html","class":'bank'},
+    {"name":"主題活動館","class":"title"},
     {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/icewash2209/index.html"},
     {"name":"空調主題館","url":"https://events.tk3c.com/events_net/airConditionerLAB/index.html"},
     {"name":"電視主題館","url":"https://events.tk3c.com/events_net/2020TVforever/index.html"},
@@ -24,23 +26,23 @@
 
   switch (folderName) {
     case 'icewash2209':
-      num = 4;
+      num = 6;
       break;
   
     case 'airConditionerLAB':
-      num = 5;
+      num = 7;
       break;
 
      case '2020TVforever':
-      num = 6;
+      num = 8;
       break;  
     
      case '2024083C':
-      num = 7;
+      num = 9;
       break; 
 
      case 'fan_hot':
-      num = 8;
+      num = 10;
       break; 
   } 
 
@@ -109,7 +111,8 @@
       <div class="aside-content">
         <ul>
           <li v-for="(event,e) in events" :key="e" :class="[e == 0 ? statusClass : event.class]">
-            <a :href="$filters.addGALink(event.url)">{{ event.name }}</a>
+            <a v-if="event.url" :href="$filters.addGALink(event.url)">{{ event.name }}</a>
+            <a v-else class="bg:#955038!  cursor:auto pointer-events:none">{{ event.name }}</a>
           </li>
         </ul>
       </div>

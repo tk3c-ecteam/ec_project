@@ -72,7 +72,7 @@
       </h2>
 
       <div class="content">
-        <Tabs :isSwiper="1" :tabs="saleTab" :statusSelect="1">
+        <Tabs :tabs="saleTab" :statusSelect="1">
           <template v-slot="{ selectedTab }">
             <TabContent :isSwiper="1" v-for="(sale, c) in saleTab" :menus="sale.id" :index="c"
               :selectedTab="selectedTab">
@@ -288,7 +288,10 @@ export default {
     this.fixedBg('.background2','.discount-box');
 
     if (today >= new Date('2025/04/11')) this.proTV.splice(1,1,this.proTV411[0]);
-
+    if (today >= new Date('2025/04/11') && today < new Date('2025/04/22')){
+      this.isDis = false;
+    }
+   
     //撈取 現折券樓層商品
     this.getFloorSingle(menuDis)
 

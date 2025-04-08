@@ -105,7 +105,7 @@
         </h2>
 
         <div v-if="tab[0].content != undefined">
-          <Tabs :isSwiper="1" :tabs="tab[0].content">
+          <Tabs :tabs="tab[0].content">
             <template v-slot="{ selectedTab }">
               <TabContent :isSwiper="1" v-for="(content, c) in tab[0].content" :menus="content.id" :index="c"
                 :selectedTab="selectedTab">
@@ -255,6 +255,8 @@ export default {
     } else {
       this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }
+
+    if (today >= new Date('2025/04/11') && today < new Date('2025/04/22')) this.isSale = false;
 
     //撈取現折券樓層商品
     this.getFloorSingle(this.menuDis)

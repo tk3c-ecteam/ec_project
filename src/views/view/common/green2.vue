@@ -355,7 +355,7 @@ export default {
     <!-- 其他樓層 -->
     <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
   </div>
-
+  
   <!-- 右側選單+手機版 -->
   <RightAside :asides="asides" :type="'mobile'"></RightAside>
 </template>

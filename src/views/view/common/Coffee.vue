@@ -101,7 +101,7 @@ body {
     display: block;
     width: 100%;
     height: 100%;
-    $image: $dir2 + "kv02.jpg";
+    $image: $dir2 + "kv03.jpg";
     background: url($image) no-repeat center;
     background-size: 100% auto;
     background-position: 0 45px, top;

@@ -124,7 +124,7 @@
         </a>
       </h2>
 
-       <Tabs :isSwiper="1" :swiperOption="swiperOption.breakpoints" :tabs="brands" :textOrImage="'text'">
+       <Tabs :swiperOption="swiperOption.breakpoints" :tabs="brands" :textOrImage="'text'">
         <template v-slot="{ selectedTab }">
           <TabContent :isSwiper="1" v-for="(brand, b) in brands" :menus="brand.id" :banners="brand.banner" :index="b" :selectedTab="selectedTab">
 
@@ -713,6 +713,8 @@ export default {
       this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }
 
+    if(today >= new Date('2025/04/11') && today < new Date('2025/04/22')) this.isDis = false;
+
     //撈取 現折券樓層商品
     this.getFloorSingle(this.menuDis)
 
@@ -1039,11 +1041,8 @@ body {
     padding-top: 2%;
     box-sizing: border-box;
     margin-bottom: 0;
-    li {
-      filter: brightness(0.8);
-      &.active {
-        filter: brightness(1);
-      }
+    .swiper-wrapper {
+      justify-content: center;
     }
   }
 
@@ -1180,8 +1179,11 @@ body {
 
   .product-box {
     .tab {
-      li {
-        flex-basis: 22%;
+      .swiper-wrapper {
+        justify-content: left;
+      }
+      .swiper-slide {
+        flex-basis: 30%;
       }
     }
   }
@@ -1287,9 +1289,9 @@ body {
 
   .product-box {
     .tab {
-      li {
-        flex-basis: 45%;
-      }
+     .swiper-slide {
+      flex-basis: fit-content;
+     }
     }
   }
 }

@@ -161,7 +161,7 @@
           </h2>
 
           <div v-if="t1[0].content != undefined" class="rel">
-            <Tabs :isSwiper="1" :tabs="t1[0].content" :singleUrl="t1[0].url">
+            <Tabs :tabs="t1[0].content" :singleUrl="t1[0].url">
               <template v-slot="{ selectedTab }">
                 <TabContent v-for="(content, c) in t1[0].content" :type="content.type" :menus="content.id" :name="`p${c + 1}`" :index="c"
                   :selectedTab="selectedTab">
@@ -192,7 +192,7 @@
 
           <!-- 商品區 -->
           <div v-if="t2[0].content != undefined">
-             <Tabs :isSwiper="1" :tabs="t2[0].content" :singleUrl="t2[0].url">
+             <Tabs :tabs="t2[0].content" :singleUrl="t2[0].url">
               <template v-slot="{ selectedTab }">
                 <TabContent v-for="(content, c) in t2[0].content" :menus="content.id" :name="`p${c + 1}`" :index="c"
                   :selectedTab="selectedTab">
@@ -223,7 +223,6 @@
 <script>
 import listM from '@/views/layout/listM.vue'
 import { EffectFlip } from 'swiper/modules'
-import ProductTop from '../../layout/ProductTop.vue'
 export default {
   data() {
     return {
@@ -561,6 +560,7 @@ export default {
     let {today,tab1,tab2 } = this
 
     if (today >= new Date('2025/04/11')) this.isBank = false;
+    if (today >= new Date('2025/04/10') && today < new Date('2025/04/22')) this.isOff = false;
 
     //3/24更新現折券
     if(today >= new Date('2025/03/24')) {
