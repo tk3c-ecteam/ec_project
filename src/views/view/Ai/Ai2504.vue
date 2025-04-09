@@ -43,7 +43,7 @@
      </section>
 
     <!--  指南 -->
-    <section class="gift-box">
+    <section class="gift-box scroll" titles="幣殺指南" id="gift">
       <h2 class="title">
         <img :src="$filters.siteUrl('2024083C/images/2504/s1.png')" />
       </h2>
@@ -120,7 +120,7 @@
     </section>
 
     <!-- 銀行優惠 -->
-     <section class="bank-group" v-if="isBank">
+     <section class="bank-group scroll" titles="銀行優惠" id="bank" v-if="isBank">
       <h2 class="title">
        <img :src="$filters.siteUrl('2024083C/images/2504/bank_title.png')" />
       </h2>
@@ -152,7 +152,7 @@
           <ListF :pro="product2[7668]" :isSwiper="1" :name="'pro'"></ListF>
         </section>
 
-        <section class="pro-group scroll" v-for="(t1, t) in tab1[0]" :class="`tab${Number(t) + 1}-box`"
+        <section class="pro-group" v-for="(t1, t) in tab1[0]" :class="`tab${Number(t) + 1}-box`"
           :id="`tab${Number(t) + 1}`">
           <h2 class="title single-url">
             <a :href="$filters.addGALink(t1[0].url)" target="_blank">
@@ -179,7 +179,7 @@
 
       <!-- 週邊樓層區 -->
       <div v-show="statusGift == 1" class="product-area pro2">
-        <section class="pro-group scroll" v-for="(t2, t) in tab2[0]" :class="`tab${Number(t) + 8}-box`"
+        <section class="pro-group" v-for="(t2, t) in tab2[0]" :class="`tab${Number(t) + 8}-box`"
           :id="`tab${Number(t) + 8}`">
           <h2 class="title">
             <a v-if="t2[0].content != undefined" :href="$filters.addGALink(t2[0].content[0].url)" target="_blank">
@@ -214,15 +214,15 @@
   </div>
 
    <!-- 左側選單 -->
-   <LeftAside :type="'mobileAi'" :tab1="tab1" :tab2="tab2" :statusGift="statusGift"></LeftAside>
-
+   <LeftAside :asides="asides"></LeftAside>
    <!-- 右側選單 -->
-    <RightAside :tab1="tab1" :tab2="tab2" :statusGift="statusGift"></RightAside>
+   <RightAside :asides="asides"></RightAside> 
 </template>
 
 <script>
 import listM from '@/views/layout/listM.vue'
 import { EffectFlip } from 'swiper/modules'
+import RightAside from '../../../components/RightAside.vue'
 export default {
   data() {
     return {
