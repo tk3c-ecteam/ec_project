@@ -7,26 +7,10 @@
    /*手機版選單類型
    * type == 'mobile' -> 置底選單
    * type == 'mobile2' -> 置頂選單
-   * type == 'mobileAi' -> 3c頁用
    */
    const type = defineModel('type', {
    type: String
   });
-
-  /* 3c頁專用 start */
-  const tab1 = defineModel('tab1', {
-    type: Object
-  });
-
-  const tab2 = defineModel('tab2', {
-    type: Object
-  });
-
-   const statusGift = defineModel('statusGift', {
-    type: Number
-  });
-
-  /* 3c頁專用 end */
 
   //右側選單圖片
   const asideImage = defineModel('asideImage',{
@@ -35,11 +19,14 @@
 </script>
 
 <script>
- //右側選單 1520 以下裝置不展開
   export default {
     mounted() {
+      //右側選單 1520 以下裝置不展開
       this.smallDeviceRight();
       window.addEventListener('resize',this.smallDeviceRight);
+      //左右側選單顯示隱藏
+      window.addEventListener('scroll',this.showAside);
+      //手機版上方選單項目滾動
       window.addEventListener('scroll',this.scrollToPos);
     },
     unmounted() {
@@ -50,38 +37,23 @@
 
 <template>
   <!-- 右側選單 -->
-  <aside class="aside-container" :class="{'close-right':isRightAside}">
+  <aside class="aside-container" v-show="isAsideTop" :class="{'close-right':isRightAside}">
     <span class="collaspe" @click="switchRightAside">
       <i v-if="!isRightAside" class="fas fa-chevron-right"></i>
       <i v-else class="fas fa-chevron-left"></i>
     </span>
     
     <div class="aside-wrap">
+      <!-- 上方圖片 -->
       <h3 class="aside-header">
        <img v-if="asideImage != undefined" :src="$filters.siteUrl(asideImage)">
       </h3>
       <!-- 一般右側選單樓層項目 -->
       <div class="aside-content" v-if="asides">
         <ul>
-          <li v-for="(aside, a) in asides" :key="a">
+          <li v-for="(aside, a) in asides" :key="a" :class="{'stay': isMobileTopStatus == a}">
             <a :href="aside.href">{{ aside.text }}</a>
           </li>
-        </ul>
-      </div>
-
-      <!-- 3c頁樓層項目專屬 -->
-      <div class="aside-content" v-else>
-        <ul class="a1" v-show="statusGift == 0">
-          <li v-for="(t1,t) in tab1[0]" :key="t">
-            <a :href="t1[0].href">{{ t1[0].text }}</a>
-          </li>
-          <li><a href="#event">熱門活動 </a></li>
-        </ul>
-        <ul class="a2" v-show="statusGift == 1">
-          <li v-for="(t2,t) in tab2[0]" :key="t">
-            <a :href="t2[0].href">{{ t2[0].text }}</a>
-          </li>
-          <li><a href="#event">熱門活動 </a></li>
         </ul>
       </div>
       

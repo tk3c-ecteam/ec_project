@@ -61,23 +61,8 @@
     type: Object
   });
 
-  /* 3C頁用類別 START */ 
-  const tab1 = defineModel('tab1', {
-    type: Object
-  });
-
-  const tab2 = defineModel('tab2', {
-    type: Object
-  });
-
-   const statusGift = defineModel('statusGift', {
-    type: Number
-  });
-  /*3C頁用類別 END */
-
   /*手機版類型
   * 預設: mobile3 
-    type == 'mobileAi' 啟動3c用手機版選單
   */
   const type = defineModel('type', {
     type: String,
@@ -86,12 +71,15 @@
 </script>
 
 <script>
- //左側選單 1520 以下裝置不展開
   export default {
     mounted() {
+      //左側選單 1520 以下裝置不展開
       this.smallDeviceLeft();
       window.addEventListener('resize',this.smallDeviceLeft);
+      //手機版上方選單項目滾動
       window.addEventListener('scroll',this.scrollToPos);
+      //左右側選單顯示隱藏
+      window.addEventListener('scroll',this.showAside);
     },
     unmounted() {
       window.removeEventListener('resize',this.smallDeviceLeft);
@@ -101,7 +89,7 @@
 
 <template>
    <!-- 左側選單 -->
-  <aside class="aside-container left" :class="{'close-left': isLeftAside}">
+  <aside class="aside-container left" v-show="isAsideTop" :class="{'close-left': isLeftAside}">
     <span class="collaspe" @click="switchLeftAside">
       <i v-if="!isLeftAside" class="fas fa-chevron-left"></i>
       <i v-else class="fas fa-chevron-right"></i>
@@ -140,32 +128,4 @@
       </ul>
     </template>
   </mobile3>
-
-  <!-- 3c頁手機版選單 -->
-   <mobileAi v-if="type == 'mobileAi'">
-       <!-- 熱門活動 -->
-    <template #events>
-       <ul>
-        <li v-for="(event,e) in events" :key="e" :class="[event.class ? event.class : '']">
-              <a :href="$filters.addGALink(event.url)">{{ event.name }}</a>
-            </li>
-        </ul>
-    </template>
-
-     <!-- 上方快速選單 -->
-    <template #typeAside>
-       <ul class="a1" v-if="statusGift == 0">
-          <li v-for="(t1,t) in tab1[0]" :key="t">
-            <a :href="t1[0].href">{{ t1[0].text }}</a>
-          </li>
-          <li><a href="#event">熱門活動 </a></li>
-        </ul>
-        <ul class="a2" v-if="statusGift == 1">
-          <li v-for="(t2,t) in tab2[0]" :key="t">
-            <a :href="t2[0].href">{{ t2[0].text }}</a>
-          </li>
-          <li><a href="#event">熱門活動 </a></li>
-        </ul>
-    </template>
-   </mobileAi>
 </template>
