@@ -15,6 +15,7 @@ export const globalMixin = {
       mobileStatus: '',//手機版置底選單用(status:'event','social')
       mobileBg: 'none',//手機版選單背景遮罩
       isGoTop: false,//手機版回到上層按鈕
+      isAsideTop: false,//左右側選單顯示隱藏
       isMobileOpen: false,//手機版上方選單切換狀態
       isMobileTopStatus: '', //手機版上方選單目前項目
       jimmyId: [], //商品樓層id
@@ -305,6 +306,10 @@ export const globalMixin = {
     showMobileTop() {
       (window.scrollY >= 100) ? this.isGoTop = true : this.isGoTop = false;
     },
+    //左右側選單滾動顯示
+    showAside() {
+      (window.scrollY >= 800) ? this.isAsideTop = true : this.isAsideTop = false;
+    },
     //移除手機版上方選單 .open 與改變icon符號
     changeNav() {
       this.isMobileOpen = false;
@@ -318,15 +323,6 @@ export const globalMixin = {
     //點擊切換手機版上方按鈕
     switchMobile() {
       this.isMobileOpen = !this.isMobileOpen;
-    },
-    //顯示左右側選單
-    showAside() {
-      let firstSection = document.querySelectorAll('section')[0],
-        firstSectionPos = firstSection.getBoundingClientRect().top
-      if (firstSection) {
-        (window.scrollY >= firstSectionPos) ? this.isLeftAside = true : this.isLeftAside = false;
-        (window.scrollY >= firstSectionPos) ? this.isRightAside = true : this.isRightAside = false;
-      }
     },
     //切換左側選單顯示按鈕
     switchLeftAside() {
