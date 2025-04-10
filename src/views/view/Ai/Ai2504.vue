@@ -5,7 +5,6 @@
         <img :src="$filters.siteUrl('2024083C/images/2504/title3.png')" />
         <div class="subtitle">
           <swiper
-          :loop="true"
           :effect="'flip'"
           :flipEffect="{
             limitRotation:180
@@ -19,7 +18,7 @@
           <swiper-slide>
             <img :src="$filters.siteUrl('2024083C/images/2504/st1.png')" />
           </swiper-slide>
-           <swiper-slide>
+           <swiper-slide v-if="isOff">
             <img :src="$filters.siteUrl('2024083C/images/2504/st2.png')" />
           </swiper-slide>
           </swiper>
@@ -64,8 +63,8 @@
         <img class="hidden@<576 abs w:90% w:full@<992 h:auto left:0 right:0 m:auto top:0 z:-1"
           :src="$filters.siteUrl('2024083C/images/2504/sp_bg.png')" />
         <ul class="gap:10 pt:2% pt:3%@<992 box:border-box">
-          <li class="w:62% w:71.5%@<992 w:full@<576" :class="[!isOff ? 'off' : '']">
-            <a class="mb:1%" @click="goNB('#sale')" target="_blank">
+          <li class="w:62% w:71.5%@<992 w:full@<576">
+            <a class="mb:1%" @click="goNB('#sale')" target="_blank" :class="[!isOff ? 'off' : '']">
               <img :src="$filters.siteUrl('2024083C/images/2504/sp01-1.png')" />
             </a>
             <div class="flex flex-direction:row gap:10 mb:1%">
@@ -560,7 +559,7 @@ export default {
     let {today,tab1,tab2 } = this
 
     if (today >= new Date('2025/04/11')) this.isBank = false;
-    if (today >= new Date('2025/04/10') && today < new Date('2025/04/22')) this.isOff = false;
+    if (today >= new Date('2025/04/11') && today < new Date('2025/04/22')) this.isOff = false;
 
     //3/24更新現折券
     if(today >= new Date('2025/03/24')) {

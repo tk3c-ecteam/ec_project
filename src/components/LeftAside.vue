@@ -2,7 +2,7 @@
  const today = new Date();
 
  //熱門活動區
- let mainName = (today >= new Date('2025/04/11')) ? '202504vip' : '25spring_part3',
+ let mainName = (today >= new Date('2025/04/10')) ? '202504vip' : '25spring_part3',
   mainUrl = `https://events.tk3c.com/events_net/${mainName}/index.html`,
    location = window.location.pathname.split('/'),
   folderName = (location[2] == 'events_net') ? location[3] : location[2],
@@ -108,7 +108,7 @@
     </div>
   </aside>
 
-   <!-- 手機版選單 -->
+   <!-- 手機版選單 置頂 -->
   <mobile3 v-if="type == 'mobile3'">
     <!-- 熱門活動 -->
     <template #events>
@@ -121,7 +121,7 @@
 
     <!-- 上方快速選單 -->
     <template #topAsides>
-     <ul>
+     <ul v-if="asides">
        <li v-for="(aside,a) in asides" :key="a" :class="{'active':isMobileTopStatus == a}">
           <a :href="aside.href">{{ aside.text }}</a>
        </li>

@@ -48,7 +48,7 @@
     </section>
 
     <!-- 回饋必殺技 -->
-    <section class="gift-box scroll" titles="回饋必殺技" id="gift">
+    <section class="gift-box scroll" titles="回饋必殺技" v-if="isGift" id="gift">
       <h2 class="title">
         <img :src="$filters.siteUrl('windows10upgrade/images/bar_sp.png')" />
       </h2>
@@ -191,11 +191,12 @@ export default {
         }
       ],
       today:new Date(),
-      menu:[7859,7860,7861,7862]
+      menu:[7859,7860,7861,7862],
+      isGift:false
     }
   },
   mounted() {
-    this.fixedBg('.background2','.gift-box');
+    this.fixedBg('.background2','.special-box');
   },
 }
 </script>

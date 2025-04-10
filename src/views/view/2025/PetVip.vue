@@ -20,12 +20,13 @@
     <section class="pet-group">
       <h2 class="title">
         <img :src="$filters.siteUrl('pet_product/images/vip/s1.png')" />
+        <a class="abs w:10vmax w:10rem@<992 w:8rem@<576 left:0 right:0 bottom:-23% bottom:-4vw@<992 bottom:-2rem@<576 m:auto bg:#518f45 f:1.5em f:1.2em@<576 lh:1.5em lh:1em@<576 p:5px p:8px@<576 r:20px abs:hover color:#fff:hover box:border-box color:#fff animation:shake|1.4s|linear @iteration-count:infinite" :href="$filters.addGALink('https://events.tk3c.com/events_net/tkpet/index.html')" target="_blank">我要開卡</a>
       </h2>
 
-      <p class="w:75% w:90%@<992 w:full@<576 m:0|auto|2%">
+      <p class="w:65% w:80%@<992 w:full@<576 m:5%|auto|2% m:15%|auto|2%@<576">
         <img :src="$filters.siteUrl('pet_product/images/vip/s1-1.png')" />
       </p>
-      <p class="rel w:75% w:90%@<992 w:full@<576 m:auto">
+      <p class="rel w:65% w:80%@<992 w:full@<576 m:auto">
         <img class="abs w:full left:0 right:0 m:auto top:0 z:-1" :src="$filters.siteUrl('pet_product/images/vip/s1-2.png')" />
         <ul class="gap:10">
           <li v-for="(i,index) in 4" :key="index" class="w:48% h:11vmax h:11rem@<1700 h:21vw@<992 h:20vw@<576 h:8vmax@>2500">
@@ -83,7 +84,8 @@ export default {
   methods: {
     alert(id) {
       //彈出視窗
-      let image = "";
+      let image = "",
+      imagePath = "";
       switch (id) {
         case 1:
           image = "pet_product/images/vip/a1.png"
@@ -101,10 +103,12 @@ export default {
           image = "pet_product/images/vip/a4.png"
           break;  
       }
+
+     imagePath = this.$filters.siteUrl(image);
       
-     setTimeout(() => {
-       Swal.fire({
-        html:`<img src="${this.$filters.siteUrl(image)}" width="50%" height="20%">`,
+      Swal.fire({
+        imageUrl:imagePath,
+        imageWidth:'80%',
         confirmButtonText: '關閉',
         position: 'center',
         showCloseButton: true,
@@ -112,7 +116,6 @@ export default {
         padding:0,
         returnFocus: true
       })
-     }, 0);
     }
   },
 }
