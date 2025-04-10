@@ -110,3 +110,30 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+  .tab {
+    .swiper-wrapper {
+      justify-content: center;
+    }
+  }
+
+  @include media-query("mobile", "992px") {
+   .tab {
+    .swiper-wrapper {
+      justify-content: left;
+    }
+    .swiper-slide {
+      flex-basis: 32%;
+    }
+   }
+  }
+
+  @include media-query("mobile", "576px") {
+    .tab {
+      .swiper-slide {
+        flex-basis: 42%;
+      }
+    }
+  }
+</style>
