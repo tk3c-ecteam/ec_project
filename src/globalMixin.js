@@ -16,6 +16,7 @@ export const globalMixin = {
       mobileBg: 'none',//手機版選單背景遮罩
       isGoTop: false,//手機版回到上層按鈕
       isAsideTop: false,//左右側選單顯示隱藏
+      asidesStatus: '',//右側選單目前項目
       isMobileOpen: false,//手機版上方選單切換狀態
       isMobileTopStatus: '', //手機版上方選單目前項目
       jimmyId: [], //商品樓層id
@@ -252,12 +253,26 @@ export const globalMixin = {
       if (document.querySelectorAll('.mobile-for-product .top-nav').length > 0) {
         let topNav = document.querySelector('.mobile-for-product .top-nav');
         topNav.scrollTo({ left: 0 });
-        this.isMobileTopStatus = '';
       }
+      this.isMobileTopStatus = '';
+      this.asidesStatus = '';
       window.scrollTo(0, 0);
       this.mobileBg = 'none';
     },
-    //滾動到指定位置
+    //滾動到指定位置(右側選單)
+    scrollAsidePos() {
+      document.querySelectorAll('section.scroll').forEach((el, i) => {
+        let scrollTop = window.scrollY,
+          top = el.getBoundingClientRect().top + scrollTop - 120,
+          bottom = top + window.innerHeight;
+        /* 目前滑鼠滾動位置滾到每個樓層區，所屬項目加上 .active 標記,
+        */
+        if (scrollTop > top && scrollTop < bottom) {
+          this.asidesStatus = i;
+        }
+      });
+    },
+    //滾動到指定位置(手機版)
     scrollToPos() {
       if (document.querySelectorAll('.mobile-for-product .top-nav').length <= 0) return;
       document.querySelectorAll('section.scroll').forEach((el, i) => {

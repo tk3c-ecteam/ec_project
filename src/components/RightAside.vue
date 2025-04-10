@@ -28,6 +28,8 @@
       window.addEventListener('scroll',this.showAside);
       //手機版上方選單項目滾動
       window.addEventListener('scroll',this.scrollToPos);
+      //右側選單項目滾動
+       window.addEventListener('scroll',this.scrollAsidePos);
     },
     unmounted() {
       window.removeEventListener('resize',this.smallDeviceRight);
@@ -49,9 +51,9 @@
        <img v-if="asideImage != undefined" :src="$filters.siteUrl(asideImage)">
       </h3>
       <!-- 一般右側選單樓層項目 -->
-      <div class="aside-content" v-if="asides">
+      <div class="aside-content">
         <ul>
-          <li v-for="(aside, a) in asides" :key="a" :class="{'stay': isMobileTopStatus == a}">
+          <li v-for="(aside, a) in asides" :key="a" :class="{'stay': asidesStatus == a}">
             <a :href="aside.href">{{ aside.text }}</a>
           </li>
         </ul>
