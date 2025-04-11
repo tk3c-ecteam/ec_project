@@ -51,7 +51,31 @@ export default {
       menuFloor: [6566, 6567, 6568, 6569],
       status: 0,
       statusTab: 1,
-      moreImage: '24spring_clean/images/2504/more.png'
+      moreImage: '24spring_clean/images/2504/more.png',
+      swiperOption:{
+        breakpoints:{
+           0:{
+            slidesPerView:2.2,
+            grid:{
+              fill:'colmn',
+              rows:1
+            }
+          },
+          600:{
+            slidesPerView:2,
+            grid:{
+              fill:'colmn',
+              rows:2
+            }
+          },
+          992:{
+            grid:{
+              fill:'colmn',
+              rows:2
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -63,7 +87,7 @@ export default {
 
     <!-- 品牌商品 -->
     <section class="tab-box">
-       <Tabs :tabs="tabs">
+       <Tabs :tabs="tabs" :swiperOption="swiperOption.breakpoints">
         <template v-slot="{ selectedTab }">
           <TabContent :isSwiper="1" :moreImage="moreImage" v-for="(tab, t) in tabs" :moreUrl="tab.moreUrl" :menus="tab.id" :index="t" :selectedTab="selectedTab">
 
@@ -137,24 +161,6 @@ section {
 .tab-box {
   .tab {
     margin-bottom: 0 !important;
-    li {
-      flex-basis: 45%;
-      &:first-of-type {
-        flex-basis: 36%;
-      }
-      &:nth-of-type(2) {
-        flex-basis: 50%;
-      }
-      &:nth-of-type(3) {
-        flex-basis: 26%;
-      }
-      &:nth-of-type(4) {
-        flex-basis: 29%;
-      }
-      &:last-of-type {
-        flex-basis: 30%;
-      }
-    }
   }
   .more {
     margin: 0 auto 0;
@@ -195,6 +201,14 @@ section {
       padding-bottom: 52vw;
     }
   }
+
+  .tab-box {
+    .tab {
+      .swiper-slide {
+        flex-basis: fit-content;
+      }
+    }
+  }
 }
 
 /* 手機版 */
@@ -214,22 +228,8 @@ section {
 
   .tab-box {
     .tab {
-      li {
-        &:first-of-type {
-          flex-basis: 40%;
-        }
-        &:nth-of-type(2) {
-          flex-basis: 55%;
-        }
-        &:nth-of-type(3) {
-          flex-basis: 28%;
-        }
-        &:nth-of-type(4) {
-          flex-basis: 31%;
-        }
-        &:last-of-type {
-          flex-basis: 33%;
-        }
+      .swiper-slide {
+        flex-basis: 17%;
       }
     }
   }

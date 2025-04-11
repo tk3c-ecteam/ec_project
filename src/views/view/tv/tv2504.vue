@@ -399,15 +399,16 @@ body {
     }
   }
   .tab {
+    margin-bottom: 0;
     .swiper-wrapper {
       justify-content: center;
+      align-items: center;
     }
     .swiper-slide {
       flex-basis: 16%;
       &:last-child {
         img {
           transform: scale(0.65);
-          margin-top: -8%;
           margin-left: -14%;
         }
       }

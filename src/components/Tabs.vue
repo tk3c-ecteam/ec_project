@@ -115,6 +115,7 @@ export default {
   .tab {
     .swiper-wrapper {
       justify-content: center;
+      align-items: baseline;
     }
   }
 

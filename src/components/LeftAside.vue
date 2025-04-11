@@ -121,7 +121,7 @@
 
     <!-- 上方快速選單 -->
     <template #topAsides>
-     <ul v-if="asides">
+      <ul v-if="asides">
        <li v-for="(aside,a) in asides" :key="a" :class="{'active':isMobileTopStatus == a}">
           <a :href="aside.href">{{ aside.text }}</a>
        </li>

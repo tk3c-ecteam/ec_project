@@ -160,7 +160,7 @@ export const globalMixin = {
      *  scrollSelect:滾動後區域
      */
     fixedBg(element, scrollSelect) {
-      if ($all(element).length > 0) {
+      if (document.querySelectorAll(element).length > 0) {
         document.addEventListener('scroll', (e) => {
           let scrollTop = window.scrollY,
             scrollEl = document.querySelector(scrollSelect),
