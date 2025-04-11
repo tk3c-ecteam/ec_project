@@ -54,6 +54,10 @@ export default {
       singleImage:'pet_product/images/s1.png',
       floors:[
         {
+           text:"寵物卡專屬價",
+           isSwiper:1
+        },
+        {
           text:'餵食/飲水',
         },
          {
@@ -78,7 +82,7 @@ export default {
           type:listM
         },
       ],
-      menu:[7913,7914,7915,7916,7917,7918,7919]
+      menu:[7959,7913,7914,7915,7916,7917,7918,7919]
     }
   },
   methods: {
@@ -106,9 +110,8 @@ export default {
 
      imagePath = this.$filters.siteUrl(image);
       
-      Swal.fire({
-        imageUrl:imagePath,
-        imageWidth:'80%',
+     Swal.fire({
+        html:`<pichture><img class="w:60% w:80%@<992 w:90%@<576 m:auto" src="${imagePath}" loading="lazy"></pichture>`,  
         confirmButtonText: '關閉',
         position: 'center',
         showCloseButton: true,
