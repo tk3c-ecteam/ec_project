@@ -77,7 +77,7 @@
           <img :src="$filters.siteUrl('icewash2209/images/2504/sub1.png')" loading="lazy" />
         </li>
         <li class="flex flex-direction:column w:40% w:44%@<992 w:95%@<576">
-          <a class="mb:2%" @click="message(1)">
+          <a class="mb:2%" @click="alert">
             <img :src="$filters.siteUrl('icewash2209/images/2504/sub2.png')" />
           </a>
           <a class="mb:2%" :href="$filters.addGALink('https://save3000.moeaea.gov.tw/subsidy02/index/index.aspx')"
@@ -92,6 +92,12 @@
           </a>
         </li>
       </ul>
+
+      <!-- 彈出視窗 -->
+       <AlertBox ref="alert" :type="'image'">
+          <img src="https://www.cdn-tkec.tw/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg">
+          <img src="https://www.cdn-tkec.tw/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg">
+       </AlertBox>
     </section>
 
     <!-- 商品樓層 -->
@@ -299,13 +305,15 @@ export default {
         confirmButtonText: '確定',
         confirmButtonColor: '#46a5b0'
       })
+    },
+    alert() {
+      this.$refs.alert.openAlert();
     }
   }
 }
 </script>
 
 <style lang="scss">
-@charset "utf-8";
 $dir: 'https://events.cdn-tkec.tw/events_net/events_net/icewash2209/images/2504/';
 $origin: 'https://events.tk3c.com/events_net/events_net/icewash2209/images/2504/';
 
@@ -375,6 +383,14 @@ section {
   }
 }
 
+.alert-box {
+  .img-content {
+    height: 70%;
+    overflow: auto;
+    padding: 0;
+  }
+}
+
 /*  電腦版其他尺寸 */
 @include media-query('mobile', '992px') {
   #icewash-container {
@@ -402,6 +418,12 @@ section {
   section {
     .title {
       width: 70%;
+    }
+  }
+
+  .alert-box {
+    .img-content {
+      width: 50%;
     }
   }
 }
@@ -452,6 +474,12 @@ section {
       .swiper-wrapper {
         justify-content: left;
       }
+    }
+  }
+
+  .alert-box {
+    .img-content {
+      width: 90%;
     }
   }
 }

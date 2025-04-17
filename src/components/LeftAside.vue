@@ -72,18 +72,56 @@
 
 <script>
   export default {
+    data() {
+      return {
+        swiper:null,
+        status:null,
+        itemNum:0
+      }
+    },
     mounted() {
       //左側選單 1520 以下裝置不展開
       this.smallDeviceLeft();
       window.addEventListener('resize',this.smallDeviceLeft);
-      //手機版上方選單項目滾動
-      window.addEventListener('scroll',this.scrollToPos);
       //左右側選單顯示隱藏
       window.addEventListener('scroll',this.showAside);
+      window.addEventListener('scroll',this.scrollPos);
     },
     unmounted() {
       window.removeEventListener('resize',this.smallDeviceLeft);
+      window.removeEventListener('scroll',this.scrollPos);
+    },
+    methods: {
+      scrollPos() {
+        //先取得第一個區域px位置
+        if (document.querySelectorAll('section.scroll').length <= 0) return false;
+       let firstArea =  document.querySelectorAll('section.scroll')[0].getBoundingClientRect().top;
+      document.querySelectorAll('section.scroll').forEach((el, i) => {
+        this.itemNum = 'auto';
+        let scrollTop = window.scrollY,
+          top = el.getBoundingClientRect().top + scrollTop - 150,
+          bottom = top + window.innerHeight;
+        /* 目前滑鼠滾動位置滾到每個樓層區，所屬項目加上 .active 標記,
+        */
+        if (scrollTop > top && scrollTop < bottom) {
+          this.status = i;
+          this.goSlide(this.status);
+        }
+
+        //在第一區域上面的 樓層標題項目歸0
+        if (scrollTop < firstArea) {
+          this.status = null;
+          this.goSlide(0);
+        }
+      });
+    },
+    onSwiper(swiper) {
+      this.swiper = swiper
+    },
+    goSlide(id) {
+      this.swiper.slideTo(id); 
     }
+    },
   }
 </script>
 
@@ -121,11 +159,39 @@
 
     <!-- 上方快速選單 -->
     <template #topAsides>
-      <ul v-if="asides">
-       <li v-for="(aside,a) in asides" :key="a" :class="{'active':isMobileTopStatus == a}">
+      <swiper
+      :loop="false"
+      :spaceBetween="10"
+      :slidesPerView="itemNum"
+      @swiper="onSwiper"
+      >
+      <swiper-slide v-for="(aside,a) in asides" :key="a" :class="{'active': status == a}" class="color:#ffe400.active width:fit-content!">
+         <a :href="aside.href">{{ aside.text }}</a>
+      </swiper-slide>
+      </swiper>
+    </template>
+    <template #mobileList>
+       <ul class="grid-cols:2">
+        <li v-for="(aside,a) in asides" :key="a" :class="{'active': status == a}">
           <a :href="aside.href">{{ aside.text }}</a>
-       </li>
+        </li>
       </ul>
     </template>
   </mobile3>
 </template>
+
+<style lang="scss">
+  .mobile-for-product{
+    &.open {
+      ul {
+        li {
+          width: auto;
+          margin: 0 3px 5%;
+        }
+      }
+    }
+    .switch {
+      top: 0;
+    }
+  }
+</style>

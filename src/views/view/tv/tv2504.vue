@@ -285,7 +285,7 @@ export default {
   mounted() {
     const { menuDis, today } = this
 
-    this.fixedBg('.background2','.discount-box');
+    this.fixedBg('.background2','.gift-box');
 
     if (today >= new Date('2025/04/11')) this.proTV.splice(1,1,this.proTV411[0]);
     if (today >= new Date('2025/04/11') && today < new Date('2025/04/22')){

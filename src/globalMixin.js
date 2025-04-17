@@ -16,9 +16,7 @@ export const globalMixin = {
       mobileBg: 'none',//手機版選單背景遮罩
       isGoTop: false,//手機版回到上層按鈕
       isAsideTop: false,//左右側選單顯示隱藏
-      asidesStatus: '',//右側選單目前項目
       isMobileOpen: false,//手機版上方選單切換狀態
-      isMobileTopStatus: '', //手機版上方選單目前項目
       jimmyId: [], //商品樓層id
       jimmyText: [], //樓層文字 
     }
@@ -249,60 +247,8 @@ export const globalMixin = {
     },
     //回到最上層
     goTop() {
-      //將手機板選單卷軸歸0
-      if (document.querySelectorAll('.mobile-for-product .top-nav').length > 0) {
-        let topNav = document.querySelector('.mobile-for-product .top-nav');
-        topNav.scrollTo({ left: 0 });
-      }
-      this.isMobileTopStatus = '';
-      this.asidesStatus = '';
       window.scrollTo(0, 0);
       this.mobileBg = 'none';
-    },
-    //滾動到指定位置(右側選單)
-    scrollAsidePos() {
-      document.querySelectorAll('section.scroll').forEach((el, i) => {
-        let scrollTop = window.scrollY,
-          top = el.getBoundingClientRect().top + scrollTop - 120,
-          bottom = top + window.innerHeight;
-        /* 目前滑鼠滾動位置滾到每個樓層區，所屬項目加上 .active 標記,
-        */
-        if (scrollTop > top && scrollTop < bottom) {
-          this.asidesStatus = i;
-        }
-      });
-    },
-    //滾動到指定位置(手機版)
-    scrollToPos() {
-      if (document.querySelectorAll('.mobile-for-product .top-nav').length <= 0) return;
-      document.querySelectorAll('section.scroll').forEach((el, i) => {
-        let scrollTop = window.scrollY,
-          topNav = document.querySelector('.mobile-for-product .top-nav'),
-          topNavLi = document.querySelectorAll('.mobile-for-product .top-nav li'),
-          top = el.getBoundingClientRect().top + scrollTop - 120,
-          bottom = top + window.innerHeight,
-          left = topNav.scrollLeft,
-          num = topNavLi.length;
-        /* 目前滑鼠滾動位置滾到每個樓層區，所屬項目加上 .active 標記,
-        */
-
-        if (scrollTop > top && scrollTop < bottom) {
-          this.isMobileTopStatus = i;
-          //跑到一半的項目卷軸往右移動
-          if (i >= num / 3 && i < num) {
-            topNav.scrollTo({
-              behavior: 'smooth',
-              left: left + 150
-            });
-          } else {
-            //滑鼠滾到底後卷軸往左移動
-            topNav.scrollTo({
-              behavior: 'smooth',
-              left: left - 150
-            });
-          }
-        }
-      });
     },
     //點擊切換置底選單      
     changeMobile(name) {
@@ -328,6 +274,7 @@ export const globalMixin = {
     //移除手機版上方選單 .open 與改變icon符號
     changeNav() {
       this.isMobileOpen = false;
+      document.body.style.overflow = 'auto';
     },
     //點擊切換置底選單      
     changeMobile(name) {
@@ -338,6 +285,7 @@ export const globalMixin = {
     //點擊切換手機版上方按鈕
     switchMobile() {
       this.isMobileOpen = !this.isMobileOpen;
+      this.isMobileOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
     },
     //切換左側選單顯示按鈕
     switchLeftAside() {

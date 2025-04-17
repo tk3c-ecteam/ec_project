@@ -208,6 +208,9 @@ export default {
             confirmButtonColor: '#000'
           })
         }, 5);
+      },
+      alert() {
+        this.$refs.alert.openAlert();
       }
   }
 }  
@@ -235,32 +238,6 @@ export default {
 
     <!-- 環保3C家電產品 週末12%回饋 -->
     <section class="new-box">
-      <!-- 3/1新增 -->
-      <div v-show="isOpen">
-        <p class="w:85% w:full@<992 m:0|auto|6%">
-          <img :src="$filters.siteUrl('green_subsidy/images/new/g5.png')" />
-        </p>
-
-        <h2 class="title">
-          <img :src="$filters.siteUrl('green_subsidy/images/new/bank31_title.png')" />
-        </h2>
-        <p class="w:85% w:full@<992 mb:2% m:auto">
-          <img :src="$filters.siteUrl('green_subsidy/images/new/bank31.png')" />
-        </p>
-        <div class="w:35% w:50%@<992 w:70%@<576 grid-cols:2 gap:10 m:0|auto|5%">
-          <a @click="message(2)"><img :src="$filters.siteUrl('green_subsidy/images/new/bank_btn1.png')" /></a>
-          <a @click="message(3)"><img :src="$filters.siteUrl('green_subsidy/images/new/bank_btn2.png')" /></a>
-        </div>
-        <p class="w:85% w:full@<992 m:0|auto|4%">
-          <img :src="$filters.siteUrl('green_subsidy/images/new/bank31_board.png')" />
-        </p>
-
-        <a :href="
-            $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
-          " class="w:42% w:45%@<992 w:90%@<576 m:0|auto|5%" target="_blank"><img
-            :src="$filters.siteUrl('green_subsidy/images/new/btn2.png')" /></a>
-      </div>
-
       <div v-show="isOff" class="w:full flex jc:center flex-wrap:wrap gap:10 m:0|0|5% m:0|0|10%@<576">
         <a href="#info" class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%"><img
             :src="$filters.siteUrl('green_subsidy/images/new/btn1_b.png')" /></a>
@@ -319,7 +296,7 @@ export default {
       <img class="sub-bg" :src="$filters.siteUrl('green_subsidy/images/sub_bg_2406.png')" alt="" />
       <ul>
         <li class="alert1">
-          <a @click="message(1)">
+          <a @click="alert">
             <img :src="$filters.siteUrl('green_subsidy/images/a05_1.png')" alt="" />
           </a>
         </li>
@@ -336,6 +313,12 @@ export default {
           </a>
         </li>
       </ul>
+
+      <!-- 彈出視窗 -->
+      <AlertBox ref="alert" :type="'image'">
+         <img src="https://www.tk3c.com/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg">
+         <img src="https://www.tk3c.com/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg">
+      </AlertBox> 
     </section>
 
     <!-- 印表機 -->
@@ -603,16 +586,20 @@ form#form1 {
 
 .printer-box {
   .tab {
-    li {
+    .swiper-slide {
       width: 20%;
       padding: 5px 5px 0;
       font-size: 1.5em;
       box-sizing: border-box;
       background: #fff;
+      color: #000;
       &.active {
         background: #3f3a39;
         color: #fff;
       }
+    }
+    .swiper-wrapper {
+      justify-content: center;
     }
   }
   .bg01 {
@@ -624,6 +611,14 @@ form#form1 {
  .bg01 {
   margin: 0 auto 2%;
  }
+}
+
+.alert-box {
+  .img-content {
+    height: 70%;
+    overflow: auto;
+    padding: 0;
+  }
 }
 
 /*  電腦版其他尺寸 */
@@ -667,14 +662,6 @@ form#form1 {
   .floor {
     .bg01 {
       margin: 0 auto 2%;
-    }
-  }
-
-  .printer-box {
-    .tab {
-      li {
-        width: 33%;
-      }
     }
   }
 }
@@ -757,8 +744,7 @@ form#form1 {
 
   .printer-box {
     .tab {
-      li {
-        width: 40%;
+      .swiper-slide {
         font-size: 1em;
       }
     }

@@ -30,10 +30,15 @@
         <img class="abs w:full left:0 right:0 m:auto top:0 z:-1" :src="$filters.siteUrl('pet_product/images/vip/s1-2.png')" />
         <ul class="gap:10">
           <li v-for="(i,index) in 4" :key="index" class="w:48% h:11vmax h:11rem@<1700 h:21vw@<992 h:20vw@<576 h:8vmax@>2500">
-            <a class="h:full" @click="alert(index + 1)"></a>
+            <a class="h:full" @click="alert(index)"></a>
           </li>
         </ul>
       </p>
+
+      <!-- 彈出視窗 -->
+      <AlertBox v-for="(msg,m) in message" :key="m" :ref="`alert${m}`" :type="'image'">
+        <img :src="$filters.siteUrl(msg.image)">
+      </AlertBox>
     </section> 
 
     <!--商品樓層 -->
@@ -82,43 +87,27 @@ export default {
           type:listM
         },
       ],
-      menu:[7959,7913,7914,7915,7916,7917,7918,7919]
+      message:[
+         {
+          "image":"pet_product/images/vip/a1.png"
+        },
+        {
+          "image":"pet_product/images/vip/a2.png"
+        },
+        {
+          "image":"pet_product/images/vip/a3.png"
+        },
+        {
+          "image":"pet_product/images/vip/a4.png"
+        },
+      ],
+      menu:[7959,7913,7914,7915,7916,7917,7918,7919],
+      status:null
     }
   },
   methods: {
     alert(id) {
-      //彈出視窗
-      let image = "",
-      imagePath = "";
-      switch (id) {
-        case 1:
-          image = "pet_product/images/vip/a1.png"
-          break;
-      
-        case 2:
-          image = "pet_product/images/vip/a2.png"
-          break;
-
-        case 3:
-          image = "pet_product/images/vip/a3.png"
-          break;  
-
-         case 4:
-          image = "pet_product/images/vip/a4.png"
-          break;  
-      }
-
-     imagePath = this.$filters.siteUrl(image);
-      
-     Swal.fire({
-        html:`<pichture><img class="w:60% w:80%@<992 w:90%@<576 m:auto" src="${imagePath}" loading="lazy"></pichture>`,  
-        confirmButtonText: '關閉',
-        position: 'center',
-        showCloseButton: true,
-        confirmButtonColor: '#000',
-        padding:0,
-        returnFocus: true
-      })
+     this.$refs[`alert${id}`][0].openAlert();
     }
   },
 }

@@ -2,35 +2,58 @@
   <div id="air-container" v-cloak>
     <div class="background">
       <h2 class="title">
-        <img :src="$filters.siteUrl('airConditionerLAB/images/2503/title2.png')"/>
+        <img :src="$filters.siteUrl('airConditionerLAB/images/2503/title2.png')" />
       </h2>
 
       <div class="subtitle">
         <a class="abs w:full h:full left:0 right:0 top:0 z:10" @click="message(1)"></a>
-        <img :src="$filters.siteUrl('airConditionerLAB/images/2503/subtitle.png')"/>
-        <div>
-          <swiper
-          :loop="true"
-          :effect="'flip'"
-          :flipEffect="{
+        <img :src="$filters.siteUrl('airConditionerLAB/images/2503/subtitle.png')" />
+        <div class="sub">
+          <swiper :loop="true" :effect="'flip'" :flipEffect="{
             slideShadows:false,
             limitRotation:90
-          }"
-          :autoplay="{
+          }" :autoplay="{
             delay:1200,
             disableOnInteraction:false
-          }"
-          :modules="[EffectFlip,Parallax]"
-          >
-          <swiper-slide v-for="sub in subtitles">
-            <img :src="$filters.siteUrl(sub.image)" data-swiper-parallax-opacity="0">
-          </swiper-slide>
+          }" :modules="[EffectFlip,Parallax]">
+            <swiper-slide v-for="sub in subtitles">
+              <img :src="$filters.siteUrl(sub.image)" data-swiper-parallax-opacity="0">
+            </swiper-slide>
           </swiper>
         </div>
+
+        <!-- 空調場勘預約預約抽好禮 -->
+      <AlertBox ref="alert1" :type="'text'">
+        <p class="color:red f:bold mb:25px text:left">
+          本活動需完成(1)預約空調場勘+(2)購買分離式空調+(3)安裝完成，請留意預約空調場勘時所填寫的聯絡地址及聯絡電話需與空調安裝地址及聯絡電話相同。</p>
+        <ul>
+          <li>
+            1.凡於活動期間(2025/03/01~04/30)，於燦坤線上購物網站預約空調場勘，且於燦坤線上購物網站或燦坤實體門市以會員資格購買「全系列分離式空調(外機計)(下稱活動指定商品)」，並於2025/05/15前出貨/配送完成，且後續未退貨退款者，即可獲得本活動抽獎資格(1張發票1次抽獎機會)，將共抽出3名，為「DAIKIN
+            7坪閃流放電空氣清淨機(227244)(市價$8,800)」1名、「虎牌電鍋(236761)(市價$3,000)」1名、「陳傑憲簽名球」1名 ​</li>
+          <li>
+            2.中獎名單將於2025/05/16公告於FACEBOOK粉絲專頁「燦坤3C」，並另以簡訊通知中獎者，通知以會員資料所留存的個人聯絡資料為準。倘中獎人因個人因素致無法收受上開通知(如無法收受、未能讀取或遲誤讀取)，均與燦坤3C無涉。​
+          </li>
+          <li>
+            3.中獎者請於2025/05/25前回填中獎通知函：(1)攜帶身分證件、中獎發票至「原消費門市」，出示中獎簡訊並填寫中獎通知函完成；或(2)私訊「燦坤3C」粉絲專頁，提供姓名/電話/中獎簡訊畫面，小編會提供回函，請依規定填寫並繳交相關資料，並將正本掛號寄回燦坤3C內湖總部，以郵戳為憑。逾期、資料不符規定或填寫不正確、不完整者或未依中獎通知函規定期限存入代扣稅金者，視同放棄中獎/兌獎權利。(依稅法規定，抽中獎項市值超過1,001元(含)以上，將列入本年度之個人綜合所得稅申報，超過20,000元(含)以上者，依法須預先扣繳10%稅金(外籍人士20%))。
+            ​</li>
+          <li>
+            4.經核對符合活動條件者，燦坤3C會另行通知，請中獎者於2025/05/31前前往原消費門市領取(如為線上購買，燦坤3C會與中獎者確認領取門市)，如中獎者有額外運送/安裝需求，另行計價，逾期領獎或安裝完成視為放棄。​
+          </li>
+          <li>5.獎項詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金，中獎資格不可轉讓予第三人。​</li>
+          <li>
+            6.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​
+          </li>
+          <li class='pl:10px'>(1) 提供獎品前：燦坤3C將不會寄送獎品。​</li>
+          <li class='pl:10px'>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
+          <li>8.涉及大宗採購且(或)有議價時，因已經過議價給予價格優惠，該筆交易(發票)將無法參與本活動。​</li>
+          <li class='last'>9.活動未盡事宜以燦坤3C公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
+        </ul>
+      </AlertBox>
       </div>
 
-      <a class="icon" :href="$filters.addGALink('https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2')" target="_blank">
-        <img :src="$filters.siteUrl('airConditionerLAB/images/2503/vip_icon.png')"/>
+      <a class="icon" :href="$filters.addGALink('https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2')"
+        target="_blank">
+        <img :src="$filters.siteUrl('airConditionerLAB/images/2503/vip_icon.png')" />
       </a>
 
       <div class="product">
@@ -39,7 +62,8 @@
           }" :parallax="true" :autoplay="{ delay: 1800, disableOnInteraction: false }"
           :modules="[EffectFade, Parallax]">
           <swiper-slide v-for="pro in proAir">
-            <a :href="$filters.addGALink(pro.url)" target="_blank" data-swiper-parallax-x="-1200" data-swiper-parallax-opacity="0">
+            <a :href="$filters.addGALink(pro.url)" target="_blank" data-swiper-parallax-x="-1200"
+              data-swiper-parallax-opacity="0">
               <img :src="$filters.siteUrl(pro.image)" alt="" />
             </a>
           </swiper-slide>
@@ -68,7 +92,7 @@
 
 
       <div class="discount">
-       <listF :pro="product2[menuDis]" :isSwiper="1" :name="'dis'"></listF>
+        <listF :pro="product2[menuDis]" :isSwiper="1" :name="'dis'"></listF>
       </div>
     </section>
 
@@ -117,16 +141,17 @@
     </section>
 
     <!-- 品牌 -->
-     <section class="brand-box scroll" titles="品牌大放送" id="brand">
+    <section class="brand-box scroll" titles="品牌大放送" id="brand">
       <h2 class="title single-url">
         <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=11225&aid=4707')" target="_blank">
-        <img :src="$filters.siteUrl('airConditionerLAB/images/2503/S2.png')" alt="" />
+          <img :src="$filters.siteUrl('airConditionerLAB/images/2503/S2.png')" alt="" />
         </a>
       </h2>
 
-       <Tabs :swiperOption="swiperOption.breakpoints" :tabs="brands" :textOrImage="'text'">
+      <Tabs :swiperOption="swiperOption.breakpoints" :tabs="brands" :textOrImage="'text'">
         <template v-slot="{ selectedTab }">
-          <TabContent :isSwiper="1" v-for="(brand, b) in brands" :menus="brand.id" :banners="brand.banner" :index="b" :selectedTab="selectedTab">
+          <TabContent :isSwiper="1" v-for="(brand, b) in brands" :menus="brand.id" :banners="brand.banner" :index="b"
+            :selectedTab="selectedTab">
 
           </TabContent>
         </template>
@@ -140,8 +165,8 @@
           <img :src="$filters.siteUrl('airConditionerLAB/images/2503/S3.png')" alt="" />
         </a>
       </h2>
-      
-     <listF :pro="product2[4127]" :isSwiper="1" :name="'hot'"></listF>
+
+      <listF :pro="product2[4127]" :isSwiper="1" :name="'hot'"></listF>
     </section>
 
     <!-- 冷暖空調 -->
@@ -152,7 +177,7 @@
         </a>
       </h2>
 
-     <listF :pro="product2[menuCold]"></listF>
+      <listF :pro="product2[menuCold]"></listF>
     </section>
 
     <!-- 除濕機 -->
@@ -184,40 +209,41 @@
         <img :src="$filters.siteUrl('airConditionerLAB/images/2501/bar_b.png')" alt="" />
       </h2>
 
-      <swiper
-      :loop="false"
-      :space-between="10"
-      :autoplay="{
+      <swiper :loop="false" :space-between="10" :autoplay="{
           delay: 1500,
           disableOnInteraction: false
-        }"
-      :breakpoints="{
+        }" :breakpoints="{
         0:{
           slidesPerView:1
         },
         992:{
           slidesPerView:3
         }
-      }"
-      >
-      <swiper-slide>
-         <a :href="
+      }">
+        <swiper-slide>
+          <a :href="
               $filters.addGALink('https://events.tk3c.com/events_net/green_subsidy/index.html')
             " target="_blank">
-            <img :src="$filters.siteUrl('airConditionerLAB/images/2502/b01.png')" alt="" />
+            <img :src="$filters.siteUrl('airConditionerLAB/images/2502/b01.png')" />
           </a>
-      </swiper-slide>
-      <swiper-slide>
-         <a @click="message(2)">
+        </swiper-slide>
+        <swiper-slide>
+          <a @click="message(2)">
             <img :src="$filters.siteUrl('airConditionerLAB/images/2502/b02.png')" />
           </a>
-      </swiper-slide>
-      <swiper-slide>
-        <a :href="$filters.addGALink('https://save3000.moeaea.gov.tw')" target="_blank">
+        </swiper-slide>
+        <swiper-slide>
+          <a :href="$filters.addGALink('https://save3000.moeaea.gov.tw')" target="_blank">
             <img :src="$filters.siteUrl('airConditionerLAB/images/2502/b03.png')" />
           </a>
-      </swiper-slide>
+        </swiper-slide>
       </swiper>
+
+      <!--退貨 -->
+      <AlertBox ref="alert2" :type="'image'">
+         <img src="https://www.tk3c.com/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg">
+         <img src="https://www.tk3c.com/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg">
+      </AlertBox>
     </section>
 
     <section class="info-box scroll" titles="場勘服務" id="info">
@@ -272,6 +298,13 @@
         <a class="alert" @click="message(4)"><img :src="$filters.siteUrl('airConditionerLAB/images/2402/c_bn.png')" />
         </a>
       </div>
+
+      <!-- 彈出視窗 -->
+       <AlertBox ref="alert4" :type="'image'">
+         <img src="https://events.tk3c.com/events_net/events_net/airConditionerLAB/images/2402/alert_price.png" class="mb:30px">
+         <img src="https://events.tk3c.com/events_net/events_net/airConditionerLAB/images/2402/alert_price2.png" class="mb:30px">
+         <img src="https://events.tk3c.com/events_net/events_net/airConditionerLAB/images/2402/alert_price3.png" class="mb:30px">
+       </AlertBox>
     </section>
 
     <!-- banner -->
@@ -292,8 +325,8 @@
       <div class="swiper-pagination"></div>
     </section>
 
-    <section class="product-box scroll" v-for="(floor, f) in floors[0]" :titles="floor[0].text" :class="`tab${Number(f) + 1}-box`"
-      :id="`tab${Number(f) + 1}`">
+    <section class="product-box scroll" v-for="(floor, f) in floors[0]" :titles="floor[0].text"
+      :class="`tab${Number(f) + 1}-box`" :id="`tab${Number(f) + 1}`">
       <h2 class="title single-url">
         <a :href="$filters.addGALink(floor[0].url)" target="_blank">
           <img :src="$filters.siteUrl(floor[0].title)" />
@@ -304,7 +337,8 @@
         <div v-if="floor[0].content != undefined">
           <Tabs :tabs="floor[0].content">
             <template v-slot="{ selectedTab }">
-              <TabContent v-for="(content, c) in floor[0].content" :menus="content.id" :index="c" :selectedTab="selectedTab">
+              <TabContent v-for="(content, c) in floor[0].content" :menus="content.id" :index="c"
+                :selectedTab="selectedTab">
 
               </TabContent>
             </template>
@@ -312,9 +346,9 @@
         </div>
 
         <div v-else>
-           <listF v-if="product2[floor[0].id] != undefined" :pro="product2[floor[0].id]"></listF>
+          <listF v-if="product2[floor[0].id] != undefined" :pro="product2[floor[0].id]"></listF>
         </div>
-         
+
       </div>
     </section>
 
@@ -323,7 +357,7 @@
   </div>
 
   <!-- 左側選單+手機版 -->
-   <LeftAside :asides="asides"></LeftAside>
+  <LeftAside :asides="asides"></LeftAside>
 
   <!-- 右側選單 -->
   <RightAside :asides="asides"></RightAside>
@@ -364,16 +398,40 @@ export default {
     return {
       proAir: [
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=248028',
-          image: 'airConditionerLAB/images/2503/PD1.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=180197',
+          image: 'airConditionerLAB/images/2503/180197_a.png'
         },
         {
-          url: 'https://www.tk3c.com/pt.aspx?pid=215493',
-          image: 'airConditionerLAB/images/2503/PD2.png'
+          url: 'https://www.tk3c.com/pt.aspx?pid=216588',
+          image: 'airConditionerLAB/images/2503/216588_a.png'
+        },
+        {
+          url: 'https://www.tk3c.com/pt.aspx?pid=222274',
+          image: 'airConditionerLAB/images/2503/222274_a.png'
+        },
+        {
+          url: 'https://www.tk3c.com/pt.aspx?pid=225365',
+          image: 'airConditionerLAB/images/2503/225365_a.png'
         },
         {
           url: 'https://www.tk3c.com/pt.aspx?pid=240642',
-          image: 'airConditionerLAB/images/2503/PD3.png'
+          image: 'airConditionerLAB/images/2503/240642_a.png'
+        },
+        {
+          url: 'https://www.tk3c.com/pt.aspx?pid=245235',
+          image: 'airConditionerLAB/images/2503/245235_a.png'
+        },
+        {
+          url: 'https://www.tk3c.com/pt.aspx?pid=245236',
+          image: 'airConditionerLAB/images/2503/245236_a.png'
+        },
+        {
+          url: 'https://www.tk3c.com/pt.aspx?pid=255346',
+          image: 'airConditionerLAB/images/2503/255346_a.png'
+        },
+        {
+          url: 'https://www.tk3c.com/pt.aspx?pid=255366',
+          image: 'airConditionerLAB/images/2503/255366_a.png'
         }
       ],
       subtitles:[
@@ -701,7 +759,7 @@ export default {
   mounted() {
     const {  today,floors } = this
     //固定背景
-    this.fixedBg('.background2', '.discount-box');
+    this.fixedBg('.background2', '.brand-box');
 
     //  VVIP安裝隱藏
     if(today >= new Date('2025/04/01')) this.isVipOld = false;
@@ -744,65 +802,24 @@ export default {
       }, 150)
     },
     message(id) {
-      //活動辦法
-      let infoHtml = ''
-
+      let self = this;
       switch (id) {
         case 1:
-          //空調場勘預約預約抽好禮
-          infoHtml = `
-               <p style="color:red;font-weight:bold;margin-bottom:25px;text-align:left;">本活動需完成(1)預約空調場勘+(2)購買分離式空調+(3)安裝完成，請留意預約空調場勘時所填寫的聯絡地址及聯絡電話需與空調安裝地址及聯絡電話相同。</p>
-           <ul style='text-align:left;'>
-                    <li style='margin-bottom:10px';>1.凡於活動期間(2025/03/01~04/30)，於燦坤線上購物網站預約空調場勘，且於燦坤線上購物網站或燦坤實體門市以會員資格購買「全系列分離式空調(外機計)(下稱活動指定商品)」，並於2025/05/15前出貨/配送完成，且後續未退貨退款者，即可獲得本活動抽獎資格(1張發票1次抽獎機會)，將共抽出3名，為「DAIKIN 7坪閃流放電空氣清淨機(227244)(市價$8,800)」1名、「虎牌電鍋(236761)(市價$3,000)」1名、「陳傑憲簽名球」1名 ​</li>
-                    <li style='margin-bottom:10px';>2.中獎名單將於2025/05/16公告於FACEBOOK粉絲專頁「燦坤3C」，並另以簡訊通知中獎者，通知以會員資料所留存的個人聯絡資料為準。倘中獎人因個人因素致無法收受上開通知(如無法收受、未能讀取或遲誤讀取)，均與燦坤3C無涉。​</li>
-                    <li style='margin-bottom:10px';>3.中獎者請於2025/05/25前回填中獎通知函：(1)攜帶身分證件、中獎發票至「原消費門市」，出示中獎簡訊並填寫中獎通知函完成；或(2)私訊「燦坤3C」粉絲專頁，提供姓名/電話/中獎簡訊畫面，小編會提供回函，請依規定填寫並繳交相關資料，並將正本掛號寄回燦坤3C內湖總部，以郵戳為憑。逾期、資料不符規定或填寫不正確、不完整者或未依中獎通知函規定期限存入代扣稅金者，視同放棄中獎/兌獎權利。(依稅法規定，抽中獎項市值超過1,001元(含)以上，將列入本年度之個人綜合所得稅申報，超過20,000元(含)以上者，依法須預先扣繳10%稅金(外籍人士20%))。 ​</li>
-                    <li style='margin-bottom:10px';>4.經核對符合活動條件者，燦坤3C會另行通知，請中獎者於2025/05/31前前往原消費門市領取(如為線上購買，燦坤3C會與中獎者確認領取門市)，如中獎者有額外運送/安裝需求，另行計價，逾期領獎或安裝完成視為放棄。​</li>
-                    <li style='margin-bottom:10px';>5.獎項詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金，中獎資格不可轉讓予第三人。​</li>
-                    <li style='margin-bottom:10px';>6.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​</li>
-                    <li style='margin-bottom:10px;padding-left:10px';>(1) 提供獎品前：燦坤3C將不會寄送獎品。​</li>
-                    <li style='margin-bottom:10px;padding-left:10px';>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
-                    <li style='margin-bottom:10px';>8.涉及大宗採購且(或)有議價時，因已經過議價給予價格優惠，該筆交易(發票)將無法參與本活動。​</li>
-                    <li style='margin-bottom:10px';>9.活動未盡事宜以燦坤3C公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
-        </ul>
-          `
-          break
-
+          self.$refs.alert1.openAlert();
+          break;
+      
         case 2:
-          //政府補助 退貨
-          infoHtml = `
-           <img src="https://www.tk3c.com/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg" width="100%">
-            <img src="https://www.tk3c.com/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg" width="100%">
-        `
-          break
+          self.$refs.alert2.openAlert();
+          break;
 
-        case 3:
-          //政府補助 汰舊換新
-          infoHtml = `
-            <img src="https://www.tk3c.com/image/UserFiles/sgs-2024-1.jpg" width="100%">
-            <img src="https://www.tk3c.com/image/UserFiles/sgs-2024-2.jpg" width="100%">
-          `
-          break
+         case 3:
+          self.$refs.alert3.openAlert();
+          break;  
 
-        case 4:
-          //更多費用
-          infoHtml = `
-             <img src="https://events.tk3c.com/events_net/events_net/airConditionerLAB/images/2402/alert_price.png" width="100%" style="margin-bottom:30px">
-                <img src="https://events.tk3c.com/events_net/events_net/airConditionerLAB/images/2402/alert_price2.png" width="100%" style="margin-bottom:30px">
-                <img src="https://events.tk3c.com/events_net/events_net/airConditionerLAB/images/2402/alert_price3.png" width="100%" style="margin-bottom:30px"
-          `
-          break
+          case 4:
+          self.$refs.alert4.openAlert();
+          break; 
       }
-
-      Swal.fire({
-        width: 1000,
-        title: "<p style='margin-bottom:5px';>活動辦法</p>",
-        html: infoHtml,
-        confirmButtonText: '關閉',
-        position: 'center',
-        showCloseButton: true,
-        confirmButtonColor: '#000',
-        returnFocus: false
-      })
     }
   }
 }
@@ -847,9 +864,9 @@ body {
       left: 26%;
       margin: 0 auto;
       top: 57%;
-      div {
+      .sub {
         width: 80%;
-        margin: -16% auto 0;
+        margin: -29% auto 0;
         .swiper-wrapper {
           align-items: baseline;
         }
@@ -1086,6 +1103,15 @@ body {
     .bg01 {
       background: #3ba2e1;
     }
+}
+
+
+.alert-box {
+  .img-content {
+    height: 70%;
+    overflow: auto;
+    padding: 0;
+  }
 }
 
 /*  電腦版其他尺寸 */

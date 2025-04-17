@@ -20,21 +20,57 @@
 
 <script>
   export default {
+    data() {
+      return {
+        swiper:null,
+        status:null,
+        itemNum:0
+      }
+    },
     mounted() {
       //右側選單 1520 以下裝置不展開
       this.smallDeviceRight();
       window.addEventListener('resize',this.smallDeviceRight);
       //左右側選單顯示隱藏
       window.addEventListener('scroll',this.showAside);
-      //手機版上方選單項目滾動
-      window.addEventListener('scroll',this.scrollToPos);
       //右側選單項目滾動
-       window.addEventListener('scroll',this.scrollAsidePos);
+       window.addEventListener('scroll',this.scrollPos);
     },
     unmounted() {
       window.removeEventListener('resize',this.smallDeviceRight);
+      window.removeEventListener('scroll',this.scrollPos);
     },
-  }
+    methods: {
+    scrollPos() {
+      //先取得第一個區域px位置
+        if (document.querySelectorAll('section.scroll').length <= 0) return false;
+       let firstArea =  document.querySelectorAll('section.scroll')[0].getBoundingClientRect().top; 
+      document.querySelectorAll('section.scroll').forEach((el, i) => {
+        this.itemNum = 'auto';
+        let scrollTop = window.scrollY,
+          top = el.getBoundingClientRect().top + scrollTop - 150,
+          bottom = top + window.innerHeight;
+        /* 目前滑鼠滾動位置滾到每個樓層區，所屬項目加上 .active 標記,
+        */
+        if (scrollTop > top && scrollTop < bottom) {
+          this.status = i;
+          if (this.type == 'mobile2') this.goSlide(this.status);
+        }
+        //在第一區域上面的 樓層標題項目歸0
+        if (scrollTop < firstArea) {
+          this.status = null;
+          if (this.type == 'mobile2') this.goSlide(0);
+        }
+      });
+    },
+    onSwiper(swiper) {
+      this.swiper = swiper
+    },
+    goSlide(id) {
+      this.swiper.slideTo(id);
+    }
+  },
+}
 </script>
 
 <template>
@@ -53,7 +89,7 @@
       <!-- 一般右側選單樓層項目 -->
       <div class="aside-content">
         <ul>
-          <li v-for="(aside, a) in asides" :key="a" :class="{'stay': asidesStatus == a}">
+          <li v-for="(aside, a) in asides" :key="a" :class="{'stay': status == a}">
             <a :href="aside.href">{{ aside.text }}</a>
           </li>
         </ul>
@@ -68,7 +104,7 @@
     <template #asides>
       <ul>
         <li v-for="(aside,a) in asides" :key="a">
-          <a :href="aside.href">{{ aside.text }}</a>
+          <a :href="aside.href" @click="changeNav">{{ aside.text }}</a>
         </li>
       </ul>
     </template>
@@ -77,11 +113,39 @@
   <!-- 手機版上方選單 -->
   <mobile2 v-if="type == 'mobile2'">
     <template #topAsides>
-      <ul>
-        <li v-for="(aside,a) in asides" :key="a" :class="{'active':isMobileTopStatus == a}">
-          <a :href="aside.href" @click="changeNav">{{ aside.text }}</a>
+      <swiper
+      :loop="false"
+      :spaceBetween="10"
+      :slidesPerView="itemNum"
+      @swiper="onSwiper"
+      >
+      <swiper-slide v-for="(aside,a) in asides" :key="a" :class="{'active': status == a}" class="color:#ffe400.active width:fit-content!">
+         <a :href="aside.href">{{ aside.text }}</a>
+      </swiper-slide>
+      </swiper>
+    </template>
+    <template #mobileList>
+       <ul class="grid-cols:2">
+        <li v-for="(aside,a) in asides" :key="a" :class="{'active': status == a}">
+          <a :href="aside.href">{{ aside.text }}</a>
         </li>
       </ul>
     </template>
   </mobile2>
 </template>
+
+<style lang="scss">
+  .mobile-for-product{
+    &.open {
+      ul {
+        li {
+          width: auto;
+          margin: 0 3px 5%;
+        }
+      }
+    }
+    .switch {
+      top: 0;
+    }
+  }
+</style>
