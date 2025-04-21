@@ -5,7 +5,7 @@
     <div class="nav-box">
       <ul>
         <li @click="changeMobile('type')" :class="[mobileStatus == 'type' ? 'active' : '']">
-          <span class="icon"><i class="fa-solid fa-shop"></i>精選商品</span>
+          <span class="icon"><i class="fa-solid fa-shop"></i>熱門品類</span>
         </li>
          <li @click="changeMobile('social')" :class="[mobileStatus == 'social' ? 'active' : '']">
           <span class="icon"><i class="fa-solid fa-people-arrows"></i>關注社群</span>

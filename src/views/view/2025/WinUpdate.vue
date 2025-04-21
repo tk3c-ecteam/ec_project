@@ -3,7 +3,8 @@
     <div class="background">
       <h2 class="title animate__animated animate__backInUp">
         <img class="animate__animated animate__heartBeat"
-          :src="$filters.siteUrl('windows10upgrade/images/title.png')" />
+          :src="$filters.siteUrl('windows10upgrade/images/title2.png')" />
+           <em class="date" v-if="isDate">即日起-4.30</em>
       </h2>
     </div>
 
@@ -192,11 +193,15 @@ export default {
       ],
       today:new Date(),
       menu:[7859,7860,7861,7862],
-      isGift:false
+      isGift:false,
+      isDate:true
     }
   },
   mounted() {
+    const { today } = this;
     this.fixedBg('.background2','.special-box');
+
+    if(today >= new Date('2025/05/01')) this.isDate = false;
   },
 }
 </script>
@@ -253,6 +258,13 @@ body{
       img {
         animation-duration: 1.3s;
         animation-delay: 2s;
+      }
+      .date {
+        font-size: 1.5vw;
+        font-weight: bold;
+        position: absolute;
+        top: 16%;
+        color: #fff;
       }
     }
   }
@@ -314,6 +326,10 @@ body{
         width: 55%;
         top: 9vw;
         right: 2vw;
+        .date {
+          font-size: 2vw;
+          top: 4vw;
+        }
       }
     }
   }
@@ -364,6 +380,10 @@ body{
         top: 25vw;
         right: 0;
         margin: 0 auto;
+        .date {
+          font-size: 1.2rem;
+          top: 2vw;
+        }
       }
     }
   }

@@ -2,58 +2,65 @@
  const today = new Date();
 
  //熱門活動區
- let mainName = (today >= new Date('2025/04/10')) ? '202504vip' : '25spring_part3',
+ let mainName = (today >= new Date('2025/04/22')) ? 'lovemama' : '202504vip',
   mainUrl = `https://events.tk3c.com/events_net/${mainName}/index.html`,
    location = window.location.pathname.split('/'),
   folderName = (location[2] == 'events_net') ? location[3] : location[2],
-  statusClass = '';
-
-  var num = 0;
+  main = null,
+  statusEvent = null,
+  statusTopic = null;
 
   let events = [
-    {"name":"回主會場","url": mainUrl},
-    {"name":"燦坤服務","class":"title"},
-    {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html","class":"bank"},
-    {"name":"銀行優惠","url":"https://events.tk3c.com/events_net/events_net/banks/bank.html","class":'bank'},
-    {"name":"環保集點","url":"https://events.tk3c.com/events_net/green_subsidy/index.html","class":'bank'},
-    {"name":"主題活動館","class":"title"},
+    {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
+    {"name":"銀行優惠","url":"https://events.tk3c.com/events_net/events_net/banks/bank.html"},
+    {"name":"環保集點","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
+  ];
+
+  let topics = [
     {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/icewash2209/index.html"},
-    {"name":"空調主題館","url":"https://events.tk3c.com/events_net/airConditionerLAB/index.html"},
-    {"name":"電視主題館","url":"https://events.tk3c.com/events_net/2020TVforever/index.html"},
-    {"name":"電腦系統週邊","url":"https://events.tk3c.com/events_net/2024083C/index.html"},
-    {"name":"風扇主題館","url":"https://events.tk3c.com/events_net/fan_hot/index.html"}
+    {"name":"空調","url":"https://events.tk3c.com/events_net/airConditionerLAB/index.html"},
+    {"name":"電視","url":"https://events.tk3c.com/events_net/2020TVforever/index.html"},
+    {"name":"電腦週邊","url":"https://events.tk3c.com/events_net/2024083C/index.html"},
+    {"name":"風扇","url":"https://events.tk3c.com/events_net/fan_hot/index.html"},
+    {"name":"咖啡","url":"https://events.tk3c.com/events_net/crown_202204/index.html"},
+    {"name":"寵物","url":"https://events.tk3c.com/events_net/pet_product/index.html"},
   ];
 
   switch (folderName) {
     case 'icewash2209':
-      num = 6;
+      statusTopic = 0;
       break;
   
     case 'airConditionerLAB':
-      num = 7;
+      statusTopic = 1;
       break;
 
      case '2020TVforever':
-      num = 8;
+      statusTopic = 2;
       break;  
     
      case '2024083C':
-      num = 9;
+      statusTopic = 3;
       break; 
 
      case 'fan_hot':
-      num = 10;
+      statusTopic = 4;
+      break; 
+
+      case 'crown_202204':
+      statusTopic = 5;
+      break;
+      
+      case 'pet_product':
+        statusTopic = 6;
       break; 
   } 
 
-  if (folderName == mainName) {
-    events.splice(0,1);
-    statusClass = 'main';
-  }
-  
-  if(folderName != mainName) {
-    events.splice(num,1); 
-    statusClass = 'main';
+  if (folderName != mainName) {
+    main = [
+      {"name":"回主會場","url": mainUrl},
+    ];
+    topics.splice(statusTopic,1);
   }
   
   //選單項目(各樓層的標題)
@@ -76,7 +83,7 @@
       return {
         swiper:null,
         status:null,
-        itemNum:0
+        itemNum:''
       }
     },
     mounted() {
@@ -105,7 +112,7 @@
         */
         if (scrollTop > top && scrollTop < bottom) {
           this.status = i;
-          this.goSlide(this.status);
+          this.goSlide(i);
         }
 
         //在第一區域上面的 樓層標題項目歸0
@@ -134,12 +141,19 @@
     </span>  
     <div class="aside-wrap">
       <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li v-for="(event,e) in events" :key="e" :class="[e == 0 ? statusClass : event.class]">
-            <a v-if="event.url" :href="$filters.addGALink(event.url)">{{ event.name }}</a>
-            <a v-else class="bg:#955038!  cursor:auto pointer-events:none">{{ event.name }}</a>
+      <div class="aside-content rt:15px box:border-box bg:#000000b8">
+        <ul class="flex flex-wrap:wrap">
+          <li class="main" v-if="main != null">
+            <a :href="$filters.addGALink(main[0].url)">{{ main[0].name }}</a>
           </li>
+          <li class="color:#fff bg:#955038">燦坤服務</li>
+           <li v-for="(event,e) in events" :key="e" class="bank">
+            <a class="bg:#fff!" :href="$filters.addGALink(event.url)" target="_blank">{{ event.name }}</a>
+            </li>
+          <li class="color:#fff bg:#955038">主題活動館</li>
+           <li v-for="(topic,t) in topics" :key="t" class="w:49.8%!">
+            <a class="bg:none!" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
+           </li>
         </ul>
       </div>
       <a href="#" class="go-top" @click="goTop">GO TOP</a>
@@ -148,12 +162,30 @@
 
    <!-- 手機版選單 置頂 -->
   <mobile3 v-if="type == 'mobile3'">
-    <!-- 熱門活動 -->
-    <template #events>
+    <!-- 主會場 -->
+    <template v-slot:main="{ closeNav2 }">
+      <li v-if="main != null" @click="closeNav2">
+         <a :href="$filters.addGALink(main[0].url)" target="_blank">主會場</a>
+      </li>
+    </template>
+
+    <!-- 主題活動館 -->
+    <template #topics>
        <ul>
-        <li v-for="(event,e) in events" :key="e" :class="[event.class ? event.class : '']">
-              <a :href="$filters.addGALink(event.url)">{{ event.name }}</a>
+        <li v-for="(topic,t) in topics" :key="t" class="w:31%!">
+              <a class="word-break:keep-all" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
             </li>
+      </ul>
+    </template>
+
+    <!-- 燦坤服務 -->
+     <template #events>
+       <h2 class="color:#fff pt:2% box:border-box f:1.2em f:bold">燦坤服務</h2>
+       <span class="w:80% h:auto block m:auto bb:1px|solid|#fff box:border-box"></span>
+       <ul>
+        <li v-for="(event,e) in events" :key="e" class="w:31%!">
+          <a class="word-break:keep-all" :href="$filters.addGALink(event.url)" target="_blank">{{ event.name }}</a>
+        </li>
       </ul>
     </template>
 

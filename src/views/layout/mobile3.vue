@@ -5,7 +5,16 @@
     },
     beforeUnmount() {
         window.removeEventListener('scroll',this.showMobileTop);
-    }
+    },
+    methods: {
+      closeNav2() {
+        setTimeout(() => {
+          this.mobileStatus = '';
+          this.mobileBg = 'none';
+          document.body.style.overflow = 'auto';
+        }, 50);
+      }
+    },
   }
 </script>
 
@@ -15,13 +24,15 @@
     <div class="footer-bg" :style="{'display': mobileBg}" @click="closeNav"></div>
     <div class="nav-box">
       <ul>
-        <li @click="changeMobile('event')" :class="[mobileStatus == 'event' ? 'active' : '']">熱門活動</li>
+        <li @click="changeMobile('event')" :class="[mobileStatus == 'event' ? 'active' : '']">主題活動館</li>
+        <slot name="main" :closeNav2="closeNav2"></slot>
         <li @click="changeMobile('social')" :class="[mobileStatus == 'social' ? 'active' : '']">關注社群</li>
       </ul>
     </div>
 
    <div class="box-area event" :class="[mobileStatus == 'event' ? 'footer-nav-open' : '']">
-     <slot name="events"></slot>
+      <slot name="topics"></slot>
+      <slot name="events"></slot>
     </div>
 
     <div class="box-area social" :class="[mobileStatus == 'social' ? 'footer-nav-open' : '']">

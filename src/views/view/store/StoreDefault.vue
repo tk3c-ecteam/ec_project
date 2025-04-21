@@ -7,7 +7,7 @@ const contents = defineModel("contents");
      data(){
       return {
          swiper:null,
-         statusNav:0
+         statusNav:null
       }
      },
      mounted() {
@@ -16,11 +16,30 @@ const contents = defineModel("contents");
 
        //導航區滾動定位
        if (document.querySelectorAll('nav').length > 0) {
-       document.addEventListener("scroll", (e) => {
+         window.addEventListener('scroll',this.storeScroll);
+      }
+     },
+     beforeUnmount() {
+        window.removeEventListener('scroll',this.showMobileTop);
+        window.removeEventListener('scroll',this.storeScroll);
+     },
+     methods: {
+      onSwiper(swiper) {
+        this.swiper = swiper
+      },
+      goSlide(id) {
+        this.swiper.slideTo(id);
+      },
+      //回到上層
+      goTop2() {
+        window.scrollTo(0,0);
+        this.statusNav = null;
+      },
+       storeScroll() {
          let scrollTop = window.scrollY;
 
          if (scrollTop >= 150) {
-          document.querySelector('nav').classList.add('fixed');
+           document.querySelector('nav').classList.add('fixed');
          } else {
            document.querySelector('nav').classList.remove('fixed');
          }
@@ -29,26 +48,16 @@ const contents = defineModel("contents");
            let top = el.getBoundingClientRect().top + scrollTop - 150,
              bottom = top + window.innerHeight;
            if (scrollTop >= top && scrollTop < bottom) {
-            this.statusNav = i
+             this.statusNav = i
              this.goSlide(this.statusNav);
-             el.classList.add('active')
-           } else {
-            el.classList.remove('active')
+           }
+
+           if (scrollTop < 300) {
+            this.statusNav = null;
+            this.goSlide(this.statusNav);
            }
          });
-       });
-      }
-     },
-     beforeUnmount() {
-        window.removeEventListener('scroll',this.showMobileTop);
-     },
-     methods: {
-      onSwiper(swiper) {
-        this.swiper = swiper
-      },
-      goSlide(id) {
-        this.swiper.slideTo(id);
-      }
+       }
      },
   }
 </script>
@@ -88,7 +97,7 @@ const contents = defineModel("contents");
         @swiper="onSwiper"
       >
         <swiper-slide v-for="(floor, f) in contents[0].floorImg" class="flex-basis:fit-content">
-          <a :href="floor.href" :class="[statusNav == f ? 'active' : '']">
+          <a :href="floor.href" :class="{'active' : statusNav == f}">
             <span class="f:1.2em f:2em@<992 f:1.2em@<576 f:1.5em@>2000">
               {{ floor.text }} <i class="f:0.9rem">▼</i>
             </span>
@@ -128,7 +137,7 @@ const contents = defineModel("contents");
     </div>
   </div>
 
-  <div class="custom-top" :class="{'isShow':isGoTop}" @click="goTop"><p></p></div>
+  <div class="custom-top" :class="{'isShow':isGoTop}" @click="goTop2"><p></p></div>
 </template>
 
 <style lang="scss">
@@ -138,7 +147,6 @@ const contents = defineModel("contents");
       height: 0;
       position: relative;
       margin: 0 auto 0;
-      padding-bottom: 40%;
       .swiper-pagination
         {
           bottom: 0 !important;
@@ -150,9 +158,6 @@ const contents = defineModel("contents");
   .swiper-wrapper {
     justify-content: center;
     padding-bottom: 0;
-  }
-  &.fixed {
-    position: fixed;
   }
 }
 

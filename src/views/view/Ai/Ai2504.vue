@@ -308,7 +308,6 @@
 <script>
 import listM from '@/views/layout/listM.vue'
 import { EffectFlip } from 'swiper/modules'
-import RightAside from '../../../components/RightAside.vue'
 export default {
   data() {
     return {
@@ -648,11 +647,11 @@ export default {
     if (today >= new Date('2025/04/11')) this.isBank = false;
     if (today >= new Date('2025/04/11') && today < new Date('2025/04/22')) this.isOff = false;
 
-    //3/24更新現折券
-    if(today >= new Date('2025/03/24')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
+    //4/22更新現折券
+    if(today >= new Date('2025/04/22')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124427&aid=23931&strPreView=y'
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
     }
 
     //熱門活動標題

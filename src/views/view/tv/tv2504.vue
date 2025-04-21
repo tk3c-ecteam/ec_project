@@ -301,11 +301,11 @@ export default {
      //撈取 夜殺樓層商品
     this.getFloorSingle(this.menuNight)
 
-    // 2025 3/24 更新現折券連結
-    if (today >= new Date('2025/03/24')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947';
+    // 2025 4/22 更新現折券連結
+    if (today >= new Date('2025/04/22')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124427&aid=23931&strPreView=y';
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
     }
   }
 }

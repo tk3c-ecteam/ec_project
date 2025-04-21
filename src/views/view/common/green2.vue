@@ -112,7 +112,6 @@ export default {
       today: new Date(),
       isVip: false,
       isNew: false,
-      isGreenSale:false,
       isOpen:false,
       isOff:true,
       swiperOption: {
@@ -145,13 +144,8 @@ export default {
   mounted() {
     const { today } = this
 
-    //綠色消費趣 顯示
-    if (today >= new Date('2025/02/17') && today < new Date('2025/03/17')) {
-      this.isGreenSale = true;
-    }
-
-    //3/1新增星展活動
-    if (today >= new Date('2025/03/01') && today < new Date('2025/04/01')) {
+    //5/1新增星展活動
+    if (today >= new Date('2025/05/01') && today < new Date('2025/06/01')) {
       this.isOpen = true;
       this.isOff = false;
     }
@@ -224,21 +218,30 @@ export default {
       </span>
       <h2
         class="title w:25% abs right:26% top:19% m:auto w:40vw@<992 w:55vw@<576 left:45vw@<992 left:44vw@<576 top:9vw@<992 top:22vw@<576">
-        <img :src="$filters.siteUrl('green_subsidy/images/new/title.png')" alt="" />
+        <img :src="$filters.siteUrl('green_subsidy/images/new/title.png')" />
       </h2>
     </div>
 
-    <!-- 綠色消費趣活動 -->
-    <section v-show="isGreenSale">
-      <a :href="$filters.addGALink('https://www.greenpoint.org.tw/GPHome/')" target="_blank">
-        <img class="pc" :src="$filters.siteUrl('green_subsidy/images/new/bn25217.jpg')" />
-        <img class="mobile" :src="$filters.siteUrl('green_subsidy/images/new/bn25217M.jpg')" />
-      </a>
+    <!-- 新展活動 -->
+    <section>
+      <h2 class="title">
+        <img v-show="isOff" :src="$filters.siteUrl('green_subsidy/images/new/bar_2504.png')" />
+        <img v-show="isOpen" :src="$filters.siteUrl('green_subsidy/images/new/bar_2505.png')" />
+      </h2>
+      <p class="w:60% w:70%@<992 w:90%@<576 m:auto m:0|auto|4%@<576">
+         <img :src="$filters.siteUrl('green_subsidy/images/new/4card.png')" />
+      </p>
+
+      <div>
+        <img v-show="isOff" class="w:80% w:90%@<992 w:full@<576 m:0|auto|2%" :src="$filters.siteUrl('green_subsidy/images/new/sp2_04.png')" />
+         <img v-show="isOpen" class="w:80% w:90%@<992 w:full@<576 m:0|auto|2%" :src="$filters.siteUrl('green_subsidy/images/new/sp2_05.png')" />
+        <img class="w:80% w:90%@<992 w:full@<576 m:0|auto|2%" :src="$filters.siteUrl('green_subsidy/images/new/sp_3.png')" />
+      </div>
     </section>
 
     <!-- 環保3C家電產品 週末12%回饋 -->
     <section class="new-box">
-      <div v-show="isOff" class="w:full flex jc:center flex-wrap:wrap gap:10 m:0|0|5% m:0|0|10%@<576">
+      <div class="w:full flex jc:center flex-wrap:wrap gap:10 m:0|0|5% m:0|0|10%@<576">
         <a href="#info" class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%"><img
             :src="$filters.siteUrl('green_subsidy/images/new/btn1_b.png')" /></a>
         <a :href="
