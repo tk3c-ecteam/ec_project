@@ -241,13 +241,9 @@ export default {
 
     <!-- 環保3C家電產品 週末12%回饋 -->
     <section class="new-box">
-      <div class="w:full flex jc:center flex-wrap:wrap gap:10 m:0|0|5% m:0|0|10%@<576">
-        <a href="#info" class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%"><img
+      <div class="w:full flex jc:center flex-wrap:wrap gap:10 m:0|0|5% m:0|auto|10%@<576">
+        <a href="#info" class="w:50% w:60%@<992 w:90%@<576"><img
             :src="$filters.siteUrl('green_subsidy/images/new/btn1_b.png')" /></a>
-        <a :href="
-            $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
-          " class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%" target="_blank"><img
-            :src="$filters.siteUrl('green_subsidy/images/new/btn2.png')" /></a>
 
         <div class="rel m:auto bg:#2fbe44 pb:1% p:2%|3%|3%|3%@<576" id="info">
           <img class="w:full abs left:0 top:0 right:0 z:-1 hidden@<576"
@@ -257,6 +253,11 @@ export default {
           </p>
         </div>
       </div>
+
+        <a :href="
+            $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
+          " class="w:50% w:60%@<992 w:90%@<576 m:0|auto|4%" target="_blank"><img
+            :src="$filters.siteUrl('green_subsidy/images/new/btn2.png')" /></a>
 
       <div class="box" v-show="isNew">
         <!-- 頁籤 -->
