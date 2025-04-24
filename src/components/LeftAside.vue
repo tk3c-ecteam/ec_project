@@ -7,13 +7,13 @@
    location = window.location.pathname.split('/'),
   folderName = (location[2] == 'events_net') ? location[3] : location[2],
   main = null,
-  statusEvent = null,
   statusTopic = null;
 
   let events = [
     {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
     {"name":"銀行優惠","url":"https://events.tk3c.com/events_net/events_net/banks/bank.html"},
     {"name":"環保集點","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
+    {"name":"空調場勘","url":"https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2"},
   ];
 
   let topics = [
@@ -75,6 +75,11 @@
     type: String,
     default:'mobile3'
   });
+
+  //3c頁樓層錨點
+  const go3cFloor = defineModel('go3cFloor',{
+    type:Function
+  });
 </script>
 
 <script>
@@ -92,7 +97,7 @@
       window.addEventListener('resize',this.smallDeviceLeft);
       //左右側選單顯示隱藏
       window.addEventListener('scroll',this.showAside);
-      window.addEventListener('scroll',this.scrollPos);
+     if(this.go3cFloor == undefined)  window.addEventListener('scroll',this.scrollPos);
     },
     unmounted() {
       window.removeEventListener('resize',this.smallDeviceLeft);
@@ -198,14 +203,16 @@
       @swiper="onSwiper"
       >
       <swiper-slide v-for="(aside,a) in asides" :key="a" :class="{'active': status == a}" class="color:#ffe400.active width:fit-content!">
-         <a :href="aside.href">{{ aside.text }}</a>
+         <a v-if="go3cFloor" :href="aside.href" @click="go3cFloor(aside.id)">{{ aside.text }}</a>
+          <a v-else :href="aside.href">{{ aside.text }}</a>
       </swiper-slide>
       </swiper>
     </template>
     <template #mobileList>
        <ul class="grid-cols:2">
         <li v-for="(aside,a) in asides" :key="a" :class="{'active': status == a}">
-          <a :href="aside.href">{{ aside.text }}</a>
+           <a v-if="go3cFloor" :href="aside.href" @click="go3cFloor(aside.id)">{{ aside.text }}</a>
+          <a v-else :href="aside.href">{{ aside.text }}</a>
         </li>
       </ul>
     </template>

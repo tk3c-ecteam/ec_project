@@ -16,6 +16,11 @@
   const asideImage = defineModel('asideImage',{
     type:String
   });
+
+  //3c頁樓層錨點
+  const go3cFloor = defineModel('go3cFloor',{
+    type:Function
+  });
 </script>
 
 <script>
@@ -88,7 +93,12 @@
       </h3>
       <!-- 一般右側選單樓層項目 -->
       <div class="aside-content">
-        <ul>
+         <ul v-if="go3cFloor">
+           <li v-for="(aside, a) in asides" :key="a">
+            <a :href="aside.href" @click="go3cFloor(aside.id)">{{ aside.text }}</a>
+            </li>
+         </ul>
+         <ul v-else>
           <li v-for="(aside, a) in asides" :key="a" :class="{'stay': status == a}">
             <a :href="aside.href">{{ aside.text }}</a>
           </li>
