@@ -288,7 +288,7 @@ export default {
     this.fixedBg('.background2','.gift-box');
 
     if (today >= new Date('2025/04/11')) this.proTV.splice(1,1,this.proTV411[0]);
-    if (today >= new Date('2025/04/11') && today < new Date('2025/04/22')){
+    if (today >= new Date('2025/04/11') && today < new Date('2025/04/22 10:00')){
       this.isDis = false;
     }
    
@@ -302,8 +302,8 @@ export default {
     this.getFloorSingle(this.menuNight)
 
     // 2025 4/22 更新現折券連結
-    if (today >= new Date('2025/04/22')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124427&aid=23931&strPreView=y';
+    if (today >= new Date('2025/04/22 10:00')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
     } else {
       this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
     }

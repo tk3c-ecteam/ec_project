@@ -88,7 +88,7 @@
     <!-- RTX50 新機預購 -->
     <section class="rtx-group scroll" titles="RTX50新機預購" id="rtx">
       <h2 class="title">
-        <a :href="$filters.addGALink('https://events.tk3c.com/events_net/RTXNB/index.html')" target="_blank">
+        <a :href="$filters.addGALink('https://events.tk3c.com/events_net/DBS_RTX50NB')" target="_blank">
           <img :src="$filters.siteUrl('windows10upgrade/images/bar_rtx50.png')" />
         </a>
       </h2>

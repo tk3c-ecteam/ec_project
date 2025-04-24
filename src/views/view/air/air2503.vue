@@ -765,13 +765,13 @@ export default {
     if(today >= new Date('2025/04/01')) this.isVipOld = false;
     
     // 4/22修改現折券連結
-    if (today >= new Date('2025/04/22')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124427&aid=23931&strPreView=y';
+    if (today >= new Date('2025/04/22 10:00')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
     } else {
       this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
     }
 
-    if(today >= new Date('2025/04/11') && today < new Date('2025/04/22')) this.isDis = false;
+    if(today >= new Date('2025/04/11') && today < new Date('2025/04/22 10:00')) this.isDis = false;
 
     //撈取 現折券樓層商品
     this.getFloorSingle(this.menuDis)

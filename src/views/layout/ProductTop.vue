@@ -7,12 +7,12 @@ export default {
 <!-- 上方商品輪播 -->
 <template>
   <!-- 有輪播 -->
-  <div class="bg01 list_F bg:#fff r:15px r:10px@<576 p:1%|1%|0! p:2%|2%|0!@<576 box:border-box">
+  <div class="bg01 list_F bg:#fff r:15px r:10px@<576 p:1%|1%|0! p:3%|3%|0!@<576 box:border-box">
     <ul v-if="pro != undefined" class="pro-top">
-      <swiper
+      <swiper class="overflow:hidden"
         :loop="false"
         :autoplay="{
-          delay: 2200,
+          delay: 2800,
           disableOnInteraction: false
         }"
         :space-between="10"
@@ -25,7 +25,7 @@ export default {
           v-for="(proA, p) in pro"
           class="bg:#fff pb:2%@<576"
         >
-          <a
+          <a 
             :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=' + proA.productid)"
             :id="'prod' + proA.productid"
             :name="'prod' + proA.productid"
@@ -62,7 +62,8 @@ export default {
             }
           }
         }
-        .iconF_pro {
+        .iconF_pro,
+        h4 {
           display: none;
         }
         .boxF_price {

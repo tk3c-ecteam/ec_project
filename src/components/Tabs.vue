@@ -10,7 +10,7 @@
       direct -> 輪播方向(預設為水平) 若要垂直輪播請設定'vertical'
     */ -->
 
-    <div class="tab mb:1% overflow:hidden">
+    <div class="tab mb:0.3% overflow:hidden">
       <!-- swiper有輪播滑動 -->
       <swiper
       :loop="false" 
@@ -22,11 +22,11 @@
       @slideChange="onSlideChange"
       >
         <swiper-slide v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }" class="flex! flex-basis:fit brightness(0.7) brightness(1).active" @click="goSlide(index)">
-           <a v-if="singleUrl != undefined" :value="$filters.addGALink(singleUrl)"  @click.prevent="selectTab(index)" >
+           <a v-if="singleUrl != undefined" :href="$filters.addGALink(singleUrl)"  @click.prevent="selectTab(index)" >
              <b v-if="tab.text != undefined"> {{ tab.text }}</b>
             <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
           </a>
-            <a v-else :value="$filters.addGALink(tab.url)"  @click.prevent="selectTab(index)">
+            <a v-else :href="$filters.addGALink(tab.url)"  @click.prevent="selectTab(index)">
               <b v-if="tab.text != undefined"> {{ tab.text }}</b>
             <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
           </a>
@@ -75,27 +75,20 @@ export default {
     selectTab(index) {
       this.selectedTab = index;
 
-       if (event) {
-        let current = event.currentTarget,
+      let current = event.currentTarget,
         parent = '';
 
-          //連結只有一個不用更換(標題加上 .single-url)
-         if (document.querySelectorAll('.single-url').length > 0) return false;
+      if (current.closest('section') == undefined) return false;  
+      //點擊找到此區域
+      parent = current.closest('section');
 
-        //頁籤為swiper(輪播)格式(標題上加入連結)
-       if (current.parentNode.getAttribute('class').indexOf('swiper-slide') > -1) {
-          parent = current.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-        } else {
-          parent = current.parentNode.parentNode.parentNode.parentNode.parentNode;
-        }
-      
-        let parentAr = parent,
-          parentId = parentAr.getAttribute('id'),
-          getUrl = current.getAttribute('value');
+      //連結只有一個不用更換(標題加上 .single-url)
+      if (parent.querySelectorAll('.single-url').length > 0) return false;
 
-          if (document.querySelectorAll(`.${parentId}-box .title a`).length > 0) {
-            document.querySelector(`.${parentId}-box .title a`).setAttribute('href', getUrl);
-          }
+      let getUrl = current.getAttribute('href');
+
+      if (parent.querySelectorAll('.title a').length > 0 && getUrl != '') {
+        parent.querySelector('.title a').setAttribute('href', getUrl);
       }
     },
     onSwiper(swiper) {
@@ -116,6 +109,13 @@ export default {
     .swiper-wrapper {
       justify-content: center;
       align-items: baseline;
+      padding-bottom: 5px;
+      box-sizing: border-box;
+    }
+    a {
+      b {
+        font-size: 1.5em;
+      }
     }
   }
 
@@ -134,6 +134,11 @@ export default {
     .tab {
       .swiper-slide {
         flex-basis: 42%;
+      }
+      a {
+        b {
+          font-size: 1.2em;
+        }
       }
     }
   }

@@ -256,13 +256,13 @@ export default {
     this.fixedBg('.background2','.sub-box');
 
     // 2025/4/22 更新現折券連結
-    if (today >= new Date('2025/04/22')) {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124427&aid=23931&strPreView=y';
+    if (today >= new Date('2025/04/22 10:00')) {
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
     } else {
       this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
     }
 
-    if (today >= new Date('2025/04/11') && today < new Date('2025/04/22')) this.isSale = false;
+    if (today >= new Date('2025/04/11') && today < new Date('2025/04/22 10:00')) this.isSale = false;
 
     //撈取現折券樓層商品
     this.getFloorSingle(this.menuDis)
