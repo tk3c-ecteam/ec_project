@@ -25,7 +25,7 @@ export const globalMixin = {
     this.timer = setInterval(() => {
       setTimeout(() => {
         this.getFloorTitle('section.scroll');
-      }, 5500);
+      }, 5800);
     }, 1000);
 
     setTimeout(() => {

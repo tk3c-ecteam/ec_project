@@ -93,14 +93,12 @@
         </a>
       </h2>
 
-      <div>
-        <Tabs :tabs="tabs">
+      <Tabs :tabs="tabs">
           <template v-slot="{ selectedTab }">
             <TabContent v-for="(tab, b) in tabs" :type="tab.type" :menus="tab.id" :index="b" :selectedTab="selectedTab">
             </TabContent>
           </template>
         </Tabs>
-      </div>
     </section>
 
     <CommonFloor :floors="floors" :menu="menu"></CommonFloor>

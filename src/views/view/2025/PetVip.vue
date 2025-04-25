@@ -37,7 +37,7 @@
 
       <!-- 彈出視窗 -->
       <AlertBox v-for="(msg,m) in message" :key="m" :ref="`alert${m}`" :type="'image'">
-        <img :src="$filters.siteUrl(msg.image)" width="80%">
+        <img :src="$filters.siteUrl(msg.image)" width="30%">
       </AlertBox>
     </section> 
 
@@ -64,16 +64,18 @@ export default {
         },
         {
           text:'餵食/飲水',
+          isSwiper:1
         },
          {
           text:'貓砂機',
+          isSwiper:1
         },
         {
           text:'攝影機',
+          isSwiper:1
         },
          {
           text:'寵物美容',
-          isSwiper:1
         },
         {
           text:'健康監控',
@@ -81,6 +83,7 @@ export default {
         },
         {
           text:'環境清淨',
+          isSwiper:1
         },
         {
           text:'寵物床窩/玩具',

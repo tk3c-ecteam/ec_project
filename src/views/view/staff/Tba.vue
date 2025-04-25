@@ -26,7 +26,7 @@ const contents = [
           `,
     navButtons: [
       {
-        image: 'tup/images/nav3.png',
+        image: 'tba/images/nav3_a.png',
         url: 'https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2'
       },
       {

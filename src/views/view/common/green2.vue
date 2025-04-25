@@ -286,9 +286,9 @@ export default {
         <img :src="$filters.siteUrl('green_subsidy/images/green_title.png')" alt="" />
       </h2>
       <div class="green content">
-         <Tabs :isSwiper="1" :tabs="tabs">
+         <Tabs :tabs="tabs">
           <template v-slot="{ selectedTab }">
-            <TabContent :isSwiper="1" :moreImage="'green_subsidy/images/more2.png'" v-for="(tab, t) in tabs" :menus="tab.id" :name="`t${t + 1}`" :moreUrl="tab.url" :index="t" :selectedTab="selectedTab">
+            <TabContent :isSwiper="1" :moreImage="'green_subsidy/images/more2.png'" v-for="(tab, t) in tabs" :menus="tab.id" :moreUrl="tab.url" :index="t" :selectedTab="selectedTab">
             </TabContent>
           </template>
         </Tabs>

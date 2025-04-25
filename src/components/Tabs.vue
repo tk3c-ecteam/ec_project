@@ -22,11 +22,7 @@
       @slideChange="onSlideChange"
       >
         <swiper-slide v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }" class="flex! flex-basis:fit brightness(0.7) brightness(1).active" @click="goSlide(index)">
-           <a v-if="singleUrl != undefined" :href="$filters.addGALink(singleUrl)"  @click.prevent="selectTab(index)" >
-             <b v-if="tab.text != undefined"> {{ tab.text }}</b>
-            <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
-          </a>
-            <a v-else :href="$filters.addGALink(tab.url)"  @click.prevent="selectTab(index)">
+            <a :href="$filters.addGALink(tab.url)"  @click.prevent="selectTab(index)">
               <b v-if="tab.text != undefined"> {{ tab.text }}</b>
             <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
           </a>
@@ -82,11 +78,9 @@ export default {
       //點擊找到此區域
       parent = current.closest('section');
 
-      //連結只有一個不用更換(標題加上 .single-url)
-      if (parent.querySelectorAll('.single-url').length > 0) return false;
-
       let getUrl = current.getAttribute('href');
 
+      //如果頁籤按鈕上有連結就把此連結加到樓層標題上
       if (parent.querySelectorAll('.title a').length > 0 && getUrl != '') {
         parent.querySelector('.title a').setAttribute('href', getUrl);
       }
