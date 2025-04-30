@@ -22,15 +22,10 @@ export const globalMixin = {
     }
   },
   mounted() {
-    this.timer = setInterval(() => {
-      setTimeout(() => {
-        this.getFloorTitle('section.scroll');
-      }, 5800);
-    }, 1000);
-
+    //取得樓層標題、id
     setTimeout(() => {
-      clearInterval(this.timer);
-    }, 1000);
+      this.getFloorTitle('section.scroll');
+    }, 5800);
   },
   methods: {
     /*加入meta標籤
@@ -226,7 +221,7 @@ export const globalMixin = {
         }
       );
     },
-    //取得樓層標題(element=區域)
+    //取得樓層標題 id(element=區域)，並加到右側、手機版選單上
     getFloorTitle(element) {
       document.querySelectorAll(element).forEach((el, t) => {
         let title = el.getAttribute('titles'),
@@ -241,7 +236,7 @@ export const globalMixin = {
             {
               "text": title,
               "href": '#' + id
-            })
+            });
         }
       });
     },

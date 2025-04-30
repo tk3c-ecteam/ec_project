@@ -52,7 +52,6 @@ body {
       right: 0;
       margin: 0 auto;
       top: 31%;
-      animation: slide-down 1.5s ease-in;
       img {
         animation: wave-move 1.8s linear infinite alternate;
         animation-delay: 1s;
@@ -186,11 +185,6 @@ section {
 }
 
 @include media-query("mobile", "576px") {
-  .fix_btn {
-    .dropdown-menu {
-      display: none;
-    }
-  }
   #staff-container {
     .background {
       padding-bottom: 70vw;

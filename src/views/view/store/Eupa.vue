@@ -49,11 +49,17 @@ var contents = [
             { pc: "EUPA/images/TSK-2865_a.png", mobile: "EUPA/images/TSK-2865_M.png" },
              { pc: "EUPA/images/TSK-B164.png", mobile: "EUPA/images/TSK-B164_M.png" },
           ],
+          slide51:[
+            {pc: "EUPA/images/bn20255115_1.jpg",mobile:'EUPA/images/bn20255115_1M.jpg'},
+            {pc: "EUPA/images/bn20255115_2.jpg",mobile:'EUPA/images/bn20255115_2M.jpg'},
+            {pc: "EUPA/images/bn20255115_3.jpg",mobile:'EUPA/images/bn20255115_3M.jpg'}
+          ]
         }
       ];
     
       const menu = [7759,7675,7676,7677,7678,7760];
       const moreImage = "EUPA/images/more.png";
+      const today = new Date();
 
       nextTick(() => {
        if( document.querySelectorAll('.floor')[0].querySelectorAll('.bg01 li').length == 0) {
@@ -69,10 +75,18 @@ var contents = [
 
         addEventListener('resize',() => {
            if (slide.mobile == undefined && window.innerWidth <= 992) {
-          contents[0].slides.splice(s,1);
+            contents[0].slides.splice(s,1);
           }
         });
       });    
+
+     nextTick(() => {
+       if(today >= new Date('2025/05/01') && today < new Date('2025/05/16')) {
+        contents[0].slide51.forEach((slide5,s) => {
+          contents[0].slides.splice(0,0,contents[0].slide51[s]);
+        });
+      }
+     });
      
 </script>
 

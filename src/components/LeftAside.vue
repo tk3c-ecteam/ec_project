@@ -2,7 +2,7 @@
  const today = new Date();
 
  //熱門活動區
- let mainName = (today >= new Date('2025/04/22')) ? 'lovemama' : '202504vip',
+ let mainName = (today >= new Date('2025/05/01')) ? '202505event' : 'lovemama',
   mainUrl = `https://events.tk3c.com/events_net/${mainName}/index.html`,
    location = window.location.pathname.split('/'),
   folderName = (location[2] == 'events_net') ? location[3] : location[2],

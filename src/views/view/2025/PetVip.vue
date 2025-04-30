@@ -24,7 +24,7 @@
       </h2>
 
       <p class="w:65% w:80%@<992 w:full@<576 m:5%|auto|2% m:15%|auto|2%@<576">
-        <img :src="$filters.siteUrl('pet_product/images/vip/s1-1.png')" />
+        <img :src="$filters.siteUrl('pet_product/images/vip/s1-1a.png')" />
       </p>
       <p class="rel w:65% w:80%@<992 w:full@<576 m:auto">
         <img class="abs w:full left:0 right:0 m:auto top:0 z:-1" :src="$filters.siteUrl('pet_product/images/vip/s1-2.png')" />
@@ -37,7 +37,7 @@
 
       <!-- 彈出視窗 -->
       <AlertBox v-for="(msg,m) in message" :key="m" :ref="`alert${m}`" :type="'image'">
-        <img :src="$filters.siteUrl(msg.image)" width="30%">
+        <img :src="$filters.siteUrl(msg.image)" width="50%" height="50%">
       </AlertBox>
     </section> 
 
@@ -95,10 +95,10 @@ export default {
           "image":"pet_product/images/vip/a1.png"
         },
         {
-          "image":"pet_product/images/vip/a2.png"
+          "image":"pet_product/images/vip/a2_2.png"
         },
         {
-          "image":"pet_product/images/vip/a3.png"
+          "image":"pet_product/images/vip/a3_2.png"
         },
         {
           "image":"pet_product/images/vip/a4.png"
