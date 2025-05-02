@@ -44,14 +44,6 @@
         <swiper
         :loop="false"
         :space-between="10"
-        :effect="'coverflow'"
-        :coverflowEffect="{
-          rotate:32,
-          stretch: 0,
-          depth: 70,
-          modifier: 1,
-          slideShadows : false
-        }"
         :navigation="{
            nextEl: '.gift-box .next',
            prevEl: '.gift-box .prev',
@@ -67,7 +59,6 @@
             slidesPerView:4
           }
         }" 
-        :modules="[EffectCoverflow]"
         >
         <swiper-slide v-for="gift in gifts">
            <a :href="$filters.addGALink(gift.url)" target="_blank">
@@ -98,20 +89,18 @@
   </div>
 
   <!-- 左側選單+手機版 -->
-  <LeftAside :asides="asides"></LeftAside>
+  <LeftAside></LeftAside>
 
   <!-- 右側選單 -->
-  <RightAside :asides="asides"></RightAside>
+  <RightAside></RightAside>
 </template>
 
 <script>
 import listM from "@/views/layout/listM.vue";
-import { EffectCoverflow } from "swiper/modules";
 export default {
   data() {
     return {
       listM,
-      EffectCoverflow,
       gifts:[
          {
           image: 'fan_hot/images/2505/sp01.png',

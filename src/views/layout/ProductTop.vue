@@ -5,8 +5,7 @@
 export default {
   props:{
     pro:{type:Object,required:true},
-  },
-  props: ['pro'],
+  }
 }
 </script>
 

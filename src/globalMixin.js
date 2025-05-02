@@ -8,7 +8,6 @@ export const globalMixin = {
       product2: [],//單一商品
       percent: 0,
       tabS: null,
-      asides: [],//右側選單項目
       timer: null,
       isLeftAside: false, //是否顯示左側選單
       isRightAside: false, //是否顯示右側選單
@@ -20,12 +19,6 @@ export const globalMixin = {
       jimmyId: [], //商品樓層id
       jimmyText: [], //樓層文字 
     }
-  },
-  mounted() {
-    //取得樓層標題、id
-    setTimeout(() => {
-      this.getFloorTitle('section.scroll');
-    }, 5800);
   },
   methods: {
     /*加入meta標籤
@@ -223,22 +216,23 @@ export const globalMixin = {
     },
     //取得樓層標題 id(element=區域)，並加到右側、手機版選單上
     getFloorTitle(element) {
-      document.querySelectorAll(element).forEach((el, t) => {
-        let title = el.getAttribute('titles'),
-          id = '';
+      const elements = document.querySelectorAll(element);
+      const asides = [];
 
-        //取得id 作錨點
-        if (el.getAttribute('id')) id = el.getAttribute('id');
-        if (el.querySelector('.title') && el.querySelector('.title').getAttribute('id')) id = el.querySelector('.title').getAttribute('id');
+      elements.forEach(el => {
+        const title = el.getAttribute('titles'),
+          id = el.getAttribute('id') || el.querySelector('.title')?.getAttribute('id');
 
-        if (id != '' && title != '') {
-          this.asides.push(
+        if (id && title) {
+          asides.push(
             {
               "text": title,
               "href": '#' + id
             });
         }
       });
+
+      return asides;
     },
     //回到最上層
     goTop() {

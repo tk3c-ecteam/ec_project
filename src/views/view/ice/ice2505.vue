@@ -13,7 +13,7 @@
 
     <!-- 上方凸品 -->
     <section class="top-group mt:-17% mt:-31vw@<992 mt:-51vw@<576">
-      <img class="w:90% w:full@<992 abs left:0 right:0 m:auto top:-0.3vw z:-1 hidden@<992" :src="$filters.siteUrl('icewash2209/images/2505/KV_BOX.png')" />
+      <img class="w:86% w:full@<992 abs left:0 right:0 m:auto top:-1vw z:-1 hidden@<992" :src="$filters.siteUrl('icewash2209/images/2505/KV_BOX.png')" />
       <div class="bg:#af7b58 w:85% w:full@<992 m:auto r:20px r:10px@<992 p:0|0|2%@<992 box:border-box">
         <ProductTop :pro="product2[menuTop]"></ProductTop>
       </div>
@@ -143,10 +143,10 @@
   </div>
 
   <!-- 左側選單+手機版 -->
-  <LeftAside :asides="asides"></LeftAside>
+  <LeftAside></LeftAside>
 
   <!-- 右側選單 -->
-  <RightAside :asides="asides"></RightAside>
+  <RightAside></RightAside>
 </template>
 
 <script>
@@ -397,6 +397,14 @@ body {
   .tab {
     .swiper-wrapper {
       justify-content: center;
+    }
+  }
+}
+
+.tab3-box {
+  .tab {
+    .swiper-wrapper {
+      justify-content: left;
     }
   }
 }

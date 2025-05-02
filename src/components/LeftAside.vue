@@ -62,11 +62,6 @@
     ];
     topics.splice(statusTopic,1);
   }
-  
-  //選單項目(各樓層的標題)
-  const asides = defineModel('asides', {
-    type: Object
-  });
 
   /*手機版類型
   * 預設: mobile3 
@@ -80,6 +75,11 @@
   const go3cFloor = defineModel('go3cFloor',{
     type:Function
   });
+
+  // 自訂右側選單樓層標題項目
+   const asideExtra = defineModel('asideExtra',{
+    type:Object
+  });
 </script>
 
 <script>
@@ -88,7 +88,8 @@
       return {
         swiper:null,
         status:null,
-        itemNum:''
+        itemNum:'',
+        asides:[]
       }
     },
     mounted() {
@@ -98,6 +99,12 @@
       //左右側選單顯示隱藏
       window.addEventListener('scroll',this.showAside);
      if(this.go3cFloor == undefined)  window.addEventListener('scroll',this.scrollPos);
+    },
+    beforeUpdate() {
+       //確保 DOM 更新後再取得樓層標題和 ID
+       this.asides = this.getFloorTitle('section.scroll');
+       // 如果是自訂的選單項目則覆蓋舊有的
+       if(this.asideExtra) this.asides = this.asideExtra;
     },
     unmounted() {
       window.removeEventListener('resize',this.smallDeviceLeft);
@@ -203,7 +210,7 @@
       @swiper="onSwiper"
       >
       <swiper-slide v-for="(aside,a) in asides" :key="a" :class="{'active': status == a}" class="color:#ffe400.active width:fit-content!">
-         <a v-if="go3cFloor" :href="aside.href" @click="go3cFloor(aside.id)">{{ aside.text }}</a>
+         <a v-if="go3cFloor" @click="go3cFloor(aside.id,aside.href)">{{ aside.text }}</a>
           <a v-else :href="aside.href">{{ aside.text }}</a>
       </swiper-slide>
       </swiper>
@@ -211,7 +218,7 @@
     <template #mobileList>
        <ul class="grid-cols:2">
         <li v-for="(aside,a) in asides" :key="a" :class="{'active': status == a}">
-           <a v-if="go3cFloor" :href="aside.href" @click="go3cFloor(aside.id)">{{ aside.text }}</a>
+           <a v-if="go3cFloor" @click="go3cFloor(aside.id,aside.href)">{{ aside.text }}</a>
           <a v-else :href="aside.href">{{ aside.text }}</a>
         </li>
       </ul>

@@ -299,9 +299,9 @@
   </div>
 
    <!-- 左側選單 -->
-   <LeftAside :asides="asides"></LeftAside>
+   <LeftAside></LeftAside>
    <!-- 右側選單 -->
-   <RightAside :asides="asides"></RightAside> 
+   <RightAside></RightAside> 
 </template>
 
 <script>

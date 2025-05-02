@@ -6,27 +6,27 @@ export default {
       tabs: [
         {
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=111723&aid=23606&hid=121773',
-          image: '24spring_clean/images/2504/logo_Homedics.png',
+          image: '24spring_clean/images/2505/logo_Homedics2.png',
           id:6564
         },
         {
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=111723&aid=23606&hid=121772',
-          image: '24spring_clean/images/2504/logo_Hamilton.png',
+          image: '24spring_clean/images/2505/logo_Hamilton2.png',
           id:6565,
         },
         {
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=111723&aid=23606&hid=121774',
-          image: '24spring_clean/images/2504/logo_Gtech.png',
+          image: '24spring_clean/images/2505/logo_Gtech2.png',
           id:6561
         },
         {
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=111723&aid=23606&hid=121775',
-          image: '24spring_clean/images/2504/logo_BISSELL.png',
+          image: '24spring_clean/images/2505/logo_BISSELL2.png',
           id:6562
         },
         {
           moreUrl: 'https://www.tk3c.com/dic2.aspx?cid=111723&aid=23606&hid=122689',
-          image: '24spring_clean/images/2504/logo_INXNI.png',
+          image: '24spring_clean/images/2505/logo_INXNI2.png',
           id:6563
         }
       ],
@@ -52,24 +52,6 @@ export default {
       status: 0,
       statusTab: 1,
       moreImage: '24spring_clean/images/2504/more.png',
-      swiperOption:{
-        breakpoints:{
-           0:{
-            slidesPerView:3,
-            grid:{
-              fill:'colmn',
-              rows:2
-            }
-          },
-           600:{
-            slidesPerView:2.5,
-            grid:{
-              fill:'colmn',
-              rows:2
-            }
-          }
-        }
-      }
     }
   }
 }
@@ -81,7 +63,7 @@ export default {
 
     <!-- 品牌商品 -->
     <section class="tab-box">
-       <Tabs :tabs="tabs" :swiperOption="swiperOption.breakpoints">
+       <Tabs :tabs="tabs">
         <template v-slot="{ selectedTab }">
           <TabContent :isSwiper="1" :moreImage="moreImage" v-for="(tab, t) in tabs" :moreUrl="tab.moreUrl" :menus="tab.id" :index="t" :selectedTab="selectedTab">
 
@@ -96,32 +78,18 @@ export default {
   </div>
 
   <!-- 右側選單 + 手機板 -->
-   <RightAside :asides="asides" :type="'mobile'"></RightAside>
+   <RightAside :type="'mobile'"></RightAside>
 </template>
 
 <style lang="scss">
 @charset "utf-8";
 
-$dir: 'https://events.cdn-tkec.tw/events_net/events_net/24spring_clean/images/2504/';
-$origin: 'https://events.tk3c.com/events_net/events_net/24spring_clean/images/2504/';
+$dir: 'https://events.cdn-tkec.tw/events_net/events_net/24spring_clean/images/2505/';
+$origin: 'https://events.tk3c.com/events_net/events_net/24spring_clean/images/2505/';
 
 /*  共用樣式調整 */
-form#form1 {
-  position: relative;
-  &:before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    $image: $dir + 'BG.png';
-    background: url($image) repeat-y center;
-    background-size: 100% auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    z-index: -2;
-  }
+body {
+  background: #fefabb;
 }
 
 .bg01 {
@@ -135,8 +103,8 @@ form#form1 {
   position: relative;
 
   .background {
-    $image: $dir + 'KV.png';
-    @include bg-responsive($image, 2000, 790);
+    $image: $dir + 'kv2.jpg';
+    @include bg-responsive($image, 2000, 700);
     position: relative;
     margin: 0 auto 0;
     background-position:
@@ -197,14 +165,6 @@ section {
       padding-bottom: 52vw;
     }
   }
-
-  .tab-box {
-    .tab {
-      .swiper-slide {
-        flex-basis: fit-content;
-      }
-    }
-  }
 }
 
 /* 手機版 */
@@ -212,7 +172,7 @@ section {
 @include media-query('mobile', '576px') {
   #spring-container {
     .background {
-      $image: $dir + 'KV_M.png';
+      $image: $dir + 'kv_M2.jpg';
       background: url($image) no-repeat center;
       background-size: 100% auto;
       background-position:

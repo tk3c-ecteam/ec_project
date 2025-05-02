@@ -1,9 +1,4 @@
 <script setup>
-   //選單項目(各樓層的標題)
-   const asides = defineModel('asides', {
-   type: Object
-  });
-
    /*手機版選單類型
    * type == 'mobile' -> 置底選單
    * type == 'mobile2' -> 置頂選單
@@ -21,6 +16,11 @@
   const go3cFloor = defineModel('go3cFloor',{
     type:Function
   });
+
+  // 自訂右側選單樓層標題項目
+   const asideExtra = defineModel('asideExtra',{
+    type:Object
+  });
 </script>
 
 <script>
@@ -29,7 +29,8 @@
       return {
         swiper:null,
         status:null,
-        itemNum:0
+        itemNum:0,
+        asides:[]
       }
     },
     mounted() {
@@ -40,6 +41,12 @@
       window.addEventListener('scroll',this.showAside);
       //右側選單項目滾動
        window.addEventListener('scroll',this.scrollPos);
+    },
+    beforeUpdate() {
+       //確保 DOM 更新後再取得樓層標題和 ID
+       this.asides = this.getFloorTitle('section.scroll');
+       // 如果是自訂的選單項目則覆蓋舊有的
+       if(this.asideExtra) this.asides = this.asideExtra;
     },
     unmounted() {
       window.removeEventListener('resize',this.smallDeviceRight);
@@ -95,7 +102,7 @@
       <div class="aside-content">
          <ul v-if="go3cFloor">
            <li v-for="(aside, a) in asides" :key="a">
-            <a :href="aside.href" @click="go3cFloor(aside.id)">{{ aside.text }}</a>
+            <a @click="go3cFloor(aside.id,aside.href)">{{ aside.text }}</a>
             </li>
          </ul>
          <ul v-else>

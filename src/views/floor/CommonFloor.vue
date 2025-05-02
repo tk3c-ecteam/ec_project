@@ -22,9 +22,11 @@ import listF from '@/views/layout/listF.vue'
 export default {
   props: ['floors', 'menu', 'singleImage','moreImage','isSwiper'],
   mounted() {
-   setTimeout(() => {
-     this.getFloorData(this.menu);
-   }, 5);
+   if (this.menu != undefined) {
+    setTimeout(() => {
+      this.getFloorData(this.menu);
+    }, 800);
+   }
   }
 }
 </script>

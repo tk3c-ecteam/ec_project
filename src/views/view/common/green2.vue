@@ -344,7 +344,7 @@ export default {
   </div>
   
   <!-- 右側選單+手機版 -->
-  <RightAside :asides="asides" :type="'mobile'"></RightAside>
+  <RightAside :type="'mobile'"></RightAside>
 </template>
 
 <style lang="scss">
