@@ -35,6 +35,7 @@ src/AppComponent.vue 以這個vue來引入各頁面
 
 src/globalMixin.js 撈取樓層商品api、與其他共用功能
 
+*若其他.vue檔案裡找不到的function都在globalMixin.js
 ```
 
 ## 此專案安裝步驟
