@@ -95,7 +95,7 @@ export default {
       </div>
 
       <div class="rel">
-        <a class="rel w:full h:full" :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?cid=83187&aid=22279&hid=67843&pid=254268')" target="_blank">
+        <a class="rel w:full h:full" :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=coffee-20')" target="_blank">
            <img :src="$filters.siteUrl('crown_202204/images/2311/coffee-20e.png')" /> 
            <div class="price">
               <b>{{ price2 }}</b>

@@ -9,6 +9,7 @@ import Components from 'unplugin-vue-components/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   define: {
     global: 'window',
     'process.env': {}
@@ -89,9 +90,14 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        lenovo2503: resolve(__dirname, './index.html')
+        coffee_vue: resolve(__dirname, './index.html')
       },
       output: {
+        //拆分node套件命名為vendor.js
+        //有同一頁面的vendor大小、內容不同需將檔名區分(如:vendor2504等)
+        manualChunks(id) {
+          if (id.includes('node_modules')) return 'vendor';
+        },
         entryFileNames: 'js/[name].js',
         chunkFileNames: 'js/[name].js',
         assetFileNames: 'css/[name][extname]'

@@ -22,8 +22,8 @@
       <ul class="gap:10 mb:2%">
         <li class="w:80% w:95%@<992 w:full@<576">
           <div class="flex flex-direction:row flex-direction:column@<576 gap:10">
-            <a class="w:50% w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947&strPreView=y')" target="_blank" :class="[!isOff ? 'off' : '']">
-              <img :src="$filters.siteUrl('2025_Intel_Spring_Bundle/images/sp01-1.png')" />
+            <a class="w:50% w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947')" target="_blank" :class="[!isOff ? 'off' : '']">
+              <img :src="$filters.siteUrl('2025_Intel_Spring_Bundle/images/sp01-1c.png')" />
             </a>
             <a class="w:50% w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')"
               target="_blank"><img :src="$filters.siteUrl('2025_Intel_Spring_Bundle/images/sp01-2.png')" /></a>

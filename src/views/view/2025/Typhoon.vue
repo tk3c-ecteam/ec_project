@@ -16,10 +16,10 @@
   </div>
 
   <!-- 左側選單+手機版 -->
-   <LeftAside :asides="asides"></LeftAside>
+   <LeftAside></LeftAside>
 
    <!-- 右側選單 -->
-   <RightAside :asides="asides" :asideImage="asideImage"></RightAside> 
+   <RightAside :asideImage="asideImage"></RightAside> 
 </template>
 
 <script setup>

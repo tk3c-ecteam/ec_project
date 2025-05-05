@@ -39,7 +39,7 @@
     <!--  指南 -->
     <section class="gift-box">
       <h2 class="title">
-        <img :src="$filters.siteUrl('2024083C/images/2505/S01.png')" />
+        <img :src="$filters.siteUrl('2024083C/images/2505/S01_a.png')" />
       </h2>
      
       <ul class="w:45% w:70%@<992 w:full@<576 grid-cols:2 m:0|auto|-5% m:0|auto|-6%@<992 m:0|auto|-10%@<576 gap:10 gap:5@<576">
@@ -59,7 +59,7 @@
           <li class="w:80% w:95%@<992 w:full@<576">
             <div class="flex flex-direction:row flex-direction:column@<576 gap:10">
               <a class="w:50% w:full@<576" @click="goNB('#sale')" target="_blank" :class="[!isOff ? 'off' : '']">
-                <img :src="$filters.siteUrl('2024083C/images/2505/sp01-1a.png')" />
+                <img :src="$filters.siteUrl('2024083C/images/2505/sp01-1b.png')" />
               </a>
               <a class="w:50% w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')"
                 target="_blank"><img :src="$filters.siteUrl('2024083C/images/2505/sp01-2a.png')" /></a>
@@ -215,6 +215,13 @@
         </ul>
         </AlertBox>
       </div>
+    </section>
+
+    <section>
+      <a :href="$filters.addGALink('https://events.tk3c.com/events_net/2025_Intel_Spring_Bundle/index.html')" target="_blank">
+        <img class="pc" :src="$filters.siteUrl('2024083C/images/2505/bn_intel.jpg')" />
+         <img class="mobile" :src="$filters.siteUrl('2024083C/images/2505/bn_intelM.jpg')" />
+      </a>
     </section>
 
       <!-- 筆電區商品樓層 -->
