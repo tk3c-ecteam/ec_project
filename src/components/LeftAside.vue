@@ -98,7 +98,7 @@
       window.addEventListener('resize',this.smallDeviceLeft);
       //左右側選單顯示隱藏
       window.addEventListener('scroll',this.showAside);
-     if(this.go3cFloor == undefined)  window.addEventListener('scroll',this.scrollPos);
+      if(this.go3cFloor === undefined) window.addEventListener('scroll',this.scrollPos);
     },
     beforeUpdate() {
        //確保 DOM 更新後再取得樓層標題和 ID
@@ -113,33 +113,37 @@
     methods: {
       scrollPos() {
         //先取得第一個區域px位置
-        if (document.querySelectorAll('section.scroll').length <= 0) return false;
-       let firstArea =  document.querySelectorAll('section.scroll')[0].getBoundingClientRect().top;
-      document.querySelectorAll('section.scroll').forEach((el, i) => {
-        this.itemNum = 'auto';
-        let scrollTop = window.scrollY,
-          top = el.getBoundingClientRect().top + scrollTop - 150,
-          bottom = top + window.innerHeight;
-        /* 目前滑鼠滾動位置滾到每個樓層區，所屬項目加上 .active 標記,
-        */
-        if (scrollTop > top && scrollTop < bottom) {
-          this.status = i;
-          this.goSlide(i);
-        }
+        
+        const sectionS = document.querySelectorAll('section.scroll');
+        if (sectionS.length === 0) return;
 
-        //在第一區域上面的 樓層標題項目歸0
-        if (scrollTop < firstArea) {
+        const firstAreaTop = sectionS[0].getBoundingClientRect().top,
+          scrollTop = window.scrollY;
+
+         this.itemNum = 'auto';
+        sectionS.forEach((el, i) => {
+          const top = el.getBoundingClientRect().top + scrollTop - 150,
+            bottom = top + window.innerHeight;
+
+          // 檢查當前滾動位置是否在當前區域內
+          if (scrollTop > top && scrollTop < bottom) {
+            this.status = i;
+            this.goSlide(i);
+          }
+        });
+
+        // 當滾動位置在第一區域上方時，重置狀態
+        if (scrollTop < firstAreaTop) {
           this.status = null;
           this.goSlide(0);
         }
-      });
-    },
-    onSwiper(swiper) {
-      this.swiper = swiper
-    },
-    goSlide(id) {
-      this.swiper.slideTo(id); 
-    }
+      },
+      onSwiper(swiper) {
+        this.swiper = swiper
+      },
+      goSlide(id) {
+        this.swiper.slideTo(id);
+      }
     },
   }
 </script>
