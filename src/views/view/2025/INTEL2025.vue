@@ -64,7 +64,7 @@
             <li class="short">(3) 搭載 Intel® Core™ Ultra (系列) 行動處理器之H/HX系列筆電</li>
             <li class="short mb:25px!">(225H、235H、255H、265H、235HX、245HX、255HX、265HX、275HX、285HX)</li>
             <li>2.《Dying Light: The Beast》即將推出，登錄後待遊戲上市後始能使用，實際上市時間以遊戲官方公告為主。</li>
-            <li>3.【Intel 未日文明遊戲包】內容《Dying Light: The Beast》與《席德·梅爾的文明帝國 VII》兩款遊戲序號數量有限，送完為止。完整遊戲條款及細則請參閱 <a class="color:#42b9ef text:underline">https://softwareoffer.intel.com/offer/2502-05/terms</a>，欲兌換遊戲包之消費者，請務必保留原購買證明、產品型號、產品機等相關購買資料以備主辦單位查詢。若屆時無法提供，恐主辦單位無法協助處理遊戲包下載之相關問題。</li>
+            <li>3.【Intel 未日文明遊戲包】內容《Dying Light: The Beast》與《席德·梅爾的文明帝國 VII》兩款遊戲序號數量有限，送完為止。完整遊戲條款及細則請參閱 <a class="color:#42b9ef text:underline" href="https://softwareoffer.intel.com/offer/2502-05/terms" target="_blank">https://softwareoffer.intel.com/offer/2502-05/terms</a>，欲兌換遊戲包之消費者，請務必保留原購買證明、產品型號、產品機等相關購買資料以備主辦單位查詢。若屆時無法提供，恐主辦單位無法協助處理遊戲包下載之相關問題。</li>
             <li>4.經由其他管道非本促銷活動之配合管道所取得之兌換者，不在主辦單位協助範圍內。</li>
             <li>5.本遊戲包兌換時間至台灣時間2025/09/30(一)23:59截止。</li>
             <li>本遊戲之遊戲、語言使用者端是否支援，視各個人電腦及電腦使用國家(如：所在地區/國家之網路限制、個人電腦中的瀏覽器版本、網路安全設定等等)導致下載中斷或失敗，主辦單位與指定配合通路概不負責，並勿多次點擊登入及換頁，以免帳號連系統鎖住。</li>

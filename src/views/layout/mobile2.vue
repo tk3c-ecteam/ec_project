@@ -4,8 +4,7 @@
     <div class="footer-bg" :style="{'display': mobileBg}" @click="closeNav"></div>
     <div class="nav-box">
       <ul>
-        <li @click="goTop">回到上層</li>
-        <li @click="changeMobile('social')" :class="[mobileStatus == 'social' ? 'active' : '']">關注社群</li>
+        <li class="w:full!" @click="changeMobile('social')" :class="[mobileStatus == 'social' ? 'active' : '']">關注社群</li>
       </ul>
     </div>
 
@@ -24,7 +23,7 @@
   <div class="mobile-for-product" :class="{'open': isMobileOpen}">
     <div v-if="isMobileOpen" @click="changeNav" class="abs w:full h:full left:0 top:0 z:-1"></div>
     <div class="top-nav">
-     <slot name="topAsides"></slot>
+      <div v-if="!isMobileOpen"><slot name="topAsides"></slot></div>
     </div>
     <a class="switch" @click="switchMobile">
       <i v-if="!isMobileOpen" class="fa-solid fa-angle-down"></i>

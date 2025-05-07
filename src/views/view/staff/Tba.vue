@@ -18,61 +18,27 @@ const contents = [
         <li><p>(1) 限【門市取貨門市付款】(預約門市取貨且選擇門市付款)，商品不得轉售。</p></li>
         <li><p>(2) 指定取貨/付款門市&nbsp;&nbsp;全台門市</p></li>
         <li><p>(3) 貨到門市後，燦坤3C會再行通知，請於期限內攜帶【會員證】至【預約取貨門市】，出示【門市交易預約單】後於實體門市現場進行選購與付款，逾期未完成取貨則預約單自動取消。</p></li>
-        <li><p>(4) 如非本人取貨、取貨未攜帶員工識別證等，燦坤3C得拒絕本交易。</p></li>
-        <li><p>(5) 請務必填寫真實、正確資訊，若因姓名、電話、員工編號錯誤等不可歸責於燦坤3C之事由導致聯絡不上或無法出貨等情況，恕不負責，請多包涵。</p></li>
+        <li><p>(4) 如非本人取貨、取貨未攜帶會員證等，燦坤3C得拒絕本交易。</p></li>
+        <li><p>(5) 請務必填寫真實、正確資訊，若因姓名、電話、會員編號錯誤等不可歸責於燦坤3C之事由導致聯絡不上或無法出貨等情況，恕不負責，請多包涵。</p></li>
         <li><p class="last">(6) 於本網頁所輸入的資料受個人資料保護法相關法規保護，基於作業需求，同意提供燦坤及協力廠商等於聯絡溝通使用。</p></li>
         <li>3.請留意於本網頁成立的是【門市交易預約單】，是指於本網頁預約【至燦坤實體門市進行交易的優先資格】，商品依門市現貨為主，相關交易流程依實體門市規定為準，不屬於通訊交易，依法不享有七天猶豫期。</li>
         <li>4.活動未盡事宜以燦坤3C公告為準，燦坤3C保留活動最終解釋修改變更之權利。</li>
           `,
-    navButtons: [
-      {
-        image: 'tba/images/nav3_a.png',
-        url: 'https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2'
-      },
-      {
-        image: 'tup/images/nav4.png',
-        url: 'https://events.tk3c.com/events_net/nightsale/index.html'
-      },
-      {
-        image: 'tup/images/nav5.png',
-        url: 'https://events.tk3c.com/events_net/green_subsidy/index.html'
-      },
-      {
-        image: 'tup/images/nav6.png',
-        url: 'https://events.tk3c.com/events_net/events_net/banks/bank.html'
-      }
-    ],
     otherBanners:[
       {
         url:'',
         pc:'tba/images/member.png',
         mobile:'tba/images/member.png'
       }
-    ]
+    ],
+    menu:[7742],
+    alertTitle:'開業福袋專屬優惠'
   }
 ];
-
-const menus = [7742];
 </script>
 
 <template>
-  <StaffCommon v-model:contents="contents"></StaffCommon>
-
-  <!-- 商品樓層 -->
-  <CommonFloor
-    :floors="contents[0].floor"
-    :singleImage="contents[0].singleImage"
-    :menu="menus"
-  ></CommonFloor>
-
-  <!-- 活動辦法 -->
-  <section class="info-group scroll" titles="開業福袋專屬優惠" id="info">
-    <h2 class="title">開業福袋專屬優惠</h2>
-    <div class="text">
-      <p class="last">注意事項如下</p>
-      <ol v-html="contents[0].alertHtml"></ol>
-    </div>
-  </section>
+  <StaffCommon :contents="contents"></StaffCommon>
 </template>
 
 <style lang="scss">

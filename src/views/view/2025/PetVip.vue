@@ -46,7 +46,7 @@
   </div>
 
   <!-- 右側選單+手機板 -->
-  <RightAside :asides="asides" :type="'mobile'" :asideImage="asideImage"></RightAside>
+  <RightAside :type="'mobile2'" :asideImage="asideImage"></RightAside>
 </template>
 
 <script>
@@ -242,17 +242,17 @@ body {
 @include media-query("mobile", "576px") {
   #pet-container {
     .background {
-      padding-bottom: 64vw;
+      padding-bottom: 74vw;
       .title {
         width: 85%;
-        top: 16vw;
+        top: 26vw;
         left: 0;
         right: 0;
         margin: 0 auto;
       }
       .pet {
         width: 120%;
-        top: 27vw;
+        top: 36vw;
         left: -12vw;
         right: 0;
         margin: 0 auto;
@@ -264,7 +264,7 @@ body {
     &:before,
     .background2 {
       background-size: 180% auto;
-      background-position: -37vw 10vw,top;
+      background-position: -37vw 20vw,top;
     }
   }
 }

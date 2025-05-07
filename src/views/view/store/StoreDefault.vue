@@ -38,12 +38,6 @@ const contents = defineModel("contents");
        storeScroll() {
          let scrollTop = window.scrollY;
 
-         if (scrollTop >= 150) {
-           document.querySelector('nav').classList.add('fixed');
-         } else {
-           document.querySelector('nav').classList.remove('fixed');
-         }
-
          document.querySelectorAll(".floor").forEach((el, i) => {
            let top = el.getBoundingClientRect().top + scrollTop - 150,
              bottom = top + window.innerHeight;
@@ -87,7 +81,7 @@ const contents = defineModel("contents");
     </p>
 
     <!-- 導航區 -->
-    <nav v-if="contents[0].floorImg != undefined" class="w:full top:45px z:99 p:0.5%|1%|0.5% p:2%|3%|2%@<992 p:2%|4%|3%@<576 box:border-box"
+    <nav v-if="contents[0].floorImg != undefined" class="sticky w:full top:45px z:99 p:0.5%|1%|0.5% p:2%|3%|2%@<992 p:2%|4%|3%@<576 box:border-box"
     >
       <swiper
         class="max-w:1100px min-w:50% w:auto@<992"
@@ -135,9 +129,14 @@ const contents = defineModel("contents");
       <div class="swiper-button-prev prev"></div>
       <div class="swiper-button-next next"></div>
     </div>
-  </div>
 
-  <div class="custom-top" :class="{'isShow':isGoTop}" @click="goTop2"><p></p></div>
+    <!-- 商品樓層 -->
+    <div v-if="contents[0].menu">
+       <CommonFloor :floors="contents[0].floorImg" :menu="contents[0].menu"  :moreImage="contents[0].moreImage"></CommonFloor>
+    </div>
+
+     <div class="custom-top" :class="{'isShow':isGoTop}" @click="goTop2"><p></p></div>
+  </div>
 </template>
 
 <style lang="scss">
