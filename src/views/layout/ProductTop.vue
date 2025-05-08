@@ -1,10 +1,15 @@
 <script>
 /* 
 * pro - 吉米後台陳列清單編號撈取商品 - 必要
+* swiperOption - 若要 swiper fade效果直接加入 - 非必要
+  swiperOption:{
+    efffect:'fade'
+  }
 */
 export default {
   props:{
     pro:{type:Object,required:true},
+    swiperOption:{type:Object,default:''}
   }
 }
 </script>
@@ -22,6 +27,10 @@ export default {
         }"
         :space-between="10"
         :slidesPerView="'auto'"
+        :effect="swiperOption.effect"
+        :fadeEffect="{
+          crossFade:true
+        }"
         :pagination="{
            el: '.pro-top .page',
           dynamicBullets: true,

@@ -49,7 +49,7 @@
       </p>
 
       <div class="product">
-       <ProductTop :pro="product2[menuTop]"></ProductTop>
+       <ProductTop :pro="product2[menuTop]" :swiperOption="swiperOption3"></ProductTop>
       </div>
 
       <p class="fruit">
@@ -636,6 +636,9 @@ export default {
             }
           }
         }
+      },
+      swiperOption3:{
+        effect:'fade'
       }
     }
   },
