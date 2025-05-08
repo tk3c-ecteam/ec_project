@@ -225,9 +225,9 @@
     </section>
 
       <!-- 筆電區商品樓層 -->
-      <div v-show="statusGift == 0" class="product-area pro1">
+      <div v-if="statusGift == 0" class="product-area pro1">
         <!-- 狂撒百萬折價券 -->
-        <section class="sale-box" v-show="product2[7668] != ''" id="sale">
+        <section class="sale-box scroll" titles="狂撒百萬折價券" v-if="product2[7668] != ''" id="sale">
           <h2 class="title">
             <a :href="$filters.addGALink(disUrl)"
               target="_blank">
@@ -238,7 +238,7 @@
           <ListF :pro="product2[7668]" :isSwiper="1" :name="'pro'"></ListF>
         </section>
 
-        <section class="pro-group odd" v-for="(t1, t) in tab1[0]" :class="`tab${Number(t) + 1}-box`"
+        <section class="pro-group odd scroll" v-for="(t1, t) in tab1[0]" :titles="t1[0].text" :class="`tab${Number(t) + 1}-box`"
           :id="`tab${Number(t) + 1}`">
           <h2 class="title">
             <a :href="$filters.addGALink(t1[0].url)" target="_blank">
@@ -264,8 +264,8 @@
       </div>
 
       <!-- 週邊樓層區 -->
-      <div v-show="statusGift == 1" class="product-area pro2">
-        <section class="pro-group even" v-for="(t2, t) in tab2[0]" :class="`tab${Number(t) + 8}-box`"
+      <div v-if="statusGift == 1" class="product-area pro2">
+        <section class="pro-group even scroll" v-for="(t2, t) in tab2[0]" :titles="t2[0].text" :class="`tab${Number(t) + 8}-box`"
           :id="`tab${Number(t) + 8}`">
           <h2 class="title">
            <a :href="$filters.addGALink(t2[0].url)" target="_blank">
@@ -297,9 +297,9 @@
   </div>
 
    <!-- 左側選單 -->
-   <LeftAside :asideExtra="aside2" :go3cFloor="go3cFloor"></LeftAside>
+   <LeftAside></LeftAside>
    <!-- 右側選單 -->
-   <RightAside :asideExtra="aside2" :go3cFloor="go3cFloor"></RightAside> 
+   <RightAside></RightAside> 
 </template>
 
 <script>
@@ -622,12 +622,6 @@ export default {
       disUrl:'',
       menuDis:7668,
       menuPro:7956,
-      isBank:true,
-      aside2:[
-        {"text":"筆電區","href":"#tab1","id":0},
-        {"text":"DIY/週邊區","href":"#tab8","id":1},
-        {"text":"熱門活動","href":"#event","id": 0},
-      ]
     }
   },
   mounted() {
