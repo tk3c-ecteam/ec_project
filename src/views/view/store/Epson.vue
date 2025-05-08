@@ -53,14 +53,16 @@ const contents = [
             },
           ],
           slides: [
-            { "url": "https://www.tkec.com.tw/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson_230309.jpg", "mobile": "epson/images/epson_230309M.jpg" },
-            { "url": "https://www.tkec.com.tw/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson01_2050x600.jpg", "mobile": "epson/images/epson01_900x800.jpg" },
-            { "url": "https://www.tkec.com.tw/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson02_2050x600.jpg", "mobile": "epson/images/epson02_900x800.jpg" },
-            { "url": "https://www.tkec.com.tw/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson03_2050x600.jpg", "mobile": "epson/images/epson03_900x800.jpg" },
-            { "url": "https://www.tkec.com.tw/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson04_2050x600.jpg", "mobile": "epson/images/epson04_900x800.jpg" },
-            { "url": "https://www.tkec.com.tw/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson05_2050x600.jpg", "mobile": "epson/images/epson05_900x800.jpg" },
-            { "url": "https://www.tkec.com.tw/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson06_2050x600.jpg", "mobile": "epson/images/epson06_900x800.jpg" },
+            { "url": "https://www.tk3c.com/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson_230309.jpg", "mobile": "epson/images/epson_230309M.jpg" },
+            { "url": "https://www.tk3c.com/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson01_2050x600.jpg", "mobile": "epson/images/epson01_900x800.jpg" },
+            { "url": "https://www.tk3c.com/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson02_2050x600.jpg", "mobile": "epson/images/epson02_900x800.jpg" },
+            { "url": "https://www.tk3c.com/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson03_2050x600.jpg", "mobile": "epson/images/epson03_900x800.jpg" },
+            { "url": "https://www.tk3c.com/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson04_2050x600.jpg", "mobile": "epson/images/epson04_900x800.jpg" },
+            { "url": "https://www.tk3c.com/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson05_2050x600.jpg", "mobile": "epson/images/epson05_900x800.jpg" },
+            { "url": "https://www.tk3c.com/dic1.aspx?cid=16917&aid=6722", "pc": "epson/images/epson06_2050x600.jpg", "mobile": "epson/images/epson06_900x800.jpg" },
           ],
+          menu:[3578,3580,3581,3582,3583,3585,3584,
+          3586,3587]
         }
       ];
 
@@ -72,50 +74,44 @@ const icons = [
    { "url": "#pro3583", "image": "epson/images/nav05.png" },
    { "url": "#pro3584", "image": "epson/images/nav06.png" },
    { "url": "#pro3586", "image": "epson/images/nav07.png" },
-];
-
-const menu = [3578,3580,3581,3582,3583,3585,3584,
-  3586,3587
-];      
+];     
 </script>
 
 <template>
-  <StoreDefault :contents="contents"></StoreDefault>
-
-  <!-- icon錨點區 -->
-  <section class="icon-group pt:5% box:border-box">
-    <swiper
-    :loop="false"
-    :spaceBetween="10"
-    :breakpoints="{
-      0:{
-        slidesPerView:2.3,
-        grid:{
-          fill:'colmn',
-          rows:2
-        }
-      },
-      600:{
-        slidesPerView:2.5,
-        grid:{
-          fill:'colmn',
-          rows:2
-        }
-      },
-      992:{
-        slidesPerView:4,
-        grid:{
-          fill:'colmn',
-          rows:2
-        }
-      }
-    }"
-    >
-      <swiper-slide v-for="(icon,i) in icons" :key="i">
-        <a :href="icon.url"><img :src="$filters.siteUrl(icon.image)"></a>
-      </swiper-slide>
-    </swiper>
-  </section>
+  <StoreDefault :contents="contents">
+    <template #special>
+      <!-- icon錨點區 -->
+      <section class="icon-group pt:5% box:border-box">
+        <swiper :loop="false" :spaceBetween="10" :breakpoints="{
+          0: {
+            slidesPerView: 2.3,
+            grid: {
+              fill: 'colmn',
+              rows: 2
+            }
+          },
+          600: {
+            slidesPerView: 2.5,
+            grid: {
+              fill: 'colmn',
+              rows: 2
+            }
+          },
+          992: {
+            slidesPerView: 4,
+            grid: {
+              fill: 'colmn',
+              rows: 2
+            }
+          }
+        }">
+          <swiper-slide v-for="(icon, i) in icons" :key="i">
+            <a :href="icon.url"><img :src="$filters.siteUrl(icon.image)"></a>
+          </swiper-slide>
+        </swiper>
+      </section>
+    </template>
+  </StoreDefault>
 
   <!-- 商品樓層 -->
   <CommonFloor :floors="contents[0].floorImg" :menu="menu"></CommonFloor>

@@ -31,16 +31,13 @@ const contents = [
             { "url": "https://www.tk3c.com/pt.aspx?pid=229090", "pc": "roborock_event/images/common/4Q_7Max_2050x600.jpg", "mobile": "roborock_event/images/common/4Q_7Max_900x800.jpg" },
             { "url": "https://www.tk3c.com/pt.aspx?pid=230244", "pc": "roborock_event/images/common/5G10_2050x600.jpg", "mobile": "roborock_event/images/common/5G10_900x800.jpg" },
           ],
+          menu:[1505,1506,1507]
         }
-      ];
- const menu = [1505,1506,1507]     
+      ];  
 </script>
 
 <template>
   <StoreDefault :contents="contents"></StoreDefault>
-
-  <!-- 商品樓層 -->
-  <CommonFloor :floors="contents[0].floorImg" :menu="menu"></CommonFloor>
 
   <!-- 影片 -->
   <section class="video-group">
@@ -105,13 +102,7 @@ form#form1 {
 
 nav {
   background: #000;
-  padding: 0 !important;
-  .swiper-wrapper {
-    justify-content: center;
-    padding-bottom: 0;
-  }
   .swiper-slide {
-    margin-right: 50px !important;
     a {
       color: #fff;
       padding: 10px 20px 10px;
@@ -141,47 +132,12 @@ nav {
       padding-bottom: 88%;
     }
   }
-
- nav {
-  .swiper-wrapper {
-    justify-content: left;
-    .swiper-slide {
-      flex-basis: 30% !important;
-      a {
-        padding: 16px 20px 5px;
-      }
-    }
-  }
- }
 }
 
 @include media-query("mobile", "576px") {
-  nav {
-    .swiper-wrapper {
-      .swiper-slide {
-        flex-basis: fit-content !important;
-        margin-right: 30px !important;
-      }
-    }
-  }
-
   .floor {
     .title {
       margin: 0 auto -5%;
-    }
-  }
-
-  .copyR {
-    margin-bottom: 0;
-  }
-}
-
-@include media-query("pc", "2000px") {
-  nav {
-    .swiper-slide {
-      a {
-        padding: 16px 20px 5px;
-      }
     }
   }
 }

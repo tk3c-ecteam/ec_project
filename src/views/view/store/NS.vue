@@ -42,6 +42,7 @@ const contents = [
               mobile: 'NS/images/ns2303_900x800.jpg'
             }
           ],
+          menu:[2362,2363,2364,2365,2366,2367,2368]
         }
       ];
 
@@ -67,48 +68,42 @@ const contents = [
           url:'https://www.tk3c.com/dic2.aspx?cid=111639&aid=23911&hid=124254'
         },
       ];
-      const menus = [2362,2363,2364,2365,2366,2367,2368];
 </script>
 
 <template>
-  <StoreDefault :contents="contents"></StoreDefault>
+  <StoreDefault :contents="contents">
+    <template #special>
+      <!-- 影片區 -->
+      <div class="youtube">
+        <iframe frameborder="0" src="https://www.youtube.com/embed/ew6OCUN-5jE?autoplay=1&mute=1&loop=1"
+          allowfullscreen></iframe>
+      </div>
 
-  <!-- 影片區 -->
-  <div class="youtube">
-    <iframe frameborder="0" src="https://www.youtube.com/embed/ew6OCUN-5jE?autoplay=1&mute=1&loop=1"
-      allowfullscreen></iframe>
-  </div>
-
-  <!-- 導航區 -->
-  <div class="bg:#fff mb:2%">
-    <swiper 
-    :loop="false" 
-    :space-between="10" 
-    :autoplay="{
-      delay: 1500,
-      disableOnInteraction: false,
-    }" 
-    :breakpoints="{
-      0:{
-        slidesPerView:2
-      },
-      600:{
-        slidesPerView:3
-      },
-      992:{
-        slidesPerView:5
-      }
-    }">
-      <swiper-slide v-for="(nv, n) in navs">
-        <a :href="nv.url" target="_blank">
-          <img :src="$filters.siteUrl(nv.image)" />
-        </a>
-      </swiper-slide>
-    </swiper>
-  </div>
-
-  <!-- 商品樓層 -->
-  <CommonFloor :floors="contents[0].floorImg" :menu="menus" :singleImage="contents[0].singleImage"></CommonFloor>
+      <!-- 導航區 -->
+      <div class="bg:#fff mb:2%">
+        <swiper :loop="false" :space-between="10" :autoplay="{
+          delay: 1500,
+          disableOnInteraction: false,
+        }" :breakpoints="{
+        0: {
+          slidesPerView: 2
+        },
+        600: {
+          slidesPerView: 3
+        },
+        992: {
+          slidesPerView: 5
+        }
+      }">
+          <swiper-slide v-for="(nv, n) in navs">
+            <a :href="nv.url" target="_blank">
+              <img :src="$filters.siteUrl(nv.image)" />
+            </a>
+          </swiper-slide>
+        </swiper>
+      </div>
+    </template>
+  </StoreDefault>
 </template>
 
 <style lang="scss">

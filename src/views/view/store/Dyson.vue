@@ -74,23 +74,23 @@ const contents = [
               mobile: 'dyson/images/bn1M.jpg'
             }
           ],
+          menu:[2383,2384,2385,2386,2387]
         }
       ];
-const menu = [2383,2384,2385,2386,2387];      
+   
 </script>
 
 <template>
-  <StoreDefault :contents="contents"></StoreDefault>
-
-  <!-- 影片區 -->
-  <div class="youtube w:full m:0|auto|2%">
-    <video autoplay muted loop class="w:full">
-      <source :src="$filters.siteUrl('dyson/video/dyson2307.mp4')" type="video/mp4" />
-    </video>
-  </div>
-
-  <!-- 商品樓層 -->
-  <CommonFloor :floors="contents[0].floorImg" :menu="menu"></CommonFloor>
+  <StoreDefault :contents="contents">
+    <template #special>
+       <!-- 影片區 -->
+      <div class="youtube w:full m:0|auto|2%">
+        <video autoplay muted loop class="w:full">
+          <source :src="$filters.siteUrl('dyson/video/dyson2307.mp4')" type="video/mp4" />
+        </video>
+      </div>
+    </template>
+  </StoreDefault>
 </template>
 
 <style lang="scss">
@@ -125,21 +125,14 @@ body {
 
 nav {
   background: #fff;
-  padding: 0 !important;
-  .swiper-wrapper {
-    justify-content: center;
-    padding-bottom: 0;
-  }
   .swiper-slide {
-    margin-right: 50px !important;
+    flex-basis: 17%;
     a {
       color: #000;
-      padding: 10px 20px 10px;
     }
     &:hover,
     .active {
-      background: #878787;
-      color: #fff;
+      color: #878787;
     }
   }
 }
@@ -169,12 +162,9 @@ nav {
 
  nav {
   .swiper-wrapper {
-    justify-content: left;
     .swiper-slide {
       margin-right: 75px !important;
-      a {
-        padding: 16px 20px 5px;
-      }
+      flex-basis: fit-content;
     }
   }
  }

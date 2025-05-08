@@ -63,9 +63,10 @@
       const today = new Date();
 
       nextTick(() => {
-        const floorLi = document.querySelectorAll('.floor .bg01 li');
+        const floor = document.querySelectorAll('.floor')[0],
+        floorLI = floor.querySelectorAll('.bg01 li');
        //如果樓層沒有商品則移除那一層 
-       if(floorLi.length === 0) {
+       if(floorLI.length === 0) {
          contents.value[0].floorImg.shift();
          contents.value[0].menu.shift();
        }
@@ -73,9 +74,11 @@
 
       //若輪播圖片沒有手機版圖在手機版時不顯示
       const updateSlide = () => {
-        contents.value[0].slides = contents.value[0].slides.filter(slide =>
+        let newSlide = null;
+        newSlide = contents.value[0].slides.filter(slide =>
           slide.mobile != undefined || window.innerWidth > 992
         );
+        contents.value[0].slides = newSlide;
       };
 
       updateSlide();

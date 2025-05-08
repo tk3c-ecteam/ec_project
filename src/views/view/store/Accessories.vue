@@ -47,16 +47,13 @@ const contents = [
               "mobile": "accessories_pavilion/images/banner02M.jpg" 
             }
           ],
+          menu:[2714,2771,2772,2773,2774,2775]
         }
       ];
-      const menus = [2714,2771,2772,2773,2774,2775];
 </script>
 
 <template>
   <StoreDefault :contents="contents"></StoreDefault>
-
-  <!-- 商品樓層 -->
-  <CommonFloor :floors="contents[0].floorImg" :menu="menus"></CommonFloor>
 </template>
 
 <style lang="scss">

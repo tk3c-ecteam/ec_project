@@ -36,9 +36,9 @@ const contents = [
               "mobile": "TOSHIBA202206/images/900x800rtM.jpg" 
             },
           ],
+          menu:[3227,3228,3229,3230]
         }
-      ];
-const menu = [3227,3228,3229,3230];      
+      ];    
 </script>
 <script>
   export default {
@@ -49,26 +49,26 @@ const menu = [3227,3228,3229,3230];
 </script>
 
 <template>
-  <StoreDefault :contents="contents"></StoreDefault>
+  <StoreDefault :contents="contents">
+    <template #special>
+      <div class="background2"></div>
 
-  <div class="background2"></div>
-
-  <!-- 影片區 -->
-   <section class="yt-group mt:3%">
-      <div class="w:full gap:10 grid-cols:2 grid-cols:1@<576 m:auto" id="hot">
-      <div class="h:0 pb:90% w:full@<992 rel">
-        <iframe class="abs w:full h:full left:0 right:0 top:0 m:auto" frameborder="0" src="https://www.youtube.com/embed/6J0IPGbofos?autoplay=1&mute=1&loop=1"></iframe>
-      </div>
-      <div class="product">
-        <a href="https://www.tk3c.com/pt.aspx?cid=111723&aid=22711&hid=115679&pid=233453" target="_blank">
-          <img :src="$filters.siteUrl('TOSHIBA202206/images/product9.jpg')">
-        </a>
-      </div>
-   </div>
-   </section>
-
-  <!-- 商品樓層 -->
-  <CommonFloor :floors="contents[0].floorImg" :menu="menu"></CommonFloor>
+      <!-- 影片區 -->
+      <section class="yt-group mt:3%">
+        <div class="w:full gap:10 grid-cols:2 grid-cols:1@<576 m:auto" id="hot">
+          <div class="h:0 pb:90% w:full@<992 rel">
+            <iframe class="abs w:full h:full left:0 right:0 top:0 m:auto" frameborder="0"
+              src="https://www.youtube.com/embed/6J0IPGbofos?autoplay=1&mute=1&loop=1"></iframe>
+          </div>
+          <div class="product">
+            <a href="https://www.tk3c.com/pt.aspx?cid=111723&aid=22711&hid=115679&pid=233453" target="_blank">
+              <img :src="$filters.siteUrl('TOSHIBA202206/images/product9.jpg')">
+            </a>
+          </div>
+        </div>
+      </section>
+    </template>
+  </StoreDefault>
 </template>
 
 <style lang="scss">

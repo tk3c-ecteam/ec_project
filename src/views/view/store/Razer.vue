@@ -38,38 +38,35 @@ const contents = [
           slides: [
             { pc: "razer/images/bn_main.jpg", mobile: "/razer/images/bn_mainM.jpg" },
           ],
+          moreImage:"Razer/images/more.png",
+          menu:[4441,4442,4443,4444,4446]
         }
       ];
-      const moreImage = "Razer/images/more.png";
-
-      //陳列清單編號
-      const menus = [4441,4442,4443,4444,4446]
 </script>
 
 <template>
-  <StoreDefault :contents="contents"></StoreDefault>
+  <StoreDefault :contents="contents">
+    <template #special>
+      <div id="container" class="fixed">
+        <canvas id="pixie"></canvas>
+      </div>
 
-  <div id="container">
-     <canvas id="pixie"></canvas>
-  </div>
-
-  <!-- 最新消息 -->
-  <section class="hot-box">
-    <h2 class="title">最新資訊</h2>
-    <ul>
-      <li class="news">
-        <a :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=118749')" target="_blank">
-          <img :src="$filters.siteUrl('Razer/images/NEW_BN.jpg')" />
-        </a>
-      </li>
-      <li class="youtube">
-        <iframe src="https://www.youtube.com/embed/rk5LTWHLQ7I?mute=1&autoplay=1&loop=1" allowfullscreen></iframe>
-      </li>
-    </ul>
-  </section>
-
-  <!-- 商品樓層 -->
-  <CommonFloor :floors="contents[0].floorImg" :menu="menus" :moreImage="moreImage"></CommonFloor>
+       <!-- 最新消息 -->
+      <section class="hot-box">
+        <h2 class="title">最新資訊</h2>
+        <ul>
+          <li class="news">
+            <a :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=118749')" target="_blank">
+              <img :src="$filters.siteUrl('Razer/images/NEW_BN.jpg')" />
+            </a>
+          </li>
+          <li class="youtube">
+            <iframe src="https://www.youtube.com/embed/rk5LTWHLQ7I?mute=1&autoplay=1&loop=1" allowfullscreen></iframe>
+          </li>
+        </ul>
+      </section>
+    </template>
+  </StoreDefault>
 </template>
 
 <style lang="scss">
@@ -360,6 +357,9 @@ nav {
 #store-container {
   .logo-title {
     width: auto;
+  }
+  .background {
+    padding-bottom: 32%;
   }
 }
 

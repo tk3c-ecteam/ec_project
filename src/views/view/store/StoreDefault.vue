@@ -38,19 +38,32 @@ const contents = defineModel("contents");
        storeScroll() {
          let scrollTop = window.scrollY;
 
+         //當前滾動位置超過100px時導航區固定
+         if (scrollTop > 100) {
+          document.querySelector('#store-container nav').classList.add('fixed');
+         } else {
+          document.querySelector('#store-container nav').classList.remove('fixed');
+         }
+
          document.querySelectorAll(".floor").forEach((el, i) => {
            let top = el.getBoundingClientRect().top + scrollTop - 150,
-             bottom = top + window.innerHeight;
+             bottom = top + window.innerHeight; 
+
+           // 檢查當前滾動位置是否在當前區域內  
            if (scrollTop >= top && scrollTop < bottom) {
              this.statusNav = i
              this.goSlide(this.statusNav);
+             el.classList.add('active');
+           } else {
+            el.classList.remove('active');
            }
+         });
 
-           if (scrollTop < 300) {
+         // 當滾動位置在第一區域上方時，重置狀態
+          if (scrollTop < 300) {
             this.statusNav = null;
             this.goSlide(this.statusNav);
            }
-         });
        }
      },
   }
@@ -81,13 +94,20 @@ const contents = defineModel("contents");
     </p>
 
     <!-- 導航區 -->
-    <nav v-if="contents[0].floorImg != undefined" class="sticky w:full top:45px z:99 p:0.5%|1%|0.5% p:2%|3%|2%@<992 p:2%|4%|3%@<576 box:border-box"
+    <nav v-if="contents[0].floorImg != undefined" class="w:full top:45px z:99 p:0.5%|1%|0.5% p:2%|3%|2%@<992 p:2%|4%|3%@<576 box:border-box"
     >
       <swiper
-        class="max-w:1100px min-w:50% w:auto@<992"
         :loop="false"
         :slidesPerView="'auto'"
         :space-between="10"
+        :breakpoints="{
+          0:{
+            spaceBetween:30
+          },
+          600:{
+            spaceBetween:50
+          }
+        }"
         @swiper="onSwiper"
       >
         <swiper-slide v-for="(floor, f) in contents[0].floorImg" class="flex-basis:fit-content">
@@ -119,7 +139,7 @@ const contents = defineModel("contents");
         }"
       >
         <swiper-slide v-for="(slide,s) in contents[0].slides">
-          <a :href="$filters.addGALink(slide.url)" target="_blank">
+          <a :class="[slide.url == undefined ? 'no' : '']" :href="$filters.addGALink(slide.url)" target="_blank">
              <img v-if="slide.pc" class="pc" :src="$filters.siteUrl(slide.pc)" />
              <img v-if="slide.mobile" class="mobile" :src="$filters.siteUrl(slide.mobile)"/>
           </a>
@@ -130,9 +150,12 @@ const contents = defineModel("contents");
       <div class="swiper-button-next next"></div>
     </div>
 
+    <!-- 影片+圖片(非必要) -->
+     <slot name="special"></slot>
+
     <!-- 商品樓層 -->
     <div v-if="contents[0].menu">
-       <CommonFloor :floors="contents[0].floorImg" :menu="contents[0].menu"  :moreImage="contents[0].moreImage"></CommonFloor>
+       <CommonFloor :floors="contents[0].floorImg" :menu="contents[0].menu" :singleImage="contents[0].singleImage"  :moreImage="contents[0].moreImage"></CommonFloor>
     </div>
 
      <div class="custom-top" :class="{'isShow':isGoTop}" @click="goTop2"><p></p></div>
@@ -150,6 +173,12 @@ const contents = defineModel("contents");
         {
           bottom: 0 !important;
         }
+      .swiper-slide {
+        a {
+          pointer-events: none;
+          cursor: auto;
+        }
+      }  
     }
   }
 
