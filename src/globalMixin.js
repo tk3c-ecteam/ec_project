@@ -4,11 +4,9 @@ import axiosRetry from 'axios-retry';
 export const globalMixin = {
   data() {
     return {
-      products: [],//多個商品
-      product2: [],//單一商品
+      products: {},//多個商品
+      product2: {},//單一商品
       percent: 0,
-      tabS: null,
-      timer: null,
       isLeftAside: false, //是否顯示左側選單
       isRightAside: false, //是否顯示右側選單
       mobileStatus: '',//手機版置底選單用(status:'event','social')
@@ -52,49 +50,42 @@ export const globalMixin = {
         behavior: "smooth",
       })
     },
+    //生成 api url
+    apiUrl(menuId) {
+      const time = Date.now();
+      return `https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=${menuId}&_=${time}`;
+    },
+    //例外處理錯誤訊息
+    handleError(error) {
+      if (error.code === 'ECONNABORTED') {
+        console.log('請求逾時');
+        this.retryRequest(); //重啟
+      } else {
+        console.log(error.message)
+      }
+    },
     //用後台陳列編號撈取全商品 [2000,20001,2002]
     async getFloorData(menu) {
-      let moreUrls = [],
-        time = Date.now();
-
-      for (let z = 0; z < menu.length; z++) {
-        moreUrls.push('https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu[z] + '&_=' + time)
-      }
-
-      this.interCatch();
+      const moreUrls = menu.map(this.apiUrl); // 生成所有 URL
 
       //撈取所有 url api 資料
-      await axios.all(moreUrls.map((moreUrl) => axios.get(moreUrl))).then((respon) => {
-        respon.forEach((res, r) => {
-          this.products[menu[r]] = res.data
+      try {
+        const responses = await Promise.all(moreUrls.map(url => axios.get(url)));
+        responses.forEach((response, r) => {
+          this.products[menu[r]] = response.data;
         });
-      })
-        .catch((error) => {
-          if (error.code === 'ECONNABORTED') {
-            console.log('請求逾時')
-          } else {
-            console.log(error.message)
-          }
-        })
+      } catch (error) {
+        this.handleError(error);
+      }
     },
 
     //用後台陳列編號撈取單一商品 如:2000
     async getFloorSingle(menu) {
-      let time = Date.now();
       try {
-        this.interCatch();
-        const res = await axios({
-          method: 'get',
-          url: 'https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu + '&_=' + time,
-        })
-
-        this.product2[menu] = res.data.Data
+        const response = await axios.get(this.apiUrl(menu));
+        this.product2[menu] = response.data.Data;
       } catch (error) {
-        if (error.code === 'ECONNABORTED') {
-          console.log('請求逾時')
-        } else {
-          console.log(error.message)
-        }
+        this.handleError(error);
       }
     },
     //計算折數
