@@ -1,5 +1,5 @@
 <script setup>
-import listM from '@/views/layout/listM.vue'
+import listD from '@/views/layout/listD.vue'
 
 const contents = [
   {
@@ -8,23 +8,11 @@ const contents = [
     mark: 'tup/images/mark.png',
     store: 'tup/images/S01.png',
     storeBtn: ['tup/images/S01-1.png', 'tup/images/S01-2.png'],
+    singleImage:'starlux/images/bar.png',
     floor: [
       {
-        text: '手機',
-        image: 'tup/images/S02.png'
-      },
-      {
-        text: '平板',
-        image: 'tup/images/S03.png'
-      },
-      {
-        text: 'WATCH',
-        image: 'tup/images/S04.png'
-      },
-       {
-        text: '咖啡機',
-        image: 'tup/images/S05.png',
-        type:listM
+        text: '許願清單',
+        type:listD
       }
     ],
     alertHtml: `
@@ -43,7 +31,7 @@ const contents = [
         <li>3.請留意於本網頁成立的是【門市交易預約單】，是指於本網頁預約【至燦坤實體門市進行交易的優先資格】，商品依門市現貨為主，相關交易流程依實體門市規定為準，不屬於通訊交易，依法不享有七天猶豫期。</li>
         <li>4.活動未盡事宜以燦坤3C公告為準，燦坤3C保留活動最終解釋修改變更之權利。</li>
           `,
-     menu: [7671,7672,7673,7674],
+     menu: [5989],
      alertTitle:'福利委員會員購專案'
   }
 ]
@@ -69,18 +57,6 @@ body {
     background-position:
       0 45px,
       top;
-  }
-}
-
-.bg01 {
-  &:before {
-    background: #5380da;
-  }
-}
-
-.floor {
-  .title {
-    font-size: 0;
   }
 }
 
@@ -120,6 +96,13 @@ body {
   }
 }
 
+.floor {
+  .title {
+    width: 80%;
+    margin: 0 auto -2%;
+  }
+}
+
 @include media-query('mobile', '992px') {
   body {
     &:before {
@@ -146,6 +129,12 @@ body {
       &:first-of-type {
         margin-right: -15px !important;
       }
+    }
+  }
+
+  .floor {
+    .title {
+      width: 100%;
     }
   }
 }

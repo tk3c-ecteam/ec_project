@@ -1,5 +1,5 @@
 <script setup>
-import listM from '@/views/layout/listM.vue'
+import listD from '@/views/layout/listD.vue'
 
 const today = new Date()
 
@@ -11,17 +11,8 @@ const contents = [
     singleImage: 'starlux/images/bar.png',
     floor: [
       {
-        text: '手機'
-      },
-      {
-        text: '平板'
-      },
-      {
-        text: 'WATCH'
-      },
-      {
-        text: '咖啡機',
-        type: listM
+        text: '許願清單',
+        type:listD
       }
     ],
     alertHtml: `
@@ -40,7 +31,7 @@ const contents = [
         <li>3.請留意於本網頁成立的是【門市交易預約單】，是指於本網頁預約【至燦坤實體門市進行交易的優先資格】，商品依門市現貨為主，相關交易流程依實體門市規定為準，不屬於通訊交易，依法不享有七天猶豫期。</li>
         <li>4.活動未盡事宜以燦坤3C公告為準，燦坤3C保留活動最終解釋修改變更之權利。</li>
           `,
-    menu: [7671, 7672, 7673, 7674]
+    menu: [5989]
   }
 ];
 

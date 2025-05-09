@@ -4,7 +4,7 @@
       <h2 class="title animate__animated animate__backInUp">
         <img class="animate__animated animate__heartBeat"
           :src="$filters.siteUrl('windows10upgrade/images/title2.png')" />
-           <em class="date" v-if="isDate">即日起-4.30</em>
+           <em class="date" v-if="isDate">即日起-5.31</em>
       </h2>
     </div>
 
@@ -105,7 +105,7 @@
   </div>
 
   <!-- 右側選單+手機板 -->
-  <RightAside :asides="asides" :type="'mobile2'"></RightAside>
+  <RightAside :type="'mobile2'"></RightAside>
 </template>
 
 <script>
@@ -174,7 +174,7 @@ export default {
       floors:[
         {
           "image":"windows10upgrade/images/bar_01.png",
-          "url":"https://www.tk3c.com/dic2.aspx?cid=124426&aid=23931&hid=124429",
+          "url":"https://www.tk3c.com/dic2.aspx?cid=124426&aid=23947&hid=124524",
         },
          {
           "image":"windows10upgrade/images/bar_02.png",
@@ -199,7 +199,7 @@ export default {
     const { today } = this;
     this.fixedBg('.background2','.special-box');
 
-    if(today >= new Date('2025/05/01')) this.isDate = false;
+    if(today >= new Date('2025/06/01')) this.isDate = false;
   },
 }
 </script>
