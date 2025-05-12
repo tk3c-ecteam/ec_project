@@ -124,14 +124,6 @@ body {
     }
   }
 
-  .nav-group {
-    .swiper-slide {
-      &:first-of-type {
-        margin-right: -15px !important;
-      }
-    }
-  }
-
   .floor {
     .title {
       width: 100%;
@@ -177,8 +169,15 @@ body {
   .nav-group {
     .swiper-slide {
       &:first-of-type {
-        margin-right: 10px !important;
+        margin-right: -10px !important;
       }
+    }
+  }
+
+  .floor {
+    .title {
+      width: 140%;
+      margin: 0 -19% -4%;
     }
   }
 }

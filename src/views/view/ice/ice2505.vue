@@ -6,14 +6,15 @@
       </h2>
     </div>
 
-   
+
     <p class="item">
       <img :src="$filters.siteUrl('icewash2209/images/2505/item.png')" />
     </p>
 
     <!-- 上方凸品 -->
     <section class="top-group mt:-17% mt:-31vw@<992 mt:-51vw@<576">
-      <img class="w:86% w:full@<992 abs left:0 right:0 m:auto top:-1vw z:-1 hidden@<992" :src="$filters.siteUrl('icewash2209/images/2505/KV_BOX.png')" />
+      <img class="w:86% w:full@<992 abs left:0 right:0 m:auto top:-1vw z:-1 hidden@<992"
+        :src="$filters.siteUrl('icewash2209/images/2505/KV_BOX.png')" />
       <div class="bg:#af7b58 w:85% w:full@<992 m:auto r:20px r:10px@<992 p:0|0|2%@<992 box:border-box">
         <ProductTop :pro="product2[menuTop]"></ProductTop>
       </div>
@@ -21,7 +22,8 @@
 
     <!-- 最高現折 -->
     <section class="sale-box scroll" id="sale" titles="領券現折" v-if="isSale && product2[menuDis] != ''">
-      <h2 class="title bg:#5c5044 color:#fff f:3em f:3.5em@<992 f:1.5em@<576 f:bold r:15px r:10px@<576 p:5px box:border-box">
+      <h2
+        class="title bg:#5c5044 color:#fff f:3em f:3.5em@<992 f:1.5em@<576 f:bold r:15px r:10px@<576 p:5px box:border-box">
         領券現折
       </h2>
       <div class="sale">
@@ -37,45 +39,66 @@
       </h2>
 
       <!-- 活動搶先看 -->
-      <div class="rel w:80% w:95%@<992 w:full@<576 m:auto">
-        <swiper
-        :loop="false"
-        :spaceBetween="10"
-        :autoplay="{
-          delay:1800,
-          disableOnInteraction:false
-        }"
-        :breakpoints="{
-          0:{
-            slidesPerView:2
+      <div class="w:80% w:95%@<992 w:full@<576 m:auto">
+        <div class="sp1 rel">
+          <swiper :loop="false" :effect="'fade'" :fadeEffect="{
+            crossFade: true
+          }" :autoplay="{
+          delay: 1800,
+          disableOnInteraction: false
+        }" :modules="[EffectFade]">
+            <swiper-slide>
+              <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=124485&aid=23943&hid=124748')"
+                target="_blank">
+                <img :src="$filters.siteUrl('icewash2209/images/2505/bn_sp1.jpg')" />
+              </a>
+            </swiper-slide>
+            <swiper-slide>
+              <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=124485&aid=23943&hid=124747')"
+                target="_blank">
+                <img :src="$filters.siteUrl('icewash2209/images/2505/bn_sp2.jpg')" />
+              </a>
+            </swiper-slide>
+          </swiper>
+        </div>
+
+        <div class="sp2 rel">
+          <swiper :loop="false" :spaceBetween="10" :autoplay="{
+            delay: 1800,
+            disableOnInteraction: false
+          }" :breakpoints="{
+          0: {
+            slidesPerView: 2
           },
-          600:{
-            slidesPerView:3
+          600: {
+            slidesPerView: 3
           }
-        }"
-        :navigation="{
-          nextEl:'.gift-box .next',
-          prevEl:'.gift-box .prev'
-        }"
-        >
-        <swiper-slide>
-         <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=12504&aid=4878&hid=49125')" target="_blank">
-          <img :src="$filters.siteUrl('icewash2209/images/2505/C01.png')" />
-          </a>
-        </swiper-slide>
-        <swiper-slide>
-         <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=12504&aid=4878&hid=12524')" target="_blank">
-          <img :src="$filters.siteUrl('icewash2209/images/2505/C02.png')" />
-          </a>
-        </swiper-slide>
-        <swiper-slide>
-         <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=12504&aid=4878&hid=14374')" target="_blank">
-          <img :src="$filters.siteUrl('icewash2209/images/2505/C03.png')" />
-          </a>
-        </swiper-slide>
-        </swiper>
-        <div class="swiper-button-prev prev"></div>
-        <div class="swiper-button-next next"></div>
+        }" :navigation="{
+          nextEl: '.gift-box .next',
+          prevEl: '.gift-box .prev'
+        }">
+            <swiper-slide>
+              <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=12504&aid=4878&hid=49125')"
+                target="_blank">
+                <img :src="$filters.siteUrl('icewash2209/images/2505/C01.png')" />
+              </a>
+            </swiper-slide>
+            <swiper-slide>
+              <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=12504&aid=4878&hid=12524')"
+                target="_blank">
+                <img :src="$filters.siteUrl('icewash2209/images/2505/C02.png')" />
+              </a>
+            </swiper-slide>
+            <swiper-slide>
+              <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=12504&aid=4878&hid=14374')"
+                target="_blank">
+                <img :src="$filters.siteUrl('icewash2209/images/2505/C03.png')" />
+              </a>
+            </swiper-slide>
+          </swiper>
+          <div class="swiper-button-prev prev"></div>
+          <div class="swiper-button-next next"></div>
+        </div>
       </div>
     </section>
 
@@ -94,7 +117,7 @@
           </a>
           <a class="mb:2%" :href="$filters.addGALink('https://save3000.moeaea.gov.tw/subsidy02/index/index.aspx')"
             target="_blank">
-            <img :src="$filters.siteUrl('icewash2209/images/2505/sub3.png')"/>
+            <img :src="$filters.siteUrl('icewash2209/images/2505/sub3.png')" />
           </a>
         </li>
         <li class="w:80% w:90%@<992 w:95%@<576">
@@ -106,10 +129,14 @@
       </ul>
 
       <!-- 彈出視窗 -->
-       <AlertBox ref="alert" :type="'image'">
-          <img src="https://www.cdn-tkec.tw/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg" width="50%">
-          <img src="https://www.cdn-tkec.tw/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg" width="50%">
-       </AlertBox>
+      <AlertBox ref="alert" :type="'image'">
+        <img
+          src="https://www.cdn-tkec.tw/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg"
+          width="50%">
+        <img
+          src="https://www.cdn-tkec.tw/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg"
+          width="50%">
+      </AlertBox>
     </section>
 
     <!-- 商品樓層 -->
@@ -135,7 +162,7 @@
         </div>
 
         <div v-else>
-         <listF :pro="product2[tab[0].id]" :isSwiper="1" :name="`po${t + 1}`">
+          <listF :pro="product2[tab[0].id]" :isSwiper="1" :name="`po${t + 1}`">
           </listF>
         </div>
       </section>
@@ -150,9 +177,11 @@
 </template>
 
 <script>
+import { EffectFade } from "swiper/modules";
 export default {
   data() {
     return {
+      EffectFade,
       tabs: [
         {
           0: [
@@ -421,6 +450,14 @@ body {
     height: 70%;
     overflow: auto;
     padding: 0;
+  }
+}
+
+.tab3-box {
+  .tab {
+    .swiper-slide {
+      flex-basis: 15.6%;
+    }
   }
 }
 

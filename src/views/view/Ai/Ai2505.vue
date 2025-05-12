@@ -626,7 +626,7 @@ export default {
   },
   mounted() {
     let {today,tab1,tab2 } = this
-    if (today >= new Date('2025/05/11')) this.isOff = false;
+    if (today >= new Date('2025/05/16')) this.isOff = false;
 
     //背景滾動後固定
     this.fixedBg('.background2','.gift-box');

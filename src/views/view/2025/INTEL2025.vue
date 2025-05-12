@@ -153,7 +153,7 @@ export default {
     //撈取上方商品
     this.getFloorSingle(this.menuPro);
 
-    if (today >= new Date('2025/05/11')) this.isOff = false;
+    if (today >= new Date('2025/05/16')) this.isOff = false;
   },
 }
 </script>

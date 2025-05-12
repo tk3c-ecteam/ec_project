@@ -54,7 +54,7 @@ const navButtons = [
           :slidesPerView="'auto'"
         >
           <swiper-slide class="flex-basis:19% flex-basis:22%@<992 flex-basis:28%@<576">
-            <div class="mix flex flex-wrap:wrap flex-direction:column bg:#fff r:20px r:10px@<576 p:4% box:border-box">
+            <div class="mix flex flex-wrap:wrap flex-direction:column bg:#fff r:20px r:10px@<576 p:1% box:border-box">
               <img class="w:65% m:0|auto|4%" :src="$filters.siteUrl('tup/images/nav2.png')" />
               <a class="w:70%" href="https://www.tk3c.com">
                 <img :src="$filters.siteUrl('tup/images/nav1.png')" />
