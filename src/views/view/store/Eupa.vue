@@ -81,15 +81,15 @@
         contents.value[0].slides = newSlide;
       };
 
-      updateSlide();
-      addEventListener('resize',updateSlide);//resize updateslide
-
      nextTick(() => {
        if(today >= new Date('2025/05/01') && today < new Date('2025/05/16')) {
+         //添加 slide51數組到 slides前頭
           contents.value[0].slides.unshift(...contents.value[0].slide51);
       }
      });
-     
+
+      updateSlide();
+      addEventListener('resize',updateSlide);//resize updateslide
 </script>
 
 <template>
