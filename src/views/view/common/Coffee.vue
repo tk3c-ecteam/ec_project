@@ -31,12 +31,6 @@ export default {
   mounted() {
     //撈取樓層商品
     this.getFloorSingle(this.menuSP);
-
-    //判斷樓層是否有商品
-    if (document.querySelectorAll('.floor')[3].querySelectorAll('.bg01 li').length <= 0) {
-       this.floorImg.splice(3,1);
-       this.menus.splice(3,1);
-    }
   },
   computed:{
     //買一送一 精品濾掛式咖啡價格
@@ -110,7 +104,7 @@ export default {
   </div>
 
   <!-- 右側選單  -->
-  <RightAside :asides="asides" :type="'mobile'"></RightAside>
+  <RightAside :type="'mobile'"></RightAside>
 </template>
 
 <style lang="scss">

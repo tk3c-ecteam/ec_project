@@ -67,8 +67,7 @@
         floorLI = floor.querySelectorAll('.bg01 li');
        //如果樓層沒有商品則移除那一層 
        if(floorLI.length === 0) {
-         contents.value[0].floorImg.shift();
-         contents.value[0].menu.shift();
+         document.querySelectorAll('nav .swiper-slide')[0].remove();
        }
       });
 

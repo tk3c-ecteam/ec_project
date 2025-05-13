@@ -23,52 +23,69 @@ export default {
   props: ['floors', 'menu', 'singleImage','moreImage','isSwiper'],
   mounted() {
    if (this.menu != undefined) {
-    setTimeout(() => {
-      this.getFloorData(this.menu);
-    }, 800);
+    this.getFloorData(this.menu);
    }
   }
 }
 </script>
 
 <template>
-  <section class="floor scroll" v-for="(floor, f) in floors" :titles="[products[menu[f]] != undefined ? products[menu[f]].MenuTitle.trim() : '']" :key="f">
-    <h2 class="title" :name="`pro${menu[f]}`" :id="`pro${menu[f]}`">
-      <!-- 圖片+連結標題 -->
-      <a v-if="floor.url" :href="$filters.addGALink(floor.url)" target="_blank">
-        <img :src="$filters.siteUrl(floor.image)" />
+  <section class="floor" v-for="(floor, f) in floors" :class="{'scroll' : products[menu[f]]?.Data.length > 0}" :titles="[products[menu[f]]?.MenuTitle.trim() || '']"
+    :key="f">
+    <!-- 若沒有商品則不顯示 -->
+    <div v-if="products[menu[f]]?.Data.length > 0">
+      <h2 class="title" :name="`pro${menu[f]}`" :id="`pro${menu[f]}`">
+        <!-- 圖片+連結標題 -->
+        <template v-if="floor.url">
+          <a :href="$filters.addGALink(floor.url)" target="_blank">
+            <img :src="$filters.siteUrl(floor.image)" />
+          </a>
+        </template>
+
+        <!-- 有看更多按鈕僅有圖片標題 -->
+        <template v-else-if="floor.moreUrl && floor.image">
+          <img :src="$filters.siteUrl(floor.image)" />
+        </template>
+
+        <!-- 僅有圖片標題 -->
+        <template v-else-if="floor.image">
+          <img :src="$filters.siteUrl(floor.image)">
+        </template>
+
+        <!-- 標題圖片(無文字) -->
+        <template v-if="singleImage">
+          <img :src="$filters.siteUrl(singleImage)" />
+        </template>
+
+        <b v-if="floor.text"
+          class="abs left:0 right:0 m:auto top:50% translateY(-50%) f:3em f:2.5em@<992 f:1.5em@<576 f:1.2em@<361 f:bold color:#fff">{{
+            floor.text }}</b>
+      </h2>
+
+      <!-- 有輪播(單個樓層輪播) -->
+      <div class="content" v-if="floor.isSwiper">
+        <component v-if="products[menu[f]]" :is="floor.type || listF" :pro="products[menu[f]].Data" :isSwiper="1"
+          :name="`pro${f + 1}`">
+        </component>
+      </div>
+
+      <!-- 有輪播(全部樓層輪播) -->
+      <div class="content" v-else-if="isSwiper">
+        <component v-if="products[menu[f]]" :is="floor.type || listF" :pro="products[menu[f]].Data" :isSwiper="1"
+          :name="`pro${f + 1}`">
+        </component>
+      </div>
+
+      <div class="content" v-else>
+        <!-- 無輪播 -->
+        <component v-if="products[menu[f]]" :is="floor.type || listF" :pro="products[menu[f]].Data">
+        </component>
+      </div>
+
+      <!-- 單獨看更多按鈕 -->
+      <a v-if="floor.moreUrl" class="more" :href="$filters.addGALink(floor.moreUrl)" target="_blank">
+        <img :src="$filters.siteUrl(moreImage)" />
       </a>
-      <!-- 有看更多按鈕僅有圖片標題 -->
-      <img v-else-if="floor.moreUrl && floor.image" :src="$filters.siteUrl(floor.image)" />
-      <img v-else-if="floor.image != undefined" :src="$filters.siteUrl(floor.image)">
-
-      <!-- 標題圖片(無文字) -->
-      <img v-if="singleImage != undefined" :src="$filters.siteUrl(singleImage)" />
-      <b v-if="floor.text" class="abs left:0 right:0 m:auto top:50% translateY(-50%) f:3em f:2.5em@<992 f:1.5em@<576 f:1.2em@<361 f:bold color:#fff">{{ floor.text }}</b>
-    </h2>
-
-    <!-- 有輪播(單個樓層輪播) -->
-    <div class="content" v-if="floor.isSwiper">
-      <component v-if="products[menu[f]] != undefined && floor.isSwiper == 1" :is="floor.type != undefined ? floor.type : listF"
-        :pro="products[menu[f]].Data" :isSwiper="1" :name="`pro${f + 1}`"></component>
     </div>
-
-    <!-- 有輪播(全部樓層輪播) -->
-    <div class="content" v-else-if="isSwiper">
-      <component v-if="products[menu[f]] != undefined && isSwiper == 1" :is="floor.type != undefined ? floor.type : listF"
-        :pro="products[menu[f]].Data" :isSwiper="1" :name="`pro${f + 1}`"></component>
-    </div>
-
-    <div class="content" v-else>
-      <!-- 無輪播 -->
-      <component v-if="products[menu[f]] != undefined" :is="floor.type != undefined ? floor.type : listF"
-        :pro="products[menu[f]].Data">
-      </component>
-    </div>
-
-    <!-- 單獨看更多按鈕 -->
-    <a v-if="floor.moreUrl != undefined" class="more" :href="$filters.addGALink(floor.moreUrl)" target="_blank">
-      <img :src="$filters.siteUrl(moreImage)" />
-    </a>
   </section>
 </template>
