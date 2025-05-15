@@ -15,12 +15,10 @@ import listF from '@/views/layout/listF.vue'
  text - 標題文字 - 非必要
  ) , 
  menu(樓層陳列編號) - 必要
- * singleImage(純標題圖片單張+系統文字) - 非必要
  * isSwiper(是否使用swiper輪播) - 非必要 (有要輪播才要寫 isSwiper = 1)
- * moreImage(看更多按鈕圖片) - 非必要
  */
 export default {
-  props: ['floors', 'menu', 'singleImage','moreImage','isSwiper'],
+  props: ['floors', 'menu','isSwiper'],
   mounted() {
    if (this.menu != undefined) {
     this.getFloorData(this.menu);
@@ -53,9 +51,7 @@ export default {
         </template>
 
         <!-- 標題圖片(無文字) -->
-        <template v-if="singleImage">
-          <img :src="$filters.siteUrl(singleImage)" />
-        </template>
+         <slot name="moreTitle"></slot>
 
         <b v-if="floor.text"
           class="abs left:0 right:0 m:auto top:50% translateY(-50%) f:3em f:2.5em@<992 f:1.5em@<576 f:1.2em@<361 f:bold color:#fff">{{
@@ -84,7 +80,7 @@ export default {
 
       <!-- 單獨看更多按鈕 -->
       <a v-if="floor.moreUrl" class="more" :href="$filters.addGALink(floor.moreUrl)" target="_blank">
-        <img :src="$filters.siteUrl(moreImage)" />
+        <slot name="more"></slot>
       </a>
     </div>
   </section>
