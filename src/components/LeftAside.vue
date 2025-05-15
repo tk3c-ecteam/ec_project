@@ -2,27 +2,21 @@
  const today = new Date();
 
  //熱門活動區
- let mainName = (today >= new Date('2025/05/01')) ? '202505event' : 'lovemama',
+ let mainName = (today >= new Date('2025/05/16')) ? 'awesomepet' : '202505event',
   mainUrl = `https://events.tk3c.com/events_net/${mainName}/index.html`,
    location = window.location.pathname.split('/'),
   folderName = (location[2] == 'events_net') ? location[3] : location[2],
   main = null,
   statusTopic = null;
 
-  let events = [
-    {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
-    {"name":"銀行優惠","url":"https://events.tk3c.com/events_net/events_net/banks/bank.html"},
-    {"name":"環保集點","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
-    {"name":"空調場勘","url":"https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2"},
-  ];
-
   let topics = [
     {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/icewash2209/index.html"},
     {"name":"空調","url":"https://events.tk3c.com/events_net/airConditionerLAB/index.html"},
     {"name":"電視","url":"https://events.tk3c.com/events_net/2020TVforever/index.html"},
-    {"name":"電腦週邊","url":"https://events.tk3c.com/events_net/2024083C/index.html"},
-    {"name":"風扇","url":"https://events.tk3c.com/events_net/fan_hot/index.html"},
-    {"name":"咖啡","url":"https://events.tk3c.com/events_net/crown_202204/index.html"},
+    {"name":"電腦系統週邊","url":"https://events.tk3c.com/events_net/2024083C/index.html"},
+    {"name":"季節風扇","url":"https://events.tk3c.com/events_net/fan_hot/index.html"},
+    {"name":"環保集點","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
+    {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
     {"name":"寵物","url":"https://events.tk3c.com/events_net/pet_product/index.html"},
   ];
 
@@ -45,14 +39,6 @@
 
      case 'fan_hot':
       statusTopic = 4;
-      break; 
-
-      case 'crown_202204':
-      statusTopic = 5;
-      break;
-      
-      case 'pet_product':
-        statusTopic = 6;
       break; 
   } 
 
@@ -158,18 +144,18 @@
     <div class="aside-wrap">
       <h3 class="aside-header"></h3>
       <div class="aside-content rt:15px box:border-box bg:#000000b8">
-        <ul class="flex flex-wrap:wrap">
+        <ul class="flex flex:wrap jc:flex-start">
           <li class="main" v-if="main != null">
             <a :href="$filters.addGALink(main[0].url)">{{ main[0].name }}</a>
           </li>
-          <li class="color:#fff bg:#955038">燦坤服務</li>
-           <li v-for="(event,e) in events" :key="e" class="bank">
-            <a class="bg:#fff!" :href="$filters.addGALink(event.url)" target="_blank">{{ event.name }}</a>
-            </li>
           <li class="color:#fff bg:#955038">主題活動館</li>
-           <li v-for="(topic,t) in topics" :key="t" class="w:49.8%!">
-            <a class="bg:none!" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
+           <li v-for="(topic,t) in topics" :key="t" class="bank flex:1|1|80px">
+            <a class="word-break:keep-all white-space:pre" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
            </li>
+           <li class="color:#fff bg:#955038">熱門品類</li>
+           <li v-for="(aside, a) in asides" class="w:46%!" :class="{'stay': status == a}" :key="a">
+                <a class="bg:none! word-break:keep-all white-space:nowrap text:ellipsis overflow:hidden" :href="aside.href">{{ aside.text }}</a>
+             </li>
         </ul>
       </div>
       <a href="#" class="go-top" @click="goTop">GO TOP</a>
@@ -186,7 +172,7 @@
     </template>
 
     <!-- 主題活動館 -->
-    <template #topics>
+    <template #topic>
        <ul>
         <li v-for="(topic,t) in topics" :key="t" class="w:31%!">
               <a class="word-break:keep-all" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
@@ -195,15 +181,11 @@
     </template>
 
     <!-- 燦坤服務 -->
-     <template #events>
-       <h2 class="color:#fff pt:2% box:border-box f:1.2em f:bold">燦坤服務</h2>
-       <span class="w:80% h:auto block m:auto bb:1px|solid|#fff box:border-box"></span>
-       <ul>
-        <li v-for="(event,e) in events" :key="e" class="w:31%!">
-          <a class="word-break:keep-all" :href="$filters.addGALink(event.url)" target="_blank">{{ event.name }}</a>
-        </li>
+     <template #service>
+      <ul>
+        <Service></Service>
       </ul>
-    </template>
+     </template>
 
     <!-- 上方快速選單 -->
     <template #topAsides>

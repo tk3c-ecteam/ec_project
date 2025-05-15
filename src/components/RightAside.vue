@@ -21,6 +21,7 @@
    const asideExtra = defineModel('asideExtra',{
     type:Object
   });
+
 </script>
 
 <script>
@@ -108,6 +109,10 @@
             <a @click="go3cFloor(aside.id,aside.href)">{{ aside.text }}</a>
             </li>
          </ul>
+         <ul v-else-if="type == 'mobile3'">
+           <li class="color:#fff bg:#955038 rt:15px box:border-box">燦坤服務</li>
+           <Service></Service>
+         </ul>
          <ul v-else>
           <li v-for="(aside, a) in asides" :key="a" :class="{'stay': status == a}">
             <a :href="aside.href">{{ aside.text }}</a>
@@ -153,6 +158,7 @@
     </template>
   </mobile2>
 </template>
+
 
 <style lang="scss">
   .mobile-for-product{
