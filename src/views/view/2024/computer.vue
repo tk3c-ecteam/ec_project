@@ -1,42 +1,7 @@
-<script setup>
-  import { useHead,useScript } from "unhead";
-
-//META DESCRIPTION 
-useHead({
-  title: "3C電腦家電大賞 | 燦坤線上購物",
-  meta: [
-    {
-      name: 'description',
-      content: '開學衝一波！燦坤3C電腦家電大展8/30-9/3，筆電、電視、冰箱、洗衣機、空調、生活家電、廚房家電、螢幕等商品通通有！門市下單最高回饋8%K幣，線上購物領券限折最高1000，再刷台新燦坤聯名卡最高折1100，優惠不容錯過！',
-    }
-    ,{
-      property:'og:title',
-      content:'3C電腦家電大賞 | 燦坤線上購物'
-    },
-    {
-      property:'og:description',
-      content:'開學衝一波！燦坤3C電腦家電大展8/30-9/3，筆電、電視、冰箱、洗衣機、空調、生活家電、廚房家電、螢幕等商品通通有！門市下單最高回饋8%K幣，線上購物領券限折最高1000，再刷台新燦坤聯名卡最高折1100，優惠不容錯過！'
-    },
-    {
-      property:'og:image',
-      content:'https://www.tk3c.com/images/headimg.jpg'
-    },
-    {
-      property:'og:url',
-      content:'https://events.tk3c.com/events_net/2408computer/index.html'
-    }
-  ]
-});
-</script>
-
 <script> 
-import { globalMixin } from "../../../globalMixin.js";
-
    export default {
-    mixins: [globalMixin],
     data() {
       return {
-        menus:[7368,7369,7370],
         sales:[
           { "url": "", "image": "2408computer/images/s250.png", "menu": 7367 },
           { "url": "", "image":"2408computer/images/s699.png","menu":7331},
@@ -58,18 +23,62 @@ import { globalMixin } from "../../../globalMixin.js";
           {
             "url":"https://www.tk3c.com/dictitleurl.aspx?cid=123690",
             "image":"2408computer/images/2c_bn.png",
-            "menu":7365
           },
           {
             "url": "https://www.tk3c.com/dictitleurl.aspx?cid=123690",
             "image": "2408computer/images/1c_bn.png",
-            "menu":7366
           },
         ],
         specials: [
-          { "url": "", "image": "2408computer/images/S0-1.png" },
-          { "url": "", "image": "2408computer/images/S0-2.png" },
-          { "url": "", "image": "2408computer/images/S0-3.png" },
+          { "menu": 7368,"image": "2408computer/images/S0-1.png" },
+          { "menu": 7369,"image": "2408computer/images/S0-2.png" },
+          { "menu": 7370,"image": "2408computer/images/S0-3.png" },
+        ],
+        floorImg:[
+          {
+            "moreUrl":"https://events.tk3c.com/events_net/green_subsidy/index.html",
+            "image":"2408computer/images/sb5.png"
+          },
+          {
+            "moreUrl": "https://events.tk3c.com/events_net/24TK2C/index.html",
+            "image": "2408computer/images/sb6_2.png"
+          },
+          {
+            "moreUrl": "https://events.tk3c.com/events_net/airConditionerLAB/index.html",
+            "image": "2408computer/images/sb7.png"
+          },
+          {
+            "moreUrl": "https://events.tk3c.com/events_net/2024083C/index.html",
+            "image": "2408computer/images/sb8_2.png"
+          },
+          {
+            "moreUrl": "https://events.tk3c.com/events_net/wet/index.html",
+            "image": "2408computer/images/sb9.png"
+          },
+          {
+            "moreUrl": "https://events.tk3c.com/events_net/icewash2209/index.html",
+            "image": "2408computer/images/sb10.png"
+          },
+          {
+            "moreUrl": "https://events.tk3c.com/events_net/fan_hot/index.html",
+            "image": "2408computer/images/sb11.png"
+          },
+          {
+            "moreUrl": "https://events.tk3c.com/events_net/icewash2209/index.html",
+            "image": "2408computer/images/sb12.png"
+          },
+          {
+            "moreUrl": "https://events.tk3c.com/events_net/events_net/PLAYGAMES/index.html",
+            "image": "2408computer/images/sb13.png"
+          },
+          {
+            "moreUrl": "https://events.tk3c.com/events_net/2020TVforever/index.html",
+            "image": "2408computer/images/sb14.png"
+          },
+          {
+            "moreUrl": "https://www.tk3c.com/dic2.aspx?cid=123139&aid=23800&hid=123290",
+            "image": "2408computer/images/sb15.png"
+          },
         ],
         status:0,
         status2:0,
@@ -79,247 +88,30 @@ import { globalMixin } from "../../../globalMixin.js";
         sale:null,
         sp:null,
         proSP:[],
+        menu: [7338, 7339, 7340, 7341, 7343, 7344, 7345, 7346,
+          7347, 7348, 7349
+        ],
+        menuPro:[7365,7366]
       }
     },
-    created() {
-      let styles = [
-        "https://www.tk3c.com/images/headimg.jpg",
-        "https://events.tk3c.com/events_net/events_net/2408computer/css/computer.css"
-      ];
-
-     //新增css 連結
-    this.addStyle(styles);
-    },
     mounted() {
-      const {proDatas,sales,specials,menus,today} = this;
-
-      document.querySelectorAll('.wrapper')[1].innerHTML = "";
+      const {today} = this;
 
       if (today >= new Date('2024/09/01')) {
         this.sales = this.sale09;
         this.sales[0].menu = this.sale09[0].menu;
       }
 
-   
-
-      this.saleSlide(0);
-      this.spSlide(0);
-
-       //撈取限時5天樓層
-      this.getFloorData(menus);
-
-      //撈取現折樓層商品
-     this.getFloorSingle(this.sales[0].menu);
-
-     //撈取樓層商品
-      for (const [p, pro] of Object.entries(proDatas)) {
-      this.getFloorSingle(pro.menu);
-     }
-
+     //撈取3c大展樓層商品
+     this.getFloorData(this.menuPro);
+  
       //撈取聯名卡樓層
       this.getFloorSingle(7337);
       
     },
-    updated() {
-      this.proSlide();
-      this.salePro(0);
-      this.slides();
-      this.spPro(0);
-    },
   methods: {
     change(id) {
      this.status = id;
-    },
-    changeSale(id,menu){
-      if (event) {
- 
-        this.pro = [];
-        this.sale = null;
-
-        this.getFloorSingle(menu);
-        
-
-        this.saleSlide(id);
-
-        setTimeout(() => {
-          this.showAndHide(Number(id), '.sale-group');
-        }, 30);
-
-         setTimeout(() => {
-           this.salePro(id);
-        }, 45);
-
-      }
-    },
-    changeSp(id,) {
-      if (event) {
-
-        this.proSP = [];
-        this.sp = null;
-
-
-        this.spSlide(id);
-
-        this.showAndHide(Number(id), '.special-box');
-        this.spPro(id);
-
-      }
-    },
-    proSlide() {
-      setTimeout(() => {
-        $all('.product-group .product').forEach((el, p) => {
-          new Swiper(`.product-group .p${p + 1} .pro`, {
-            loop: true,
-            autoplay: {
-              delay: 2500,
-              disableOnInteraction: false,
-            },
-            spaceBetween: 10,
-            navigation: {
-              nextEl: `.product-group .p${Number(p) + 1} .next`,
-              prevEl: `.product-group .p${Number(p) + 1} .prev`,
-            },
-            breakpoints: {
-              0: {
-                slidesPerView: 2,
-              },
-              610: {
-                slidesPerView: 2
-              },
-              992: {
-                slidesPerView: 2,
-              }
-            },
-          });
-        });
-
-      }, 40);
-    },
-    slides() {
-       setTimeout(() => {
-         new Swiper('.card-group .card .box', {
-           loop: true,
-           autoplay: {
-             delay: 2500,
-             disableOnInteraction: false,
-           },
-           observer:true,
-           spaceBetween: 10,
-           navigation: {
-             nextEl: `.card-group .next`,
-             prevEl: `.card-group .prev`,
-           },
-           breakpoints: {
-             0: {
-               slidesPerView: 2,
-             },
-             610: {
-               slidesPerView: 3
-             },
-             992: {
-               slidesPerView: 4,
-             }
-           },
-         });
-       }, 40);
-    },
-    spSlide(id) {
-      this.sp = new Swiper('.special-box .tab', {
-        loop: false,
-        spaceBetween: 10,
-        breakpoints: {
-          0: {
-            slidesPerView: 2.3,
-          },
-          600: {
-            slidesPerView: 4,
-          },
-          992: {
-            slidesPerView: 5,
-          },
-        },
-      });
-
-      this.sp.loopDestroy();
-      this.sp.update();
-      this.sp.slideTo(id);
-    },
-    spPro(id) {
-      setTimeout(() => {
-        this.proSP[id] = new Swiper(`.special-box .tab-content .pro`, {
-          loop: true,
-          autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-          },
-          observer: true,
-          spaceBetween: 10,
-          navigation: {
-            nextEl: `.special-box .next`,
-            prevEl: `.special-box .prev`,
-          },
-          breakpoints: {
-            0: {
-              slidesPerView: 2,
-            },
-            610: {
-              slidesPerView: 3
-            },
-            992: {
-              slidesPerView: 4,
-            }
-          },
-        });
-      }, 40);
-    },
-    saleSlide(id) {
-      this.sale = new Swiper('.sale-group .tab', {
-        loop: false,
-        spaceBetween: 10,
-        breakpoints: {
-          0: {
-            slidesPerView: 2.4,
-          },
-          600: {
-            slidesPerView: 4.4,
-          },
-          992: {
-            slidesPerView: 6,
-          },
-        },
-      });
-
-      this.sale.loopDestroy();
-      this.sale.update();
-      this.sale.slideTo(id);
-    },
-    salePro(id) {
-     setTimeout(() => {
-       this.pro[id] = new Swiper(`.sale-group .tab-content .pro`, {
-         loop: true,
-         autoplay: {
-           delay: 2500,
-           disableOnInteraction: false,
-         },
-         observer:true,
-         spaceBetween: 10,
-         navigation: {
-           nextEl: `.sale-group .next`,
-           prevEl: `.sale-group .prev`,
-         },
-         breakpoints: {
-           0: {
-             slidesPerView: 2,
-           },
-           610: {
-             slidesPerView: 3
-           },
-           992: {
-             slidesPerView: 4,
-           }
-         },
-       });
-     }, 40);
     },
     message(type) {
       let infoHtml = "";
@@ -427,45 +219,19 @@ import { globalMixin } from "../../../globalMixin.js";
     <section class="special-box">
       <h2 class="title">
         <img :src="$filters.siteUrl('2408computer/images/sb0.png')">
-        <a class="more" :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123647') "
-          target="_blank">看更多</a>
       </h2>
 
-      <ul class="tab">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(special, s) in specials" :class="[status3 == s ? 'active' : '']">
-            <a @click="changeSp(s)"><img :src="$filters.siteUrl(special.image)"></a>
-          </div>
-        </div>
-      </ul>
+      <div>
+        <Tabs :tabs="specials">
+        <template v-slot="{ selectedTab }">
+          <TabContent :isSwiper="1" v-for="(sp, s) in specials" :menus="sp.menu" :index="s"
+            :selectedTab="selectedTab">
+          </TabContent>
+        </template>
+       </Tabs>
 
-      <div class="tab-content" v-for="(special, s) in specials" v-show="status3 == s">
-        <div class="bg01 list_F" v-if="products[s] != undefined">
-          <ul>
-            <div class="sale pro">
-              <div class="swiper-wrapper">
-                <li class="swiper-slide" v-for=" (pro, p) in products[s]">
-                  <a :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=' + pro.productid)"
-                    :id="'prod' + pro.productid" :name="'prod' + pro.productid">
-                    <p class="itemF_img"><img onerror="ImgError(this);" :src="pro.ImgUrl" border="0"></p>
-                    <storg>{{ pro.productname }}</storg>
-                    <h4 :class="[pro.Promote.trim() == '' ? 'empty' : '']">{{ pro.Promote }}</h4>
-                    <div class="boxF_price">
-                      <p class="iconF_pro" v-if="getProPercent(pro) != 100"><span>{{ getProPercent(pro) }}</span>折</p>
-
-                      <strong class="txt_red fred">
-                        <em>市價${{ addNumComma(pro.nonmemberprice) }}</em>
-                        <i>活動價$</i>{{ addNumComma(pro.realprice) }}
-                      </strong>
-                    </div>
-                  </a>
-                </li>
-              </div>
-              <div class="swiper-button-prev prev"></div>
-              <div class="swiper-button-next next"></div>
-            </div>
-          </ul>
-        </div> 
+        <a class="more" :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123647') "
+        target="_blank">看更多</a>
       </div>
     </section>
 
@@ -473,48 +239,21 @@ import { globalMixin } from "../../../globalMixin.js";
     <section class="sale-group">
       <h2 class="title">
         <img :src="$filters.siteUrl('2408computer/images/sb3.png')">
+      </h2>
+
+      <div>
+        <Tabs :tabs="sales">
+        <template v-slot="{ selectedTab }">
+          <TabContent :isSwiper="1" v-for="(sale, s) in sales" :menus="sale.menu" :index="s"
+            :selectedTab="selectedTab">
+          </TabContent>
+        </template>
+      </Tabs>
         <a v-if="today < new Date('2024/09/01')" class="more"
           :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123647')" target="_blank">看更多</a>
         <a class="more" v-else :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123738')" target="_blank">看更多</a>
-      </h2>
-
-      <ul class="tab">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(sale, s) in sales" :class="[status2 == s ? 'active' : '']">
-            <a @click="changeSale(s, sale.menu)"><img :src="$filters.siteUrl(sale.image)"></a>
-          </div>
-        </div>
-      </ul>
-
-   
-      <div class="tab-content" v-for="(sale, s) in sales" v-show="status2 == s">
-         <div class="bg01 list_F" v-if="product2[sale.menu] != undefined">
-          <ul>
-            <div class="sale pro">
-              <div class="swiper-wrapper">
-                <li class="swiper-slide" v-for=" (pro, p) in product2[sale.menu]">
-                  <a :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=' + pro.productid)"
-                    :id="'prod' + pro.productid" :name="'prod' + pro.productid">
-                    <p class="itemF_img"><img onerror="ImgError(this);" :src="pro.ImgUrl" border="0"></p>
-                    <storg>{{ pro.productname }}</storg>
-                    <h4 :class="[pro.Promote.trim() == '' ? 'empty' : '']">{{ pro.Promote }}</h4>
-                    <div class="boxF_price">
-                      <p class="iconF_pro" v-if="getProPercent(pro) != 100"><span>{{ getProPercent(pro) }}</span>折</p>
-
-                      <strong class="txt_red fred">
-                        <em>市價${{ addNumComma(pro.nonmemberprice) }}</em>
-                        <i>活動價$</i>{{ addNumComma(pro.realprice) }}
-                      </strong>
-                    </div>
-                  </a>
-                </li>
-              </div>
-              <div class="swiper-button-prev prev"></div>
-              <div class="swiper-button-next next"></div>
-            </div>
-          </ul>
-        </div> 
       </div>
+    
     </section>
 
     <!-- 銀行 -->
@@ -599,7 +338,7 @@ import { globalMixin } from "../../../globalMixin.js";
     </section>
 
     <!-- 3C大展商品區 -->
-    <section class="product-group scroll" id="pro">
+    <section class="product-group scroll" titles="3C大展商品區" id="pro">
       <h2 class="title">
         <img :src="$filters.siteUrl('2408computer/images/sb16.png')">
       </h2>
@@ -609,35 +348,10 @@ import { globalMixin } from "../../../globalMixin.js";
         <div class="product w:48% w:95vw@<992" v-for="(proData,p) in proDatas" :class="`p${Number(p) + 1}`">
           <a class="banner w:100% pb:1% pb:3%@<576" :href="$filters.addGALink(proData.url)" target="_blank">
             <img :src="$filters.siteUrl(proData.image)">
-            <a class="more" :href="$filters.addGALink(proData.url)" target="_blank">看更多</a>
           </a>
 
-          <div class="bg01 list_F" v-if="product2[proData.menu] != undefined">
-            <ul>
-              <div class="pro swiper-container">
-                <div class="swiper-wrapper">
-                  <li class="swiper-slide" v-for=" (pro, p) in product2[proData.menu]">
-                    <a :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=' + pro.productid)"
-                      :id="'prod' + pro.productid" :name="'prod' + pro.productid">
-                      <p class="itemF_img"><img onerror="ImgError(this);" :src="pro.ImgUrl" border="0"></p>
-                      <storg>{{ pro.productname }}</storg>
-                      <h4 :class="[pro.Promote.trim() == '' ? 'empty' : '']">{{ pro.Promote }}</h4>
-                      <div class="boxF_price">
-                        <p class="iconF_pro" v-if="getProPercent(pro) != 100"><span>{{ getProPercent(pro) }}</span>折</p>
-
-                        <strong class="txt_red fred">
-                          <em>市價${{ addNumComma(pro.nonmemberprice) }}</em>
-                          <i>活動價$</i>{{ addNumComma(pro.realprice) }}
-                        </strong>
-                      </div>
-                    </a>
-                  </li>
-                </div>
-                <div class="swiper-button-prev prev"></div>
-                <div class="swiper-button-next next"></div>
-              </div>
-            </ul>
-          </div>
+          <ListF :pro="products[menuPro[p]]?.Data" :isSwiper="1" :name="`pro${p + 1}`"></ListF>
+          <a class="more" :href="$filters.addGALink(proData.url)" target="_blank">看更多</a>
         </div>
       </div>
     </section>
@@ -646,37 +360,12 @@ import { globalMixin } from "../../../globalMixin.js";
     <section class="card-group" id="card">
       <h2 class="title">
         <img :src="$filters.siteUrl('2408computer/images/sb4.png')">
-        <a class="more" :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')"
-          target="_blank">看更多</a>
       </h2>
 
       <div class="card">
-        <div class="bg01 list_F" v-if="product2[7337] != undefined">
-          <ul>
-            <div class="box pro">
-              <div class="swiper-wrapper">
-                <li class="swiper-slide" v-for=" (pro, p) in product2[7337]">
-                  <a :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=' + pro.productid)"
-                    :id="'prod' + pro.productid" :name="'prod' + pro.productid">
-                    <p class="itemF_img"><img onerror="ImgError(this);" :src="pro.ImgUrl" border="0"></p>
-                    <storg>{{ pro.productname }}</storg>
-                    <h4 :class="[pro.Promote.trim() == '' ? 'empty' : '']">{{ pro.Promote }}</h4>
-                    <div class="boxF_price">
-                      <p class="iconF_pro" v-if="getProPercent(pro) != 100"><span>{{ getProPercent(pro) }}</span>折</p>
-
-                      <strong class="txt_red fred">
-                        <em>市價${{ addNumComma(pro.nonmemberprice) }}</em>
-                        <i>活動價$</i>{{ addNumComma(pro.realprice) }}
-                      </strong>
-                    </div>
-                  </a>
-                </li>
-              </div>
-              <div class="swiper-button-prev prev"></div>
-              <div class="swiper-button-next next"></div>
-            </div>
-          </ul>
-        </div>
+        <ListF :pro="product2[7337]" :isSwiper="1"></ListF>
+        <a class="more" :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')"
+        target="_blank">看更多</a>
       </div>
 
       <a class="banner" href="https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=main" target="_blank">
@@ -684,32 +373,200 @@ import { globalMixin } from "../../../globalMixin.js";
         <img class="mobile" src="https://events.tk3c.com/events_net/events_net/24618go/images/tk3c_card3M.jpg">
       </a>
     </section>
+
+    <CommonFloor :floors="floorImg" :menu="menu">
+      <template #more>
+        看更多
+      </template>
+    </CommonFloor>
   </div>
 
   <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li class="main"><a href="#pro">3C大展商品</a></li>
-          <li><a href="#pro7338">綠點</a></li>
-          <li><a href="#pro7339">廚房小家電</a></li>
-          <li><a href="#pro7340">空調</a></li>
-          <li><a href="#pro7341">手機/平板</a></li>
-          <li><a href="#pro7343">清掃家電</a></li>
-          <li><a href="#pro7344">冰箱 </a></li>
-          <li><a href="#pro7345">風扇</a></li>
-          <li><a href="#pro7346">洗衣機</a></li>
-          <li><a href="#pro7347">遊戲 </a></li>
-          <li><a href="#pro7348">電視/影音</a></li>
-          <li><a href="#pro4349">機車 </a></li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
+  <RightAside :type="'mobile2'"></RightAside>
 
 </template>
 
+<style lang="scss">
+$dir: 'https://events.cdn-tkec.tw/events_net/events_net/2408computer/images/';
+$origin: 'https://events.tk3c.com/events_net/events_net/2408computer/images/';
+
+body {
+  background: #83ceff;
+}
+
+.bg01 {
+  background: #000;
+  margin: 0 auto 2%;
+}
+
+.item {
+  top:250px;
+}
+
+.more {
+  background: #000;
+}
+
+#computer-container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  .background {
+    width: 100%;
+    height: 0;
+    $image:$dir + 'kv_bg.png';
+    background: url($image) no-repeat center;
+    background-size: 100% auto;
+    background-position: 0 45px,top;
+    padding-bottom: 55%;
+    .title {
+      animation-duration: 1.8s;
+      img {
+        animation: rubberBand 1.5s;
+        animation-delay: 0.7s;
+      }
+    }
+    .subtitle {
+      .go {
+        animation-duration: 0.5s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+    }
+    .product {
+      animation-duration: 2.4s;
+    }
+  }
+  .background2 {
+    width: 100%;
+    height: 100%;
+    $image:$dir + 'bg.png';
+    background: url($image) no-repeat center;
+    background-size: 100% auto;
+    background-position: 0 0, top;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: -1;
+  }
+}
+
+.gift-box {
+  .tab {
+    li {
+      filter: grayscale(1);
+      transform: translateZ(0);
+      &.active {
+        filter: grayscale(0);
+        transform: translateZ(0);
+      }
+    }
+  }
+  .tab-content {
+    position: relative;
+    &.t1 {
+      li {
+        width: 44%;
+        margin: 0 4px 2%;
+        position: relative;
+        &.all {
+          .links {
+            width: 100%;
+            position: absolute;
+            top: 39%;
+            right: -32%;
+            a {
+              width: 25%;
+              margin-bottom: 25%;
+            }
+          }
+          a {
+            &:hover {
+              position: static;
+            }
+          }
+        }
+        &.social {
+          .links {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            top: 0;
+            a {
+              width: 100%;
+              height: 13vmax;
+              &:last-of-type {
+                height: 15vmax;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.product-group {
+  .products {
+    .bg01 {
+      padding: 2% 2% 1%;
+      box-sizing: border-box;
+    }
+    .p1 {
+      .bg01 {
+        background: #5ed91a;
+      }
+    }
+    .p2 {
+      .bg01 {
+        background: #ff67cf;
+      }
+    }
+    .banner {
+      position: relative;
+      .more {
+        right: 2%;
+        top: 66%;
+      }
+    }
+    .swiper-wrapper {
+      justify-content: center;
+    }
+    .swiper-slide {
+      width: 50% !important;
+    }
+  }
+}
+
+.sale-group {
+  .tab {
+    .swiper-wrapper {
+      justify-content: left;
+    }
+  }
+}
+
+/*  電腦版其他尺寸 */
+@media only screen and (max-width: 992px) {
+  #computer-container {
+    .background {
+      background-size: 120% auto;
+      background-position: -4vw 4vw, top;
+      padding-bottom: 68vw;
+   }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #computer-container {
+    .background {
+      background-size: 300% auto;
+      background-position: -85vw 22vw, top;
+      padding-bottom: 180vw;
+   }
+  }
+}
+</style>

@@ -92,7 +92,7 @@
   <LeftAside></LeftAside>
 
   <!-- 右側選單 -->
-  <RightAside></RightAside>
+  <RightAside :type="'mobile3'"></RightAside>
 </template>
 
 <script>

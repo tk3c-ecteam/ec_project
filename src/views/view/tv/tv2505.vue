@@ -39,7 +39,7 @@
     </section>
 
     <!-- 房東精選 -->
-    <section class="home-box scroll" titles="房東精選專區" id="home" v-show="isHome">
+    <section class="home-box scroll" titles="房東精選" id="home" v-show="isHome">
       <h2 class="title">
         <img :src="$filters.siteUrl('2020TVforever/images/2505/home_title.png')" />
       </h2>
@@ -47,7 +47,7 @@
     </section>
 
     <!-- 福利 -->
-    <section class="sale-group scroll" titles="品牌福利出清" id="sale">
+    <section class="sale-group scroll" titles="品牌出清" id="sale">
       <h2 class="title">
         <img :src="$filters.siteUrl('2020TVforever/images/2505/sale_title.png')" />
       </h2>
@@ -132,7 +132,7 @@
   <LeftAside></LeftAside>
 
   <!-- 右側選單 -->
-  <RightAside></RightAside>
+  <RightAside :type="'mobile3'"></RightAside>
 </template>
 
 <script>
@@ -281,11 +281,11 @@ export default {
      //撈取 夜殺樓層商品
     this.getFloorSingle(this.menuNight)
 
-    // 2025 5/1 更新現折券連結
-    if (today >= new Date('2025/05/01')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947&strPreView=y';
+    // 更新現折券連結
+    if (today >= new Date('2025/05/16')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y'
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124427&aid=23931'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
     }
   },
 }

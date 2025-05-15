@@ -115,7 +115,7 @@
     </section>
 
     <!-- 熱銷空調首選 -->
-    <section class="hot-group scroll" titles="熱銷空調首選" id="hot">
+    <section class="hot-group scroll" titles="熱銷首選" id="hot">
       <h2 class="title">
         <a :href="$filters.addGALink('https://www.tk3c.com/search.aspx?q=%E7%A9%BA%E8%AA%BF')" target="_blank">
           <img :src="$filters.siteUrl('airConditionerLAB/images/2503/S3.png')" alt="" />
@@ -148,7 +148,7 @@
     </section>
 
     <!-- 熊速配專區 -->
-    <section class="bear-box scroll" titles="熊速配專區" id="bear">
+    <section class="bear-box scroll" titles="熊速配" id="bear">
       <h2 class="title">
         <img :src="$filters.siteUrl('airConditionerLAB/images/2303/pro_title.jpg')" />
       </h2>
@@ -316,7 +316,7 @@
   <LeftAside></LeftAside>
 
   <!-- 右側選單 -->
-  <RightAside></RightAside>
+  <RightAside :type="'mobile3'"></RightAside>
 </template>
 
 <script setup>
@@ -485,7 +485,7 @@ export default {
         {
           0: [
             {
-              text:'分離式空調',
+              text:'分離式',
               title: 'airConditionerLAB/images/2503/S6.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4704&strPreView=y',
               content: [
@@ -511,7 +511,7 @@ export default {
           ],
           1: [
             {
-              text:'窗型空調',
+              text:'窗型',
               title: 'airConditionerLAB/images/2503/S7.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=4702&strPreView=y',
               content: [
@@ -536,7 +536,7 @@ export default {
           ],
           2: [
             {
-              text:'移動式空調',
+              text:'移動式',
               id: 4130,
               title: 'airConditionerLAB/images/2503/S8.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11225&aid=13580&strPreView=y'
@@ -657,11 +657,11 @@ export default {
       document.querySelector('.background .bird.b3').classList.add('fadein');
     }, 1795);
     
-    // 5/1修改現折券連結
-    if (today >= new Date('2025/05/01')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947&strPreView=y';
+    // 修改現折券連結
+    if (today >= new Date('2025/05/16')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931';
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947';
     }
 
     //撈取 上方商品
