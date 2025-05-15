@@ -40,6 +40,18 @@
      case 'fan_hot':
       statusTopic = 4;
       break; 
+
+     case 'green_subsidy':
+      statusTopic = 5;
+      break;  
+
+     case 'nightsale':
+      statusTopic = 6;
+      break;
+      
+     case 'pet_product':
+      statusTopic = 7;
+      break;
   } 
 
   if (folderName != mainName) {

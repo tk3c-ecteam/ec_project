@@ -42,11 +42,17 @@
     </section> 
 
     <!--商品樓層 -->
-    <CommonFloor :floors="floors" :menu="menu" :singleImage="singleImage"></CommonFloor>
+    <CommonFloor :floors="floors" :menu="menu">
+      <template #moreTitle>
+        <img :src="$filters.siteUrl(singleImage)">
+      </template>
+    </CommonFloor>
   </div>
 
+  <!-- 左側選單 -->
+  <LeftAside></LeftAside> 
   <!-- 右側選單+手機板 -->
-  <RightAside :type="'mobile2'" :asideImage="asideImage"></RightAside>
+  <RightAside :type="'mobile3'" :asideImage="asideImage"></RightAside>
 </template>
 
 <script>
@@ -190,8 +196,10 @@ body {
 }
 
 .aside-container {
-  .aside-header {
-    margin: 0 auto 10px;
+  &:not(.left) {
+    .aside-header {
+     margin: 0 auto 10px;
+   }
   }
 }
 

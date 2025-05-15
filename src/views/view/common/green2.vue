@@ -343,8 +343,10 @@ export default {
     <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
   </div>
   
+  <!-- 左側選單 -->
+  <LeftAside></LeftAside> 
   <!-- 右側選單+手機版 -->
-  <RightAside :type="'mobile'"></RightAside>
+  <RightAside :type="'mobile3'"></RightAside>
 </template>
 
 <style lang="scss">

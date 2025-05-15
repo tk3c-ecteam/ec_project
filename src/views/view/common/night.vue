@@ -194,8 +194,10 @@ export default {
     </section>
   </div>
 
+  <!-- 左側選單 -->
+  <LeftAside></LeftAside> 
   <!-- 右側選單+手機版 -->
-   <RightAside :type="'mobile2'"></RightAside>
+   <RightAside :type="'mobile3'"></RightAside>
 </template>
 
 <style lang="scss">
@@ -260,6 +262,7 @@ body {
         &:before {
           content: "先加入購物車";
           letter-spacing: 0;
+          display: block;width: 95%;height: 35px;float: right;border-radius: 20px;color: white;font-size: 0.5em;text-align: center;	line-height: 35px;position: absolute;bottom: 7px;right: 0;left: 0; background: #3f3a39;margin: 0 auto;
         }
         em {
           display: none;
@@ -268,6 +271,16 @@ body {
       .iconF_pro {
         display: none;
       }
+    }
+  }
+
+  .boxF_price {
+    strong {
+      height: auto;
+      line-height: 180px;
+    }
+    .iconF_pro {
+      bottom: 136px;
     }
   }
 }
@@ -472,8 +485,7 @@ section {
     .boxF_price {
       &.incoming {
         &:after {
-          content: "先加入購物車" !important;
-          font-size: 0.8em;
+          content: "先加入購物車";
         }
       }
     }
@@ -481,7 +493,8 @@ section {
     .before {
       .boxF_price {
         &:after {
-          content: "先加入購物車" !important;
+          content: "先加入購物車";
+          font-size: 0.8em;color: #fff; background: #3f3a39;  width: 95%;  height: 34px; display: none; text-align: center; font-size: 0.8em;  letter-spacing: 0; line-height: 34px;box-sizing: border-box;font-weight: bold;border-radius: 20px;margin: 0 auto;
         }
       }
     }
