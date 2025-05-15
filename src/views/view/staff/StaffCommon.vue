@@ -96,8 +96,11 @@ const navButtons = [
     <CommonFloor
       :floors="contents[0].floor"
       :menu="contents[0].menu"
-      :singleImage="contents[0].singleImage"
-    ></CommonFloor>
+    >
+      <template #moreTitle>
+        <img :src="$filters.siteUrl(contents[0].singleImage)">
+      </template>
+    </CommonFloor>
 
     <!-- 活動辦法 -->
     <section class="info-group scroll" titles="活動辦法" id="info">

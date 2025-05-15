@@ -173,7 +173,7 @@
   <LeftAside></LeftAside>
 
   <!-- 右側選單 -->
-  <RightAside></RightAside>
+  <RightAside :type="'mobile3'"></RightAside>
 </template>
 
 <script>
@@ -332,8 +332,8 @@ export default {
   mounted() {
     let {  today,tabs } = this
 
-    // 2025/4/22 更新現折券連結
-    if (today >= new Date('2025/04/22 10:00')) {
+    // 更新現折券連結
+    if (today >= new Date('2025/05/16')) {
       this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
     } else {
       this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
