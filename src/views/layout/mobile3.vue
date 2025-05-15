@@ -24,31 +24,20 @@
     <div class="footer-bg" :style="{'display': mobileBg}" @click="closeNav"></div>
     <div class="nav-box">
       <ul>
-        <li @click="changeMobile('event')" :class="[mobileStatus == 'event' ? 'active' : '']">主題活動館</li>
+        <li @click="changeMobile('topic')" :class="[mobileStatus == 'topic' ? 'active' : '']">主題活動館</li>
         <slot name="main" :closeNav2="closeNav2"></slot>
-        <li @click="changeMobile('social')" :class="[mobileStatus == 'social' ? 'active' : '']">關注社群</li>
+        <li @click="changeMobile('service')" :class="[mobileStatus == 'service' ? 'active' : '']">燦坤服務</li>
       </ul>
     </div>
 
-   <div class="box-area event" :class="[mobileStatus == 'event' ? 'footer-nav-open' : '']">
-      <slot name="topics"></slot>
-      <slot name="events"></slot>
+    <!-- 主題活動館 -->
+   <div class="box-area topic" :class="[mobileStatus == 'topic' ? 'footer-nav-open' : '']">
+      <slot name="topic"></slot>
     </div>
 
-    <div class="box-area social" :class="[mobileStatus == 'social' ? 'footer-nav-open' : '']">
-      <ul>
-        <li>
-          <a href="https://reurl.cc/QbZ149" @click="closeNav" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-        </li>
-        <li>
-          <a href="https://reurl.cc/7pMZVl" @click="closeNav" target="_blank"><i class="fa-brands fa-line"></i></a>
-        </li>
-        <li>
-          <a href="https://reurl.cc/3Ye8kX" @click="closeNav" target="_blank"
-            ><i class="fa-brands fa-instagram"></i
-          ></a>
-        </li>
-      </ul>
+    <!-- 燦坤服務 -->
+    <div class="box-area service" :class="[mobileStatus == 'service' ? 'footer-nav-open' : '']">
+      <slot name="service"></slot>
     </div>
   </div>
 
