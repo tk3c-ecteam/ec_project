@@ -110,7 +110,9 @@
             </li>
          </ul>
          <ul v-else-if="type == 'mobile3'">
-           <li class="color:#fff bg:#955038 rt:15px box:border-box">燦坤服務</li>
+           <li class="color:#fff bg:#767070 f:bold rt:15px box:border-box">
+            <a class="bg:none!" :href="$filters.addGALink('https://events.tk3c.com/events_net/Online_DMCatalog/index.aspx')" target="_blank">DM線上看</a>
+           </li>
            <Service></Service>
          </ul>
          <ul v-else>
@@ -133,6 +135,13 @@
         </li>
       </ul>
     </template>
+
+    <!-- 燦坤服務 -->
+    <template #service>
+      <ul>
+        <Service></Service>
+      </ul>
+     </template>
   </mobile>
 
   <!-- 手機版上方選單 -->
@@ -156,6 +165,12 @@
         </li>
       </ul>
     </template>
+    <!-- 燦坤服務 -->
+    <template #service>
+      <ul>
+        <Service></Service>
+      </ul>
+     </template>
   </mobile2>
 </template>
 

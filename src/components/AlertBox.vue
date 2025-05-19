@@ -49,7 +49,7 @@
             <slot></slot>
          </div>
       </div>
-       <div class="bg:#ffe400 sticky left:0 right:0 m:auto bottom:0">
+       <div class="bg:#ffe400 rb:15px box:border-box sticky left:0 right:0 m:auto bottom:0">
         <a class="rel z:10 f:1.5vw f:1.5rem@<992 f:bold pt:10px pt:5px@<576 box:border-box"
           @click="closeAlert">關閉</a>
       </div>

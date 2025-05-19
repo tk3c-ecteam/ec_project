@@ -24,7 +24,7 @@ export default {
         :effect="'coverflow'"
         :centeredSlides="true"
         :coverflowEffect="{
-           rotate:26, // 3d旋轉時Y軸的旋轉角度
+           rotate:22, // 3d旋轉時Y軸的旋轉角度
            stretch: 0, //slide之間的拉伸值 越大靠得越緊
             depth: 135, //值越大z軸距離越遠 (越來越小)
             modifier: 1, //modifier和rotate、stretch、depth之間的倍率 值越大越明顯

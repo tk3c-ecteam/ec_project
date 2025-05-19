@@ -11,13 +11,13 @@
 
   let topics = [
     {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/icewash2209/index.html"},
-    {"name":"空調","url":"https://events.tk3c.com/events_net/airConditionerLAB/index.html"},
-    {"name":"電視","url":"https://events.tk3c.com/events_net/2020TVforever/index.html"},
+    {"name":"空調主題館","url":"https://events.tk3c.com/events_net/airConditionerLAB/index.html"},
+    {"name":"電視主題館","url":"https://events.tk3c.com/events_net/2020TVforever/index.html"},
     {"name":"電腦系統週邊","url":"https://events.tk3c.com/events_net/2024083C/index.html"},
-    {"name":"季節風扇","url":"https://events.tk3c.com/events_net/fan_hot/index.html"},
-    {"name":"環保集點","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
+    {"name":"季節/風扇/熨燙","url":"https://events.tk3c.com/events_net/fan_hot/index.html"},
+    {"name":"綠點週末10倍送","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
     {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
-    {"name":"寵物","url":"https://events.tk3c.com/events_net/pet_product/index.html"},
+    {"name":"福利品特賣","url":"https://events.tk3c.com/events_net/OUTLET/index.html"},
   ];
 
   switch (folderName) {
@@ -61,9 +61,8 @@
     topics.splice(statusTopic,1);
   }
 
-  /*手機版類型
-  * 預設: mobile3 
-  */
+  //手機版類型
+  //預設: mobile3 
   const type = defineModel('type', {
     type: String,
     default:'mobile3'
@@ -158,15 +157,17 @@
       <div class="aside-content rt:15px box:border-box bg:#000000b8">
         <ul class="flex flex:wrap jc:flex-start">
           <li class="main" v-if="main != null">
-            <a :href="$filters.addGALink(main[0].url)">{{ main[0].name }}</a>
+            <a :href="$filters.addGALink(main[0].url)" target="_blank">{{ main[0].name }}</a>
           </li>
-          <li class="color:#fff bg:#955038">主題活動館</li>
-           <li v-for="(topic,t) in topics" :key="t" class="bank flex:1|1|80px">
-            <a class="word-break:keep-all white-space:pre" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
+          <li class="color:#fff bg:#767070 f:bold">主題活動館</li>
+           <li v-for="(topic,t) in topics" :key="t">
+            <a class="bg:none! white-space:nowrap text:ellipsis overflow:hidden box:border-box" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
+            <em v-if="t != topics.length -1 " class="w:75% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
            </li>
-           <li class="color:#fff bg:#955038">熱門品類</li>
-           <li v-for="(aside, a) in asides" class="w:46%!" :class="{'stay': status == a}" :key="a">
-                <a class="bg:none! word-break:keep-all white-space:nowrap text:ellipsis overflow:hidden" :href="aside.href">{{ aside.text }}</a>
+           <li class="color:#fff bg:#767070 f:bold mb:5px">熱門品類</li>
+           <li v-for="(aside, a) in asides" class="w:44%! m:0|3px!" :class="{'stay': status == a,'br:2px|solid|#fff': a % 2 == 0}" :key="a">
+                <a class="bg:none! word-break:keep-all white-space:nowrap text:ellipsis overflow:hidden box:border-box" :href="aside.href">{{ aside.text }}</a>
+                <em class="w:75% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
              </li>
         </ul>
       </div>

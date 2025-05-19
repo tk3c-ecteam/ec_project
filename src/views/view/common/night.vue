@@ -273,16 +273,6 @@ body {
       }
     }
   }
-
-  .boxF_price {
-    strong {
-      height: auto;
-      line-height: 180px;
-    }
-    .iconF_pro {
-      bottom: 136px;
-    }
-  }
 }
 
 .timearea {

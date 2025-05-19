@@ -7,28 +7,17 @@
         <li @click="changeMobile('type')" :class="[mobileStatus == 'type' ? 'active' : '']">
           <span class="icon"><i class="fa-solid fa-shop"></i>熱門品類</span>
         </li>
-         <li @click="changeMobile('social')" :class="[mobileStatus == 'social' ? 'active' : '']">
-          <span class="icon"><i class="fa-solid fa-people-arrows"></i>關注社群</span>
+         <li @click="changeMobile('service')" :class="[mobileStatus == 'service' ? 'active' : '']">
+          <span class="icon"><i class="fa-solid fa-people-arrows"></i>燦坤服務</span>
         </li>
       </ul>
     </div>
     <div class="box-area type" :class="[mobileStatus == 'type' ? 'footer-nav-open' : '']" @click="closeNav">
       <slot name="asides"></slot>
     </div>
-    <div class="box-area social" :class="[mobileStatus == 'social' ? 'footer-nav-open' : '']">
-      <ul>
-        <li>
-          <a href="https://reurl.cc/QbZ149"  @click="closeNav" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-        </li>
-        <li>
-          <a href="https://reurl.cc/7pMZVl" @click="closeNav" target="_blank"><i class="fa-brands fa-line"></i></a>
-        </li>
-        <li>
-          <a href="https://reurl.cc/3Ye8kX" @click="closeNav" target="_blank"
-            ><i class="fa-brands fa-instagram"></i
-          ></a>
-        </li>
-      </ul>
+    <!-- 燦坤服務 -->
+    <div class="box-area service" :class="[mobileStatus == 'service' ? 'footer-nav-open' : '']">
+      <slot name="service"></slot>
     </div>
   </div>
 

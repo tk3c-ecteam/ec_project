@@ -140,8 +140,8 @@ const contents = defineModel("contents");
       >
         <swiper-slide v-for="(slide,s) in contents[0].slides">
           <a :class="[slide.url == undefined ? 'no' : '']" :href="$filters.addGALink(slide.url)" target="_blank">
-             <img v-if="slide.pc" class="pc" :src="$filters.siteUrl(slide.pc)" />
-             <img v-if="slide.mobile" class="mobile" :src="$filters.siteUrl(slide.mobile)"/>
+             <img v-if="slide.pc" class="pc" :src="$filters.siteUrl(slide.pc)" loading="lazy" />
+             <img v-if="slide.mobile" class="mobile" :src="$filters.siteUrl(slide.mobile)" loading="lazy"/>
           </a>
         </swiper-slide>
       </swiper>

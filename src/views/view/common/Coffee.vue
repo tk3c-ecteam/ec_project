@@ -131,6 +131,7 @@ body {
     margin: 0 auto;
     z-index: -1;
     top: 0;
+    aspect-ratio: 16/9;
   }
 }
 

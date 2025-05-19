@@ -4,16 +4,13 @@
     <div class="footer-bg" :style="{'display': mobileBg}" @click="closeNav"></div>
     <div class="nav-box">
       <ul>
-        <li class="w:full!" @click="changeMobile('social')" :class="[mobileStatus == 'social' ? 'active' : '']">關注社群</li>
+        <li class="w:full!" @click="changeMobile('service')" :class="[mobileStatus == 'service' ? 'active' : '']">燦坤服務</li>
       </ul>
     </div>
 
-    <div class="box-area social":class="[mobileStatus == 'social' ? 'footer-nav-open' : '']">
-      <ul>
-        <li><a href="https://reurl.cc/QbZ149" @click="closeNav" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
-        <li><a href="https://reurl.cc/7pMZVl" @click="closeNav" target="_blank"><i class="fa-brands fa-line"></i></a></li>
-        <li><a href="https://reurl.cc/3Ye8kX" @click="closeNav" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-      </ul>
+    <!-- 燦坤服務 -->
+    <div class="box-area service" :class="[mobileStatus == 'service' ? 'footer-nav-open' : '']">
+      <slot name="service"></slot>
     </div>
   </div>
 
@@ -27,11 +24,10 @@
     </div>
     <a class="switch" @click="switchMobile">
       <i v-if="!isMobileOpen" class="fa-solid fa-angle-down"></i>
-      <i v-else class="fa-solid fa-xmark"></i>
+      <i v-else class="fa-solid fa-angle-up"></i>
     </a>
     <div v-if="isMobileOpen">
-      <h3 class="title">快速選單</h3>
-      <div @click="changeNav">
+      <div @click="changeNav" class="bg:#1e1d1de0 pl:15px box:border-box">
         <slot name="mobileList"></slot>
       </div>
     </div>

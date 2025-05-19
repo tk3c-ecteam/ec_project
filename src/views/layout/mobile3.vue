@@ -51,11 +51,10 @@
     </div>
     <a class="switch" @click="switchMobile">
       <i v-if="!isMobileOpen" class="fa-solid fa-angle-down"></i>
-      <i v-else class="fa-solid fa-xmark"></i>
+      <i v-else class="fa-solid fa-angle-up"></i>
     </a>
     <div v-if="isMobileOpen">
-      <h3 class="title">快速選單</h3>
-      <div @click="changeNav">
+      <div @click="changeNav" class="bg:#1e1d1de0 pl:15px box:border-box">
          <slot name="mobileList"></slot>
       </div>
     </div>

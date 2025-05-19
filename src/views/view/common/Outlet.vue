@@ -140,7 +140,7 @@ export default {
 
       <ul class="gap:10 gap:5@<992">
         <li class="w:19% w:48%@<576" v-for="(sp,s) in specials" :key="s">
-          <a :href="sp.url">
+          <a @click="goAnchor(sp.url)">
             <img :src="$filters.siteUrl(sp.image)">
           </a>
         </li>

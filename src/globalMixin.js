@@ -265,7 +265,6 @@ export const globalMixin = {
     //點擊切換手機版上方按鈕
     switchMobile() {
       this.isMobileOpen = !this.isMobileOpen;
-      this.isMobileOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
     },
     //切換左側選單顯示按鈕
     switchLeftAside() {
@@ -295,6 +294,18 @@ export const globalMixin = {
           this.jimmyText[id] = pro.textContent.trim();
         });
       }
-    }
+    },
+    goAnchor(element) {
+      //前往錨點
+      let el = document.querySelector(element),
+        rect = el.getBoundingClientRect(),
+        move = rect.top + document.documentElement.scrollTop
+
+      setTimeout(() => {
+        window.scrollTo({
+          top: move - 90,
+        })
+      }, 80)
+    },
   }
 }
