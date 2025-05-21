@@ -40,7 +40,7 @@ export default {
       >
         <swiper-slide
           v-for="(proA, p) in pro"
-          class="bg:#fff pb:2%@<576"
+          class="pb:2%@<576"
         >
           <a 
             :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=' + proA.productid)"

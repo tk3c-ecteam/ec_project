@@ -237,22 +237,6 @@ body {
 
 .bg01 {
   background: none;
-  li {
-    .boxF_price {
-      &.incoming {
-        strong {
-          color: #fff;
-          height: 60px;
-          font-size: 190%;
-          &:before {
-            content: "先加入購物車";
-            letter-spacing: 0;
-          }
-        }
-      }
-    }
-  }
-
   .before {
     .boxF_price {
       strong {

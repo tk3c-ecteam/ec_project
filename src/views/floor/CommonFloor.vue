@@ -34,7 +34,7 @@ export default {
     <div v-if="products[menu[f]]?.Data.length > 0">
       <h2 class="title" :name="`pro${menu[f]}`" :id="`pro${menu[f]}`">
         <!-- 圖片+連結標題 -->
-        <template v-if="floor.url">
+        <template v-if="floor.url && floor.image">
           <a :href="$filters.addGALink(floor.url)" target="_blank">
             <img :src="$filters.siteUrl(floor.image)" />
           </a>
@@ -50,12 +50,23 @@ export default {
           <img :src="$filters.siteUrl(floor.image)">
         </template>
 
-        <!-- 標題圖片(無文字) -->
-         <slot name="moreTitle"></slot>
-
-        <b v-if="floor.text"
-          class="abs left:0 right:0 m:auto top:50% translateY(-50%) f:3em f:2.5em@<992 f:1.5em@<576 f:1.2em@<361 f:bold color:#fff">{{
+        <!-- 標題圖片(非必要)+系統文字+連結 -->
+         <template v-else-if="floor.url && floor.text">
+          <a :href="$filters.addGALink(floor.url)" target="_blank">
+             <!-- 標題圖片 -->
+            <slot name="moreTitle"></slot>
+            <b class="abs left:0 right:0 m:auto top:50% translateY(-50%) f:3em f:2.5em@<992 f:1.5em@<576 f:1.2em@<361 f:bold color:#fff">{{
             floor.text }}</b>
+          </a>
+         </template>
+
+         <!-- 無連結+標題圖片(非必要) -->
+        <template v-else>
+          <!-- 標題圖片 -->
+          <slot name="moreTitle2"></slot>
+          <b class="abs left:0 right:0 m:auto top:50% translateY(-50%) f:3em f:2.5em@<992 f:1.5em@<576 f:1.2em@<361 f:bold color:#fff">{{
+            floor.text }}</b>
+        </template> 
       </h2>
 
       <!-- 有輪播(單個樓層輪播) -->

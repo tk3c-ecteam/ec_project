@@ -4,21 +4,17 @@ import { EffectFlip } from 'swiper/modules'
 
 const props = defineProps({
   banner1: Object,
-  banner2: Object,
-  title: String
+  banner2: Object
 })
 
 const { banner1 } = toRefs(props)
 const { banner2 } = toRefs(props)
-const { title } = toRefs(props)
 </script>
 
 <template>
   <!-- 熱門活動 -->
   <section class="event-box scroll" titles="熱門活動" id="event">
-    <h2 class="title" v-if="title != undefined">
-      <img :src="$filters.siteUrl(title)" />
-    </h2>
+    <slot name="bn-title"></slot>
     <div class="content w:full">
       <!-- 左邊banner輪播翻轉 -->
       <div class="banner1">
