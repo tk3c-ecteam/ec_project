@@ -1,23 +1,5 @@
-<script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import listF from '../layout/listF.vue'
-import { ref } from 'vue'
-
-const swiperRef = ref()
-const onSwiper = (swiper) => {
-  swiperRef.value = swiper
-}
-
-const goSlide = (id) => {
-  swiperRef.value.slideTo(id)
-}
-</script>
-
 <script>
-import { globalMixin } from '../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       sales: [
@@ -61,13 +43,64 @@ export default {
         { url: '', image: 'AutumnShopping/images/PD03.png' },
         { url: '', image: 'AutumnShopping/images/PD04.png' }
       ],
+      floorImg: [
+        {
+          url: 'https://events.tk3c.com/events_net/green_subsidy/index.html',
+          image: 'AutumnShopping/images/S04.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/24TK2C/index.html',
+          image: 'AutumnShopping/images/S05.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/airConditionerLAB/index.html',
+          image: 'AutumnShopping/images/S06.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=10890',
+          image: 'AutumnShopping/images/S07.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/2024083C/index.html',
+          image: 'AutumnShopping/images/S08.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/2024083C/index.html',
+          image: 'AutumnShopping/images/S10.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/wet/index.html',
+          image: 'AutumnShopping/images/S11.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/icewash2209/index.html',
+          image: 'AutumnShopping/images/S09.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/fan_hot/index.html',
+          image: 'AutumnShopping/images/S12.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/icewash2209/index.html',
+          image: 'AutumnShopping/images/S13.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/events_net/PLAYGAMES/index.html',
+          image: 'AutumnShopping/images/S14.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/2020TVforever/index.html',
+          image: 'AutumnShopping/images/S15.png'
+        }
+      ],
       status: 0,
       statusSale: 0,
       today: new Date(),
       future: new Date('2024/09/18'),
       pro: [],
       sale: null,
-      menuBank: 7337
+      menuBank: 7337,
+      menu: [7338, 7339, 7340, 7341, 7342, 7350, 7343, 7344, 7345, 7346, 7347, 7348],
     }
   },
   mounted() {
@@ -76,11 +109,7 @@ export default {
     // 9/18更換現折券商品
     if (today >= new Date('2024/09/18')) {
       this.sales = this.sales_after
-      this.sales[0].menu = this.sales_after[0].menu
     }
-
-    //撈取現折樓層商品
-    this.getFloorSingle(this.sales[0].menu)
 
     //撈取聯名卡樓層
     this.getFloorSingle(menuBank)
@@ -235,14 +264,8 @@ export default {
 }
 </script>
 
-<style>
-[v-cloak] {
-  display: none;
-}
-</style>
-
 <template>
-  <div id="computer-container" v-cloak>
+  <div id="autumn-container" v-cloak>
     <div class="background">
       <h2 class="title animate__animated animate__backInLeft">
         <img v-if="today < future" :src="$filters.siteUrl('AutumnShopping/images/title.png')" />
@@ -293,48 +316,16 @@ export default {
         </a>
       </h2>
 
-      <ul class="tab">
-        <swiper
-          class="w:full"
-          @swiper="onSwiper"
-          :loop="false"
-          :space-between="10"
-          :breakpoints="{
-            0: {
-              slidesPerView: 2.4
-            },
-            600: {
-              slidesPerView: 4.3
-            },
-            992: {
-              slidesPerView: 6
-            }
-          }"
-        >
-          <swiper-slide
-            v-for="(sale, s) in sales"
-            :class="[statusSale == s ? 'active' : '']"
-            @click="goSlide(s)"
-          >
-            <a @click="changeSale(s, sale.menu)">
-              <img :src="$filters.siteUrl(sale.image)" />
-            </a>
-          </swiper-slide>
-        </swiper>
-      </ul>
-
-      <div class="tab-content" v-for="(sale, s) in sales" v-show="statusSale == s">
-        <component
-          :is="listF"
-          :pro="product2[sale.menu]"
-          :isSwiper="1"
-          :name="'sale-box'"
-        ></component>
-      </div>
+      <Tabs :tabs="sales">
+        <template v-slot="{ selectedTab }">
+          <TabContent :isSwiper="1" v-for="(sale, s) in sales" :menus="sale.menu" :index="s" :selectedTab="selectedTab">
+          </TabContent>
+        </template>
+      </Tabs>
     </section>
 
     <!--  全站優惠 -->
-    <section class="gift-box scroll" id="gift">
+    <section class="gift-box scroll" titles="全站優惠" id="gift">
       <h2 class="title animate__animated animate__backInUp">
         <img :src="$filters.siteUrl('AutumnShopping/images/S01.png')" />
       </h2>
@@ -517,7 +508,7 @@ export default {
     </section>
 
     <!-- 聯名卡 -->
-    <section class="card-group" id="card">
+    <section class="card-group scroll" titles="聯名卡" id="card">
       <h2 class="title">
         <a
           :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=123139')"
@@ -549,43 +540,233 @@ export default {
         <img class="mobile" :src="$filters.siteUrl('24618go/images/tk3c_card3M.jpg')" />
       </a>
     </section>
+
+    <CommonFloor :floors="floorImg" :menu="menu"></CommonFloor>
   </div>
 
-  <!-- 左側選單 -->
-  <aside class="aside-container left">
-    <span class="collaspe"><i class="fas fa-chevron-left"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul></ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li class="main"><a href="#gift">全站優惠報你知</a></li>
-          <li><a href="#pro7338">環保集點</a></li>
-          <li><a href="#pro7339">廚房小家電</a></li>
-          <li><a href="#pro7340">空調</a></li>
-          <li><a href="#pro4341">手機/平板</a></li>
-          <li><a href="#pro7342">筆電/桌機</a></li>
-          <li><a href="#pro7350">電腦週邊</a></li>
-          <li><a href="#pro7343">清掃家電</a></li>
-          <li><a href="#pro7344">冰箱 </a></li>
-          <li><a href="#pro7345">風扇</a></li>
-          <li><a href="#pro7346">洗衣機</a></li>
-          <li><a href="#pro7347">遊戲 </a></li>
-          <li><a href="#pro7348">電視/影音</a></li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
+  <RightAside :type="'mobile2'"></RightAside>
 </template>
+
+<style lang="scss">
+$dir: "https://events.cdn-tkec.tw/events_net/events_net/AutumnShopping/images/";
+$origin: "https://events.tk3c.com/events_net/events_net/AutumnShopping/images/";
+
+/*  共用樣式調整 */
+body {
+  background: #150606;
+  position: relative;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    $image: $dir + "BG.png";
+    background: url($image) no-repeat center;
+    background-size: 100% auto;
+    background-position: 0 45px, top;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 0;
+    z-index: -1;
+  }
+}
+
+.bg01 {
+  background: none;
+  position: relative;
+}
+
+.protitle {
+  width: 80%;
+  height: auto;
+  @include hide-text;
+  margin: 0 auto 1%;
+}
+
+.item {
+  top: 250px;
+}
+
+section {
+  .title {
+    width: 80%;
+  }
+}
+
+#autumn-container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  .background {
+    width: 100%;
+    height: 0;
+    position: relative;
+    margin: 0 auto 0;
+    padding-bottom: 50%;
+    .title {
+      width: 35%;
+      position: absolute;
+      left: 20%;
+      top: 19%;
+      animation-duration: 1.6s;
+      img {
+        animation: light 3.2s infinite;
+      }
+    }
+    .product {
+      width: 25%;
+      position: absolute;
+      right: 21%;
+      top: 19%;
+      overflow: hidden;
+      .swiper-wrapper {
+        align-items: baseline;
+      }
+    }
+  }
+}
+
+.gift-box {
+  .tab {
+    li {
+      filter: brightness(0.6);
+      &.active {
+        filter: brightness(1);
+      }
+    }
+  }
+}
+
+.sale-box {
+  .tab {
+    margin: 0 auto 1%;
+    overflow: hidden;
+    .swiper-slide {
+      filter: brightness(0.6);
+      &.active {
+        filter: brightness(1);
+      }
+    }
+  }
+}
+
+.card-group {
+  .bg01 {
+    margin: 0 auto 1%;
+  }
+}
+
+.icon-group {
+  .swiper-wrapper {
+    align-items: baseline;
+    padding-bottom: 5px;
+  }
+
+  .swiper-pagination {
+    bottom: -7% !important;
+    .swiper-pagination-bullet,
+    .swiper-pagination-bullet-active {
+      background: #fff !important;
+    }
+  }
+
+  .swiper-slide {
+    margin-bottom: 2%;
+  }
+  .icon {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+}
+
+/*  電腦版其他尺寸 */
+@include media-query("mobile", "992px") {
+  #autumn-container {
+    .background {
+      padding-bottom: 63vw;
+      .title {
+        width: 45vw;
+        left: 11vw;
+        top: 10vw;
+      }
+      .product {
+        width: 32vw;
+        right: 13vw;
+        top: 10vw;
+      }
+    }
+  }
+
+  body {
+    &:before {
+      background-size: 120% auto;
+      background-position: -10vw 4vw, top;
+    }
+  }
+
+  section {
+    .title {
+      width: 100%;
+    }
+  }
+
+  .protitle {
+    width: 100%;
+  }
+
+  .icon-group {
+    .icon {
+      width: 100%;
+    }
+  }
+}
+
+/* 手機版 */
+@include media-query("mobile", "576px") {
+  .fix_btn {
+    display: block;
+    .dropdown-menu {
+      display: none;
+    }
+  }
+
+  #autumn-container {
+    .background {
+      padding-bottom: 170vw;
+      .title {
+        width: 90vw;
+        left: 0;
+        top: 24vw;
+        right: 0;
+        margin: 0 auto;
+      }
+      .product {
+        width: 70vw;
+        right: 0;
+        top: 93vw;
+        left: 0;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  body {
+    &:before {
+      background-size: 200% auto;
+      background-position: -46vw 22vw, top;
+    }
+  }
+
+  section {
+    .title {
+      margin: 0 auto 2%;
+    }
+  }
+}
+
+
+</style>
