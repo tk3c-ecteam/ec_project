@@ -1,8 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import listF from '../layout/listF.vue'
-import Double12F from '../floor/Double12F.vue'
-import AllEvent from '../../components/AllEvent.vue'
 
 const swiperRef = ref()
 const swiperBank = ref()
@@ -29,28 +26,24 @@ const goBankSlide = (id) => {
 </script>
 
 <script>
-import { globalMixin } from '../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
-      menuSale: [7654, 7655, 7656, 7657, 7658, 7659, 7660, 7661, 7662, 7663, 7664],
       menuPro: 7643, //1212必購神物 陳列編號
       menuGreen: 7517, //環保商品陳列編號
       menuGo: 7518, //速速go陳列編號
       sales: [
-        { image: 'double12_2024/images/1212/s112.png' },
-        { image: 'double12_2024/images/1212/s212.png' },
-        { image: 'double12_2024/images/1212/s312.png' },
-        { image: 'double12_2024/images/1212/s412.png' },
-        { image: 'double12_2024/images/1212/s512.png' },
-        { image: 'double12_2024/images/1212/s1212.png' },
-        { image: 'double12_2024/images/1212/s400.png' },
-        { image: 'double12_2024/images/1212/s500.png' },
-        { image: 'double12_2024/images/1212/s700.png' },
-        { image: 'double12_2024/images/1212/s600.png' },
-        { image: 'double12_2024/images/1212/s1000.png' }
+        { image: 'double12_2024/images/1212/s112.png',id:7564 },
+        { image: 'double12_2024/images/1212/s212.png',id:7655 },
+        { image: 'double12_2024/images/1212/s312.png',id:7656 },
+        { image: 'double12_2024/images/1212/s412.png',id:7657 },
+        { image: 'double12_2024/images/1212/s512.png',id:7658 },
+        { image: 'double12_2024/images/1212/s1212.png',id:7659 },
+        { image: 'double12_2024/images/1212/s400.png',id:7660 },
+        { image: 'double12_2024/images/1212/s500.png',id:7661 },
+        { image: 'double12_2024/images/1212/s700.png',id:7662 },
+        { image: 'double12_2024/images/1212/s600.png',id:7663 },
+        { image: 'double12_2024/images/1212/s1000.png',id:7664 }
       ],
       banks: [
         { image: 'double12_2024/images/1212/bank1.png' },
@@ -62,30 +55,6 @@ export default {
         { image: 'double12_2024/images/1212/bank5.png' },
         { image: 'double12_2024/images/1212/bank6.png', class: 'long' }
       ],
-      asides: [
-        { text: '現折券', href: '#sale' },
-        { text: '信用卡專屬優惠', href: '#bank' },
-        { text: '環保商品', href: '#green' },
-        { text: '筆電', href: '#pro7646' },
-        { text: 'Apple', href: '#pro7562' },
-        { text: 'Android', href: '#pro7563' },
-        { text: '印表機', href: '#print' },
-        { text: '平板/穿戴', href: '#pro7569' },
-        { text: '桌機/螢幕', href: '#pro7533' },
-        { text: '遊戲', href: '#pro7535' },
-        { text: '攝影/空拍機', href: '#pro7536' },
-        { text: '電視', href: '#pro7537' },
-        { text: '冰箱/洗衣機', href: '#pro7539' },
-        { text: '廚房3機', href: '#pro7545' },
-        { text: '廚房家電', href: '#pro7538' },
-        { text: '空調', href: '#pro7543' },
-        { text: '秋冬除濕', href: '#pro7544' },
-        { text: '電暖器', href: '#pro7665' },
-        { text: '清淨除塵', href: '#pro7540' },
-        { text: '居家美容', href: '#pro7541' },
-        { text: '機車', href: '#pro7546' },
-        { text: '燦坤K幣0元購', href: '#bonus' }
-      ],
       statusSale: 0, //現折券樓層用
       statusBank: 0, // 銀行樓層用
       today: new Date()
@@ -95,11 +64,6 @@ export default {
     // 撈取1212必購神物樓層商品
     this.getFloorSingle(this.menuPro)
 
-    //撈取現折券樓層商品
-    setTimeout(() => {
-      this.getFloorData(this.menuSale)
-    }, 50)
-
     //撈取綠點樓層商品
     this.getFloorSingle(this.menuGreen)
 
@@ -107,13 +71,6 @@ export default {
     this.getFloorSingle(this.menuGo)
   },
   methods: {
-    changSale(id) {
-      if (event) {
-        setTimeout(() => {
-          this.statusSale = id
-        }, 30)
-      }
-    },
     changeBank(id) {
       setTimeout(() => {
         this.statusBank = id
@@ -213,7 +170,7 @@ export default {
     </section>
 
     <!-- 現折券 -->
-    <section class="sale-box scroll" id="sale">
+    <section class="sale-box scroll" titles="現折券" id="sale">
       <h2 class="title">
         <a
           :href="
@@ -225,51 +182,16 @@ export default {
         </a>
       </h2>
 
-      <div class="tab mb:1%">
-        <swiper
-          class="overflow:hidden"
-          :loop="false"
-          :space-between="10"
-          :breakpoints="{
-            0: {
-              slidesPerView: 3.2
-            },
-            600: {
-              slidesPerView: 4.3
-            },
-            992: {
-              slidesPerView: 6.3
-            }
-          }"
-          @swiper="onSwiper"
-        >
-          <swiper-slide
-            v-for="(sale, s) in sales"
-            :key="s"
-            :class="[statusSale == s ? 'active' : '']"
-            class="hue-rotate(-97deg).active"
-            @click="goSlide(s)"
-          >
-            <a @click="changSale(s)">
-              <img :src="$filters.siteUrl(sale.image)" alt />
-            </a>
-          </swiper-slide>
-        </swiper>
-      </div>
-
-      <div class="sale-content" v-for="(sale, s) in sales" v-show="statusSale == s">
-        <component
-          v-if="products[menuSale[s]] != undefined"
-          :is="listF"
-          :pro="products[menuSale[s]].Data"
-          :isSwiper="1"
-          :name="'sale'"
-        ></component>
-      </div>
+      <Tabs :tabs="sales">
+        <template v-slot="{ selectedTab }">
+          <TabContent :isSwiper="1" v-for="(sale, s) in sales" :menus="sale.id" :index="s" :selectedTab="selectedTab">
+          </TabContent>
+        </template>
+      </Tabs>
     </section>
 
     <!-- 信用卡專屬優惠 -->
-    <section class="bank-group scroll" id="bank">
+    <section class="bank-group scroll" titles="信用卡專屬優惠" id="bank">
       <h2 class="title">
         <a
           :href="$filters.addGALink('https://events.tk3c.com/events_net/bank_ec/index.html')"
@@ -424,7 +346,7 @@ export default {
     </section>
 
     <!-- 環保商品 -->
-    <section class="green-box scroll" id="green">
+    <section class="green-box scroll" titles="環保商品" id="green">
       <h2 class="title">
         <a
           :href="$filters.addGALink('https://events.tk3c.com/events_net/green_subsidy/index.html')"
@@ -439,12 +361,7 @@ export default {
       </p>
 
       <div class="box">
-        <component
-          :is="listF"
-          :pro="product2[menuGreen]"
-          :isSwiper="1"
-          :name="'green-pro'"
-        ></component>
+        <ListF :pro="product2[menuGreen]" :isSwiper="1" :name="'green-pro'"></ListF>
       </div>
     </section>
 
@@ -462,7 +379,7 @@ export default {
       </h2>
 
       <div class="box">
-        <component :is="listF" :pro="product2[menuGo]" :isSwiper="1" :name="'go-box'"></component>
+        <listF :pro="product2[menuGo]" :isSwiper="1" :name="'go-box'"></listF>
       </div>
     </section>
 
@@ -470,42 +387,10 @@ export default {
     <Double12F></Double12F>
   </div>
 
-  <!-- 左側選單 -->
-  <aside class="aside-container left">
-    <span class="collaspe"><i class="fas fa-chevron-left"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul></ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="arrow"><i class="fas fa-chevron-left"></i></span>
-    <div class="aside-wrap">
-      <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li v-for="aside in asides">
-            <a :href="aside.href">
-              {{ aside.text }}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
+  <RightAside :type="'mobile2'"></RightAside>
 </template>
 
 <style lang="scss">
-@charset "utf-8";
-
-@import '../../../src/assets/sass/module/base';
 $dir: 'https://events.cdn-tkec.tw/events_net/events_net/double12_2024/images/1212/';
 $origin: 'https://events.tk3c.com/events_net/events_net/double12_2024/images/1212/';
 

@@ -14,11 +14,9 @@ const goSlide = (id) => {
   swiperTab.value.slideTo(id)
 }
 </script>
-<script>
-import { globalMixin } from '../../globalMixin.js'
 
+<script>
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       menu: [
