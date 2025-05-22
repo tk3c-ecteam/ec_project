@@ -13,51 +13,90 @@
     {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/icewash2209/index.html"},
     {"name":"空調主題館","url":"https://events.tk3c.com/events_net/airConditionerLAB/index.html"},
     {"name":"電視主題館","url":"https://events.tk3c.com/events_net/2020TVforever/index.html"},
-    {"name":"電腦系統週邊","url":"https://events.tk3c.com/events_net/2024083C/index.html"},
-    {"name":"季節/風扇/熨燙","url":"https://events.tk3c.com/events_net/fan_hot/index.html"},
-    {"name":"綠點週末10倍送","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
+    {"name":"3C電腦週邊","url":"https://events.tk3c.com/events_net/2024083C/index.html"},
+    {"name":"風扇與熨燙","url":"https://events.tk3c.com/events_net/fan_hot/index.html"},
+    {"name":"綠點10倍送","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
     {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
     {"name":"福利品特賣","url":"https://events.tk3c.com/events_net/OUTLET/index.html"},
   ];
 
+  let topic618 = [
+    {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/coolcleantech/index.html"},
+    {"name":"空調主題館","url":"https://events.tk3c.com/events_net/airconditioner/index.html"},
+    {"name":"電視主題館","url":"https://events.tk3c.com/events_net/tv_media/index.html"},
+    {"name":"3C電腦週邊","url":"https://events.tk3c.com/events_net/3c_system/index.html"},
+    {"name":"風扇與熨燙","url":"https://events.tk3c.com/events_net/fan/index.html"},
+    {"name":"綠點10倍送","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
+    {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
+    {"name":"福利品特賣","url":"https://events.tk3c.com/events_net/OUTLET/index.html"},
+    {"name":"辦公用品","url":"https://events.tk3c.com/events_net/office3c/index.html"},
+    {"name":"健康美容","url":"https://events.tk3c.com/events_net/healthbeauty/index.html"},
+    {"name":"廚房家電","url":"https://events.tk3c.com/events_net/kitchen3c/index.html"},
+    {"name":"行動通訊","url":"https://events.tk3c.com/events_net/mobile3c/index.html"},
+    {"name":"戶外休閒","url":"https://events.tk3c.com/events_net/outdoor3c/index.html"},
+  ];
+
+  if (today >= new Date('2025/06/01')) {
+    topics = topic618;
+  }
+
   switch (folderName) {
     case 'icewash2209':
+    case 'coolcleantech':
       statusTopic = 0;
       break;
-  
+
     case 'airConditionerLAB':
+    case 'airconditioner':
       statusTopic = 1;
       break;
 
-     case '2020TVforever':
+    case '2020TVforever':
+    case 'tv_media':
       statusTopic = 2;
-      break;  
-    
-     case '2024083C':
+      break;
+
+    case '2024083C':
+    case '3c_system':
       statusTopic = 3;
-      break; 
+      break;
 
-     case 'fan_hot':
+    case 'fan_hot':
+    case 'fan':
       statusTopic = 4;
-      break; 
+      break;
 
-     case 'green_subsidy':
+    case 'green_subsidy':
       statusTopic = 5;
-      break;  
+      break;
 
-     case 'nightsale':
+    case 'nightsale':
       statusTopic = 6;
       break;
-      
-     case 'pet_product':
-      statusTopic = 7;
+
+    case 'office3c':
+      statusTopic = 8;
+      break;
+
+    case 'healthbeauty':
+      statusTopic = 9;
+      break;
+
+    case 'kitchen3c':
+      statusTopic = 10;
+      break;
+
+    case 'mobile3c':
+      statusTopic = 11;
+      break;
+
+    case 'outdoor3c':
+      statusTopic = 12;
       break;
   } 
 
   if (folderName != mainName) {
-    main = [
-      {"name":"回主會場","url": mainUrl},
-    ];
+    main = true;
     topics.splice(statusTopic,1);
   }
 
@@ -90,9 +129,6 @@
       }
     },
     mounted() {
-      //左側選單 1520 以下裝置不展開
-      this.smallDeviceLeft();
-      window.addEventListener('resize',this.smallDeviceLeft);
       //左右側選單顯示隱藏
       window.addEventListener('scroll',this.showAside);
       if(this.go3cFloor === undefined) window.addEventListener('scroll',this.scrollPos);
@@ -156,18 +192,17 @@
       <h3 class="aside-header"></h3>
       <div class="aside-content rt:15px box:border-box bg:#000000b8">
         <ul class="flex flex:wrap jc:flex-start">
-          <li class="main" v-if="main != null">
-            <a :href="$filters.addGALink(main[0].url)" target="_blank">{{ main[0].name }}</a>
+          <li class="main color:#fff f:bold" v-if="main">
+            <a class="bg:#767070!" :href="$filters.addGALink(mainUrl)" target="_blank">回主會館</a>
           </li>
-          <li class="color:#fff bg:#767070 f:bold">主題活動館</li>
-           <li v-for="(topic,t) in topics" :key="t">
-            <a class="bg:none! white-space:nowrap text:ellipsis overflow:hidden box:border-box" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
-            <em v-if="t != topics.length -1 " class="w:75% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
+           <li v-for="(topic,t) in topics" :class="{'br:2px|solid|#fff': t % 2 == 0}" class="w:48%! m:0|1px! box:border-box" :key="t">
+            <a class="bg:none! word-break:keep-all text:ellipsis overflow:hidden box:border-box" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
+            <em v-if="t != topics.length -1 && t != topics.length - 2" class="w:75% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
            </li>
-           <li class="color:#fff bg:#767070 f:bold mb:5px">熱門品類</li>
-           <li v-for="(aside, a) in asides" class="w:44%! m:0|3px!" :class="{'stay': status == a,'br:2px|solid|#fff': a % 2 == 0}" :key="a">
+           <li v-if="asides" class="color:#fff bg:#767070 f:bold mb:5px">熱門品類</li>
+           <li v-for="(aside, a) in asides" class="w:48%! m:0|1px! box:border-box" :class="{'stay': status == a,'br:2px|solid|#fff': a % 2 == 0}" :key="a">
                 <a class="bg:none! word-break:keep-all white-space:nowrap text:ellipsis overflow:hidden box:border-box" :href="aside.href">{{ aside.text }}</a>
-                <em class="w:75% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
+                <em v-if="a != asides.length - 1 && a != asides.length - 2" class="w:75% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
              </li>
         </ul>
       </div>
@@ -180,7 +215,7 @@
     <!-- 主會場 -->
     <template v-slot:main="{ closeNav2 }">
       <li v-if="main != null" @click="closeNav2">
-         <a :href="$filters.addGALink(main[0].url)" target="_blank">主會場</a>
+         <a :href="$filters.addGALink(moreUrl)" target="_blank">主會館</a>
       </li>
     </template>
 
