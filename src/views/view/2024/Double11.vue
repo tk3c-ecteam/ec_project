@@ -1,57 +1,10 @@
-<script setup>
-import { Controller } from 'swiper/modules'
-import { ref } from 'vue'
-import listF from '../layout/listF.vue'
-import DoubleFloor from '../floor/DoubleFloor.vue' //雙11樓層
-
-const swiperRef1 = ref()
-const swiperRef2 = ref()
-const swiperRef3 = ref()
-const swiperRef4 = ref()
-
-/* 全站神券swiper用 start */
-const onSwiperSP = (swiper) => {
-  swiperRef1.value = swiper
-}
-
-const onControlSwiperSP = (swiper) => {
-  swiperRef2.value = swiper
-}
-
-const goSlide = (id) => {
-  swiperRef2.value.slideTo(id)
-  swiperRef1.value.slideTo(id)
-}
-/* 全站神券swiper用 end */
-
-/* 現折券swiper用 start */
-const onSwiperSale = (swiper) => {
-  swiperRef3.value = swiper
-}
-
-const onControlSwiperSale = (swiper) => {
-  swiperRef4.value = swiper
-}
-
-const goSlideSale = (id) => {
-  swiperRef4.value.slideTo(id)
-  swiperRef3.value.slideTo(id)
-}
-/* 現折券swiper用 end */
-</script>
-
 <script>
-import { globalMixin } from '../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       menuGreen: 7517, //環保商品陳列編號
       menuGo: 7518, //速速go陳列編號
       menuPrice: 7572, //挑戰最低價用
-      menuSp: [7597, 7590, 7591, 7592, 7593, 7594, 7595, 7596],
-      menuSale: [7523, 7524, 7525, 7526, 7527, 7528],
       specials: [
         { image: 'double11_2024/images/sp100.png', menu: 7519 },
         { image: 'double11_2024/images/sp200.png', menu: 7520 },
@@ -62,53 +15,188 @@ export default {
         { image: 'double11_2024/images/sp3000.png', menu: 7575 }
       ],
       special_after: [
-        { image: 'double11_2024/images/part2/c-1111.png' },
-        { image: 'double11_2024/images/part2/c-111.png' },
-        { image: 'double11_2024/images/part2/c-211.png' },
-        { image: 'double11_2024/images/part2/c-411.png' },
-        { image: 'double11_2024/images/part2/c-511.png' },
-        { image: 'double11_2024/images/part2/c-1111b.png' },
-        { image: 'double11_2024/images/part2/c-2111.png' },
-        { image: 'double11_2024/images/part2/c-3011b.png' }
+        { image: 'double11_2024/images/part2/c-111.png',menu:7590 },
+        { image: 'double11_2024/images/part2/c-211.png',menu:7591 },
+        { image: 'double11_2024/images/part2/c-411.png',menu:7592 },
+        { image: 'double11_2024/images/part2/c-511.png',menu:7593 },
+        { image: 'double11_2024/images/part2/c-1111b.png',menu:7594 },
+        { image: 'double11_2024/images/part2/c-2111.png',menu:7595 },
+        { image: 'double11_2024/images/part2/c-3011b.png',menu:7596 }
       ],
       sales: [
-        { image: 'double11_2024/images/c-100.png' },
-        { image: 'double11_2024/images/c-400.png' },
-        { image: 'double11_2024/images/c-500.png' },
-        { image: 'double11_2024/images/c-600.png' },
-        { image: 'double11_2024/images/c-700.png' },
-        { image: 'double11_2024/images/c-1000_b.png' }
+        { image: 'double11_2024/images/c-100.png',menu:7523 },
+        { image: 'double11_2024/images/c-400.png',menu:7524 },
+        { image: 'double11_2024/images/c-500.png',menu:7525 },
+        { image: 'double11_2024/images/c-600.png',menu:7526 },
+        { image: 'double11_2024/images/c-700.png',menu:7527 },
+        { image: 'double11_2024/images/c-1000_b.png',menu:7528 }
       ],
       statusSp: 0, //全戰神券樓層用
       statusSale: 0, //現折券樓層用
-      asides: [
-        { text: '環保商品', href: '#green' },
-        { text: '全站神券', href: '#sp' },
-        { text: 'Apple', href: '#pro7529' },
-        { text: 'Android', href: '#pro7530' },
-        { text: '高效筆電', href: '#pro7531' },
-        { text: '美型筆電', href: '#pro7532' },
-        { text: '桌機/螢幕', href: '#pro7533' },
-        { text: '網通/印表機', href: '#pro7534' },
-        { text: '電競', href: '#pro7535' },
-        { text: '攝影/空拍機', href: '#pro7536' },
-        { text: '電視', href: '#pro7537' },
-        { text: '廚電', href: '#pro7538' },
-        { text: '冰箱/洗衣機', href: '#pro7539' },
-        { text: '掃除精選', href: '#pro7540' },
-        { text: '健康美容', href: '#pro7541' },
-        { text: '風扇', href: '#pro7542' },
-        { text: '空調', href: '#pro7543' },
-        { text: '秋冬除濕', href: '#pro7544' },
-        { text: '廚房三機', href: '#pro7545' },
-        { text: '機車', href: '#pro7546' }
-      ],
       today: new Date(),
       isSale: true,
       vips: [
         { image: 'double11_2024/images/part2/S3-e1.png' },
         { image: 'double11_2024/images/part2/S3-e2.png' },
         { image: 'double11_2024/images/part2/S3-e3.png' }
+      ],
+      floorImg: [
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=40444',
+          image: 'double11_2024/images/part2/S1.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=93605',
+          image: 'double11_2024/images/part2/S2.png',
+          banner: [
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=93605&aid=20222&hid=123877',
+              pc: 'double11_2024/images/bn_samsung.jpg',
+              mobile: 'double11_2024/images/bn_samsungM.jpg'
+            }
+          ]
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/2024083C/index.html',
+          image: 'double11_2024/images/part2/S3.png',
+          banner: [
+            {
+              url: 'https://events.tk3c.com/events_net/WUKONG/index.html',
+              pc: 'double11_2024/images/bn_wukongP5.jpg',
+              mobile: 'double11_2024/images/bn_wukongP5M.jpg'
+            },
+            {
+              url: 'https://events.tk3c.com/events_net/2024083C/index.html',
+              pc: 'double11_2024/images/part2/bn_3c.jpg',
+              mobile: 'double11_2024/images/part2/bn_3cM.jpg'
+            }
+          ]
+        },
+        {
+          url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=23504&hid=120184',
+          image: 'double11_2024/images/part2/S4.png',
+          banner: [
+            {
+              url: 'https://events.tk3c.com/events_net/2024083C/index.html',
+              pc: 'double11_2024/images/part2/bn_3c.jpg',
+              mobile: 'double11_2024/images/part2/bn_3cM.jpg'
+            }
+          ]
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=44823',
+          image: 'double11_2024/images/part2/S5.png',
+          banner: [
+            {
+              url: 'https://www.tk3c.com/dic2.aspx?cid=44823&aid=22521&hid=113989&strPreView=y',
+              pc: 'double11_2024/images/part2/bn_samung.jpg',
+              mobile: 'double11_2024/images/part2/bn_samungM.jpg'
+            }
+          ]
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=43403',
+          image: 'double11_2024/images/part2/S6.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117913',
+          image: 'double11_2024/images/part2/S7.png',
+          banner: [
+            {
+              url: 'https://events.tk3c.com/events_net/book_sale/index.html',
+              pc: 'double11_2024/images/bn_book.jpg',
+              mobile: 'double11_2024/images/bn_bookM.jpg'
+            },
+            {
+              url: 'https://events.tk3c.com/events_net/WUKONG/index.html',
+              pc: 'double11_2024/images/bn_wukongP5.jpg',
+              mobile: 'double11_2024/images/bn_wukongP5M.jpg'
+            }
+          ]
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=111126',
+          image: 'double11_2024/images/part2/S8.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/2020TVforever/index.html',
+          image: 'double11_2024/images/part2/S9.png',
+          banner: [
+            {
+              url: 'https://events.tk3c.com/events_net/2020TVforever/index.html',
+              pc: 'double11_2024/images/part2/bn_tv.jpg',
+              mobile: 'double11_2024/images/part2/bn_tvM.jpg'
+            }
+          ]
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=83185',
+          image: 'double11_2024/images/part2/S10.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/icewash2209/index.html',
+          image: 'double11_2024/images/part2/S11.png',
+          banner: [
+            {
+              url: 'https://events.tk3c.com/events_net/icewash2209/index.html',
+              pc: 'double11_2024/images/part2/bn_ice.jpg',
+              mobile: 'double11_2024/images/part2/bn_iceM.jpg'
+            }
+          ]
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=71484',
+          image: 'double11_2024/images/part2/S12.png',
+          banner: [
+            {
+              url: 'https://events.tk3c.com/events_net/24spring_clean/index.html',
+              pc: 'double11_2024/images/part2/bn_clean.jpg',
+              mobile: 'double11_2024/images/part2/bn_cleanM.jpg'
+            }
+          ]
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=4640',
+          image: 'double11_2024/images/part2/S13.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/fan_hot/index.html',
+          image: 'double11_2024/images/part2/S14.png',
+          banner: [
+            {
+              url: 'https://events.tk3c.com/events_net/fan_hot/index.html',
+              pc: 'double11_2024/images/part2/bn_fan.jpg',
+              mobile: 'double11_2024/images/part2/bn_fanM.jpg'
+            }
+          ]
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/airConditionerLAB/index.html',
+          image: 'double11_2024/images/part2/S15.png',
+          banner: [
+            {
+              url: 'https://events.tk3c.com/events_net/airConditionerLAB/index.html',
+              pc: 'double11_2024/images/part2/bn_air.jpg',
+              mobile: 'double11_2024/images/part2/bn_airM.jpg'
+            }
+          ]
+        },
+        {
+          url: 'https://www.tk3c.com/dic1.aspx?cid=71323&aid=16881',
+          image: 'double11_2024/images/part2/S16.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=113296',
+          image: 'double11_2024/images/part2/S17.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dic1.aspx?cid=111383&aid=22330',
+          image: 'double11_2024/images/part2/S18.png'
+        }
+      ],
+      menu: [
+        7529, 7530, 7531, 7532, 7533, 7534, 7535, 7536, 7537, 7538, 7539, 7540, 7541, 7542, 7543,
+        7544, 7545, 7546
       ],
       isVip: false,
       isAll: true,
@@ -118,12 +206,7 @@ export default {
     }
   },
   mounted() {
-    const { menuGo, menuGreen, sales, specials, menuPrice, today } = this
-
-    if (today >= new Date('2024/11/05')) {
-      this.special_after.splice(0, 1)
-      this.menuSp.splice(0, 1)
-    }
+    const { menuGo, menuGreen, menuPrice, today } = this
 
     //撈取挑戰最低價樓層商品
     this.getFloorSingle(menuPrice)
@@ -133,12 +216,6 @@ export default {
 
     //撈取速速go樓層商品
     this.getFloorSingle(menuGo)
-
-    //撈取全站神券樓層商品
-    this.getFloorData(this.menuSp)
-
-    //撈取現折券樓層商品
-    this.getFloorData(this.menuSale)
 
     // 11/1-12 隱藏現折券區
     if (today < new Date('2024/11/13')) {
@@ -160,20 +237,6 @@ export default {
     }
   },
   methods: {
-    changSp(id) {
-      if (event) {
-        setTimeout(() => {
-          this.statusSp = id
-        }, 20)
-      }
-    },
-    changSale(id) {
-      if (event) {
-        setTimeout(() => {
-          this.statusSale = id
-        }, 20)
-      }
-    },
     message(id) {
       //活動辦法
 
@@ -489,12 +552,11 @@ export default {
       />
 
       <div class="box">
-        <component
-          :is="listF"
+        <listF
           :pro="product2[menuGreen]"
           :isSwiper="1"
           :name="'green-pro'"
-        ></component>
+        ></listF>
       </div>
     </section>
 
@@ -512,7 +574,7 @@ export default {
       </h2>
 
       <div class="box">
-        <component :is="listF" :pro="product2[menuGo]" :isSwiper="1" :name="'go-box'"></component>
+        <listF :pro="product2[menuGo]" :isSwiper="1" :name="'go-box'"></listF>
       </div>
     </section>
 
@@ -538,58 +600,12 @@ export default {
         </a>
       </h2>
 
-      <div class="tab">
-        <swiper
-          :loop="false"
-          :space-between="10"
-          :breakpoints="{
-            0: {
-              slidesPerView: 2.4
-            },
-            600: {
-              slidesPerView: 4.3
-            },
-            992: {
-              slidesPerView: spNum
-            }
-          }"
-          :modules="[Controller]"
-          :controller="{
-            control: [spContent]
-          }"
-          @swiper="onSwiperSP"
-        >
-          <swiper-slide
-            v-for="(sp, s) in specials"
-            :key="s"
-            :class="[statusSp == s ? 'active' : '']"
-            class="brightness(0.6) brightness(1).active"
-            @click="goSlide(s)"
-          >
-            <a @click="changSp(s)"><img :src="$filters.siteUrl(sp.image)" alt /></a>
-          </swiper-slide>
-        </swiper>
-      </div>
-
-      <div class="special">
-        <swiper
-          id="spContent"
-          :loop="false"
-          :allowTouchMove="false"
-          :modules="[Controller]"
-          @swiper="onControlSwiperSP"
-        >
-          <swiper-slide class="tab-content" v-for="(sp, s) in specials" :key="s">
-            <component
-              v-if="products[menuSp[s]] != undefined"
-              :is="listF"
-              :pro="products[menuSp[s]].Data"
-              :isSwiper="1"
-              :name="'sp'"
-            ></component>
-          </swiper-slide>
-        </swiper>
-      </div>
+      <Tabs :tabs="specials">
+        <template v-slot="{ selectedTab }">
+          <TabContent :isSwiper="1" v-for="(special, s) in specials" :menus="special.menu" :index="s" :selectedTab="selectedTab">
+          </TabContent>
+        </template>
+      </Tabs>
     </section>
 
     <!-- 現折券 -->
@@ -603,60 +619,12 @@ export default {
         </a>
       </h2>
 
-      <div class="tab">
-        <swiper
-          :loop="false"
-          :space-between="10"
-          :breakpoints="{
-            0: {
-              slidesPerView: 2.4
-            },
-            600: {
-              slidesPerView: 3.3
-            },
-            992: {
-              slidesPerView: 6
-            }
-          }"
-          :modules="[Controller]"
-          :controller="{
-            control: [saleContent]
-          }"
-          @swiper="onSwiperSale"
-        >
-          <swiper-slide
-            v-for="(sale, s) in sales"
-            :key="s"
-            :class="[statusSale == s ? 'active' : '']"
-            class="brightness(0.6) brightness(1).active"
-            @click="goSlideSale(s)"
-          >
-            <a @click="changSale(s)">
-              <img :src="$filters.siteUrl(sale.image)" alt />
-            </a>
-          </swiper-slide>
-        </swiper>
-      </div>
-
-      <div class="sale-area">
-        <swiper
-          id="saleContent"
-          :loop="false"
-          :allowTouchMove="false"
-          :modules="[Controller]"
-          @swiper="onControlSwiperSale"
-        >
-          <swiper-slide class="tab-content" v-for="(sale, s) in sales" :key="s">
-            <component
-              v-if="products[menuSale[s]] != undefined"
-              :is="listF"
-              :pro="products[menuSale[s]].Data"
-              :isSwiper="1"
-              :name="'sp'"
-            ></component>
-          </swiper-slide>
-        </swiper>
-      </div>
+      <Tabs :tabs="sales">
+        <template v-slot="{ selectedTab }">
+          <TabContent :isSwiper="1" v-for="(sale, s) in sales" :menus="sale.menu" :index="s" :selectedTab="selectedTab">
+          </TabContent>
+        </template>
+      </Tabs>
     </section>
 
     <!-- 聯名卡 -->
@@ -723,35 +691,353 @@ export default {
     </section>
 
     <!-- 其他樓層 -->
-    <DoubleFloor></DoubleFloor>
+    <CommonFloor :floors="floorImg" :menu="menu"></CommonFloor>
   </div>
 
+ 
   <!-- 左側選單 -->
-  <aside class="aside-container left" v-if="today >= new Date('2024/11/01')">
-    <span class="collaspe"><i class="fas fa-chevron-left"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul></ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
+  <LeftAside></LeftAside>
 
   <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="arrow"><i class="fas fa-chevron-left"></i></span>
-    <div class="aside-wrap">
-      <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li v-for="(aside, a) in asides">
-            <a :href="aside.href">{{ aside.text }}</a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
+  <RightAside></RightAside> 
 </template>
+
+<style lang="scss">
+$dir: "https://events.cdn-tkec.tw/events_net/events_net/double11_2024/images/";
+$origin: "https://events.tk3c.com/events_net/events_net/double11_2024/images/";
+
+/*  共用樣式調整 */
+body {
+  background: #d0eff7;
+  position: relative;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    $image: $dir + "bg.gif";
+    background: url($image) no-repeat center;
+    background-size: 107% auto;
+    background-position: -2vw 45px, top;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 0;
+    z-index: -1;
+  }
+}
+
+.bg01 {
+  background: #fffe89;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-sizing: border-box;
+}
+
+section {
+  .tab {
+    .swiper-wrapper {
+      justify-content: center;
+    }
+  }
+}
+
+.aside-container {
+  zoom: 0.9;
+}
+
+#double-container {
+  .background {
+    width: 100%;
+    height: 0;
+    position: relative;
+    margin: 0 auto 0;
+    padding-bottom: 38%;
+    .title {
+      width: 35%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 19%;
+      margin: 0 auto;
+      animation-duration: 1.3s;
+      img {
+        animation: rubberBand 0.8s linear;
+        animation-delay: 1.6s;
+      }
+    }
+    .subtitle {
+      width: 33%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 55%;
+      animation: flipX 1.4s linear;
+      animation-delay: 2s;
+    }
+    .circle {
+      width: 6%;
+      position: absolute;
+      right: 33%;
+      top: 18%;
+      animation-duration: 1.7s;
+      img {
+        animation: jump-ball-down 0.8s linear infinite alternate;
+        animation-delay: 2.5s;
+      }
+    }
+    .logo {
+      width: 6%;
+      height: auto;
+      display: block;
+      position: absolute;
+      left: 21%;
+      top: 45px;
+    }
+    .product {
+      width: 65%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 21%;
+      animation: upAndDown 1.5s linear infinite alternate;
+    }
+    &.new {
+      .title {
+        width: 30%;
+        top: 16%;
+      }
+      .subtitle {
+        top: 60%;
+      }
+    }
+  }
+}
+
+.early-box {
+  padding-bottom: 1%;
+  .early-bg {
+    margin: 15% auto 1%;
+    padding-top: 2%;
+    &:before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      $image: $dir + "car.png";
+      background: url($image) no-repeat center;
+      background-size: 100% auto;
+      background-position: 0 0, top;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: -95%;
+      z-index: -1;
+    }
+  }
+}
+
+.green-box {
+  .bg01 {
+    background: #d3ffcd;
+    border-radius: 0;
+  }
+}
+
+.go-group {
+  .bg01 {
+    background: #575757;
+    border-radius: 0;
+  }
+}
+
+.special-box,
+.sale-box {
+  .bg01 {
+    background: #fe9694;
+    border-radius: 0;
+  }
+}
+
+.price-box {
+  min-width: 70%;
+  .bg01 {
+    background: #ea1d32;
+    padding: 1%;
+    box-sizing: border-box;
+  }
+}
+
+.special-box {
+  .tab {
+    .swiper-wrapper {
+      justify-content: left;
+    }
+  }
+}
+
+/*  電腦版其他尺寸 */
+@include media-query("mobile", "1600px") {
+  .price-box {
+    min-width: 80%;
+  }
+}
+@include media-query("mobile", "1440px") {
+  .aside-container {
+    zoom: 0.5;
+  }
+  #double-container {
+    .background {
+      .product {
+        width: 70%;
+      }
+    }
+  }
+}
+@include media-query("mobile", "992px") {
+  #double-container {
+    .background {
+      padding-bottom: 55vw;
+      .title {
+        width: 45vw;
+        top: 11vw;
+      }
+      .subtitle {
+        width: 43vw;
+        top: 29vw;
+      }
+      .logo {
+        width: 10vw;
+        left: 16vw;
+      }
+      .circle {
+        width: 8vw;
+        right: 29vw;
+        top: 11vw;
+      }
+      .product {
+        width: 80vw;
+        top: 11vw;
+      }
+      &.new {
+        .title {
+          width: 40vw;
+          top: 9vw;
+        }
+        .subtitle {
+          top: 31.5vw;
+        }
+        .circle {
+          top: 9vw;
+        }
+      }
+    }
+  }
+
+  body {
+    &:before {
+      background-size: 120% auto;
+      background-position: -10vw 4vw, top;
+    }
+  }
+
+  section {
+    .tab {
+      .swiper-wrapper {
+        justify-content: left;
+      }
+    }
+  }
+
+  .early-box {
+    .early-bg {
+      &:before {
+        top: -24vw;
+      }
+    }
+  }
+}
+
+/* 手機版 */
+@include media-query("mobile", "576px") {
+  .fix_btn {
+    display: block;
+    .dropdown-menu {
+      display: none;
+    }
+  }
+
+  #double-container {
+    .background {
+      padding-bottom: 95vw;
+      .title {
+        width: 80vw;
+        top: 29vw;
+      }
+      .logo {
+        width: 15vw;
+        top: 5.5rem;
+        left: 0;
+      }
+      .subtitle {
+        width: 80vw;
+        top: 61vw;
+      }
+      .circle {
+        width: 14vw;
+        right: 14vw;
+        top: 29vw;
+      }
+      .product {
+        width: 105%;
+        top: 53vw;
+        left: 1vw;
+      }
+      &.new {
+        .title {
+          width: 70vw;
+          top: 28vw;
+        }
+        .subtitle {
+          top: 66vw;
+        }
+        .circle {
+          top: 29vw;
+        }
+      }
+    }
+  }
+
+  body {
+    &:before {
+      background-size: 180% auto;
+      background-position: -43vw 21vw, top;
+    }
+  }
+
+  .early-box {
+    .early-bg {
+      margin: 20% auto 1%;
+    }
+  }
+
+  .price-box {
+    .bg01 {
+      padding: 2%;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@include media-query("pc", "2500px") {
+  .price-box {
+    min-width: 45%;
+  }
+}
+
+</style>

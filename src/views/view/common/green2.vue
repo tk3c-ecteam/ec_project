@@ -5,28 +5,28 @@ export default {
       tabs: [
         {
           id:4344,
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120395&strPreView=y',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120816',
           image: 'green_subsidy/images/tab1.png',
           isSwiper:1
         },
         {
           id:4345,
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392&strPreView=y',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392',
           image: 'green_subsidy/images/tab2.png'
         },
         {
           id:4346,
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120393&strPreView=y',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120393',
           image: 'green_subsidy/images/tab3.png'
         },
         {
           id:4347,
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120394&strPreView=y',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120394',
           image: 'green_subsidy/images/tab4.png'
         },
         {
           id:4390,
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120396&strPreView=y',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120396',
           image: 'green_subsidy/images/tab5_a.png'
         }
       ],
@@ -288,7 +288,12 @@ export default {
       <div class="green content">
          <Tabs :tabs="tabs">
           <template v-slot="{ selectedTab }">
-            <TabContent :isSwiper="1" :moreImage="'green_subsidy/images/more2.png'" v-for="(tab, t) in tabs" :menus="tab.id" :moreUrl="tab.url" :index="t" :selectedTab="selectedTab">
+            <TabContent :isSwiper="1" v-for="(tab, t) in tabs" :menus="tab.id" :index="t" :selectedTab="selectedTab">
+              <template #moreBtn>
+                <a class="more" :href="$filters.addGALink(tab.url)" target="_blank">
+                  <img :src="$filters.siteUrl('green_subsidy/images/more2.png')">
+                </a>
+              </template>
             </TabContent>
           </template>
         </Tabs>
@@ -333,7 +338,12 @@ export default {
 
        <Tabs :tabs="printers">
           <template v-slot="{ selectedTab }">
-            <TabContent :moreImage="'green_subsidy/images/more2.png'" v-for="(printer, p) in printers" :menus="printer.id" :moreUrl="'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123239'" :index="p" :selectedTab="selectedTab">
+            <TabContent v-for="(printer, p) in printers" :menus="printer.id" :index="p" :selectedTab="selectedTab">
+              <template #moreBtn>
+                <a class="more" :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123239')" target="_blank">
+                  <img :src="$filters.siteUrl('green_subsidy/images/more2.png')">
+                </a>
+              </template>
             </TabContent>
           </template>
         </Tabs>

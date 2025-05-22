@@ -105,6 +105,8 @@ export default {
     a {
       b {
         font-size: 1.5em;
+        padding: 0 40px 0;
+        box-sizing: border-box;
       }
     }
   }
@@ -127,7 +129,7 @@ export default {
       }
       a {
         b {
-          font-size: 1.2em;
+          font-size: 1rem;
         }
       }
     }

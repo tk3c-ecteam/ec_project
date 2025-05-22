@@ -23,15 +23,23 @@ export default {
    if (this.menu != undefined) {
     this.getFloorData(this.menu);
    }
-  }
+  },
+  methods: {
+    hasProduct(f) {
+      return this.products[this.menu[f]]?.Data.length > 0;
+    },
+    getMenuTitle(f) {
+      return this.products[this.menu[f]]?.MenuTitle.trim() || '';
+    }
+  },
 }
 </script>
 
 <template>
-  <section class="floor" v-for="(floor, f) in floors" :class="{'scroll' : products[menu[f]]?.Data.length > 0}" :titles="[products[menu[f]]?.MenuTitle.trim() || '']"
+  <section class="floor" v-for="(floor, f) in floors" :class="{'scroll' : hasProduct(f) }" :titles="[getMenuTitle(f)]"
     :key="f">
     <!-- 若沒有商品則不顯示 -->
-    <div v-if="products[menu[f]]?.Data.length > 0">
+    <div v-if="hasProduct(f)">
       <h2 class="title" :name="`pro${menu[f]}`" :id="`pro${menu[f]}`">
         <!-- 圖片+連結標題 -->
         <template v-if="floor.url && floor.image">
@@ -68,6 +76,9 @@ export default {
             floor.text }}</b>
         </template> 
       </h2>
+
+      <!-- banner區 -->
+      <BannerSlide v-if="floor.banner" :banners="floor.banner" :index="f"></BannerSlide>
 
       <!-- 有輪播(單個樓層輪播) -->
       <div class="content" v-if="floor.isSwiper">

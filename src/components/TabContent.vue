@@ -9,10 +9,12 @@
         
         <listF v-if="isSwiper" :isSwiper="1" :pro="product2[menus]" :name="`box${index + 1}`"></listF>
         <component v-else :is="type" :pro="product2[menus]"></component>
-          <a v-if="moreUrl" class="more" :href="$filters.addGALink(moreUrl)" target="_blank">
+        <!-- 看更多按鈕 -->
+         <slot name="moreBtn"></slot>
+          <!-- <a v-if="moreUrl" class="more" :href="$filters.addGALink(moreUrl)" target="_blank">
             MORE
             <img v-if="moreImage" :src="$filters.siteUrl(moreImage)">
-          </a>
+          </a> -->
       </slot>
     </div>
   </transition>
@@ -45,13 +47,6 @@ export default {
     isSwiper:{
       type:Boolean,
       default:false
-    },
-    //看更多按鈕
-    moreUrl:{
-      type:String
-    },
-    moreImage:{
-      type:String
     },
     //商品樓層版型(沒有輪播) 預設listF 4小板型
     type:{
