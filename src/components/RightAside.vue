@@ -35,9 +35,6 @@
       }
     },
     mounted() {
-      //右側選單 1520 以下裝置不展開
-      this.smallDeviceRight();
-      window.addEventListener('resize',this.smallDeviceRight);
       //左右側選單顯示隱藏
       window.addEventListener('scroll',this.showAside);
       //右側選單項目滾動
