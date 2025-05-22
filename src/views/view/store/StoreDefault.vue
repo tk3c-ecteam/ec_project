@@ -155,7 +155,15 @@ const contents = defineModel("contents");
 
     <!-- 商品樓層 -->
     <div v-if="contents[0].menu">
-       <CommonFloor :floors="contents[0].floorImg" :menu="contents[0].menu" :singleImage="contents[0].singleImage"  :moreImage="contents[0].moreImage"></CommonFloor>
+       <CommonFloor :floors="contents[0].floorImg" :menu="contents[0].menu">
+          <template v-if="contents[0].singleImage" #moreTitle2>
+            <img :src="$filters.siteUrl(contents[0].singleImage)">
+          </template>
+
+          <template v-if="contents[0].moreImage" #more>
+            <img :src="$filters.siteUrl(contents[0].moreImage)">
+          </template>
+       </CommonFloor>
     </div>
 
      <div class="custom-top" :class="{'isShow':isGoTop}" @click="goTop2"><p></p></div>

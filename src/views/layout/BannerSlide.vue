@@ -20,7 +20,7 @@
           >
             <img v-if="bn.image" :src="$filters.siteUrl(bn.image)" />
             <img class="pc" v-if="bn.pc" :src="$filters.siteUrl(bn.pc)" />
-            <img class="mobile" v-if="bn.pc" :src="$filters.siteUrl(bn.mobile)" />
+            <img class="mobile" v-if="bn.mobile" :src="$filters.siteUrl(bn.mobile)" />
           </a>
 
           <!-- 單張圖片切割成多個連結 -->

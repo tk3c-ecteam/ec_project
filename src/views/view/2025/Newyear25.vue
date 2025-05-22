@@ -118,25 +118,6 @@ export default {
          {
           url: 'https://events.tk3c.com/events_net/2024083C/index.html',
           image: 'newyear2025/images/s15.png'
-        },
-        {
-          url: 'https://www.tk3c.com/other_store.aspx',
-          image: 'newyear2025/images/s21.png',
-          id:'store',
-          products:[
-            {
-              image:'newyear2025/images/S24-1.png',
-            },
-            {
-              image:'newyear2025/images/S24-2.png',
-            },
-            {
-              image:'newyear2025/images/S24-3.png',
-            },
-            {
-              image:'newyear2025/images/S24-4.png',
-            },
-          ]
         }
       ],
       floorImg2:[
