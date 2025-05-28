@@ -110,7 +110,7 @@ const contents = defineModel("contents");
         }"
         @swiper="onSwiper"
       >
-        <swiper-slide v-for="(floor, f) in contents[0].floorImg" class="flex-basis:fit-content">
+        <swiper-slide v-for="(floor, f) in contents[0].floorImg" class="w:fit-content!">
           <a :href="floor.href" :class="{'active' : statusNav == f}">
             <span class="f:1.2em f:2em@<992 f:1.2em@<576 f:1.5em@>2000">
               {{ floor.text }} <i class="f:0.9rem">▼</i>

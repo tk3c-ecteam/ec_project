@@ -390,15 +390,4 @@ body {
       }
     }
 }
-
-/* 手機版 */
-@include media-query('mobile', '576px') {
-  .pro-area {
-    .tab {
-      .swiper-slide {
-        flex-basis: 40%;
-      }
-    }
-  }
-}
 </style>

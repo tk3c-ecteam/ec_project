@@ -4,27 +4,6 @@ export default {
   data() {
     return {
       listM,
-      navs:[
-        {
-          text:"outlet 特賣"
-        },
-        {
-          url:"https://events.tk3c.com/events_net/tk3c_fastdelivery/index.html",
-          text:"3小時到貨"
-        },
-        {
-          url:"https://events.tk3c.com/events_net/nightsale/index.html",
-          text:"夜深價更深"
-        },
-        {
-          url:"https://www.tk3c.com/dictitleurl.aspx?cid=124426",
-          text:"會員折價券"
-        },
-        {
-          url:"https://www.tk3c.com/dictitleurl.aspx?cid=124426",
-          text:"會員折價券"
-        }
-      ],
       specials:[
         {
           url:'#pro8047',

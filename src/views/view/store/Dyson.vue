@@ -126,7 +126,6 @@ body {
 nav {
   background: #fff;
   .swiper-slide {
-    flex-basis: 17%;
     a {
       color: #000;
     }
@@ -156,25 +155,6 @@ nav {
     .logo {
       span {
         width: 25%;
-      }
-    }
-  }
-
- nav {
-  .swiper-wrapper {
-    .swiper-slide {
-      margin-right: 75px !important;
-      flex-basis: fit-content;
-    }
-  }
- }
-}
-
-@include media-query("mobile", "576px") {
-  nav {
-    .swiper-wrapper {
-      .swiper-slide {
-        margin-right: 30px !important;
       }
     }
   }

@@ -20,7 +20,7 @@
       @swiper="onSwiper"
       @slideChange="onSlideChange"
       >
-        <swiper-slide v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }" class="flex! flex-basis:fit brightness(0.7) brightness(1).active" @click="goSlide(index)">
+        <swiper-slide v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }" class="flex-basis:fit brightness(0.7) brightness(1).active" @click="goSlide(index)">
             <a :href="$filters.addGALink(tab.url)"  @click.prevent="selectTab(index)">
               <b v-if="tab.text != undefined"> {{ tab.text }}</b>
             <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
@@ -125,7 +125,7 @@ export default {
   @include media-query("mobile", "576px") {
     .tab {
       .swiper-slide {
-        flex-basis: 42%;
+        flex-basis: 37%;
       }
       a {
         b {

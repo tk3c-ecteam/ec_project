@@ -111,43 +111,43 @@
 </script>
 
 <script>
-  export default {
-    data() {
-      return {
-        swiper:null,
-        status:null,
-        itemNum:'',
-        asides:[]
-      }
-    },
-    mounted() {
-      //左右側選單顯示隱藏
-      window.addEventListener('scroll',this.showAside);
-      if(this.go3cFloor === undefined) window.addEventListener('scroll',this.scrollPos);
-    },
-    beforeUpdate() {
-       //確保 DOM 更新後再取得樓層標題和 ID
-       this.asides = this.getFloorTitle('section.scroll');
-       // 如果是自訂的選單項目則覆蓋舊有的
-       if(this.asideExtra) this.asides = this.asideExtra;
-    },
-    unmounted() {
-      window.removeEventListener('resize',this.smallDeviceLeft);
-      window.removeEventListener('scroll',this.scrollPos);
-    },
-    methods: {
-      scrollPos() {
-        //先取得第一個區域px位置
-        
-        const sectionS = document.querySelectorAll('section.scroll');
-        if (sectionS.length === 0) return;
+export default {
+  data() {
+    return {
+      swiper: null,
+      status: null,
+      itemNum: '',
+      asides: []
+    }
+  },
+  mounted() {
+    //左右側選單顯示隱藏
+    window.addEventListener('scroll', this.showAside);
+    if (this.go3cFloor === undefined) window.addEventListener('scroll', this.scrollPos);
+  },
+  beforeUpdate() {
+    //確保 DOM 更新後再取得樓層標題和 ID
+    this.asides = this.getFloorTitle('section.scroll');
+    // 如果是自訂的選單項目則覆蓋舊有的
+    if (this.asideExtra) this.asides = this.asideExtra;
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.smallDeviceLeft);
+    window.removeEventListener('scroll', this.scrollPos);
+  },
+  methods: {
+    scrollPos() {
+      //先取得第一個區域px位置
 
-        const firstAreaTop = sectionS[0].getBoundingClientRect().top,
-          scrollTop = window.scrollY;
+      const sectionS = document.querySelectorAll('section.scroll');
+      if (sectionS.length === 0) return;
 
-         this.itemNum = 'auto';
-        sectionS.forEach((el, i) => {
-          const top = el.getBoundingClientRect().top + scrollTop - 150,
+      const firstAreaTop = sectionS[0].getBoundingClientRect().top,
+        scrollTop = window.scrollY;
+
+      this.itemNum = 'auto';
+      sectionS.forEach((el, i) => {
+        const top = el.getBoundingClientRect().top + scrollTop - 150,
             bottom = top + window.innerHeight;
 
           // 檢查當前滾動位置是否在當前區域內
