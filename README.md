@@ -19,7 +19,6 @@ src/views/layout 共用版型(商品樓層與手機版選單)
           - ProductTop.vue 上方商品輪播
           - mobile.vue 手機版置底選單
           - mobile2.vue 手機版置頂選單
-          - mobileAi.vue 3c頁用手機版選單
           - mobile3.vue 熱門活動版本手機版選單
 
 src/views/floor 樓層區
@@ -30,6 +29,9 @@ src/views/components 常用功能
          - Tab.vue/TabContent.vue 頁籤
          - LeftAside.vue 左側選單+手機版
          - RightAside.vue 右側選單+手機版
+         - AlertBox.vue 彈出視窗訊息
+         - AirVideo.vue 空調頁面用影片
+         - Service.vue 燦坤服務項目
 
 src/AppComponent.vue 以這個vue來引入各頁面
 
@@ -48,8 +50,10 @@ nvs進行安裝(步驟如此連結:https://smlpoints.com/guide-nvs-switch-node-j
 *安裝 git sourcetree(介面化檔案管理) 教學-> https://etrex.tw/free_chatbot_book/windows_dev/sourcetree.html
 
 1. 在本機新增資料夾
-2. git clone檔案下來(下載此專案或直接使用sourcetree載到本機資料裡)
-3. 對此專案資料夾輸入 npm init 後 npm install 進行安裝npm 套件安裝
+2. `git clone` [https://github.com/ejguan123/ec_project.git] 檔案下來(下載此專案或直接使用sourcetree載到本機資料裡)
+3. 在vs code編輯器的終端機對此專案資料夾輸入 npm init 後 npm install 進行安裝npm 套件安裝
+4. 頁面撰寫完畢輸入 npm run build 進行打包
+5. 上傳`git push`(可直接用sourcetree)到github上進行檔案同步管理
 ```
 
 ### 此專案在本機運作指令
