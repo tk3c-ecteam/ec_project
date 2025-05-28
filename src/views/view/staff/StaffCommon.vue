@@ -97,7 +97,7 @@ const navButtons = [
       :floors="contents[0].floor"
       :menu="contents[0].menu"
     >
-      <template v-if="contents[0].singleImage" #moreTitle>
+      <template v-if="contents[0].singleImage" #moreTitle2>
         <img :src="$filters.siteUrl(contents[0].singleImage)">
       </template>
     </CommonFloor>

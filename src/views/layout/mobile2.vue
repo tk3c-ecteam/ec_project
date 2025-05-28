@@ -4,13 +4,17 @@
     <div class="footer-bg" :style="{'display': mobileBg}" @click="closeNav"></div>
     <div class="nav-box">
       <ul>
-        <li class="w:full!" @click="changeMobile('service')" :class="[mobileStatus == 'service' ? 'active' : '']">燦坤服務</li>
+        <li class="w:full!" @click="changeMobile('social')" :class="[mobileStatus == 'soical' ? 'active' : '']">關注社群</li>
       </ul>
     </div>
 
-    <!-- 燦坤服務 -->
-    <div class="box-area service" :class="[mobileStatus == 'service' ? 'footer-nav-open' : '']">
-      <slot name="service"></slot>
+    <!-- 關注社群 -->
+    <div class="box-area social" :class="[mobileStatus == 'social' ? 'footer-nav-open' : '']">
+      <ul>
+        <li><a href="https://reurl.cc/QbZ149" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+        <li><a href="https://reurl.cc/7pMZVl" target="_blank"><i class="fa-brands fa-line"></i></a></li>
+        <li><a href="https://reurl.cc/3Ye8kX" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+      </ul>
     </div>
   </div>
 

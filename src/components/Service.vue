@@ -13,7 +13,7 @@
 
 <template>
   <li v-for="(service,s) in services" :key="s">
-    <a class="word-break:keep-all" :href="$filters.addGALink(service.url)" target="_blank">{{ service.name }}</a>
+    <a class="bg:none! word-break:keep-all" :href="$filters.addGALink(service.url)" target="_blank">{{ service.name }}</a>
     <em v-if="s != services.length -1" class="w:75% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
    </li>
 </template>

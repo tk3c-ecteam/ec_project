@@ -2,7 +2,8 @@
   <div id="pet-container">
     <div class="background">
       <h2 class="title">
-        <img :src="$filters.siteUrl('pet_product/images/vip/title.png')" />
+        <img v-if="today >= new Date('2025/06/01')" :src="$filters.siteUrl('pet_product/images/vip/title2506_a.png')" />
+        <img v-else :src="$filters.siteUrl('pet_product/images/vip/title.png')" />
       </h2>
 
       <p class="pet animate__animated animate__fadeInUp">
@@ -24,7 +25,8 @@
       </h2>
 
       <p class="w:65% w:80%@<992 w:full@<576 m:5%|auto|2% m:15%|auto|2%@<576">
-        <img :src="$filters.siteUrl('pet_product/images/vip/s1-1a.png')" />
+        <img v-if="today >= new Date('2025/06/01')" :src="$filters.siteUrl('pet_product/images/vip/s1-1_2506_a.png')" />
+        <img v-else :src="$filters.siteUrl('pet_product/images/vip/s1-1a.png')" />
       </p>
       <p class="rel w:65% w:80%@<992 w:full@<576 m:auto">
         <img class="abs w:full left:0 right:0 m:auto top:0 z:-1" :src="$filters.siteUrl('pet_product/images/vip/s1-2.png')" />
@@ -43,7 +45,7 @@
 
     <!--商品樓層 -->
     <CommonFloor :floors="floors" :menu="menu">
-      <template #moreTitle>
+      <template #moreTitle2>
         <img :src="$filters.siteUrl(singleImage)">
       </template>
     </CommonFloor>
@@ -108,9 +110,28 @@ export default {
           "image":"pet_product/images/vip/a4.png"
         },
       ],
+      message2:[
+         {
+          "image":"pet_product/images/vip/a1.png"
+        },
+        {
+          "image":"pet_product/images/vip/a2_2506_a.png"
+        },
+        {
+          "image":"pet_product/images/vip/a3_2506_a.png"
+        },
+        {
+          "image":"pet_product/images/vip/a4_2506_a.png"
+        },
+      ],
       menu:[7959,7913,7914,7915,7916,7917,7918,7919],
-      status:null
+      status:null,
+      today:new Date()
     }
+  },
+  mounted() {
+    const { today } = this;
+    if (today >= new Date('2025/06/01')) this.message = this.message2;
   },
   methods: {
     alert(id) {

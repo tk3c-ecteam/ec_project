@@ -130,6 +130,7 @@ export default {
       a {
         b {
           font-size: 1rem;
+          white-space:nowrap;
         }
       }
     }

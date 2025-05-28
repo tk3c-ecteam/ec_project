@@ -21,14 +21,6 @@
   ];
 
   let topic618 = [
-    {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/coolcleantech/index.html"},
-    {"name":"空調主題館","url":"https://events.tk3c.com/events_net/airconditioner/index.html"},
-    {"name":"電視主題館","url":"https://events.tk3c.com/events_net/tv_media/index.html"},
-    {"name":"3C電腦週邊","url":"https://events.tk3c.com/events_net/3c_system/index.html"},
-    {"name":"風扇與熨燙","url":"https://events.tk3c.com/events_net/fan/index.html"},
-    {"name":"綠點10倍送","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
-    {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
-    {"name":"福利品特賣","url":"https://events.tk3c.com/events_net/OUTLET/index.html"},
     {"name":"辦公用品","url":"https://events.tk3c.com/events_net/office3c/index.html"},
     {"name":"健康美容","url":"https://events.tk3c.com/events_net/healthbeauty/index.html"},
     {"name":"廚房家電","url":"https://events.tk3c.com/events_net/kitchen3c/index.html"},
@@ -36,8 +28,8 @@
     {"name":"戶外休閒","url":"https://events.tk3c.com/events_net/outdoor3c/index.html"},
   ];
 
-  if (today >= new Date('2025/06/01')) {
-    topics = topic618;
+  if (today >= new Date('2025/06/04')) {
+    topics = topics.concat(...topic618);
   }
 
   switch (folderName) {
@@ -215,7 +207,7 @@
     <!-- 主會場 -->
     <template v-slot:main="{ closeNav2 }">
       <li v-if="main != null" @click="closeNav2">
-         <a :href="$filters.addGALink(moreUrl)" target="_blank">主會館</a>
+         <a :href="$filters.addGALink(mainUrl)" target="_blank">主會館</a>
       </li>
     </template>
 

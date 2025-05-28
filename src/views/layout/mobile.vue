@@ -5,19 +5,23 @@
     <div class="nav-box">
       <ul>
         <li @click="changeMobile('type')" :class="[mobileStatus == 'type' ? 'active' : '']">
-          <span class="icon"><i class="fa-solid fa-shop"></i>熱門品類</span>
+         熱門品類
         </li>
-         <li @click="changeMobile('service')" :class="[mobileStatus == 'service' ? 'active' : '']">
-          <span class="icon"><i class="fa-solid fa-people-arrows"></i>燦坤服務</span>
+         <li @click="changeMobile('social')" :class="[mobileStatus == 'social' ? 'active' : '']">
+          關注社群
         </li>
       </ul>
     </div>
     <div class="box-area type" :class="[mobileStatus == 'type' ? 'footer-nav-open' : '']" @click="closeNav">
       <slot name="asides"></slot>
     </div>
-    <!-- 燦坤服務 -->
-    <div class="box-area service" :class="[mobileStatus == 'service' ? 'footer-nav-open' : '']">
-      <slot name="service"></slot>
+    <!-- 關注社群 -->
+    <div class="box-area social" :class="[mobileStatus == 'social' ? 'footer-nav-open' : '']">
+      <ul>
+        <li><a href="https://reurl.cc/QbZ149" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+        <li><a href="https://reurl.cc/7pMZVl" target="_blank"><i class="fa-brands fa-line"></i></a></li>
+        <li><a href="https://reurl.cc/3Ye8kX" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+      </ul>
     </div>
   </div>
 

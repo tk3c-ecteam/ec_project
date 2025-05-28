@@ -100,23 +100,21 @@
        <img v-if="asideImage != undefined" :src="$filters.siteUrl(asideImage)">
       </h3>
       <!-- 一般右側選單樓層項目 -->
-      <div class="aside-content">
+      <div class="aside-content rt:15px box:border-box bg:#000000b8">
          <ul v-if="go3cFloor">
            <li v-for="(aside, a) in asides" :key="a">
             <a @click="go3cFloor(aside.id,aside.href)">{{ aside.text }}</a>
             </li>
          </ul>
-         <ul v-else-if="type == 'mobile3'">
-           <li class="color:#fff bg:#767070 f:bold rt:15px box:border-box">
-            <a class="bg:none!" :href="$filters.addGALink('https://events.tk3c.com/events_net/Online_DMCatalog/index.aspx')" target="_blank">DM線上看</a>
-           </li>
-           <Service></Service>
+         <ul v-else class="flex flex:wrap jc:flex-start">
+          <li v-if="type == 'mobile3'" class="rt:15px color:#fff bg:#767070 f:bold mb:5px box:border-box">燦坤服務</li>
+            <Service v-if="type == 'mobile3'"></Service>
+           <li v-if="asides && (type == 'mobile' || type == 'mobile2')" class="rt:15px color:#fff bg:#767070 f:bold mb:5px box:border-box">熱門品類</li>
+           <li v-if="type == 'mobile' || type == 'mobile2'" v-for="(aside, a) in asides" class="w:48%! m:0|1px! box:border-box" :class="{'stay': status == a,'br:2px|solid|#fff': a % 2 == 0}" :key="a">
+                <a class="bg:none! word-break:keep-all white-space:nowrap text:ellipsis overflow:hidden box:border-box" :href="aside.href">{{ aside.text }}</a>
+                <em v-if="a != asides.length - 1 && a != asides.length - 2" class="w:75% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
+             </li>
          </ul>
-         <ul v-else>
-          <li v-for="(aside, a) in asides" :key="a" :class="{'stay': status == a}">
-            <a :href="aside.href">{{ aside.text }}</a>
-          </li>
-        </ul>
       </div>
       
       <a href="#" class="go-top" @click="goTop">GO TOP</a>
@@ -127,18 +125,11 @@
   <mobile v-if="type == 'mobile'">
     <template #asides>
       <ul>
-        <li v-for="(aside,a) in asides" :key="a">
+        <li v-for="(aside,a) in asides" :key="a" :class="{'active': status == a}">
           <a :href="aside.href" @click="changeNav">{{ aside.text }}</a>
         </li>
       </ul>
     </template>
-
-    <!-- 燦坤服務 -->
-    <template #service>
-      <ul>
-        <Service></Service>
-      </ul>
-     </template>
   </mobile>
 
   <!-- 手機版上方選單 -->
@@ -162,12 +153,6 @@
         </li>
       </ul>
     </template>
-    <!-- 燦坤服務 -->
-    <template #service>
-      <ul>
-        <Service></Service>
-      </ul>
-     </template>
   </mobile2>
 </template>
 

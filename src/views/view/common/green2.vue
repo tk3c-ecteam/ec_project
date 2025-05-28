@@ -455,6 +455,11 @@ form#form1 {
     justify-content: center;
     padding-bottom: 10px;
   }
+  .tab{
+    .swiper-slide {
+      flex-basis: unset;
+    }
+  }
 }
 
 .special-group {
@@ -465,71 +470,6 @@ form#form1 {
     border-radius: 0;
     background: #23948a;
     padding: 1%;
-    .list_special {
-      ul {
-        justify-content: left;
-        li {
-          width: 23.9%;
-          margin: 0 9px 8px 0;
-        }
-      }
-    }
-    ul {
-      justify-content: left;
-    }
-    .hotproboxL,
-    .hotproboxR {
-      .icon_number {
-        display: none;
-      }
-    }
-  }
-
-  .tab {
-    justify-content: left;
-    flex-wrap: nowrap;
-    li {
-      width: 48%;
-      margin: 0 10px;
-      filter: grayscale(1);
-      transform: translateZ(0);
-      &.active {
-        filter: grayscale(0);
-        transform: translateZ(0);
-      }
-    }
-  }
-
-  .tab-content {
-    .bg01 {
-      display: none;
-      &:nth-of-type(1) {
-        background: #ff5901;
-      }
-      &:nth-of-type(2) {
-        background: #4f5a98;
-        ul {
-          justify-content: left;
-          li {
-            margin: 6px 5px;
-          }
-        }
-        .prev2,
-        .next2 {
-          display: none;
-        }
-      }
-    }
-    .swiper-slide {
-      margin: 0 0;
-    }
-  }
-
-  .swiper-slide {
-    margin: 0 0;
-  }
-  .special {
-    position: relative;
   }
 }
 
@@ -587,15 +527,6 @@ form#form1 {
     top: 0;
     &:hover {
       position: relative;
-    }
-  }
-}
-
-#tab-area {
-  .swiper-slide {
-    opacity: 0.4;
-    &.active {
-      opacity: 1;
     }
   }
 }
