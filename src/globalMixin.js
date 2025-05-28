@@ -230,12 +230,6 @@ export const globalMixin = {
       window.scrollTo(0, 0);
       this.mobileBg = 'none';
     },
-    //點擊切換置底選單      
-    changeMobile(name) {
-      this.mobileStatus = name;
-      this.mobileBg = 'block';
-      document.body.style.overflow = 'hidden';
-    },
     //關閉手機版選單
     closeNav() {
       this.isMobileOpen = false;
@@ -258,9 +252,17 @@ export const globalMixin = {
     },
     //點擊切換置底選單      
     changeMobile(name) {
-      this.mobileStatus = name;
-      this.mobileBg = 'block';
-      document.body.style.overflow = 'hidden';
+      if (this.mobileStatus == name) {
+        this.mobileStatus = '';
+        this.mobileBg = 'none';
+        document.body.style.overflow = 'auto';
+      } else {
+        this.mobileStatus = name;
+        this.mobileBg = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+
+      this.isMobileOpen = false;
     },
     //點擊切換手機版上方按鈕
     switchMobile() {
