@@ -1,6 +1,6 @@
 <template>
   <!-- 加到樓層裡的banner輪播 -->
-   <div class="banner rel" :class="`bn${index + 1}`">
+   <div v-if="banners" class="banner rel" :class="`bn${index + 1}`">
     <swiper
         :loop="false"
         :effect="'fade'"
