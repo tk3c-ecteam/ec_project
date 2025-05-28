@@ -138,7 +138,6 @@ export default {
   methods: {
     scrollPos() {
       //先取得第一個區域px位置
-
       const sectionS = document.querySelectorAll('section.scroll');
       if (sectionS.length === 0) return;
 
@@ -148,29 +147,29 @@ export default {
       this.itemNum = 'auto';
       sectionS.forEach((el, i) => {
         const top = el.getBoundingClientRect().top + scrollTop - 150,
-            bottom = top + window.innerHeight;
+          bottom = top + window.innerHeight;
 
-          // 檢查當前滾動位置是否在當前區域內
-          if (scrollTop > top && scrollTop < bottom) {
-            this.status = i;
-            this.goSlide(i);
-          }
-        });
-
-        // 當滾動位置在第一區域上方時，重置狀態
-        if (scrollTop < firstAreaTop) {
-          this.status = null;
-          this.goSlide(0);
+        // 檢查當前滾動位置是否在當前區域內
+        if (scrollTop > top && scrollTop < bottom) {
+          this.status = i;
+          this.goSlide(i);
         }
-      },
-      onSwiper(swiper) {
-        this.swiper = swiper
-      },
-      goSlide(id) {
-        this.swiper.slideTo(id);
+      });
+
+      // 當滾動位置在第一區域上方時，重置狀態
+      if (scrollTop < firstAreaTop) {
+        this.status = null;
+        this.goSlide(0);
       }
     },
-  }
+    onSwiper(swiper) {
+      this.swiper = swiper
+    },
+    goSlide(id) {
+      this.swiper.slideTo(id);
+    }
+  },
+}
 </script>
 
 <template>
