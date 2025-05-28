@@ -10,7 +10,7 @@ export default {
       contents: [
         {
           menuPro: 8058,
-          title: 'office3c/images/TT_office.png',
+          title: 'kitchen3c/images/TT_cook.png',
           floors: [
             {
               text: '印表機/事務機',

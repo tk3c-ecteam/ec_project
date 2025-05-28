@@ -6,17 +6,6 @@
       </template>
 
       <template #content>
-        <section class="gift-box">
-          <!-- 精選活動 -->
-          <a class="w:80% w:90%@<992 w:full@<576 mb:2%"
-            :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=11312')" target="_blank">
-            <img :src="$filters.siteUrl('tv_media/images/gift_test.png')" />
-          </a>
-
-          <!-- 活動辦法 -->
-          <a class="w:15% w:20%@<992 w:33%@<576"> <img :src="$filters.siteUrl('tv_media/images/bn.png')" /></a>
-        </section>
-
         <!-- 房東精選 -->
         <section class="home-box scroll" titles="房東精選" id="home">
           <h2 class="title">
@@ -178,23 +167,23 @@ export default {
       ],
       contents: [
         {
-          title: 'tv_media/images/title.png',
+          title: 'tv_media/images/title2.png',
           menuPro: 8123,
           specials: [
             {
-              image: 'tv_media/images/C01.png',
+              image: 'tv_media/images/C01_a.png',
               url: ''
             },
             {
-              image: 'tv_media/images/C02.png',
+              image: 'tv_media/images/C02_a.png',
               url: ''
             },
             {
-              image: 'tv_media/images/C03.png',
+              image: 'tv_media/images/C03_a.png',
               url: ''
             },
             {
-              image: 'tv_media/images/C04.png',
+              image: 'tv_media/images/C04_a.png',
               url: ''
             },
           ],
@@ -233,6 +222,13 @@ export default {
             }
           ],
           menus: [8115,8116,8117,8118,8119,8120,8121,8122],
+          gifts:[
+            {
+              pc:'tv_media/images/gift_pc.png',
+              mobile:'tv_media/images/gift_m.png',
+              url:'https://tw.sharp/news/2025-apr-aug'
+            }
+          ]
         }
       ],
       menuDis: 8109, //現折 清單編號
@@ -259,10 +255,10 @@ export default {
     this.getFloorSingle(this.menuNight)
 
     // 更新現折券連結
-    if (today >= new Date('2025/05/16')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y'
+    if (today >= new Date('2025/06/01')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947&strPreView=y';
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }
   },
 }

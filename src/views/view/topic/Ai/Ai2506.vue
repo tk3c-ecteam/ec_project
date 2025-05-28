@@ -568,12 +568,12 @@ export default {
                 },
                 {
                   id:8183,
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=108783&aid=22325',
+                  url: 'https://www.tk3c.com/dic1.aspx?cid=11684&aid=4761',
                   image:'3c_system/images/S15-logo_03.png',
                 },
                 {
                   id:8184,
-                  url: 'https://www.tk3c.com/dic1.aspx?cid=11684&aid=4761',
+                  url: 'https://www.tk3c.com/dic1.aspx?cid=108783&aid=22325',
                   image:'3c_system/images/S15-logo_04.png',
                 }
               ]

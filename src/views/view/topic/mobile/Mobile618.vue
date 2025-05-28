@@ -10,7 +10,7 @@ export default {
       contents: [
         {
           menuPro: 8058,
-          title: 'healthbeauty/images/TT_health.png',
+          title: 'mobile3c/images/TT_mobile.png',
           floors: [
             {
               text: '吹風機',

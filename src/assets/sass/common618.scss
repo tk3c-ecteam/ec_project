@@ -1,0 +1,205 @@
+@charset 'utf-8';
+/* 618 公版用 */
+$dir: "https://events.cdn-tkec.tw/events_net/events_net/tv_media/images/";
+$dir2: "https://events.cdn-tkec.tw/events_net/events_net/office3c/images/";
+
+body {
+  background: #ffe6d9;
+}
+
+.bg01 {
+  background: #ef6c2b;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.floor {
+  .title {
+    b {
+      padding-top: 4%;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.background {
+  $image: $dir + "BG_PC3.png";
+  @include bg-responsive($image, 2000, 1488);
+  position: relative;
+  margin: 0 auto 0;
+  background-position:
+    0 45px,
+    top;
+  padding-bottom: 78%;
+  .title {
+    width: 28%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 8%;
+    margin: 0 auto;
+    animation-duration: 0.7s;
+    img {
+      animation: tada 1s linear;
+      animation-delay: 0.8s;
+    }
+  }
+  .product {
+    width: 46%;
+    height: 21vmax;
+    position: relative;
+    top: 28.5vmax;
+    margin: 0 auto 0;
+    overflow: hidden;
+    .bg01 {
+      background: none;
+    }
+    .swiper-pagination {
+      .swiper-pagination-bullet,
+      .swiper-pagination-bullet-active {
+        background: #9d3be3 !important;
+      }
+    }
+  }
+
+  &.other {
+    $image: $dir2 + "BG_PC.png";
+    @include bg-responsive($image, 2000, 1551);
+    padding-bottom: 53%;
+    .title {
+      top: 12%;
+    }
+  }
+}
+
+@include media-query("mobile", "1600px") {
+  .background {
+    background-size: 120% auto;
+    background-position:
+      -10vw 3vw,
+      top;
+    padding-bottom: 90%;
+    .title {
+      width: 35%;
+    }
+    .product {
+      width: 55%;
+      height: 25vmax;
+      top: 36vmax;
+    }
+    &.other {
+      background-size: 120% auto;
+      background-position:
+        -10vw 3vw,
+        top;
+      padding-bottom: 67%;
+    }
+  }
+}
+
+@include media-query("mobile", "1025px") {
+  .background {
+    .product {
+      width: 56%;
+      height: 25vw;
+      top: 36.5vw;
+    }
+  }
+}
+
+@include media-query("mobile", "992px") {
+  .background {
+    background-size: 180% auto;
+    background-position:
+      -40vw 4vw,
+      top;
+    padding-bottom: 138vw;
+    .board {
+      .pc {
+        display: block !important;
+      }
+      .mobile {
+        display: none !important;
+      }
+    }
+
+    .title {
+      width: 53%;
+      top: 12vw;
+    }
+    .product {
+      width: 84%;
+      height: 38vw;
+      top: 53vw;
+    }
+    &.other {
+      background-size: 180% auto;
+      background-position:
+        -40vw 4vw,
+        top;
+      padding-bottom: 98vw;
+      .title {
+        top: 12vw;
+      }
+    }
+  }
+}
+
+@include media-query("pad", "577px", "610px") {
+  .background {
+    .product {
+      width: 90%;
+    }
+  }
+}
+
+@include media-query("mobile", "576px") {
+  .background {
+    background-size: 350% auto;
+    background-position:
+      -126vw 20vw,
+      top;
+    padding-bottom: 280vw;
+    .board {
+      .pc {
+        display: none !important;
+      }
+      .mobile {
+        display: block !important;
+      }
+    }
+    .title {
+      width: 80%;
+      top: 27vw;
+    }
+    .product {
+      width: 75%;
+      height: 92vw;
+      top: 95vw;
+      .swiper-slide {
+        width: 100% !important;
+      }
+      .swiper-pagination {
+        bottom: 0 !important;
+      }
+    }
+    &.other {
+      background-size: 350% auto;
+      background-position:
+        -126vw 20vw,
+        top;
+      padding-bottom: 200vw;
+      .title {
+        top: 27vw;
+      }
+    }
+  }
+}
+
+@include media-query("pc", "2000px") {
+  .background {
+    .product {
+      width: 49%;
+    }
+  }
+}

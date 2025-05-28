@@ -4,16 +4,49 @@
       <img class="pc" :src="$filters.siteUrl('tv_media/images/BOX_PC.png')" />
       <img class="mobile" :src="$filters.siteUrl('tv_media/images/BOX_M.png')" />
     </template>
+    
+    <template #special>
+      <swiper-slide v-for="(sp,s) in contents[0].specials" :key="s">
+        <a v-if="sp.class" @click="message(s + 1)">
+          <img :src="$filters.siteUrl(sp.image)">
+        </a>
+        <a v-else :href="$filters.addGALink(sp.url)" target="_blank">
+          <img :src="$filters.siteUrl(sp.image)">
+        </a>
+      </swiper-slide>
+    </template>
+
+    <template #alert-message>
+        <!-- 空調場勘預約預約抽好禮 -->
+     <AlertBox ref="alert1" :type="'text'">
+        <p class="color:red f:bold mb:25px text:left">
+          本活動需完成(1)預約空調場勘+(2)購買分離式空調+(3)安裝完成，請留意預約空調場勘時所填寫的聯絡地址及聯絡電話需與空調安裝地址及聯絡電話相同。</p>
+        <ul>
+          <li>
+            1.凡於活動期間(2025/05/01~06/30)，於燦坤線上購物網站預約空調場勘，且於燦坤線上購物網站或燦坤實體門市以會員資格購買「全系列分離式空調(外機計)(下稱活動指定商品)」，並於2025/07/15前出貨/配送完成，且後續未退貨退款者，即可獲得本活動抽獎資格(1張發票1次抽獎機會)，將共抽出3名，為「DAIKIN
+            7坪閃流放電空氣清淨機(227244)(市價$8,800)」1名、「虎牌電鍋(236761)(市價$3,000)」1名、「陳傑憲簽名球」1名 ​</li>
+          <li>
+            2.中獎名單將於2025/07/16公告於FACEBOOK粉絲專頁「燦坤3C」，並另以簡訊通知中獎者，通知以會員資料所留存的個人聯絡資料為準。倘中獎人因個人因素致無法收受上開通知(如無法收受、未能讀取或遲誤讀取)，均與燦坤3C無涉。
+          </li>
+          <li>
+            3.中獎者請於2025/07/25前回填中獎通知函：(1)攜帶身分證件、中獎發票至「原消費門市」，出示中獎簡訊並填寫中獎通知函完成；或(2)私訊「燦坤3C」粉絲專頁，提供姓名/電話/中獎簡訊畫面，小編會提供回函，請依規定填寫並繳交相關資料，並將正本掛號寄回燦坤3C內湖總部，以郵戳為憑。逾期、資料不符規定或填寫不正確、不完整者或未依中獎通知函規定期限存入代扣稅金者，視同放棄中獎/兌獎權利。(依稅法規定，抽中獎項市值超過1,001元(含)以上，將列入本年度之個人綜合所得稅申報，超過20,000元(含)以上者，依法須預先扣繳10%稅金(外籍人士20%))。
+            ​</li>
+          <li>
+            4.經核對符合活動條件者，燦坤3C會另行通知，請中獎者於2025/07/31前前往原消費門市領取(如為線上購買，燦坤3C會與中獎者確認領取門市)，如中獎者有額外運送/安裝需求，另行計價，逾期領獎或安裝完成視為放棄。
+          </li>
+          <li>5.獎項詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金，中獎資格不可轉讓予第三人。​</li>
+          <li>
+            6.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：
+          </li>
+          <li class='pl:10px'>(1) 提供獎品前：燦坤3C將不會寄送獎品。​</li>
+          <li class='pl:10px'>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
+          <li>8.涉及大宗採購且(或)有議價時，因已經過議價給予價格優惠，該筆交易(發票)將無法參與本活動。 ​</li>
+          <li class='last'>9.活動未盡事宜以燦坤3C公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
+        </ul>
+      </AlertBox>
+    </template>
 
     <template #content>
-      <!-- 抽獎 -->
-      <section>
-        <a href="https://www.tk3c.com.tw/#actsdetail&8&816" target="_blank">
-          <img class="pc" :src="$filters.siteUrl('airConditionerLAB/images/2505/bn.jpg')">
-          <img class="mobile" :src="$filters.siteUrl('airConditionerLAB/images/2505/bn_M.jpg')">
-        </a>
-      </section>
-
       <!-- 現折券 -->
       <section class="discount-box" v-if="isDis && product2[menuDis] != ''">
         <h2 class="title">
@@ -500,24 +533,39 @@ export default {
       },
       contents:[
         {
-          title:'airconditioner/images/title.png',
+          title:'airconditioner/images/title2.png',
           menuPro:8124,
+          isAlert:true,
           specials:[
             {
-              image:'tv_media/images/C01.png',
-              url:''
+              image:'airconditioner/images/C01_a.png',
+              class:'alert'
             },
             {
-              image:'tv_media/images/C02.png',
-              url:''
+              image:'airconditioner/images/C02_a.png',
+              url:'https://www.tk3c.com.tw/#actsdetail&8&816&ec=airconditioner'
             },
             {
-              image:'tv_media/images/C03.png',
-              url:''
+              image:'airconditioner/images/C03_a.png',
+              url:'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=11237'
             },
             {
-              image:'tv_media/images/C04.png',
-              url:''
+              image:'airconditioner/images/C04_a.png',
+              url:'https://www.tk3c.com/dic2.aspx?cid=11225&aid=4707&hid=111598'
+            },
+            {
+              image:'airconditioner/images/C05_a.png',
+              url:'https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2'
+            },
+          ],
+          gifts:[
+            {
+              image:'airConditioner/images/sp01.png',
+              url:'https://www.panasonic.com/tw/consumer/news/202505-airsp.html?utm_source=gsm&utm_medium=search&utm_campaign=air-conditioning_hotsp&utm_term=brand&utm_content=keyword_sp&gad_source=1'
+            },
+            {
+              image:'airConditioner/images/sp02.png',
+              url:'https://event1000.jci-hitachi.tw/SummerAnniversary60/promo/prm001.aspx'
             },
           ]
         }
@@ -527,10 +575,10 @@ export default {
   mounted() {
     const {  today,floors } = this;
     // 修改現折券連結
-    if (today >= new Date('2025/05/16')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
+    if (today >= new Date('2025/06/01')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947&strPreView=y';
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947';
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931';
     }
 
     //撈取 現折券樓層商品
@@ -733,6 +781,12 @@ body {
   }
 }
 
+.special-box {
+  .swiper-slide {
+    width: 18.5% !important;
+  }
+}
+
 /*  電腦版其他尺寸 */
 @include media-query("mobile", "992px") {
   .info-box {
@@ -783,11 +837,8 @@ body {
   }
 
   .special-box {
-    .tab {
-      width: 100%;
-      .swiper-wrapper {
-        justify-content: left;
-      }
+    .swiper-slide {
+      width: 23% !important;
     }
   }
 
@@ -840,6 +891,12 @@ body {
      .swiper-slide {
       flex-basis: 44%;
      }
+    }
+  }
+
+  .special-box {
+    .swiper-slide {
+      width: 46% !important;
     }
   }
 }

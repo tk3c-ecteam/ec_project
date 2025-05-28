@@ -6,15 +6,28 @@
     </template>
 
     <template #content>
+      <!-- 獨家指定滿額最高折3000 -->
+      <section class="scroll" titles="獨家指定滿額" id="sale2">
+        <h2 class="title">
+          <a :href="$filters.addGALink('https://www.tk3c.com/dic1.aspx?cid=124485&aid=23994&strPreView=y')" target="_blank">
+            <img :src="$filters.siteUrl('coolcleantech/images/S11.png')">
+          </a>
+        </h2>
+
+        <div>
+          <listF :pro="product2[menuDis2]" :isSwiper="1" :name="'sale2-pro'"></listF>
+        </div>
+      </section> 
+
       <!-- 最高現折 -->
       <section class="sale-box scroll" id="sale" titles="領券現折" v-if="isSale && product2[menuDis] != ''">
-        <h2
-          class="title bg:#0e74f0 color:#fff f:3em f:3.5em@<992 f:1.5em@<576 f:bold r:15px r:10px@<576 p:5px box:border-box">
-          領券現折
+        <h2 class="title">
+          <a :href="$filters.addGALink(saleUrl)" target="_blank">
+            <img :src="$filters.siteUrl('coolcleantech/images/S10.png')">
+          </a>
         </h2>
         <div class="sale">
           <listF :pro="product2[menuDis]" :isSwiper="1" :name="'sale-pro'"></listF>
-          <a class="more bg:#0e74f0!" :href="$filters.addGALink(saleUrl)" target="_blank">MORE</a>
         </div>
       </section>
 
@@ -233,29 +246,48 @@ export default {
       isSale: true,
       today: new Date(),
       saleUrl: '',
+      menuDis2:8228,//獨家指定滿額陳列編號
       menuDis:8107, //現折券陳列編號
       contents:[
         {
-          title:'coolcleantech/images/title.png',
+          title:'coolcleantech/images/title2.png',
           menuPro:8088,
           specials:[
             {
-              image:'tv_media/images/C01.png',
-              url:''
+              image:'coolcleantech/images/C01.png',
+              url:'https://www.tk3c.com/dic2.aspx?cid=124485&aid=23995&hid=124826&strPreView=y'
             },
             {
-              image:'tv_media/images/C02.png',
-              url:''
+              image:'coolcleantech/images/C02.png',
+              url:'https://www.tk3c.com/dic2.aspx?cid=124485&aid=23986&hid=124761'
             },
             {
-              image:'tv_media/images/C03.png',
-              url:''
+              image:'coolcleantech/images/C03.png',
+              url:'https://www.tk3c.com/dic2.aspx?cid=124485&aid=23943&hid=124748'
             },
             {
-              image:'tv_media/images/C04.png',
-              url:''
+              image:'coolcleantech/images/C04.png',
+              url:'https://www.tk3c.com/dic2.aspx?cid=124485&aid=23943&hid=124747'
             },
-          ]
+          ],
+          gifts: [
+            {
+              image: 'coolcleantech/images/sp01.png',
+              url: 'https://www.lg.com/tw/promotions/2025-cny-sp/'
+            },
+            {
+              image: 'coolcleantech/images/sp02.png',
+              url: 'https://event.hitachi-homeappliances.com.tw/reg.aspx?id=2086'
+            },
+            {
+              image: 'coolcleantech/images/sp03.png',
+              url: 'https://tw.sharp/news/2025-apr-aug'
+            },
+            {
+              image: 'coolcleantech/images/sp04.png',
+              url: 'https://www.mitsubishielectric.com.tw/home/refrigerator/event-250501/'
+            },
+          ],
         }
       ],
     }
@@ -264,11 +296,14 @@ export default {
     let {  today,tabs } = this
 
     // 更新現折券連結
-    if (today >= new Date('2025/05/16')) {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
+    if (today >= new Date('2025/06/01')) {
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947&strPreView=y';
     } else {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }
+
+     //撈取獨家指定滿額樓層商品
+     this.getFloorSingle(this.menuDis2)
 
     //撈取現折券樓層商品
     this.getFloorSingle(this.menuDis)
