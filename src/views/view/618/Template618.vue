@@ -29,7 +29,10 @@
         }">
           <!-- 無彈跳視窗 -->
           <swiper-slide v-if="!contents[0].isAlert" v-for="(special, s) in contents[0].specials" class="w:fit-content! w:31%!@<992 w:47%!@<576" :key="s">
-            <a :href="$filters.addGALink(special.url)" target="_blank">
+            <a v-if="special.url.indexOf('#') >= 0" @click.prevent="goAnchor(special.url)">
+              <img :src="$filters.siteUrl(special.image)">
+            </a>
+            <a v-else :href="$filters.addGALink(special.url)" target="_blank">
               <img :src="$filters.siteUrl(special.image)">
             </a>
           </swiper-slide>

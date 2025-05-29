@@ -787,8 +787,18 @@ body {
   }
 }
 
+@include media-query("mobile", "1600px") {
+  .background {
+    padding-bottom: 92%;
+  } 
+}
+
 /*  電腦版其他尺寸 */
 @include media-query("mobile", "992px") {
+  .background {
+    padding-bottom: 141vw;
+  }
+
   .info-box {
     .content {
       .tab-bg {
@@ -856,6 +866,10 @@ body {
 
 /* 手機版 */
 @include media-query("mobile", "576px") {
+  .background {
+    padding-bottom: 280vw;
+  } 
+
   .video-box {
     .youtube {
       width: 95vw;
@@ -900,5 +914,9 @@ body {
     }
   }
 }
-
+@include media-query("pc", "2500px") {
+  .background {
+    padding-bottom: 80%;
+  }
+}
 </style>

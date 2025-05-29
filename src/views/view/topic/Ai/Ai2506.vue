@@ -6,49 +6,23 @@
     </template>
 
     <template #content>
-      <!--  指南 -->
-      <section class="gift-box">
-        <ul class="w:45% w:70%@<992 w:full@<576 grid-cols:2 gap:10 gap:5@<576">
-          <li :class="[statusGift == 0 ? 'active' : '']" class="contrast(0.5) contrast(1).active">
-            <a @click="changeGift(0)">
-              <img :src="$filters.siteUrl('3c_system/images/tab1.png')" /></a>
-          </li>
-          <li class="contrast(0.5) contrast(1).active" :class="[statusGift == 1 ? 'active' : '']">
-            <a @click="changeGift(1)">
-              <img :src="$filters.siteUrl('3c_system/images/tab2.png')" /></a>
+      <!-- 登記 -->
+      <section class="gift-box" >
+        <ul class="gap:10 w:85% w:95%@<992">
+          <li v-for="(gift,g) in gifts" :key="g" :class="gift.class" class="w:46% w:full@<576 w:92%.long w:full.long@<576 mb:1% mb:5%@<576">
+            <a class="mb:5px" :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank">
+              <img v-if="gift.image" :src="$filters.siteUrl(gift.image)">
+              <img class="pc" v-if="gift.pc" :src="$filters.siteUrl(gift.pc)">
+              <img class="mobile" v-if="gift.mobile" :src="$filters.siteUrl(gift.mobile)">
+            </a>
+            <a class="info" @click="showMsg(g + 1)">
+              <img :src="$filters.siteUrl('tv_media/images/bn.png')">
+            </a>
           </li>
         </ul>
 
-        <!-- 筆電 -->
-        <div class="tab-content rel" v-show="statusGift == 0">
-          <ul class="gap:10 mb:2% pt:2% pt:3%@<992 box:border-box">
-            <li class="w:80% w:95%@<992 w:full@<576">
-              <div class="flex flex-direction:row flex-direction:column@<576 gap:10">
-                <a class="w:50% w:full@<576" @click="goNB('#sale')" target="_blank" :class="[!isOff ? 'off' : '']">
-                  <img :src="$filters.siteUrl('2024083C/images/2505/sp01-1b.png')" />
-                </a>
-                <a class="w:50% w:full@<576" :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')"
-                  target="_blank"><img :src="$filters.siteUrl('2024083C/images/2505/sp01-2a.png')" /></a>
-              </div>
-            </li>
-            <li class="w:40% w:47%@<992 w:full@<576">
-              <a :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank"><img
-                  :src="$filters.siteUrl('2024083C/images/2505/sp01-3a.png')" /></a>
-            </li>
-            <li class="w:39% w:46%@<992 w:full@<576 flex flex-direction:column gap:10">
-              <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121988')"
-                target="_blank"><img :src="$filters.siteUrl('2024083C/images/2505/sp01-4a.png')" /></a>
-              <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121986')"
-                target="_blank"><img :src="$filters.siteUrl('2024083C/images/2505/sp01-5a.png')" /></a>
-              <a :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121987')"
-                target="_blank"><img :src="$filters.siteUrl('2024083C/images/2505/sp01-6a.png')" /></a>
-            </li>
-          </ul>
-          <a class="bg:#e249fe r:20px color:#fff color:#fff:hover box:border-box f:2em f:1.5em@<576 w:20% w:35%@<992 w:50%@<576 m:auto"
-            @click="showMsg(1)">
-            活動辦法
-          </a>
-          <AlertBox ref="alert1" :type="'text'">
+        <!-- 活動辦法: 搭載Intel處理器筆電 羅技 -->
+        <AlertBox ref="alert1" :type="'text'">
             <p class="title">【活動一】 5/1-5/31購買搭載Intel處理器筆電，登記抽Panasonic 10L 清淨除濕機(市價$14,390，1名)</p>
             <p class="color:#f00 f:bold mb:25px">活動期間(2025/5/1-5/31)，於燦坤線上購物網站購買「全館任一搭載Intel
               處理器筆電(下稱活動指定商品)」，並於線上完成付款且後續未退貨退款者，並於2025/6/4(含)前至指定活動頁面完成登記申請即可獲得本活動抽獎資格，抽出1名送Panasonic 10L
@@ -72,7 +46,11 @@
               <li class='pl:10px'>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
               <li class='last'>7.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
             </ul>
-            <p class="title">【活動二】 5/1-5/31購買搭載Intel處理器筆電，單品滿$30,000，登記送 廣穎 A66 2.5吋 4TB 軍規行動硬碟-黑 (市價$3,699，10名)</p>
+        </AlertBox> 
+
+         <!-- 活動辦法: 搭載Intel處理器筆電 上豪 16吋立扇 -->
+         <AlertBox ref="alert2" :type="'text'">
+            <p class="title"> 5/1-5/31購買搭載Intel處理器筆電，單品滿$30,000，登記送 廣穎 A66 2.5吋 4TB 軍規行動硬碟-黑 (市價$3,699，10名)</p>
             <p class="color:#f00 f:bold mb:25px">
               活動期間(2025/5/1-5/31)內，於燦坤線上購物網站購買「全館任一搭載Intel處理器筆電(下稱活動指定商品)」，單品發票消費金額滿$30,000，並於線上完成付款且後續未退貨退款者，並於2025/6/4(含)前至指定活動頁面完成登記申請，送廣穎
               A66 2.5吋 4TB 軍規行動硬碟-黑 (市價$3,699，10名)。</p>
@@ -89,72 +67,11 @@
               <li class='pl:10px'>(2) 提供贈品後：需將贈品退回，倘若已使用贈品，則需返回等同贈品價值金額。​</li>
               <li class='last'>6.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
             </ul>
+        </AlertBox> 
 
-            <p class="title">【活動三】 5/1-5/31購搭載Intel處理器筆電，單筆滿$9,999，登記送 Logitech M650 多工靜音無線滑鼠(市價$1,090，10名)</p>
-            <p class="color:#f00 f:bold mb:25px">
-              活動期間(2025/5/1-5/31)內，於燦坤線上購物網站購買「全館任一搭載Intel處理器筆電(下稱活動指定商品)」，單品發票消費金額滿$9,999，並於線上完成付款且後續未退貨退款者，並於2025/6/4(含)前至指定活動頁面完成登記申請，Logitech
-              M650 多工靜音無線滑鼠(市價$1,090，10名)。
-            </p>
-            <ul>
-              <li>1.請留意登記完成不代表保證獲得回饋(贈送)資格，燦坤3C後續會進行資格檢核，相關認定以燦坤3C電腦系統之紀錄與認定為準。​</li>
-              <li>2.消費金額以實際發票開立金額認定，僅限活動指定商品消費金額，其他商品恕不累計。​</li>
-              <li>3.經核對無誤後，燦坤3C將於2025/7/25起陸續寄出獎項至會員資料地址
-                (限台灣本島地區且不可為郵政信箱)。若因地址/收件人錯誤、無人收件等不可歸責於燦坤3C之事由導致延遲、遺失等情況，恕不負責，請多包涵。​</li>
-              <li>4.商品詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金。​</li>
-              <li>
-                5.會員須遵守燦坤相關購物服務條款及其他交易有關之規定，活動期間內，若會員取消該筆訂單，或因違反相關服務條款或因司法案件等原因遭到鎖定或納入黑名單等，將會無法參與活動或無法獲得活動獎勵。若中獎發票後續有取消、退貨、退款或換貨等情事或有其他爭議(如非為會員本人購買)者，燦坤3C將以下列方式處理：​
-              </li>
-              <li class='pl:10px'>(1) 提供贈品前：燦坤3C將不會寄送贈品。</li>
-              <li class='pl:10px'>(2) 提供贈品後：需將贈品退回，倘若已使用贈品，則需返回等同贈品價值金額。​</li>
-              <li class='last'>6.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
-            </ul>
-
-            <p class="text:left mb:25px color:#f00 f:bold">【活動二、活動三僅可擇一登記，無法累積贈送。如重複登記，燦坤保有所送贈品之決定權】</p>
-          </AlertBox>
-        </div>
-
-        <!-- 週邊 -->
-        <div class="t2 tab-content pt:2% pt:3%@<992 box:border-box" v-show="statusGift == 1">
-          <div class="rel w:80% w:95%@<992 w:full@<576 m:0|auto|2%">
-            <swiper :loop="false" :spaceBetween="10" :breakpoints="{
-              0: {
-                slidesPerView: 1
-              },
-              600: {
-                slidesPerView: 2
-              },
-              992: {
-                slidesPerView: 3
-              }
-            }" :navigation="{
-          nextEl: '.gift-box .t2 .next',
-          prevEl: '.gift-box .t2 .prev',
-        }">
-              <swiper-slide>
-                <a @click="goNB('#tab8')">
-                  <img :src="$filters.siteUrl('2024083C/images/2505/sp01-7a.png')" />
-                </a>
-              </swiper-slide>
-              <swiper-slide>
-                <a @click="goNB('#tab9')">
-                  <img :src="$filters.siteUrl('2024083C/images/2505/sp01-8a.png')" />
-                </a>
-              </swiper-slide>
-              <swiper-slide>
-                <a @click="goNB('#tab13')">
-                  <img :src="$filters.siteUrl('2024083C/images/2505/sp01-9a.png')" />
-                </a>
-              </swiper-slide>
-            </swiper>
-            <div class="swiper-button-prev prev"></div>
-            <div class="swiper-button-next next"></div>
-          </div>
-          <a @click="showMsg(2)"
-            class="f:2em f:1.5em@<576 bg:#e249fe r:20px color:#fff color:#fff:hover box:border-box w:20% w:35%@<992 w:50%@<576 m:auto">
-            活動辦法
-          </a>
-          <AlertBox ref="alert2" :type="'text'">
-            <p class="title">【活動一】購買網路設備/儲存卡碟/監控攝影機，單筆滿$3000，登記送：TELEFUNKEN 14吋觸控式DC立扇(市價$2,280，20名)</p>
+        <!-- 活動辦法: 網路設備/儲存卡碟/監控攝影機 -->
+        <AlertBox ref="alert3" :type="'text'">
+            <p class="title">購買網路設備/儲存卡碟/監控攝影機，單筆滿$3000，登記送：TELEFUNKEN 14吋觸控式DC立扇(市價$2,280，20名)</p>
             <p class="mb:10px color:#f00 text:left f:bold">
               *網路設備/儲存卡碟/監控攝影機(含網路分享器/路由器、網路交換器/集線器、網路線、網路卡、硬碟、隨身碟、記憶卡、網路監控攝影機)</p>
             <p class="mb:25px color:#f00 text:left f:bold">
@@ -174,8 +91,11 @@
               <li class='pl:10px'>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
               <li class='last'>6.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
             </ul>
+        </AlertBox>
 
-            <p class="title">【活動二】5/1-5/31購買任一DIY組裝電腦，登記抽Logitech MX Mechanical無線鍵盤-黑(市價$4,990，1名)</p>
+        <!-- 活動辦法: DIY組裝電腦 -->
+        <AlertBox ref="alert4" :type="'text'">
+          <p class="title">5/1-5/31購買任一DIY組裝電腦，登記抽Logitech MX Mechanical無線鍵盤-黑(市價$4,990，1名)</p>
             <p class="mb:25px color:#f00 text:left f:bold">活動期間(2025/5/1-5/31)內，於燦坤線上購物網站購買「全館任一DIY組裝電腦
               (下稱活動指定商品)」，並於線上完成付款且後續未退貨退款者，並於2025/6/4(含)前至指定活動頁面完成登記申請，抽Logitech MX Mechanical無線鍵盤-黑(市價$4,990，1名)</p>
             <ul>
@@ -198,8 +118,11 @@
               <li class='pl:10px'>(2) 提供獎品後：中獎人需將獎品退回，倘若已使用獎品，則需返回等同獎品價值金額。​</li>
               <li class='last'>8.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
             </ul>
+        </AlertBox>
 
-            <p class="title">【活動三】 5/1-5/31購買任一投影機，單品滿$8,000，登記抽 AirPods 4 (市價$4,490，共2名) *活動不含輕劇院商品</p>
+        <!-- 活動辦法: 投影機  -->
+        <AlertBox ref="alert5" :type="'text'">
+          <p class="title">5/1-5/31購買任一投影機，單品滿$8,000，登記抽 AirPods 4 (市價$4,490，共2名) *活動不含輕劇院商品</p>
             <p class="color:#f00 mb:25px text:left f:bold">
               活動期間(2025/5/1-5/31)內，於燦坤線上購物網站購買「全館任一投影機(不包含輕劇院商品，下稱活動指定商品)」，單筆發票消費金額滿$10,000，並於線上完成付款且後續未退貨退款者，並於2025/6/4(含)前至指定活動頁面完成登記申請，送康生
               雷電滴滴 熱敷感壓按摩槍 (市價$8,800，共5名，不挑色)。</p>
@@ -216,9 +139,8 @@
               <li class='pl:10px'>(2) 提供贈品後：需將贈品退回，倘若已使用贈品，則需返回等同贈品價值金額。​</li>
               <li class='last'>6.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。​</li>
             </ul>
-          </AlertBox>
-        </div>
-      </section>
+        </AlertBox>
+      </section> 
 
       <section>
         <a :href="$filters.addGALink('https://events.tk3c.com/events_net/2025_Intel_Spring_Bundle/index.html')"
@@ -228,10 +150,24 @@
         </a>
       </section>
 
+      <!--  指南 -->
+      <section class="gift-box">
+        <ul class="w:45% w:70%@<992 w:full@<576 grid-cols:2 gap:10 gap:5@<576">
+          <li :class="[statusGift == 0 ? 'active' : '']" class="contrast(0.5) contrast(1).active">
+            <a @click="changeGift(0)">
+              <img :src="$filters.siteUrl('3c_system/images/tab1.png')" /></a>
+          </li>
+          <li class="contrast(0.5) contrast(1).active" :class="[statusGift == 1 ? 'active' : '']">
+            <a @click="changeGift(1)">
+              <img :src="$filters.siteUrl('3c_system/images/tab2.png')" /></a>
+          </li>
+        </ul>
+      </section>
+
       <!-- 筆電區商品樓層 -->
       <div v-if="statusGift == 0" class="product-area pro1">
         <!-- 狂撒百萬折價券 -->
-        <section class="sale-box scroll" titles="狂撒百萬折價券" v-if="product2[7668] != ''" id="sale">
+        <section class="sale-box scroll" titles="狂撒百萬折價券" v-if="product2[menuDis] != ''" id="sale">
           <h2 class="title">
             <a :href="$filters.addGALink(disUrl)" target="_blank">
               <img :src="$filters.siteUrl('3c_system/images/S1.png')" />
@@ -241,7 +177,7 @@
           <ListF :pro="product2[menuDis]" :isSwiper="1" :name="'pro'"></ListF>
         </section>
 
-        <section class="pro-group odd scroll" v-for="(t1, t) in tab1[0]" :titles="t1[0].text"
+        <section class="pro-group scroll" v-for="(t1, t) in tab1[0]" :titles="t1[0].text"
           :class="`tab${Number(t) + 1}-box`" :id="`tab${Number(t) + 1}`">
           <h2 class="title">
             <a :href="$filters.addGALink(t1[0].url)" target="_blank">
@@ -268,7 +204,7 @@
 
       <!-- 週邊樓層區 -->
       <div v-if="statusGift == 1" class="product-area pro2">
-        <section class="pro-group even scroll" v-for="(t2, t) in tab2[0]" :titles="t2[0].text"
+        <section class="pro-group scroll" v-for="(t2, t) in tab2[0]" :titles="t2[0].text"
           :class="`tab${Number(t) + 8}-box`" :id="`tab${Number(t) + 8}`">
           <h2 class="title">
             <a :href="$filters.addGALink(t2[0].url)" target="_blank">
@@ -302,75 +238,58 @@
 </template>
 
 <script>
-import listM from '@/views/layout/listM.vue'
 export default {
   data() {
     return {
-      listM,
       tab1:[
         {
-             0: [
+          0: [
             {
-              text:'RTX50新機',
-              title: '3c_system/images/S2.png',
-              url: 'https://events.tk3c.com/events_net/DBS_RTX50NB',
+              text:'輕薄商務',
+              title: '3c_system/images/S2_a.png',
+              url: 'https://www.tk3c.com/dictitleurl.aspx?cid=11124',
               content: [
                 {
-                  id:8152,
-                  image:'3c_system/images/S2-logo_01.png',
-                  type:listM
+                  id:8156,
+                  image:'3c_system/images/S2-logo_02a.png',
                 },
                 {
-                  id:8153,
-                  image:'3c_system/images/S2-logo_02.png',
+                  id:8155,
+                  image:'3c_system/images/S2-logo_01a.png',
                 },
-                 {
-                  id:8154,
-                  image:'3c_system/images/S2-logo_03.png',
-                  type:listM
+                {
+                  id:8229,
+                  image:'3c_system/images/S2-logo_03a.png',
                 },
               ]
             }
           ],
           1: [
             {
-              text:'輕薄商務',
-              title: '3c_system/images/S3.png',
-              url: 'https://www.tk3c.com/dictitleurl.aspx?cid=11124',
+              text:'飆速電競',
+              title: '3c_system/images/S3_a.png',
+               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117913',
               content: [
                 {
-                  id:8155,
-                  image:'3c_system/images/S3-logo_01.png',
+                  id:8230,
+                  image:'3c_system/images/S3-logo_04a.png',
                 },
                 {
-                  id:8156,
-                  image:'3c_system/images/S3-logo_02.png',
+                  id:8157,
+                  image:'3c_system/images/S3-logo_01a.png',
+                },
+                {
+                  id:8158,
+                  image:'3c_system/images/S3-logo_02a.png',
+                },
+                {
+                  id:8159,
+                  image:'3c_system/images/S3-logo_03a.png',
                 }
               ]
             }
           ],
           2: [
-            {
-              text:'飆速電競',
-              title: '3c_system/images/S4.png',
-               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117913',
-              content: [
-                {
-                  id:8157,
-                  image:'3c_system/images/S4-logo_01.png',
-                },
-                {
-                  id:8158,
-                  image:'3c_system/images/S4-logo_02.png',
-                },
-                {
-                  id:8159,
-                  image:'3c_system/images/S4-logo_03.png',
-                }
-              ]
-            }
-          ],
-          3: [
             {
               text:'特仕改裝升級',
               title: '3c_system/images/S5.png',
@@ -391,7 +310,7 @@ export default {
               ]
             }
           ],
-          4: [
+          3: [
             {
               text:'精選螢幕',
               title: '3c_system/images/S6.png',
@@ -408,7 +327,7 @@ export default {
               ]
             }
           ],
-          5: [
+          4: [
             {
               id:7277,
               text:'高效桌機',
@@ -416,7 +335,7 @@ export default {
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=114130'
             }
           ],
-          6: [
+          5: [
             {
               text:'DIY零組件',
               title: '3c_system/images/S8.png',
@@ -610,6 +529,25 @@ export default {
           image: '202404_green/images/bn_tesnbM.jpg'
         }
       ],
+      gifts: [
+        {
+          image: '3c_system/images/SP01.png'
+        },
+        {
+          image: '3c_system/images/SP02.png'
+        },
+        {
+          image: '3c_system/images/SP03.png'
+        },
+        {
+          image: '3c_system/images/SP04.png'
+        },
+        {
+          pc: '3c_system/images/SP05_PC.png',
+          mobile: '3c_system/images/SP05_M.png',
+          class:'long'
+        },
+      ],
       statusPro: 0,
       tabs: [],
       statusGift: 0,
@@ -619,24 +557,28 @@ export default {
       menuDis:8151,
       contents:[
         {
-          title:'3c_system/images/title.png',
+          title:'3c_system/images/title2.png',
           menuPro:8150,
           specials:[
             {
-              image:'tv_media/images/C01.png',
-              url:''
+              image:'3c_system/images/C01.png',
+              url:'#sale'
             },
             {
-              image:'tv_media/images/C02.png',
-              url:''
+              image:'3c_system/images/C02.png',
+              url:'https://www.tk3c.com/dic2.aspx?cid=19729&aid=7461&hid=19732'
             },
             {
-              image:'tv_media/images/C03.png',
-              url:''
+              image:'3c_system/images/C03.png',
+              url:'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121988'
             },
             {
-              image:'tv_media/images/C04.png',
-              url:''
+              image:'3c_system/images/C04.png',
+              url:'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121986'
+            },
+            {
+              image:'3c_system/images/C05.png',
+              url:'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=121987'
             },
           ]
         }
@@ -644,14 +586,13 @@ export default {
     }
   },
   mounted() {
-    let {today,tab1,tab2 } = this
-    if (today >= new Date('2025/05/16')) this.isOff = false;
+    let {today,tab1,tab2 } = this;
 
     // 更新現折券連結
-    if(today >= new Date('2025/05/16')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
+    if(today >= new Date('2025/06/01')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947';
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
     }
 
      if (this.statusGift == 0 ) this.tabs = tab1[0];
@@ -674,29 +615,8 @@ export default {
       this.statusGift = id
     },
     showMsg(id) {
-      let self = this;
-      switch (id) {
-        case 1:
-          self.$refs.alert1.openAlert();
-          break;
-      
-        case 2:
-          self.$refs.alert2.openAlert();
-          break;
-      }
-    },
-    goNB(element) {
-      //前往錨點
-      let el = document.querySelector(element),
-        rect = el.getBoundingClientRect(),
-        move = rect.top + document.documentElement.scrollTop
-
-      setTimeout(() => {
-        window.scrollTo({
-          top: move - 100,
-        })
-      }, 100)
-    },
+      this.$refs[`alert${id}`].openAlert();
+    }
   }
 }
 </script>
@@ -729,8 +649,37 @@ body {
   }
 }
 
+.gift-box {
+  li {
+    .info {
+      width: 32%;
+    }
+    &.long {
+      .info {
+        width: 18%;
+      }
+    }
+  }
+}
+
+.special-box {
+  .swiper-slide {
+    width: 18.5% !important;
+  }
+}
+
+@include media-query("mobile", "1600px") {
+  .background {
+    padding-bottom: 92%;
+  } 
+}
+
 /*  電腦版其他尺寸 */
 @include media-query('mobile', '992px') {
+  .background {
+    padding-bottom: 141vw;
+  } 
+
   .pro-group {
     .tab {
       .swiper-wrapper {
@@ -739,6 +688,7 @@ body {
     }
   }
 
+  .tab2-box,
   .tab8-box,
   .tab14-box {
     .tab {
@@ -750,13 +700,22 @@ body {
       }
     }
   }
+
+  .special-box {
+    .swiper-slide {
+      width: 31.5% !important;
+    }
+  }
 }
 
 /* 手機版 */
 @include media-query('mobile', '576px') {
+  .background {
+    padding-bottom: 280vw;
+  } 
+  
   .tab1-box,
-  .tab3-box,
-  .tab4-box {
+  .tab3-box {
     .tab {
       .swiper-wrapper {
         justify-content: left;
@@ -771,6 +730,31 @@ body {
         flex-basis: 43%;
       }
     }
+  }
+
+  .special-box {
+    .swiper-slide {
+      width: 46% !important;
+    }
+  }
+
+  .gift-box {
+    li {
+      .info {
+        width: 35%;
+      }
+      &.long {
+        .info {
+          width: 35%;
+        }
+      }
+    }
+  }
+}
+
+@include media-query("pc", "2500px") {
+  .background {
+    padding-bottom: 80%;
   }
 }
 </style>

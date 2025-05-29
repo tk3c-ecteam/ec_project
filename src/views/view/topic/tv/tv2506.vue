@@ -172,19 +172,19 @@ export default {
           specials: [
             {
               image: 'tv_media/images/C01_a.png',
-              url: ''
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11312&aid=4708&hid=11343'
             },
             {
               image: 'tv_media/images/C02_a.png',
-              url: ''
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11312&aid=4708&hid=11338'
             },
             {
               image: 'tv_media/images/C03_a.png',
-              url: ''
+              url: 'https://www.tk3c.com/dictitleurl.aspx?cid=11312'
             },
             {
               image: 'tv_media/images/C04_a.png',
-              url: ''
+              url: 'https://www.tk3c.com/dic2.aspx?cid=11312&aid=4708&hid=11340'
             },
           ],
           floors: [

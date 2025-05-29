@@ -298,6 +298,7 @@ export const globalMixin = {
       }
     },
     goAnchor(element) {
+      if (document.querySelector(element) == null) return;
       //前往錨點
       let el = document.querySelector(element),
         rect = el.getBoundingClientRect(),

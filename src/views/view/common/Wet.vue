@@ -51,16 +51,7 @@ export default {
   },
   methods: {
     message() {
-      Swal.fire({
-        width: 900,
-        html: `<img src="https://www.cdn-tkec.tw/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg" width="100%">
-          <img src="https://www.cdn-tkec.tw/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg" width="100%">`,
-        showCloseButton: true,
-        position: 'center',
-        returnFocus: false,
-        confirmButtonText: '確定',
-        confirmButtonColor: '#46a5b0'
-      })
+      this.$refs.alert.openAlert();
     }
   },
 }
@@ -84,19 +75,12 @@ export default {
       </p>
       <div
         class="w:30% w:40vw@<992 w:85vw@<576 abs right:21% right:12vw@<992 right:12vw@<576 top:22% top:8vw@<992 top:66vw@<576">
-           <swiper 
-        :loop="true" 
-        :autoplay="{
+        <swiper :loop="true" :autoplay="{
           delay: 1800,
           disableOnInteraction: false
-        }" 
-        :parallax="true" 
-        :effect="'fade'" 
-         :fadeEffect="{
+        }" :parallax="true" :effect="'fade'" :fadeEffect="{
             crossFade: true
-          }" 
-          :modules="[EffectFade, Parallax]"
-          >
+          }" :modules="[EffectFade, Parallax]">
           <swiper-slide v-for="(pro,p) in proWets" :key="p">
             <a :href="$filters.addGALink(pro.url)" target="_blank" data-swiper-parallax-opacity="0">
               <img :src="$filters.siteUrl(pro.image)" />
@@ -125,6 +109,20 @@ export default {
             <img :src="$filters.siteUrl('wet/images/sub2_b.png')" /></a>
         </li>
       </ul>
+
+      <!-- 彈出訊息 -->
+      <AlertBox ref="alert" :type="'image'">
+        <picture>
+          <img
+            src="https://www.cdn-tkec.tw/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg"
+            width="100%">
+        </picture>
+        <picture>
+          <img
+            src="https://www.cdn-tkec.tw/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg"
+            width="100%">
+        </picture>
+      </AlertBox>
     </section>
 
     <!-- 速速go -->
@@ -236,6 +234,14 @@ body {
 .go-box {
   .bg01 {
     margin: 0 auto 2%;
+  }
+}
+
+.alert-box {
+  .img-content {
+    height: 70%;
+    overflow: auto;
+    padding: 0;
   }
 }
 

@@ -114,6 +114,7 @@ export default {
       isNew: false,
       isOpen:false,
       isOff:true,
+      isAllOff:true,
       swiperOption: {
         breakpoints: {
           0: {
@@ -149,6 +150,8 @@ export default {
       this.isOpen = true;
       this.isOff = false;
     }
+
+    if (today >= new Date('2025/06/01')) this.isAllOff = false;
 
     // 每週六日顯示
     if (today.getDay() == 6 || today.getDay() == 0) {
@@ -223,7 +226,7 @@ export default {
     </div>
 
     <!-- 新展活動 -->
-    <section>
+    <section v-if="isAllOff">
       <h2 class="title">
         <img v-show="isOff" :src="$filters.siteUrl('green_subsidy/images/new/bar_2504.png')" />
         <img v-show="isOpen" :src="$filters.siteUrl('green_subsidy/images/new/bar_2505.png')" />

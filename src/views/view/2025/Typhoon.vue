@@ -15,11 +15,8 @@
     <CommonFloor :floors="floors" :menu="menus"></CommonFloor>
   </div>
 
-  <!-- 左側選單+手機版 -->
-   <LeftAside></LeftAside>
-
    <!-- 右側選單 -->
-   <RightAside :asideImage="asideImage"></RightAside> 
+   <RightAside :asideImage="asideImage" :type="'mobile2'"></RightAside> 
 </template>
 
 <script setup>
