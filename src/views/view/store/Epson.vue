@@ -112,9 +112,6 @@ const icons = [
       </section>
     </template>
   </StoreDefault>
-
-  <!-- 商品樓層 -->
-  <CommonFloor :floors="contents[0].floorImg" :menu="menu"></CommonFloor>
 </template>
 
 <style lang="scss">

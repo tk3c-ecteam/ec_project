@@ -119,6 +119,7 @@ body {
     padding: 45px 0 0;
     span {
       width: 10%;
+      padding-top: 0;
     }
   }
 }

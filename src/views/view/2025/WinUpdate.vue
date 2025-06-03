@@ -86,9 +86,9 @@
     </section>
 
     <!-- RTX50 新機預購 -->
-    <section class="rtx-group scroll" titles="RTX50新機預購" id="rtx">
+    <section class="rtx-group scroll" titles="RTX50新機" id="rtx">
       <h2 class="title">
-        <a :href="$filters.addGALink('https://events.tk3c.com/events_net/DBS_RTX50NB')" target="_blank">
+        <a href="https://events.tk3c.com/events_net/3c_system/index.html#tab2" target="_blank">
           <img :src="$filters.siteUrl('windows10upgrade/images/bar_rtx50.png')" />
         </a>
       </h2>
@@ -178,15 +178,15 @@ export default {
         },
          {
           "image":"windows10upgrade/images/bar_02.png",
-          "url":"https://events.tk3c.com/events_net/2024083C/index.html",
+          "url":"https://events.tk3c.com/events_net/3c_system/index.html",
         },
          {
           "image":"windows10upgrade/images/bar_03.png",
-          "url":"https://events.tk3c.com/events_net/2024083C/index.html",
+          "url":"https://events.tk3c.com/events_net/3c_system/index.html",
         },
          {
           "image":"windows10upgrade/images/bar_04.png",
-          "url":"https://events.tk3c.com/events_net/2024083C/index.html",
+          "url":"https://events.tk3c.com/events_net/3c_system/index.html",
         }
       ],
       today:new Date(),
