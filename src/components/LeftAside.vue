@@ -29,9 +29,9 @@
     {"name":"戶外休閒","url":"https://events.tk3c.com/events_net/outdoor3c/index.html"},
   ];
 
-  if (today >= new Date('2025/06/04')) {
+  /*if (today >= new Date('2025/06/04')) {
     topics = topics.concat(...topic618);
-  }
+  }*/
 
   switch (folderName) {
     case 'icewash2209':

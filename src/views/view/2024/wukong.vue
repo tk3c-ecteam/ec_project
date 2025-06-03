@@ -1,13 +1,5 @@
-<script setup>
-import listF from '../layout/listF.vue'
-import mobileAi from '../layout/mobileAi.vue'
-</script>
-
 <script>
-import { globalMixin } from '../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
       status: 0,
@@ -22,20 +14,19 @@ export default {
             {
               title: 'WUKONG/images/S02.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117913',
-              asidetext: '電競筆電',
-              asideUrl: '#tab1',
+              text: '電競筆電',
               tag: [
                 {
                   url: 'https://events.tk3c.com/events_net/2024083C/index.html',
-                  image: 'WUKONG/images/tag1-1_a.png'
+                  image: 'WUKONG/images/tag1-1_a.png',
                 },
                 {
                   url: 'https://events.tk3c.com/events_net/2024083C/index.html',
-                  image: 'WUKONG/images/tag1-2_a.png'
+                  image: 'WUKONG/images/tag1-2_a.png',
                 },
                 {
                   url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=123687&strPreView=y',
-                  image: 'WUKONG/images/tag1-3_a.png'
+                  image: 'WUKONG/images/tag1-3_a.png',
                 }
               ]
             }
@@ -44,12 +35,11 @@ export default {
             {
               title: 'WUKONG/images/S03.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117914',
-              asidetext: '電競桌機',
-              asideUrl: '#tab2',
+              text: '電競桌機',
               tag: [
                 {
                   url: 'https://www.tk3c.com/dic2.aspx?cid=11124&aid=22469&hid=123687&strPreView=y',
-                  image: 'WUKONG/images/tag2-1_a.png'
+                  image: 'WUKONG/images/tag2-1_a.png',
                 }
               ]
             }
@@ -58,32 +48,28 @@ export default {
             {
               title: 'WUKONG/images/S04.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117915',
-              asidetext: '電競螢幕',
-              asideUrl: '#tab3'
+              text: '電競螢幕',
             }
           ],
           3: [
             {
               title: 'WUKONG/images/S05.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=117916&aid=23091',
-              asidetext: '鍵鼠/耳機',
-              asideUrl: '#tab4'
+              text: '鍵鼠/耳機',
             }
           ],
           4: [
             {
               title: 'WUKONG/images/S06.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=117896&aid=23009&strPreView=y',
-              asidetext: '顯示卡',
-              asideUrl: '#tab5'
+              text: '顯示卡',
             }
           ],
           5: [
             {
               title: 'WUKONG/images/S07.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=117896',
-              asidetext: 'SSD/RAM',
-              asideUrl: '#tab6'
+              text: 'SSD/RAM',
             }
           ]
         }
@@ -94,16 +80,14 @@ export default {
             {
               title: 'WUKONG/images/S08.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=629&aid=10180',
-              asidetext: 'PS5&週邊',
-              asideUrl: '#tab7'
+              text: 'PS5&週邊',
             }
           ],
           1: [
             {
               title: 'WUKONG/images/S09.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=11312',
-              asidetext: '電視',
-              asideUrl: '#tab8',
+              text: '電視',
               tag: [
                 {
                   url: 'https://www.tk3c.com/dictitleurl.aspx?cid=11312',
@@ -120,8 +104,7 @@ export default {
             {
               title: 'WUKONG/images/S10.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=828',
-              asidetext: '聲霸/喇叭',
-              asideUrl: '#tab9'
+              text: '聲霸/喇叭',
             }
           ]
         }
@@ -153,7 +136,7 @@ export default {
       </h2>
 
       <div class="product">
-        <swiper-container
+        <swiper
           :loop="true"
           :parallax="true"
           :autoplay="{
@@ -163,10 +146,10 @@ export default {
         >
           <swiper-slide v-for="pro in proDatas">
             <a :href="$filters.addGALink(pro.url)" target="_blank">
-              <img :src="$filters.siteUrl(pro.image)" alt="" />
+              <img :src="$filters.siteUrl(pro.image)" />
             </a>
           </swiper-slide>
-        </swiper-container>
+        </swiper>
       </div>
     </div>
 
@@ -181,10 +164,10 @@ export default {
       </h2>
 
       <ul class="tab">
-        <li :class="[status == 0 ? 'active' : '']" :value="0">
+        <li :class="[status == 0 ? 'active' : '']">
           <a @click="change(0)"><img :src="$filters.siteUrl('WUKONG/images/steam.png')" /></a>
         </li>
-        <li :class="[status == 1 ? 'active' : '']" :value="1">
+        <li :class="[status == 1 ? 'active' : '']">
           <a @click="change(1)"><img :src="$filters.siteUrl('WUKONG/images/ps5.png')" /></a>
         </li>
       </ul>
@@ -193,10 +176,11 @@ export default {
     <!-- steam平台 樓層 -->
     <div class="special sp1" v-if="status == 0">
       <section
-        class="tab-area scroll"
+        class="pro-area scroll"
         v-for="(tab, t) in tab1[0]"
         :class="`tab${Number(t) + 1}-box`"
         :id="`tab${Number(t) + 1}`"
+        :titles="tab[0].text"
       >
         <h2 class="title">
           <a :href="$filters.addGALink(tab[0].url)" target="_blank">
@@ -204,11 +188,7 @@ export default {
           </a>
         </h2>
 
-        <component
-          v-if="products[menu1[t]] != undefined"
-          :is="listF"
-          :pro="products[menu1[t]].Data"
-        ></component>
+        <listF v-if="products[menu1[t]] != undefined" :pro="products[menu1[t]].Data"></listF>
 
         <ul class="tags" v-if="tab[0].tag != undefined">
           <li v-for="tag in tab[0].tag">
@@ -228,6 +208,7 @@ export default {
         :key="t"
         :class="`tab${Number(t) + 7}-box`"
         :id="`tab${Number(t) + 7}`"
+        :titles="tab[0].text"
       >
         <h2 class="title">
           <a :href="$filters.addGALink(tab[0].url)" target="_blank">
@@ -235,11 +216,7 @@ export default {
           </a>
         </h2>
 
-        <component
-          v-if="products[menu2[t]] != undefined"
-          :is="listF"
-          :pro="products[menu2[t]].Data"
-        ></component>
+        <listF v-if="products[menu2[t]] != undefined" :pro="products[menu2[t]].Data"></listF>
 
         <ul class="tags" v-if="tab[0].tag != undefined">
           <li v-for="tag in tab[0].tag">
@@ -253,35 +230,10 @@ export default {
   </div>
 
   <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="arrow"><i class="fas fa-chevron-left"></i></span>
-    <div class="aside-wrap">
-      <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul class="a1" v-show="status == 0">
-          <li v-for="(t1, t) in tab1[0]">
-            <a :href="t1[0].asideUrl">{{ t1[0].asidetext }}</a>
-          </li>
-        </ul>
-        <ul class="a2" v-show="status == 1">
-          <li v-for="(t2, t) in tab2[0]">
-            <a :href="t2[0].asideUrl">{{ t2[0].asidetext }}</a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <!-- 手機版選單 -->
-  <mobileAi v-model:status="status" v-model:tab1="tab1" v-model:tab2="tab2"></mobileAi>
+  <RightAside :type="'mobile2'"></RightAside>
 </template>
 
 <style lang="scss">
-@charset "utf-8";
-
-@import '../../assets/sass/module/base';
 $dir: 'https://events.cdn-tkec.tw/events_net/events_net/WUKONG/images/';
 $origin: 'https://events.tk3c.com/events_net/events_net/WUKONG/images/';
 

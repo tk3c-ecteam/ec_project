@@ -74,6 +74,9 @@
     margin-bottom: 15px;
     font-weight: bold;
     color: #1559f9;
+    background: #cfc8c8;
+    padding: 5px;
+    box-sizing: border-box;
   }
   ul {
     justify-content: left;

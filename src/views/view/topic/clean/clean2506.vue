@@ -226,13 +226,5 @@ section {
       padding-bottom: 160vw;
     }
   }
-
-  .tab-box {
-    .tab {
-      .swiper-wrapper {
-        justify-content: center;
-      }
-    }
-  }
 }
 </style>
