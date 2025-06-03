@@ -4,7 +4,7 @@
       <h2 class="title animate__animated animate__backInUp">
         <img class="animate__animated animate__heartBeat"
           :src="$filters.siteUrl('windows10upgrade/images/title2.png')" />
-           <em class="date" v-if="isDate">即日起-5.31</em>
+           <em class="date">即日起-{{ getLastDay() }}</em>
       </h2>
     </div>
 
@@ -17,7 +17,7 @@
     </p>
 
     <!-- 精選推薦商品 -->
-    <section class="special-box scroll" titles="精選推薦商品" id="special">
+    <section class="special-box scroll" v-if="isSp" titles="精選推薦商品" id="special">
       <h2 class="title">
         <img :src="$filters.siteUrl('windows10upgrade/images/bar_top.png')" />
       </h2>
@@ -192,14 +192,24 @@ export default {
       today:new Date(),
       menu:[7859,7860,7861,7862],
       isGift:false,
-      isDate:true
+      isDate:true,
+      isSp:false
     }
   },
   mounted() {
     const { today } = this;
-    this.fixedBg('.background2','.special-box');
+    this.fixedBg('.background2','.rtx-group');
 
     if(today >= new Date('2025/06/01')) this.isDate = false;
+  },
+  methods: {
+    getLastDay() {
+      const year = this.today.getFullYear(),
+      month = this.today.getMonth(),
+      last = new Date(year,month + 1,0), // 0 為最後一天
+      lastDay = last.getDate();
+      return (month + 1) + '.' + lastDay;
+    }
   },
 }
 </script>
@@ -319,7 +329,7 @@ body{
 @include media-query("mobile", "992px") {
   #window-container {
     .background {
-      padding-bottom: 40vw;
+      padding-bottom: 50vw;
       .title {
         width: 55%;
         top: 9vw;
@@ -363,16 +373,9 @@ body{
 
 /* 手機版 */
 @include media-query("mobile", "576px") {
-  .fix_btn {
-    display: block;
-    .dropdown-menu {
-      display: none;
-    }
-  }
-
   #window-container {
     .background {
-      padding-bottom: 75vw;
+      padding-bottom: 88vw;
       .title {
         width: 85%;
         top: 25vw;

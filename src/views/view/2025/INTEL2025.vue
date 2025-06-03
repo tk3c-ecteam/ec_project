@@ -14,7 +14,7 @@
     </section>
 
     <!-- 獨家優惠指南 -->
-    <section class="special-box scroll" titles="獨家優惠指南" id="special">
+    <section class="special-box scroll" v-if="isSp" titles="獨家優惠指南" id="special">
       <h2 class="title">
         <img :src="$filters.siteUrl('2025_Intel_Spring_Bundle/images/S01.png')" />
       </h2>
@@ -142,13 +142,14 @@ export default {
       moreImage:'2025_Intel_Spring_Bundle/images/more.png',
       menu:[8033,8034],
       menuPro:8032,
-      isOff:true
+      isOff:true,
+      isSp:false
     }
   },
   mounted() {
     const { today } = this;
 
-    this.fixedBg('.background2','.special-box');
+    this.fixedBg('.background2','#pro8033');
 
     //撈取上方商品
     this.getFloorSingle(this.menuPro);

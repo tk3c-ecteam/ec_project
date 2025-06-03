@@ -110,9 +110,9 @@
           <li v-if="type == 'mobile3'" class="rt:15px color:#fff bg:#767070 f:bold mb:5px box:border-box">燦坤服務</li>
             <Service v-if="type == 'mobile3'"></Service>
            <li v-if="asides && (type == 'mobile' || type == 'mobile2')" class="rt:15px color:#fff bg:#767070 f:bold mb:5px box:border-box">熱門品類</li>
-           <li v-if="type == 'mobile' || type == 'mobile2'" v-for="(aside, a) in asides" class="w:48%! m:0|1px! box:border-box" :class="{'stay': status == a,'br:2px|solid|#fff': a % 2 == 0}" :key="a">
+           <li v-if="type == 'mobile' || type == 'mobile2'" v-for="(aside, a) in asides" class="w:48%! m:0|1px! p:0|5px box:border-box" :class="{'stay': status == a,'br:2px|solid|#fff': a % 2 == 0}" :key="a">
                 <a class="bg:none! word-break:keep-all white-space:nowrap text:ellipsis overflow:hidden box:border-box" :href="aside.href">{{ aside.text }}</a>
-                <em v-if="a != asides.length - 1 && a != asides.length - 2" class="w:75% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
+                <em v-if="a != asides.length - 1 && a != asides.length - 2" class="w:95% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
              </li>
          </ul>
       </div>

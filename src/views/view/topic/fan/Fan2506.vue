@@ -5,7 +5,41 @@
       <img class="mobile" :src="$filters.siteUrl('3c_system/images/BOX_M.png')" />
     </template>
     <template #content>
-       <!-- 速速go -->
+      <!-- 登記送 -->
+      <section class="gift-box">
+        <ul class="w:85% w:95%@<992 w:full@<576 grid-cols:1">
+          <li>
+            <a :href="$filters.addGALink('https://www.tk3c.com/events/eventgift.aspx')" target="_blank">
+              <img class="pc" :src="$filters.siteUrl('fan/images/gift_pc2.png')">
+              <img class="mobile" :src="$filters.siteUrl('fan/images/gift_m2.png')">
+            </a>
+            <a class="w:18% w:35%@<576" @click="alert">
+              <img :src="$filters.siteUrl('tv_media/images/bn.png')">
+            </a>
+          </li>
+        </ul>
+
+        <!-- 活動辦法 -->
+        <AlertBox ref="alert" :type="'text'">
+          <ul>
+            <li>
+              1.活動期2025/6.1-30內，於燦坤線上購物網站購搭載風扇或水冷扇，單品滿額$2000(下稱活動指定商品)」，並於線上完成付款且後續未退貨退款者，並於2025/6.1-30(含)前至指定活動頁面完成登記申請，登記送好禮:聲寶8吋循環扇 (市價$888，10名)
+            </li>
+            <li>2.完成登錄不代表保證獲得回饋，限量名額依「登錄且符合活動條件」順序為準，最終認定以燦坤3C電腦系統為準，不接受截圖、翻拍等證明。若系統異常導致無法登錄或資料遺失等情況時，燦坤3C可改以「發票開立時間」認定。若發票後續有取消、退換貨並重開時，需以「新發票號碼」重新登錄。​</li>
+            <li>3.經核對無誤後，燦坤3C將於2025/7/28起陸續寄出獎項至會員資料地址(限台灣本島地區且不可為郵政信箱)。若因地址/收件人錯誤、無人收件等不可歸責於燦坤3C之事由導致延遲、遺失等情況，恕不負責，請多包涵。</li>
+            <li>4.商品詳細內容與規格以實物為準，不得轉換、轉讓、轉售或折換現金。 </li>
+            <li>
+              5.會員須遵守燦坤線上購物服務條款、使用規範及其他交易有關之規定，若活動期間內，若會員帳號因違反燦坤線上購物相關規則或因司法案件等原因遭到鎖定或納入黑名單，或系統偵測與判斷您有使用任何外掛程式或非正常方式進行登記，將會無法參與活動或無法獲得活動獎勵。若後續有爭議者，燦坤3C將以下列方式處理 (1)提供贈品前：燦坤3C將不會寄送贈品。 (2)提供贈品後：需將贈品退回，倘若已使用贈品，則需返回等同贈品價值金額。 
+            </li>
+            <li>6.活動未盡事宜以燦坤線上購物官網公告為準，燦坤3C保留活動最終解釋修改變更之權利。</li>
+            <li>7.每人限登記一次。參與資格以燦坤認列為準。 ​</li>
+            <li>8寄送資料將以燦坤線上購物會員資料為準，若因燦坤後台資料填寫不完整或錯誤，影響後續寄送，將視同失去贈獎資格。​</li>
+            <li class='last'>9.滿額活動無法累計贈送，每人限登單一門檻，如重複登記，燦坤保有權決定所贈送之贈品。​</li>
+          </ul>
+        </AlertBox>
+      </section>
+
+      <!-- 速速go -->
       <section class="sale-box scroll" titles="速速GO" id="go">
         <h2 class="title">
           <a :href="$filters.addGALink('https://fast.tk3c.com/store/219/category/13')" target="_blank">
@@ -14,7 +48,7 @@
         </h2>
 
         <div class="sale">
-        <listF :pro="product2[menuGo]" :isSwiper="1" :name="'sale'"></listF> 
+          <listF :pro="product2[menuGo]" :isSwiper="1" :name="'sale'"></listF>
         </div>
       </section>
     </template>
@@ -27,7 +61,7 @@ export default {
     return {
       contents:[
         {
-          title:'fan/images/title2.png',
+          title:'fan/images/title3_2.png',
           menuPro:8217,
           floors: [
             {
@@ -107,6 +141,11 @@ export default {
   mounted() {
     //撈取速速go樓層商品
     this.getFloorSingle(this.menuGo)
+  },
+  methods: {
+    alert() {
+      this.$refs.alert.openAlert();
+    }
   },
 }
 </script>

@@ -10,17 +10,6 @@
   statusTopic = null;
 
   let topics = [
-    {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/icewash2209/index.html"},
-    {"name":"空調主題館","url":"https://events.tk3c.com/events_net/airConditionerLAB/index.html"},
-    {"name":"電視主題館","url":"https://events.tk3c.com/events_net/2020TVforever/index.html"},
-    {"name":"3C電腦週邊","url":"https://events.tk3c.com/events_net/2024083C/index.html"},
-    {"name":"風扇與熨燙","url":"https://events.tk3c.com/events_net/fan_hot/index.html"},
-    {"name":"綠點10倍送","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
-    {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
-    {"name":"福利品特賣","url":"https://events.tk3c.com/events_net/OUTLET/index.html"},
-  ];
-
-  let topic6 = [
     {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/coolcleantech/index.html"},
     {"name":"空調主題館","url":"https://events.tk3c.com/events_net/airconditioner/index.html"},
     {"name":"電視主題館","url":"https://events.tk3c.com/events_net/tv_media/index.html"},
@@ -29,6 +18,7 @@
     {"name":"綠點10倍送","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
     {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
     {"name":"福利品特賣","url":"https://events.tk3c.com/events_net/OUTLET/index.html"},
+    {"name":"電競專區","url":"https://events.tk3c.com/events_net/GamingRace/index.html"},
   ];
 
   let topic618 = [
@@ -38,9 +28,6 @@
     {"name":"行動通訊","url":"https://events.tk3c.com/events_net/mobile3c/index.html"},
     {"name":"戶外休閒","url":"https://events.tk3c.com/events_net/outdoor3c/index.html"},
   ];
-
-  // 6/1更換連結
-  if (today >= new Date('2025/06/01')) topics = topic6;
 
   if (today >= new Date('2025/06/04')) {
     topics = topics.concat(...topic618);
@@ -80,24 +67,28 @@
       statusTopic = 6;
       break;
 
-    case 'office3c':
+    case 'GamingRace':
       statusTopic = 8;
-      break;
+      break;  
 
-    case 'healthbeauty':
+    case 'office3c':
       statusTopic = 9;
       break;
 
-    case 'kitchen3c':
+    case 'healthbeauty':
       statusTopic = 10;
       break;
 
-    case 'mobile3c':
+    case 'kitchen3c':
       statusTopic = 11;
       break;
 
-    case 'outdoor3c':
+    case 'mobile3c':
       statusTopic = 12;
+      break;
+
+    case 'outdoor3c':
+      statusTopic = 13;
       break;
   } 
 
@@ -201,15 +192,15 @@ export default {
           <li class="main color:#fff f:bold" v-if="main">
             <a class="bg:#767070!" :href="$filters.addGALink(mainUrl)" target="_blank">回主會館</a>
           </li>
-           <li v-for="(topic,t) in topics" :class="{'br:2px|solid|#fff': t % 2 == 0}" class="w:48%! m:0|1px! box:border-box" :key="t">
+           <li v-for="(topic,t) in topics" :class="{'br:2px|solid|#fff': t % 2 == 0}" class="w:48%! m:0|1px! p:0|4px box:border-box" :key="t">
             <a class="bg:none! word-break:keep-all text:ellipsis overflow:hidden box:border-box" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
-            <em v-if="t != topics.length -1 && t != topics.length - 2" class="w:75% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
+            <em v-if="t != topics.length -1 && t != topics.length - 2" class="w:95% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
            </li>
            <li v-if="asides" class="color:#fff bg:#767070 f:bold mb:5px">熱門品類</li>
-           <li v-for="(aside, a) in asides" class="w:48%! m:0|1px! box:border-box" :class="{'stay': status == a,'br:2px|solid|#fff': a % 2 == 0}" :key="a">
-                <a class="bg:none! word-break:keep-all white-space:nowrap text:ellipsis overflow:hidden box:border-box" :href="aside.href">{{ aside.text }}</a>
-                <em v-if="a != asides.length - 1 && a != asides.length - 2" class="w:75% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
-             </li>
+           <li v-for="(aside, a) in asides" class="w:48%! m:0|1px! p:0|5px box:border-box" :class="{'stay': status == a,'br:2px|solid|#fff': a % 2 == 0}" :key="a">
+              <a class="bg:none! word-break:keep-all white-space:nowrap text:ellipsis overflow:hidden box:border-box" :href="aside.href">{{ aside.text }}</a>
+              <em v-if="a != asides.length - 1 && a != asides.length - 2" class="w:95% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
+           </li>
         </ul>
       </div>
       <a href="#" class="go-top" @click="goTop">GO TOP</a>

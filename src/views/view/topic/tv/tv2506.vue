@@ -49,7 +49,7 @@
         </section>
 
         <!-- 夜間下殺 -->
-        <section class="night-box" v-show="isNight && products[menuNight[n]] != ''">
+        <section class="night-box" v-if="product2[menuNight[n]]">
           <h2 class="title">
             <a :href="$filters.addGALink('https://events.tk3c.com/events_net/nightsale/index.html')" target="_blank">
               <img :src="$filters.siteUrl('tv_media/images/S04.png')" />
@@ -314,6 +314,12 @@ body {
   }
 }
 
+.special-box {
+  .swiper-slide {
+    width: 23.4% !important;
+  }
+}
+
 
 /*  電腦版其他尺寸 */
 @include media-query('mobile', '992px') {
@@ -339,6 +345,12 @@ body {
     width: 100%;
   }
  }
+
+ .special-box {
+  .swiper-slide {
+    width: 31% !important;
+  }
+ }
 }
 
 /* 手機版 */
@@ -351,6 +363,12 @@ body {
       .swiper-wrapper {
         justify-content: left;
       }
+    }
+  }
+
+  .special-box {
+    .swiper-slide {
+      width: 47% !important;
     }
   }
 }

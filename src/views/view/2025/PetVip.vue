@@ -39,7 +39,9 @@
 
       <!-- 彈出視窗 -->
       <AlertBox v-for="(msg,m) in message" :key="m" :ref="`alert${m}`" :type="'image'">
-        <img :src="$filters.siteUrl(msg.image)" width="50%" height="50%">
+        <picture>
+          <img :src="$filters.siteUrl(msg.image)" loading="lazy">
+        </picture>
       </AlertBox>
     </section> 
 
