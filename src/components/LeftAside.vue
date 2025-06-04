@@ -18,7 +18,9 @@
     {"name":"綠點10倍送","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
     {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
     {"name":"福利品特賣","url":"https://events.tk3c.com/events_net/OUTLET/index.html"},
-    {"name":"電競專區","url":"https://events.tk3c.com/events_net/GamingRace/index.html"},
+    {"name":"電競主題館","url":"https://events.tk3c.com/events_net/GamingRace/index.html"},
+    {"name":"毛孩生活館","url":"https://events.tk3c.com/events_net/pet_product/index.html"},
+    {"name":"Win11優惠 ","url":"https://events.tk3c.com/events_net/windows10upgrade/index.html"},
   ];
 
   let topic618 = [
@@ -71,24 +73,32 @@
       statusTopic = 8;
       break;  
 
-    case 'office3c':
+    case 'pet_product':
       statusTopic = 9;
-      break;
+      break;  
 
-    case 'healthbeauty':
+    case 'windows10upgrade':
       statusTopic = 10;
-      break;
+      break;  
 
-    case 'kitchen3c':
+    case 'office3c':
       statusTopic = 11;
       break;
 
-    case 'mobile3c':
+    case 'healthbeauty':
       statusTopic = 12;
       break;
 
-    case 'outdoor3c':
+    case 'kitchen3c':
       statusTopic = 13;
+      break;
+
+    case 'mobile3c':
+      statusTopic = 14;
+      break;
+
+    case 'outdoor3c':
+      statusTopic = 15;
       break;
   } 
 
