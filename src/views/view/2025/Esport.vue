@@ -110,7 +110,7 @@
     </section>
 
     <!-- 右側選單+手機板 -->
-    <RightAside :asides="asides" :type="'mobile'"></RightAside>
+    <RightAside :type="'mobile'"></RightAside>
    </div>
  </div>
 </template>

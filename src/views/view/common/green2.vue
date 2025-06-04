@@ -112,8 +112,6 @@ export default {
       today: new Date(),
       isVip: false,
       isNew: false,
-      isOpen:false,
-      isOff:true,
       isAllOff:true,
       swiperOption: {
         breakpoints: {
@@ -145,13 +143,7 @@ export default {
   mounted() {
     const { today } = this
 
-    //5/1新增星展活動
-    if (today >= new Date('2025/05/01') && today < new Date('2025/06/01')) {
-      this.isOpen = true;
-      this.isOff = false;
-    }
-
-    if (today >= new Date('2025/06/01')) this.isAllOff = false;
+    if (today >= new Date('2025/07/01')) this.isAllOff = false;
 
     // 每週六日顯示
     if (today.getDay() == 6 || today.getDay() == 0) {
@@ -228,16 +220,14 @@ export default {
     <!-- 新展活動 -->
     <section v-if="isAllOff">
       <h2 class="title">
-        <img v-show="isOff" :src="$filters.siteUrl('green_subsidy/images/new/bar_2504.png')" />
-        <img v-show="isOpen" :src="$filters.siteUrl('green_subsidy/images/new/bar_2505.png')" />
+        <img :src="$filters.siteUrl('green_subsidy/images/new/bar_2506.png')" />
       </h2>
       <p class="w:60% w:70%@<992 w:90%@<576 m:auto m:0|auto|4%@<576">
          <img :src="$filters.siteUrl('green_subsidy/images/new/4card.png')" />
       </p>
 
       <div>
-        <img v-show="isOff" class="w:80% w:90%@<992 w:full@<576 m:0|auto|2%" :src="$filters.siteUrl('green_subsidy/images/new/sp2_04.png')" />
-         <img v-show="isOpen" class="w:80% w:90%@<992 w:full@<576 m:0|auto|2%" :src="$filters.siteUrl('green_subsidy/images/new/sp2_05.png')" />
+         <img class="w:80% w:90%@<992 w:full@<576 m:0|auto|2%" :src="$filters.siteUrl('green_subsidy/images/new/sp2_2506.png')" />
         <img class="w:80% w:90%@<992 w:full@<576 m:0|auto|2%" :src="$filters.siteUrl('green_subsidy/images/new/sp_3.png')" />
       </div>
     </section>

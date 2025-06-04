@@ -2,16 +2,11 @@
   <transition appear>
     <div class="tab-content" v-show="isActive">
       <slot>
-        <a v-if="banners != undefined" class="banner" v-for="bn in banners" :href="$filters.addGALink(bn.url)" target="_blank">
-          <img class="pc" :src="$filters.siteUrl(bn.pc)">
-          <img class="mobile" :src="$filters.siteUrl(bn.mobile)">
-        </a>
+        <BannerSlide :banners="banners" :index="index"></BannerSlide>
 
-        <JimmyFloor :id="id" :name="name" :isSwiper="isSwiper"></JimmyFloor>
-        <a v-if="moreUrl" class="more" :href="$filters.addGALink(moreUrl)" target="_blank">
-          MORE
-          <img v-if="moreImage" :src="$filters.siteUrl(moreImage)">
-        </a>
+        <JimmyFloor :id="id" :name="`box${index + 1}`" :isSwiper="isSwiper"></JimmyFloor>
+        <!-- 看更多按鈕 -->
+        <slot name="moreBtn"></slot>
       </slot>
     </div>
   </transition>
@@ -36,10 +31,6 @@ export default {
       type:String
     },
     moreImage:{
-      type:String
-    },
-    //輪播class(左右按鈕不重複class)
-    name:{
       type:String
     },
     //吉米後台樓層id

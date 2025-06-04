@@ -53,8 +53,11 @@
     </CommonFloor>
   </div>
 
+  <!-- 左側選單 -->
+  <LeftAside></LeftAside> 
+
   <!-- 右側選單+手機板 -->
-  <RightAside :type="'mobile2'" :asideImage="asideImage"></RightAside>
+  <RightAside :type="'mobile3'" :asideImage="asideImage"></RightAside>
 </template>
 
 <script>
