@@ -2,7 +2,7 @@
  const today = new Date();
 
  //熱門活動區
- let mainName = (today >= new Date('2025/06/01')) ? '2025618videoparty' : 'awesomepet',
+ let mainName = (today >= new Date('2025/06/19')) ? 'myfirst' : '2025618videoparty',
   mainUrl = `https://events.tk3c.com/events_net/${mainName}/index.html`,
    location = window.location.pathname.split('/'),
   folderName = (location[2] == 'events_net') ? location[3] : location[2],
@@ -31,9 +31,7 @@
     {"name":"戶外休閒","url":"https://events.tk3c.com/events_net/outdoor3c/index.html"},
   ];
 
-  /*if (today >= new Date('2025/06/04')) {
-    topics = topics.concat(...topic618);
-  }*/
+  topics = topics.concat(...topic618);
 
   switch (folderName) {
     case 'icewash2209':
@@ -197,18 +195,18 @@ export default {
     </span>  
     <div class="aside-wrap">
       <h3 class="aside-header"></h3>
-      <div class="aside-content rt:15px box:border-box bg:#000000b8">
-        <ul class="flex flex:wrap jc:flex-start">
-          <li class="main color:#fff f:bold" v-if="main">
-            <a class="bg:#767070!" :href="$filters.addGALink(mainUrl)" target="_blank">回主會館</a>
+      <div class="aside-content">
+        <ul>
+          <li class="main" v-if="main">
+            <a :href="$filters.addGALink(mainUrl)" target="_blank">回主會館</a>
           </li>
-           <li v-for="(topic,t) in topics" :class="{'br:2px|solid|#fff': t % 2 == 0}" class="w:48%! m:0|1px! p:0|4px box:border-box" :key="t">
-            <a class="bg:none! word-break:keep-all text:ellipsis overflow:hidden box:border-box" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
+           <li class="topic" v-for="(topic,t) in topics" :class="{'line-r': t % 2 === 0}" :key="t">
+            <a :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
             <em v-if="t != topics.length -1 && t != topics.length - 2" class="w:95% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
            </li>
-           <li v-if="asides" class="color:#fff bg:#767070 f:bold mb:5px">熱門品類</li>
-           <li v-for="(aside, a) in asides" class="w:48%! m:0|1px! p:0|5px box:border-box" :class="{'stay': status == a,'br:2px|solid|#fff': a % 2 == 0}" :key="a">
-              <a class="bg:none! word-break:keep-all white-space:nowrap text:ellipsis overflow:hidden box:border-box" :href="aside.href">{{ aside.text }}</a>
+           <li v-if="asides" class="board">熱門品類</li>
+           <li v-for="(aside, a) in asides" class="hot-item" :class="{'stay': status == a,'line-r': a % 2 === 0}" :key="a">
+              <a :href="aside.href">{{ aside.text }}</a>
               <em v-if="a != asides.length - 1 && a != asides.length - 2" class="w:95% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
            </li>
         </ul>

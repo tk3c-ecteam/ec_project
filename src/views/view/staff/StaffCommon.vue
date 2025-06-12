@@ -1,6 +1,12 @@
 <script setup>
 const contents = defineModel('contents');
 
+//樓層手機板選單選擇
+const asideType = defineModel('asideType',{
+    type:String,
+    default:'mobile'
+  });
+
 //導航區
 const navButtons = [
   {
@@ -30,7 +36,18 @@ const navButtons = [
       <p class="mark" v-if="contents[0].mark != undefined">
         <img :src="$filters.siteUrl(contents[0].mark)" />
       </p>
+      <p v-if="contents[0].people" class="people animate__animated animate__fadeInLeft">
+        <img :src="$filters.siteUrl(contents[0].people)">
+      </p>
+      <p v-if="contents[0].product" class="product animate__animated animate__bounceInRight">
+        <img :src="$filters.siteUrl(contents[0].product)">
+      </p>
     </div>
+
+    <!-- 滑鼠滾動背景 -->
+     <p class="item" v-if="contents[0].item">
+      <img :src="$filters.siteUrl(contents[0].item)">
+     </p>
 
     <!-- banner區 -->
     <section class="banner-group" v-if="contents[0].otherBanners != undefined">
@@ -114,5 +131,5 @@ const navButtons = [
   </div>
 
   <!-- 右側選單+手機板 -->
-   <RightAside :type="'mobile'"></RightAside>
+   <RightAside :type="asideType"></RightAside>
 </template>

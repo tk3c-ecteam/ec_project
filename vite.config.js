@@ -81,23 +81,22 @@ export default defineConfig({
   },
   build: {
     //壓縮js
-    minify: 'esbuild',
+    minify: 'terser',
     //不壓縮css
-    cssMinify: false,
+    cssMinify: true,
     // 小於4k轉換成base64
-    assetsInlineLimit: 4096,
+    assetsInlineLimit: 8196,
     //每次執行清空 dist資料夾
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        coffee_vue: resolve(__dirname, './index.html')
+        acer2506: resolve(__dirname, './index.html'),
       },
       output: {
         //拆分node套件命名為vendor.js
-        //有同一頁面的vendor大小、內容不同需將檔名區分(如:vendor2504等)
-        manualChunks(id) {
+        /*manualChunks(id) {
           if (id.includes('node_modules')) return 'vendor';
-        },
+        },*/
         entryFileNames: 'js/[name].js',
         chunkFileNames: 'js/[name].js',
         assetFileNames: 'css/[name][extname]'

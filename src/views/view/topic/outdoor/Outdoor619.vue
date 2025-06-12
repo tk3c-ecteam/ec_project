@@ -1,5 +1,21 @@
 <template>
-  <Template618 :contents="contents"></Template618>
+  <Template618 :contents="contents">
+    <template #items>
+        <p class="items i1">
+          <img :src="$filters.siteUrl('outdoor3c/images/item1.png')" />
+        </p>
+        <p class="items i2">
+          <img :src="$filters.siteUrl('outdoor3c/images/item2.png')" />
+        </p>
+        <p class="items i3">
+          <img :src="$filters.siteUrl('outdoor3c/images/item3.png')" />
+        </p>
+      </template>
+
+      <template #summer-other>
+        <img :src="$filters.siteUrl('fan/images/S02_a.png')" />
+      </template>
+  </Template618>
 </template>
 
 <script>
@@ -10,7 +26,7 @@ export default {
       contents: [
         {
           menuPro: 8317,
-          title: 'outdoor3c/images/TT_outdoor2.png',
+          title: 'outdoor3c/images/title619.png',
           floors: [
             {
               text: '空拍機',

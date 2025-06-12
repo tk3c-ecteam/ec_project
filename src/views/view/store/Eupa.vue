@@ -51,10 +51,8 @@
           { pc: "EUPA/images/TSK-2865_a.png", mobile: "EUPA/images/TSK-2865_M.png" },
           { pc: "EUPA/images/TSK-B164.png", mobile: "EUPA/images/TSK-B164_M.png" },
         ],
-        slide51: [
-          { pc: "EUPA/images/bn20255115_1.jpg", mobile: 'EUPA/images/bn20255115_1M.jpg' },
-          { pc: "EUPA/images/bn20255115_2.jpg", mobile: 'EUPA/images/bn20255115_2M.jpg' },
-          { pc: "EUPA/images/bn20255115_3.jpg", mobile: 'EUPA/images/bn20255115_3M.jpg' }
+        slide622: [
+          { pc: "EUPA/images/bn20250622.jpg", mobile: 'EUPA/images/bn20250622M.jpg' },
         ],
         menu: [7759, 7675, 7676, 7677, 7678, 7760],
         moreImage: "EUPA/images/more.png"
@@ -81,9 +79,9 @@
       };
 
      nextTick(() => {
-       if(today >= new Date('2025/05/01') && today < new Date('2025/05/16')) {
+       if(today < new Date('2025/06/23')) {
          //添加 slide51數組到 slides前頭
-          contents.value[0].slides.unshift(...contents.value[0].slide51);
+          contents.value[0].slides.unshift(...contents.value[0].slide622);
       }
      });
 

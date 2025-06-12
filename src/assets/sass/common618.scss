@@ -62,6 +62,42 @@ body {
     }
   }
 
+  .items {
+    position: absolute;
+    &.i1 {
+      width: 11%;
+      left: 20%;
+      top: 9%;
+      animation: rotate-small 1.2s infinite alternate;
+    }
+    &.i2 {
+      width: 11%;
+      top: 22%;
+      left: 8%;
+      animation: rotate-small 1s infinite alternate;
+    }
+    &.i3 {
+      width: 12%;
+      top: 44%;
+      left: 12%;
+      animation: rotate-small 0.6s infinite alternate;
+    }
+    &.i4 {
+      width: 12%;
+      top: 13%;
+      left: 1%;
+      animation: rotate-small 1.3s infinite alternate;
+    }
+  }
+
+  .girl {
+    width: 25%;
+    position: absolute;
+    right: 7%;
+    top: 8%;
+    animation-duration: 0.9s;
+  }
+
   &.other {
     $image: $dir2 + "BG_PC.png";
     @include bg-responsive($image, 2000, 1551);
@@ -69,6 +105,47 @@ body {
     .title {
       top: 12%;
     }
+  }
+
+  &.summer {
+    $image: $dir + "kv_bg2.jpg";
+    @include bg-responsive($image, 2000, 1027);
+    padding-bottom: 74%;
+    .background2 {
+      width: 100%;
+      height: 100%;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position:
+        0 27vmax,
+        top;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+    .title {
+      width: 40%;
+      top: 5%;
+      img {
+        animation: blurFadeIn 1.5s ease-in;
+        animation-delay: 1s;
+      }
+    }
+    .product {
+      .swiper-pagination {
+        .swiper-pagination-bullet,
+        .swiper-pagination-bullet-active {
+          background: #10c26b !important;
+        }
+      }
+    }
+  }
+
+  &.summer-other {
+    $image: $dir + "kv_bg2.png";
+    @include bg-responsive($image, 2000, 954);
+    padding-bottom: 74%;
   }
 }
 
@@ -87,12 +164,42 @@ body {
       height: 25vmax;
       top: 36vmax;
     }
+    .girl {
+      right: 2%;
+      top: 14%;
+    }
+    .items {
+      &.i3 {
+        left: 4%;
+      }
+    }
     &.other {
       background-size: 120% auto;
       background-position:
         -10vw 3vw,
         top;
       padding-bottom: 67%;
+    }
+    &.summer {
+      background-size: 120% auto;
+      background-position:
+        -10vw 3vw,
+        top;
+      padding-bottom: 86%;
+      .title {
+        width: 45%;
+      }
+      .board {
+        top: 33vw;
+      }
+      .product {
+        top: 33.5vw;
+      }
+      .background2 {
+        background-position:
+          0 35vw,
+          top;
+      }
     }
   }
 }
@@ -103,6 +210,20 @@ body {
       width: 56%;
       height: 25vw;
       top: 36.5vw;
+    }
+    .girl {
+      width: 30%;
+      right: 0;
+      top: 13vw;
+    }
+    &.summer {
+      .board {
+        width: 63%;
+      }
+      .title {
+        width: 45%;
+        top: 5vw;
+      }
     }
   }
 }
@@ -132,6 +253,34 @@ body {
       height: 38vw;
       top: 53vw;
     }
+    .girl {
+      width: 30%;
+      right: -10vw;
+      top: 29vw;
+    }
+    .items {
+      &.i1 {
+        width: 14%;
+        left: 10vw;
+        top: 9vw;
+      }
+      &.i2 {
+        width: 14%;
+        top: 34vw;
+        left: 5vw;
+      }
+      &.i3 {
+        width: 12%;
+        top: 8vw;
+        right: 3vw;
+        left: unset;
+      }
+      &.i4 {
+        width: 15%;
+        top: 23vw;
+        left: 1vw;
+      }
+    }
     &.other {
       background-size: 180% auto;
       background-position:
@@ -142,6 +291,32 @@ body {
         top: 12vw;
       }
     }
+    &.summer {
+      background-size: 180% auto;
+      background-position:
+        -40vw 4vw,
+        top;
+      padding-bottom: 135vw;
+      .title {
+        width: 70%;
+        top: 8vw;
+      }
+      .board {
+        width: 95%;
+        top: 52vw;
+      }
+      .product {
+        width: 85%;
+        height: 38vw;
+        top: 53vw;
+      }
+      .background2 {
+        background-size: 190% auto;
+        background-position:
+          -46vw 53vw,
+          top;
+      }
+    }
   }
 }
 
@@ -149,6 +324,11 @@ body {
   .background {
     .product {
       width: 90%;
+    }
+    &.summer {
+      .product {
+        width: 90%;
+      }
     }
   }
 }
@@ -183,6 +363,10 @@ body {
         bottom: 0 !important;
       }
     }
+    .girl,
+    .items {
+      display: none;
+    }
     &.other {
       background-size: 350% auto;
       background-position:
@@ -193,6 +377,34 @@ body {
         top: 27vw;
       }
     }
+    &.summer {
+      background-size: 280% auto;
+      background-position:
+        -96vw 16vw,
+        top;
+      padding-bottom: 231vw;
+      .title {
+        width: 100%;
+        top: 23vw;
+      }
+      .board {
+        top: 87vw;
+      }
+      .product {
+        width: 90%;
+        height: 64vw;
+        top: 88vw;
+        .swiper-slide {
+          width: calc(100% / 2 - 3px) !important;
+        }
+      }
+      .background2 {
+        background-size: 300% auto;
+        background-position:
+          -100vw 86vw,
+          top;
+      }
+    }
   }
 }
 
@@ -200,6 +412,14 @@ body {
   .background {
     .product {
       width: 49%;
+    }
+  }
+}
+
+@include media-query("pc", "2500px") {
+  .background {
+    &.summer {
+      padding-bottom: 76%;
     }
   }
 }
