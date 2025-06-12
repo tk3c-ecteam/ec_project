@@ -7,7 +7,8 @@ const contents = defineModel("contents");
      data(){
       return {
          swiper:null,
-         statusNav:null
+         statusNav:null,
+         status:null
       }
      },
      mounted() {
@@ -64,6 +65,15 @@ const contents = defineModel("contents");
             this.statusNav = null;
             this.goSlide(this.statusNav);
            }
+       },
+       mouseover(id) {
+        this.status = id;
+       },
+       mouseleave() {
+        this.status = null;
+       },
+       change(id) {
+        (this.status == null) ? this.status = id : this.status = null;
        }
      },
   }
@@ -111,11 +121,28 @@ const contents = defineModel("contents");
         @swiper="onSwiper"
       >
         <swiper-slide v-for="(floor, f) in contents[0].floorImg" class="w:fit-content!">
-          <a :href="floor.href" :class="{'active' : statusNav == f}">
+          <a v-if="!floor.children" :href="floor.href" :class="{'active' : statusNav == f}">
             <span class="f:1.2em f:2em@<992 f:1.2em@<576 f:1.5em@>2000">
               {{ floor.text }} <i class="f:0.9rem">▼</i>
             </span>
           </a>
+          <!-- 下拉選單 -->
+          <div v-else 
+          @mouseover="mouseover(f)"
+          @mouseleave="mouseleave"
+          @click="change(f)"
+          >
+          <span class="f:1.2em f:2em@<992 f:1.2em@<576 f:1.5em@>2000">
+              {{ floor.text }} <i class="f:0.9rem">▼</i>
+           </span>
+           <ul class="dropdown" v-if="status == f">
+              <li v-for="(child,c) in floor.children" :key="c">
+                <a :href="child.href" target="_blank">
+                  {{ child.name }}
+                </a>
+              </li>
+           </ul>
+        </div> 
         </swiper-slide>
       </swiper>
     </nav>
