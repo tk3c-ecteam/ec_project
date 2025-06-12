@@ -70,7 +70,28 @@ body {
       top: 45px;
       right: 5%;
     }
+    .people {
+      width: 70%;
+      top: 10%;
+      left: 4%;
+      position: absolute;
+      z-index: -1;
+      img {
+        animation: upAndDown 0.8s linear infinite alternate;
+        animation-delay: 1.2s;
+      }
+    }
+    .product {
+      position: absolute;
+      width: 30%;
+      right: 14%;
+      top: 56%;
+    }
   }
+}
+
+.item {
+  top: 250px;
 }
 
 section {
@@ -135,6 +156,19 @@ section {
   }
 }
 
+.floor {
+  .title {
+    width: 900px;
+    margin: 0 auto 0;
+    b {
+      font-size: 3em;
+      line-height: 15rem;
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+}
+
 /*  電腦版其他尺寸 */
 @include media-query("mobile", "992px") {
   body {
@@ -176,6 +210,17 @@ section {
     .text {
       width: 95%;
       font-size: 20px;
+    }
+  }
+
+  .floor {
+    .title {
+      width: 115%;
+      margin: 0 -8% 0;
+      b {
+        font-size: 2.5rem;
+        line-height: 25vw;
+      }
     }
   }
 }
@@ -226,6 +271,17 @@ section {
       padding: 3%;
       border-radius: 5px;
       box-sizing: border-box;
+    }
+  }
+
+  .floor {
+    .title {
+      width: 150%;
+      margin: 0 -23% 0;
+      b {
+        font-size: 2rem;
+        line-height: 37vw;
+      }
     }
   }
 }

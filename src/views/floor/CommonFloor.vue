@@ -63,7 +63,7 @@ export default {
           <a :href="$filters.addGALink(floor.url)" target="_blank">
              <!-- 標題圖片 -->
             <slot name="moreTitle"></slot>
-            <b class="abs left:0 right:0 m:auto top:50% translateY(-50%) f:3em f:2.5em@<992 f:1.5em@<576 f:1.2em@<361 f:bold color:#fff">{{
+            <b class="abs left:0 right:0 m:auto top:50% translateY(-50%) f:3em f:2.2em@<1500 f:2.5em@<992 f:1.5em@<576 f:1.2em@<361 f:bold color:#fff">{{
             floor.text }}</b>
           </a>
          </template>
@@ -72,7 +72,7 @@ export default {
         <template v-else>
           <!-- 標題圖片 -->
           <slot name="moreTitle2"></slot>
-          <b class="abs left:0 right:0 m:auto top:50% translateY(-50%) f:3em f:2.5em@<992 f:1.5em@<576 f:1.2em@<361 f:bold color:#fff">{{
+          <b class="abs left:0 right:0 m:auto top:50% translateY(-50%) f:3em f:2.2em@<1500 f:2.5em@<992 f:1.5em@<576 f:1.2em@<361 f:bold color:#fff">{{
             floor.text }}</b>
         </template> 
       </h2>

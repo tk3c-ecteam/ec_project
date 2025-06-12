@@ -22,14 +22,8 @@ const contents = [
             }
           ],
           slides: [
-            { "url": "https://www.tk3c.com/pt.aspx?pid=244715", "pc": "roborock_event/images/common/rock_qrevoMAX.jpg", "mobile": "roborock_event/images/common/rock_qrevoMAXM.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=243673", "pc": "roborock_event/images/common/rockq5pro.jpg", "mobile": "roborock_event/images/common/rockq5proM.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=242015", "pc": "roborock_event/images/common/rock_dypro.jpg", "mobile": "roborock_event/images/common/rock_dyproM.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=238189", "pc": "roborock_event/images/common/1S8PU_2050x600.jpg", "mobile": "roborock_event/images/common/1S8PU_900x800.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=238187", "pc": "roborock_event/images/common/2S8_2050x600.jpg", "mobile": "roborock_event/images/common/2S8_ 900x800.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=239984", "pc": "roborock_event/images/common/3Q_Revo 2050x600.jpg", "mobile": "roborock_event/images/common/3Q_Revo_900x800.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=229090", "pc": "roborock_event/images/common/4Q_7Max_2050x600.jpg", "mobile": "roborock_event/images/common/4Q_7Max_900x800.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=230244", "pc": "roborock_event/images/common/5G10_2050x600.jpg", "mobile": "roborock_event/images/common/5G10_900x800.jpg" },
+            { "pc": "roborock_event/images/common/rock_sarosZ70.png", "mobile": "roborock_event/images/common/rock_sarosZ70M2.png" },
+            { "pc": "roborock_event/images/common/rock_g30.png", "mobile": "roborock_event/images/common/rock_g30M.png" },
           ],
           menu:[1505,1506,1507]
         }

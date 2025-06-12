@@ -306,7 +306,7 @@ export const globalMixin = {
 
       setTimeout(() => {
         window.scrollTo({
-          top: move - 90,
+          top: move - 120,
         })
       }, 80)
     },
