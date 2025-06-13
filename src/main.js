@@ -46,8 +46,8 @@ app.component(VueCountdown.name, VueCountdown);
 //使用方法: $filters.siteUrl(value)
 app.config.globalProperties.$filters = config
 
-// id:app 區域有存在再綁到vue
-if (document.querySelectorAll('#app').length > 0) app.mount('#app')
+// 綁定body
+app.mount('#app');
 
 //所有圖片加入 alt
 document.querySelectorAll('#app img').forEach(el => {

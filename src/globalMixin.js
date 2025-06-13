@@ -4,33 +4,19 @@ import axiosRetry from 'axios-retry';
 export const globalMixin = {
   data() {
     return {
-      products: [],//多個商品
-      product2: [],//單一商品
+      products: {},//多個商品
+      product2: {},//單一商品
       percent: 0,
-      tabS: null,
-      asides: [],//右側選單項目
-      timer: null,
       isLeftAside: false, //是否顯示左側選單
       isRightAside: false, //是否顯示右側選單
       mobileStatus: '',//手機版置底選單用(status:'event','social')
       mobileBg: 'none',//手機版選單背景遮罩
       isGoTop: false,//手機版回到上層按鈕
+      isAsideTop: false,//左右側選單顯示隱藏
       isMobileOpen: false,//手機版上方選單切換狀態
-      isMobileTopStatus: '', //手機版上方選單目前項目
       jimmyId: [], //商品樓層id
       jimmyText: [], //樓層文字 
     }
-  },
-  mounted() {
-    this.timer = setInterval(() => {
-      setTimeout(() => {
-        this.getFloorTitle('section.scroll');
-      }, 5000);
-    }, 1000);
-
-    setTimeout(() => {
-      clearInterval(this.timer);
-    }, 1000);
   },
   methods: {
     /*加入meta標籤
@@ -64,49 +50,42 @@ export const globalMixin = {
         behavior: "smooth",
       })
     },
+    //生成 api url
+    apiUrl(menuId) {
+      const time = Date.now();
+      return `https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=${menuId}&_=${time}`;
+    },
+    //例外處理錯誤訊息
+    handleError(error) {
+      if (error.code === 'ECONNABORTED') {
+        console.log('請求逾時');
+        this.retryRequest(); //重啟
+      } else {
+        console.log(error.message)
+      }
+    },
     //用後台陳列編號撈取全商品 [2000,20001,2002]
     async getFloorData(menu) {
-      let moreUrls = [],
-        time = Date.now();
-
-      for (let z = 0; z < menu.length; z++) {
-        moreUrls.push('https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu[z] + '&_=' + time)
-      }
-
-      this.interCatch();
+      const moreUrls = menu.map(this.apiUrl); // 生成所有 URL
 
       //撈取所有 url api 資料
-      await axios.all(moreUrls.map((moreUrl) => axios.get(moreUrl))).then((respon) => {
-        respon.forEach((res, r) => {
-          this.products[menu[r]] = res.data
+      try {
+        const responses = await Promise.all(moreUrls.map(url => axios.get(url)));
+        responses.forEach((response, r) => {
+          this.products[menu[r]] = response.data;
         });
-      })
-        .catch((error) => {
-          if (error.code === 'ECONNABORTED') {
-            console.log('請求逾時')
-          } else {
-            console.log(error.message)
-          }
-        })
+      } catch (error) {
+        this.handleError(error);
+      }
     },
 
     //用後台陳列編號撈取單一商品 如:2000
     async getFloorSingle(menu) {
-      let time = Date.now();
       try {
-        this.interCatch();
-        const res = await axios({
-          method: 'get',
-          url: 'https://events.tk3c.com/events_net/ashx/fkabow/GetAdSystemAll.ashx?menuid=' + menu + '&_=' + time,
-        })
-
-        this.product2[menu] = res.data.Data
+        const response = await axios.get(this.apiUrl(menu));
+        this.product2[menu] = response.data.Data;
       } catch (error) {
-        if (error.code === 'ECONNABORTED') {
-          console.log('請求逾時')
-        } else {
-          console.log(error.message)
-        }
+        this.handleError(error);
       }
     },
     //計算折數
@@ -158,7 +137,7 @@ export const globalMixin = {
      *  scrollSelect:滾動後區域
      */
     fixedBg(element, scrollSelect) {
-      if ($all(element).length > 0) {
+      if (document.querySelectorAll(element).length > 0) {
         document.addEventListener('scroll', (e) => {
           let scrollTop = window.scrollY,
             scrollEl = document.querySelector(scrollSelect),
@@ -226,73 +205,30 @@ export const globalMixin = {
         }
       );
     },
-    //取得樓層標題(element=區域)
+    //取得樓層標題 id(element=區域)，並加到右側、手機版選單上
     getFloorTitle(element) {
-      document.querySelectorAll(element).forEach((el, t) => {
-        let title = el.getAttribute('titles'),
-          id = '';
+      const elements = document.querySelectorAll(element);
+      const asides = [];
 
-        //取得id 作錨點
-        if (el.getAttribute('id')) id = el.getAttribute('id');
-        if (el.querySelector('.title') && el.querySelector('.title').getAttribute('id')) id = el.querySelector('.title').getAttribute('id');
+      elements.forEach(el => {
+        const title = el.getAttribute('titles'),
+          id = el.getAttribute('id') || el.querySelector('.title')?.getAttribute('id');
 
-        if (id != '' && title != '') {
-          this.asides.push(
+        if (id && title) {
+          asides.push(
             {
               "text": title,
               "href": '#' + id
-            })
+            });
         }
       });
+
+      return asides;
     },
     //回到最上層
     goTop() {
-      //將手機板選單卷軸歸0
-      if (document.querySelectorAll('.mobile-for-product .top-nav').length > 0) {
-        let topNav = document.querySelector('.mobile-for-product .top-nav');
-        topNav.scrollTo({ left: 0 });
-        this.isMobileTopStatus = '';
-      }
       window.scrollTo(0, 0);
       this.mobileBg = 'none';
-    },
-    //滾動到指定位置
-    scrollToPos() {
-      if (document.querySelectorAll('.mobile-for-product .top-nav').length <= 0) return;
-      document.querySelectorAll('section.scroll').forEach((el, i) => {
-        let scrollTop = window.scrollY,
-          topNav = document.querySelector('.mobile-for-product .top-nav'),
-          topNavLi = document.querySelectorAll('.mobile-for-product .top-nav li'),
-          top = el.getBoundingClientRect().top + scrollTop - 120,
-          bottom = top + window.innerHeight,
-          left = topNav.scrollLeft,
-          num = topNavLi.length;
-        /* 目前滑鼠滾動位置滾到每個樓層區，所屬項目加上 .active 標記,
-        */
-
-        if (scrollTop > top && scrollTop < bottom) {
-          this.isMobileTopStatus = i;
-          //跑到一半的項目卷軸往右移動
-          if (i >= num / 3 && i < num) {
-            topNav.scrollTo({
-              behavior: 'smooth',
-              left: left + 150
-            });
-          } else {
-            //滑鼠滾到底後卷軸往左移動
-            topNav.scrollTo({
-              behavior: 'smooth',
-              left: left - 150
-            });
-          }
-        }
-      });
-    },
-    //點擊切換置底選單      
-    changeMobile(name) {
-      this.mobileStatus = name;
-      this.mobileBg = 'block';
-      document.body.style.overflow = 'hidden';
     },
     //關閉手機版選單
     closeNav() {
@@ -305,28 +241,32 @@ export const globalMixin = {
     showMobileTop() {
       (window.scrollY >= 100) ? this.isGoTop = true : this.isGoTop = false;
     },
+    //左右側選單滾動顯示
+    showAside() {
+      (window.scrollY >= 800) ? this.isAsideTop = true : this.isAsideTop = false;
+    },
     //移除手機版上方選單 .open 與改變icon符號
     changeNav() {
       this.isMobileOpen = false;
+      document.body.style.overflow = 'auto';
     },
     //點擊切換置底選單      
     changeMobile(name) {
-      this.mobileStatus = name;
-      this.mobileBg = 'block';
-      document.body.style.overflow = 'hidden';
+      if (this.mobileStatus == name) {
+        this.mobileStatus = '';
+        this.mobileBg = 'none';
+        document.body.style.overflow = 'auto';
+      } else {
+        this.mobileStatus = name;
+        this.mobileBg = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+
+      this.isMobileOpen = false;
     },
     //點擊切換手機版上方按鈕
     switchMobile() {
       this.isMobileOpen = !this.isMobileOpen;
-    },
-    //顯示左右側選單
-    showAside() {
-      let firstSection = document.querySelectorAll('section')[0],
-        firstSectionPos = firstSection.getBoundingClientRect().top
-      if (firstSection) {
-        (window.scrollY >= firstSectionPos) ? this.isLeftAside = true : this.isLeftAside = false;
-        (window.scrollY >= firstSectionPos) ? this.isRightAside = true : this.isRightAside = false;
-      }
     },
     //切換左側選單顯示按鈕
     switchLeftAside() {
@@ -356,6 +296,19 @@ export const globalMixin = {
           this.jimmyText[id] = pro.textContent.trim();
         });
       }
-    }
+    },
+    goAnchor(element) {
+      if (document.querySelector(element) == null) return;
+      //前往錨點
+      let el = document.querySelector(element),
+        rect = el.getBoundingClientRect(),
+        move = rect.top + document.documentElement.scrollTop
+
+      setTimeout(() => {
+        window.scrollTo({
+          top: move - 120,
+        })
+      }, 80)
+    },
   }
 }

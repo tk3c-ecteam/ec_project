@@ -22,25 +22,16 @@ const contents = [
             }
           ],
           slides: [
-            { "url": "https://www.tk3c.com/pt.aspx?pid=244715", "pc": "roborock_event/images/common/rock_qrevoMAX.jpg", "mobile": "roborock_event/images/common/rock_qrevoMAXM.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=243673", "pc": "roborock_event/images/common/rockq5pro.jpg", "mobile": "roborock_event/images/common/rockq5proM.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=242015", "pc": "roborock_event/images/common/rock_dypro.jpg", "mobile": "roborock_event/images/common/rock_dyproM.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=238189", "pc": "roborock_event/images/common/1S8PU_2050x600.jpg", "mobile": "roborock_event/images/common/1S8PU_900x800.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=238187", "pc": "roborock_event/images/common/2S8_2050x600.jpg", "mobile": "roborock_event/images/common/2S8_ 900x800.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=239984", "pc": "roborock_event/images/common/3Q_Revo 2050x600.jpg", "mobile": "roborock_event/images/common/3Q_Revo_900x800.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=229090", "pc": "roborock_event/images/common/4Q_7Max_2050x600.jpg", "mobile": "roborock_event/images/common/4Q_7Max_900x800.jpg" },
-            { "url": "https://www.tk3c.com/pt.aspx?pid=230244", "pc": "roborock_event/images/common/5G10_2050x600.jpg", "mobile": "roborock_event/images/common/5G10_900x800.jpg" },
+            { "pc": "roborock_event/images/common/rock_sarosZ70.png", "mobile": "roborock_event/images/common/rock_sarosZ70M2.png" },
+            { "pc": "roborock_event/images/common/rock_g30.png", "mobile": "roborock_event/images/common/rock_g30M.png" },
           ],
+          menu:[1505,1506,1507]
         }
-      ];
- const menu = [1505,1506,1507]     
+      ];  
 </script>
 
 <template>
   <StoreDefault :contents="contents"></StoreDefault>
-
-  <!-- 商品樓層 -->
-  <CommonFloor :floors="contents[0].floorImg" :menu="menu"></CommonFloor>
 
   <!-- 影片 -->
   <section class="video-group">
@@ -53,9 +44,6 @@ const contents = [
       </div>
     </div>
   </section>
-
-  <!-- 右側選單+手機版 -->
-  <RightAside :asides="contents[0].floorImg" :type="'mobile'"></RightAside>
 </template>
 
 <style lang="scss">
@@ -108,13 +96,7 @@ form#form1 {
 
 nav {
   background: #000;
-  padding: 0 !important;
-  .swiper-wrapper {
-    justify-content: center;
-    padding-bottom: 0;
-  }
   .swiper-slide {
-    margin-right: 50px !important;
     a {
       color: #fff;
       padding: 10px 20px 10px;
@@ -144,47 +126,12 @@ nav {
       padding-bottom: 88%;
     }
   }
-
- nav {
-  .swiper-wrapper {
-    justify-content: left;
-    .swiper-slide {
-      flex-basis: 30% !important;
-      a {
-        padding: 16px 20px 5px;
-      }
-    }
-  }
- }
 }
 
 @include media-query("mobile", "576px") {
-  nav {
-    .swiper-wrapper {
-      .swiper-slide {
-        flex-basis: fit-content !important;
-        margin-right: 30px !important;
-      }
-    }
-  }
-
   .floor {
     .title {
       margin: 0 auto -5%;
-    }
-  }
-
-  .copyR {
-    margin-bottom: 14%;
-  }
-}
-
-@include media-query("pc", "2000px") {
-  nav {
-    .swiper-slide {
-      a {
-        padding: 16px 20px 5px;
-      }
     }
   }
 }

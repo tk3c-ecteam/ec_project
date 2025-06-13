@@ -5,42 +5,23 @@
        tabs -> 頁籤按鈕(文字或圖片)與連結 的object 格式
        (tabs內部架構 tab.text -> 頁籤按鈕為文字
        tab.image -> 頁籤為圖片)
-       isSwiper -> 是否為輪播
-      singleUrl -> 連結只有一個(如果有頁籤也沒有連結)
       statusSelect-> 預設頁籤要顯示幾個(都沒有設定為0)
       direct -> 輪播方向(預設為水平) 若要垂直輪播請設定'vertical'
     */ -->
 
-    <div class="tab mb:1% overflow:hidden">
-      <ul v-if="isSwiper == false" class="gap:10">
-        <li v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }"
-          class="flex-basis:fit-content brightness(0.7) brightness(1).active">
-            <a v-if="singleUrl != undefined" :value="$filters.addGALink(singleUrl)" @click.prevent="selectTab(index)">
-            <b v-if="tab.text != undefined"> {{ tab.text }}</b>
-            <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
-          </a>
-          <a v-else :value="$filters.addGALink(tab.url)" @click.prevent="selectTab(index)">
-             <b v-if="tab.text != undefined"> {{ tab.text }}</b>
-            <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
-          </a>
-        </li>
-      </ul>
-
-      <!-- swiper有輪播滑動版本 -->
-      <swiper v-else 
+    <div class="tab mb:0.3% overflow:hidden">
+      <!-- swiper有輪播滑動 -->
+      <swiper
       :loop="false" 
       :space-between="10" 
+      :direction="direct"
       :slides-per-view="'auto'"
       :breakpoints="swiperOption"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
       >
-        <swiper-slide v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }" class="flex! flex-basis:fit brightness(0.7) brightness(1).active" @click="goSlide(index)">
-           <a v-if="singleUrl != undefined" :value="$filters.addGALink(singleUrl)"  @click.prevent="selectTab(index)" >
-             <b v-if="tab.text != undefined"> {{ tab.text }}</b>
-            <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
-          </a>
-            <a v-else :value="$filters.addGALink(tab.url)"  @click.prevent="selectTab(index)">
+        <swiper-slide v-for="(tab, index) in tabs" :key="index" :class="{ active: selectedTab === index }" class="flex-basis:fit brightness(0.7) brightness(1).active" @click="goSlide(index)">
+            <a :href="$filters.addGALink(tab.url)"  @click.prevent="selectTab(index)">
               <b v-if="tab.text != undefined"> {{ tab.text }}</b>
             <img v-else :src="$filters.siteUrl(tab.image)" alt=" " />
           </a>
@@ -57,13 +38,6 @@ export default {
     tabs: {
       type: Object,
       required: true
-    },
-    isSwiper: {
-      type: Boolean,
-      default: false
-    },
-    singleUrl:{
-      type:String
     },
     statusSelect:{
       type:Number
@@ -85,9 +59,7 @@ export default {
   mounted() {
     if (this.statusSelect != undefined) {
        this.selectedTab = this.statusSelect;
-       setTimeout(() => {
-        this.goSlide(this.selectedTab);
-       }, 50);
+      this.goSlide(this.selectedTab);
     }
    
   },
@@ -95,27 +67,18 @@ export default {
     selectTab(index) {
       this.selectedTab = index;
 
-       if (event) {
-        let current = event.currentTarget,
+      let current = event.currentTarget,
         parent = '';
 
-          //連結只有一個不用更換(標題加上 .single-url)
-         if (document.querySelectorAll('.single-url').length > 0) return false;
+      if (current.closest('section') == undefined) return false;  
+      //點擊找到此區域
+      parent = current.closest('section');
 
-        //頁籤為swiper(輪播)格式(標題上加入連結)
-       if (current.parentNode.getAttribute('class').indexOf('swiper-slide') > -1) {
-          parent = current.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-        } else {
-          parent = current.parentNode.parentNode.parentNode.parentNode.parentNode;
-        }
-      
-        let parentAr = parent,
-          parentId = parentAr.getAttribute('id'),
-          getUrl = current.getAttribute('value');
+      let getUrl = current.getAttribute('href');
 
-          if (document.querySelectorAll(`.${parentId}-box .title a`).length > 0) {
-            document.querySelector(`.${parentId}-box .title a`).setAttribute('href', getUrl);
-          }
+      //如果頁籤按鈕上有連結就把此連結加到樓層標題上
+      if (parent.querySelectorAll('.title a').length > 0 && getUrl != '') {
+        parent.querySelector('.title a').setAttribute('href', getUrl);
       }
     },
     onSwiper(swiper) {
@@ -130,3 +93,46 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+  .tab {
+    .swiper-wrapper {
+      justify-content: center;
+      align-items: baseline;
+      padding-bottom: 5px;
+      box-sizing: border-box;
+    }
+    a {
+      b {
+        font-size: 1.5em;
+        padding: 0 40px 0;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  @include media-query("mobile", "992px") {
+   .tab {
+    .swiper-wrapper {
+      justify-content: left;
+    }
+    .swiper-slide {
+      flex-basis: 32%;
+    }
+   }
+  }
+
+  @include media-query("mobile", "576px") {
+    .tab {
+      .swiper-slide {
+        flex-basis: 37%;
+      }
+      a {
+        b {
+          font-size: 1rem;
+          white-space:nowrap;
+        }
+      }
+    }
+  }
+</style>

@@ -1,18 +1,13 @@
 <template>
-  <transition>
+  <transition name="fade">
     <div class="tab-content" v-if="isActive">
       <slot>
-        <a v-if="banners != undefined" class="banner" v-for="banner in banners" :href="$filters.addGALink(banner.url)" target="_blank">
-          <img class="pc" :src="$filters.siteUrl(banner.pc)" loading="lazy">
-          <img class="mobile" :src="$filters.siteUrl(banner.mobile)" loading="lazy">
-        </a>
+        <BannerSlide :banners="banners" :index="index"></BannerSlide>
         
         <listF v-if="isSwiper" :isSwiper="1" :pro="product2[menus]" :name="`box${index + 1}`"></listF>
         <component v-else :is="type" :pro="product2[menus]"></component>
-          <a v-if="moreUrl" class="more" :href="$filters.addGALink(moreUrl)" target="_blank">
-            MORE
-            <img v-if="moreImage" :src="$filters.siteUrl(moreImage)">
-          </a>
+        <!-- 看更多按鈕 -->
+         <slot name="moreBtn"></slot>
       </slot>
     </div>
   </transition>
@@ -46,13 +41,6 @@ export default {
       type:Boolean,
       default:false
     },
-    //看更多按鈕
-    moreUrl:{
-      type:String
-    },
-    moreImage:{
-      type:String
-    },
     //商品樓層版型(沒有輪播) 預設listF 4小板型
     type:{
       type:Object,
@@ -73,11 +61,13 @@ export default {
 </script>
 
 <style lang="scss">
-  .v-enter-active, .v-leave-active {
-  transition: opacity 0.8s ease;
-}
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.6s ease;
+  }
 
-.v-enter-from, .v-leave-to {
-  opacity: 0;
-}
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
 </style>

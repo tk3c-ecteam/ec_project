@@ -5,12 +5,12 @@ export default {
       menuSP: 7392,
       menus: [6149, 6150, 6151, 6152, 6153, 6154],
       proDatas: [
-        { image: 'nightsale/images/part3/bar_top.png', id: 6149, text: '本週強檔推薦',href:'#pro6149' },
-        { image: 'nightsale/images/part3/bar000.png', id: 6150, text: '大型家電',href:'#pro6150' },
-        { image: 'nightsale/images/part3/bar01.png', id: 6151, text: '生活家電',href:'#pro6151' },
-        { image: 'nightsale/images/part3/bar02.png', id: 6152, text: '電腦資訊',href:'#pro6152' },
-        { image: 'nightsale/images/part3/bar07.png', id: 6153, text: '鍵盤滑鼠',href:'#pro6153' },
-        { image: 'nightsale/images/part3/bar04_b.png', id: 6154, text: '數位週邊',href:'#pro6154' }
+        { image: 'nightsale/images/part3/bar_top.png', text: '本週強檔推薦',id:6149 },
+        { image: 'nightsale/images/part3/bar000.png', text: '大型家電',id:6150 },
+        { image: 'nightsale/images/part3/bar01.png', text: '生活家電',id:6151 },
+        { image: 'nightsale/images/part3/bar02.png', text: '電腦資訊',id:6152 },
+        { image: 'nightsale/images/part3/bar07.png', text: '鍵盤滑鼠',id:6153 },
+        { image: 'nightsale/images/part3/bar04_b.png', text: '數位週邊',id:6154 }
       ],
       today: new Date(),
       isSp: false,
@@ -24,15 +24,6 @@ export default {
     }
   },
   updated() {
-    //若某樓層沒有商品則隱藏此區域、移除右側選單(手機版)項目
-    document.querySelectorAll('.pro-box').forEach((el, p) => {
-      if (el.querySelectorAll('.bg01').length > 0) {
-        if (el.querySelectorAll('.bg01 .swiper-slide').length <= 0) {
-           el.style.display = 'none';
-        }
-      }
-    })
-
     //限時樓層有商品才顯示
     if (document.querySelectorAll('.special-box .special .bg01 .swiper-slide').length > 0) {
       this.isSp = true
@@ -114,17 +105,13 @@ export default {
     <!-- 限時 -->
     <section class="special-box" v-show="isSp">
       <div class="special rel">
-         <div class="swiper-pagination page top:-2%!"></div>
+        <div class="swiper-pagination page top:-2%!"></div>
         <div class="bg01 list_F p:1% p:2%@<576" v-if="product2[menuSP] != undefined">
           <ul>
-            <swiper class="overflow:hidden" 
-              :space-between="10" 
-              :pagination="pagination"
-              :navigation="{
+            <swiper class="overflow:hidden" :space-between="10" :pagination="pagination" :navigation="{
                 prevEl: '.special .prev',
                 nextEl: '.special .next'
-              }" 
-              :breakpoints="{
+              }" :breakpoints="{
                 0: {
                   slidesPerView: 2,
                   grid: {
@@ -182,20 +169,24 @@ export default {
       </div>
     </section>
 
-    <section class="pro-box scroll" v-for="(pd, p) in proDatas" :key="p" :titles="pd.text" :id="`pro${pd.id}`" :class="`pro${Number(p) + 1}-box`">
-      <h2 class="title">
-        <img :src="$filters.siteUrl(pd.image)" />
-      </h2>
+    <section class="pro-box" v-for="(pd, p) in proDatas" :key="p" :titles="pd.text"
+      :class="{'scroll' : products[menus[p]]?.Data.length > 0}" :id="`pro${pd.id}`">
+      <div v-if="products[menus[p]]?.Data.length > 0">
+        <h2 class="title">
+          <img :src="$filters.siteUrl(pd.image)" />
+        </h2>
 
-      <div class="products">
-        <listF v-if="products[menus[p]] != undefined" :pro="products[menus[p]].Data" :isSwiper="1"
-          :name="`pro${Number(p) + 1}`" :incoming="income"></listF>
+        <div class="products">
+          <listF :pro="products[menus[p]].Data" :isSwiper="1" :name="`pro${Number(p) + 1}`" :incoming="income"></listF>
+        </div>
       </div>
     </section>
   </div>
 
+  <!-- 左側選單 -->
+  <LeftAside></LeftAside>
   <!-- 右側選單+手機版 -->
-   <RightAside :asides="asides" :type="'mobile2'"></RightAside>
+  <RightAside :type="'mobile3'"></RightAside>
 </template>
 
 <style lang="scss">
@@ -235,22 +226,6 @@ body {
 
 .bg01 {
   background: none;
-  li {
-    .boxF_price {
-      &.incoming {
-        strong {
-          color: #fff;
-          height: 60px;
-          font-size: 190%;
-          &:before {
-            content: "先加入購物車";
-            letter-spacing: 0;
-          }
-        }
-      }
-    }
-  }
-
   .before {
     .boxF_price {
       strong {
@@ -260,6 +235,7 @@ body {
         &:before {
           content: "先加入購物車";
           letter-spacing: 0;
+          display: block;width: 95%;height: 35px;float: right;border-radius: 20px;color: white;font-size: 0.5em;text-align: center;	line-height: 35px;position: absolute;bottom: 7px;right: 0;left: 0; background: #3f3a39;margin: 0 auto;
         }
         em {
           display: none;
@@ -472,8 +448,7 @@ section {
     .boxF_price {
       &.incoming {
         &:after {
-          content: "先加入購物車" !important;
-          font-size: 0.8em;
+          content: "先加入購物車";
         }
       }
     }
@@ -481,7 +456,8 @@ section {
     .before {
       .boxF_price {
         &:after {
-          content: "先加入購物車" !important;
+          content: "先加入購物車";
+          font-size: 0.8em;color: #fff; background: #3f3a39;  width: 95%;  height: 34px; display: none; text-align: center; font-size: 0.8em;  letter-spacing: 0; line-height: 34px;box-sizing: border-box;font-weight: bold;border-radius: 20px;margin: 0 auto;
         }
       }
     }

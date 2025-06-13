@@ -252,7 +252,7 @@ export default {
       </div>
 
   <!-- 右側選單  -->
-  <RightAside :asides="asides" :type="'mobile2'"></RightAside>
+  <RightAside :type="'mobile2'"></RightAside>
 </template>
 
 <style lang="scss">

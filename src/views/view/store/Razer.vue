@@ -1,37 +1,34 @@
 <script setup>
+import listM from '@/views/layout/listM.vue';
 const contents = [
         {
           logoImage: "Razer/images/logo.png",
           floorImg: [
             {
-              id:4441,
               href: "#pro4441",
               text: "熱銷商品",
               moreUrl: "https://www.tk3c.com/dictitleurl.aspx?cid=118749",
             },
             {
-              id:4442,
               href: "#pro4442",
               text: "滑鼠",
               moreUrl:
                 "https://www.tk3c.com/dic2.aspx?cid=118749&aid=23193&hid=118754",
             },
              {
-              id:4443,
               href: "#pro4443",
               text: "鍵盤",
+              type:listM,
               moreUrl:
                 "https://www.tk3c.com/dic2.aspx?cid=118749&aid=23193&hid=118753",
             },
             {
-              id:4444,
               href: "#pro4444",
               text: "耳機/麥克風",
               moreUrl:
                 "https://www.tk3c.com/dic2.aspx?cid=118749&aid=23193&hid=118755",
             },
             {
-              id:4446,
               href: "#pro4446",
               text: "電競椅",
               moreUrl:
@@ -41,35 +38,35 @@ const contents = [
           slides: [
             { pc: "razer/images/bn_main.jpg", mobile: "/razer/images/bn_mainM.jpg" },
           ],
+          moreImage:"Razer/images/more.png",
+          menu:[4441,4442,4443,4444,4446]
         }
       ];
-      const moreImage = "Razer/images/more.png";
 </script>
 
 <template>
-  <StoreDefault :contents="contents"></StoreDefault>
+  <StoreDefault :contents="contents">
+    <template #special>
+      <div id="container" class="fixed">
+        <canvas id="pixie"></canvas>
+      </div>
 
-  <div id="container">
-     <canvas id="pixie"></canvas>
-  </div>
-
-  <!-- 最新消息 -->
-  <section class="hot-box">
-    <h2 class="title">最新資訊</h2>
-    <ul>
-      <li class="news">
-        <a :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=118749')" target="_blank">
-          <img :src="$filters.siteUrl('Razer/images/NEW_BN.jpg')" />
-        </a>
-      </li>
-      <li class="youtube">
-        <iframe src="https://www.youtube.com/embed/rk5LTWHLQ7I?mute=1&autoplay=1&loop=1" allowfullscreen></iframe>
-      </li>
-    </ul>
-  </section>
-
-  <!-- 商品樓層 -->
-  <CommonFloor2 :floors="contents[0].floorImg" :moreImage="moreImage"></CommonFloor2>
+       <!-- 最新消息 -->
+      <section class="hot-box">
+        <h2 class="title">最新資訊</h2>
+        <ul>
+          <li class="news">
+            <a :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=118749')" target="_blank">
+              <img :src="$filters.siteUrl('Razer/images/NEW_BN.jpg')" />
+            </a>
+          </li>
+          <li class="youtube">
+            <iframe src="https://www.youtube.com/embed/rk5LTWHLQ7I?mute=1&autoplay=1&loop=1" allowfullscreen></iframe>
+          </li>
+        </ul>
+      </section>
+    </template>
+  </StoreDefault>
 </template>
 
 <style lang="scss">
@@ -88,6 +85,7 @@ body {
 
 .bg01 {
   background: none;
+  margin: 0 auto 2%;
   ul {
     li {
       &:hover {
@@ -276,7 +274,7 @@ body {
 
 section {
   .title {
-     font-size: 3em;
+    font-size: 3em;
     color: #fff;
     &:after {
       content: "";
@@ -296,12 +294,18 @@ section {
 
 .floor {
   .title {
+    font-size: initial;
     .more {
       width: 20%;
       position: absolute;
       right: 0;
       top: 50%;
       transform: translateY(-50%);
+    }
+    b {
+      font-weight: 400;
+      color: #fff;
+      position: static;
     }
   }
    &.active {
@@ -331,7 +335,7 @@ nav {
 
 .hot-box {
   li {
-    width: 48.5%;
+    width: 48%;
     margin: 0 5px;
     &.youtube {
       position: relative;
@@ -354,6 +358,9 @@ nav {
   .logo-title {
     width: auto;
   }
+  .background {
+    padding-bottom: 32%;
+  }
 }
 
 /*  電腦版其他尺寸 */
@@ -361,20 +368,12 @@ nav {
 @include media-query("mobile", "992px") {
   #store-container {
     .background {
-      padding-bottom: 50vw;
+      padding-bottom: 95vw;
     }
     .logo-title {
       img {
         transform: scale(3);
         margin-top: 3%;
-      }
-    }
-  }
-
-  .bg01 {
-    &.list_M {
-      .hotproboxR {
-        width: 48.6%;
       }
     }
   }

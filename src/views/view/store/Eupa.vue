@@ -1,86 +1,98 @@
 <script setup>
-var contents = [
-        {
-          logoImage: "EUPA/images/logo.png",
-          floorImg: [
-            {
-              href: "#pro7759",
-              image: "EUPA/images/bar_05.png",
-              text: "新品上市",
-            },
-            {
-              href: "#pro7675",
-              image: "EUPA/images/bar_01.png",
-              text: "熱銷商品",
-              moreUrl: "https://www.tk3c.com/dic1.aspx?cid=111723&aid=23897",
-            },
-            {
-              href: "#pro7676",
-              image: "EUPA/images/bar_02.png",
-              text: "電鍋/料理鍋",
-              moreUrl:
-                "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124110",
-            },
-            {
-              href: "#pro7677",
-              image: "EUPA/images/bar_03.png",
-              text: "咖啡機",
-              moreUrl:
-                "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124111",
-            },
-             {
-              href: "#pro7678",
-              image: "EUPA/images/bar_04.png",
-              text: "廚房小幫手",
-              moreUrl:
-                "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124112",
-            },
-             {
-              href: "#pro7760",
-              image: "EUPA/images/bar_06.png",
-              text: "展示/福利出清",
-            },
-          ],
-          slides: [
-            { pc: "EUPA/images/TSK.png"},
-            { pc: "EUPA/images/TSK-264.png", mobile: "EUPA/images/TSK-264_M.png" },
-            { pc: "EUPA/images/TSK-1171_a.png", mobile: "EUPA/images/TSK-1171A_M.png" },
-            { pc: "EUPA/images/TSK-1589.png", mobile: "EUPA/images/TSK-1589B_M.png" },
-            { pc: "EUPA/images/TSK-2865_a.png", mobile: "EUPA/images/TSK-2865_M.png" },
-             { pc: "EUPA/images/TSK-B164.png", mobile: "EUPA/images/TSK-B164_M.png" },
-          ],
-        }
-      ];
-    
-      const menu = [7759,7675,7676,7677,7678,7760];
-      const moreImage = "EUPA/images/more.png";
+  import { nextTick,ref } from "vue";
+
+    const contents = ref([
+      {
+        logoImage: "EUPA/images/logo.png",
+        floorImg: [
+          {
+            href: "#pro7759",
+            image: "EUPA/images/bar_05.png",
+            text: "新品上市",
+          },
+          {
+            href: "#pro7675",
+            image: "EUPA/images/bar_01.png",
+            text: "熱銷商品",
+            moreUrl: "https://www.tk3c.com/dic1.aspx?cid=111723&aid=23897",
+          },
+          {
+            href: "#pro7676",
+            image: "EUPA/images/bar_02.png",
+            text: "電鍋/料理鍋",
+            moreUrl:
+              "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124110",
+          },
+          {
+            href: "#pro7677",
+            image: "EUPA/images/bar_03.png",
+            text: "咖啡機",
+            moreUrl:
+              "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124111",
+          },
+          {
+            href: "#pro7678",
+            image: "EUPA/images/bar_04.png",
+            text: "廚房小幫手",
+            moreUrl:
+              "https://www.tk3c.com/dic2.aspx?cid=111723&aid=23897&hid=124112",
+          },
+          {
+            href: "#pro7760",
+            image: "EUPA/images/bar_06.png",
+            text: "展示/福利出清",
+          },
+        ],
+        slides: [
+          { pc: "EUPA/images/TSK.png" },
+          { pc: "EUPA/images/TSK-264.png", mobile: "EUPA/images/TSK-264_M.png" },
+          { pc: "EUPA/images/TSK-1171_a.png", mobile: "EUPA/images/TSK-1171A_M.png" },
+          { pc: "EUPA/images/TSK-1589.png", mobile: "EUPA/images/TSK-1589B_M.png" },
+          { pc: "EUPA/images/TSK-2865_a.png", mobile: "EUPA/images/TSK-2865_M.png" },
+          { pc: "EUPA/images/TSK-B164.png", mobile: "EUPA/images/TSK-B164_M.png" },
+        ],
+        slide622: [
+          { pc: "EUPA/images/bn20250622.jpg", mobile: 'EUPA/images/bn20250622M.jpg' },
+        ],
+        menu: [7759, 7675, 7676, 7677, 7678, 7760],
+        moreImage: "EUPA/images/more.png"
+      }
+    ]);
+      const today = new Date();
 
       nextTick(() => {
-       if( document.querySelectorAll('.floor')[0].querySelectorAll('.bg01 li').length == 0) {
-         contents[0].floorImg.splice(0,1);
-         menu.splice(0,1);
+        const floor = document.querySelectorAll('.floor')[0],
+        floorLI = floor.querySelectorAll('.bg01 li');
+       //如果樓層沒有商品則移除那一層 
+       if(floorLI.length === 0) {
+         document.querySelectorAll('nav .swiper-slide')[0].remove();
        }
       });
 
-      contents[0].slides.forEach((slide,s) => {
-        if (slide.mobile == undefined && window.innerWidth <= 992) {
-          contents[0].slides.splice(s,1);
-        }
+      //若輪播圖片沒有手機版圖在手機版時不顯示
+      const updateSlide = () => {
+        let newSlide = null;
+        newSlide = contents.value[0].slides.filter(slide =>
+          slide.mobile != undefined || window.innerWidth > 992
+        );
+        contents.value[0].slides = newSlide;
+      };
 
-        addEventListener('resize',() => {
-           if (slide.mobile == undefined && window.innerWidth <= 992) {
-          contents[0].slides.splice(s,1);
-          }
-        });
-      });    
-     
+     nextTick(() => {
+       if(today < new Date('2025/06/23')) {
+         //添加 slide51數組到 slides前頭
+          contents.value[0].slides.unshift(...contents.value[0].slide622);
+      }
+     });
+
+      updateSlide();
+      addEventListener('resize',updateSlide);//resize updateslide
 </script>
 
 <template>
      <StoreDefault
     :contents="contents"
   ></StoreDefault>
-    <CommonFloor :floors="contents[0].floorImg" :menu="menu"  :moreImage="moreImage"></CommonFloor>
 </template>
 
 <style lang="scss">

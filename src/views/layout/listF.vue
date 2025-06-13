@@ -1,6 +1,13 @@
 <script>
+/*
+* 傳入的數值
+pro - 吉米後台的陳列清單商品 - 必要
+isSwiper - 是否有輪播 0 = 不要;1 = 要 - 非必要
+name - 有輪播時需加上class名稱 供swiper 輪播左右箭頭用 - 非必要
+incoming - 加入尚未開放用class - 非必要
+*/
 export default {
-  props: ['pro', 'isSwiper', 'name', 'incoming']
+  props: ['pro','name', 'incoming','isSwiper']
 }
 </script>
 
@@ -61,8 +68,8 @@ export default {
           </a>
         </swiper-slide>
       </swiper>
-      <div v-if="pro.length > 4" class="swiper-button-prev prev"></div>
-      <div v-if="pro.length > 4" class="swiper-button-next next"></div>
+      <div v-if="pro.length > 2" class="swiper-button-prev prev"></div>
+      <div v-if="pro.length > 2" class="swiper-button-next next"></div>
     </ul>
   </div>
 

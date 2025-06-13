@@ -18,41 +18,42 @@
     mounted() {
       const { id } = this;
       
-      if (document.querySelectorAll('.wrapper .bg01').length > 0) {
-        //用樓層id來找它下一個.bg01 #pro7769 -> .bg01
+      const bg01 = document.querySelectorAll('.wrapper .bg01');
 
-        if (id != null) {
-          let protitle = document.querySelector('#pro' + id).parentNode;
-          if (protitle.nextElementSibling == null) return false;
-         
-          //取得.bg01樓層
-          this.Bg01Html = protitle.nextElementSibling;
-         
-          //撈取樓層版型 如:list_F list_M
-          this.bg01Type = protitle.nextElementSibling.getAttribute('class').substring(0, 6);
+      //檢查 .bg01商品是否存在
+      if (bg01.length === 0) return false;
+
+      if (id != null) {
+        const protitle = document.querySelector(`#pro${id}`);
+        //確認 .protitle 存在並繼續找到底下商品(.bg01)
+        
+        if (protitle.parentNode) {
+           //取得.bg01樓層
+           this.Bg01Html = protitle.parentNode.nextElementSibling;
+
+           //撈取樓層版型 如:list_F list_M
+          this.bg01Type = protitle.parentNode.nextElementSibling.getAttribute('class').substring(0, 6);
        
           //將樓層猜分li 做輪播
-          this.BgLiSlide = protitle.nextElementSibling.querySelectorAll('li');
-          let listMPro = protitle.nextElementSibling.querySelectorAll('.hotproboxL,.hotproboxR'),
-          listMSpecial = protitle.nextElementSibling.querySelectorAll('.list_special li'),
-          listBoxHBig = protitle.nextElementSibling.querySelectorAll('.boxH_big li'),
-          listBoxHSmall = protitle.nextElementSibling.querySelectorAll('.boxH_s li');
-          
+          this.BgLiSlide = protitle.parentNode.nextElementSibling.querySelectorAll('li');
+          let listMPro = protitle.parentNode.nextElementSibling.querySelectorAll('.hotproboxL,.hotproboxR'),
+          listMSpecial = protitle.parentNode.nextElementSibling.querySelectorAll('.list_special li'),
+          listBoxHBig = protitle.parentNode.nextElementSibling.querySelectorAll('.boxH_big li'),
+          listBoxHSmall = protitle.parentNode.nextElementSibling.querySelectorAll('.boxH_s li');
+       
           //各商品版型價錢加入千分號、不顯示市價=活動價
-         if (this.bg01Type == 'list_F') this.modifyListF(this.BgLiSlide);
-         if (this.bg01Type == 'list_M') this.modifyListM(listMPro); this.modifyListMsp(listMSpecial);
-         if (this.bg01Type == 'list_D') this.modifyListD(this.BgLiSlide);
-         if (this.bg01Type == 'list_H') {
-          this.modifyListH(listBoxHBig);
-          this.modifyListH(listBoxHSmall);
-         }
-         
-          
-          //移除原樓層商品
-          protitle.nextElementSibling.remove();
-        } else {
-          console.log('#pro' + id + '不存在'); return false;
+          if (this.bg01Type == 'list_F') this.modifyListF(this.BgLiSlide);
+          if (this.bg01Type == 'list_M') this.modifyListM(listMPro); this.modifyListMsp(listMSpecial);
+          if (this.bg01Type == 'list_D') this.modifyListD(this.BgLiSlide);
+          if (this.bg01Type == 'list_H') {
+            this.modifyListH(listBoxHBig);
+            this.modifyListH(listBoxHSmall);
+          }
+
+          protitle.parentNode.nextElementSibling.remove();
         }
+      } else {
+        return false;
       }
     },
     beforeUpdate() {

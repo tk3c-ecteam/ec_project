@@ -3,7 +3,8 @@
     <div class="background">
       <h2 class="title animate__animated animate__backInUp">
         <img class="animate__animated animate__heartBeat"
-          :src="$filters.siteUrl('windows10upgrade/images/title.png')" />
+          :src="$filters.siteUrl('windows10upgrade/images/title2.png')" />
+           <em class="date">即日起-{{ getLastDay() }}</em>
       </h2>
     </div>
 
@@ -16,7 +17,7 @@
     </p>
 
     <!-- 精選推薦商品 -->
-    <section class="special-box scroll" titles="精選推薦商品" id="special">
+    <section class="special-box scroll" v-if="isSp" titles="精選推薦商品" id="special">
       <h2 class="title">
         <img :src="$filters.siteUrl('windows10upgrade/images/bar_top.png')" />
       </h2>
@@ -48,7 +49,7 @@
     </section>
 
     <!-- 回饋必殺技 -->
-    <section class="gift-box scroll" titles="回饋必殺技" id="gift">
+    <section class="gift-box scroll" titles="回饋必殺技" v-if="isGift" id="gift">
       <h2 class="title">
         <img :src="$filters.siteUrl('windows10upgrade/images/bar_sp.png')" />
       </h2>
@@ -85,28 +86,29 @@
     </section>
 
     <!-- RTX50 新機預購 -->
-    <section class="rtx-group scroll" titles="RTX50新機預購" id="rtx">
+    <section class="rtx-group scroll" titles="RTX50新機" id="rtx">
       <h2 class="title">
-        <a :href="$filters.addGALink('https://events.tk3c.com/events_net/RTXNB/index.html')" target="_blank">
+        <a href="https://events.tk3c.com/events_net/3c_system/index.html#tab2" target="_blank">
           <img :src="$filters.siteUrl('windows10upgrade/images/bar_rtx50.png')" />
         </a>
       </h2>
 
-      <div>
-        <Tabs :tabs="tabs">
+      <Tabs :tabs="tabs">
           <template v-slot="{ selectedTab }">
             <TabContent v-for="(tab, b) in tabs" :type="tab.type" :menus="tab.id" :index="b" :selectedTab="selectedTab">
             </TabContent>
           </template>
         </Tabs>
-      </div>
     </section>
 
     <CommonFloor :floors="floors" :menu="menu"></CommonFloor>
   </div>
 
+  <!-- 左側選單 -->
+  <LeftAside></LeftAside> 
+
   <!-- 右側選單+手機板 -->
-  <RightAside :asides="asides" :type="'mobile2'"></RightAside>
+  <RightAside :type="'mobile3'"></RightAside>
 </template>
 
 <script>
@@ -175,27 +177,42 @@ export default {
       floors:[
         {
           "image":"windows10upgrade/images/bar_01.png",
-          "url":"https://www.tk3c.com/dic2.aspx?cid=124426&aid=23931&hid=124429",
+          "url":"https://www.tk3c.com/dic2.aspx?cid=124426&aid=23947&hid=124524",
         },
          {
           "image":"windows10upgrade/images/bar_02.png",
-          "url":"https://events.tk3c.com/events_net/2024083C/index.html",
+          "url":"https://events.tk3c.com/events_net/3c_system/index.html",
         },
          {
           "image":"windows10upgrade/images/bar_03.png",
-          "url":"https://events.tk3c.com/events_net/2024083C/index.html",
+          "url":"https://events.tk3c.com/events_net/3c_system/index.html",
         },
          {
           "image":"windows10upgrade/images/bar_04.png",
-          "url":"https://events.tk3c.com/events_net/2024083C/index.html",
+          "url":"https://events.tk3c.com/events_net/3c_system/index.html",
         }
       ],
       today:new Date(),
-      menu:[7859,7860,7861,7862]
+      menu:[7859,7860,7861,7862],
+      isGift:false,
+      isDate:true,
+      isSp:false
     }
   },
   mounted() {
-    this.fixedBg('.background2','.gift-box');
+    const { today } = this;
+    this.fixedBg('.background2','.rtx-group');
+
+    if(today >= new Date('2025/06/01')) this.isDate = false;
+  },
+  methods: {
+    getLastDay() {
+      const year = this.today.getFullYear(),
+      month = this.today.getMonth(),
+      last = new Date(year,month + 1,0), // 0 為最後一天
+      lastDay = last.getDate();
+      return (month + 1) + '.' + lastDay;
+    }
   },
 }
 </script>
@@ -253,6 +270,13 @@ body{
         animation-duration: 1.3s;
         animation-delay: 2s;
       }
+      .date {
+        font-size: 1.5vw;
+        font-weight: bold;
+        position: absolute;
+        top: 16%;
+        color: #fff;
+      }
     }
   }
 }
@@ -308,11 +332,15 @@ body{
 @include media-query("mobile", "992px") {
   #window-container {
     .background {
-      padding-bottom: 40vw;
+      padding-bottom: 50vw;
       .title {
         width: 55%;
         top: 9vw;
         right: 2vw;
+        .date {
+          font-size: 2vw;
+          top: 4vw;
+        }
       }
     }
   }
@@ -348,21 +376,18 @@ body{
 
 /* 手機版 */
 @include media-query("mobile", "576px") {
-  .fix_btn {
-    display: block;
-    .dropdown-menu {
-      display: none;
-    }
-  }
-
   #window-container {
     .background {
-      padding-bottom: 75vw;
+      padding-bottom: 88vw;
       .title {
         width: 85%;
         top: 25vw;
         right: 0;
         margin: 0 auto;
+        .date {
+          font-size: 1.2rem;
+          top: 2vw;
+        }
       }
     }
   }

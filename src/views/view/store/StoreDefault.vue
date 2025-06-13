@@ -7,40 +7,22 @@ const contents = defineModel("contents");
      data(){
       return {
          swiper:null,
-         statusNav:0
+         statusNav:null,
+         status:null
       }
      },
      mounted() {
       //回到上層按鈕滾動後顯示
-      window.addEventListener('scroll',this.showMobileTop);
+       window.addEventListener('scroll',this.showMobileTop);
 
        //導航區滾動定位
        if (document.querySelectorAll('nav').length > 0) {
-       document.addEventListener("scroll", (e) => {
-         let scrollTop = document.documentElement.scrollTop;
-
-         if (scrollTop >= 150) {
-          document.querySelector('nav').classList.add('fixed');
-         } else {
-           document.querySelector('nav').classList.remove('fixed');
-         }
-
-         document.querySelectorAll(".floor").forEach((el, i) => {
-           let top = el.getBoundingClientRect().top + scrollTop - 150,
-             bottom = top + window.innerHeight;
-           if (scrollTop >= top && scrollTop < bottom) {
-            this.statusNav = i
-             this.goSlide(this.statusNav);
-             el.classList.add('active')
-           } else {
-            el.classList.remove('active')
-           }
-         });
-       });
+         window.addEventListener('scroll',this.storeScroll);
       }
      },
      beforeUnmount() {
         window.removeEventListener('scroll',this.showMobileTop);
+        window.removeEventListener('scroll',this.storeScroll);
      },
      methods: {
       onSwiper(swiper) {
@@ -48,7 +30,51 @@ const contents = defineModel("contents");
       },
       goSlide(id) {
         this.swiper.slideTo(id);
-      }
+      },
+      //回到上層
+      goTop2() {
+        window.scrollTo(0,0);
+        this.statusNav = null;
+      },
+       storeScroll() {
+         let scrollTop = window.scrollY;
+
+         //當前滾動位置超過100px時導航區固定
+         if (scrollTop > 100) {
+          document.querySelector('#store-container nav').classList.add('fixed');
+         } else {
+          document.querySelector('#store-container nav').classList.remove('fixed');
+         }
+
+         document.querySelectorAll(".floor").forEach((el, i) => {
+           let top = el.getBoundingClientRect().top + scrollTop - 150,
+             bottom = top + window.innerHeight; 
+
+           // 檢查當前滾動位置是否在當前區域內  
+           if (scrollTop >= top && scrollTop < bottom) {
+             this.statusNav = i
+             this.goSlide(this.statusNav);
+             el.classList.add('active');
+           } else {
+            el.classList.remove('active');
+           }
+         });
+
+         // 當滾動位置在第一區域上方時，重置狀態
+          if (scrollTop < 300) {
+            this.statusNav = null;
+            this.goSlide(this.statusNav);
+           }
+       },
+       mouseover(id) {
+        this.status = id;
+       },
+       mouseleave() {
+        this.status = null;
+       },
+       change(id) {
+        (this.status == null) ? this.status = id : this.status = null;
+       }
      },
   }
 </script>
@@ -81,18 +107,42 @@ const contents = defineModel("contents");
     <nav v-if="contents[0].floorImg != undefined" class="w:full top:45px z:99 p:0.5%|1%|0.5% p:2%|3%|2%@<992 p:2%|4%|3%@<576 box:border-box"
     >
       <swiper
-        class="max-w:1100px min-w:50% w:auto@<992"
         :loop="false"
         :slidesPerView="'auto'"
         :space-between="10"
+        :breakpoints="{
+          0:{
+            spaceBetween:30
+          },
+          600:{
+            spaceBetween:50
+          }
+        }"
         @swiper="onSwiper"
       >
-        <swiper-slide v-for="(floor, f) in contents[0].floorImg" class="flex-basis:fit-content">
-          <a :href="floor.href" :class="[statusNav == f ? 'active' : '']">
+        <swiper-slide v-for="(floor, f) in contents[0].floorImg" class="w:fit-content!">
+          <a v-if="!floor.children" :href="floor.href" :class="{'active' : statusNav == f}">
             <span class="f:1.2em f:2em@<992 f:1.2em@<576 f:1.5em@>2000">
               {{ floor.text }} <i class="f:0.9rem">▼</i>
             </span>
           </a>
+          <!-- 下拉選單 -->
+          <div v-else 
+          @mouseover="mouseover(f)"
+          @mouseleave="mouseleave"
+          @click="change(f)"
+          >
+          <span class="f:1.2em f:2em@<992 f:1.2em@<576 f:1.5em@>2000">
+              {{ floor.text }} <i class="f:0.9rem">▼</i>
+           </span>
+           <ul class="dropdown" v-if="status == f">
+              <li v-for="(child,c) in floor.children" :key="c">
+                <a :href="child.href" target="_blank">
+                  {{ child.name }}
+                </a>
+              </li>
+           </ul>
+        </div> 
         </swiper-slide>
       </swiper>
     </nav>
@@ -116,9 +166,9 @@ const contents = defineModel("contents");
         }"
       >
         <swiper-slide v-for="(slide,s) in contents[0].slides">
-          <a :href="$filters.addGALink(slide.url)" target="_blank">
+          <a :class="[slide.url == undefined ? 'no' : '']" :href="$filters.addGALink(slide.url)" target="_blank">
              <img v-if="slide.pc" class="pc" :src="$filters.siteUrl(slide.pc)" loading="lazy" />
-             <img v-if="slide.mobile" class="mobile" :src="$filters.siteUrl(slide.mobile)" loading="lazy" />
+             <img v-if="slide.mobile" class="mobile" :src="$filters.siteUrl(slide.mobile)" loading="lazy"/>
           </a>
         </swiper-slide>
       </swiper>
@@ -126,9 +176,25 @@ const contents = defineModel("contents");
       <div class="swiper-button-prev prev"></div>
       <div class="swiper-button-next next"></div>
     </div>
-  </div>
 
-  <div class="custom-top" :class="{'isShow':isGoTop}" @click="goTop"><p></p></div>
+    <!-- 影片+圖片(非必要) -->
+     <slot name="special"></slot>
+
+    <!-- 商品樓層 -->
+    <div v-if="contents[0].menu">
+       <CommonFloor :floors="contents[0].floorImg" :menu="contents[0].menu">
+          <template v-if="contents[0].singleImage" #moreTitle2>
+            <img :src="$filters.siteUrl(contents[0].singleImage)">
+          </template>
+
+          <template v-if="contents[0].moreImage" #more>
+            <img :src="$filters.siteUrl(contents[0].moreImage)">
+          </template>
+       </CommonFloor>
+    </div>
+
+     <div class="custom-top" :class="{'isShow':isGoTop}" @click="goTop2"><p></p></div>
+  </div>
 </template>
 
 <style lang="scss">
@@ -138,11 +204,16 @@ const contents = defineModel("contents");
       height: 0;
       position: relative;
       margin: 0 auto 0;
-      padding-bottom: 40%;
       .swiper-pagination
         {
           bottom: 0 !important;
         }
+      .swiper-slide {
+        a {
+          pointer-events: none;
+          cursor: auto;
+        }
+      }  
     }
   }
 
@@ -151,8 +222,11 @@ const contents = defineModel("contents");
     justify-content: center;
     padding-bottom: 0;
   }
-  &.fixed {
-    position: fixed;
+}
+
+.custom-top {
+  &.isShow {
+    display: block;
   }
 }
 
@@ -165,14 +239,6 @@ const contents = defineModel("contents");
   }
 }
 @include media-query("mobile", "576px") {
-  .fix_btn {
-    display: block;
-
-    .dropdown-menu {
-      display: none;
-    }
-  }
-
   .copyR {
     margin-bottom: 0;
   }

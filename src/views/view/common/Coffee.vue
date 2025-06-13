@@ -25,16 +25,21 @@ export default {
       ],
       menus: [3003,2999,3000,3001],
       menuSP:2998,
+      today:new Date()
     }
   },
   mounted() {
     //撈取樓層商品
     this.getFloorSingle(this.menuSP);
-
-    //判斷樓層是否有商品
-    if (document.querySelectorAll('.floor')[3].querySelectorAll('.bg01 li').length <= 0) {
-       this.floorImg.splice(3,1);
-       this.menus.splice(3,1);
+  },
+  computed:{
+    //買一送一 精品濾掛式咖啡價格
+    price() {
+      return 450;
+    },
+    //買一送一 經典深焙咖啡 5/1價格更新
+    price2() {
+      return (this.today >= new Date('2025/05/01')) ? 560 : 470;
     }
   }
 }
@@ -73,10 +78,25 @@ export default {
         </a>
       </h2>
 
-      <a class="mb:2%" :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=coffee-22')" target="_blank">
-        <img :src="$filters.siteUrl('crown_202204/images/2311/coffee-22d.png')" loading="lazy" /></a>
-      <a :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=coffee-20')" target="_blank">
-        <img :src="$filters.siteUrl('crown_202204/images/2311/coffee-20c.png')" loading="lazy" /></a>
+      <div class="rel mb:2%">
+        <a class="rel w:full h:full" :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=coffee-22')" target="_blank">
+          <img :src="$filters.siteUrl('crown_202204/images/2311/coffee-22f.png')" />
+           <div class="price">
+              <b>{{ price }}</b>
+              <sup>/2包</sup>
+           </div> 
+         </a>
+      </div>
+
+      <div class="rel">
+        <a class="rel w:full h:full" :href="$filters.addGALink('https://www.tk3c.com/pt.aspx?pid=coffee-20')" target="_blank">
+           <img :src="$filters.siteUrl('crown_202204/images/2311/coffee-20e.png')" /> 
+           <div class="price">
+              <b>{{ price2 }}</b>
+              <sup>/2包</sup>
+           </div> 
+        </a>
+      </div>
     </section>
     
     <!-- 其他樓層 -->
@@ -84,7 +104,7 @@ export default {
   </div>
 
   <!-- 右側選單  -->
-  <RightAside :asides="asides" :type="'mobile'"></RightAside>
+  <RightAside :type="'mobile'"></RightAside>
 </template>
 
 <style lang="scss">
@@ -101,7 +121,7 @@ body {
     display: block;
     width: 100%;
     height: 100%;
-    $image: $dir2 + "kv02.jpg";
+    $image: $dir2 + "kv03.jpg";
     background: url($image) no-repeat center;
     background-size: 100% auto;
     background-position: 0 45px, top;
@@ -111,6 +131,7 @@ body {
     margin: 0 auto;
     z-index: -1;
     top: 0;
+    aspect-ratio: 16/9;
   }
 }
 
@@ -211,6 +232,26 @@ form#form1 {
     }
   }
 
+  .special-group {
+    .price {
+      font-family: "Noto Sans TC", sans-serif;
+      font-weight: 900;
+      width: auto;
+      position: absolute;
+      left: 36%;
+      top: 62%;
+       color: #4f3022;
+      b {
+        font-size: 3em;
+      }
+      sup {
+        font-size: 2em;
+        padding-left: 8px;
+        box-sizing: border-box;
+      }
+    }
+  }
+
 /*  電腦版其他尺寸 */
 
 @include media-query("mobile", "992px") {
@@ -231,6 +272,19 @@ form#form1 {
     .products {
       ul {
         width: 100%;
+      }
+    }
+  }
+
+  .special-group {
+    .price {
+      left: 35vw;
+      top: 23.5vw;
+      b {
+        font-size: 1.7em;
+      }
+      sup {
+        font-size: 1.2em;
       }
     }
   }
@@ -263,6 +317,34 @@ form#form1 {
       .bg01 {
         border-radius: 35px;
         box-sizing: border-box;
+      }
+    }
+  }
+
+  .special-group {
+    .price {
+      top: 23vw;
+      b {
+        font-size: 1rem;
+      }
+      sup {
+        font-size: 0.8rem;
+        padding-left: 3px;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+@include media-query("mobile", "320px") {
+  .special-group {
+    .price {
+      top: 21.5vw;
+      b {
+        font-size: 0.8rem;
+      }
+      sup {
+        font-size: 0.6rem;
       }
     }
   }

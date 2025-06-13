@@ -1,53 +1,22 @@
 <script setup>
-import CommonFloor from '../../floor/CommonFloor.vue'
-import StaffCommon from './StaffCommon.vue'
-import listM from '../../layout/listM.vue'
+import listD from '@/views/layout/listD.vue'
 
 const today = new Date()
-var contents = [
+
+const contents = [
   {
-     logo: 'CNAIR/images/logo.png',
-    title: 'CNAIR/images/title3_a.png',
+    logo: 'CNAIR/images/logo.png',
+    title: 'CNAIR/images/title250507_cnair.png',
     store: 'evaair/images/store2.png',
-    singleImage:'starlux/images/bar.png',
+    singleImage: 'starlux/images/bar.png',
     floor: [
       {
-        text: '手機'
-      },
-      {
-        text: '平板'
-      },
-      {
-        text: 'WATCH'
-      },
-      {text:'咖啡機',
-      type:listM
-      }
-    ],
-     navButtons: [
-      {
-        image: 'tup/images/nav3.png',
-        url: 'https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2'
-      },
-      {
-        image: 'tup/images/nav4.png',
-        url: 'https://events.tk3c.com/events_net/nightsale/index.html'
-      },
-      {
-        image: 'tup/images/nav5.png',
-        url: 'https://events.tk3c.com/events_net/green_subsidy/index.html'
-      },
-      {
-        image: 'tup/images/nav6.png',
-        url: 'https://events.tk3c.com/events_net/bank_ec/index.html'
-      },
-       {
-        image: 'tup/images/nav7.png',
-        url: 'https://www.tk3c.com/dictitleurl.aspx?cid=124130'
+        text: '許願清單',
+        type:listD
       }
     ],
     alertHtml: `
-        <li>1.收單時間：即日起至<span class="red">2024/12/31 23:59</span>止</li>
+        <li>1.收單時間：即日起至<span class="red">2025/6/30 23:59</span>止</li>
         <li>2.交易須知：</li>
         <li><p>(1) 限【門市取貨門市付款】(預約門市取貨且選擇門市付款)，商品不得轉售。</p></li>
         <li><p>(2) 指定取貨/付款門市</p></li>
@@ -62,30 +31,14 @@ var contents = [
         <li>3.請留意於本網頁成立的是【門市交易預約單】，是指於本網頁預約【至燦坤實體門市進行交易的優先資格】，商品依門市現貨為主，相關交易流程依實體門市規定為準，不屬於通訊交易，依法不享有七天猶豫期。</li>
         <li>4.活動未盡事宜以燦坤3C公告為準，燦坤3C保留活動最終解釋修改變更之權利。</li>
           `,
+    menu: [5989]
   }
-]
+];
 
-var menu = [7671,7672,7673,7674]
 </script>
 
 <template>
-  <StaffCommon v-model:contents="contents" v-model:menu="menu"></StaffCommon>
-
-  <!-- 商品樓層 -->
-  <CommonFloor
-    :floors="contents[0].floor"
-    :menu="menu"
-    :singleImage="contents[0].singleImage"
-  ></CommonFloor>
-
-  <!-- 活動辦法 -->
-  <section class="info-group scroll" id="info">
-    <h2 class="title">員工福利委員會員購專案</h2>
-    <div class="text">
-      <p class="last">注意事項如下</p>
-      <ol v-html="contents[0].alertHtml"></ol>
-    </div>
-  </section>
+  <StaffCommon :contents="contents"></StaffCommon>
 </template>
 
 <style lang="scss">
@@ -125,14 +78,6 @@ body {
   .title {
     width: 900px;
     margin: 0 auto 0;
-    img {
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      top: 0;
-      z-index: -1;
-    }
     b {
       font-size: 3em;
       line-height: 15rem;
@@ -168,5 +113,5 @@ body {
   }
 }
 
-@import '../../../assets//sass/staff';
+@import '../../../assets/sass/staff';
 </style>

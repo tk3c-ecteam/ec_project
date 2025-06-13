@@ -9,6 +9,7 @@ import Components from 'unplugin-vue-components/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   define: {
     global: 'window',
     'process.env': {}
@@ -80,18 +81,22 @@ export default defineConfig({
   },
   build: {
     //壓縮js
-    minify: 'esbuild',
+    minify: 'terser',
     //不壓縮css
-    cssMinify: false,
+    cssMinify: true,
     // 小於4k轉換成base64
-    assetsInlineLimit: 4096,
+    assetsInlineLimit: 8196,
     //每次執行清空 dist資料夾
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        lenovo2503: resolve(__dirname, './index.html')
+        acer2506: resolve(__dirname, './index.html'),
       },
       output: {
+        //拆分node套件命名為vendor.js
+        /*manualChunks(id) {
+          if (id.includes('node_modules')) return 'vendor';
+        },*/
         entryFileNames: 'js/[name].js',
         chunkFileNames: 'js/[name].js',
         assetFileNames: 'css/[name][extname]'

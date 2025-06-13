@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import listF from '../layout/listF.vue'
-import Double12F from '../floor/Double12F.vue'
-import AllEvent from '../../components/AllEvent.vue'
+import CommonFloor from '../../floor/CommonFloor.vue';
 
 const swiperRef = ref()
 const swiperBank = ref()
@@ -29,28 +27,43 @@ const goBankSlide = (id) => {
 </script>
 
 <script>
-import { globalMixin } from '../../globalMixin.js'
-
 export default {
-  mixins: [globalMixin],
   data() {
     return {
-      menuSale: [7654, 7655, 7656, 7657, 7658, 7659, 7660, 7661, 7662, 7663, 7664],
       menuPro: 7643, //1212必購神物 陳列編號
       menuGreen: 7517, //環保商品陳列編號
       menuGo: 7518, //速速go陳列編號
+      menu: [
+        7646,
+        7562,
+        7563
+      ],
+      menu2:[ 7569,
+        7533,
+        7535,
+        7536,
+        7537,
+        7539,
+        7545,
+        7538,
+        7543,
+        7544,
+        7665,
+        7540,
+        7541,
+        7546,],
       sales: [
-        { image: 'double12_2024/images/1212/s112.png' },
-        { image: 'double12_2024/images/1212/s212.png' },
-        { image: 'double12_2024/images/1212/s312.png' },
-        { image: 'double12_2024/images/1212/s412.png' },
-        { image: 'double12_2024/images/1212/s512.png' },
-        { image: 'double12_2024/images/1212/s1212.png' },
-        { image: 'double12_2024/images/1212/s400.png' },
-        { image: 'double12_2024/images/1212/s500.png' },
-        { image: 'double12_2024/images/1212/s700.png' },
-        { image: 'double12_2024/images/1212/s600.png' },
-        { image: 'double12_2024/images/1212/s1000.png' }
+        { image: 'double12_2024/images/1212/s112.png',id:7564 },
+        { image: 'double12_2024/images/1212/s212.png',id:7655 },
+        { image: 'double12_2024/images/1212/s312.png',id:7656 },
+        { image: 'double12_2024/images/1212/s412.png',id:7657 },
+        { image: 'double12_2024/images/1212/s512.png',id:7658 },
+        { image: 'double12_2024/images/1212/s1212.png',id:7659 },
+        { image: 'double12_2024/images/1212/s400.png',id:7660 },
+        { image: 'double12_2024/images/1212/s500.png',id:7661 },
+        { image: 'double12_2024/images/1212/s700.png',id:7662 },
+        { image: 'double12_2024/images/1212/s600.png',id:7663 },
+        { image: 'double12_2024/images/1212/s1000.png',id:7664 }
       ],
       banks: [
         { image: 'double12_2024/images/1212/bank1.png' },
@@ -62,29 +75,144 @@ export default {
         { image: 'double12_2024/images/1212/bank5.png' },
         { image: 'double12_2024/images/1212/bank6.png', class: 'long' }
       ],
-      asides: [
-        { text: '現折券', href: '#sale' },
-        { text: '信用卡專屬優惠', href: '#bank' },
-        { text: '環保商品', href: '#green' },
-        { text: '筆電', href: '#pro7646' },
-        { text: 'Apple', href: '#pro7562' },
-        { text: 'Android', href: '#pro7563' },
-        { text: '印表機', href: '#print' },
-        { text: '平板/穿戴', href: '#pro7569' },
-        { text: '桌機/螢幕', href: '#pro7533' },
-        { text: '遊戲', href: '#pro7535' },
-        { text: '攝影/空拍機', href: '#pro7536' },
-        { text: '電視', href: '#pro7537' },
-        { text: '冰箱/洗衣機', href: '#pro7539' },
-        { text: '廚房3機', href: '#pro7545' },
-        { text: '廚房家電', href: '#pro7538' },
-        { text: '空調', href: '#pro7543' },
-        { text: '秋冬除濕', href: '#pro7544' },
-        { text: '電暖器', href: '#pro7665' },
-        { text: '清淨除塵', href: '#pro7540' },
-        { text: '居家美容', href: '#pro7541' },
-        { text: '機車', href: '#pro7546' },
-        { text: '燦坤K幣0元購', href: '#bonus' }
+      floorImg: [
+        {
+          url: 'https://events.tk3c.com/events_net/2024083C/index.html',
+          image: 'double12_2024/images/1212/S06.png',
+          class: 'nb-box'
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=40444',
+          image: 'double12_2024/images/1212/S07.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dic1.aspx?cid=93605&aid=20221',
+          image: 'double12_2024/images/1212/S08.png'
+        }
+      ],
+      floorImg2:[
+      {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=10890',
+          image: 'double12_2024/images/1212/S10.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=44823',
+          image: 'double12_2024/images/1212/S11.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=629',
+          image: 'double12_2024/images/1212/S12.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=111126',
+          image: 'double12_2024/images/1212/S13.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/2020TVforever/index.html',
+          image: 'double12_2024/images/1212/S14.png',
+          banner: [
+            {
+              url: 'https://www.tk3c.com/dictitleurl.aspx?cid=11312',
+              image: 'double12_2024/images/1212/S14BN-1.png'
+            },
+            {
+              url: 'https://www.tk3c.com/dictitleurl.aspx?cid=11312',
+              image: 'double12_2024/images/1212/S14BN-2.png'
+            }
+          ]
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/icewash2209/index.html',
+          image: 'double12_2024/images/1212/S15.png',
+          banner: [
+            {
+              image: 'double12_2024/images/1212/S15BN-1.png',
+              links: [
+                'https://www.tk3c.com/dictitleurl.aspx?cid=12504',
+                'https://www.tk3c.com/dictitleurl.aspx?cid=83198',
+                'https://www.tk3c.com/dictitleurl.aspx?cid=83198'
+              ]
+            },
+            {
+              url: 'https://events.tk3c.com/events_net/icewash2209/index.html',
+              image: 'double12_2024/images/1212/S15BN-2b.png'
+            }
+          ]
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=113296',
+          image: 'double12_2024/images/1212/S16.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=83185',
+          image: 'double12_2024/images/1212/S17.png'
+        },
+        {
+          url: 'https://events.tk3c.com/events_net/airConditionerLAB/index.html',
+          image: 'double12_2024/images/1212/S18.png',
+          banner: [
+            {
+              image: 'double12_2024/images/1212/S18BN-1.png',
+              links: [
+                'https://events.tk3c.com/events_net/icewash2209/index.html',
+                'https://www.tk3c.com/mobile/mob_appointment_page.aspx?BookType=type2'
+              ]
+            },
+            {
+              url: 'https://events.tk3c.com/events_net/airConditionerLAB/index.html',
+              image: 'double12_2024/images/1212/S18BN-2.png'
+            },
+            {
+              image: 'double12_2024/images/1212/S18BN-3.png',
+              links: [
+                'https://events.tk3c.com/events_net/green_subsidy/index.html',
+                'https://events.tk3c.com/events_net/airConditionerLAB/index.html'
+              ]
+            }
+          ]
+        },
+        {
+          url: 'https://www.tk3c.com/dic1.aspx?cid=71323&aid=16881',
+          image: 'double12_2024/images/1212/S19.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dic1.aspx?cid=11058&aid=5779',
+          image: 'double12_2024/images/1212/S20.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=71323',
+          image: 'double12_2024/images/1212/S21.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dictitleurl.aspx?cid=4640',
+          image: 'double12_2024/images/1212/S22.png'
+        },
+        {
+          url: 'https://www.tk3c.com/dic1.aspx?cid=111383&aid=22330',
+          image: 'double12_2024/images/1212/S23.png'
+        }
+      ],
+      printers: [
+        {
+          image: '2024Thxgiving/images/hp.png',
+          id:7564
+        },
+        {
+          image: '2024Thxgiving/images/EPSON.png',
+          id:7565
+        },
+        {
+          image: '2024Thxgiving/images/Brother.png',
+          id:7566
+        },
+        {
+          image: '2024Thxgiving/images/Canon.png',
+          id:7567
+        },
+        {
+          image: '2024Thxgiving/images/FUJIFILM.png',
+          id:7568
+        }
       ],
       statusSale: 0, //現折券樓層用
       statusBank: 0, // 銀行樓層用
@@ -95,11 +223,6 @@ export default {
     // 撈取1212必購神物樓層商品
     this.getFloorSingle(this.menuPro)
 
-    //撈取現折券樓層商品
-    setTimeout(() => {
-      this.getFloorData(this.menuSale)
-    }, 50)
-
     //撈取綠點樓層商品
     this.getFloorSingle(this.menuGreen)
 
@@ -107,13 +230,6 @@ export default {
     this.getFloorSingle(this.menuGo)
   },
   methods: {
-    changSale(id) {
-      if (event) {
-        setTimeout(() => {
-          this.statusSale = id
-        }, 30)
-      }
-    },
     changeBank(id) {
       setTimeout(() => {
         this.statusBank = id
@@ -209,81 +325,37 @@ export default {
         <img :src="$filters.siteUrl('double12_2024/images/1212/S01.png')" />
       </h2>
 
-      <component :is="listF" :isSwiper="1" :name="'pro'" :pro="product2[menuPro]"></component>
+      <ListF :isSwiper="1" :name="'pro'" :pro="product2[menuPro]"></ListF>
     </section>
 
     <!-- 現折券 -->
-    <section class="sale-box scroll" id="sale">
+    <section class="sale-box scroll" titles="現折券" id="sale">
       <h2 class="title">
-        <a
-          :href="
+        <a :href="
             $filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=124085&strPreView=y')
-          "
-          target="_blank"
-        >
+          " target="_blank">
           <img :src="$filters.siteUrl('double12_2024/images/1212/S02.png')" />
         </a>
       </h2>
 
-      <div class="tab mb:1%">
-        <swiper
-          class="overflow:hidden"
-          :loop="false"
-          :space-between="10"
-          :breakpoints="{
-            0: {
-              slidesPerView: 3.2
-            },
-            600: {
-              slidesPerView: 4.3
-            },
-            992: {
-              slidesPerView: 6.3
-            }
-          }"
-          @swiper="onSwiper"
-        >
-          <swiper-slide
-            v-for="(sale, s) in sales"
-            :key="s"
-            :class="[statusSale == s ? 'active' : '']"
-            class="hue-rotate(-97deg).active"
-            @click="goSlide(s)"
-          >
-            <a @click="changSale(s)">
-              <img :src="$filters.siteUrl(sale.image)" alt />
-            </a>
-          </swiper-slide>
-        </swiper>
-      </div>
-
-      <div class="sale-content" v-for="(sale, s) in sales" v-show="statusSale == s">
-        <component
-          v-if="products[menuSale[s]] != undefined"
-          :is="listF"
-          :pro="products[menuSale[s]].Data"
-          :isSwiper="1"
-          :name="'sale'"
-        ></component>
-      </div>
+      <Tabs :tabs="sales">
+        <template v-slot="{ selectedTab }">
+          <TabContent :isSwiper="1" v-for="(sale, s) in sales" :menus="sale.id" :index="s" :selectedTab="selectedTab">
+          </TabContent>
+        </template>
+      </Tabs>
     </section>
 
     <!-- 信用卡專屬優惠 -->
-    <section class="bank-group scroll" id="bank">
+    <section class="bank-group scroll" titles="信用卡專屬優惠" id="bank">
       <h2 class="title">
-        <a
-          :href="$filters.addGALink('https://events.tk3c.com/events_net/bank_ec/index.html')"
-          target="_blank"
-        >
+        <a :href="$filters.addGALink('https://events.tk3c.com/events_net/bank_ec/index.html')" target="_blank">
           <img :src="$filters.siteUrl('double12_2024/images/1212/S03.png')" />
         </a>
       </h2>
 
       <div class="bank mb:4%">
-        <swiper
-          :loop="false"
-          :space-between="10"
-          :breakpoints="{
+        <swiper :loop="false" :space-between="10" :breakpoints="{
             0: {
               slidesPerView: 1.2
             },
@@ -293,15 +365,9 @@ export default {
             992: {
               slidesPerView: 3
             }
-          }"
-          @swiper="onBankSwiper"
-        >
-          <swiper-slide
-            v-for="(bank, b) in banks"
-            :class="[statusBank == b ? 'active' : '']"
-            class="contrast(0.5) contrast(1).active"
-            @click="goBankSlide(b)"
-          >
+          }" @swiper="onBankSwiper">
+          <swiper-slide v-for="(bank, b) in banks" :class="[statusBank == b ? 'active' : '']"
+            class="contrast(0.5) contrast(1).active" @click="goBankSlide(b)">
             <a @click="changeBank(b)">
               <img :src="$filters.siteUrl(bank.image)" />
             </a>
@@ -313,28 +379,20 @@ export default {
       <div class="bank-content" v-show="statusBank == 0">
         <ul class="gap:10 mb:2% mb:4%@<992">
           <li class="w:90% w:90vw@<992 w:full@<576">
-            <a
-              :href="
+            <a :href="
                 $filters.addGALink(
                   'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=main'
                 )
-              "
-              target="_blank"
-            >
+              " target="_blank">
               <img class="pc" :src="$filters.siteUrl('double12_2024/images/1212/S3-1.png')" />
               <img class="mobile" :src="$filters.siteUrl('double12_2024/images/1212/S3-1_M.png')" />
             </a>
           </li>
           <li class="w:90% w:89vw@<992 w:93vw@<576">
-            <swiper
-              :loop="false"
-              :space-between="10"
-              :autoplay="{
+            <swiper :loop="false" :space-between="10" :autoplay="{
                 delay: 1600,
                 disableOnInteraction: false
-              }"
-              :observer="true"
-              :breakpoints="{
+              }" :observer="true" :breakpoints="{
                 0: {
                   slidesPerView: 1.1
                 },
@@ -344,33 +402,24 @@ export default {
                 992: {
                   slidesPerView: 2
                 }
-              }"
-            >
+              }">
               <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
                 <img :src="$filters.siteUrl('double12_2024/images/1212/bank7_3.png')" />
-                <a
-                  class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576"
-                  :href="
+                <a class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576" :href="
                     $filters.addGALink(
                       'https://www.taishinbank.com.tw/eServiceA/CreditCardAP/apply/index.jsp?pc=27&sl=1701029779'
                     )
-                  "
-                  target="_blank"
-                >
+                  " target="_blank">
                   <img :src="$filters.siteUrl('double12_2024/images/login.png')" />
                 </a>
               </swiper-slide>
               <swiper-slide class="rel w:44% w:44vw@<992 w:94vw@<576">
                 <img :src="$filters.siteUrl('double12_2024/images/1212/bank8.png')" />
-                <a
-                  class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576"
-                  :href="
+                <a class="w:32% w:30vw@<992 w:40vw@<576 mt:3% mt:6%@<576" :href="
                     $filters.addGALink(
                       'https://events.tk3c.com/events_net/tk3c_creditcard/index.html?page=monthlyOffer'
                     )
-                  "
-                  target="_blank"
-                >
+                  " target="_blank">
                   <img :src="$filters.siteUrl('double12_2024/images/info.png')" />
                 </a>
               </swiper-slide>
@@ -385,11 +434,8 @@ export default {
           <img :src="$filters.siteUrl('double12_2024/images/1212/bank4_3.png')" />
           <img :src="$filters.siteUrl('double12_2024/images/1212/bank5_3.png')" />
         </p>
-        <a
-          href="https://www.tk3c.com.tw/#activityinfo&8"
-          class="w:16% w:30vw@<992 w:35vw@<576 mt:3% mt:6%@<576"
-          target="_blank"
-        >
+        <a href="https://www.tk3c.com.tw/#activityinfo&8" class="w:16% w:30vw@<992 w:35vw@<576 mt:3% mt:6%@<576"
+          target="_blank">
           <img :src="$filters.siteUrl('double12_2024/images/info.png')" />
         </a>
       </div>
@@ -401,11 +447,8 @@ export default {
           <img :src="$filters.siteUrl('double12_2024/images/1212/bank9-2.png')" />
           <img :src="$filters.siteUrl('double12_2024/images/1212/bank9-3.png')" />
         </p>
-        <a
-          :href="$filters.addGALink('https://events.tk3c.com/events_net/invoice_login/home.aspx')"
-          class="w:16% w:30vw@<992 w:35vw@<576 mt:3% mt:6%@<576"
-          target="_blank"
-        >
+        <a :href="$filters.addGALink('https://events.tk3c.com/events_net/invoice_login/home.aspx')"
+          class="w:16% w:30vw@<992 w:35vw@<576 mt:3% mt:6%@<576" target="_blank">
           <img :src="$filters.siteUrl('double12_2024/images/1212/login.png')" />
         </a>
       </div>
@@ -414,22 +457,17 @@ export default {
     <!-- fb/line分享 -->
     <section>
       <div class="w:90% w:full@<576 gap:10 grid-cols:2 grid-cols:1@<576 m:auto">
-        <a :href="$filters.addGALink('https://www.facebook.com/TDdd331')" target="_blank"
-          ><img :src="$filters.siteUrl('double12_2024/images/1212/fb.png')"
-        /></a>
-        <a :href="$filters.addGALink('https://page.line.me/tid7686u')" target="_blank"
-          ><img :src="$filters.siteUrl('double12_2024/images/1212/line.png')"
-        /></a>
+        <a :href="$filters.addGALink('https://www.facebook.com/TDdd331')" target="_blank"><img
+            :src="$filters.siteUrl('double12_2024/images/1212/fb.png')" /></a>
+        <a :href="$filters.addGALink('https://page.line.me/tid7686u')" target="_blank"><img
+            :src="$filters.siteUrl('double12_2024/images/1212/line.png')" /></a>
       </div>
     </section>
 
     <!-- 環保商品 -->
-    <section class="green-box scroll" id="green">
+    <section class="green-box scroll" titles="環保商品" id="green">
       <h2 class="title">
-        <a
-          :href="$filters.addGALink('https://events.tk3c.com/events_net/green_subsidy/index.html')"
-          target="_blank"
-        >
+        <a :href="$filters.addGALink('https://events.tk3c.com/events_net/green_subsidy/index.html')" target="_blank">
           <img :src="$filters.siteUrl('double11_2024/images/green_title2.png')" />
         </a>
       </h2>
@@ -439,73 +477,65 @@ export default {
       </p>
 
       <div class="box">
-        <component
-          :is="listF"
-          :pro="product2[menuGreen]"
-          :isSwiper="1"
-          :name="'green-pro'"
-        ></component>
+        <ListF :pro="product2[menuGreen]" :isSwiper="1" :name="'green-pro'"></ListF>
       </div>
     </section>
 
     <!-- 速速go -->
     <section class="go-group">
       <h2 class="title">
-        <a
-          :href="
+        <a :href="
             $filters.addGALink('https://events.tk3c.com/events_net/tk3c_fastdelivery/index.html')
-          "
-          target="_blank"
-        >
+          " target="_blank">
           <img :src="$filters.siteUrl('double12_2024/images/1212/S05.png')" />
         </a>
       </h2>
 
       <div class="box">
-        <component :is="listF" :pro="product2[menuGo]" :isSwiper="1" :name="'go-box'"></component>
+        <listF :pro="product2[menuGo]" :isSwiper="1" :name="'go-box'"></listF>
       </div>
     </section>
 
-    <!-- 其他樓層 -->
-    <Double12F></Double12F>
+    <!-- 其他樓層上部 -->
+    <CommonFloor :floors="floorImg" :menu="menu"></CommonFloor>
+
+    <!-- 印表機 -->
+    <section class="print-box scroll" titles="印表機" id="print">
+      <h2 class="title">
+        <a :href="$filters.addGALink('https://www.tk3c.com/dictitleurl.aspx?cid=16917')" target="_blank">
+          <img :src="$filters.siteUrl('double12_2024/images/1212/S09.png')">
+        </a>
+      </h2>
+
+      <Tabs :tabs="printers">
+        <template v-slot="{ selectedTab }">
+          <TabContent v-for="(print,p) in printers" :menus="print.id" :index="p" :selectedTab="selectedTab">
+          </TabContent>
+        </template>
+      </Tabs>
+    </section> 
+
+     <!-- 其他樓層下部 -->
+     <CommonFloor :floors="floorImg2" :menu="menu2"></CommonFloor>
+    
+    <!-- k幣商品 -->
+    <section class="store-box">
+      <h2 class="title">
+        <a :href="$filters.addGALink('https://www.tk3c.com/other_store.aspx')" target="_blank">
+          <img :src="$filters.siteUrl('double12_2024/images/1212/S24.png')">
+        </a>
+      </h2>
+
+      <div class="bonus mb:5%" id="bonus">
+      <img :src="$filters.siteUrl('double12_2024/images/1212/S24_pro.png')" />
+    </div>
+    </section> 
   </div>
 
-  <!-- 左側選單 -->
-  <aside class="aside-container left">
-    <span class="collaspe"><i class="fas fa-chevron-left"></i></span>
-    <div class="aside-wrap">
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul></ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
-
-  <!-- 右側選單 -->
-  <aside class="aside-container">
-    <span class="arrow"><i class="fas fa-chevron-left"></i></span>
-    <div class="aside-wrap">
-      <span class="collaspe"><i class="fas fa-chevron-right"></i></span>
-      <h3 class="aside-header"></h3>
-      <div class="aside-content">
-        <ul>
-          <li v-for="aside in asides">
-            <a :href="aside.href">
-              {{ aside.text }}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="go-top">GO TOP</a>
-    </div>
-  </aside>
+  <RightAside :type="'mobile2'"></RightAside>
 </template>
 
 <style lang="scss">
-@charset "utf-8";
-
-@import '../../../src/assets/sass/module/base';
 $dir: 'https://events.cdn-tkec.tw/events_net/events_net/double12_2024/images/1212/';
 $origin: 'https://events.tk3c.com/events_net/events_net/double12_2024/images/1212/';
 

@@ -2,104 +2,193 @@
  const today = new Date();
 
  //熱門活動區
- let mainName = (today >= new Date('2025/03/24')) ? '25spring_part3' : '25spring2',
+ let mainName = (today >= new Date('2025/06/19')) ? 'myfirst' : '2025618videoparty',
   mainUrl = `https://events.tk3c.com/events_net/${mainName}/index.html`,
    location = window.location.pathname.split('/'),
   folderName = (location[2] == 'events_net') ? location[3] : location[2],
-  statusClass = '';
+  main = null,
+  statusTopic = null;
 
-  var num = 0;
-
-  let events = [
-    {"name":"回主會場","url": mainUrl},
-    {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html","class":"bank"},
-    {"name":"銀行優惠","url":"https://events.tk3c.com/events_net/events_net/banks/bank.html","class":'bank'},
-    {"name":"環保集點","url":"https://events.tk3c.com/events_net/green_subsidy/index.html","class":'bank'},
-    {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/icewash2209/index.html"},
-    {"name":"空調主題館","url":"https://events.tk3c.com/events_net/airConditionerLAB/index.html"},
-    {"name":"電視主題館","url":"https://events.tk3c.com/events_net/2020TVforever/index.html"},
-    {"name":"電腦系統週邊","url":"https://events.tk3c.com/events_net/2024083C/index.html"},
-    {"name":"風扇主題館","url":"https://events.tk3c.com/events_net/fan_hot/index.html"}
+  let topics = [
+    {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/coolcleantech/index.html"},
+    {"name":"空調主題館","url":"https://events.tk3c.com/events_net/airconditioner/index.html"},
+    {"name":"電視主題館","url":"https://events.tk3c.com/events_net/tv_media/index.html"},
+    {"name":"3C電腦週邊","url":"https://events.tk3c.com/events_net/3c_system/index.html"},
+    {"name":"風扇與熨燙","url":"https://events.tk3c.com/events_net/fan/index.html"},
+    {"name":"綠點10倍送","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
+    {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
+    {"name":"福利品特賣","url":"https://events.tk3c.com/events_net/OUTLET/index.html"},
+    {"name":"電競主題館","url":"https://events.tk3c.com/events_net/GamingRace/index.html"},
+    {"name":"毛孩生活館","url":"https://events.tk3c.com/events_net/pet_product/index.html"},
+    {"name":"Win11優惠 ","url":"https://events.tk3c.com/events_net/windows10upgrade/index.html"},
   ];
+
+  let topic618 = [
+    {"name":"辦公用品","url":"https://events.tk3c.com/events_net/office3c/index.html"},
+    {"name":"健康美容","url":"https://events.tk3c.com/events_net/healthbeauty/index.html"},
+    {"name":"廚房家電","url":"https://events.tk3c.com/events_net/kitchen3c/index.html"},
+    {"name":"行動通訊","url":"https://events.tk3c.com/events_net/mobile3c/index.html"},
+    {"name":"戶外休閒","url":"https://events.tk3c.com/events_net/outdoor3c/index.html"},
+  ];
+
+  topics = topics.concat(...topic618);
 
   switch (folderName) {
     case 'icewash2209':
-      num = 4;
+    case 'coolcleantech':
+      statusTopic = 0;
       break;
-  
+
     case 'airConditionerLAB':
-      num = 5;
+    case 'airconditioner':
+      statusTopic = 1;
       break;
 
-     case '2020TVforever':
-      num = 6;
-      break;  
-    
-     case '2024083C':
-      num = 7;
-      break; 
+    case '2020TVforever':
+    case 'tv_media':
+      statusTopic = 2;
+      break;
 
-     case 'fan_hot':
-      num = 8;
-      break; 
+    case '2024083C':
+    case '3c_system':
+      statusTopic = 3;
+      break;
+
+    case 'fan_hot':
+    case 'fan':
+      statusTopic = 4;
+      break;
+
+    case 'green_subsidy':
+      statusTopic = 5;
+      break;
+
+    case 'nightsale':
+      statusTopic = 6;
+      break;
+
+    case 'GamingRace':
+      statusTopic = 8;
+      break;  
+
+    case 'pet_product':
+      statusTopic = 9;
+      break;  
+
+    case 'windows10upgrade':
+      statusTopic = 10;
+      break;  
+
+    case 'office3c':
+      statusTopic = 11;
+      break;
+
+    case 'healthbeauty':
+      statusTopic = 12;
+      break;
+
+    case 'kitchen3c':
+      statusTopic = 13;
+      break;
+
+    case 'mobile3c':
+      statusTopic = 14;
+      break;
+
+    case 'outdoor3c':
+      statusTopic = 15;
+      break;
   } 
 
-  if (folderName == mainName) {
-    events.splice(0,1);
-    statusClass = 'main';
+  if (folderName != mainName) {
+    main = true;
+    topics.splice(statusTopic,1);
   }
-  
-  if(folderName != mainName) {
-    events.splice(num,1); 
-    statusClass = 'main';
-  }
-  
-  //選單項目(各樓層的標題)
-  const asides = defineModel('asides', {
-    type: Object
-  });
 
-  /* 3C頁用類別 START */ 
-  const tab1 = defineModel('tab1', {
-    type: Object
-  });
-
-  const tab2 = defineModel('tab2', {
-    type: Object
-  });
-
-   const statusGift = defineModel('statusGift', {
-    type: Number
-  });
-  /*3C頁用類別 END */
-
-  /*手機版類型
-  * 預設: mobile3 
-    type == 'mobileAi' 啟動3c用手機版選單
-  */
+  //手機版類型
+  //預設: mobile3 
   const type = defineModel('type', {
     type: String,
     default:'mobile3'
   });
+
+  //3c頁樓層錨點
+  const go3cFloor = defineModel('go3cFloor',{
+    type:Function
+  });
+
+  // 自訂右側選單樓層標題項目
+   const asideExtra = defineModel('asideExtra',{
+    type:Object
+  });
 </script>
 
 <script>
- //左側選單 1520 以下裝置不展開
-  export default {
-    mounted() {
-      this.smallDeviceLeft();
-      window.addEventListener('resize',this.smallDeviceLeft);
-      window.addEventListener('scroll',this.scrollToPos);
-    },
-    unmounted() {
-      window.removeEventListener('resize',this.smallDeviceLeft);
+export default {
+  data() {
+    return {
+      swiper: null,
+      status: null,
+      itemNum: '',
+      asides: []
     }
-  }
+  },
+  mounted() {
+    //左右側選單顯示隱藏
+    window.addEventListener('scroll', this.showAside);
+    if (this.go3cFloor === undefined) window.addEventListener('scroll', this.scrollPos);
+  },
+  beforeUpdate() {
+    //確保 DOM 更新後再取得樓層標題和 ID
+    this.asides = this.getFloorTitle('section.scroll');
+    // 如果是自訂的選單項目則覆蓋舊有的
+    if (this.asideExtra) this.asides = this.asideExtra;
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.smallDeviceLeft);
+    window.removeEventListener('scroll', this.scrollPos);
+  },
+  methods: {
+    scrollPos() {
+      //先取得第一個區域px位置
+      const sectionS = document.querySelectorAll('section.scroll');
+      if (sectionS.length === 0) return;
+      if (sectionS[0].getBoundingClientRect() === undefined) return;
+
+      const sectionTop = sectionS[0].getBoundingClientRect().top,
+        scrollTop = window.scrollY;
+
+      this.itemNum = 'auto';
+      sectionS.forEach((el, i) => {
+        const top = el.getBoundingClientRect().top + scrollTop - 150,
+               bottom = top + window.innerHeight;
+
+        // 當前滾動位置是否在所在的區域內
+        if (scrollTop > top && scrollTop < bottom) {
+          this.status = i;
+          this.goSlide(i);
+        }
+      });
+
+      // 當滾動位置在第一區域，則重置狀態
+      if (scrollTop < sectionTop) {
+        this.status = null;
+        this.goSlide(0);
+      }
+    },
+    onSwiper(swiper) {
+      this.swiper = swiper
+    },
+    goSlide(id) {
+      this.swiper.slideTo(id);
+    }
+  },
+}
 </script>
 
 <template>
    <!-- 左側選單 -->
-  <aside class="aside-container left" :class="{'close-left': isLeftAside}">
+  <aside class="aside-container left" v-show="isAsideTop" :class="{'close-left': isLeftAside}">
     <span class="collaspe" @click="switchLeftAside">
       <i v-if="!isLeftAside" class="fas fa-chevron-left"></i>
       <i v-else class="fas fa-chevron-right"></i>
@@ -108,61 +197,86 @@
       <h3 class="aside-header"></h3>
       <div class="aside-content">
         <ul>
-          <li v-for="(event,e) in events" :key="e" :class="[e == 0 ? statusClass : event.class]">
-            <a :href="$filters.addGALink(event.url)">{{ event.name }}</a>
+          <li class="main" v-if="main">
+            <a :href="$filters.addGALink(mainUrl)" target="_blank">回主會館</a>
           </li>
+           <li class="topic" v-for="(topic,t) in topics" :class="{'line-r': t % 2 === 0}" :key="t">
+            <a :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
+            <em v-if="t != topics.length -1 && t != topics.length - 2" class="w:95% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
+           </li>
+           <li v-if="asides" class="board">熱門品類</li>
+           <li v-for="(aside, a) in asides" class="hot-item" :class="{'stay': status == a,'line-r': a % 2 === 0}" :key="a">
+              <a :href="aside.href">{{ aside.text }}</a>
+              <em v-if="a != asides.length - 1 && a != asides.length - 2" class="w:95% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
+           </li>
         </ul>
       </div>
       <a href="#" class="go-top" @click="goTop">GO TOP</a>
     </div>
   </aside>
 
-   <!-- 手機版選單 -->
+   <!-- 手機版選單 置頂 -->
   <mobile3 v-if="type == 'mobile3'">
-    <!-- 熱門活動 -->
-    <template #events>
+    <!-- 主會場 -->
+    <template v-slot:main="{ closeNav2 }">
+      <li v-if="main != null" @click="closeNav2">
+         <a :href="$filters.addGALink(mainUrl)" target="_blank">主會館</a>
+      </li>
+    </template>
+
+    <!-- 主題活動館 -->
+    <template #topic>
        <ul>
-        <li v-for="(event,e) in events" :key="e" :class="[event.class ? event.class : '']">
-              <a :href="$filters.addGALink(event.url)">{{ event.name }}</a>
+        <li v-for="(topic,t) in topics" :key="t" class="w:31%!">
+              <a class="word-break:keep-all" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
             </li>
       </ul>
     </template>
+
+    <!-- 燦坤服務 -->
+     <template #service>
+      <ul>
+        <Service></Service>
+      </ul>
+     </template>
 
     <!-- 上方快速選單 -->
     <template #topAsides>
-     <ul>
-       <li v-for="(aside,a) in asides" :key="a" :class="{'active':isMobileTopStatus == a}">
-          <a :href="aside.href">{{ aside.text }}</a>
-       </li>
+      <swiper
+      :loop="false"
+      :spaceBetween="10"
+      :slidesPerView="itemNum"
+      @swiper="onSwiper"
+      >
+      <swiper-slide v-for="(aside,a) in asides" :key="a" :class="{'active': status == a}" class="color:#ffe400.active width:fit-content!">
+         <a v-if="go3cFloor" @click="go3cFloor(aside.id,aside.href)">{{ aside.text }}</a>
+          <a v-else :href="aside.href">{{ aside.text }}</a>
+      </swiper-slide>
+      </swiper>
+    </template>
+    <template #mobileList>
+       <ul class="grid-cols:2">
+        <li v-for="(aside,a) in asides" :key="a" :class="{'active': status == a}">
+           <a v-if="go3cFloor" @click="go3cFloor(aside.id,aside.href)">{{ aside.text }}</a>
+          <a v-else :href="aside.href">{{ aside.text }}</a>
+        </li>
       </ul>
     </template>
   </mobile3>
-
-  <!-- 3c頁手機版選單 -->
-   <mobileAi v-if="type == 'mobileAi'">
-       <!-- 熱門活動 -->
-    <template #events>
-       <ul>
-        <li v-for="(event,e) in events" :key="e" :class="[event.class ? event.class : '']">
-              <a :href="$filters.addGALink(event.url)">{{ event.name }}</a>
-            </li>
-        </ul>
-    </template>
-
-     <!-- 上方快速選單 -->
-    <template #typeAside>
-       <ul class="a1" v-if="statusGift == 0">
-          <li v-for="(t1,t) in tab1[0]" :key="t">
-            <a :href="t1[0].href">{{ t1[0].text }}</a>
-          </li>
-          <li><a href="#event">熱門活動 </a></li>
-        </ul>
-        <ul class="a2" v-if="statusGift == 1">
-          <li v-for="(t2,t) in tab2[0]" :key="t">
-            <a :href="t2[0].href">{{ t2[0].text }}</a>
-          </li>
-          <li><a href="#event">熱門活動 </a></li>
-        </ul>
-    </template>
-   </mobileAi>
 </template>
+
+<style lang="scss">
+  .mobile-for-product{
+    &.open {
+      ul {
+        li {
+          width: auto;
+          margin: 0 3px 5%;
+        }
+      }
+    }
+    .switch {
+      top: 0;
+    }
+  }
+</style>

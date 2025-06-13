@@ -2,7 +2,8 @@
   <div id="pet-container">
     <div class="background">
       <h2 class="title">
-        <img :src="$filters.siteUrl('pet_product/images/vip/title.png')" />
+        <img v-if="today >= new Date('2025/06/01')" :src="$filters.siteUrl('pet_product/images/vip/title2506_a.png')" />
+        <img v-else :src="$filters.siteUrl('pet_product/images/vip/title.png')" />
       </h2>
 
       <p class="pet animate__animated animate__fadeInUp">
@@ -20,27 +21,43 @@
     <section class="pet-group">
       <h2 class="title">
         <img :src="$filters.siteUrl('pet_product/images/vip/s1.png')" />
+        <a class="abs w:10vmax w:10rem@<992 w:8rem@<576 left:0 right:0 bottom:-23% bottom:-4vw@<992 bottom:-2rem@<576 m:auto bg:#518f45 f:1.5em f:1.2em@<576 lh:1.5em lh:1em@<576 p:5px p:8px@<576 r:20px abs:hover color:#fff:hover box:border-box color:#fff animation:shake|1.4s|linear @iteration-count:infinite" :href="$filters.addGALink('https://events.tk3c.com/events_net/tkpet/index.html')" target="_blank">我要開卡</a>
       </h2>
 
-      <p class="w:75% w:90%@<992 w:full@<576 m:0|auto|2%">
-        <img :src="$filters.siteUrl('pet_product/images/vip/s1-1.png')" />
+      <p class="w:65% w:80%@<992 w:full@<576 m:5%|auto|2% m:15%|auto|2%@<576">
+        <img v-if="today >= new Date('2025/06/01')" :src="$filters.siteUrl('pet_product/images/vip/s1-1_2506_a.png')" />
+        <img v-else :src="$filters.siteUrl('pet_product/images/vip/s1-1a.png')" />
       </p>
-      <p class="rel w:75% w:90%@<992 w:full@<576 m:auto">
+      <p class="rel w:65% w:80%@<992 w:full@<576 m:auto">
         <img class="abs w:full left:0 right:0 m:auto top:0 z:-1" :src="$filters.siteUrl('pet_product/images/vip/s1-2.png')" />
         <ul class="gap:10">
           <li v-for="(i,index) in 4" :key="index" class="w:48% h:11vmax h:11rem@<1700 h:21vw@<992 h:20vw@<576 h:8vmax@>2500">
-            <a class="h:full" @click="alert(index + 1)"></a>
+            <a class="h:full" @click="alert(index)"></a>
           </li>
         </ul>
       </p>
+
+      <!-- 彈出視窗 -->
+      <AlertBox v-for="(msg,m) in message" :key="m" :ref="`alert${m}`" :type="'image'">
+        <picture>
+          <img :src="$filters.siteUrl(msg.image)" loading="lazy">
+        </picture>
+      </AlertBox>
     </section> 
 
     <!--商品樓層 -->
-    <CommonFloor :floors="floors" :menu="menu" :singleImage="singleImage"></CommonFloor>
+    <CommonFloor :floors="floors" :menu="menu">
+      <template #moreTitle2>
+        <img :src="$filters.siteUrl(singleImage)">
+      </template>
+    </CommonFloor>
   </div>
 
+  <!-- 左側選單 -->
+  <LeftAside></LeftAside> 
+
   <!-- 右側選單+手機板 -->
-  <RightAside :asides="asides" :type="'mobile'" :asideImage="asideImage"></RightAside>
+  <RightAside :type="'mobile3'" :asideImage="asideImage"></RightAside>
 </template>
 
 <script>
@@ -53,17 +70,23 @@ export default {
       singleImage:'pet_product/images/s1.png',
       floors:[
         {
+           text:"寵物卡專屬價",
+           isSwiper:1
+        },
+        {
           text:'餵食/飲水',
+          isSwiper:1
         },
          {
           text:'貓砂機',
+          isSwiper:1
         },
         {
           text:'攝影機',
+          isSwiper:1
         },
          {
           text:'寵物美容',
-          isSwiper:1
         },
         {
           text:'健康監控',
@@ -71,48 +94,53 @@ export default {
         },
         {
           text:'環境清淨',
+          isSwiper:1
         },
         {
           text:'寵物床窩/玩具',
           type:listM
         },
       ],
-      menu:[7913,7914,7915,7916,7917,7918,7919]
+      message:[
+         {
+          "image":"pet_product/images/vip/a1.png"
+        },
+        {
+          "image":"pet_product/images/vip/a2_2.png"
+        },
+        {
+          "image":"pet_product/images/vip/a3_2.png"
+        },
+        {
+          "image":"pet_product/images/vip/a4.png"
+        },
+      ],
+      message2:[
+         {
+          "image":"pet_product/images/vip/a1.png"
+        },
+        {
+          "image":"pet_product/images/vip/a2_2506_a.png"
+        },
+        {
+          "image":"pet_product/images/vip/a3_2506_a.png"
+        },
+        {
+          "image":"pet_product/images/vip/a4_2506_a.png"
+        },
+      ],
+      menu:[7959,7913,7914,7915,7916,7917,7918,7919],
+      status:null,
+      today:new Date()
     }
+  },
+  mounted() {
+    const { today } = this;
+    if (today >= new Date('2025/06/01')) this.message = this.message2;
   },
   methods: {
     alert(id) {
-      //彈出視窗
-      let image = "";
-      switch (id) {
-        case 1:
-          image = "pet_product/images/vip/a1.png"
-          break;
-      
-        case 2:
-          image = "pet_product/images/vip/a2.png"
-          break;
-
-        case 3:
-          image = "pet_product/images/vip/a3.png"
-          break;  
-
-         case 4:
-          image = "pet_product/images/vip/a4.png"
-          break;  
-      }
-      
-     setTimeout(() => {
-       Swal.fire({
-        html:`<img src="${this.$filters.siteUrl(image)}" width="95%" loading="lazy">`,
-        confirmButtonText: '關閉',
-        position: 'center',
-        showCloseButton: true,
-        confirmButtonColor: '#000',
-        padding:0,
-        returnFocus: true
-      })
-     }, 0);
+     this.$refs[`alert${id}`][0].openAlert();
     }
   },
 }
@@ -192,8 +220,10 @@ body {
 }
 
 .aside-container {
-  .aside-header {
-    margin: 0 auto 10px;
+  &:not(.left) {
+    .aside-header {
+     margin: 0 auto 10px;
+   }
   }
 }
 
@@ -244,17 +274,17 @@ body {
 @include media-query("mobile", "576px") {
   #pet-container {
     .background {
-      padding-bottom: 64vw;
+      padding-bottom: 74vw;
       .title {
         width: 85%;
-        top: 16vw;
+        top: 26vw;
         left: 0;
         right: 0;
         margin: 0 auto;
       }
       .pet {
         width: 120%;
-        top: 27vw;
+        top: 36vw;
         left: -12vw;
         right: 0;
         margin: 0 auto;
@@ -266,7 +296,7 @@ body {
     &:before,
     .background2 {
       background-size: 180% auto;
-      background-position: -37vw 10vw,top;
+      background-position: -37vw 20vw,top;
     }
   }
 }

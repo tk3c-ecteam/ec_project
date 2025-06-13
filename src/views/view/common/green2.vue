@@ -5,28 +5,28 @@ export default {
       tabs: [
         {
           id:4344,
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120395&strPreView=y',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120816',
           image: 'green_subsidy/images/tab1.png',
           isSwiper:1
         },
         {
           id:4345,
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392&strPreView=y',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120392',
           image: 'green_subsidy/images/tab2.png'
         },
         {
           id:4346,
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120393&strPreView=y',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120393',
           image: 'green_subsidy/images/tab3.png'
         },
         {
           id:4347,
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120394&strPreView=y',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120394',
           image: 'green_subsidy/images/tab4.png'
         },
         {
           id:4390,
-          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120396&strPreView=y',
+          url: 'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=120396',
           image: 'green_subsidy/images/tab5_a.png'
         }
       ],
@@ -112,9 +112,7 @@ export default {
       today: new Date(),
       isVip: false,
       isNew: false,
-      isGreenSale:false,
-      isOpen:false,
-      isOff:true,
+      isAllOff:true,
       swiperOption: {
         breakpoints: {
           0: {
@@ -145,16 +143,7 @@ export default {
   mounted() {
     const { today } = this
 
-    //綠色消費趣 顯示
-    if (today >= new Date('2025/02/17') && today < new Date('2025/03/17')) {
-      this.isGreenSale = true;
-    }
-
-    //3/1新增星展活動
-    if (today >= new Date('2025/03/01') && today < new Date('2025/04/01')) {
-      this.isOpen = true;
-      this.isOff = false;
-    }
+    if (today >= new Date('2025/07/01')) this.isAllOff = false;
 
     // 每週六日顯示
     if (today.getDay() == 6 || today.getDay() == 0) {
@@ -208,6 +197,9 @@ export default {
             confirmButtonColor: '#000'
           })
         }, 5);
+      },
+      alert() {
+        this.$refs.alert.openAlert();
       }
   }
 }  
@@ -221,53 +213,30 @@ export default {
       </span>
       <h2
         class="title w:25% abs right:26% top:19% m:auto w:40vw@<992 w:55vw@<576 left:45vw@<992 left:44vw@<576 top:9vw@<992 top:22vw@<576">
-        <img :src="$filters.siteUrl('green_subsidy/images/new/title.png')" alt="" />
+        <img :src="$filters.siteUrl('green_subsidy/images/new/title.png')" />
       </h2>
     </div>
 
-    <!-- 綠色消費趣活動 -->
-    <section v-show="isGreenSale">
-      <a :href="$filters.addGALink('https://www.greenpoint.org.tw/GPHome/')" target="_blank">
-        <img class="pc" :src="$filters.siteUrl('green_subsidy/images/new/bn25217.jpg')" />
-        <img class="mobile" :src="$filters.siteUrl('green_subsidy/images/new/bn25217M.jpg')" />
-      </a>
+    <!-- 新展活動 -->
+    <section v-if="isAllOff">
+      <h2 class="title">
+        <img :src="$filters.siteUrl('green_subsidy/images/new/bar_2506.png')" />
+      </h2>
+      <p class="w:60% w:70%@<992 w:90%@<576 m:auto m:0|auto|4%@<576">
+         <img :src="$filters.siteUrl('green_subsidy/images/new/4card.png')" />
+      </p>
+
+      <div>
+         <img class="w:80% w:90%@<992 w:full@<576 m:0|auto|2%" :src="$filters.siteUrl('green_subsidy/images/new/sp2_2506.png')" />
+        <img class="w:80% w:90%@<992 w:full@<576 m:0|auto|2%" :src="$filters.siteUrl('green_subsidy/images/new/sp_3.png')" />
+      </div>
     </section>
 
     <!-- 環保3C家電產品 週末12%回饋 -->
     <section class="new-box">
-      <!-- 3/1新增 -->
-      <div v-show="isOpen">
-        <p class="w:85% w:full@<992 m:0|auto|6%">
-          <img :src="$filters.siteUrl('green_subsidy/images/new/g5.png')" />
-        </p>
-
-        <h2 class="title">
-          <img :src="$filters.siteUrl('green_subsidy/images/new/bank31_title.png')" />
-        </h2>
-        <p class="w:85% w:full@<992 mb:2% m:auto">
-          <img :src="$filters.siteUrl('green_subsidy/images/new/bank31.png')" />
-        </p>
-        <div class="w:35% w:50%@<992 w:70%@<576 grid-cols:2 gap:10 m:0|auto|5%">
-          <a @click="message(2)"><img :src="$filters.siteUrl('green_subsidy/images/new/bank_btn1.png')" /></a>
-          <a @click="message(3)"><img :src="$filters.siteUrl('green_subsidy/images/new/bank_btn2.png')" /></a>
-        </div>
-        <p class="w:85% w:full@<992 m:0|auto|4%">
-          <img :src="$filters.siteUrl('green_subsidy/images/new/bank31_board.png')" />
-        </p>
-
-        <a :href="
-            $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
-          " class="w:42% w:45%@<992 w:90%@<576 m:0|auto|5%" target="_blank"><img
-            :src="$filters.siteUrl('green_subsidy/images/new/btn2.png')" /></a>
-      </div>
-
-      <div v-show="isOff" class="w:full flex jc:center flex-wrap:wrap gap:10 m:0|0|5% m:0|0|10%@<576">
-        <a href="#info" class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%"><img
+      <div class="w:full flex jc:center flex-wrap:wrap gap:10 m:0|0|5% m:0|auto|10%@<576">
+        <a href="#info" class="w:50% w:60%@<992 w:90%@<576"><img
             :src="$filters.siteUrl('green_subsidy/images/new/btn1_b.png')" /></a>
-        <a :href="
-            $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
-          " class="w:42% w:45vw@<992 w:90vw@<576 m:0|0|4%" target="_blank"><img
-            :src="$filters.siteUrl('green_subsidy/images/new/btn2.png')" /></a>
 
         <div class="rel m:auto bg:#2fbe44 pb:1% p:2%|3%|3%|3%@<576" id="info">
           <img class="w:full abs left:0 top:0 right:0 z:-1 hidden@<576"
@@ -277,6 +246,11 @@ export default {
           </p>
         </div>
       </div>
+
+        <a :href="
+            $filters.addGALink('https://events.tk3c.com/events_net/greenpoint.tk3c/index.html')
+          " class="w:50% w:60%@<992 w:90%@<576 m:0|auto|4%" target="_blank"><img
+            :src="$filters.siteUrl('green_subsidy/images/new/btn2.png')" /></a>
 
       <div class="box" v-show="isNew">
         <!-- 頁籤 -->
@@ -305,9 +279,14 @@ export default {
         <img :src="$filters.siteUrl('green_subsidy/images/green_title.png')" alt="" />
       </h2>
       <div class="green content">
-         <Tabs :isSwiper="1" :tabs="tabs">
+         <Tabs :tabs="tabs">
           <template v-slot="{ selectedTab }">
-            <TabContent :isSwiper="1" :moreImage="'green_subsidy/images/more2.png'" v-for="(tab, t) in tabs" :menus="tab.id" :name="`t${t + 1}`" :moreUrl="tab.url" :index="t" :selectedTab="selectedTab">
+            <TabContent :isSwiper="1" v-for="(tab, t) in tabs" :menus="tab.id" :index="t" :selectedTab="selectedTab">
+              <template #moreBtn>
+                <a class="more" :href="$filters.addGALink(tab.url)" target="_blank">
+                  <img :src="$filters.siteUrl('green_subsidy/images/more2.png')">
+                </a>
+              </template>
             </TabContent>
           </template>
         </Tabs>
@@ -319,7 +298,7 @@ export default {
       <img class="sub-bg" :src="$filters.siteUrl('green_subsidy/images/sub_bg_2406.png')" alt="" />
       <ul>
         <li class="alert1">
-          <a @click="message(1)">
+          <a @click="alert">
             <img :src="$filters.siteUrl('green_subsidy/images/a05_1.png')" alt="" />
           </a>
         </li>
@@ -336,6 +315,12 @@ export default {
           </a>
         </li>
       </ul>
+
+      <!-- 彈出視窗 -->
+      <AlertBox ref="alert" :type="'image'">
+         <img src="https://www.tk3c.com/image/product/desc/202302/%E5%8F%83%E8%80%83%E8%87%AA%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E8%B2%A1%E6%94%BF%E9%83%A8FB%E5%AE%98%E7%B6%B2%20%E8%A9%B3%E6%83%85%E8%B3%87%E8%A8%8A%E8%AB%8B%E6%9F%A5%E8%A9%A2%E6%94%BF%E5%BA%9C%E7%B6%B2%E7%AB%99.jpg">
+         <img src="https://www.tk3c.com/image/product/desc/202302/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-02-02%20163504(1).jpg">
+      </AlertBox> 
     </section>
 
     <!-- 印表機 -->
@@ -346,7 +331,12 @@ export default {
 
        <Tabs :tabs="printers">
           <template v-slot="{ selectedTab }">
-            <TabContent :moreImage="'green_subsidy/images/more2.png'" v-for="(printer, p) in printers" :menus="printer.id" :moreUrl="'https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123239'" :index="p" :selectedTab="selectedTab">
+            <TabContent v-for="(printer, p) in printers" :menus="printer.id" :index="p" :selectedTab="selectedTab">
+              <template #moreBtn>
+                <a class="more" :href="$filters.addGALink('https://www.tk3c.com/dic2.aspx?cid=120390&aid=23426&hid=123239')" target="_blank">
+                  <img :src="$filters.siteUrl('green_subsidy/images/more2.png')">
+                </a>
+              </template>
             </TabContent>
           </template>
         </Tabs>
@@ -355,9 +345,11 @@ export default {
     <!-- 其他樓層 -->
     <CommonFloor :floors="floorImg" :menu="menu" :moreImage="moreImage"></CommonFloor>
   </div>
-
+  
+  <!-- 左側選單 -->
+  <LeftAside></LeftAside> 
   <!-- 右側選單+手機版 -->
-  <RightAside :asides="asides" :type="'mobile'"></RightAside>
+  <RightAside :type="'mobile3'"></RightAside>
 </template>
 
 <style lang="scss">
@@ -456,6 +448,11 @@ form#form1 {
     justify-content: center;
     padding-bottom: 10px;
   }
+  .tab{
+    .swiper-slide {
+      flex-basis: unset;
+    }
+  }
 }
 
 .special-group {
@@ -466,71 +463,6 @@ form#form1 {
     border-radius: 0;
     background: #23948a;
     padding: 1%;
-    .list_special {
-      ul {
-        justify-content: left;
-        li {
-          width: 23.9%;
-          margin: 0 9px 8px 0;
-        }
-      }
-    }
-    ul {
-      justify-content: left;
-    }
-    .hotproboxL,
-    .hotproboxR {
-      .icon_number {
-        display: none;
-      }
-    }
-  }
-
-  .tab {
-    justify-content: left;
-    flex-wrap: nowrap;
-    li {
-      width: 48%;
-      margin: 0 10px;
-      filter: grayscale(1);
-      transform: translateZ(0);
-      &.active {
-        filter: grayscale(0);
-        transform: translateZ(0);
-      }
-    }
-  }
-
-  .tab-content {
-    .bg01 {
-      display: none;
-      &:nth-of-type(1) {
-        background: #ff5901;
-      }
-      &:nth-of-type(2) {
-        background: #4f5a98;
-        ul {
-          justify-content: left;
-          li {
-            margin: 6px 5px;
-          }
-        }
-        .prev2,
-        .next2 {
-          display: none;
-        }
-      }
-    }
-    .swiper-slide {
-      margin: 0 0;
-    }
-  }
-
-  .swiper-slide {
-    margin: 0 0;
-  }
-  .special {
-    position: relative;
   }
 }
 
@@ -592,27 +524,22 @@ form#form1 {
   }
 }
 
-#tab-area {
-  .swiper-slide {
-    opacity: 0.4;
-    &.active {
-      opacity: 1;
-    }
-  }
-}
-
 .printer-box {
   .tab {
-    li {
+    .swiper-slide {
       width: 20%;
       padding: 5px 5px 0;
       font-size: 1.5em;
       box-sizing: border-box;
       background: #fff;
+      color: #000;
       &.active {
         background: #3f3a39;
         color: #fff;
       }
+    }
+    .swiper-wrapper {
+      justify-content: center;
     }
   }
   .bg01 {
@@ -624,6 +551,14 @@ form#form1 {
  .bg01 {
   margin: 0 auto 2%;
  }
+}
+
+.alert-box {
+  .img-content {
+    height: 70%;
+    overflow: auto;
+    padding: 0;
+  }
 }
 
 /*  電腦版其他尺寸 */
@@ -667,14 +602,6 @@ form#form1 {
   .floor {
     .bg01 {
       margin: 0 auto 2%;
-    }
-  }
-
-  .printer-box {
-    .tab {
-      li {
-        width: 33%;
-      }
     }
   }
 }
@@ -757,8 +684,7 @@ form#form1 {
 
   .printer-box {
     .tab {
-      li {
-        width: 40%;
+      .swiper-slide {
         font-size: 1em;
       }
     }

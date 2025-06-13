@@ -5,7 +5,16 @@
     },
     beforeUnmount() {
         window.removeEventListener('scroll',this.showMobileTop);
-    }
+    },
+    methods: {
+      closeNav2() {
+        setTimeout(() => {
+          this.mobileStatus = '';
+          this.mobileBg = 'none';
+          document.body.style.overflow = 'auto';
+        }, 50);
+      }
+    },
   }
 </script>
 
@@ -15,43 +24,39 @@
     <div class="footer-bg" :style="{'display': mobileBg}" @click="closeNav"></div>
     <div class="nav-box">
       <ul>
-        <li @click="changeMobile('event')" :class="[mobileStatus == 'event' ? 'active' : '']">熱門活動</li>
-        <li @click="changeMobile('social')" :class="[mobileStatus == 'social' ? 'active' : '']">關注社群</li>
+        <li @click="changeMobile('topic')" :class="[mobileStatus == 'topic' ? 'active' : '']">主題活動館</li>
+        <slot name="main" :closeNav2="closeNav2"></slot>
+        <li @click="changeMobile('service')" :class="[mobileStatus == 'service' ? 'active' : '']">燦坤服務</li>
       </ul>
     </div>
 
-   <div class="box-area event" :class="[mobileStatus == 'event' ? 'footer-nav-open' : '']">
-     <slot name="events"></slot>
+    <!-- 主題活動館 -->
+   <div class="box-area topic" :class="[mobileStatus == 'topic' ? 'footer-nav-open' : '']">
+      <slot name="topic"></slot>
     </div>
 
-    <div class="box-area social" :class="[mobileStatus == 'social' ? 'footer-nav-open' : '']">
-      <ul>
-        <li>
-          <a href="https://reurl.cc/QbZ149" @click="closeNav" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-        </li>
-        <li>
-          <a href="https://reurl.cc/7pMZVl" @click="closeNav" target="_blank"><i class="fa-brands fa-line"></i></a>
-        </li>
-        <li>
-          <a href="https://reurl.cc/3Ye8kX" @click="closeNav" target="_blank"
-            ><i class="fa-brands fa-instagram"></i
-          ></a>
-        </li>
-      </ul>
+    <!-- 燦坤服務 -->
+    <div class="box-area service" :class="[mobileStatus == 'service' ? 'footer-nav-open' : '']">
+      <slot name="service"></slot>
     </div>
   </div>
 
   <!-- go top -->
   <a class="gotop-mobile" :class="{'isShow':isGoTop}" @click="goTop"></a>
 
-  <div class="mobile-for-product" :class="{'open':isMobileOpen}">
-    <div class="top-nav" ref="scrollDis" @click="closeNav">
-      <h3 class="title">快速選單</h3>
-      <slot name="topAsides"></slot>
+  <div class="mobile-for-product" :class="{'open': isMobileOpen}">
+    <div v-if="isMobileOpen" @click="changeNav" class="abs w:full h:full left:0 top:0 z:-1"></div>
+    <div class="top-nav">
+      <div v-if="!isMobileOpen"><slot name="topAsides"></slot></div>
     </div>
     <a class="switch" @click="switchMobile">
       <i v-if="!isMobileOpen" class="fa-solid fa-angle-down"></i>
-      <i v-else class="fa-solid fa-xmark"></i>
+      <i v-else class="fa-solid fa-angle-up"></i>
     </a>
+    <div v-if="isMobileOpen">
+      <div @click="changeNav" class="bg:#1e1d1de0 pl:15px box:border-box">
+         <slot name="mobileList"></slot>
+      </div>
+    </div>
   </div>
 </template>
