@@ -224,6 +224,10 @@ const contents = defineModel("contents");
         {
           bottom: 0 !important;
         }
+        .no {
+          pointer-events: none;
+          cursor: auto;
+        }
     }
   }
 

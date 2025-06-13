@@ -144,6 +144,16 @@
           url: "https://www.tk3c.com/dictitleurl.aspx?cid=89383",
         }
       ],
+      slides:[
+        {
+          pc:'sharp/images/bn2025_1.jpg',
+          mobile:'sharp/images/bn2025_1M.jpg'
+        },
+        {
+          pc:'sharp/images/bn2025_2.jpg',
+          mobile:'sharp/images/bn2025_2M.jpg'
+        },
+      ],
       singleImage: 'sharp/images/bar_bg2.png',
       menu:[8281,8282,8283,8284,8285,8286,
       8287,8288,8289,8290,8291,8292],
@@ -157,7 +167,7 @@
   <StoreDefault2 :contents="contents">
     <!-- 影片 -->
     <template #special>
-      <div class="w:full h:0 pb:60% pb:50%@<576 rel m:auto">
+      <div class="w:58% w:full@<992 h:0 pb:33% pb:60%@<992 rel m:0|auto|5%">
         <iframe
           class="w:full h:full abs left:0 right:0 m:auto"
           frameborder="0"
