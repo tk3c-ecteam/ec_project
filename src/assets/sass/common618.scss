@@ -143,9 +143,30 @@ body {
   }
 
   &.summer-other {
-    $image: $dir + "kv_bg2.png";
+    $image: $dir2 + "kv_bg2.png";
     @include bg-responsive($image, 2000, 954);
-    padding-bottom: 74%;
+    padding-bottom: 54%;
+    .title {
+      width: 35%;
+      top: 7%;
+      img {
+        animation: blurFadeIn 1.5s ease-in;
+        animation-delay: 1s;
+      }
+    }
+    .product {
+      .swiper-pagination {
+        .swiper-pagination-bullet,
+        .swiper-pagination-bullet-active {
+          background: #10c26b !important;
+        }
+      }
+    }
+    .items {
+      &.i4 {
+        top: 56%;
+      }
+    }
   }
 }
 
@@ -201,6 +222,15 @@ body {
           top;
       }
     }
+    &.summer-other {
+      .title {
+        width: 44%;
+      }
+      .product {
+        top: 36.5vmax;
+        height: 25vw;
+      }
+    }
   }
 }
 
@@ -223,6 +253,16 @@ body {
       .title {
         width: 45%;
         top: 5vw;
+      }
+    }
+    &.summer-other {
+      .board {
+        width: 63%;
+        top: 35vw;
+      }
+      .product {
+        top: 35vw;
+        height: 27vw;
       }
     }
   }
@@ -317,6 +357,28 @@ body {
           top;
       }
     }
+    &.summer-other {
+      padding-bottom: 94vw;
+      .title {
+        width: 65%;
+        top: 8vw;
+      }
+      .board {
+        width: 80%;
+        top: 54vw;
+      }
+      .product {
+        width: 75%;
+        height: 35vw;
+        top: 53.5vw;
+      }
+      .items {
+        &.i4 {
+          top: 62vw;
+          left: -4vw;
+        }
+      }
+    }
   }
 }
 
@@ -403,6 +465,29 @@ body {
         background-position:
           -100vw 86vw,
           top;
+      }
+    }
+    &.summer-other {
+      background-size: 265% auto;
+      background-position:
+        -81vw 12vw,
+        top;
+      padding-bottom: 155%;
+      .title {
+        width: 90%;
+        top: 22vw;
+      }
+      .product {
+        width: 87%;
+        height: 64vw;
+        top: 84vw;
+        .swiper-slide {
+          width: calc(100% / 2 - 3px) !important;
+        }
+      }
+      .board {
+        width: 95%;
+        top: 84vw;
       }
     }
   }
