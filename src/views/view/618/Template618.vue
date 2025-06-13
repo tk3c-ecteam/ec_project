@@ -7,14 +7,15 @@
 
       <slot name="items"></slot>
 
-      <p class="girl animate__animated animate__lightSpeedInRight" v-if="contents[0].type == 'summer'">
+      <p class="girl animate__animated animate__lightSpeedInRight" v-if="contents[0].type">
         <img :src="$filters.siteUrl('tv_media/images/girl.png')" />
       </p>
 
       <div
         class="board abs w:50% w:60%@<1600 w:90%@<992 w:80%@<576 left:0 right:0 top:28vmax top:35.5vmax@<1600 top:36vw@<1025 top:53vw@<992 top:89vw@<576 m:auto">
         <img v-if="!contents[0].specials" class="pc" :src="$filters.siteUrl('office3c/images/BOX_PC.png')" />
-        <img v-if="!contents[0].specials" class="mobile" :src="$filters.siteUrl('office3c/images/BOX_M.png')" />
+        <img v-if="!contents[0].specials && contents[0].type != 'summer-other'" class="mobile" :src="$filters.siteUrl('office3c/images/BOX_M.png')" />
+        <img v-if="!contents[0].specials && contents[0].type == 'summer-other'" class="mobile" :src="$filters.siteUrl('tv_media/images/BOX_M2.png')">
         <slot v-if="contents[0].specials" name="board-image"></slot>
       </div>
 
