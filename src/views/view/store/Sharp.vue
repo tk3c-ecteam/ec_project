@@ -84,9 +84,6 @@
           text: "展示/福利出清",
         }
       ],
-      slides: [
-        { url:'https://www.facebook.com/events/640114099049707', pc: "sharp/images/bn612.jpg", mobile: 'sharp/images/bn612M.jpg' },
-      ],
       floorImg: [
         {
           href: "pro8281",
@@ -157,7 +154,18 @@
 </script>
 
 <template>
-  <StoreDefault2 :contents="contents"></StoreDefault2>
+  <StoreDefault2 :contents="contents">
+    <!-- 影片 -->
+    <template #special>
+      <div class="w:full h:0 pb:60% pb:50%@<576 rel m:auto">
+        <iframe
+          class="w:full h:full abs left:0 right:0 m:auto"
+          frameborder="0"
+          src="https://www.youtube.com/embed/qMC9blOvgAk?autoplay=1&mute=1&loop=1"
+        ></iframe>
+      </div>
+    </template>
+  </StoreDefault2>
 </template>
 
 <style lang="scss">

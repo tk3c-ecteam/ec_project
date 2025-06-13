@@ -157,7 +157,7 @@ const contents = defineModel("contents");
     </div>  
 
     <!-- banner輪播區 -->
-    <div class="background" @mouseleave="mouseleave">
+    <div class="background" @mouseleave="mouseleave" v-if="contents[0].slides">
       <swiper :loop="false" :autoplay="{
           delay: 2500,
           disableOnInteraction: false,
