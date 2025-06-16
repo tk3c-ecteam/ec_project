@@ -146,6 +146,10 @@
       ],
       slides:[
         {
+          pc:'sharp/images/bn2025_3.jpg',
+          mobile:'sharp/images/bn2025_3M.jpg'
+        },
+        {
           pc:'sharp/images/bn2025_1.jpg',
           mobile:'sharp/images/bn2025_1M.jpg'
         },
@@ -161,6 +165,10 @@
     }
   ]);
   const today = new Date();
+
+  if (today >= new Date('2025/06/21')) {
+    contents[0].slides.splice(0,1);
+  }
 </script>
 
 <template>
