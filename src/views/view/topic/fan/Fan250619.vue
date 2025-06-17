@@ -79,44 +79,44 @@ export default {
       contents:[
         {
           type:'summer',
-          title:'fan/images/title619.png',
-          spImage:'tv_media/images/sp_bg.png',
+          title:'fan/images/title619_b.png',
+          spImage:'fan/images/SP_BG.png',
           menuPro:8217,
           floors: [
             {
-              text: '節能DC扇',
+              image: 'fan/images/S01.png',
               url: 'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=27404'
             },
             {
-              text: '對流循環扇',
+              image: 'fan/images/S02.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11058&aid=16920'
             },
             {
-              text: '勁涼AC扇',
+              image: 'fan/images/S03.png',
               url: 'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=115230'
             },
             {
-              text: '瞬冷水冷扇',
+              image: 'fan/images/S04.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11058&aid=17040'
             },
             {
-              text: '便攜小風扇',
+              image: 'fan/images/S05.png',
               url: 'https://www.tk3c.com/dic2.aspx?cid=11058&aid=4675&hid=26943'
             },
             {
-              text: '熨燙好心情',
+              image: 'fan/images/S06_2.png',
               url: 'https://www.tk3c.com/dictitleurl.aspx?cid=115927'
             },
             {
-              text: '滅蚊一把罩',
+              image: 'fan/images/S07.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11058&aid=4677'
             },
             {
-              text: '限量福利品',
+              image: 'fan/images/S08.png',
               url: 'https://www.tk3c.com/dic2.aspx?cid=11058&aid=22588&hid=120412',
             },
             {
-              text: '電暖超低價',
+              image: 'fan/images/S09.png',
               url: 'https://www.tk3c.com/dic1.aspx?cid=11058&aid=5779',
             }
           ],
@@ -172,10 +172,6 @@ export default {
 <style lang="scss">
 body {
   background: #ffe9cf;
-}
-
-.bg01 {
-  background: #196ff0;
 }
 
 .background {

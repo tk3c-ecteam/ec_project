@@ -30,7 +30,7 @@ export default {
         {
           type:'summer-other',
           menuPro: 8261,
-          title: 'healthbeauty/images/title619.png',
+          title: 'healthbeauty/images/title619_a.png',
           floors: [
             {
               text: '吹風機',
@@ -69,3 +69,75 @@ export default {
 }
 </script>
 
+<style lang="scss">
+ body {
+    background: #cfffcd;
+  }
+  
+  .bg01 {
+    background: #1084ec;
+  }
+
+  .background {
+    &.summer-other {
+      .items {
+      &.i1 {
+        width: 6%;
+        left: 26%;
+        top: 15%;
+      }
+      &.i2 {
+        top: 18%;
+        left: 6%;
+      }
+      &.i3 {
+        top: 38%;
+        left: 12%;
+      }
+      &.i4 {
+        width: 10%;
+        top: 51%;
+        left: 1%;
+      }
+    }
+    }
+  }
+  
+  .floor {
+    .title {
+      b {
+        top: 50%;
+      }
+    }
+  }
+
+  @include media-query("mobile", "992px") {
+    .background {
+      &.summer-other {
+        .items {
+        &.i1 {
+          width: 8%;
+          left: 19vw;
+          top: 9vw;
+        }
+        &.i2 {
+          width: 16%;
+          top: 19vw;
+          left: 1vw;
+        }
+        &.i3 {
+          width: 14%;
+          top: 37vw;
+          left: 3vw;
+        }
+        &.i4 {
+          width: 10%;
+          right: 5vw;
+          top: 8vw;
+          left: unset;
+        }
+        }
+      }
+    }
+  }
+</style>

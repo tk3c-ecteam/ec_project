@@ -589,8 +589,8 @@ export default {
       contents:[
         {
           type:'summer',
-          title:'3c_system/images/title619.png',
-          spImage:'tv_media/images/sp_bg.png',
+          title:'3c_system/images/title619_a.png',
+          spImage:'3c_system/images/sp_bg2.png',
           menuPro:8150,
           specials:[
             {

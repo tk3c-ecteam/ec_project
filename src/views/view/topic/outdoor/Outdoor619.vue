@@ -12,8 +12,8 @@
         </p>
       </template>
 
-      <template #summer-other>
-        <img :src="$filters.siteUrl('fan/images/S02_a.png')" />
+      <template #summer-floor>
+        <img :src="$filters.siteUrl('fan/images/S01_a.png')" />
       </template>
   </Template618>
 </template>
@@ -25,8 +25,9 @@ export default {
       today: new Date(),
       contents: [
         {
+          type:'summer-other',
           menuPro: 8317,
-          title: 'outdoor3c/images/title619.png',
+          title: 'outdoor3c/images/title619_a.png',
           floors: [
             {
               text: '空拍機',

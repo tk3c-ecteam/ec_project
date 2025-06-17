@@ -30,7 +30,7 @@ export default {
         {
           type:'summer-other',
           menuPro: 8264,
-          title: 'kitchen3c/images/title619.png',
+          title: 'kitchen3c/images/title619_a.png',
           floors: [
             {
               text: '微波爐',

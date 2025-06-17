@@ -546,8 +546,8 @@ export default {
       contents:[
         {
           type:'summer',
-          title:'airconditioner/images/title619.png',
-          spImage:'tv_media/images/sp_bg.png',
+          title:'airconditioner/images/title619_a.png',
+          spImage:'airconditioner/images/SP_BG.png',
           menuPro:8124,
           isAlert:true,
           specials:[

@@ -260,7 +260,7 @@ export default {
       contents:[
         {
           type:'summer',
-          title:'coolcleantech/images/title619.png',
+          title:'coolcleantech/images/title619_a.png',
           spImage:'tv_media/images/sp_bg.png',
           menuPro:8088,
           specials:[

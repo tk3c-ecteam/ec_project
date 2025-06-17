@@ -24,7 +24,7 @@ export default {
         {
           type:'summer-other',
           menuPro: 8256,
-          title: 'office3c/images/title619_a.png',
+          title: 'office3c/images/title619_b.png',
           floors: [
             {
               text: '噴墨印表機',
