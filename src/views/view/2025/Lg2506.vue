@@ -164,6 +164,7 @@ export default {
         },
         {
           "image":"2505_LG_Brandday/images/gift5.png",
+          "url":"https://www.tk3c.com.tw/#actsdetail&8&867&ec"
         }
       ],
       floors:[
@@ -200,6 +201,10 @@ export default {
           "url":"https://www.tk3c.com/dic2.aspx?cid=115927&aid=22750&hid=115598"
         },
         {
+          "image":"2505_LG_Brandday/images/S12_a.png",
+          "url":"https://www.tk3c.com/dic1.aspx?cid=11124&aid=22997"
+        },
+        {
           "image":"2505_LG_Brandday/images/S09.png",
           "url":"https://www.tk3c.com/dic2.aspx?cid=44823&aid=22521&hid=113987"
         },
@@ -212,7 +217,7 @@ export default {
         },
       ],
       menuPro:8333,
-      menus:[8334,8335,8336,8337,8338,8339,8344,8340,8341,8342,8343],
+      menus:[8334,8335,8336,8337,8338,8339,8344,8340, 8346,8341,8342,8343],
       today:new Date()
     }
   },

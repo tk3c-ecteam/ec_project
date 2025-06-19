@@ -589,10 +589,10 @@ export default {
   mounted() {
     const {  today,floors } = this;
     // 修改現折券連結
-    if (today >= new Date('2025/06/01')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947&strPreView=y';
+    if (today >= new Date('2025/06/19')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931';
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947';
     }
 
     //撈取 現折券樓層商品

@@ -73,14 +73,6 @@ export default {
     background: #1084ec;
   }
 
-  .floor {
-    .title {
-      b {
-        top: 50%;
-      }
-    }
-  }
-
   @include media-query("mobile", "1600px") {
     .background {
       &.summer-other {

@@ -67,6 +67,10 @@
       statusTopic = 6;
       break;
 
+    case 'OUTLET':
+      statusTopic = 7;
+      break;  
+
     case 'GamingRace':
       statusTopic = 8;
       break;  

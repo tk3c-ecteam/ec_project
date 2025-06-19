@@ -307,10 +307,10 @@ export default {
     let {  today,tabs } = this
 
     // 更新現折券連結
-    if (today >= new Date('2025/06/01')) {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947&strPreView=y';
+    if (today >= new Date('2025/06/19')) {
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
     } else {
-      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
+      this.saleUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
     }
 
      //撈取獨家指定滿額樓層商品

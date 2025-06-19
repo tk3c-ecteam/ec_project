@@ -98,11 +98,6 @@ export default {
   mounted() {
     //撈取私心推薦樓層商品
     this.getFloorSingle(this.menuPro);
-
-    window.addEventListener('scroll',this.showMobileTop);
-  },
-  beforeUnmount() {
-    window.removeEventListener('scroll',this.showMobileTop);
   }
 }
 </script>
@@ -140,7 +135,11 @@ export default {
     
     <!-- 其他樓層 -->
     <CommonFloor :floors="floorImg" :menu="menus"></CommonFloor>
-    <div class="custom-top" :class="{'isShow':isGoTop}" @click="goTop"><p></p></div>
+    
+     <!-- 左側選單 -->
+    <LeftAside></LeftAside> 
+    <!-- 右側選單+手機版 -->
+    <RightAside :type="'mobile3'"></RightAside>
   </div>
 </template>
 
@@ -233,8 +232,8 @@ body {
   #outlet-container{
     .background {
       background-size: 160% auto;
-      background-position: -26vw 10vw,top;
-      padding-bottom: 85vw;
+      background-position: -26vw 17vw,top;
+      padding-bottom: 90vw;
     }
   }
 
@@ -248,10 +247,6 @@ body {
   .background2 {
     background-size: 330% auto;
     background-position: -92vw -12vw, top;
-  }
-
-  .mobile-for-product {
-    top: 23vw;
   }
 }
 

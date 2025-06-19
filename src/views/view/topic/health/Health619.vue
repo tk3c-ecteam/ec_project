@@ -102,14 +102,6 @@ export default {
     }
     }
   }
-  
-  .floor {
-    .title {
-      b {
-        top: 50%;
-      }
-    }
-  }
 
   @include media-query("mobile", "992px") {
     .background {

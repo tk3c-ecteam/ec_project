@@ -594,7 +594,7 @@ export default {
           menuPro:8150,
           specials:[
             {
-              image:'3c_system/images/C01.png',
+              image:'3c_system/images/C01_619.png',
               url:'#sale'
             },
             {
@@ -622,10 +622,10 @@ export default {
     let {today,tab1,tab2 } = this;
 
     // 更新現折券連結
-    if(today >= new Date('2025/06/01')) {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947';
+    if(today >= new Date('2025/06/19')) {
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931&strPreView=y';
     } else {
-      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23931'
+      this.disUrl = 'https://www.tk3c.com/dic1.aspx?cid=124426&aid=23947'
     }
 
      if (this.statusGift == 0 ) this.tabs = tab1[0];
