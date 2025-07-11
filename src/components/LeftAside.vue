@@ -10,99 +10,105 @@
   statusTopic = null;
 
   let topics = [
-    {"name":"冰箱洗衣機","url":"https://events.tk3c.com/events_net/coolcleantech/index.html"},
-    {"name":"空調主題館","url":"https://events.tk3c.com/events_net/airconditioner/index.html"},
-    {"name":"電視主題館","url":"https://events.tk3c.com/events_net/tv_media/index.html"},
-    {"name":"3C電腦週邊","url":"https://events.tk3c.com/events_net/3c_system/index.html"},
-    {"name":"風扇與熨燙","url":"https://events.tk3c.com/events_net/fan/index.html"},
-    {"name":"綠點10倍送","url":"https://events.tk3c.com/events_net/green_subsidy/index.html"},
-    {"name":"夜深價更深","url":"https://events.tk3c.com/events_net/nightsale/index.html"},
-    {"name":"福利品特賣","url":"https://events.tk3c.com/events_net/OUTLET/index.html"},
-    {"name":"電競主題館","url":"https://events.tk3c.com/events_net/GamingRace/index.html"},
-    {"name":"毛孩生活館","url":"https://events.tk3c.com/events_net/pet_product/index.html"},
-    {"name":"Win11優惠 ","url":"https://events.tk3c.com/events_net/windows10upgrade/index.html"},
-  ];
+      { "name": "今日最強檔", "url": "https://events.tk3c.com/events_net/supersale/index.html" },
+      { "name": "影音電視館", "url": "https://events.tk3c.com/events_net/tv_media/index.html" },
+      { "name": "冷氣空調館", "url": "https://events.tk3c.com/events_net/airconditioner/index.html" },
+      { "name": "3C電腦週邊", "url": "https://events.tk3c.com/events_net/3c_system/index.html" },
+      { "name": "冰箱洗衣機", "url": "https://events.tk3c.com/events_net/coolcleantech/index.html" },
+      { "name": "風扇與熨燙", "url": "https://events.tk3c.com/events_net/fan/index.html" },
+      { "name": "廚房家電", "url": "https://events.tk3c.com/events_net/kitchen3c/index.html" },
+      { "name": "辦公用品", "url": "https://events.tk3c.com/events_net/office3c/index.html" },
+      { "name": "健康美容", "url": "https://events.tk3c.com/events_net/healthbeauty/index.html" },
+      { "name": "行動通訊", "url": "https://events.tk3c.com/events_net/mobile3c/index.html" },
+      { "name": "掃除家電", "url": "https://events.tk3c.com/events_net/clean3c/index.html" },
+      { "name": "毛孩生活館", "url": "https://events.tk3c.com/events_net/pet_product/index.html" },
+      { "name": "電競專區", "url": "https://events.tk3c.com/events_net/GamingRace/index.html" },
+      { "name": "戶外休閒", "url": "https://events.tk3c.com/events_net/outdoor3c/index.html" },
+      { "name": "福利品特賣", "url": "https://events.tk3c.com/events_net/OUTLET/index.html" },
+      { "name": "夜深價更深", "url": "https://events.tk3c.com/events_net/nightsale/index.html" },
+      { "name": "綠點10倍送", "url": "https://events.tk3c.com/events_net/green_subsidy/index.html" },
+      { "name": "Win11優惠 ", "url": "https://events.tk3c.com/events_net/windows10upgrade/index.html" },
+    ];
 
-  let topic618 = [
-    {"name":"辦公用品","url":"https://events.tk3c.com/events_net/office3c/index.html"},
-    {"name":"健康美容","url":"https://events.tk3c.com/events_net/healthbeauty/index.html"},
-    {"name":"廚房家電","url":"https://events.tk3c.com/events_net/kitchen3c/index.html"},
-    {"name":"行動通訊","url":"https://events.tk3c.com/events_net/mobile3c/index.html"},
-    {"name":"戶外休閒","url":"https://events.tk3c.com/events_net/outdoor3c/index.html"},
-  ];
 
-  topics = topics.concat(...topic618);
+    switch (folderName) {
+      case 'supersale':
+        statusTopic = 0;
+        break;
 
-  switch (folderName) {
-    case 'icewash2209':
-    case 'coolcleantech':
-      statusTopic = 0;
-      break;
+      case '2020TVforever':
+      case 'tv_media':
+        statusTopic = 1;
+        break;
 
-    case 'airConditionerLAB':
-    case 'airconditioner':
-      statusTopic = 1;
-      break;
+      case 'airConditionerLAB':
+      case 'airconditioner':
+        statusTopic = 2;
+        break;
 
-    case '2020TVforever':
-    case 'tv_media':
-      statusTopic = 2;
-      break;
+      case '2024083C':
+      case '3c_system':
+        statusTopic = 3;
+        break;
 
-    case '2024083C':
-    case '3c_system':
-      statusTopic = 3;
-      break;
+      case 'icewash2209':
+      case 'coolcleantech':
+        statusTopic = 4;
+        break;
 
-    case 'fan_hot':
-    case 'fan':
-      statusTopic = 4;
-      break;
+      case 'fan_hot':
+      case 'fan':
+        statusTopic = 5;
+        break;
 
-    case 'green_subsidy':
-      statusTopic = 5;
-      break;
+      case 'kitchen3c':
+        statusTopic = 6;
+        break;
 
-    case 'nightsale':
-      statusTopic = 6;
-      break;
+      case 'office3c':
+        statusTopic = 7;
+        break;
 
-    case 'OUTLET':
-      statusTopic = 7;
-      break;  
+      case 'healthbeauty':
+        statusTopic = 8;
+        break;
 
-    case 'GamingRace':
-      statusTopic = 8;
-      break;  
+      case 'mobile3c':
+        statusTopic = 9;
+        break;
 
-    case 'pet_product':
-      statusTopic = 9;
-      break;  
+      case "clean3c":
+        statusTopic = 10;
+        break;
 
-    case 'windows10upgrade':
-      statusTopic = 10;
-      break;  
+      case 'pet_product':
+        statusTopic = 11;
+        break;
 
-    case 'office3c':
-      statusTopic = 11;
-      break;
+      case 'GamingRace':
+        statusTopic = 12;
+        break;
 
-    case 'healthbeauty':
-      statusTopic = 12;
-      break;
+      case 'outdoor3c':
+        statusTopic = 13;
+        break;
 
-    case 'kitchen3c':
-      statusTopic = 13;
-      break;
+      case 'OUTLET':
+        statusTopic = 14;
+        break;
 
-    case 'mobile3c':
-      statusTopic = 14;
-      break;
+      case 'nightsale':
+        statusTopic = 15;
+        break;
 
-    case 'outdoor3c':
-      statusTopic = 15;
-      break;
-  } 
+      case 'green_subsidy':
+        statusTopic = 16;
+        break;
+
+      case 'windows10upgrade':
+        statusTopic = 17;
+        break;
+    }
 
   if (folderName != mainName) {
     main = true;
@@ -208,7 +214,7 @@ export default {
             <a :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
             <em v-if="t != topics.length -1 && t != topics.length - 2" class="w:95% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
            </li>
-           <li v-if="asides" class="board">熱門品類</li>
+           <li v-if="asides != ''" class="board">熱門品類</li>
            <li v-for="(aside, a) in asides" class="hot-item" :class="{'stay': status == a,'line-r': a % 2 === 0}" :key="a">
               <a :href="aside.href">{{ aside.text }}</a>
               <em v-if="a != asides.length - 1 && a != asides.length - 2" class="w:95% h:auto block m:auto bb:2px|solid|#fff rel box:border-box"></em>
@@ -231,9 +237,9 @@ export default {
     <!-- 主題活動館 -->
     <template #topic>
        <ul>
-        <li v-for="(topic,t) in topics" :key="t" class="w:31%!">
-              <a class="word-break:keep-all" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
-            </li>
+          <li v-for="(topic,t) in topics" :key="t" class="w:31%!">
+            <a class="word-break:keep-all" :href="$filters.addGALink(topic.url)" target="_blank">{{ topic.name }}</a>
+          </li>
       </ul>
     </template>
 

@@ -167,7 +167,7 @@
   const today = new Date();
 
   if (today >= new Date('2025/06/21')) {
-    contents[0].slides.splice(0,1);
+    contents.value[0].slides.splice(0,1);
   }
 </script>
 

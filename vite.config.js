@@ -90,7 +90,7 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        acer2506: resolve(__dirname, './index.html'),
+        esun: resolve(__dirname, './index.html'),
       },
       output: {
         //拆分node套件命名為vendor.js

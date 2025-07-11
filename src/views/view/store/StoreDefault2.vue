@@ -126,7 +126,7 @@ const contents = defineModel("contents");
             </span>
           </a>
 
-          <div v-else @mouseenter="mouseover(floor.id)" @touchstart="mobileOpen(floor.id)">
+          <div class="rel" v-else @mouseenter="mouseover(floor.id)" @touchstart="mobileOpen(floor.id)">
             <span class="f:1.2em f:2em@<992 f:1.2em@<576 f:1.5em@>2000">
               {{ floor.text }} <i class="f:0.9rem">▼</i>
             </span>
@@ -233,7 +233,7 @@ const contents = defineModel("contents");
 
   nav {
   .dropdown {
-    width: 800px;
+    width: 120px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     padding: 15px 20px;
     box-sizing: border-box;
@@ -244,7 +244,7 @@ const contents = defineModel("contents");
     right:0;
     z-index: 10;
     color: #fff;
-    text-align: left;
+    text-align: center;
     li {
       margin: 0 5px 10px;
       a {

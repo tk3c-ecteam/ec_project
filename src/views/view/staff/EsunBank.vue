@@ -61,7 +61,7 @@ export default {
        <p class="card animate__animated animate__fadeInLeft">
          <img :src="$filters.siteUrl('esunbank_gov/images/card.png')" />
       </p>
-      <a :href="$filters.addGALink('https://s.tk3c.com/?go=ZZRW')" target="_blank" class="go animate__animated animate__bounceInLeft">
+      <a :href="$filters.addGALink('https://lihi.cc/4R1sp')" target="_blank" class="go animate__animated animate__bounceInLeft">
          <img :src="$filters.siteUrl('esunbank_gov/images/go.png')" />
       </a>
        <p class="mark">
